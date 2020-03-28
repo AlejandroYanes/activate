@@ -1,0 +1,4 @@
+* text eol=lf
+*.ttf binary eol=lf
+*.svg binary eol=lf
+*.jpg binary eol=lf
