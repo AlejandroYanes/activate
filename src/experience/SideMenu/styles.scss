@@ -1,0 +1,117 @@
+@import "../../styles/colors";
+
+$menu-block-radius: 16px;
+$menu-block-radius--selected: 24px;
+
+.app-side-menu {
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+}
+
+.app-side-menu__wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: $menu-block-radius--selected;
+}
+
+.app-side-menu__block {
+  width: 78px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-purple;
+  color: $color-white;
+
+  &:focus, &:active {
+    outline: none;
+  }
+}
+
+.app-side-menu__block--top {
+  height: 10px;
+  background-color: $color-purple;
+  box-sizing: border-box;
+  border: none;
+
+  div {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.selected {
+    background-color: $color-gray-1;
+
+    div {
+      border-bottom-right-radius: $menu-block-radius--selected;
+      background-color: $color-purple;
+    }
+  }
+}
+
+.app-side-menu__block--bottom {
+  height: 10px;
+  background-color: $color-purple;
+  box-sizing: border-box;
+
+  div {
+    width: 100%;
+    height: 100%;
+  }
+
+  &.selected {
+    background-color: $color-gray-1;
+
+    div {
+      border-top-right-radius: $menu-block-radius--selected;
+      background-color: $color-purple;
+    }
+  }
+}
+
+.app-side-menu__block__content {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color, color linear 500ms;
+
+  &.selected {
+    border-top-left-radius: $menu-block-radius--selected;
+    border-bottom-left-radius: $menu-block-radius--selected;
+    background-color: $color-gray-1;
+    color: $color-purple;
+    width: 74%;
+    margin-left: auto;
+    justify-content: flex-start;
+
+    span {
+      margin-left: 13px;
+    }
+  }
+}
+
+.app-side-menu__top-block {
+  width: 78px;
+  height: 78px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: $color-purple;
+}
+
+.app-side-menu__empty-block {
+  width: 78px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: $color-purple;
+}
