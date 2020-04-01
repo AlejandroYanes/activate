@@ -1,4 +1,4 @@
-@import "../../styles/colors";
+@import "../../../styles/colors";
 
 .app-aux-panel {
   width: 380px;
@@ -10,10 +10,8 @@
 }
 
 .app-aux-panel__top {
-  height: 100px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
 }
 
 .app-aux-panel__body {
