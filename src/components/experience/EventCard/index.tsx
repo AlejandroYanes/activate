@@ -1,7 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './styles.scss';
+import React, { FunctionComponent, useState } from 'react';
 import Button from '../../basse-components/Button';
+import Avatar from '../../basse-components/Avatar';
+import SvgIcon from '../../basse-components/SvgIcon';
+import { Colors } from '../../basse-components/SvgIcon/colors';
+import { Icons } from '../../basse-components/SvgIcon/Icons';
+import './styles.scss';
 
 const formatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
@@ -11,12 +14,38 @@ const formatter = new Intl.DateTimeFormat('default', {
   minute: 'numeric',
 });
 
-export default function EventCard(props) {
+interface Props {
+  title: string;
+  date: Date;
+  description: string;
+  author: {
+    photo: string;
+    name: string;
+    email: string;
+  };
+  stats: {
+    likes: number;
+    shares: number;
+  };
+}
+
+const EventCard: FunctionComponent<Props> = (props) => {
   const {
     title,
     date,
     description,
+    author: {
+      photo,
+      name,
+      email,
+    },
+    stats: {
+      likes,
+      shares,
+    },
   } = props;
+  const [isLiked, setIsLiked] = useState(false);
+  const [isShared, setIsShared] = useState(false);
 
   return (
     <div className="event-card">
@@ -29,27 +58,44 @@ export default function EventCard(props) {
           <Button
             className="event-card__content__button"
             variant="transparent"
-            align="start"
             label="Continue Reading"
+            icon={<SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />}
+            iconPosition="end"
             onClick={() => undefined}
           />
         </div>
       </div>
       <div className="event-card__bottom">
-        Content
+        <div className="event-card__author">
+          <Avatar icon={photo} size="medium" />
+          <div className="event-card__author-data">
+            <span className="event-card__author-name">{name}</span>
+            <span className="event-card__author-email">{email}</span>
+          </div>
+        </div>
+        <div className="event-card__stats">
+          <Button
+            variant="transparent"
+            className="event-card__stat"
+            label={likes}
+            onClick={() => setIsLiked(!isLiked)}
+            icon={<SvgIcon icon={Icons.HEART} strokeColor={isLiked ? Colors.ERROR : Colors.GRAY3} />}
+            iconPosition="start"
+          />
+          <Button
+            variant="transparent"
+            className="event-card__stat"
+            label={shares}
+            onClick={() => setIsShared(!isShared)}
+            icon={<SvgIcon icon={Icons.SHARE} fillColor={isShared ? Colors.SUCCESS : Colors.GRAY3} />}
+            iconPosition="start"
+          />
+        </div>
       </div>
     </div>
   );
-}
-
-EventCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
-  description: PropTypes.string.isRequired,
-  // author: PropTypes.shape({
-  //   name: PropTypes.string,
-  //   email: PropTypes.string,
-  // }).isRequired,
 };
 
 EventCard.defaultProps = {};
+
+export default EventCard;

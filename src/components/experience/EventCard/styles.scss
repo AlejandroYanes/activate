@@ -1,10 +1,18 @@
 @import "../../../styles/colors";
+@import "../../../styles/variables";
 
 .event-card {
   width: 600px;
   height: 500px;
   display: flex;
   flex-direction: column;
+  background: $color-white;
+  //box-shadow:  $focused-box-shadow--gray;
+  margin-bottom: 32px;
+  border-radius: 16px;
+  box-shadow:
+    -2px -2px 4px $color-white,
+    2px 2px 4px $color-gray-3;
 }
 
 .event-card__image {
@@ -19,7 +27,7 @@
 .event-card__content {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 60%;
   height: 100%;
   padding: 28px 24px;
   box-sizing: border-box;
@@ -40,6 +48,7 @@
   padding: 8px 12px;
   margin: 20px auto 20px 0;
   border-radius: 6px;
+  cursor: pointer;
 }
 
 .event-card__content__description {
@@ -47,8 +56,8 @@
   flex: 1;
   color: $color-white;
   letter-spacing: 1.2px;
-  font-size: 16px;
-  line-height: 18px;
+  font-size: 13px;
+  line-height: 20px;
 }
 
 .event-card__content__separator {
@@ -59,18 +68,59 @@
 }
 
 .event-card__content__button {
-  max-width: 180px;
+  max-width: 200px;
 }
 
 .event-card__bottom {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  background-color: $color-white;
-  border-right: 2px $color-gray-2 solid;
-  border-left: 2px $color-gray-2 solid;
-  border-bottom: 2px $color-gray-2 solid;
+  //border-right: 2px $color-gray-3 solid;
+  //border-left: 2px $color-gray-3 solid;
+  //border-bottom: 2px $color-gray-3 solid;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
+  padding: 6px 12px;
+}
+
+.event-card__author {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex: 1;
+}
+
+.event-card__author-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 12px;
+}
+
+.event-card__author-name {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.event-card__author-email {
+  font-size: 12px;
+  color: $color-gray-3;
+}
+
+.event-card__stats {
+  display: flex;
+  align-items: center;
+}
+
+.event-card__stat {
+  //padding-left: 12px;
+  //display: flex;
+  color: $color-gray-3;
+  width: 100px;
+
+  //& > span {
+  //  padding-left: 4px;
+  //  font-size: 14px;
+  //}
 }

@@ -1,8 +1,8 @@
 {
   "extends": [
     "tslint:recommended",
+//    "tslint-config-airbnb",
     "tslint-react",
-    "tslint-config-airbnb",
     "tslint-react-hooks"
   ],
   "linterOptions": {
@@ -12,7 +12,7 @@
     ]
   },
   "rules": {
-    "max-len": ["error", 120],
+    "max-line-length": [true, 120],
     "object-curly-newline": "off",
     "quotemark": {
       "options": [
@@ -38,13 +38,17 @@
       "spaces",
       2
     ],
-    "jsx-no-lambda": true,
+    "jsx-no-lambda": false,
     "tsx-filename-extension": true,
     "jsx-closing-bracket-location": true,
     "jsx-closing-tag-location": true,
     "no-multi-spaces": true,
     "jsx-tag-spacing": true,
     "jsx-boolean-value": false,
-    "alt-text": true
+    "alt-text": true,
+    "variable-name": {
+      "options": "allow-pascal-case"
+    },
+    "import-name": false
   }
 }

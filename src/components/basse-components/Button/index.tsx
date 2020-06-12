@@ -1,38 +1,31 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import RainbowButton, { ButtonProps } from 'react-rainbow-components/components/Button';
 import './styles.scss';
 
-export default function Button(props) {
-  const { label, onClick, variant, align, type, className, style } = props;
-  const buttonClassName = classnames('button', variant, align, className);
-
-  return (
-    <button
-      className={buttonClassName}
-      style={style}
-      onClick={onClick}
-      type={type}
-    >
-      {label}
-    </button>
-  );
+interface Props extends ButtonProps {
+  mR?: boolean;
+  sm?: boolean;
 }
 
-Button.propTypes = {
-  label: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  variant: PropTypes.oneOf(['primary', 'transparent']),
-  align: PropTypes.oneOf(['start', 'center', 'end']),
-  type: PropTypes.oneOf(['button', 'submit']),
-  className: PropTypes.string,
-  style: PropTypes.object,
+const Button: FunctionComponent<Props> = (props) => {
+  const {
+    mR,
+    className,
+    ...rest
+  } = props;
+
+  const buttonClassName = classnames(`button`, { mR }, className);
+
+  return (
+    <RainbowButton {...rest} className={buttonClassName} />
+  );
 };
 
 Button.defaultProps = {
   type: 'button',
   className: undefined,
   style: undefined,
-  variant: 'primary',
-  align: 'center',
 };
+
+export default Button;

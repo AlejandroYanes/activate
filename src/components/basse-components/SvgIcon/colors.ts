@@ -1,6 +1,10 @@
-export const colors = {
-  primary: '#8177f3',
-  white: '#fff',
-};
-
-export const colorDefinitions = Object.keys(colors);
+export enum Colors {
+  PRIMARY = '#8177f3',
+  WHITE = '#fff',
+  DARK = '#061c3f',
+  GRAY3 = '#a4a7b5',
+  INFO = '#009acf',
+  WARNING = '#fc0',
+  ERROR = '#ea4243',
+  SUCCESS = '#1ad1a3',
+}

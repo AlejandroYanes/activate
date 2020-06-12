@@ -1,45 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { colorDefinitions, colors } from './colors';
-import HomeIcon from './HomeIcon';
-import ChevronUpIcon from './ChevronUp';
-import ChevronDownIcon from './ChevronDown';
-import ChevronLeftIcon from './ChevronLeft';
-import ChevronRightIcon from './ChevronRight';
+import { FunctionComponent } from 'react';
+import { IconProps } from './icon-props';
+import { Colors } from './colors';
+import { icons } from './Icons';
+import { svgIconStyles } from './styles';
 
-const icons = {
-  home: (props) => <HomeIcon {...props} />,
-  'chevron-up': (props) => <ChevronUpIcon {...props} />,
-  'chevron-down': (props) => <ChevronDownIcon {...props} />,
-  'chevron-left': (props) => <ChevronLeftIcon {...props} />,
-  'chevron-right': (props) => <ChevronRightIcon {...props} />,
-  none: () => null,
-};
-
-export default function SvgIcon(props) {
-  const { icon, fillColor, strokeColor, ...iconProps } = props;
-  return icons[icon]({ ...iconProps, fillColor: colors[fillColor], strokeColor: colors[strokeColor] });
+interface Props extends IconProps {
+  size?: 'small' | 'medium' | 'large';
 }
 
-SvgIcon.propTypes = {
-  icon: PropTypes.oneOf([
-    'home',
-    'none',
-  ]),
-  fillColor: PropTypes.oneOf(colorDefinitions),
-  strokeColor: PropTypes.oneOf(colorDefinitions),
-  height: PropTypes.number,
-  width: PropTypes.number,
-  className: PropTypes.string,
-  style: PropTypes.object,
+const SvgIcon: FunctionComponent<Props> = (props) => {
+  const { icon, width, height, size, ...iconProps } = props;
+  const iconHeight = height || svgIconStyles.size[size].height;
+  const iconWidth = width || svgIconStyles.size[size].width;
+
+  return icons[icon]({
+    ...iconProps,
+    width: iconWidth,
+    height: iconHeight,
+  });
 };
 
 SvgIcon.defaultProps = {
-  icon: 'none',
-  fillColor: 'primary',
-  strokeColor: 'primary',
-  height: 20,
-  width: 20,
+  fillColor: Colors.DARK,
+  strokeColor: Colors.DARK,
+  size: 'medium',
+  height: undefined,
+  width: undefined,
   className: undefined,
   style: undefined,
 };
+
+export default SvgIcon;

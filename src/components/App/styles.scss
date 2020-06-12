@@ -1,4 +1,4 @@
-@import "../styles/colors";
+@import "../../styles/colors";
 
 .app-wrapper {
   display: flex;
@@ -19,8 +19,4 @@
   padding: 32px;
   overflow-y: auto;
   overflow-x: hidden;
-
-  & > * {
-    margin-bottom: 32px;
-  }
 }

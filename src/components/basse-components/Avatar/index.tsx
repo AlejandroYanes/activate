@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import user1 from '../../../assets/icons/users/user1.svg';
 import user2 from '../../../assets/icons/users/user2.svg';
 import user3 from '../../../assets/icons/users/user3.svg';
@@ -12,6 +11,7 @@ import user9 from '../../../assets/icons/users/user9.svg';
 import user10 from '../../../assets/icons/users/user10.svg';
 import user11 from '../../../assets/icons/users/user11.svg';
 import user12 from '../../../assets/icons/users/user12.svg';
+import { avatarStyles } from './styles';
 
 const icons = {
   user1,
@@ -28,22 +28,31 @@ const icons = {
   user12,
 };
 
-export default function Avatar(props) {
-  const { icon, height, width } = props;
-
-  return (
-    <img style={{ width: `${width}px`, height: `${height}px` }} src={icons[icon]} alt="user's avatar" />
-  );
+interface Props {
+  icon: string;
+  size?: 'x-small' | 'small' | 'medium' | 'large';
+  alt?: string;
+  onClick?: (event) => void;
 }
 
-Avatar.propTypes = {
-  icon: PropTypes.string,
-  width: PropTypes.number,
-  height: PropTypes.number,
+const Avatar: FunctionComponent<Props> = (props) => {
+  const { icon, size, alt, onClick } = props;
+
+  return (
+    <span onClick={onClick} style={avatarStyles.size[size]}>
+      <img
+        alt={alt}
+        src={icons[icon]}
+        style={avatarStyles.size[size]}
+      />
+    </span>
+  );
 };
 
 Avatar.defaultProps = {
   icon: 'user1',
-  width: 48,
-  height: 48,
+  size: 'small',
+  alt: 'user\'s avatar',
 };
+
+export default Avatar;

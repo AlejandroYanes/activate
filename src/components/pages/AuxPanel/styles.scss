@@ -11,7 +11,13 @@
 
 .app-aux-panel__top {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
+  padding-right: 2rem;
+}
+
+.app-aux-panel__top__option {
+  margin: 0 18px;
 }
 
 .app-aux-panel__body {

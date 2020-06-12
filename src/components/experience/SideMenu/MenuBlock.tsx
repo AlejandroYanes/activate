@@ -1,8 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 
-export default function MenuBlock(props) {
+interface Props {
+  selected: boolean;
+  label: string;
+  onClick: (event) => void;
+}
+
+const MenuBlock: FunctionComponent<Props> = (props) => {
   const { selected, label, onClick } = props;
   const blockTopClassName = classnames(
     'app-side-menu__block--top',
@@ -31,14 +36,10 @@ export default function MenuBlock(props) {
       </div>
     </li>
   );
-}
-
-MenuBlock.propTypes = {
-  selected: PropTypes.bool,
-  label: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 MenuBlock.defaultProps = {
   selected: false,
 };
+
+export default MenuBlock;

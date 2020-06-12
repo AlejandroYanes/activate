@@ -1,0 +1,27 @@
+@import "../../../styles/colors";
+
+.avatar-menu__trigger {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 32px;
+  padding: 6px 8px;
+  border-radius: 12px;
+
+  &:hover {
+    box-shadow:
+      -2px -2px 4px $color-white,
+      2px 2px 4px $color-gray-3;
+  }
+
+  &.is-open {
+    box-shadow:
+      inset -2px -2px 4px $color-white,
+      inset 2px 2px 4px $color-gray-3;
+  }
+}
+
+.avatar-menu__trigger__user {
+  margin: 0 8px;
+  text-transform: capitalize;
+}
