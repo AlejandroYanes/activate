@@ -56,11 +56,10 @@ const EventCard: FunctionComponent<Props> = (props) => {
           <p className="event-card__content__description">{description}</p>
           <div className="event-card__content__separator" />
           <Button
-            className="event-card__content__button"
-            variant="transparent"
+            variant="base"
+            color="white"
             label="Continue Reading"
-            icon={<SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />}
-            iconPosition="end"
+            rightIcon={<SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />}
             onClick={() => undefined}
           />
         </div>
@@ -75,20 +74,18 @@ const EventCard: FunctionComponent<Props> = (props) => {
         </div>
         <div className="event-card__stats">
           <Button
-            variant="transparent"
-            className="event-card__stat"
+            variant="outline"
             label={likes}
             onClick={() => setIsLiked(!isLiked)}
-            icon={<SvgIcon icon={Icons.HEART} strokeColor={isLiked ? Colors.ERROR : Colors.GRAY3} />}
-            iconPosition="start"
+            leftIcon={<SvgIcon icon={Icons.HEART} strokeColor={isLiked ? Colors.ERROR : Colors.BRAND} />}
+            mR
           />
           <Button
-            variant="transparent"
-            className="event-card__stat"
+            variant="fill"
+            color="success"
             label={shares}
             onClick={() => setIsShared(!isShared)}
-            icon={<SvgIcon icon={Icons.SHARE} fillColor={isShared ? Colors.SUCCESS : Colors.GRAY3} />}
-            iconPosition="start"
+            leftIcon={<SvgIcon icon={Icons.SHARE} fillColor={isShared ? Colors.SUCCESS : Colors.WHITE} />}
           />
         </div>
       </div>

@@ -30,15 +30,15 @@ const AuxPanel: FunctionComponent = () => {
     <aside className="app-aux-panel">
       <header className="app-aux-panel__top">
         <IconButton
-          variant="transparent"
+          variant="border-inverse"
           onClick={() => undefined}
           icon={Icons.SETTINGS}
         />
         <IconButton
-          variant="transparent"
+          variant="base"
           onClick={() => undefined}
           icon={Icons.BELL}
-          wrapperClassName="app-aux-panel__top__option"
+          className="app-aux-panel__top__option"
         />
         <AvatarMenu />
       </header>

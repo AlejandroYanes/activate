@@ -1,31 +1,53 @@
-import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
-import RainbowButton, { ButtonProps } from 'react-rainbow-components/components/Button';
-import './styles.scss';
+import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import StyledButton from './styled/button';
+import Content from './Content';
 
-interface Props extends ButtonProps {
+export interface ButtonProps {
+  label?: string | number;
+  onClick: (event) => void;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
+  isLoading?: boolean;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'base' | 'fill' | 'outline';
+  color?: 'brand' | 'success' | 'warning' | 'error' | 'white';
   mR?: boolean;
-  sm?: boolean;
+  className?: string;
+  style?: CSSProperties;
 }
 
-const Button: FunctionComponent<Props> = (props) => {
+const Button: FunctionComponent<ButtonProps> = (props) => {
   const {
-    mR,
-    className,
+    label,
+    onClick,
+    leftIcon,
+    rightIcon,
+    isLoading,
+    children,
     ...rest
   } = props;
 
-  const buttonClassName = classnames(`button`, { mR }, className);
-
   return (
-    <RainbowButton {...rest} className={buttonClassName} />
+    <StyledButton onClick={onClick} {...rest}>
+      <Content
+        children={children}
+        isLoading={isLoading}
+        label={label}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+      />
+    </StyledButton>
   );
 };
 
 Button.defaultProps = {
   type: 'button',
+  variant: 'base',
+  color: 'brand',
   className: undefined,
   style: undefined,
+  leftIcon: null,
+  rightIcon: null,
 };
 
 export default Button;

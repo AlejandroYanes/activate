@@ -2,7 +2,7 @@ import faker from 'faker';
 
 export const events = Array(5).fill('1').map(() => ({
   id: faker.random.uuid(),
-  title: faker.lorem.words(3),
+  title: faker.lorem.words(7),
   date: faker.date.recent(7),
   description: faker.lorem.lines(4),
   author: {

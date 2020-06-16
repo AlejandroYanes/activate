@@ -49,7 +49,7 @@ const Alert: FunctionComponent<Props> = (props) => {
         <RenderIf condition={!!actions && actions.length > 0}>
           <Actions actions={actions} />
         </RenderIf>
-        <Button label="Close" onClick={() => undefined} sm />
+        <Button label="Close" onClick={() => undefined} />
       </div>
     </div>
   );
