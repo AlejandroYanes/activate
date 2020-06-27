@@ -10,8 +10,12 @@ export interface ButtonProps {
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'base' | 'fill' | 'outline';
-  color?: 'brand' | 'success' | 'warning' | 'error' | 'white';
+  color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  mT?: boolean;
   mR?: boolean;
+  mB?: boolean;
+  mL?: boolean;
+  sm?: boolean;
   className?: string;
   style?: CSSProperties;
 }

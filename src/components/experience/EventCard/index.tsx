@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
+import Colors from '../../../styles/colors';
 import Button from '../../basse-components/Button';
 import Avatar from '../../basse-components/Avatar';
 import SvgIcon from '../../basse-components/SvgIcon';
-import { Colors } from '../../basse-components/SvgIcon/colors';
 import { Icons } from '../../basse-components/SvgIcon/Icons';
 import './styles.scss';
 
@@ -13,6 +13,12 @@ const formatter = new Intl.DateTimeFormat('default', {
   hour: 'numeric',
   minute: 'numeric',
 });
+
+const arrowRightIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />;
+const heartIcon = <SvgIcon icon={Icons.HEART} strokeColor={Colors.GRAY} />;
+const heartFilledIcon = <SvgIcon icon={Icons.HEART_FILLED} fillColor={Colors.ERROR} />;
+const shareIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.GRAY} />;
+const shareFilledIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.SUCCESS} />;
 
 interface Props {
   title: string;
@@ -37,7 +43,6 @@ const EventCard: FunctionComponent<Props> = (props) => {
     author: {
       photo,
       name,
-      email,
     },
     stats: {
       likes,
@@ -56,36 +61,31 @@ const EventCard: FunctionComponent<Props> = (props) => {
           <p className="event-card__content__description">{description}</p>
           <div className="event-card__content__separator" />
           <Button
-            variant="base"
             color="white"
             label="Continue Reading"
-            rightIcon={<SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />}
+            rightIcon={arrowRightIcon}
             onClick={() => undefined}
           />
         </div>
       </div>
       <div className="event-card__bottom">
         <div className="event-card__author">
-          <Avatar icon={photo} size="medium" />
-          <div className="event-card__author-data">
-            <span className="event-card__author-name">{name}</span>
-            <span className="event-card__author-email">{email}</span>
-          </div>
+          <Avatar icon={photo} size="small" />
+          <span className="event-card__author-name">{name}</span>
         </div>
         <div className="event-card__stats">
           <Button
-            variant="outline"
+            color="gray"
             label={likes}
             onClick={() => setIsLiked(!isLiked)}
-            leftIcon={<SvgIcon icon={Icons.HEART} strokeColor={isLiked ? Colors.ERROR : Colors.BRAND} />}
+            leftIcon={isLiked ? heartFilledIcon : heartIcon}
             mR
           />
           <Button
-            variant="fill"
-            color="success"
+            color="gray"
             label={shares}
             onClick={() => setIsShared(!isShared)}
-            leftIcon={<SvgIcon icon={Icons.SHARE} fillColor={isShared ? Colors.SUCCESS : Colors.WHITE} />}
+            leftIcon={isShared ? shareFilledIcon : shareIcon}
           />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
+import Colors from '../../../styles/colors';
 import SvgIcon from '../../basse-components/SvgIcon';
 import { Icons } from '../../basse-components/SvgIcon/Icons';
-import { Colors } from '../../basse-components/SvgIcon/colors';
 
 const NotificationsPage: FunctionComponent = () => {
   return (
@@ -10,7 +10,7 @@ const NotificationsPage: FunctionComponent = () => {
         <span>Notifications</span>
         <SvgIcon icon={Icons.BELL} strokeColor={Colors.DARK} />
       </header>
-      <main></main>
+      <main>aaaaa</main>
     </section>
   );
 };

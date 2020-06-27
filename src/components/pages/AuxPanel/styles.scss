@@ -16,10 +16,9 @@
   padding-right: 2rem;
 }
 
-.app-aux-panel__top__option {
-  margin: 0 18px;
-}
-
 .app-aux-panel__body {
   flex: 1;
+  padding: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }

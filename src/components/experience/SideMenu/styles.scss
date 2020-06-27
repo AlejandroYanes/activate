@@ -30,7 +30,7 @@ $menu-block-width: 100%;
   height: 64px;
   display: flex;
   flex-direction: column;
-  background-color: $color-purple;
+  //background-color: $color-purple;
   color: $color-white;
 
   &:focus, &:active {
@@ -40,7 +40,7 @@ $menu-block-width: 100%;
 
 .app-side-menu__block--top {
   height: 10px;
-  background-color: $color-purple;
+  //background-color: $color-purple;
   box-sizing: border-box;
   border: none;
 
@@ -54,14 +54,14 @@ $menu-block-width: 100%;
 
     div {
       border-bottom-right-radius: $menu-block-radius--selected;
-      background-color: $color-purple;
+      background-color: $color-error;
     }
   }
 }
 
 .app-side-menu__block--bottom {
   height: 10px;
-  background-color: $color-purple;
+  //background-color: $color-purple;
   box-sizing: border-box;
 
   div {
@@ -74,7 +74,7 @@ $menu-block-width: 100%;
 
     div {
       border-top-right-radius: $menu-block-radius--selected;
-      background-color: $color-purple;
+      background-color: $color-error;
     }
   }
 }
@@ -85,13 +85,14 @@ $menu-block-width: 100%;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 1.5rem;
   transition: background-color, color linear 500ms;
 
   &.selected {
     border-top-left-radius: $menu-block-radius--selected;
     border-bottom-left-radius: $menu-block-radius--selected;
     background-color: $color-gray-1;
-    color: $color-purple;
+    //color: $color-purple;
     width: 74%;
     margin-left: auto;
     justify-content: flex-start;
@@ -110,7 +111,7 @@ $menu-block-width: 100%;
   align-items: center;
   justify-content: center;
   color: $color-white;
-  background-color: $color-purple;
+  //background-color: $color-purple;
 }
 
 .app-side-menu__empty-block {
@@ -118,5 +119,5 @@ $menu-block-width: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: $color-purple;
+  //background-color: $color-purple;
 }

@@ -16,7 +16,7 @@
 }
 
 .event-card__image {
-  height: 80%;
+  height: 86%;
   border-top-right-radius: 16px;
   border-top-left-radius: 16px;
   background-size: cover;
@@ -56,8 +56,8 @@
   flex: 1;
   color: $color-white;
   letter-spacing: 1.2px;
-  font-size: 13px;
-  line-height: 20px;
+  font-size: 0.9rem;
+  line-height: 24px;
 }
 
 .event-card__content__separator {
@@ -76,9 +76,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  //border-right: 2px $color-gray-3 solid;
-  //border-left: 2px $color-gray-3 solid;
-  //border-bottom: 2px $color-gray-3 solid;
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
   padding: 6px 12px;
@@ -95,17 +92,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding-left: 12px;
+
 }
 
 .event-card__author-name {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.event-card__author-email {
-  font-size: 12px;
-  color: $color-gray-3;
+  font-size: 16px;
+  padding-left: 12px;
 }
 
 .event-card__stats {

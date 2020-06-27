@@ -1,25 +1,42 @@
 import styled from 'styled-components';
+import Colors from '../../../../styles/colors';
 import { ButtonProps } from '../index';
-import { Colors } from '../../SvgIcon/colors';
 
-const getMr = (props: ButtonProps) => props.mR ? '1rem' : '0';
+const getSize = (props: ButtonProps) => {
+  const { sm } = props;
+
+  if (sm) {
+    return `
+      height: 28px;
+      font-size:0.75rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    `;
+  }
+
+  return `
+    height: 38px;
+    font-size: 1.15rem;
+  `;
+};
+
+const getMargins = (props: ButtonProps) => {
+  const { mT, mR, mB, mL } = props;
+  const margins = [
+    mT ? '1rem' : '0',
+    mR ? '1rem' : '0',
+    mB ? '1rem' : '0',
+    mL ? '1rem' : '0',
+  ];
+
+  return `margin: ${margins.join(' ')};`;
+};
 
 const getBackgroundColor = (props: ButtonProps) => {
   const { variant, color } = props;
 
   if (variant === 'fill') {
-    switch (color) {
-      case 'brand':
-        return Colors.BRAND;
-      case 'success':
-        return Colors.SUCCESS;
-      case 'warning':
-        return Colors.WARNING;
-      case 'error':
-        return Colors.ERROR;
-      case 'white':
-        return Colors.WHITE;
-    }
+    return Colors[color.toUpperCase()];
   }
 
   return 'transparent';
@@ -32,25 +49,12 @@ const getFontColor = (props: ButtonProps) => {
     switch (color) {
       case 'white':
         return Colors.DARK;
-      case 'warning':
-        return Colors.DARK;
       default:
         return Colors.WHITE;
     }
   }
 
-  switch (color) {
-    case 'brand':
-      return Colors.BRAND;
-    case 'success':
-      return Colors.SUCCESS;
-    case 'warning':
-      return Colors.WARNING;
-    case 'error':
-      return Colors.ERROR;
-    case 'white':
-      return Colors.WHITE;
-  }
+  return Colors[color.toUpperCase()];
 };
 
 const getBorder = (props: ButtonProps) => {
@@ -58,62 +62,78 @@ const getBorder = (props: ButtonProps) => {
   const borderStyle = 'solid 1px ';
 
   if (variant === 'outline' || variant === 'fill') {
-    switch (color) {
-      case 'brand':
-        return `${borderStyle} ${Colors.BRAND}`;
-      case 'success':
-        return `${borderStyle} ${Colors.SUCCESS}`;
-      case 'warning':
-        return `${borderStyle} ${Colors.WARNING}`;
-      case 'error':
-        return `${borderStyle} ${Colors.ERROR}`;
-      case 'white':
-        return `${borderStyle} ${Colors.WHITE}`;
-    }
+    return `${borderStyle} ${Colors[color.toUpperCase()]}`;
   }
 
   return `${borderStyle} transparent`;
 };
 
-const getHoveredBorderColor = (props: ButtonProps) => {
-  const { color } = props;
+const getHoveredStyles = (props: ButtonProps) => {
+  const { variant, color } = props;
 
-  switch (color) {
-    case 'brand':
-      return Colors.BRAND;
-    case 'success':
-      return Colors.SUCCESS;
-    case 'warning':
-      return Colors.WARNING;
-    case 'error':
-      return Colors.ERROR;
-    case 'white':
-      return Colors.WHITE;
+  if (variant === 'base') {
+    return `
+    border-color: ${Colors[color.toUpperCase()]};
+    background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
+    `;
+  }
+
+  if (variant === 'outline') {
+    return `
+    color: ${Colors[`${color.toUpperCase()}_DARK`]};
+    border-color: ${Colors[`${color.toUpperCase()}_DARK`]};
+    background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
+    `;
+  }
+
+  if (variant === 'fill') {
+    return `
+    background-color: ${Colors[`${color.toUpperCase()}_DARK`]};
+    color: ${Colors.WHITE};
+    `;
   }
 };
+
+// TODO: do not destroy till certain of correct behavior of focus as hover
+// const getFocusStyles = (props: ButtonProps) => {
+//   const { variant, color } = props;
+//
+//   if (variant === 'fill') {
+//     return `
+//       background-color: ${Colors.WHITE};
+//       border-color: ${Colors[color.toUpperCase()]};
+//       color: ${Colors[color.toUpperCase()]};
+//     `;
+//   }
+//
+//   return `border-color: ${Colors[color.toUpperCase()]}`;
+// };
 
 const StyledButton = styled.button`
   border: none;
   outline: none;
   box-shadow: none;
   box-sizing: border-box;
-  border-radius: 10px;
-  height: 42px;
-  font-size: 1rem;
+  border-radius: 100px;
   letter-spacing: 1px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 8px;
+  padding: 0 4px;
   cursor: pointer;
   transition: all ease-in-out 120ms;
-  margin-right: ${getMr};
+  ${getSize};
+  ${getMargins};
   color: ${getFontColor};
   background-color: ${getBackgroundColor};
   border: ${getBorder};
 
-  &:hover {
-    border-color: ${getHoveredBorderColor};
+  &:active {
+    transform: scale(1.07);
+  }
+
+  &:hover, &:focus {
+      ${getHoveredStyles}
   }
 `;
 

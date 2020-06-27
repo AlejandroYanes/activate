@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
+import Colors from '../../../styles/colors';
 
 interface Props {
   selected: boolean;
@@ -24,14 +25,14 @@ const MenuBlock: FunctionComponent<Props> = (props) => {
   );
 
   return (
-    <li className="app-side-menu__block" onClick={onClick}>
-      <div className={blockTopClassName}>
+    <li className="app-side-menu__block" style={{ backgroundColor: Colors.BRAND }} onClick={onClick}>
+      <div className={blockTopClassName} style={{ backgroundColor: Colors.BRAND }}>
         <div />
       </div>
-      <div className={blockContentClassName}>
+      <div className={blockContentClassName} style={{ backgroundColor: Colors.BRAND }}>
         <span>{label}</span>
       </div>
-      <div className={blockBottomClassName}>
+      <div className={blockBottomClassName} style={{ backgroundColor: Colors.BRAND }}>
         <div />
       </div>
     </li>
