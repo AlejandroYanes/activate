@@ -1,51 +1,52 @@
-import React, { CSSProperties, FunctionComponent, useMemo } from 'react';
-import RainbowButtonIcon, { ButtonIconProps } from 'react-rainbow-components/components/ButtonIcon';
+import React, { CSSProperties, FunctionComponent } from 'react';
 import SvgIcon from '../SvgIcon';
-import { Icons } from '../SvgIcon/Icons';
 import { IconProps } from '../SvgIcon/icon-props';
-import './styles.scss';
+import StyledIconButton from './styled/icon-button';
 
-interface Props extends ButtonIconProps, IconProps {
-  icon: Icons;
+export interface IconButtonProps extends IconProps {
+  variant?: 'base' | 'fill' | 'outline';
+  color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
   onClick: (event) => void;
+  mT?: boolean;
+  mR?: boolean;
+  mB?: boolean;
+  mL?: boolean;
+  sm?: boolean;
   iconClassName?: string;
   iconStyle?: CSSProperties;
 }
 
-const IconButton: FunctionComponent<Props> = (props) => {
+const IconButton: FunctionComponent<IconButtonProps> = (props) => {
   const {
-    icon: iconName,
+    onClick,
+    icon,
     fillColor,
     strokeColor,
-    height,
     width,
+    height,
     iconClassName,
     iconStyle,
-    ...buttonProps
+    ...rest
   } = props;
 
-  const icon = useMemo(
-    () => (
+  return (
+    <StyledIconButton onClick={onClick} {...rest}>
       <SvgIcon
-        icon={iconName}
-        fillColor={fillColor}
-        strokeColor={strokeColor}
+        icon={icon}
         height={height}
         width={width}
+        fillColor={fillColor}
+        strokeColor={strokeColor}
         className={iconClassName}
         style={iconStyle}
       />
-    ),
-    [iconName, fillColor, strokeColor, height, width, iconClassName, iconStyle],
-  );
-
-  return (
-    <RainbowButtonIcon {...buttonProps} icon={icon} />
+    </StyledIconButton>
   );
 };
 
 IconButton.defaultProps = {
   variant: 'base',
+  color: 'brand',
 };
 
 export default IconButton;

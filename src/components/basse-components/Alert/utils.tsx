@@ -1,9 +1,9 @@
+import React from 'react';
+import Colors from '../../../styles/colors';
 import SvgIcon from '../SvgIcon';
 import { Icons } from '../SvgIcon/Icons';
-import { Colors } from '../SvgIcon/colors';
-import React from 'react';
-import { AlertAction, AlertType } from './index';
 import Button from '../Button';
+import { AlertAction, AlertType } from './index';
 
 export function resolveTitle(type) {
   switch (type as AlertType) {

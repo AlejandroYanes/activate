@@ -18,7 +18,7 @@ const App: FunctionComponent = () => {
       <main className="app-body">
         {eventCards}
       </main>
-      {/*<AuxPanel />*/}
+      <AuxPanel />
     </section>
   );
 };

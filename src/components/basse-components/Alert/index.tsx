@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import classnames from 'classnames';
 import { Actions, AlertIcon, resolveTitle } from './utils';
-import './styles.scss';
 import Button from '../Button';
 import RenderIf from '../RenderIf';
+import './styles.scss';
 
 export enum AlertType {
   SUCCESS,
@@ -49,7 +49,7 @@ const Alert: FunctionComponent<Props> = (props) => {
         <RenderIf condition={!!actions && actions.length > 0}>
           <Actions actions={actions} />
         </RenderIf>
-        <Button label="Close" onClick={() => undefined} />
+        <Button label="Close" onClick={() => undefined} sm />
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
-import { Colors } from '../colors';
 
 const ErrorIcon: FunctionComponent<IconProps> = (props) => {
   const { fillColor, height, width, className, style } = props;

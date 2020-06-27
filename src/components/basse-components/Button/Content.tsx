@@ -1,9 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const StyledLabel = styled.span`
-margin: 0 8px;
-`;
+import StyledLabel from './styled/label';
 
 export default function Content({ label, rightIcon, leftIcon, isLoading, children }) {
   if (children) {
