@@ -1,9 +1,9 @@
 import React from 'react';
 import Colors from '../../../styles/colors';
-import Avatar from '../../basse-components/Avatar';
-import SvgIcon from '../../basse-components/SvgIcon';
-import { Icons } from '../../basse-components/SvgIcon/Icons';
-import Button from '../../basse-components/Button';
+import Avatar from '../../base-components/Avatar';
+import SvgIcon from '../../base-components/SvgIcon';
+import { Icons } from '../../base-components/SvgIcon/Icons';
+import Button from '../../base-components/Button';
 
 const MenuTrigger = (props) => {
   const { isOpen, toggleMenu, label } = props;

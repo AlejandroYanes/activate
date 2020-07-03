@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 import './styles.scss';
 import Colors from '../../../styles/colors';
-import SvgIcon from '../../basse-components/SvgIcon';
-import { Icons } from '../../basse-components/SvgIcon/Icons';
+import SvgIcon from '../../base-components/SvgIcon';
+import { Icons } from '../../base-components/SvgIcon/Icons';
 import MenuBlock from './MenuBlock';
 
 const items = ['A', 'B', 'C', 'D', 'E'];

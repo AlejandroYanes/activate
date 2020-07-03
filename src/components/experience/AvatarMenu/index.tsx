@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import MenuItem from '../../basse-components/Menu/MenuItem';
-import Menu from '../../basse-components/Menu';
-import SvgIcon from '../../basse-components/SvgIcon';
-import { Icons } from '../../basse-components/SvgIcon/Icons';
+import MenuItem from '../../base-components/Menu/MenuItem';
+import Menu from '../../base-components/Menu';
+import SvgIcon from '../../base-components/SvgIcon';
+import { Icons } from '../../base-components/SvgIcon/Icons';
 import MenuTrigger from './MenuTrigger';
 import './styles.scss';
 

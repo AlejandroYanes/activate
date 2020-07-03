@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import Colors from '../../../styles/colors';
-import Button from '../../basse-components/Button';
-import Avatar from '../../basse-components/Avatar';
-import SvgIcon from '../../basse-components/SvgIcon';
-import { Icons } from '../../basse-components/SvgIcon/Icons';
+import Button from '../../base-components/Button';
+import Avatar from '../../base-components/Avatar';
+import SvgIcon from 'components/base-components/SvgIcon';
+import { Icons } from 'components/base-components/SvgIcon/Icons';
 import './styles.scss';
 
 const formatter = new Intl.DateTimeFormat('default', {
