@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { IconButtonProps } from '../index';
 import Colors from '../../../../styles/colors';
 
 const getSize = (props) => {
-  const { sm } = props;
+  const { sm } = props as IconButtonProps;
 
   if (sm) {
     return `
@@ -18,7 +19,7 @@ const getSize = (props) => {
 };
 
 const getMargins = (props) => {
-  const { mT, mR, mB, mL } = props;
+  const { mT, mR, mB, mL } = props as IconButtonProps;
   const margins = [
     mT ? '1rem' : '0',
     mR ? '1rem' : '0',
@@ -30,7 +31,7 @@ const getMargins = (props) => {
 };
 
 const getBackGroundColor = (props) => {
-  const { variant, color } = props;
+  const { variant, color } = props as IconButtonProps;
 
   if (variant === 'fill') {
     return `${Colors[color.toUpperCase()]}`;
@@ -40,7 +41,7 @@ const getBackGroundColor = (props) => {
 };
 
 const getBorder = (props) => {
-  const { variant, color } = props;
+  const { variant, color } = props as IconButtonProps;
   const borderStyle = 'solid 1px ';
 
   if (variant === 'outline' || variant === 'fill') {
@@ -51,7 +52,7 @@ const getBorder = (props) => {
 };
 
 const getHoveredStyles = (props) => {
-  const { color } = props;
+  const { color } = props as IconButtonProps;
 
   return `
     color: ${Colors[`${color.toUpperCase()}_DARK`]};

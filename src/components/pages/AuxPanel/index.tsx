@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import IconButton from '../../basse-components/IconButton';
-import { Icons } from '../../basse-components/SvgIcon/Icons';
+import IconButton from '../../base-components/IconButton';
+import { Icons } from '../../base-components/SvgIcon/Icons';
 import AvatarMenu from '../../experience/AvatarMenu';
 import './styles.scss';
 
