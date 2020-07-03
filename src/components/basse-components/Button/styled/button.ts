@@ -109,7 +109,7 @@ const getHoveredStyles = (props: ButtonProps) => {
 //   return `border-color: ${Colors[color.toUpperCase()]}`;
 // };
 
-const StyledButton = styled.button`
+export const Button = styled.button`
   border: none;
   outline: none;
   box-shadow: none;
@@ -136,5 +136,3 @@ const StyledButton = styled.button`
       ${getHoveredStyles}
   }
 `;
-
-export default StyledButton;

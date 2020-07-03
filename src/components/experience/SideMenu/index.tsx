@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
-import './styles.scss';
 import Colors from '../../../styles/colors';
 import SvgIcon from '../../basse-components/SvgIcon';
 import { Icons } from '../../basse-components/SvgIcon/Icons';
 import MenuBlock from './MenuBlock';
+import { SideMenu as StyledSideMenu, MenuList, ActionBlock, EmptyBlock } from './styled';
 
 const items = ['A', 'B', 'C', 'D', 'E'];
 
@@ -15,15 +15,15 @@ const SideMenu: FunctionComponent = () => {
   ));
 
   return (
-    <aside className="app-side-menu">
-      <ul className="app-side-menu__wrapper">
-        <li className="app-side-menu__action-block" style={{ backgroundColor: Colors.BRAND }}>
+    <StyledSideMenu>
+      <MenuList>
+        <ActionBlock>
           <SvgIcon icon={Icons.HOME} fillColor={Colors.WHITE} />
-        </li>
+        </ActionBlock>
         {menuBlocks}
-        <li className="app-side-menu__empty-block" style={{ backgroundColor: Colors.BRAND }} />
-      </ul>
-    </aside>
+        <EmptyBlock />
+      </MenuList>
+    </StyledSideMenu>
   );
 };
 

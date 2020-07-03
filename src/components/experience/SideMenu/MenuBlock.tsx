@@ -1,41 +1,32 @@
 import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
-import Colors from '../../../styles/colors';
+import {
+  MenuBlock as StyledMenuBlock,
+  MenuBlockTop,
+  MenuBlockContent,
+  MenuBlockBottom,
+} from './styled';
 
-interface Props {
+export interface MenuBlockProps {
   selected: boolean;
   label: string;
   onClick: (event) => void;
 }
 
-const MenuBlock: FunctionComponent<Props> = (props) => {
+const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
   const { selected, label, onClick } = props;
-  const blockTopClassName = classnames(
-    'app-side-menu__block--top',
-    {
-      selected,
-    },
-  );
-  const blockContentClassName = classnames('app-side-menu__block__content', { selected });
-  const blockBottomClassName = classnames(
-    'app-side-menu__block--bottom',
-    {
-      selected,
-    },
-  );
 
   return (
-    <li className="app-side-menu__block" style={{ backgroundColor: Colors.BRAND }} onClick={onClick}>
-      <div className={blockTopClassName} style={{ backgroundColor: Colors.BRAND }}>
+    <StyledMenuBlock onClick={onClick}>
+      <MenuBlockTop selected={selected}>
         <div />
-      </div>
-      <div className={blockContentClassName} style={{ backgroundColor: Colors.BRAND }}>
+      </MenuBlockTop>
+      <MenuBlockContent selected={selected}>
         <span>{label}</span>
-      </div>
-      <div className={blockBottomClassName} style={{ backgroundColor: Colors.BRAND }}>
+      </MenuBlockContent>
+      <MenuBlockBottom selected={selected}>
         <div />
-      </div>
-    </li>
+      </MenuBlockBottom>
+    </StyledMenuBlock>
   );
 };
 

@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
-import StyledButton from './styled/button';
+import { Button as StyledButton } from './styled';
 import Content from './Content';
 
 export interface ButtonProps {
