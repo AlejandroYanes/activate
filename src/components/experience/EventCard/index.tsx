@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
-import Colors from '../../../styles/colors';
-import Button from '../../base-components/Button';
-import Avatar from '../../base-components/Avatar';
+import Colors from 'styles/colors';
+import Button from 'components/base-components/Button';
+import Avatar from 'components/base-components/Avatar';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import {
@@ -19,7 +19,7 @@ import {
   Stats,
 } from './styled';
 
-import backgroundImage from '../../../assets/images/cuba-1082913_1920.jpg';
+import backgroundImage from 'assets/images/cuba-1082913_1920.jpg';
 
 const formatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
