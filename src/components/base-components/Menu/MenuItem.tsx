@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import SvgIcon from '../SvgIcon';
 import RenderIf from '../RenderIf';
 import { Icons } from '../SvgIcon/Icons';
+import { MenuItem as StyledMenuItem, MenuItemIcon, MenuItemLabel } from './styled';
 
 interface Props {
   label: string;
@@ -12,18 +13,18 @@ interface Props {
 const MenuItem: FunctionComponent<Props> = (props) => {
   const { label, icon, onClick } = props;
   const itemIcon = icon && typeof icon === 'string'
-    ? <SvgIcon className="menu-item__icon" icon={icon} />
-    : <div className="menu-item__icon">{icon}</div>;
+    ? <MenuItemIcon as={SvgIcon} icon={icon} />
+    : <MenuItemIcon>{icon}</MenuItemIcon>;
 
   return (
-    <li className="menu-item" onClick={onClick}>
+    <StyledMenuItem onClick={onClick}>
       <RenderIf condition={!!icon}>
         {itemIcon}
       </RenderIf>
-      <div className="menu-item__label">
+      <MenuItemLabel>
         <span>{label}</span>
-      </div>
-    </li>
+      </MenuItemLabel>
+    </StyledMenuItem>
   );
 };
 

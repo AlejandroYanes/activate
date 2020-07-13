@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import IconButton from '../../base-components/IconButton';
-import { Icons } from '../../base-components/SvgIcon/Icons';
-import AvatarMenu from '../../experience/AvatarMenu';
+import IconButton from 'components/base-components/IconButton';
+import { Icons } from 'components/base-components/SvgIcon/Icons';
+import AvatarMenu from 'components/experience/AvatarMenu';
 import './styles.scss';
 
 const AuxPanel: FunctionComponent = () => {

@@ -4,6 +4,7 @@ import SvgIcon from '../SvgIcon';
 import { Icons } from '../SvgIcon/Icons';
 import Button from '../Button';
 import { AlertAction, AlertType } from './index';
+import { Icon as StyledIcon } from './styled';
 
 export function resolveTitle(type) {
   switch (type as AlertType) {
@@ -46,9 +47,9 @@ export function resolveColor(type) {
 
 export function AlertIcon({ type }) {
   return (
-    <div className="alert_icon" style={{ backgroundColor: resolveColor(type) }}>
+    <StyledIcon style={{ backgroundColor: resolveColor(type) }}>
       {resolveIcon(type)}
-    </div>
+    </StyledIcon>
   );
 }
 

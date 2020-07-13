@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useMemo, useRef, useState } from 'react';
 import RenderIf from '../RenderIf';
-import './styles.scss';
+import { MenuWrapper, MenuContainer, MenuList } from './styled';
 
 interface Props {
   trigger: (onClick) => JSX.Element;
@@ -31,16 +31,16 @@ const Menu: FunctionComponent<Props> = (props) => {
   }), [align]);
 
   return (
-    <div className="menu-wrapper" ref={menuRef}>
+    <MenuWrapper ref={menuRef}>
       <MenuTrigger isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} {...otherProps} />
       <RenderIf condition={isOpen}>
-        <div className="menu-container">
-          <ul className="menu-list" style={menuListStyles}>
+        <MenuContainer>
+          <MenuList style={menuListStyles}>
             {children}
-          </ul>
-        </div>
+          </MenuList>
+        </MenuContainer>
       </RenderIf>
-    </div>
+    </MenuWrapper>
   );
 };
 

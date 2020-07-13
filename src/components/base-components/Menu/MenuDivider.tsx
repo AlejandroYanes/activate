@@ -1,5 +1,6 @@
 import React from 'react';
+import { Divider } from './styled';
 
-const MenuDivider = () => <div className="menu-divider" />;
+const MenuDivider = () => <Divider />;
 
 export default MenuDivider;
