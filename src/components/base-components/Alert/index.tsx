@@ -1,9 +1,17 @@
 import React, { FunctionComponent } from 'react';
-import classnames from 'classnames';
-import { Actions, AlertIcon, resolveTitle } from './utils';
 import Button from '../Button';
 import RenderIf from '../RenderIf';
-import './styles.scss';
+import { Actions, AlertIcon, resolveTitle } from './utils';
+import {
+  Actions as StyledActions,
+  Alert as StyledAlert,
+  Content,
+  Divider,
+  IconSection,
+  Message,
+  MessageSection,
+  Tittle,
+} from './styled';
 
 export enum AlertType {
   SUCCESS,
@@ -17,41 +25,39 @@ export interface AlertAction {
   onClick: () => void;
 }
 
-interface Props {
+export interface AlertProps {
   message: string | ((close) => JSX.Element);
   type: AlertType;
   actions?: AlertAction[];
   mb?: boolean;
 }
 
-const Alert: FunctionComponent<Props> = (props) => {
+const Alert: FunctionComponent<AlertProps> = (props) => {
   const { message, type, actions, mb } = props;
 
   if ( typeof message === 'function') {
     return message(() => undefined);
   }
 
-  const alertClassName = classnames('alert', { mb });
-
   return (
-    <div className={alertClassName}>
-      <div className="alert_content">
-        <div className="alert_icon-section">
+    <StyledAlert mb={mb}>
+      <Content>
+        <IconSection>
           <AlertIcon type={type} />
-        </div>
-        <div className="alert_message-section">
-          <h1 className="alert_title">{resolveTitle(type)}</h1>
-          <p className="alert_message">{message}</p>
-        </div>
-      </div>
-      <div className="alert_divider" />
-      <div className="alert_actions">
+        </IconSection>
+        <MessageSection>
+          <Tittle>{resolveTitle(type)}</Tittle>
+          <Message>{message}</Message>
+        </MessageSection>
+      </Content>
+      <Divider />
+      <StyledActions>
         <RenderIf condition={!!actions && actions.length > 0}>
           <Actions actions={actions} />
         </RenderIf>
         <Button label="Close" onClick={() => undefined} sm />
-      </div>
-    </div>
+      </StyledActions>
+    </StyledAlert>
   );
 };
 

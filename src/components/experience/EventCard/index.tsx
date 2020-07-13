@@ -1,10 +1,25 @@
 import React, { FunctionComponent, useState } from 'react';
-import Colors from '../../../styles/colors';
-import Button from '../../base-components/Button';
-import Avatar from '../../base-components/Avatar';
+import Colors from 'styles/colors';
+import Button from 'components/base-components/Button';
+import Avatar from 'components/base-components/Avatar';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
-import './styles.scss';
+import {
+  Card,
+  Content,
+  ContentWrapper,
+  ContentImage,
+  Title,
+  Date,
+  Description,
+  Separator,
+  Footer,
+  Author,
+  AuthorName,
+  Stats,
+} from './styled';
+
+import backgroundImage from 'assets/images/cuba-1082913_1920.jpg';
 
 const formatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
@@ -53,27 +68,28 @@ const EventCard: FunctionComponent<Props> = (props) => {
   const [isShared, setIsShared] = useState(false);
 
   return (
-    <div className="event-card">
-      <div className="event-card__image">
-        <div className="event-card__content">
-          <h1 className="event-card__content__title">{title}</h1>
-          <div className="event-card__content__date">{formatter.format(date)}</div>
-          <p className="event-card__content__description">{description}</p>
-          <div className="event-card__content__separator" />
+    <Card>
+      <ContentWrapper>
+        <ContentImage src={backgroundImage} />
+        <Content>
+          <Title>{title}</Title>
+          <Date>{formatter.format(date)}</Date>
+          <Description>{description}</Description>
+          <Separator />
           <Button
             color="white"
             label="Continue Reading"
             rightIcon={arrowRightIcon}
             onClick={() => undefined}
           />
-        </div>
-      </div>
-      <div className="event-card__bottom">
-        <div className="event-card__author">
+        </Content>
+      </ContentWrapper>
+      <Footer>
+        <Author>
           <Avatar icon={photo} size="small" />
-          <span className="event-card__author-name">{name}</span>
-        </div>
-        <div className="event-card__stats">
+          <AuthorName>{name}</AuthorName>
+        </Author>
+        <Stats>
           <Button
             color="gray"
             label={likes}
@@ -87,9 +103,9 @@ const EventCard: FunctionComponent<Props> = (props) => {
             onClick={() => setIsShared(!isShared)}
             leftIcon={isShared ? shareFilledIcon : shareIcon}
           />
-        </div>
-      </div>
-    </div>
+        </Stats>
+      </Footer>
+    </Card>
   );
 };
 

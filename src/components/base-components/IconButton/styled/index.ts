@@ -61,7 +61,7 @@ const getHoveredStyles = (props) => {
     `;
 };
 
-const StyledIconButton = styled.button`
+export const IconButton = styled.button`
   border: none;
   outline: none;
   box-shadow: none;
@@ -85,5 +85,3 @@ const StyledIconButton = styled.button`
       ${getHoveredStyles}
   }
 `;
-
-export default StyledIconButton;

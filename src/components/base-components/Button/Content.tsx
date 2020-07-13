@@ -1,5 +1,5 @@
 import React from 'react';
-import StyledLabel from './styled/label';
+import { Label } from './styled';
 
 export default function Content({ label, rightIcon, leftIcon, isLoading, children }) {
   if (children) {
@@ -16,7 +16,7 @@ export default function Content({ label, rightIcon, leftIcon, isLoading, childre
     return (
       <>
         {leftIcon}
-        <StyledLabel>{label}</StyledLabel>
+        <Label>{label}</Label>
         {rightIcon}
       </>
     );

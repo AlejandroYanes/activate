@@ -1,10 +1,9 @@
 import React, { FunctionComponent } from 'react';
-import MenuItem from '../../base-components/Menu/MenuItem';
-import Menu from '../../base-components/Menu';
-import SvgIcon from '../../base-components/SvgIcon';
-import { Icons } from '../../base-components/SvgIcon/Icons';
+import MenuItem from 'components/base-components/Menu/MenuItem';
+import Menu from 'components/base-components/Menu';
+import SvgIcon from 'components/base-components/SvgIcon';
+import { Icons } from 'components/base-components/SvgIcon/Icons';
 import MenuTrigger from './MenuTrigger';
-import './styles.scss';
 
 const AvatarMenu: FunctionComponent = () => {
   return (
