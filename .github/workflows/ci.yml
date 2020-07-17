@@ -22,8 +22,4 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
   
-    - name: ESLint Action
-      uses: hallee/eslint-action@1.0.3
-      with:
-        # GitHub repository token for publishing inline lint annotations. Should be secrets.GITHUB_TOKEN.
-        repo-token: secrets.GITHUBTOKEN
+    - run: npm test
