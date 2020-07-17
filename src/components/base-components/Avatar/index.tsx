@@ -40,7 +40,7 @@ const Avatar: FunctionComponent<Props> = (props) => {
   const { icon, size, alt, onClick } = props;
 
   return (
-    <span onClick={onClick} role="button" style={avatarStyles.size[size]}>
+    <span onClick={onClick} role="button" tabIndex={0} style={avatarStyles.size[size]}>
       <img
         alt={alt}
         src={icons[icon]}
