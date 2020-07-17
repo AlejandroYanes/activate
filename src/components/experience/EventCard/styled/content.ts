@@ -23,7 +23,7 @@ export const Content = styled.article`
   flex-direction: column;
   width: 60%;
   height: 100%;
-  padding: 28px 24px;
+  padding: 28px 24px 36px;
   box-sizing: border-box;
   background-color: ${contentBackground};
 `;
