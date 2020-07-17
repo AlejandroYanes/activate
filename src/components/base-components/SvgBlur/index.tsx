@@ -11,19 +11,19 @@ export default function SvgBlur() {
   return (
     <svg display="none">
       <defs>
-        <filter id='goo'>
+        <filter id="goo">
           <feGaussianBlur
-            in='SourceGraphic'
-            stdDeviation='10'
-            result='name'
+            in="SourceGraphic"
+            stdDeviation="10"
+            result="name"
           />
           <feColorMatrix
-            in='name'
-            mode='matrix'
+            in="name"
+            mode="matrix"
             values={colorMatrix}
-            result='aab'
+            result="aab"
           />
-          <feBlend in='SourceGraphic' in2='aab'/>
+          <feBlend in="SourceGraphic" in2="aab" />
         </filter>
       </defs>
     </svg>

@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
-import { AlertProps } from '../';
+import { AlertProps } from '..';
 
 const getMarginStyles = (props: AlertProps) => {
   if (props.mb) {
-    return `margin-bottom: 16px;`;
+    return 'margin-bottom: 16px;';
   }
+  return '';
 };
 
 export const Alert = styled.div.attrs((props: AlertProps) => props)`
@@ -62,7 +63,7 @@ export const Message = styled.p`
 export const Divider = styled.div`
   height: 1px;
   width: 98%;
-  background-color: ${Colors.LIGHT_GRAY};
+  background-color: ${Colors.DARK_GRAY};
   margin-left: 8px;
   margin-top: 8px;
   margin-bottom: 8px;

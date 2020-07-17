@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-const menuBlockRadiusSelected = '24px';
-
 export const SideMenu = styled.aside`
   width: 90px;
   display: flex;
@@ -20,5 +18,5 @@ export const MenuList = styled.ul`
   height: 100%;
   width: 100%;
   overflow: hidden;
-  border-radius: ${menuBlockRadiusSelected};
+  border-radius: 16px;
 `;

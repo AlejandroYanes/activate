@@ -55,6 +55,7 @@ const getSelectedStyles = (props: MenuBlockProps) => {
       }
     `;
   }
+  return '';
 };
 
 export const Block = styled.li.attrs((props: MenuBlockProps) => props)`

@@ -5,6 +5,12 @@
     "jest": true,
     "node": true
   },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "arrowFunctions": true
+    }
+  },
   "plugins": [
     "@typescript-eslint",
     "eslint-comments",
@@ -23,9 +29,9 @@
     "plugin:promise/recommended",
     "plugin:unicorn/recommended",
     "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:import/typescript",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended"
+    "plugin:react/recommended"
   ],
   "rules": {
     "max-len": [2, 120],
@@ -34,15 +40,14 @@
     "react/button-has-type": 0,
     "jsx-quotes": [
       "error",
-      "prefer-single"
+      "prefer-double"
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "devDependencies": [
-        ]
-      }
-    ],
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "react/display-name": 0,
+    "import/no-cycle": 0,
+    "unicorn/consistent-function-scoping": 0,
+    "@typescript-eslint/no-explicit-any": 0,
     "jsx-a11y/label-has-associated-control": [ 2, {
       "labelComponents": ["Label"],
       "labelAttributes": ["title"],
@@ -57,6 +62,10 @@
       "error",
       {
         "whitelist": {
+          "AlertProps": true,
+          "ButtonProps": true,
+          "IconProps": true,
+          "IconButtonProps": true,
           "props": true,
           "otherProps": true,
           "hoverRef": true,
@@ -72,24 +81,29 @@
       "groups": [
         ["external", "builtin"],
         ["internal", "parent", "sibling", "index"]
-      ],
-      "newlines-between": "always"
+      ]
     }]
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
-      "alias": {
-        "map": [
-          ["@components", "./src/components/base-components"],
-          ["@experience", "./src/components/experience"],
-          ["@pages", "./src/components/pages"],
-          ["@styles", "./src/styles"],
-          ["@", "./src"]
-        ],
-        "extensions": [
-          ".ts", ".tsx", ".js", ".jsx", ".json"
-        ]
+      "typescript": {
+        "directory": "./"
       }
+//      "alias": {
+//        "map": [
+//          ["@components", "./src/components/base-components"],
+//          ["@experience", "./src/components/experience"],
+//          ["@pages", "./src/components/pages"],
+//          ["@styles", "./src/styles"],
+//          ["@", "./src"]
+//        ],
+//        "extensions": [
+//          ".ts", ".tsx", ".json"
+//        ]
+//      }
     }
   }
 }

@@ -11,14 +11,14 @@ interface Props {
 const Menu: FunctionComponent<Props> = (props) => {
   const { trigger: MenuTrigger, align, children, ...otherProps } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(undefined);
+  const menuReference = useRef(undefined);
 
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+    const handleClickOutside = (event) => {
+      if (menuReference.current && !menuReference.current.contains(event.target)) {
         setIsOpen(false);
       }
-    }
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -26,12 +26,10 @@ const Menu: FunctionComponent<Props> = (props) => {
     };
   }, []);
 
-  const menuListStyles = useMemo(() => ({
-    [align === 'end' ? 'right' : 'left']: 0,
-  }), [align]);
+  const menuListStyles = useMemo(() => ({ [align === 'end' ? 'right' : 'left']: 0 }), [align]);
 
   return (
-    <MenuWrapper ref={menuRef}>
+    <MenuWrapper ref={menuReference}>
       <MenuTrigger isOpen={isOpen} toggleMenu={() => setIsOpen(!isOpen)} {...otherProps} />
       <RenderIf condition={isOpen}>
         <MenuContainer>

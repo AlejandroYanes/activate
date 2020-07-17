@@ -7,8 +7,6 @@ export interface MenuBlockProps {
   onClick: (event) => void;
 }
 
-
-
 const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
   const { selected, label, onClick } = props;
 
@@ -22,8 +20,6 @@ const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
   );
 };
 
-MenuBlock.defaultProps = {
-  selected: false,
-};
+MenuBlock.defaultProps = { selected: false };
 
 export default MenuBlock;

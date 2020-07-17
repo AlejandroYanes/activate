@@ -7,12 +7,10 @@ export const Footer = styled.footer`
   border-bottom-right-radius: 16px;
   border-bottom-left-radius: 16px;
   padding: 6px 12px;
-  // border: 1px solid ${Colors.MEDIUM_GRAY};
-  //border-top-color: ${Colors.WHITE};
   position: relative;
 `;
 
-export const Wave = styled.div`
+export const StyledWave = styled.div`
   position: absolute;
   top: -100px;
   left: -10px;

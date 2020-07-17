@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 

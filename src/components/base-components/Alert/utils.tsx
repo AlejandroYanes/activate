@@ -3,7 +3,7 @@ import Colors from '../../../styles/colors';
 import SvgIcon from '../SvgIcon';
 import { Icons } from '../SvgIcon/Icons';
 import Button from '../Button';
-import { AlertAction, AlertType } from './index';
+import { AlertAction, AlertType } from '.';
 import { Icon as StyledIcon } from './styled';
 
 export function resolveTitle(type) {
@@ -16,6 +16,8 @@ export function resolveTitle(type) {
       return 'You need to know:';
     case AlertType.ERROR:
       return 'Oops, something went wrong:';
+    default:
+      return '';
   }
 }
 
@@ -29,6 +31,8 @@ export function resolveIcon(type) {
       return <SvgIcon icon={Icons.WARNING} fillColor={Colors.WHITE} />;
     case AlertType.ERROR:
       return <SvgIcon icon={Icons.ERROR} fillColor={Colors.WHITE} />;
+    default:
+      return null;
   }
 }
 
@@ -42,6 +46,8 @@ export function resolveColor(type) {
       return Colors.WARNING;
     case AlertType.ERROR:
       return Colors.ERROR;
+    default:
+      return AlertType.SUCCESS.toString();
   }
 }
 
@@ -57,6 +63,6 @@ export function Actions(props: { actions: AlertAction[] }): any {
   const { actions } = props;
 
   return actions.map((action) => (
-    <Button label={action.label} onClick={action.onClick} mR sm />
+    <Button key={action.code} label={action.label} onClick={action.onClick} mR sm />
   ));
 }

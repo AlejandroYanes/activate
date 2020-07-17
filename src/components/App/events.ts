@@ -1,6 +1,6 @@
 import faker from 'faker';
 
-export const events = Array(5).fill('1').map(() => ({
+export const events = new Array(5).fill('1').map(() => ({
   id: faker.random.uuid(),
   title: faker.lorem.words(7),
   date: faker.date.recent(7),

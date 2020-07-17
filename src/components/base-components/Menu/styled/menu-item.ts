@@ -25,10 +25,7 @@ export const MenuItem = styled.li`
 
   &:hover {
     cursor: pointer;
-    background-color: ${Colors.MEDIUM_GRAY};
-    // box-shadow:
-    //   inset -2px -2px 4px ${Colors.WHITE},
-    //   inset 2px 2px 4px ${Colors.MEDIUM_GRAY};
+    background-color: ${Colors.DARK_GRAY};
   }
 
   &:active {

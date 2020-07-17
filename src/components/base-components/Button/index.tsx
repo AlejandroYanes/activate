@@ -34,12 +34,13 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
   return (
     <StyledButton onClick={onClick} {...rest}>
       <Content
-        children={children}
         isLoading={isLoading}
         label={label}
         leftIcon={leftIcon}
         rightIcon={rightIcon}
-      />
+      >
+        {children}
+      </Content>
     </StyledButton>
   );
 };

@@ -12,7 +12,7 @@ export default function Content({ label, rightIcon, leftIcon, isLoading, childre
     );
   }
 
-  if (!!label) {
+  if (label) {
     return (
       <>
         {leftIcon}

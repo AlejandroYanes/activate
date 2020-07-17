@@ -2,9 +2,10 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { StyledNotifications } from './styled';
 import { notifications } from './notifications';
 import Alert from 'components/base-components/Alert';
+import { generateUID } from 'helpers/generators';
 
 function notificationFactory() {
-  return notifications.map(not => <Alert {...not} mb />);
+  return notifications.map((not) => <Alert key={generateUID()} {...not} mb />);
 }
 
 const NotificationsPage: FunctionComponent = () => {
