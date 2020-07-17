@@ -36,4 +36,4 @@ jobs:
       uses: hallee/eslint-action@1.0.3
       with:
         # GitHub repository token for publishing inline lint annotations. Should be secrets.GITHUB_TOKEN.
-        repo-token: 
+        repo-token: 7f969fe966449cfb25769ffb89de36c4c56a96ca
