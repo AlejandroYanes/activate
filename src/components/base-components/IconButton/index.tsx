@@ -1,6 +1,6 @@
 import React, { CSSProperties, FunctionComponent } from 'react';
-import SvgIcon from '../SvgIcon';
-import { IconProps } from '../SvgIcon/icon-props';
+import SvgIcon from 'components/base-components/SvgIcon';
+import { IconProps } from 'components/base-components/SvgIcon/icon-props';
 import { IconButton as StyledIconButton } from './styled';
 
 export interface IconButtonProps extends IconProps {

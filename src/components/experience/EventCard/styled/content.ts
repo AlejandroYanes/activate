@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../../../../styles/colors';
 
-const contentBackground = `rgba(104,96,196,0.9)`;
+const contentBackground = 'rgba(104,96,196,0.9)';
 
 export const ContentWrapper = styled.div`
   height: 86%;
@@ -36,7 +36,7 @@ export const Title = styled.h1`
 `;
 
 export const Date = styled.div`
-  background-color: ${Colors.LIGHT_GRAY};
+  background-color: ${Colors.WHITE};
   font-size: 12px;
   letter-spacing: 0.9px;
   padding: 8px 12px;

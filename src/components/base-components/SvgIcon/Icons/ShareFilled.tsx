@@ -1,3 +1,4 @@
+/* eslint-disable max-len,no-mixed-spaces-and-tabs,no-tabs */
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { IconButtonProps } from '../index';
 import Colors from '../../../../styles/colors';
+import { IconButtonProps } from '..';
 
 const getSize = (props) => {
   const { sm } = props as IconButtonProps;

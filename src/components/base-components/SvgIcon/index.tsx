@@ -9,12 +9,12 @@ interface Props extends IconProps {
 }
 
 const SvgIcon: FunctionComponent<Props> = (props) => {
-  const { icon, width, height, size, ...iconProps } = props;
+  const { icon, width, height, size, ...iconProperties } = props;
   const iconHeight = height || svgIconStyles.size[size].height;
   const iconWidth = width || svgIconStyles.size[size].width;
 
   return icons[icon]({
-    ...iconProps,
+    ...iconProperties,
     width: iconWidth,
     height: iconHeight,
   });

@@ -19,4 +19,3 @@ export const EmptyBlock = styled.li`
   flex-direction: column;
   background-color: ${Colors.BRAND};
 `;
-

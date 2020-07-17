@@ -21,6 +21,7 @@ export enum AlertType {
 }
 
 export interface AlertAction {
+  code: string;
   label: string;
   onClick: () => void;
 }
@@ -35,7 +36,7 @@ export interface AlertProps {
 const Alert: FunctionComponent<AlertProps> = (props) => {
   const { message, type, actions, mb } = props;
 
-  if ( typeof message === 'function') {
+  if (typeof message === 'function') {
     return message(() => undefined);
   }
 

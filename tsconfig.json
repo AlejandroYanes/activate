@@ -1,5 +1,4 @@
 {
-  "extends": "./tsconfig.path.json",
   "compilerOptions": {
     "baseUrl": "./src",
     "target": "ES2020",

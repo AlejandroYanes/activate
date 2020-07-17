@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../../../styles/colors';
-import { ButtonProps } from '../index';
+import { ButtonProps } from '..';
 
 const getSize = (props: ButtonProps) => {
   const { sm } = props;
@@ -92,22 +92,8 @@ const getHoveredStyles = (props: ButtonProps) => {
     color: ${Colors.WHITE};
     `;
   }
+  return '';
 };
-
-// TODO: do not destroy till certain of correct behavior of focus as hover
-// const getFocusStyles = (props: ButtonProps) => {
-//   const { variant, color } = props;
-//
-//   if (variant === 'fill') {
-//     return `
-//       background-color: ${Colors.WHITE};
-//       border-color: ${Colors[color.toUpperCase()]};
-//       color: ${Colors[color.toUpperCase()]};
-//     `;
-//   }
-//
-//   return `border-color: ${Colors[color.toUpperCase()]}`;
-// };
 
 export const Button = styled.button`
   border: none;

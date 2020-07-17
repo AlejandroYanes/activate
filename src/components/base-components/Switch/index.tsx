@@ -12,7 +12,7 @@ const Switch: FunctionComponent<SwitchProps> = (props) => {
 
   const cases: CaseProps[] = React.Children.map(children, ((child: any) => child.props));
 
-  const validCase = cases.find(caseChild => {
+  const validCase = cases.find((caseChild) => {
     if (comparisonFunction) {
       return comparisonFunction(by, caseChild.value);
     }

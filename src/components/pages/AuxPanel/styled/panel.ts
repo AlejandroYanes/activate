@@ -6,7 +6,7 @@ export const Panel = styled.aside`
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.LIGHT_GRAY};
+  background-color: ${Colors.MEDIUM_GRAY};
   padding-top: 32px;
   box-sizing: border-box;
 `;
