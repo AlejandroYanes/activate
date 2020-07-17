@@ -1,102 +1,67 @@
 import styled from 'styled-components';
-import Colors from '../../../../styles/colors';
+import Colors from 'styles/colors';
+import { MenuBlockProps } from 'components/experience/SideMenu/MenuBlock';
 
-const menuBlockRadiusSelected = '24px';
-const menuBlockWidth = '100%';
+export const Label = styled.span`
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  z-index: 10;
+  color: white;
+`;
 
-export const ActionBlock = styled.li`
-  width: ${menuBlockWidth};
+export const Blurred = styled.div`
+  position: relative;
+  top: 0;
+  left: 100%;
+  width: 50%;
+  height: 120%;
+  filter: url(#goo);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 50%;
+    height: 120%;
+    background-color: ${Colors.LIGHT_GRAY};
+    transition: .2s;
+  }
+
+  & > span {
+        position: absolute;
+        width: 80px;
+        height: 40px;
+        top: 20px;
+        left: 0;
+        background-color: ${Colors.LIGHT_GRAY};
+        border-top-left-radius: 40px;
+        border-bottom-left-radius: 40px;
+        transition: all .2s;
+  }
+`;
+
+const getSelectedStyles = (props: MenuBlockProps) => {
+  if (props.selected) {
+    return `
+      ${Blurred} > span {
+           left: -150%;
+      }
+
+      ${Label} {
+        color: ${Colors.BRAND};
+      }
+    `;
+  }
+};
+
+export const Block = styled.li.attrs((props: MenuBlockProps) => props)`
   height: 78px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: ${Colors.WHITE};
+  width: 100%;
+  position: relative;
   background-color: ${Colors.BRAND};
-`;
-
-export const EmptyBlock = styled.li`
-  width: ${menuBlockWidth};
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: ${Colors.BRAND};
-`;
-
-export const MenuBlock = styled.li`
-  width: ${menuBlockWidth};
-  height: 64px;
-  display: flex;
-  flex-direction: column;
-  background-color: ${Colors.BRAND};
-  color: ${Colors.WHITE};
-
-  &:focus, &:active {
-    outline: none;
-  }
-`;
-
-export const MenuBlockTop = styled.div`
-  height: 10px;
-  background-color: ${Colors.BRAND};
-  box-sizing: border-box;
-  border: none;
-
-  div {
-    width: 100%;
-    height: 100%;
-  }
-
-  ${(props: { selected }) => props.selected && `
-    background-color: ${Colors.LIGHT_GRAY};
-
-    div {
-      border-bottom-right-radius: ${menuBlockRadiusSelected};
-      background-color: ${Colors.BRAND};
-    }
-  `};
-`;
-
-export const MenuBlockBottom = styled.div`
-  height: 10px;
-  background-color: ${Colors.BRAND};
-  box-sizing: border-box;
-
-  div {
-    width: 100%;
-    height: 100%;
-  }
-
-  ${(props: { selected }) => props.selected && `
-    background-color: ${Colors.LIGHT_GRAY};
-
-    div {
-      border-top-right-radius: ${menuBlockRadiusSelected};
-      background-color: ${Colors.BRAND};
-    }
-  `}
-`;
-
-export const MenuBlockContent = styled.div`
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
-  font-size: 1.5rem;
-  transition: background-color, color linear 500ms;
-
-  ${(props: { selected }) => props.selected && `
-    border-top-left-radius: ${menuBlockRadiusSelected};
-    border-bottom-left-radius: ${menuBlockRadiusSelected};
-    background-color: ${Colors.LIGHT_GRAY};
-    color: ${Colors.BRAND};
-    width: 74%;
-    margin-left: auto;
-    justify-content: flex-start;
-
-    span {
-      margin-left: 13px;
-    }
-  `};
+  ${getSelectedStyles};
 `;

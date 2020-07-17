@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
-import { AlertProps } from 'components/base-components/Alert/index';
+import { AlertProps } from '../';
+
+const getMarginStyles = (props: AlertProps) => {
+  if (props.mb) {
+    return `margin-bottom: 16px;`;
+  }
+};
 
 export const Alert = styled.div.attrs((props: AlertProps) => props)`
   display: flex;
@@ -9,9 +15,7 @@ export const Alert = styled.div.attrs((props: AlertProps) => props)`
   border-radius: 12px;
   padding: 8px 8px 8px 0;
 
-  &.mb {
-    margin-bottom: 16px;
-  }
+  ${getMarginStyles};
 `;
 
 export const Content = styled.div`

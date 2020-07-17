@@ -1,17 +1,18 @@
-import React, { FunctionComponent } from 'react';
-import Colors from '../../../styles/colors';
-import SvgIcon from '../../base-components/SvgIcon';
-import { Icons } from '../../base-components/SvgIcon/Icons';
+import React, { FunctionComponent, useMemo } from 'react';
+import { StyledNotifications } from './styled';
+import { notifications } from './notifications';
+import Alert from 'components/base-components/Alert';
+
+function notificationFactory() {
+  return notifications.map(not => <Alert {...not} mb />);
+}
 
 const NotificationsPage: FunctionComponent = () => {
+  const notificationCards = useMemo(notificationFactory, []);
   return (
-    <section>
-      <header>
-        <span>Notifications</span>
-        <SvgIcon icon={Icons.BELL} strokeColor={Colors.DARK} />
-      </header>
-      <main>aaaaa</main>
-    </section>
+    <StyledNotifications>
+      {notificationCards}
+    </StyledNotifications>
   );
 };
 

@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import SideMenu from '../experience/SideMenu';
-import EventCard from '../experience/EventCard';
-import AuxPanel from '../pages/AuxPanel';
+import SideMenu from 'components/experience/SideMenu';
+import EventCard from 'components/experience/EventCard';
+import SvgBlur from 'components/base-components/SvgBlur';
+import AuxPanel from 'components/pages/AuxPanel';
 import { events } from './events';
 import './styles.scss';
 
@@ -19,6 +20,7 @@ const App: FunctionComponent = () => {
         {eventCards}
       </main>
       <AuxPanel />
+      <SvgBlur />
     </section>
   );
 };

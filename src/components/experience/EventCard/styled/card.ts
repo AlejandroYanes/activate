@@ -10,4 +10,5 @@ export const Card = styled.section`
   margin-bottom: 32px;
   border-radius: 16px;
   overflow: hidden;
+   border: 1px solid ${Colors.MEDIUM_GRAY};
 `;
