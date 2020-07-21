@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![CI](https://github.com/AlejandroYanes/activate/workflows/CI/badge.svg)
+![CD](https://github.com/AlejandroYanes/activate/workflows/CD/badge.svg)
 [![codebeat badge](https://codebeat.co/badges/ef996646-5ec5-478b-80a2-e0de4a0fb53d)](https://codebeat.co/projects/github-com-alejandroyanes-activate-master)
 
 ## Go check it out
