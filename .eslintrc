@@ -63,9 +63,11 @@
       {
         "whitelist": {
           "AlertProps": true,
+          "AvatarProps": true,
           "ButtonProps": true,
           "IconProps": true,
           "IconButtonProps": true,
+          "PositionProps": true,
           "props": true,
           "otherProps": true,
           "hoverRef": true,

@@ -9,7 +9,7 @@ const getMarginStyles = (props: AlertProps) => {
   return '';
 };
 
-export const Alert = styled.div.attrs((props: AlertProps) => props)`
+export const Alert = styled.div.attrs((props: any) => props)`
   display: flex;
   flex-direction: column;
   background-color: ${Colors.WHITE};

@@ -1,8 +1,9 @@
-import React, { CSSProperties, FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { Button as StyledButton } from './styled';
+import { PositionProps } from 'components/base-components/_base';
 import Content from './Content';
 
-export interface ButtonProps {
+export interface ButtonProps extends PositionProps {
   label?: string | number;
   onClick: (event) => void;
   leftIcon?: ReactNode;
@@ -11,13 +12,7 @@ export interface ButtonProps {
   type?: 'button' | 'submit' | 'reset';
   variant?: 'base' | 'fill' | 'outline';
   color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
-  mT?: boolean;
-  mR?: boolean;
-  mB?: boolean;
-  mL?: boolean;
   sm?: boolean;
-  className?: string;
-  style?: CSSProperties;
 }
 
 const Button: FunctionComponent<ButtonProps> = (props) => {

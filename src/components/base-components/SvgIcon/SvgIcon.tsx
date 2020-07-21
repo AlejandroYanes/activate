@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import Colors from '../../../styles/colors';
+import Colors from 'styles/colors';
 import { IconProps } from './icon-props';
 import { icons } from './Icons';
 import { svgIconStyles } from './styles';

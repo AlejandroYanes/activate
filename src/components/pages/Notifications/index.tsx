@@ -8,7 +8,7 @@ function notificationFactory() {
   return notifications.map((not) => <Alert key={generateUID()} {...not} mb />);
 }
 
-const NotificationsPage: FunctionComponent = () => {
+const NotificationsPanel: FunctionComponent = () => {
   const notificationCards = useMemo(notificationFactory, []);
   return (
     <StyledNotifications>
@@ -17,4 +17,4 @@ const NotificationsPage: FunctionComponent = () => {
   );
 };
 
-export default NotificationsPage;
+export default NotificationsPanel;

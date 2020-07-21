@@ -17,6 +17,7 @@ import SuccessIcon from './Success';
 import InfoIcon from './Info';
 import WarningIcon from './Warning';
 import ErrorIcon from './Error';
+import GridIcon from './Grid';
 
 export enum Icons {
   HOME = 'home',
@@ -37,6 +38,7 @@ export enum Icons {
   INFO = 'info',
   WARNING = 'warning',
   ERROR = 'error',
+  GRID = 'grid',
 }
 
 export const icons = {
@@ -58,4 +60,5 @@ export const icons = {
   [Icons.INFO]: (props) => <InfoIcon {...props} />,
   [Icons.WARNING]: (props) => <WarningIcon {...props} />,
   [Icons.ERROR]: (props) => <ErrorIcon {...props} />,
+  [Icons.GRID]: (props) => <GridIcon {...props} />,
 };

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import Button from '../Button';
 import RenderIf from '../RenderIf';
 import { Actions, AlertIcon, resolveTitle } from './utils';
@@ -29,12 +29,14 @@ export interface AlertAction {
 export interface AlertProps {
   message: string | ((close) => JSX.Element);
   type: AlertType;
+  title?: string;
+  image?: ReactNode;
   actions?: AlertAction[];
   mb?: boolean;
 }
 
 const Alert: FunctionComponent<AlertProps> = (props) => {
-  const { message, type, actions, mb } = props;
+  const { title, message, type, actions, mb } = props;
 
   if (typeof message === 'function') {
     return message(() => undefined);
@@ -47,7 +49,7 @@ const Alert: FunctionComponent<AlertProps> = (props) => {
           <AlertIcon type={type} />
         </IconSection>
         <MessageSection>
-          <Tittle>{resolveTitle(type)}</Tittle>
+          <Tittle>{title || resolveTitle(type)}</Tittle>
           <Message>{message}</Message>
         </MessageSection>
       </Content>
