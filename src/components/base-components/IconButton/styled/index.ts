@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import Colors from '../../../../styles/colors';
+import Colors from 'styles/colors';
+import { getMargins } from 'components/base-components/_base';
 import { IconButtonProps } from '..';
 
-const getSize = (props) => {
-  const { sm } = props as IconButtonProps;
+const getSize = (props: IconButtonProps) => {
+  const { sm } = props;
 
   if (sm) {
     return `
@@ -18,41 +19,29 @@ const getSize = (props) => {
   `;
 };
 
-const getMargins = (props) => {
-  const { mT, mR, mB, mL } = props as IconButtonProps;
-  const margins = [
-    mT ? '1rem' : '0',
-    mR ? '1rem' : '0',
-    mB ? '1rem' : '0',
-    mL ? '1rem' : '0',
-  ];
-
-  return `margin: ${margins.join(' ')};`;
-};
-
-const getBackGroundColor = (props) => {
-  const { variant, color } = props as IconButtonProps;
+const getBackGroundColor = (props: IconButtonProps) => {
+  const { variant, color } = props;
 
   if (variant === 'fill') {
-    return `${Colors[color.toUpperCase()]}`;
+    return `background-color: ${Colors[color.toUpperCase()]}`;
   }
 
-  return 'transparent';
+  return 'background-color: transparent';
 };
 
-const getBorder = (props) => {
-  const { variant, color } = props as IconButtonProps;
-  const borderStyle = 'solid 1px ';
+const getBorder = (props: IconButtonProps) => {
+  const { variant, color } = props;
+  const borderStyle = 'solid 1px';
 
   if (variant === 'outline' || variant === 'fill') {
-    return `${borderStyle} ${Colors[color.toUpperCase()]}`;
+    return `border: ${borderStyle} ${Colors[color.toUpperCase()]}`;
   }
 
-  return `${borderStyle} transparent`;
+  return `border: ${borderStyle} transparent`;
 };
 
-const getHoveredStyles = (props) => {
-  const { color } = props as IconButtonProps;
+const getHoveredStyles = (props: IconButtonProps) => {
+  const { color } = props;
 
   return `
     color: ${Colors[`${color.toUpperCase()}_DARK`]};
@@ -61,7 +50,16 @@ const getHoveredStyles = (props) => {
     `;
 };
 
-export const IconButton = styled.button`
+const getToggleStyles = (props: IconButtonProps) => {
+  const { toggle } = props;
+
+  if (toggle) {
+    return getHoveredStyles(props);
+  }
+  return undefined;
+};
+
+export const IconButton = styled.button.attrs((props: IconButtonProps) => props)`
   border: none;
   outline: none;
   box-shadow: none;
@@ -72,10 +70,11 @@ export const IconButton = styled.button`
   justify-content: center;
   cursor: pointer;
   transition: all ease-in-out 120ms;
-  ${getSize};
   ${getMargins};
-  background-color: ${getBackGroundColor};
-  border: ${getBorder};
+  ${getSize};
+  ${getBackGroundColor};
+  ${getBorder};
+  ${getToggleStyles}
 
   &:active {
     transform: scale(1.07);

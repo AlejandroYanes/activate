@@ -107,7 +107,7 @@ export const Button = styled.button`
   justify-content: center;
   padding: 0 4px;
   cursor: pointer;
-  transition: all ease-in-out 120ms;
+  transition: all linear 150ms;
   ${getSize};
   ${getMargins};
   color: ${getFontColor};

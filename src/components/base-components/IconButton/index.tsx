@@ -1,19 +1,16 @@
 import React, { CSSProperties, FunctionComponent } from 'react';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { IconProps } from 'components/base-components/SvgIcon/icon-props';
+import { PositionProps } from 'components/base-components/_base';
+import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
 import { IconButton as StyledIconButton } from './styled';
 
-export interface IconButtonProps extends IconProps {
+export interface IconButtonProps extends IconProps, PositionProps {
   variant?: 'base' | 'fill' | 'outline';
   color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
   onClick: (event) => void;
-  mT?: boolean;
-  mR?: boolean;
-  mB?: boolean;
-  mL?: boolean;
   sm?: boolean;
   iconClassName?: string;
   iconStyle?: CSSProperties;
+  toggle?: boolean;
 }
 
 const IconButton: FunctionComponent<IconButtonProps> = (props) => {

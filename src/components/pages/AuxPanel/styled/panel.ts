@@ -21,7 +21,7 @@ export const PanelTop = styled.header`
 
 export const PanelBody = styled.main`
   flex: 1;
-  padding: 10px;
+  padding: 1rem;
   overflow-x: hidden;
   overflow-y: auto;
 `;

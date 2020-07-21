@@ -8,7 +8,7 @@ export default function Content({ label, rightIcon, leftIcon, isLoading, childre
 
   if (isLoading) {
     return (
-      <span>is loading </span>
+      <span>is loading</span>
     );
   }
 
