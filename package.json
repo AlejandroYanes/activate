@@ -7,6 +7,7 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
+    "test:all": "craco test --watchAll=false",
     "eject": "craco eject",
     "test:e2e": "cypress open",
     "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
@@ -19,7 +20,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint",
-      "pre-push": "npm test"
+      "pre-push": "npm test:all"
     }
   },
   "browserslist": {
