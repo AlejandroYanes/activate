@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Go check it out
 You can check our early build [here](https://alejandroyanes.github.io/activate/)
 
 ## Available Scripts
