@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
+import faker from 'faker';
 import Colors from 'styles/colors';
 import Button from 'components/base-components/Button';
 import Avatar from 'components/base-components/Avatar';
@@ -20,8 +21,7 @@ import {
   AuthorName,
   Stats,
 } from './styled';
-
-import backgroundImage from 'assets/images/cuba-1082913_1920.jpg';
+import { images } from './images';
 
 const formatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
@@ -72,7 +72,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
   return (
     <Card>
       <ContentWrapper>
-        <ContentImage src={backgroundImage} />
+        <ContentImage src={images[faker.finance.amount(0, 4, 0)]} />
         <Content>
           <Title>{title}</Title>
           <Date>{formatter.format(date)}</Date>
