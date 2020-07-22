@@ -2,6 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ![CI](https://github.com/AlejandroYanes/activate/workflows/CI/badge.svg)
 ![CD](https://github.com/AlejandroYanes/activate/workflows/CD/badge.svg)
+[![CodeFactor](https://www.codefactor.io/repository/github/alejandroyanes/activate/badge)](https://www.codefactor.io/repository/github/alejandroyanes/activate)
 
 ## Go check it out
 You can check our early build [here](https://alejandroyanes.github.io/activate/)
