@@ -21,7 +21,7 @@ const Colors = {
   GRAY_SHADE: 'rgba(107,109,118,0.1)',
   LIGHT_GRAY: '#F9F9F9',
   MEDIUM_GRAY: '#F5F5F5',
-  DARK_GRAY: '#EFEEF4',
+  DARK_GRAY: '#AFAFAF',
   INFO: '#009acf',
   WARNING: '#dca911',
   ERROR: '#dc2e2f',
