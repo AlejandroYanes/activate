@@ -18,6 +18,9 @@ import InfoIcon from './Info';
 import WarningIcon from './Warning';
 import ErrorIcon from './Error';
 import GridIcon from './Grid';
+import CalendarFilledIcon from './CalendarFilled';
+import MapPinIcon from './MapPin';
+import ClockIcon from './Clock';
 
 export enum Icons {
   HOME = 'home',
@@ -39,6 +42,9 @@ export enum Icons {
   WARNING = 'warning',
   ERROR = 'error',
   GRID = 'grid',
+  CALENDAR_FILLED = 'calendarFilled',
+  MAP_PIN = 'mapPin',
+  CLOCK = 'clock',
 }
 
 export const icons = {
@@ -61,4 +67,7 @@ export const icons = {
   [Icons.WARNING]: (props) => <WarningIcon {...props} />,
   [Icons.ERROR]: (props) => <ErrorIcon {...props} />,
   [Icons.GRID]: (props) => <GridIcon {...props} />,
+  [Icons.CALENDAR_FILLED]: (props) => <CalendarFilledIcon {...props} />,
+  [Icons.MAP_PIN]: (props) => <MapPinIcon {...props} />,
+  [Icons.CLOCK]: (props) => <ClockIcon {...props} />,
 };

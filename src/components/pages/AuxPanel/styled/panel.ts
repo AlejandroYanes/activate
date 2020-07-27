@@ -7,21 +7,10 @@ export const Panel = styled.aside`
   display: flex;
   flex-direction: column;
   background-color: ${Colors.MEDIUM_GRAY};
-  padding-top: 32px;
   box-sizing: border-box;
 `;
 
-export const PanelTop = styled.header`
+export const PanelHeader = styled.div`
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding-right: 2rem;
-  padding-bottom: 10px;
-`;
-
-export const PanelBody = styled.main`
-  flex: 1;
   padding: 1rem;
-  overflow-x: hidden;
-  overflow-y: auto;
 `;

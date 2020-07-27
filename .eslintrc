@@ -68,6 +68,7 @@
           "IconProps": true,
           "IconButtonProps": true,
           "PositionProps": true,
+          "TimeMarkProps": true,
           "props": true,
           "otherProps": true,
           "hoverRef": true,

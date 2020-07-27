@@ -1,29 +1,52 @@
 import React, { FunctionComponent } from 'react';
 import faker from 'faker';
 import Colors from 'styles/colors';
-import { Summary, SummaryItem } from 'components/base-components/Summary';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { TimeLine, TimeMark } from 'components/base-components/Timeline';
 import Button from 'components/base-components/Button';
-import { EventImg } from './styled';
+import { Attribute, Card, Label, Wrapper } from './styled';
 
-import backgroundImage from 'assets/images/cuba-1082913_1920.jpg';
-
-const img1 = <EventImg src={backgroundImage} alt="event-1" />;
-const img2 = <EventImg src={backgroundImage} alt="event-2" />;
-const img3 = <EventImg src={backgroundImage} alt="event-3" />;
-const img4 = <EventImg src={backgroundImage} alt="event-4" />;
 const actionIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.GRAY} size="small" />;
 
-const formatter = new Intl.DateTimeFormat('default', {
+const dateFormatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
   month: 'short',
 });
+
+const timeFormatter = new Intl.DateTimeFormat('default', {
+  hour: 'numeric',
+  minute: 'numeric',
+  hour12: false,
+});
+
+const events = new Array(3).fill(1).map(() => ({
+  id: faker.random.uuid(),
+  name: faker.lorem.words(5),
+  time: faker.date.future(),
+  location: faker.address.streetAddress(),
+}));
+
+function Events(): any {
+  return events.map((event) => (
+    <Card key={event.id}>
+      <Label>{event.name}</Label>
+      <Attribute>
+        <SvgIcon icon={Icons.CLOCK} strokeColor={Colors.GRAY} />
+        <span>{timeFormatter.format(event.time)}</span>
+      </Attribute>
+      <Attribute>
+        <SvgIcon icon={Icons.MAP_PIN} strokeColor={Colors.GRAY} />
+        <span>{event.location}</span>
+      </Attribute>
+    </Card>
+  ));
+}
 
 const UpcomingEvents: FunctionComponent = () => {
   const action = (
     <Button
       sm
-      label=" View all"
+      label="View all"
       color="gray"
       rightIcon={actionIcon}
       onClick={() => undefined}
@@ -31,28 +54,26 @@ const UpcomingEvents: FunctionComponent = () => {
   );
 
   return (
-    <Summary title="Your upcoming events" action={action} mB>
-      <SummaryItem
-        leftNode={img1}
-        label={faker.lorem.words(6)}
-        rightNode={formatter.format(faker.date.future())}
-      />
-      <SummaryItem
-        leftNode={img2}
-        label={faker.lorem.words(6)}
-        rightNode={formatter.format(faker.date.future())}
-      />
-      <SummaryItem
-        leftNode={img3}
-        label={faker.lorem.words(6)}
-        rightNode={formatter.format(faker.date.future())}
-      />
-      <SummaryItem
-        leftNode={img4}
-        label={faker.lorem.words(6)}
-        rightNode={formatter.format(faker.date.future())}
-      />
-    </Summary>
+    <Wrapper>
+      <TimeLine title="Upcoming events" actions={action}>
+        <TimeMark date={dateFormatter.format(faker.date.future())}>
+          <Card>
+            <Label>{faker.lorem.words(5)}</Label>
+            <Attribute>
+              <SvgIcon icon={Icons.CLOCK} strokeColor={Colors.GRAY} />
+              <span>{timeFormatter.format()}</span>
+            </Attribute>
+            <Attribute>
+              <SvgIcon icon={Icons.MAP_PIN} strokeColor={Colors.GRAY} />
+              <span>{faker.address.streetAddress()}</span>
+            </Attribute>
+          </Card>
+        </TimeMark>
+        <TimeMark date={dateFormatter.format(faker.date.future())}>
+          <Events />
+        </TimeMark>
+      </TimeLine>
+    </Wrapper>
   );
 };
 
