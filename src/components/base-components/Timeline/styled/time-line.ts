@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
 
-export const StyledTimeline = styled.div`
+export const StyledTimeline = styled(motion.div)`
   display: flex;
   flex-direction: column;
 `;

@@ -5,11 +5,19 @@ export interface TimeMarkProps {
   date: string;
 }
 
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
 const TimeMark: FunctionComponent<TimeMarkProps> = (props) => {
   const { date, children } = props;
 
   return (
-    <Item>
+    <Item variants={item}>
       <Track>
         <TrackMark />
         <TrackLine />

@@ -25,7 +25,7 @@ export const MenuItem = styled.li`
 
   &:hover {
     cursor: pointer;
-    background-color: ${Colors.DARK_GRAY};
+    background-color: ${Colors.GRAY_SHADE};
   }
 
   &:active {

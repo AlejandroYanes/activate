@@ -1,12 +1,14 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import Button from '../Button';
-import RenderIf from '../RenderIf';
+import React, { FunctionComponent } from 'react';
+import Colors from 'styles/colors';
+import IconButton from 'components/base-components/IconButton';
+import { Icons } from 'components/base-components/SvgIcon/Icons';
+import RenderIf from 'components/base-components/RenderIf';
 import { Actions, AlertIcon, resolveTitle } from './utils';
 import {
   Actions as StyledActions,
   Alert as StyledAlert,
+  CloseIcon,
   Content,
-  Divider,
   IconSection,
   Message,
   MessageSection,
@@ -30,7 +32,6 @@ export interface AlertProps {
   message: string | ((close) => JSX.Element);
   type: AlertType;
   title?: string;
-  image?: ReactNode;
   actions?: AlertAction[];
   mb?: boolean;
 }
@@ -44,22 +45,29 @@ const Alert: FunctionComponent<AlertProps> = (props) => {
 
   return (
     <StyledAlert mb={mb}>
-      <Content>
-        <IconSection>
+      <Content data-el="alert-content">
+        <IconSection data-el="alert-icon-section">
           <AlertIcon type={type} />
         </IconSection>
-        <MessageSection>
+        <MessageSection data-el="alert-message-section">
           <Tittle>{title || resolveTitle(type)}</Tittle>
           <Message>{message}</Message>
         </MessageSection>
       </Content>
-      <Divider />
-      <StyledActions>
+      <StyledActions data-el="alert-actions">
         <RenderIf condition={!!actions && actions.length > 0}>
           <Actions actions={actions} />
         </RenderIf>
-        <Button label="Close" onClick={() => undefined} sm />
       </StyledActions>
+      <CloseIcon>
+        <IconButton
+          onClick={() => undefined}
+          icon={Icons.CLOSE}
+          strokeColor={Colors.GRAY}
+          color="gray"
+          sm
+        />
+      </CloseIcon>
     </StyledAlert>
   );
 };

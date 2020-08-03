@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Colors from '../../../../styles/colors';
+import Colors from 'styles/colors';
+import { getMargins } from 'components/_base';
 import { ButtonProps } from '..';
 
 const getSize = (props: ButtonProps) => {
@@ -8,6 +9,7 @@ const getSize = (props: ButtonProps) => {
   if (sm) {
     return `
       height: 28px;
+      min-width: 28px;
       font-size:0.75rem;
       font-weight: bold;
       letter-spacing: 1px;
@@ -16,83 +18,66 @@ const getSize = (props: ButtonProps) => {
 
   return `
     height: 38px;
+    min-width: 36px;
     font-size: 1.15rem;
   `;
 };
 
-const getMargins = (props: ButtonProps) => {
-  const { mT, mR, mB, mL } = props;
-  const margins = [
-    mT ? '1rem' : '0',
-    mR ? '1rem' : '0',
-    mB ? '1rem' : '0',
-    mL ? '1rem' : '0',
-  ];
-
-  return `margin: ${margins.join(' ')};`;
-};
-
-const getBackgroundColor = (props: ButtonProps) => {
-  const { variant, color } = props;
-
-  if (variant === 'fill') {
-    return Colors[color.toUpperCase()];
-  }
-
-  return 'transparent';
-};
-
-const getFontColor = (props: ButtonProps) => {
-  const { variant, color } = props;
-
-  if (variant === 'fill') {
-    switch (color) {
-      case 'white':
-        return Colors.DARK;
-      default:
-        return Colors.WHITE;
-    }
-  }
-
-  return Colors[color.toUpperCase()];
-};
-
-const getBorder = (props: ButtonProps) => {
+const getVariantStyles = (props: ButtonProps) => {
   const { variant, color } = props;
   const borderStyle = 'solid 1px ';
 
-  if (variant === 'outline' || variant === 'fill') {
-    return `${borderStyle} ${Colors[color.toUpperCase()]}`;
-  }
+  switch (variant) {
+    case 'base':
+      return `
+        color: ${Colors[color.toUpperCase()]};
+        background-color: transparent;
+        border: ${borderStyle} transparent;
+      `;
+    case 'outline':
+      return `
+        color: ${Colors[color.toUpperCase()]};
+        background-color: transparent;
+        border: ${borderStyle} ${Colors[color.toUpperCase()]};
+      `;
+    default: {
+      const fontColor = color === 'white' ? Colors.DARK : Colors.WHITE;
 
-  return `${borderStyle} transparent`;
+      return `
+        color: ${fontColor};
+        background-color: ${Colors[color.toUpperCase()]};
+        border: ${borderStyle} ${Colors[color.toUpperCase()]};
+      `;
+    }
+  }
 };
 
 const getHoveredStyles = (props: ButtonProps) => {
   const { variant, color } = props;
 
-  if (variant === 'base') {
-    return `
-    border-color: ${Colors[color.toUpperCase()]};
-    background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
-    `;
+  switch (variant) {
+    case 'base':
+      return `
+        color: ${Colors[`${color.toUpperCase()}_DARK`]};
+        background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
+      `;
+    case 'outline':
+      return `
+        color: ${Colors[`${color.toUpperCase()}_DARK`]};
+        border-color: ${Colors[`${color.toUpperCase()}_DARK`]};
+        background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
+      `;
+    default:
+      return `
+        background-color: ${Colors[`${color.toUpperCase()}_DARK`]};
+        color: ${Colors.WHITE};
+      `;
   }
+};
 
-  if (variant === 'outline') {
-    return `
-    color: ${Colors[`${color.toUpperCase()}_DARK`]};
-    border-color: ${Colors[`${color.toUpperCase()}_DARK`]};
-    background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
-    `;
-  }
-
-  if (variant === 'fill') {
-    return `
-    background-color: ${Colors[`${color.toUpperCase()}_DARK`]};
-    color: ${Colors.WHITE};
-    `;
-  }
-  return '';
+const getFocusStyles = (props: ButtonProps) => {
+  const { color } = props;
+  return `box-shadow: 0px 0px 4px 0px ${Colors[`${color.toUpperCase()}`]};`;
 };
 
 export const Button = styled.button`
@@ -110,9 +95,7 @@ export const Button = styled.button`
   transition: all linear 150ms;
   ${getSize};
   ${getMargins};
-  color: ${getFontColor};
-  background-color: ${getBackgroundColor};
-  border: ${getBorder};
+  ${getVariantStyles}
 
   &:active {
     transform: scale(1.07);
@@ -121,4 +104,8 @@ export const Button = styled.button`
   &:hover, &:focus {
       ${getHoveredStyles}
   }
+
+  // &:focus {
+  //   ${getFocusStyles}
+  // }
 `;

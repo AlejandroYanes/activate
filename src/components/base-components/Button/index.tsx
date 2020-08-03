@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { Button as StyledButton } from './styled';
-import { PositionProps } from 'components/base-components/_base';
+import { PositionProps } from 'components/_base';
 import Content from './Content';
 
 export interface ButtonProps extends PositionProps {

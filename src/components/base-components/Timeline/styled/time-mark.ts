@@ -1,7 +1,14 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
 
 const trackColor = Colors.DARK_GRAY;
+
+export const Item = styled(motion.div)`
+  display: flex;
+  align-items: stretch;
+  min-height: 54px;
+`;
 
 export const Track = styled.div`
   display: flex;
@@ -42,10 +49,4 @@ export const DateLabel = styled.span`
   line-height: 16px;
   min-width: 48px;
   color: ${trackColor};
-`;
-
-export const Item = styled.div`
-  display: flex;
-  align-items: stretch;
-  min-height: 54px;
 `;

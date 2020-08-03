@@ -1,25 +1,32 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { Block, Label, Blurred } from './styled';
+import { Link } from 'react-router-dom';
+import { Block, Blurred, Label } from './styled';
 
-export interface MenuBlockProps {
-  selected: boolean;
-  label: ReactNode;
-  onClick: (event) => void;
+interface MenuBlockProps {
+  label: ReactNode | ((isSelected: boolean) => ReactNode);
+  path?: string;
+  currentPath?: string;
+  onClick?: (event) => void;
 }
 
 const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
-  const { selected, label, onClick } = props;
+  const { label, path, currentPath, onClick } = props;
+  const isSelected = path === currentPath;
+
+  const labelComponent = typeof label === 'function'
+    ? label(isSelected)
+    : label;
 
   return (
-    <Block onClick={onClick} selected={selected}>
-      <Label>{label}</Label>
-      <Blurred>
-        <span />
-      </Blurred>
-    </Block>
+    <Link to={path} onClick={onClick}>
+      <Block selected={isSelected}>
+        <Label>{labelComponent}</Label>
+        <Blurred>
+          <span />
+        </Blurred>
+      </Block>
+    </Link>
   );
 };
-
-MenuBlock.defaultProps = { selected: false };
 
 export default MenuBlock;

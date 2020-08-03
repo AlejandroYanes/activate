@@ -1,38 +1,60 @@
-/* eslint-disable react/no-array-index-key */
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
+import { useLocation } from 'react-router-dom';
 import Colors from 'styles/colors';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
-import { SideMenu as StyledSideMenu, MenuList, EmptyBlock } from './styled';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import Avatar from 'components/base-components/Avatar';
+import { EmptyBlock, MenuList, SideMenu as StyledSideMenu } from './styled';
 import MenuBlock from './MenuBlock';
 
-const items = ['A', 'B', 'C', 'D', 'E'];
+const homeIcon = (isSelected) => (
+  <SvgIcon
+    icon={Icons.HOME}
+    fillColor={isSelected ? Colors.BRAND : Colors.WHITE}
+  />
+);
+
+const discoverIcon = (isSelected) => (
+  <SvgIcon
+    icon={Icons.COMPASS}
+    strokeColor={isSelected ? Colors.BRAND : Colors.WHITE}
+  />
+);
+
+const aboutIcon = (isSelected) => (
+  <SvgIcon
+    icon={Icons.INFO_CIRCLE}
+    strokeColor={isSelected ? Colors.BRAND : Colors.WHITE}
+    fillColor={isSelected ? Colors.LIGHT_GRAY : Colors.BRAND}
+  />
+);
 
 const SideMenu: FunctionComponent = () => {
-  const [selectedIndex, setSelectedIndex] = useState(undefined);
-
-  const menuBlocks = items.map((item, index) => (
-    <MenuBlock
-      key={index}
-      selected={index === selectedIndex}
-      label={item}
-      onClick={() => setSelectedIndex(index)}
-    />
-  ));
+  const { pathname } = useLocation();
 
   return (
     <StyledSideMenu>
       <MenuList>
-        {/* <ActionBlock> */}
-        {/*  <SvgIcon icon={Icons.HOME} fillColor={Colors.WHITE} /> */}
-        {/* </ActionBlock> */}
         <EmptyBlock />
         <MenuBlock
-          label={<SvgIcon icon={Icons.HOME} fillColor={selectedIndex === -1 ? Colors.BRAND : Colors.WHITE} />}
-          onClick={() => setSelectedIndex(-1)}
-          selected={selectedIndex === -1}
+          currentPath={pathname}
+          path="/profile"
+          label={<Avatar icon="user10" size="x-small" />}
         />
-        {menuBlocks}
+        <MenuBlock
+          currentPath={pathname}
+          path="/"
+          label={homeIcon}
+        />
+        <MenuBlock
+          currentPath={pathname}
+          path="/discover"
+          label={discoverIcon}
+        />
+        <MenuBlock
+          currentPath={pathname}
+          path="/about"
+          label={aboutIcon}
+        />
         <EmptyBlock />
       </MenuList>
     </StyledSideMenu>

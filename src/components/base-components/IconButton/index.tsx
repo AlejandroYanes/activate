@@ -1,5 +1,5 @@
 import React, { CSSProperties, FunctionComponent } from 'react';
-import { PositionProps } from 'components/base-components/_base';
+import { PositionProps } from 'components/_base';
 import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
 import { IconButton as StyledIconButton } from './styled';
 

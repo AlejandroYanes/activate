@@ -1,27 +1,24 @@
 import React, { FunctionComponent, useState } from 'react';
-import faker from 'faker';
 import Colors from 'styles/colors';
 import Button from 'components/base-components/Button';
 import Avatar from 'components/base-components/Avatar';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Wave from './Wave';
 import {
-  Card,
-  Content,
-  ContentWrapper,
-  ContentImage,
-  Title,
-  Date,
-  Description,
-  Separator,
-  Footer,
-  FooterContent,
   Author,
   AuthorName,
+  Card,
+  Content,
+  ContentImage,
+  ContentWrapper,
+  Date,
+  Description,
+  Footer,
+  FooterContent,
+  Separator,
   Stats,
+  Title,
 } from './styled';
-import { images } from './images';
 
 const formatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
@@ -32,12 +29,19 @@ const formatter = new Intl.DateTimeFormat('default', {
 });
 
 const arrowRightIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />;
-const heartIcon = <SvgIcon icon={Icons.HEART} strokeColor={Colors.GRAY} />;
-const heartFilledIcon = <SvgIcon icon={Icons.HEART_FILLED} fillColor={Colors.ERROR} />;
-const shareIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.GRAY} />;
-const shareFilledIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.SUCCESS} />;
+// const heartIcon = <SvgIcon icon={Icons.HEART} strokeColor={Colors.GRAY} />;
+// const heartFilledIcon = <SvgIcon icon={Icons.HEART_FILLED} fillColor={Colors.ERROR} />;
+// const shareIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.GRAY} />;
+// const shareFilledIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.SUCCESS} />;
+const notFollowingIcon = (
+  <SvgIcon icon={Icons.BOOKMARK_FILLED} fillColor={Colors.WHITE} strokeColor={Colors.DARK} />
+);
+const followingIcon = (
+  <SvgIcon icon={Icons.BOOKMARK_FILLED} fillColor={Colors.SUCCESS} strokeColor={Colors.SUCCESS} />
+);
 
 interface Props {
+  image: string;
   title: string;
   date: Date;
   description: string;
@@ -46,14 +50,13 @@ interface Props {
     name: string;
     email: string;
   };
-  stats: {
-    likes: number;
-    shares: number;
-  };
+  following?: boolean;
+  comments: number;
 }
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const {
+    image,
     title,
     date,
     description,
@@ -61,18 +64,13 @@ const EventCard: FunctionComponent<Props> = (props) => {
       photo,
       name,
     },
-    stats: {
-      likes,
-      shares,
-    },
   } = props;
-  const [isLiked, setIsLiked] = useState(false);
-  const [isShared, setIsShared] = useState(false);
+  const [following, setFollowing] = useState(false);
 
   return (
     <Card>
       <ContentWrapper>
-        <ContentImage src={images[faker.finance.amount(0, 4, 0)]} />
+        <ContentImage src={image} />
         <Content>
           <Title>{title}</Title>
           <Date>{formatter.format(date)}</Date>
@@ -95,18 +93,11 @@ const EventCard: FunctionComponent<Props> = (props) => {
           </Author>
           <Stats>
             <Button
-              color="gray"
-              label={likes}
-              onClick={() => setIsLiked(!isLiked)}
-              leftIcon={isLiked ? heartFilledIcon : heartIcon}
-              mR
-            />
-            <Button
-              color="gray"
-              label={shares}
-              onClick={() => setIsShared(!isShared)}
-              leftIcon={isShared ? shareFilledIcon : shareIcon}
-            />
+              onClick={() => setFollowing(!following)}
+              color={following ? 'success' : 'gray'}
+            >
+              {following ? followingIcon : notFollowingIcon}
+            </Button>
           </Stats>
         </FooterContent>
       </Footer>
