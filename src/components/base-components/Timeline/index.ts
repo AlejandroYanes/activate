@@ -1,5 +1,5 @@
 import TimeLine from './Timeline';
-import TimeMark from 'components/base-components/Timeline/TimeMark';
+import TimeMark from './TimeMark';
 
 export {
   TimeLine,

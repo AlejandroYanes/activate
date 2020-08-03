@@ -25,7 +25,8 @@ const Switch: FunctionComponent<SwitchProps> = (props) => {
   });
 
   if (validCase) {
-    return validCase.component({});
+    const { component, value, ...rest } = validCase;
+    return component({ props: rest });
   }
 
   return null;

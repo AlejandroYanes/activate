@@ -54,7 +54,7 @@
       "controlComponents": ["Input", "Checkbox", "FancyCheckbox", "Toggle"],
       "depth": 3
     }],
-    "object-curly-newline": [2, { "multiline": true }],
+    "object-curly-newline": 0,
     "unicorn/filename-case": 0,
     "unicorn/prefer-query-selector": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
@@ -69,6 +69,7 @@
           "IconButtonProps": true,
           "PositionProps": true,
           "TimeMarkProps": true,
+          "TabsetProps": true,
           "props": true,
           "otherProps": true,
           "hoverRef": true,

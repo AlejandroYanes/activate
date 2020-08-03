@@ -1,28 +1,33 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import SideMenu from 'components/experience/SideMenu';
-import EventCard from 'components/experience/EventCard';
+import React, { FunctionComponent } from 'react';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import SvgBlur from 'components/base-components/SvgBlur';
-import AuxPanel from 'components/pages/AuxPanel';
-import { events } from './events';
-import './styles.scss';
+import SideMenu from 'components/experience/SideMenu';
+import AuxPanel from 'components/experience/AuxPanel';
+import FeedPage from 'components/pages/Feed';
+import ProfilePage from 'components/pages/Profile';
+import DiscoverPage from 'components/pages/Discover';
+import AboutPage from 'components/pages/About';
+import { AppBody, StyledApp } from './styled';
 
-function eventsFactory() {
-  return events.map((event) => <EventCard key={event.id} {...event} />);
-}
+import 'simplebar/dist/simplebar.min.css';
 
-const App: FunctionComponent = () => {
-  const eventCards = useMemo(eventsFactory, []);
-
-  return (
-    <section className="app-wrapper">
+const App: FunctionComponent = () => (
+  <BrowserRouter>
+    <StyledApp>
       <SideMenu />
-      <main className="app-body">
-        {eventCards}
-      </main>
+      <AppBody>
+        <Switch>
+          <Route path="/" component={FeedPage} exact />
+          <Route path="/profile" component={ProfilePage} />
+          <Route path="/discover" component={DiscoverPage} />
+          <Route path="/about" component={AboutPage} />
+          <Redirect to="/" />
+        </Switch>
+      </AppBody>
       <AuxPanel />
       <SvgBlur />
-    </section>
-  );
-};
+    </StyledApp>
+  </BrowserRouter>
+);
 
 export default App;

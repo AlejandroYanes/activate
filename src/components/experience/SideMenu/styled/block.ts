@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
-import { MenuBlockProps } from 'components/experience/SideMenu/MenuBlock';
 
 export const Label = styled.span`
   position: absolute;
@@ -9,6 +8,7 @@ export const Label = styled.span`
   font-size: 20px;
   z-index: 10;
   color: white;
+  display: flex;
 `;
 
 export const Blurred = styled.div`
@@ -43,7 +43,7 @@ export const Blurred = styled.div`
   }
 `;
 
-const getSelectedStyles = (props: MenuBlockProps) => {
+const getSelectedStyles = (props: { selected: boolean }) => {
   if (props.selected) {
     return `
       ${Blurred} > span {
@@ -58,7 +58,7 @@ const getSelectedStyles = (props: MenuBlockProps) => {
   return '';
 };
 
-export const Block = styled.li.attrs((props: MenuBlockProps) => props)`
+export const Block = styled.li.attrs((props: { selected: boolean }) => props)`
   height: 78px;
   width: 100%;
   position: relative;
