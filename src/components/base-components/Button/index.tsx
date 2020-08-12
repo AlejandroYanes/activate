@@ -42,7 +42,14 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
   ), [rightIcon, isHovered, variant, color, sm]);
 
   return (
-    <StyledButton ref={buttonReference} onClick={onClick} {...rest}>
+    <StyledButton
+      ref={buttonReference}
+      onClick={onClick}
+      variant={variant}
+      color={color}
+      sm={sm}
+      {...rest}
+    >
       <Content
         isLoading={isLoading}
         label={label}
