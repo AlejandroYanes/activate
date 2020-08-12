@@ -12,8 +12,8 @@ export const NeonLights = {
 };
 
 export const SummerVibes = {
-  BRAND: '#3EA590',
-  ACCENT: '#F5CE4B',
+  BRAND: '#27806e',
+  ACCENT: '#e5bf3f',
   DARK: '#013C59',
   LIGHT: '#1798CF',
 };
@@ -25,7 +25,8 @@ export const MidnightLight = {
 };
 
 export const ScottishSunrise = {
-  BRAND: '#72CBD3',
+  // BRAND: '#72CBD3', original
+  BRAND: '#4d979e',
   ACCENT: '#F8BB8F',
   DARK: '#14566D',
   LIGHT: '#FDD78C',

@@ -63,8 +63,8 @@ const Alert: FunctionComponent<AlertProps> = (props) => {
         <IconButton
           onClick={() => undefined}
           icon={Icons.CLOSE}
-          strokeColor={Colors.GRAY}
-          color="gray"
+          color={Colors.GRAY}
+          buttonColor="gray"
           sm
         />
       </CloseIcon>

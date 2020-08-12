@@ -9,4 +9,5 @@ export const StyledTabset = styled.ul.attrs((props: any) => props)`
   margin: 0;
   width: 100%;
   ${getMargins};
+  background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
 `;

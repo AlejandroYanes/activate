@@ -28,16 +28,14 @@ const formatter = new Intl.DateTimeFormat('default', {
   minute: 'numeric',
 });
 
-const arrowRightIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.WHITE} />;
-// const heartIcon = <SvgIcon icon={Icons.HEART} strokeColor={Colors.GRAY} />;
-// const heartFilledIcon = <SvgIcon icon={Icons.HEART_FILLED} fillColor={Colors.ERROR} />;
-// const shareIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.GRAY} />;
-// const shareFilledIcon = <SvgIcon icon={Icons.SHARE} fillColor={Colors.SUCCESS} />;
+const arrowRightIcon = (
+  <SvgIcon icon={Icons.CHEVRON_RIGHT} color={Colors.WHITE} />
+);
 const notFollowingIcon = (
-  <SvgIcon icon={Icons.BOOKMARK_FILLED} fillColor={Colors.WHITE} strokeColor={Colors.DARK} />
+  <SvgIcon icon={Icons.BOOKMARK_FILLED} secondaryColor={Colors.WHITE} color={Colors.DARK} />
 );
 const followingIcon = (
-  <SvgIcon icon={Icons.BOOKMARK_FILLED} fillColor={Colors.SUCCESS} strokeColor={Colors.SUCCESS} />
+  <SvgIcon icon={Icons.BOOKMARK_FILLED} color={Colors.SUCCESS} />
 );
 
 interface Props {

@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeIcon from './HomeIcon';
+import HomeIcon from './Home';
 import ChevronUpIcon from './ChevronUp';
 import ChevronDownIcon from './ChevronDown';
 import ChevronLeftIcon from './ChevronLeft';
@@ -28,8 +28,12 @@ import CloseIcon from './Close';
 import BookmarkIcon from './Bookmark';
 import BookmarksIcon from './Bookmarks';
 import BookmarkAddIcon from './BookmarkAdd';
-import BookmarkFilledIcon from 'components/base-components/SvgIcon/Icons/BookmarkFilled';
-import FireIcon from 'components/base-components/SvgIcon/Icons/Fire';
+import BookmarkFilledIcon from './BookmarkFilled';
+import FireIcon from './Fire';
+import PublicityIcon from './Publicity';
+import PublisherIcon from './Publisher';
+import MegaphoneIcon from './Megaphone';
+import Megaphone2Icon from './Megaphone2';
 
 export enum Icons {
   HOME = 'home',
@@ -63,6 +67,10 @@ export enum Icons {
   BOOKMARK_ADD = 'bookmarkAdd',
   BOOKMARK_FILLED = 'bookmarkFilled',
   FIRE = 'fire',
+  PUBLICITY = 'PUBLICITY',
+  PUBLISHER = 'PUBLISHER',
+  MEGAPHONE = 'MEGAPHONE',
+  MEGAPHONE2 = 'MEGAPHONE2',
 }
 
 export const icons = {
@@ -97,4 +105,8 @@ export const icons = {
   [Icons.BOOKMARK_ADD]: (props) => <BookmarkAddIcon {...props} />,
   [Icons.BOOKMARK_FILLED]: (props) => <BookmarkFilledIcon {...props} />,
   [Icons.FIRE]: (props) => <FireIcon {...props} />,
+  [Icons.PUBLICITY]: (props) => <PublicityIcon {...props} />,
+  [Icons.PUBLISHER]: (props) => <PublisherIcon {...props} />,
+  [Icons.MEGAPHONE]: (props) => <MegaphoneIcon {...props} />,
+  [Icons.MEGAPHONE2]: (props) => <Megaphone2Icon {...props} />,
 };

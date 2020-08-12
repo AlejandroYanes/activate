@@ -8,13 +8,14 @@ export interface TabsetProps extends PositionProps {
   fullWidth?: boolean;
   activeTab: string;
   onTabChange: (activeTab) => void;
+  backgroundColor?: string;
 }
 
 const Tabset: FunctionComponent<TabsetProps> = (props) => {
-  const { children, mT, mR, mB, mL, ...rest } = props;
+  const { children, mT, mR, mB, mL, backgroundColor, ...rest } = props;
 
   return (
-    <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
+    <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL} backgroundColor={backgroundColor}>
       <TabSetProvider {...rest}>
         <AnimateSharedLayout>
           {children}

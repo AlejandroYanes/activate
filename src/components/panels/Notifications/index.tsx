@@ -23,7 +23,7 @@ function notificationFactory() {
   return notifications.map(({ id, ...rest }) => <Notification key={id} {...rest} mB />);
 }
 
-const Notifications: FunctionComponent = () => {
+const NotificationsPanel: FunctionComponent = () => {
   const notificationCards = useMemo(notificationFactory, []);
 
   return (
@@ -37,4 +37,4 @@ const Notifications: FunctionComponent = () => {
   );
 };
 
-export default Notifications;
+export default NotificationsPanel;

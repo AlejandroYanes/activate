@@ -1,13 +1,15 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent, ReactNode, useMemo, useRef } from 'react';
+import { PositionProps, useHoverState } from 'components/_base';
 import { Button as StyledButton } from './styled';
-import { PositionProps } from 'components/_base';
 import Content from './Content';
+import IconNode from './Icon';
+import { Icons } from 'components/base-components/SvgIcon/Icons';
 
 export interface ButtonProps extends PositionProps {
   label?: string | number;
   onClick: (event) => void;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
+  leftIcon?: Icons | ReactNode;
+  rightIcon?: Icons | ReactNode;
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'base' | 'fill' | 'outline';
@@ -25,14 +27,24 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     children,
     ...rest
   } = props;
+  const buttonReference = useRef(undefined);
+  const isHovered = useHoverState(buttonReference);
+
+  const leftIconNode = useMemo(() => (
+    <IconNode icon={leftIcon} variant={rest.variant} color={rest.color} isHovered={isHovered} sm={rest.sm} />
+  ), [leftIcon, isHovered]);
+
+  const rightIconNode = useMemo(() => (
+    <IconNode icon={rightIcon} variant={rest.variant} color={rest.color} isHovered={isHovered} sm={rest.sm} />
+  ), [rightIcon, isHovered]);
 
   return (
-    <StyledButton onClick={onClick} {...rest}>
+    <StyledButton ref={buttonReference} onClick={onClick} {...rest}>
       <Content
         isLoading={isLoading}
         label={label}
-        leftIcon={leftIcon}
-        rightIcon={rightIcon}
+        leftIcon={leftIconNode}
+        rightIcon={rightIconNode}
       >
         {children}
       </Content>

@@ -58,6 +58,7 @@
     "unicorn/filename-case": 0,
     "unicorn/prefer-query-selector": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
+    "no-confusing-arrow": 0,
     "unicorn/prevent-abbreviations": [
       "error",
       {

@@ -24,13 +24,13 @@ export function resolveTitle(type) {
 export function resolveIcon(type) {
   switch (type as AlertType) {
     case AlertType.SUCCESS:
-      return <SvgIcon icon={Icons.SUCCESS} fillColor={Colors.WHITE} />;
+      return <SvgIcon icon={Icons.SUCCESS} color={Colors.WHITE} />;
     case AlertType.INFO:
-      return <SvgIcon icon={Icons.INFO} fillColor={Colors.WHITE} />;
+      return <SvgIcon icon={Icons.INFO} color={Colors.WHITE} />;
     case AlertType.WARNING:
-      return <SvgIcon icon={Icons.WARNING} fillColor={Colors.WHITE} />;
+      return <SvgIcon icon={Icons.WARNING} color={Colors.WHITE} />;
     case AlertType.ERROR:
-      return <SvgIcon icon={Icons.ERROR} fillColor={Colors.WHITE} />;
+      return <SvgIcon icon={Icons.ERROR} color={Colors.WHITE} />;
     default:
       return null;
   }

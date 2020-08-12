@@ -1,11 +1,14 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
+import { Tab, Tabset } from 'components/base-components/Tabset';
+import { Case, Switch } from 'components/base-components/Switch';
+import FeedPage from 'components/pages/Feed';
+import { Header } from './styled';
 
 enum Tabs {
   FOR_YOU = 'FOR_YOU',
   TRENDING = 'TRENDING',
-  PUBLISHERS = 'PUBLISHERS',
+  TODAY = 'TODAY',
 }
 
 const DiscoverPage: FunctionComponent = () => {
@@ -13,11 +16,17 @@ const DiscoverPage: FunctionComponent = () => {
 
   return (
     <section>
-      <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth>
-        <Tab name={Tabs.FOR_YOU} label="For you" />
-        <Tab name={Tabs.TRENDING} label="Trending" icon={Icons.FIRE} />
-        <Tab name={Tabs.PUBLISHERS} label="Publishers" icon={Icons.USERS} />
-      </Tabset>
+      <Header>
+        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mB>
+          <Tab name={Tabs.FOR_YOU} label="For you" />
+          <Tab name={Tabs.TRENDING} label="Trending" icon={Icons.FIRE} />
+          <Tab name={Tabs.TODAY} label="Today" />
+        </Tabset>
+      </Header>
+      <Switch by={activeTab}>
+        <Case value={Tabs.FOR_YOU} component={FeedPage} />
+        <Case value={Tabs.TRENDING} component={FeedPage} />
+      </Switch>
     </section>
   );
 };

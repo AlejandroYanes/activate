@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Colors from '../../../../styles/colors';
+import { getShade } from 'helpers';
 
-const contentBackground = 'rgba(104,96,196,0.9)';
+const contentBackground = getShade(Colors.BRAND, 0.9);
 
 export const ContentWrapper = styled.div`
   height: 86%;

@@ -3,7 +3,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
-import UpcomingEvents from 'components/panels/UpcomingEvents';
+import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
 import NotificationsPanel from 'components/panels/Notifications';
 import { Panel, PanelHeader, PanelBody } from './styled';
 
@@ -25,7 +25,7 @@ const AuxPanel: FunctionComponent = () => {
       </PanelHeader>
       <PanelBody data-el="aux-panel-body">
         <Switch by={currentSection}>
-          <Case value={Sections.Upcoming} component={UpcomingEvents} />
+          <Case value={Sections.Upcoming} component={UpcomingEventsPanel} />
           <Case value={Sections.Notifications} component={NotificationsPanel} />
         </Switch>
       </PanelBody>

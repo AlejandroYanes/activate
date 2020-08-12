@@ -1,4 +1,4 @@
-import { lighten, darken } from 'react-rainbow-components/styles/helpers/color';
+import { getShade, darken } from 'helpers';
 import { StartingTheme } from './themes';
 
 const { BRAND, ACCENT, DARK } = StartingTheme;
@@ -6,19 +6,19 @@ const { BRAND, ACCENT, DARK } = StartingTheme;
 const Colors = {
   BRAND,
   BRAND_DARK: darken(BRAND, 0.25),
-  BRAND_SHADE: lighten(BRAND, 0.85),
+  BRAND_SHADE: getShade(BRAND, 0.1),
   ACCENT,
   ACCENT_DARK: darken(ACCENT, 0.25),
-  ACCENT_SHADE: lighten(ACCENT),
+  ACCENT_SHADE: getShade(ACCENT),
   DARK,
   DARK_DARK: darken(DARK, 0.25),
-  DARK_SHADE: lighten(DARK),
+  DARK_SHADE: getShade(DARK),
   WHITE: '#fff',
   WHITE_DARK: '#fff',
-  WHITE_SHADE: 'rgba(255,255,255,0.05)',
+  WHITE_SHADE: getShade('#ffffff', 0.05),
   GRAY: '#6b6d76',
   GRAY_DARK: '#4a4b52',
-  GRAY_SHADE: 'rgba(107,109,118,0.1)',
+  GRAY_SHADE: getShade('#6b6d76'),
   LIGHT_GRAY: '#F9F9F9',
   MEDIUM_GRAY: '#F5F5F5',
   DARK_GRAY: '#AFAFAF',
@@ -26,10 +26,10 @@ const Colors = {
   WARNING: '#dca911',
   ERROR: '#dc2e2f',
   ERROR_DARK: '#ba2627',
-  ERROR_SHADE: 'rgba(220,46,47,0.1)',
+  ERROR_SHADE: getShade('#dc2e2f'),
   SUCCESS: '#15aa85',
   SUCCESS_DARK: '#118e6f',
-  SUCCESS_SHADE: 'rgba(26,209,163,0.1)',
+  SUCCESS_SHADE: getShade('#15aa85'),
 };
 
 // BRAND: '#6860c4',

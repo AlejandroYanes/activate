@@ -10,6 +10,7 @@ import AboutPage from 'components/pages/About';
 import { AppBody, StyledApp } from './styled';
 
 import 'simplebar/dist/simplebar.min.css';
+import PublishersPage from 'components/pages/Publishers';
 
 const App: FunctionComponent = () => (
   <BrowserRouter>
@@ -20,6 +21,7 @@ const App: FunctionComponent = () => (
           <Route path="/" component={FeedPage} exact />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/discover" component={DiscoverPage} />
+          <Route path="/publishers" component={PublishersPage} />
           <Route path="/about" component={AboutPage} />
           <Redirect to="/" />
         </Switch>

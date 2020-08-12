@@ -6,7 +6,7 @@ import { TimeLine, TimeMark } from 'components/base-components/Timeline';
 import Button from 'components/base-components/Button';
 import { Attribute, Card, Label, Wrapper } from './styled';
 
-const actionIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} strokeColor={Colors.GRAY} size="small" />;
+const actionIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} color={Colors.GRAY} size="small" />;
 
 const dateFormatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
@@ -31,18 +31,18 @@ function Events(): any {
     <Card key={event.id}>
       <Label>{event.name}</Label>
       <Attribute>
-        <SvgIcon icon={Icons.CLOCK} strokeColor={Colors.GRAY} />
+        <SvgIcon icon={Icons.CLOCK} color={Colors.GRAY} />
         <span>{timeFormatter.format(event.time)}</span>
       </Attribute>
       <Attribute>
-        <SvgIcon icon={Icons.MAP_PIN} strokeColor={Colors.GRAY} />
+        <SvgIcon icon={Icons.MAP_PIN} color={Colors.GRAY} />
         <span>{event.location}</span>
       </Attribute>
     </Card>
   ));
 }
 
-const UpcomingEvents: FunctionComponent = () => {
+const UpcomingEventsPanel: FunctionComponent = () => {
   const action = (
     <Button
       sm
@@ -60,11 +60,11 @@ const UpcomingEvents: FunctionComponent = () => {
           <Card>
             <Label>{faker.lorem.words(5)}</Label>
             <Attribute>
-              <SvgIcon icon={Icons.CLOCK} strokeColor={Colors.GRAY} />
+              <SvgIcon icon={Icons.CLOCK} color={Colors.GRAY} />
               <span>{timeFormatter.format()}</span>
             </Attribute>
             <Attribute>
-              <SvgIcon icon={Icons.MAP_PIN} strokeColor={Colors.GRAY} />
+              <SvgIcon icon={Icons.MAP_PIN} color={Colors.GRAY} />
               <span>{faker.address.streetAddress()}</span>
             </Attribute>
           </Card>
@@ -77,4 +77,4 @@ const UpcomingEvents: FunctionComponent = () => {
   );
 };
 
-export default UpcomingEvents;
+export default UpcomingEventsPanel;

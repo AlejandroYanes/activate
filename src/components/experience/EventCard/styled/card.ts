@@ -10,5 +10,9 @@ export const Card = styled.section`
   margin-bottom: 32px;
   border-radius: 16px;
   overflow: hidden;
-   border: 1px solid ${Colors.MEDIUM_GRAY};
+  border: 1px solid ${Colors.BRAND_SHADE};
+
+  &:hover {
+    box-shadow: 0 0 1px 1px ${Colors.BRAND_SHADE};
+  }
 `;
