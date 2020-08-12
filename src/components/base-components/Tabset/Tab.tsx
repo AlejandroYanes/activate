@@ -1,4 +1,5 @@
-import React, { FunctionComponent, ReactNode, useContext, useMemo, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useContext, useMemo, useRef } from 'react';
+import { useHoverState } from 'components/_base';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon from 'components/base-components/SvgIcon';
@@ -37,14 +38,16 @@ function getIconColor(isSelected, isHovered) {
 const Tab: FunctionComponent<Props> = (props) => {
   const { name, label, icon } = props;
   const { activeTab, onTabChange, fullWidth } = useContext(tabsetContext);
-  const [isHovered, setIsHovered] = useState(false);
+  const tabReference = useRef(undefined);
+  const isHovered = useHoverState(tabReference);
   const isSelected = name === activeTab;
+
   const iconComponent = useMemo(() => {
     if (typeof icon === 'string') {
       return (
         <SvgIcon
           icon={icon as Icons}
-          strokeColor={getIconColor(isSelected, isHovered)}
+          color={getIconColor(isSelected, isHovered)}
         />
       );
     }
@@ -52,16 +55,13 @@ const Tab: FunctionComponent<Props> = (props) => {
   }, [icon, isHovered, isSelected]);
 
   const handleClick = () => onTabChange(name);
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => setIsHovered(false);
 
   return (
     <StyledTab
+      ref={tabReference}
       fullWidth={fullWidth}
       selected={isSelected}
       onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
       <Content data-el="tab-content">
         <Text>

@@ -9,7 +9,7 @@ export const events = new Array(5).fill('1').map(() => ({
   description: faker.lorem.lines(4),
   author: {
     photo: `user${faker.finance.amount(1, 12, 0)}`,
-    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+    name: `${faker.company.companyName()}`,
     email: faker.internet.email(),
   },
   comments: parseInt(faker.finance.amount(0, 1000000, 0), 10),

@@ -5,7 +5,7 @@ import { icons } from './Icons';
 import { svgIconStyles } from './styles';
 
 interface Props extends IconProps {
-  size?: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'x-large';
 }
 
 const SvgIcon: FunctionComponent<Props> = (props) => {
@@ -21,8 +21,8 @@ const SvgIcon: FunctionComponent<Props> = (props) => {
 };
 
 SvgIcon.defaultProps = {
-  fillColor: Colors.DARK,
-  strokeColor: Colors.DARK,
+  color: Colors.DARK,
+  secondaryColor: Colors.DARK,
   size: 'medium',
   height: undefined,
   width: undefined,

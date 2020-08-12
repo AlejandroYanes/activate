@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
 const ShareFilledIcon: FunctionComponent<IconProps> = (props) => {
-  const { fillColor, strokeColor, height, width, className, style } = props;
+  const { color, secondaryColor, height, width, className, style } = props;
 
   return (
     <svg
@@ -17,8 +17,8 @@ const ShareFilledIcon: FunctionComponent<IconProps> = (props) => {
     >
       <g>
         <path
-          fill={fillColor}
-          stroke={strokeColor}
+          stroke={color}
+          fill={secondaryColor || color}
           d="M81.139,64.48c-4.286,0-8.188,1.607-11.171,4.233l-35.919-18.11c0.04-0.475,0.072-0.951,0.072-1.437
 		      c0-0.432-0.033-0.856-0.064-1.28l36.024-18.164c2.967,2.566,6.828,4.129,11.058,4.129c9.348,0,16.926-7.579,16.926-16.926
 		      C98.064,7.578,90.486,0,81.139,0C71.79,0,64.212,7.578,64.212,16.926c0,0.432,0.033,0.856,0.064,1.28L28.251,36.37

@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
 const HomeIcon: FunctionComponent<IconProps> = (props) => {
-  const { fillColor, strokeColor, height, width, className, style } = props;
+  const { color, secondaryColor, height, width, className, style } = props;
 
   return (
     <svg
@@ -11,8 +11,8 @@ const HomeIcon: FunctionComponent<IconProps> = (props) => {
       style={style}
       height={height}
       width={width}
-      fill={fillColor}
-      stroke={strokeColor}
+      stroke={secondaryColor || color}
+      fill={color}
       viewBox="0 1 511 511.999"
       xmlns="http://www.w3.org/2000/svg"
     >

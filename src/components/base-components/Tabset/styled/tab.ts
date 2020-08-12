@@ -74,7 +74,7 @@ export const StyledTab = styled.li.attrs((props: any) => props)`
   justify-content: center;
   min-width: 80px;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 10px;
   ${getWidthStyles};
   ${getSelectedStyles};
 

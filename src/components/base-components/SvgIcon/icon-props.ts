@@ -3,8 +3,8 @@ import { Icons } from './Icons';
 
 export interface IconProps {
   icon: Icons;
-  fillColor?: string;
-  strokeColor?: string;
+  color?: string;
+  secondaryColor?: string;
   height?: number;
   width?: number;
   className?: string;

@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
 const WarningIcon: FunctionComponent<IconProps> = (props) => {
-  const { fillColor, height, width, className, style } = props;
+  const { color, height, width, className, style } = props;
 
   return (
     <svg
@@ -11,7 +11,7 @@ const WarningIcon: FunctionComponent<IconProps> = (props) => {
       style={style}
       height={height}
       width={width}
-      fill={fillColor}
+      fill={color}
       viewBox="0 0 16 16"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"

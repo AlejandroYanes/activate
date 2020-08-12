@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
 const ChevronDownIcon: FunctionComponent<IconProps> = (props) => {
-  const { strokeColor, height, width, className, style } = props;
+  const { color, height, width, className, style } = props;
 
   return (
     <svg
@@ -14,7 +14,7 @@ const ChevronDownIcon: FunctionComponent<IconProps> = (props) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M19 9L12 16L5 9" stroke={strokeColor} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M19 9L12 16L5 9" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 };

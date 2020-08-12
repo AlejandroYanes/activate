@@ -5,7 +5,7 @@ import { IconButton as StyledIconButton } from './styled';
 
 export interface IconButtonProps extends IconProps, PositionProps {
   variant?: 'base' | 'fill' | 'outline';
-  color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  buttonColor?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
   onClick: (event) => void;
   sm?: boolean;
   iconClassName?: string;
@@ -17,23 +17,24 @@ const IconButton: FunctionComponent<IconButtonProps> = (props) => {
   const {
     onClick,
     icon,
-    fillColor,
-    strokeColor,
+    secondaryColor,
+    color,
     width,
     height,
     iconClassName,
     iconStyle,
+    buttonColor,
     ...rest
   } = props;
 
   return (
-    <StyledIconButton onClick={onClick} {...rest}>
+    <StyledIconButton onClick={onClick} color={buttonColor} {...rest}>
       <SvgIcon
         icon={icon}
         height={height}
         width={width}
-        fillColor={fillColor}
-        strokeColor={strokeColor}
+        color={color}
+        secondaryColor={secondaryColor}
         className={iconClassName}
         style={iconStyle}
       />
