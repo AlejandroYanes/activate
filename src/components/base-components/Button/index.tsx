@@ -25,18 +25,21 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     rightIcon,
     isLoading,
     children,
+    variant,
+    color,
+    sm,
     ...rest
   } = props;
   const buttonReference = useRef(undefined);
   const isHovered = useHoverState(buttonReference);
 
   const leftIconNode = useMemo(() => (
-    <IconNode icon={leftIcon} variant={rest.variant} color={rest.color} isHovered={isHovered} sm={rest.sm} />
-  ), [leftIcon, isHovered]);
+    <IconNode icon={leftIcon} variant={variant} color={color} isHovered={isHovered} sm={sm} />
+  ), [leftIcon, isHovered, variant, color, sm]);
 
   const rightIconNode = useMemo(() => (
-    <IconNode icon={rightIcon} variant={rest.variant} color={rest.color} isHovered={isHovered} sm={rest.sm} />
-  ), [rightIcon, isHovered]);
+    <IconNode icon={rightIcon} variant={variant} color={color} isHovered={isHovered} sm={sm} />
+  ), [rightIcon, isHovered, variant, color, sm]);
 
   return (
     <StyledButton ref={buttonReference} onClick={onClick} {...rest}>
