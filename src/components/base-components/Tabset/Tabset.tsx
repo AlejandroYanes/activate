@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
-import { PositionProps } from 'components/_base';
+import { PositionProps } from 'helpers';
 import { TabSetProvider } from './context';
 import { StyledTabset } from './styled';
 

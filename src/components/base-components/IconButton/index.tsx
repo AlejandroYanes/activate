@@ -1,7 +1,7 @@
 import React, { CSSProperties, FunctionComponent } from 'react';
-import { PositionProps } from 'components/_base';
+import { PositionProps } from 'helpers';
 import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
-import { IconButton as StyledIconButton } from './styled';
+import { StyledIconButton } from './styled';
 
 export interface IconButtonProps extends IconProps, PositionProps {
   variant?: 'base' | 'fill' | 'outline';

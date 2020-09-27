@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
-import { getMargins } from 'components/_base';
+import { getMargins } from 'helpers';
 
 export const StyledSummary = styled.div`
   display: flex;

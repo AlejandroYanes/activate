@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import { getMargins, PositionProps } from 'components/_base';
+import { getMargins, PositionProps, getShade } from 'helpers';
 import Colors from 'styles/colors';
-import { getShade } from 'helpers';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
   ${getMargins};

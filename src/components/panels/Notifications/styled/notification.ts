@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
-import { getMargins } from 'components/_base';
+import { getMargins } from 'helpers';
 
 export const StyledNotification = styled(motion.div)`
   position: relative;

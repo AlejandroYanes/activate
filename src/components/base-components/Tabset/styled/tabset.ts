@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getMargins } from 'components/_base';
+import { getMargins } from 'helpers';
 
 export const StyledTabset = styled.ul.attrs((props: any) => props)`
   list-style: none;

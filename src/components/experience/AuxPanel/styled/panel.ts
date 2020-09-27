@@ -3,19 +3,24 @@ import SimpleBar from 'simplebar-react';
 import Colors from 'styles/colors';
 
 export const Panel = styled.aside`
+  position: relative;
   width: 380px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.MEDIUM_GRAY};
+  background-color: ${Colors.BRAND_LIGHT};
   box-sizing: border-box;
+
+  svg#blob {
+    position: absolute;
+    height: 100%;
+  }
 `;
 
 export const PanelHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
   padding: 1rem;
   box-sizing: border-box;
+  z-index: 1;
 `;
 
 export const PanelBody = styled(SimpleBar)`

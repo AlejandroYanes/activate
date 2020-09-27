@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useMemo, useRef } from 'react';
-import { PositionProps, useHoverState } from 'components/_base';
+import { PositionProps, useHoverState } from 'helpers';
 import { Button as StyledButton } from './styled';
 import Content from './Content';
 import IconNode from './Icon';

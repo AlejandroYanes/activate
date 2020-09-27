@@ -12,6 +12,6 @@ export const StyledApp = styled.section`
 
 export const AppBody = styled(SimpleBar)`
   flex: 1;
-  padding: 32px;
+  padding: 32px 54px 32px 32px;
   box-sizing: border-box;
 `;

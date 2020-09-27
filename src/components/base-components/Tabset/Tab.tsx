@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactNode, useContext, useMemo, useRef } from 'react';
-import { useHoverState } from 'components/_base';
+import { useHoverState } from 'helpers';
+import Colors from 'styles/colors';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon from 'components/base-components/SvgIcon';
 import tabsetContext from './context';
 import { Content, Label, Mark, StyledTab, Text } from './styled';
-import Colors from 'styles/colors';
 
 interface Props {
   name: string;
