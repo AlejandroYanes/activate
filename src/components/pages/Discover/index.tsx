@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { AuxPanelSections, usePanelActions } from 'components/providers/PanelSections';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -13,6 +14,11 @@ enum Tabs {
 
 const DiscoverPage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
+  const { setPageSections } = usePanelActions();
+
+  useEffect(() => {
+    setPageSections([AuxPanelSections.Search]);
+  }, []);
 
   return (
     <section>

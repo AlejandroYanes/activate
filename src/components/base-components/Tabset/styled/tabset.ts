@@ -8,6 +8,6 @@ export const StyledTabset = styled.ul.attrs((props: any) => props)`
   padding: 0;
   margin: 0;
   width: 100%;
+  background-color: transparent;
   ${getMargins};
-  background-color: ${({ backgroundColor }) => backgroundColor || 'transparent'};
 `;

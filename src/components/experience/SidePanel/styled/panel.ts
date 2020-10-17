@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import SimpleBar from 'simplebar-react';
 import Colors from 'styles/colors';
 
 export const Panel = styled.aside`
@@ -10,11 +9,6 @@ export const Panel = styled.aside`
   flex-direction: column;
   background-color: ${Colors.BRAND_LIGHT};
   box-sizing: border-box;
-
-  svg#blob {
-    position: absolute;
-    height: 100%;
-  }
 `;
 
 export const PanelHeader = styled.div`
@@ -23,8 +17,7 @@ export const PanelHeader = styled.div`
   z-index: 1;
 `;
 
-export const PanelBody = styled(SimpleBar)`
-  padding: 0 16px;
+export const PanelBody = styled.section`
   height: calc(100vh - 76px);
   box-sizing: border-box;
 `;

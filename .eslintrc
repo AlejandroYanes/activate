@@ -59,11 +59,13 @@
     "unicorn/prefer-query-selector": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "no-confusing-arrow": 0,
+    "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
     "unicorn/prevent-abbreviations": [
-      "error",
+      "warn",
       {
         "whitelist": {
           "AlertProps": true,
+          "CalendarProps": true,
           "AvatarProps": true,
           "ButtonProps": true,
           "IconProps": true,
@@ -73,6 +75,9 @@
           "TabsetProps": true,
           "props": true,
           "otherProps": true,
+          "arePropsEqual": true,
+          "prevProps": true,
+          "nextProps": true,
           "hoverRef": true,
           "useCombinedRefs": true,
           "targetRef": true,

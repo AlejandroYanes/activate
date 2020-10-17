@@ -6,8 +6,6 @@ import { TimeLine, TimeMark } from 'components/base-components/Timeline';
 import Button from 'components/base-components/Button';
 import { Attribute, Card, Label, Wrapper } from './styled';
 
-const actionIcon = <SvgIcon icon={Icons.CHEVRON_RIGHT} color={Colors.GRAY} size="small" />;
-
 const dateFormatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
   month: 'short',
@@ -47,8 +45,8 @@ const UpcomingEventsPanel: FunctionComponent = () => {
     <Button
       sm
       label="View all"
-      color="gray"
-      rightIcon={actionIcon}
+      color="accent"
+      rightIcon={Icons.CHEVRON_RIGHT}
       onClick={() => undefined}
     />
   );

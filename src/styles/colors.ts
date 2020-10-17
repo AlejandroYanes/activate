@@ -5,7 +5,7 @@ const { BRAND, ACCENT, DARK } = StartingTheme;
 
 const Colors = {
   BRAND,
-  BRAND_DARK: changeColorLight(BRAND, 0.3),
+  BRAND_DARK: changeColorLight(BRAND, 0.4),
   BRAND_LIGHT: changeColorLight(BRAND, 0.95),
   BRAND_SHADE: getShade(BRAND, 0.1),
   ACCENT,

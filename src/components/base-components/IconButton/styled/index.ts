@@ -9,13 +9,15 @@ const getSize = (props: IconButtonProps) => {
   if (sm) {
     return `
       height: 28px;
-      width: 28px
+      width: 28px;
+      min-width: 28px;
     `;
   }
 
   return `
-    height: 38px;
-    width: 38px;
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
   `;
 };
 

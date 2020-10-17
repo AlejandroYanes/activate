@@ -5,6 +5,7 @@ export interface PositionProps {
   mR?: boolean;
   mB?: boolean;
   mL?: boolean;
+  fullWidth?: boolean;
   className?: string;
   style?: CSSProperties;
 }

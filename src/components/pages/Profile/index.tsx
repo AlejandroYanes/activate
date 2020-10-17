@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
+import { usePanelActions } from 'components/providers/PanelSections';
 import Avatar from 'components/base-components/Avatar';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
@@ -11,6 +12,9 @@ enum Tabs {
 
 const ProfilePage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(Tabs.UPCOMING);
+  const { resetPanelSections } = usePanelActions();
+
+  useEffect(resetPanelSections, []);
 
   return (
     <StyledProfile>

@@ -2,21 +2,33 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
 
-export const Content = styled.div`
+const getContentSpacingStyles = (props) => {
+  const { compact, selected } = props;
+
+  if (compact) {
+    if (selected) {
+      return 'padding: 0 12px;';
+    }
+    return 'padding: 0;';
+  }
+  return 'padding: 0 12px;';
+};
+
+export const Content = styled.div.attrs((props: any) => props)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 12px;
   position: relative;
   min-width: 50%;
+  ${getContentSpacingStyles};
 `;
 
-export const Text = styled.div`
+export const Text = styled.div.attrs((props: any) => props)`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 8px;
-  min-width: 64px;
+  min-width: ${({ compact }) => compact ? '20px' : '64px'};
 `;
 
 export const Label = styled.span.attrs((props: any) => props)`
@@ -34,7 +46,21 @@ export const Mark = styled(motion.div)`
   bottom: 0;
 `;
 
-const getWidthStyles = (props) => (props.fullWidth ? 'flex: 1' : '');
+const getWidthStyles = (props) => {
+  const { fullWidth, compact, selected } = props;
+  const shouldUseFullwidth = (
+    fullWidth &&
+    (
+      (compact && selected) ||
+      !compact
+    )
+  );
+
+  return `
+    min-width: ${compact ? '20px' : '80px'};
+    ${shouldUseFullwidth ? 'flex: 1' : ''}
+  `;
+};
 
 const getSelectedStyles = (props) => {
   const { selected } = props;
@@ -72,7 +98,6 @@ export const StyledTab = styled.li.attrs((props: any) => props)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 80px;
   cursor: pointer;
   border-radius: 10px;
   ${getWidthStyles};

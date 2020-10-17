@@ -1,15 +1,12 @@
 import React, { createContext, useMemo, FunctionComponent } from 'react';
 import { TabsetProps } from 'components/base-components/Tabset/Tabset';
 
-const tabsetContext = createContext(undefined);
+const tabsetContext = createContext<TabsetProps>(undefined);
 const { Provider } = tabsetContext;
 
 export const TabSetProvider: FunctionComponent<TabsetProps> = (props) => {
-  const { activeTab, onTabChange, fullWidth, children } = props;
-  const context = useMemo(
-    () => ({ activeTab, onTabChange, fullWidth }),
-    [activeTab, onTabChange, fullWidth],
-  );
+  const { children, ...rest } = props;
+  const context = useMemo(() => ({ ...rest }), Object.values(rest));
 
   return (
     <Provider value={context}>

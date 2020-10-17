@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
-import { elementHeight, elementBorderRadius } from 'styles/variables';
+
+const elementBorderRadius = '6px';
+const elementHeight = '40px';
 
 export const MenuItem = styled.li`
   box-sizing: border-box;

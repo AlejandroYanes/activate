@@ -4,23 +4,35 @@ import { getMargins } from 'helpers';
 import { ButtonProps } from '..';
 
 const getSize = (props: ButtonProps) => {
-  const { sm } = props;
+  const { sm, fullWidth } = props;
+  const width = fullWidth ? '100%' : undefined;
 
   if (sm) {
     return `
       height: 28px;
+      width: ${width};
       min-width: 28px;
       font-size:0.75rem;
       font-weight: bold;
-      letter-spacing: 1px;
     `;
   }
 
   return `
-    height: 38px;
+    height: 36px;
+    width: ${width};
     min-width: 36px;
-    font-size: 1.15rem;
+    font-size: 1rem;
   `;
+};
+
+const getAlignment = (props: ButtonProps) => {
+  const { align } = props;
+
+  if (align === 'center') {
+    return align;
+  }
+
+  return `flex-${align}`;
 };
 
 const getVariantStyles = (props: ButtonProps) => {
@@ -30,15 +42,15 @@ const getVariantStyles = (props: ButtonProps) => {
   switch (variant) {
     case 'base':
       return `
-        color: ${Colors[color.toUpperCase()]};
-        background-color: transparent;
+        color: ${color === 'white' ? Colors.WHITE : Colors.DARK};
+        background-color: ${Colors.GRAY_SHADE};
         border: ${borderStyle} transparent;
       `;
-    case 'outline':
+    case 'flat':
       return `
-        color: ${Colors[color.toUpperCase()]};
+        color: ${Colors.DARK};
         background-color: transparent;
-        border: ${borderStyle} ${Colors[color.toUpperCase()]};
+        border: ${borderStyle} transparent;
       `;
     default: {
       const fontColor = color === 'white' ? Colors.DARK : Colors.WHITE;
@@ -61,15 +73,15 @@ const getHoveredStyles = (props: ButtonProps) => {
         color: ${Colors[`${color.toUpperCase()}_DARK`]};
         background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
       `;
-    case 'outline':
+    case 'flat':
       return `
         color: ${Colors[`${color.toUpperCase()}_DARK`]};
-        border-color: ${Colors[`${color.toUpperCase()}_DARK`]};
         background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
       `;
     default:
       return `
         background-color: ${Colors[`${color.toUpperCase()}_DARK`]};
+        border-color: ${Colors[`${color.toUpperCase()}_DARK`]};
         color: ${Colors.WHITE};
       `;
   }
@@ -89,12 +101,12 @@ export const Button = styled.button`
   letter-spacing: 1px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 4px;
+  justify-content: ${getAlignment};
+  padding: 0 8px;
   cursor: pointer;
   transition: all linear 150ms;
-  ${getSize};
   ${getMargins};
+  ${getSize};
   ${getVariantStyles}
 
   &:active {
