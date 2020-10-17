@@ -4,14 +4,13 @@ import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 
 interface Props {
   icon?: Icons | ReactNode;
-  variant?: 'base' | 'fill' | 'outline';
+  variant?: 'base' | 'fill' | 'flat';
   color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
   isHovered: boolean;
   sm: boolean;
 }
 
 function resolveIconColor(variant, color, isHovered) {
-  const colorHash = Colors[color.toUpperCase()];
   const darkColorHash = Colors[`${color.toUpperCase()}_DARK`];
   const fontColor = color === 'white' ? Colors.DARK : Colors.WHITE;
 
@@ -19,7 +18,11 @@ function resolveIconColor(variant, color, isHovered) {
     return fontColor;
   }
 
-  return isHovered ? darkColorHash : colorHash;
+  if (variant === 'flat') {
+    return isHovered ? darkColorHash : Colors.DARK;
+  }
+
+  return isHovered ? darkColorHash : Colors.DARK;
 }
 
 const IconNode: FunctionComponent<Props> = (props): any => {
