@@ -41,7 +41,7 @@ function resolveActiveTabs(activeSections: AuxPanelSections[]) {
 const SidePanel: FunctionComponent = () => {
   const sections = useActivePanelSections();
   const activeTabs = useMemo(() => resolveActiveTabs(sections), [sections]);
-  const [currentSection, setCurrentSection] = useState(AuxPanelSections.Search);
+  const [currentSection, setCurrentSection] = useState(AuxPanelSections.Upcoming);
 
   return (
     <Panel>

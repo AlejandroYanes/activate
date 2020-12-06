@@ -1,21 +1,27 @@
-import React, { FunctionComponent, createContext, ReactNode, useMemo } from 'react';
+import React, { createContext, FunctionComponent, useMemo } from 'react';
+import { ValidationRules } from 'helpers/form-validations';
 
 interface Props {
-  value: object;
-  setField: (value: any) => void;
-  children: ReactNode;
+  state: any;
+  setField: (fields) => void;
+  errors?: { [x: string]: string };
+  setErrors?: (errors) => void;
+  rules?: ValidationRules;
 }
 
-export const FormContext = createContext(undefined);
+const FormContext = createContext<Props>(undefined);
 
 export const FormProvider: FunctionComponent<Props> = (props) => {
-  const { value, setField, children } = props;
+  const { state, setField, errors, setErrors, rules, children } = props;
   const providerValue = useMemo(() => (
     {
-      state: value,
+      state,
       setField,
+      errors,
+      setErrors,
+      rules,
     }
-  ), [value, setField]);
+  ), [state, setField, errors, setErrors, rules]);
 
   return (
     <FormContext.Provider value={providerValue}>
@@ -23,3 +29,5 @@ export const FormProvider: FunctionComponent<Props> = (props) => {
     </FormContext.Provider>
   );
 };
+
+export default FormContext;

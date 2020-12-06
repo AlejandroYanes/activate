@@ -54,38 +54,15 @@
       "controlComponents": ["Input", "Checkbox", "FancyCheckbox", "Toggle"],
       "depth": 3
     }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
     "object-curly-newline": 0,
     "unicorn/filename-case": 0,
     "unicorn/prefer-query-selector": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "no-confusing-arrow": 0,
     "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
-    "unicorn/prevent-abbreviations": [
-      "warn",
-      {
-        "whitelist": {
-          "AlertProps": true,
-          "CalendarProps": true,
-          "AvatarProps": true,
-          "ButtonProps": true,
-          "IconProps": true,
-          "IconButtonProps": true,
-          "PositionProps": true,
-          "TimeMarkProps": true,
-          "TabsetProps": true,
-          "props": true,
-          "otherProps": true,
-          "arePropsEqual": true,
-          "prevProps": true,
-          "nextProps": true,
-          "hoverRef": true,
-          "useCombinedRefs": true,
-          "targetRef": true,
-          "refs": true,
-          "ref": true
-        }
-      }
-    ],
+    "unicorn/prevent-abbreviations": 0,
     "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
     "import/order": ["error", {
       "groups": [
@@ -102,18 +79,6 @@
       "typescript": {
         "directory": "./"
       }
-//      "alias": {
-//        "map": [
-//          ["@components", "./src/components/base-components"],
-//          ["@experience", "./src/components/experience"],
-//          ["@pages", "./src/components/pages"],
-//          ["@styles", "./src/styles"],
-//          ["@", "./src"]
-//        ],
-//        "extensions": [
-//          ".ts", ".tsx", ".json"
-//        ]
-//      }
     }
   }
 }

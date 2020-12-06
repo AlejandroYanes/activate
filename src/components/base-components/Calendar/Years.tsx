@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { resolveYearRange } from './utils';
-import { StyledList as StyledYears, Item as Year, Item as Month } from './styled/months-years';
+import { StyledList as StyledYears, Item as Year } from './styled/months-years';
 
 interface Props {
   currentDate: Date;

@@ -78,7 +78,7 @@ const Options: FunctionComponent<Props> = (props) => {
       //   icon={icon}
       // />
     )),
-    [],
+    [onSelect],
   );
 
   return (

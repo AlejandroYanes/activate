@@ -31,7 +31,7 @@ const PanelSectionsProvider: FunctionComponent = (props) => {
     (nextSections: AuxPanelSections[]) => {
       setSections([...basicSections, ...nextSections]);
     },
-    [sections],
+    [],
   );
 
   const resetPanelSections = useCallback(() => setSections(basicSections), []);
@@ -42,7 +42,7 @@ const PanelSectionsProvider: FunctionComponent = (props) => {
       setPageSections,
       resetPanelSections,
     },
-  }), [sections]);
+  }), [sections, resetPanelSections, setPageSections]);
 
   return (
     <PanelSectionsContext.Provider value={providerValue}>

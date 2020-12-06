@@ -1,27 +1,62 @@
 import React, { FunctionComponent, useCallback } from 'react';
+import { ValidationRules } from 'helpers/form-validations';
 import { FormProvider } from './context';
+import { Form as StyledForm } from './styled';
 
 interface Props {
   id?: string;
-  value: object;
-  onChange: (nextValue: object) => void;
+  state: any;
+  onChange: (value) => void;
+  errors?: { [x: string]: string };
+  onError?: (errors) => void;
+  rules?: ValidationRules;
 }
 
-const Form: FunctionComponent<Props> = (props) => {
-  const { id, value, onChange, children } = props;
+const disableOnSubmit = (event) => {
+  event.stopPropagation();
+  event.preventDefault();
+};
 
-  const setField = useCallback((nextValues) => {
-    const nextState = { ...value, ...nextValues };
+const Form: FunctionComponent<Props> = (props) => {
+  const {
+    id,
+    state,
+    onChange,
+    errors,
+    onError,
+    rules,
+    children,
+  } = props;
+
+  const setField = useCallback((value) => {
+    const nextState = { ...state, ...value };
     onChange(nextState);
-  }, [value, onChange]);
+  }, [state, onChange]);
+
+  const setErrors = useCallback((error) => {
+    if (errors && onError) {
+      const nextErrors = { ...errors, ...error };
+      onError(nextErrors);
+    }
+  }, [errors, onError]);
 
   return (
-    <form id={id}>
-      <FormProvider value={value} setField={setField}>
+    <StyledForm id={id} onSubmit={disableOnSubmit}>
+      <FormProvider
+        state={state}
+        setField={setField}
+        errors={errors}
+        setErrors={setErrors}
+        rules={rules}
+      >
         {children}
       </FormProvider>
-    </form>
+    </StyledForm>
   );
+};
+
+Form.defaultProps = {
+  id: undefined,
 };
 
 export default Form;

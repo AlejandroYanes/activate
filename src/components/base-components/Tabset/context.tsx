@@ -6,6 +6,8 @@ const { Provider } = tabsetContext;
 
 export const TabSetProvider: FunctionComponent<TabsetProps> = (props) => {
   const { children, ...rest } = props;
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const context = useMemo(() => ({ ...rest }), Object.values(rest));
 
   return (

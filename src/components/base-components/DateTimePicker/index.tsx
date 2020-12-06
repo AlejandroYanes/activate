@@ -1,19 +1,20 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { PositionProps } from 'helpers';
 import RenderIf from 'components/base-components/RenderIf';
 import IconButton from 'components/base-components/IconButton';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Icons } from 'components/base-components/SvgIcon';
+import InputLabel from 'components/base-components/Inputs/base/Label';
+import AbsoluteContent from 'components/base-components/Inputs/base/AbsoluteContent';
 import CalendarModal from './CalendarModal';
-import DateStamp from './DateStamp';
-import { Content, Label, StyledDateTimePicker, AbsoluteContent, Separator } from './styled';
+import Content from './Content';
+import { StyledDateTimePicker } from './styled';
 
 interface Props extends PositionProps {
   id?: string;
   label?: string;
   value: Date | Date[];
   onChange: (event) => void;
-  type?: 'date-time' | 'date' | 'time';
-  useRange?: boolean;
+  type?: 'date' | 'date-range' | 'date-time' | 'time' | 'time-range';
   showOptions?: boolean;
   showClear?: boolean;
 }
@@ -25,14 +26,10 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
     type,
     value,
     onChange,
-    useRange,
     showOptions,
     showClear,
     ...rest
   } = props;
-
-  const startDate = useMemo(() => useRange && value ? value[0] : value, [useRange, value]);
-  const endDate = useMemo(() => useRange && value ? value[1] : undefined, [useRange, value]);
 
   const [showBackdrop, setShowBackdrop] = useState(false);
 
@@ -54,15 +51,13 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
   return (
     <>
       <StyledDateTimePicker id={id} {...rest}>
-        <Label>{label}</Label>
-        <Content onClick={openDatePickerModal} padRight={showClear} tabIndex={0}>
-          <SvgIcon icon={Icons.CALENDAR_FILLED} />
-          <DateStamp value={startDate} />
-          <RenderIf condition={!!endDate}>
-            <Separator />
-            <DateStamp value={endDate} />
-          </RenderIf>
-        </Content>
+        <InputLabel text={label} />
+        <Content
+          type={type}
+          value={value}
+          padRight={showClear}
+          onClick={openDatePickerModal}
+        />
         <RenderIf condition={showClear && !!value}>
           <AbsoluteContent floatRight>
             <IconButton
@@ -76,8 +71,8 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
       </StyledDateTimePicker>
       <CalendarModal
         isOpen={showBackdrop}
+        type={type}
         value={value}
-        useRange={useRange}
         showOptions={showOptions}
         onChange={handleDateSelected}
         onClose={closeDatePickerModal}
@@ -88,7 +83,6 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
 
 DateTimePicker.defaultProps = {
   type: 'date',
-  useRange: false,
   showOptions: false,
   showClear: false,
 };

@@ -1,8 +1,9 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { PositionProps } from 'helpers';
-import { AbsoluteContent, StyledContainer, StyledInput, StyledLabel } from './styled';
-import IconButton from '../IconButton';
-import { Icons } from '../SvgIcon/Icons';
+import { StyledContainer, StyledInput } from './styled/input';
+import InputLabel from '../base/Label';
+import ClearButton from '../base/ClearButton';
+import AbsoluteContent from '../base/AbsoluteContent';
 
 interface Props extends PositionProps {
   id?: string;
@@ -16,25 +17,6 @@ interface Props extends PositionProps {
   rightItems?: ReactNode[];
   showClear?: boolean;
 }
-
-const ClearButton = ({ showClear, isFocused, onChange }) => {
-  if (showClear) {
-    const clearInput = () => {
-      onChange({ target: { value: '' } });
-    };
-
-    return (
-      <IconButton
-        onClick={clearInput}
-        icon={Icons.CLOSE}
-        buttonColor={isFocused ? 'brand' : 'dark'}
-        sm
-      />
-    );
-  }
-
-  return null;
-};
 
 const Input: FunctionComponent<Props> = (props) => {
   const {
@@ -67,9 +49,7 @@ const Input: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledContainer {...rest}>
-      <StyledLabel focused={isFocused}>
-        {label}
-      </StyledLabel>
+      <InputLabel text={label} isFocused={isFocused} />
       <AbsoluteContent>
         {leftItems}
       </AbsoluteContent>

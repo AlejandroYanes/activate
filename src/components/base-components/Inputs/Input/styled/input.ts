@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { getMargins, PositionProps } from 'helpers';
 import Colors from 'styles/colors';
+import { inputBorderRadius } from 'styles/variables';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
   ${getMargins};
@@ -10,24 +11,12 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
   position: relative;
 `;
 
-const getLabelColor = (props) => {
-  const { focused } = props;
-  return `color: ${focused ? Colors.BRAND_DARK : Colors.DARK}`;
-};
-
-export const StyledLabel = styled.label.attrs((props: any) => props)`
-  margin-left: 16px;
-  margin-bottom: 6px;
-  transition: all 150ms linear;
-  ${getLabelColor};
-`;
-
 const getPadding = (count) => count * 20 + 20;
 const getLeftPadding = (props) => `padding-left: ${getPadding(props.leftItems)}px`;
 const getRightPadding = (props) => `padding-right: ${getPadding(props.rightItems)}px`;
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
-  border-radius: 50px;
+  border-radius: ${inputBorderRadius};
   border: 1px solid ${Colors.MEDIUM_GRAY};
   background-color: ${Colors.WHITE};
   color: ${Colors.DARK};
@@ -56,12 +45,4 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
     border-color: ${Colors.BRAND_DARK};
     color: ${Colors.BRAND_DARK};
   }
-`;
-
-export const AbsoluteContent = styled.div.attrs((props: any) => props)`
-  position: absolute;
-  bottom: 4px;
-  ${(props) => props.floatRight ? 'right: 8px' : 'left: 8px'};
-  display: flex;
-  align-items: center;
 `;

@@ -18,6 +18,7 @@ const DiscoverPage: FunctionComponent = () => {
 
   useEffect(() => {
     setPageSections([AuxPanelSections.Search]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

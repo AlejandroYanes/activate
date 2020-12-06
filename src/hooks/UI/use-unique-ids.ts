@@ -7,6 +7,7 @@ export function useUniqueIds(ids: string[], useHash = false) {
   useEffect(() => {
     const nextUIDs = ids.map((id) => uniqueId(id, useHash));
     setUIDs(nextUIDs);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, ids);
 
   return uIDs;
