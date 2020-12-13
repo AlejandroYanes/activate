@@ -22,8 +22,8 @@ function getHue(color: number[]) {
       Math.atan2(
         Math.sqrt(3) * (g - b),
         2 * r - g - b,
-      )
-      * 180
+      ) *
+      180
     ) / Math.PI,
   );
 
