@@ -1,9 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
-import Input from 'components/base-components/Input';
-import { getEventValue } from 'helpers';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { getEventValue, PositionProps } from 'helpers';
 import Colors from 'styles/colors';
-import { PositionProps } from 'components/_base';
+import { Input } from 'components/base-components/Inputs';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 
 const searchIcon = <SvgIcon icon={Icons.SEARCH} color={Colors.GRAY} />;
 const closeIcon = <SvgIcon icon={Icons.CLOSE} color={Colors.GRAY} />;

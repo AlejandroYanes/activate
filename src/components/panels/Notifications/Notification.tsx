@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { StyledNotification, Header, Image, TitleSection, Title, DateStamp, Message } from './styled';
-import { PositionProps } from 'components/_base';
+import { PositionProps } from 'helpers';
 
 interface Props extends PositionProps {
   image: string;

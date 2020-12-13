@@ -1,17 +1,18 @@
-import { getShade, darken } from 'helpers';
+import { getShade, changeColorLight } from 'helpers';
 import { StartingTheme } from './themes';
 
 const { BRAND, ACCENT, DARK } = StartingTheme;
 
 const Colors = {
   BRAND,
-  BRAND_DARK: darken(BRAND, 0.25),
+  BRAND_DARK: changeColorLight(BRAND, 0.4),
+  BRAND_LIGHT: changeColorLight(BRAND, 0.95),
   BRAND_SHADE: getShade(BRAND, 0.1),
   ACCENT,
-  ACCENT_DARK: darken(ACCENT, 0.25),
+  ACCENT_DARK: changeColorLight(ACCENT, 0.25),
   ACCENT_SHADE: getShade(ACCENT),
   DARK,
-  DARK_DARK: darken(DARK, 0.25),
+  DARK_DARK: changeColorLight(DARK, 0.25),
   DARK_SHADE: getShade(DARK),
   WHITE: '#fff',
   WHITE_DARK: '#fff',
@@ -31,12 +32,5 @@ const Colors = {
   SUCCESS_DARK: '#118e6f',
   SUCCESS_SHADE: getShade('#15aa85'),
 };
-
-// BRAND: '#6860c4',
-// BRAND_DARK: '#4c4595',
-// BRAND_SHADE: 'rgba(104,96,196,0.1)',
-// DARK: '#061c3f',
-// DARK_DARK: '#030e1f',
-// DARK_SHADE: 'rgba(6,28,63,0.1)',
 
 export default Colors;

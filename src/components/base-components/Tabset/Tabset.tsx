@@ -1,21 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
-import { PositionProps } from 'components/_base';
+import { PositionProps } from 'helpers';
 import { TabSetProvider } from './context';
 import { StyledTabset } from './styled';
 
 export interface TabsetProps extends PositionProps {
   fullWidth?: boolean;
+  compact?: boolean;
   activeTab: string;
   onTabChange: (activeTab) => void;
-  backgroundColor?: string;
 }
 
 const Tabset: FunctionComponent<TabsetProps> = (props) => {
-  const { children, mT, mR, mB, mL, backgroundColor, ...rest } = props;
+  const { children, mT, mR, mB, mL, ...rest } = props;
 
   return (
-    <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL} backgroundColor={backgroundColor}>
+    <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
       <TabSetProvider {...rest}>
         <AnimateSharedLayout>
           {children}

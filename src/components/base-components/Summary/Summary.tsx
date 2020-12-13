@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { PositionProps } from 'components/_base';
+import { PositionProps } from 'helpers';
 import { List, StyledSummary, Header, Title, Separator } from './styled';
 
 interface Props extends PositionProps {

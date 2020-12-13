@@ -1,3 +1,5 @@
+import { hslToRgb, rgbToHsl } from 'helpers';
+
 export function hexToRgb(color: string | number[]) {
   if (typeof color === 'string') {
     const aRgbHex = color.slice(1).match(/.{1,2}/g);
@@ -10,34 +12,15 @@ export function hexToRgb(color: string | number[]) {
   return color;
 }
 
-function addLight(color: number, amount: number) {
-  const nextColor = Math.min(color - amount, 255);
-  return nextColor.toString(16).length > 1 ? nextColor.toString(16) : `0${nextColor.toString(16)}`;
-}
-
-function subtractLight(color: number, amount: number) {
-  const cc = Math.max(color - amount, 0);
-  return cc.toString(16).length > 1 ? cc.toString(16) : `0${cc.toString(16)}`;
-}
-
 export function getShade(color: string | number[], alpha = 0.1) {
   const rgbColor = hexToRgb(color);
   const rgbString = rgbColor.join(',');
   return `rgba(${rgbString}, ${alpha})`;
 }
 
-export function lighten(color: string | number[], amount: number) {
-  const rgbColor = hexToRgb(color);
-  const factor = parseInt((255 * amount).toString(), 10);
-  return rgbColor
-    .map((c) => addLight(c, factor))
-    .reduce((accumulator, value) => `${accumulator}${value}`, '#');
-}
-
-export function darken(color: string | number[], amount: number) {
-  const rgbColor = hexToRgb(color);
-  const factor = parseInt((255 * amount).toString(), 10);
-  return rgbColor
-    .map((c) => subtractLight(c, factor))
-    .reduce((accumulator, value) => `${accumulator}${value}`, '#');
+export function changeColorLight(color: string | number[], amount: number) {
+  const hslColor = rgbToHsl(hexToRgb(color));
+  const lightenColor = [hslColor[0], hslColor[1], amount * 100];
+  const rgbString = hslToRgb(lightenColor).join(',');
+  return `rgb(${rgbString})`;
 }

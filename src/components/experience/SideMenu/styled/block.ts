@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
+import { Levels } from 'styles/levels';
 
 export const Label = styled.span`
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   font-size: 20px;
-  z-index: 10;
+  z-index: ${Levels.sideMenuBlocks};
   color: white;
   display: flex;
 `;

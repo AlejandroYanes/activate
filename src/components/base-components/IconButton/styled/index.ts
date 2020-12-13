@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
-import { getMargins } from 'components/_base';
+import { getMargins } from 'helpers';
 import { IconButtonProps } from '..';
 
 const getSize = (props: IconButtonProps) => {
@@ -9,13 +9,15 @@ const getSize = (props: IconButtonProps) => {
   if (sm) {
     return `
       height: 28px;
-      width: 28px
+      width: 28px;
+      min-width: 28px;
     `;
   }
 
   return `
-    height: 38px;
-    width: 38px;
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
   `;
 };
 
@@ -77,7 +79,7 @@ const getToggleStyles = (props: IconButtonProps) => {
   return undefined;
 };
 
-export const IconButton = styled.button.attrs((props: IconButtonProps) => props)`
+export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => props)`
   border: none;
   outline: none;
   box-shadow: none;

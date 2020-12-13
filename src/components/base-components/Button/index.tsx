@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode, useMemo, useRef } from 'react';
-import { PositionProps, useHoverState } from 'components/_base';
+import { PositionProps } from 'helpers';
+import { useHoverState } from 'hooks/UI';
 import { Button as StyledButton } from './styled';
 import Content from './Content';
 import IconNode from './Icon';
@@ -12,8 +13,9 @@ export interface ButtonProps extends PositionProps {
   rightIcon?: Icons | ReactNode;
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'base' | 'fill' | 'outline';
+  variant?: 'base' | 'fill' | 'flat';
   color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  align?: 'start' | 'center' | 'end';
   sm?: boolean;
 }
 
@@ -66,6 +68,7 @@ Button.defaultProps = {
   type: 'button',
   variant: 'base',
   color: 'brand',
+  align: 'center',
   className: undefined,
   style: undefined,
   leftIcon: null,

@@ -1,7 +1,8 @@
 export const StartingTheme = {
   BRAND: '#6860C4',
-  ACCENT: '#15aa85',
-  DARK: '#061c3f',
+  ACCENT: '#06795d',
+  DARK: '#1d2339',
+  // DARK: '#061c3f',
 };
 
 export const NeonLights = {
