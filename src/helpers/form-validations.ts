@@ -34,27 +34,43 @@ function hasValue(value) {
   return value !== undefined && value !== null && value !== '';
 }
 
+function checkMinLength(value, matchValue, message) {
+  return hasValue(value) && value.toString().length < matchValue
+    ? message
+    : undefined;
+}
+
+function checkMaxLength(value, matchValue, message) {
+  return hasValue(value) && value.toString().length > matchValue
+    ? message
+    : undefined;
+}
+
+function checkMinValue(value, matchValue, message) {
+  return hasValue(value) && parseFloat(value) < matchValue
+    ? message
+    : undefined;
+}
+
+function checkMaxValue(value, matchValue, message) {
+  return hasValue(value) && parseFloat(value) > matchValue
+    ? message
+    : undefined;
+}
+
 export function checkCommonRules(rule: Rule, value) {
   const { type, message, value: matchValue } = rule;
   switch (type) {
     case RuleType.Required:
       return !hasValue(value) ? message : undefined;
     case RuleType.MinLength:
-      return hasValue(value) && value.toString().length < matchValue
-        ? message
-        : undefined;
+      return checkMinLength(value, matchValue, message);
     case RuleType.MaxLength:
-      return hasValue(value) && value.toString().length > matchValue
-        ? message
-        : undefined;
+      return checkMaxLength(value, matchValue, message);
     case RuleType.Min:
-      return hasValue(value) && parseFloat(value) < matchValue
-        ? message
-        : undefined;
+      return checkMinValue(value, matchValue, message);
     case RuleType.Max:
-      return hasValue(value) && parseFloat(value) > matchValue
-        ? message
-        : undefined;
+      return checkMaxValue(value, matchValue, message);
     case RuleType.Email:
       return hasValue(value) && !isValidEmail(value) ? message : undefined;
     case RuleType.WebSite:
