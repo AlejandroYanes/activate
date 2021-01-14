@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -29,7 +29,7 @@ const sectionsMap = {
   },
 };
 
-function resolveActiveTabs(activeSections: AuxPanelSections[]) {
+function resolveAvailableTabs(activeSections: AuxPanelSections[]) {
   return activeSections
     .map((section) => sectionsMap[section])
     .sort((sectionA, sectionB) => sectionA.order - sectionB.order)
@@ -40,18 +40,25 @@ function resolveActiveTabs(activeSections: AuxPanelSections[]) {
 
 const SidePanel: FunctionComponent = () => {
   const sections = useActivePanelSections();
-  const activeTabs = useMemo(() => resolveActiveTabs(sections), [sections]);
-  const [currentSection, setCurrentSection] = useState(AuxPanelSections.Upcoming);
+  const availableTabs = useMemo(() => resolveAvailableTabs(sections), [sections]);
+  const [activeTab, setActiveTab] = useState(AuxPanelSections.Upcoming);
+
+  useEffect(() => {
+    if (sections.some((section) => section !== activeTab)) {
+      setActiveTab(sections[0]);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sections]);
 
   return (
     <Panel>
       <PanelHeader data-el="aux-panel-header">
-        <Tabset activeTab={currentSection} onTabChange={setCurrentSection} fullWidth compact>
-          {activeTabs}
+        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth compact>
+          {availableTabs}
         </Tabset>
       </PanelHeader>
       <PanelBody data-el="aux-panel-body">
-        <Switch by={currentSection}>
+        <Switch by={activeTab}>
           <Case value={AuxPanelSections.Upcoming} component={UpcomingEventsPanel} />
           <Case value={AuxPanelSections.Notifications} component={NotificationsPanel} />
           <Case value={AuxPanelSections.Search} component={SearchPanel} />

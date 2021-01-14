@@ -2,13 +2,12 @@ import React, { CSSProperties, FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
 import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
 import { StyledIconButton } from './styled';
-import Colors from '../../../styles/colors';
 
 export interface IconButtonProps extends IconProps, PositionProps {
   variant?: 'base' | 'fill' | 'outline';
   buttonColor?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  size?: 'small' | 'medium' | 'large' | 'x-large';
   onClick: (event) => void;
-  sm?: boolean;
   iconClassName?: string;
   iconStyle?: CSSProperties;
   toggle?: boolean;
@@ -23,16 +22,27 @@ const IconButton: FunctionComponent<IconButtonProps> = (props) => {
     iconClassName,
     iconStyle,
     buttonColor,
+    color,
+    secondaryColor,
+    size,
     ...rest
   } = props;
 
   return (
-    <StyledIconButton type="button" onClick={onClick} color={buttonColor} {...rest}>
+    <StyledIconButton
+      type="button"
+      onClick={onClick}
+      color={buttonColor}
+      size={size}
+      {...rest}
+    >
       <SvgIcon
+        size={size}
         icon={icon}
         height={height}
         width={width}
-        color={Colors[buttonColor.toUpperCase()]}
+        color={color}
+        secondaryColor={secondaryColor}
         className={iconClassName}
         style={iconStyle}
       />
@@ -43,6 +53,7 @@ const IconButton: FunctionComponent<IconButtonProps> = (props) => {
 IconButton.defaultProps = {
   variant: 'base',
   buttonColor: 'brand',
+  size: 'medium',
 };
 
 export default IconButton;

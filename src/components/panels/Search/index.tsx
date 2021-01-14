@@ -1,11 +1,12 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
+import { subDays } from 'date-fns';
 import Button from 'components/base-components/Button';
 import { Field, Form } from 'components/base-components/Form';
 import DateTimePicker from 'components/base-components/DateTimePicker';
 import { BottomSection, Content, StyledSearch } from './styled';
 
 const today = new Date();
-const yesterday = new Date(today.getTime() - (24 * 60 * 60 * 1000));
+const yesterday = subDays(today, 1);
 const initialSearchState = { event: '', publisher: '', date: [yesterday, today] };
 
 const SearchPanel: FunctionComponent = () => {
@@ -21,7 +22,7 @@ const SearchPanel: FunctionComponent = () => {
           <Field name="publisher" label="Publisher" showClear mT />
           <Field
             name="date"
-            label="Start Date"
+            label="Date of the event"
             component={DateTimePicker}
             type="date-range"
             showOptions

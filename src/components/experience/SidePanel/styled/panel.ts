@@ -1,14 +1,26 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
 
+const getStylesBasedOnWindowWidth = () => {
+  const windowWidth = window.innerWidth;
+
+  if (windowWidth > 1366) {
+    return `
+      margin: 16px 0;
+      border-radius: 16px;
+    `;
+  }
+  return '';
+};
+
 export const Panel = styled.aside`
   position: relative;
   width: 380px;
-  height: 100%;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.BRAND_LIGHT};
   box-sizing: border-box;
+  background-color: ${Colors.WHITE};
+  ${getStylesBasedOnWindowWidth};
 `;
 
 export const PanelHeader = styled.div`

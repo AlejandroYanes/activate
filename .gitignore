@@ -22,7 +22,7 @@ yarn-debug.log*
 yarn-error.log*
 .idea
 yarn.lock
-package-lock.json
+#package-lock.json
 /.vs
 .vs/lpm-webapp/v16/.suo
 .vs/slnx.sqlite

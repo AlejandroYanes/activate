@@ -65,7 +65,7 @@ const Alert: FunctionComponent<AlertProps> = (props) => {
           icon={Icons.CLOSE}
           color={Colors.GRAY}
           buttonColor="gray"
-          sm
+          size="small"
         />
       </CloseIcon>
     </StyledAlert>

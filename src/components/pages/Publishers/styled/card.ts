@@ -8,7 +8,7 @@ export const PublisherCard = styled.div`
   background-color: ${Colors.WHITE};
   border-radius: 10px;
   margin-bottom: 32px;
-  width: 600px;
+  width: 760px;
   min-width: 450px;
   border: 1px solid ${Colors.BRAND_SHADE};
   transition: all 150ms linear;

@@ -34,6 +34,8 @@ import PublicityIcon from './Publicity';
 import PublisherIcon from './Publisher';
 import MegaphoneIcon from './Megaphone';
 import Megaphone2Icon from './Megaphone2';
+import TicketIcon from './Ticket';
+import GlobeIcon from './Globe';
 
 export enum Icons {
   HOME = 'home',
@@ -71,6 +73,8 @@ export enum Icons {
   PUBLISHER = 'PUBLISHER',
   MEGAPHONE = 'MEGAPHONE',
   MEGAPHONE2 = 'MEGAPHONE2',
+  TICKET = 'ticket',
+  GLOBE = 'globe',
 }
 
 export const icons = {
@@ -109,4 +113,6 @@ export const icons = {
   [Icons.PUBLISHER]: (props) => <PublisherIcon {...props} />,
   [Icons.MEGAPHONE]: (props) => <MegaphoneIcon {...props} />,
   [Icons.MEGAPHONE2]: (props) => <Megaphone2Icon {...props} />,
+  [Icons.TICKET]: (props) => <TicketIcon {...props} />,
+  [Icons.GLOBE]: (props) => <GlobeIcon {...props} />,
 };
