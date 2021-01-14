@@ -21,7 +21,7 @@ const ClearButton: FunctionComponent<Props> = (props) => {
         onClick={clearInput}
         icon={Icons.CLOSE}
         buttonColor={isFocused ? 'brand' : 'dark'}
-        sm
+        size="small"
       />
     );
   }

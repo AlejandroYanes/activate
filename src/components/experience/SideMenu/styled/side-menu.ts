@@ -5,7 +5,7 @@ export const SideMenu = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12px 12px;
+  padding: 16px 12px;
 `;
 
 export const MenuList = styled.ul`

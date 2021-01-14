@@ -4,21 +4,40 @@ import { getMargins } from 'helpers';
 import { IconButtonProps } from '..';
 
 const getSize = (props: IconButtonProps) => {
-  const { sm } = props;
+  const { size } = props;
 
-  if (sm) {
-    return `
-      height: 28px;
-      width: 28px;
-      min-width: 28px;
-    `;
+  switch (size) {
+    case 'small':
+      return `
+        height: 28px;
+        width: 28px;
+        min-width: 28px;
+      `;
+    case 'medium':
+      return `
+        height: 32px;
+        width: 32px;
+        min-width: 32px;
+      `;
+    case 'large':
+      return `
+        height: 46px;
+        width: 46px;
+        min-width: 46px;
+      `;
+    case 'x-large':
+      return `
+        height: 46px;
+        width: 46px;
+        min-width: 46px;
+      `;
+    default:
+      return `
+        height: 32px;
+        width: 32px;
+        min-width: 32px;
+      `;
   }
-
-  return `
-    height: 32px;
-    width: 32px;
-    min-width: 32px;
-  `;
 };
 
 const getVariantStyles = (props: IconButtonProps) => {

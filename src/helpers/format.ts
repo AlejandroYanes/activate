@@ -39,3 +39,20 @@ const dateTimeFormatter = new Intl.DateTimeFormat('default', {
 export function formatDateTime(date: Date): string {
   return dateTimeFormatter.format(date);
 }
+
+const dayFormatter = new Intl.DateTimeFormat(undefined, {
+  weekday: 'long',
+});
+
+export function getDayOfTheWeek(date: Date): string {
+  return dayFormatter.format(date);
+}
+
+const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
+  day: 'numeric',
+  month: 'short',
+});
+
+export function getShortDate(date: Date): string {
+  return shortDateFormatter.format(date);
+}

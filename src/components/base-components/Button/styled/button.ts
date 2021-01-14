@@ -105,6 +105,7 @@ export const Button = styled.button`
   padding: 0 8px;
   cursor: pointer;
   transition: all linear 150ms;
+  flex-shrink: 0;
   ${getMargins};
   ${getSize};
   ${getVariantStyles}

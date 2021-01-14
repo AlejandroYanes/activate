@@ -1,4 +1,11 @@
-import React, { createContext, FunctionComponent, useCallback, useContext, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  FunctionComponent,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from 'react';
 
 export enum AuxPanelSections {
   Upcoming = 'Upcoming',

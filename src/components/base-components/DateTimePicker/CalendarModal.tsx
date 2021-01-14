@@ -1,5 +1,4 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { formatDateTime } from 'helpers';
 import Backdrop from 'components/base-components/Backdrop';
 import Calendar from 'components/base-components/Calendar';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -8,6 +7,7 @@ import Button from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import { ClockWrapper, Footer, StyledCalendarModal, Expander } from './styled/calendar-modal';
 import Clock from '../Clock';
+import CurrentDate from './CurrentDate';
 
 interface Props {
   isOpen: boolean;
@@ -93,11 +93,7 @@ const CalendarModal: FunctionComponent<Props> = (props) => {
           </RenderIf>
           <RenderIf condition={useRange || isDateTime}>
             <Expander />
-            <RenderIf condition={type === 'date-time'}>
-              <Footer>
-                {formatDateTime(dates as Date)}
-              </Footer>
-            </RenderIf>
+            <CurrentDate isVisible={isDateTime} date={dates as Date} />
             <Footer>
               <Button onClick={onClose} label="Cancel" mR />
               <Button onClick={sendDateSelected} label="Select" variant="fill" />

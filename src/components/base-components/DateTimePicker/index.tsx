@@ -64,7 +64,7 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
               onClick={handleClear}
               icon={Icons.CLOSE}
               buttonColor="dark"
-              sm
+              size="small"
             />
           </AbsoluteContent>
         </RenderIf>
