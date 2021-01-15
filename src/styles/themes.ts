@@ -1,5 +1,5 @@
 export const StartingTheme = {
-  BRAND: '#6860C4',
+  BRAND: '#6860c4',
   ACCENT: '#06795d',
   DARK: '#1d2339',
   // DARK: '#061c3f',

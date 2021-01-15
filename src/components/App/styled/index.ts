@@ -11,12 +11,16 @@ export const StyledApp = styled.main`
   background-color: ${Colors.LIGHT_GRAY};
   max-width: 1366px;
   margin: 0 auto;
+  box-sizing: border-box;
 `;
 
 export const AppBody = styled.section`
   flex: 1;
-  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   box-sizing: border-box;
-  height: 100vh;
   overflow: auto;
+  height: 100vh;
+  padding: 32px 0 0;
 `;

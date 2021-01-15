@@ -31,7 +31,7 @@ const icons = {
 
 export interface AvatarProps {
   icon: string;
-  size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
+  size?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
   alt?: string;
   onClick?: (event) => void;
 }

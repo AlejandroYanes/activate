@@ -3,6 +3,7 @@ import { AvatarProps } from '..';
 
 const avatarStyles = {
   size: {
+    'xx-small': { width: '20px', height: '20px' },
     'x-small': { width: '28px', height: '28px' },
     small: { width: '48px', height: '48px' },
     medium: { width: '52px', height: '52px' },

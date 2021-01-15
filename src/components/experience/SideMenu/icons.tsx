@@ -4,7 +4,7 @@ import Colors from 'styles/colors';
 
 export const homeIcon = (isSelected) => (
   <SvgIcon
-    icon={Icons.HOME}
+    icon={Icons.BOOKMARKS}
     color={isSelected ? Colors.BRAND : Colors.WHITE}
   />
 );

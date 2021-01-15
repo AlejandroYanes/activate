@@ -21,7 +21,7 @@ const Colors = {
   GRAY_DARK: '#4a4b52',
   GRAY_SHADE: getShade('#6b6d76'),
   LIGHT_GRAY: '#F9F9F9',
-  MEDIUM_GRAY: '#F5F5F5',
+  MEDIUM_GRAY: '#E5E5E5',
   DARK_GRAY: '#AFAFAF',
   INFO: '#009acf',
   WARNING: '#dca911',

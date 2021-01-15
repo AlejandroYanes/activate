@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
+import { cardWidth } from 'styles/variables';
 
 export const Card = styled.article`
   display: flex;
@@ -9,7 +10,10 @@ export const Card = styled.article`
   overflow: hidden;
   position: relative;
   margin-bottom: 64px;
-  width: 760px;
+  width: ${cardWidth};
+  max-width: ${cardWidth};
+  box-sizing: border-box;
+  border: 1px solid ${Colors.MEDIUM_GRAY};
 
   &:hover {
     box-shadow: 0 0 1px 1px ${Colors.BRAND_SHADE};
@@ -30,8 +34,6 @@ export const Content = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   padding: 12px;
-  border: 1px solid ${Colors.BRAND_SHADE};
-  border-top: none;
   border-bottom-left-radius: 16px;
   border-bottom-right-radius: 16px;
 `;
