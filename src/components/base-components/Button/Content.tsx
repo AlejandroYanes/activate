@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label } from './styled';
+import { Text } from './styled';
 
 export default function Content({ label, rightIcon, leftIcon, isLoading, children }) {
   if (children) {
@@ -8,7 +8,7 @@ export default function Content({ label, rightIcon, leftIcon, isLoading, childre
 
   if (isLoading) {
     return (
-      <Label>is loading</Label>
+      <Text>is loading</Text>
     );
   }
 
@@ -16,7 +16,7 @@ export default function Content({ label, rightIcon, leftIcon, isLoading, childre
     return (
       <>
         {leftIcon}
-        <Label>{label}</Label>
+        <Text>{label}</Text>
         {rightIcon}
       </>
     );
