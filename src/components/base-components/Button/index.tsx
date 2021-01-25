@@ -36,11 +36,23 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
   const isHovered = useHoverState(buttonReference);
 
   const leftIconNode = useMemo(() => (
-    <IconNode icon={leftIcon} variant={variant} color={color} isHovered={isHovered} sm={sm} />
+    <IconNode
+      isHovered={isHovered}
+      variant={variant}
+      icon={leftIcon}
+      color={color}
+      sm={sm}
+    />
   ), [leftIcon, isHovered, variant, color, sm]);
 
   const rightIconNode = useMemo(() => (
-    <IconNode icon={rightIcon} variant={variant} color={color} isHovered={isHovered} sm={sm} />
+    <IconNode
+      isHovered={isHovered}
+      variant={variant}
+      icon={rightIcon}
+      color={color}
+      sm={sm}
+    />
   ), [rightIcon, isHovered, variant, color, sm]);
 
   return (

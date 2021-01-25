@@ -6,6 +6,10 @@ export const SideMenu = styled.aside`
   flex-direction: column;
   align-items: center;
   padding: 32px 0 32px 32px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
 `;
 
 export const MenuList = styled.ul`

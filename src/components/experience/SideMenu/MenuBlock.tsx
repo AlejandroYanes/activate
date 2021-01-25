@@ -1,6 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { Link } from 'react-router-dom';
-import { Block, Blurred, Label } from './styled';
+import { Block, Label, StyledLink, StyledBubble } from './styled';
 
 interface MenuBlockProps {
   label: ReactNode | ((isSelected: boolean) => ReactNode);
@@ -18,14 +17,12 @@ const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
     : label;
 
   return (
-    <Link to={path} onClick={onClick}>
-      <Block selected={isSelected}>
-        <Label>{labelComponent}</Label>
-        <Blurred>
-          <span />
-        </Blurred>
-      </Block>
-    </Link>
+    <Block>
+      <StyledLink to={path} onClick={onClick}>
+        <StyledBubble selected={isSelected} />
+        <Label selected={isSelected}>{labelComponent}</Label>
+      </StyledLink>
+    </Block>
   );
 };
 

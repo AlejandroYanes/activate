@@ -14,19 +14,19 @@ const dateFormatter = new Intl.DateTimeFormat('default', {
   month: 'short',
 });
 
-const item = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-  },
-};
+// const item = {
+//   hidden: { y: 20, opacity: 0 },
+//   visible: {
+//     y: 0,
+//     opacity: 1,
+//   },
+// };
 
 const Notification: FunctionComponent<Props> = (props) => {
   const { image, title, date, message, ...margins } = props;
 
   return (
-    <StyledNotification {...margins} variants={item}>
+    <StyledNotification {...margins}>
       <Header>
         <Image src={image} alt="event" />
         <TitleSection>

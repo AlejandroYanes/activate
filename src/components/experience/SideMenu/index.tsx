@@ -15,7 +15,7 @@ const SideMenu: FunctionComponent = () => {
         <MenuBlock
           currentPath={pathname}
           path="/profile"
-          label={<Avatar icon="user10" size="x-small" />}
+          label={<Avatar icon="user2" size="x-small" />}
         />
         <MenuBlock
           currentPath={pathname}

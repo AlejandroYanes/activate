@@ -8,7 +8,8 @@ export const StyledApp = styled.main`
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background-color: ${Colors.LIGHT_GRAY};
+  background-color: ${Colors.BACKGROUND};
+  color: ${Colors.DARK};
   max-width: 1366px;
   margin: 0 auto;
   box-sizing: border-box;
@@ -22,5 +23,7 @@ export const AppBody = styled.section`
   box-sizing: border-box;
   overflow: auto;
   height: 100vh;
-  padding: 32px 0 0;
+  //padding: 32px 0 0;
+  padding: 32px 398px 0 122px;
+  //visibility: hidden;
 `;

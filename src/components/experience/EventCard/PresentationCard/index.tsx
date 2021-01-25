@@ -1,31 +1,34 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
+import { getMonthLabel } from 'helpers';
 import Colors from 'styles/colors';
-import { formatDate } from 'helpers';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
 import Avatar from 'components/base-components/Avatar';
+import IconButton from 'components/base-components/IconButton';
+import RenderIf from 'components/base-components/RenderIf';
+import EventImage from './EventImage';
 import {
-  AuthorName,
-  Avatars,
-  Bookmark,
+  Actions,
+  Address,
   Card,
+  DateBadge,
   Content,
+  Description,
+  Divider,
+  Footer,
   Header,
-  Image,
-  ImageSection,
-  Info,
-  InfoEntry,
-  Row,
   Title,
+  TitleAndAddress,
+  Users,
+  Avatars,
 } from './styled';
 
 interface Props {
-  image: string;
   title: string;
-  author: string;
   address: string;
   date: Date;
-  tickets: string;
+  price: number[];
+  image: string;
+  description?: string;
 }
 
 const avatars = [
@@ -36,55 +39,67 @@ const avatars = [
 
 const PresentationCard: FunctionComponent<Props> = (props) => {
   const {
-    image,
-    title,
-    author,
-    address,
     date,
-    tickets,
+    title,
+    address,
+    image,
+    description,
   } = props;
+  const [isBooked, setIsBooked] = useState(false);
+
+  const handleBookActionClick = useCallback(() => {
+    setIsBooked((previousState) => !previousState);
+  }, []);
 
   return (
-    <Card>
-      <ImageSection>
-        <Image src={image} alt="event" />
-        <Bookmark>
+    <Card isBooked={isBooked}>
+      <Header>
+        <DateBadge>
+          <span>{getMonthLabel(date).slice(0, 3)}</span>
+          <span>{date.getDate()}</span>
+        </DateBadge>
+        <TitleAndAddress>
+          <Title>{title}</Title>
+          <Address>
+            <SvgIcon icon={Icons.MAP_PIN} color={Colors.DARK} />
+            <span>{address}</span>
+          </Address>
+        </TitleAndAddress>
+        <Avatar icon="user2" size="small" />
+      </Header>
+      <Content>
+        <EventImage src={image} alt="event" />
+        <RenderIf condition={!!description}>
+          <Description>
+            {description}
+          </Description>
+        </RenderIf>
+      </Content>
+      <Divider />
+      <Footer>
+        <Users>
+          <Avatars avatars={avatars} maxAvatars={3} />
+          <span>+16k</span>
+        </Users>
+        <Actions>
           <IconButton
+            mR
             size="large"
-            buttonColor="brand"
-            color={Colors.DARK}
-            secondaryColor="transparent"
-            icon={Icons.BOOKMARK_FILLED}
+            buttonColor="info"
+            icon={Icons.SEND}
+            color={Colors.INFO}
             onClick={() => undefined}
           />
-        </Bookmark>
-      </ImageSection>
-      <Content>
-        <Row>
-          <Header>
-            <Title>{title}</Title>
-            <AuthorName>{author}</AuthorName>
-            <InfoEntry>
-              <Avatars avatars={avatars} maxAvatars={3} />
-              <span>Fabianne y otras 16k personas asistiran</span>
-            </InfoEntry>
-          </Header>
-          <Info>
-            <InfoEntry>
-              <SvgIcon icon={Icons.MAP_PIN} color={Colors.GRAY_DARK} />
-              <span>{address}</span>
-            </InfoEntry>
-            <InfoEntry>
-              <SvgIcon icon={Icons.CALENDAR_FILLED} color={Colors.GRAY_DARK} />
-              <span>{`${formatDate(date)}. Lasts 4 days.`}</span>
-            </InfoEntry>
-            <InfoEntry>
-              <SvgIcon icon={Icons.TICKET} color={Colors.GRAY_DARK} />
-              <span>{tickets}</span>
-            </InfoEntry>
-          </Info>
-        </Row>
-      </Content>
+          <IconButton
+            size="large"
+            buttonColor="success"
+            icon={Icons.BOOKMARK_FILLED}
+            color={Colors.SUCCESS}
+            secondaryColor={isBooked ? Colors.SUCCESS : 'transparent'}
+            onClick={handleBookActionClick}
+          />
+        </Actions>
+      </Footer>
     </Card>
   );
 };

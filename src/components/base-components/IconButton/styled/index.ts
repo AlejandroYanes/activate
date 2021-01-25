@@ -115,7 +115,7 @@ export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => 
   ${getToggleStyles}
 
   &:active {
-    transform: scale(1.07);
+    transform: scale(0.9);
   }
 
   &:hover, &:focus {

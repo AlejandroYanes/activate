@@ -79,10 +79,10 @@ const getHoverStyles = (props) => {
   const { selected } = props;
 
   return `
-     background-color: ${selected ? Colors.BRAND_SHADE : Colors.GRAY_SHADE};
+     background-color: ${Colors.BRAND_SHADE};
 
     ${Label}{
-      color: ${selected ? Colors.BRAND_DARK : Colors.GRAY_DARK}
+      color: ${Colors.BRAND_DARK}
     }
 
     ${Mark}{

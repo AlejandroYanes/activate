@@ -19,7 +19,7 @@ export const discoverIcon = (isSelected) => (
 export const aboutIcon = (isSelected) => (
   <SvgIcon
     icon={Icons.INFO_CIRCLE}
-    color={isSelected ? Colors.LIGHT_GRAY : Colors.BRAND}
+    color={isSelected ? Colors.BACKGROUND : Colors.BRAND}
     secondaryColor={isSelected ? Colors.BRAND : Colors.WHITE}
   />
 );

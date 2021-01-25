@@ -15,6 +15,7 @@ export const Title = styled.h2`
 export const Subheader = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const Content = styled.div`

@@ -15,17 +15,19 @@ function resolveFontColor({ color }: BadgeProps) {
 function resolveBackgroundColor({ color }: BadgeProps) {
   switch (color) {
     case 'brand':
-      return Colors.BRAND;
+      return Colors.BRAND_DARK;
     case 'info':
       return Colors.INFO;
     case 'success':
-      return Colors.SUCCESS;
+      return Colors.SUCCESS_DARK;
     case 'warning':
       return Colors.WARNING;
     case 'error':
-      return Colors.ERROR;
+      return Colors.ERROR_DARK;
+    case 'light':
+      return Colors.GRAY_SHADE;
     default:
-      return Colors.BRAND_LIGHT;
+      return Colors.BRAND;
   }
 }
 
@@ -35,7 +37,7 @@ function resolveSize({ sm }: BadgeProps) {
 
 export const StyledBadge = styled.div.attrs((props: any) => props)`
   padding: 6px 10px;
-  border-radius: 50px;
+  border-radius: 6px;
   display: flex;
   justify-content: center;
   align-items: center;

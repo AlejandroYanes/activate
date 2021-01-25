@@ -12,12 +12,8 @@ export const PublisherCard = styled.article`
   width: ${cardWidth};
   max-width: ${cardWidth};
   box-sizing: border-box;
-  border: 1px solid ${Colors.BRAND_SHADE};
+  border: 1px solid ${Colors.WHITE};
   transition: all 150ms linear;
-
-  &:hover {
-    box-shadow: 0 0 1px 1px ${Colors.BRAND_SHADE};
-  }
 `;
 
 export const Content = styled.div`

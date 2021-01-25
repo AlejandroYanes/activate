@@ -2,6 +2,7 @@
   "name": "activate",
   "version": "0.1.0",
   "homepage": "http://alejandroyanes.github.io/activate",
+  "repository": "https://github.com/AlejandroYanes/activate",
   "private": false,
   "scripts": {
     "start": "craco start",
@@ -19,7 +20,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-push": "npm run lint"
     }
   },
   "browserslist": {
@@ -44,6 +45,7 @@
     "@types/styled-components": "^5.1.0",
     "classnames": "^2.2.6",
     "date-fns": "^2.16.1",
+    "framer": "^1.2.12",
     "framer-motion": "^2.3.0",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",

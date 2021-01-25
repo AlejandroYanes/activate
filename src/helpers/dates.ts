@@ -1,12 +1,3 @@
-const currencyFormatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
-
-export function formatCurrency(number: number | string): string {
-  return currencyFormatter.format(parseFloat(number as any) || 0);
-}
-
 const dateFormatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
   month: 'short',
@@ -55,4 +46,29 @@ const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
 
 export function getShortDate(date: Date): string {
   return shortDateFormatter.format(date);
+}
+
+const monthFormatter = new Intl.DateTimeFormat('default', {
+  month: 'long',
+});
+
+export function getMonthLabel(date: Date): string {
+  return monthFormatter.format(date);
+}
+
+const yearFormatter = new Intl.DateTimeFormat('default', {
+  year: 'numeric',
+});
+
+export function getYear(date: Date): string {
+  return yearFormatter.format(date);
+}
+
+const monthYearFormatter = new Intl.DateTimeFormat('default', {
+  month: 'long',
+  year: 'numeric',
+});
+
+export function getMonthYear(date: Date): string {
+  return monthYearFormatter.format(date);
 }
