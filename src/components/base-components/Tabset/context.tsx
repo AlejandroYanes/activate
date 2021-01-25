@@ -1,10 +1,14 @@
 import React, { createContext, useMemo, FunctionComponent } from 'react';
 import { TabsetProps } from 'components/base-components/Tabset/Tabset';
 
-const tabsetContext = createContext<TabsetProps>(undefined);
+interface TabsetContext extends TabsetProps {
+  animateEntrance?: boolean;
+}
+
+const tabsetContext = createContext<TabsetContext>(undefined);
 const { Provider } = tabsetContext;
 
-export const TabSetProvider: FunctionComponent<TabsetProps> = (props) => {
+export const TabSetProvider: FunctionComponent<TabsetContext> = (props) => {
   const { children, ...rest } = props;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Levels } from 'styles/levels';
+import { ZLevels } from 'styles/z-levels';
 
 export const StyledBackdrop = styled.main`
   position: fixed;
@@ -11,6 +11,6 @@ export const StyledBackdrop = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: ${Levels.backdrop};
+  z-index: ${ZLevels.backdrop};
   background-color: rgba(0, 0, 0, 0.4);
 `;

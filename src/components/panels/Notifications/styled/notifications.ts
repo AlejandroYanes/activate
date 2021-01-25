@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import SimpleBar from 'simplebar-react';
 
-export const Wrapper = styled(SimpleBar)`
+export const Wrapper = styled.div`
   height: 100%;
-  padding: 0 16px;
 `;
 
 export const StyledNotifications = styled(motion.section)`

@@ -46,13 +46,6 @@ const initialOptions = [
   },
 ];
 
-// const Option = ({ label, icon, onClick }) => (
-//   <StyledOption onClick={onClick}>
-//     <SvgIcon icon={icon} color={Colors.DARK} />
-//     <span>{label}</span>
-//   </StyledOption>
-// );
-
 interface Props {
   value: Date | Date[];
   onSelect: (date) => void;
@@ -67,16 +60,11 @@ const Options: FunctionComponent<Props> = (props) => {
         onClick={() => onSelect(value)}
         label={label}
         leftIcon={icon}
+        color="dark"
         variant="flat"
         align="start"
         mB
       />
-      // <Option
-      //   key={key}
-      //   onClick={() => onSelect(value)}
-      //   label={label}
-      //   icon={icon}
-      // />
     )),
     [onSelect],
   );

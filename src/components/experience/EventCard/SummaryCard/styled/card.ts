@@ -4,35 +4,40 @@ import { getMargins } from 'helpers';
 
 export const Card = styled.div`
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
   padding: 16px;
-  border-radius: 10px;
+  border-radius: 16px;
   background-color: ${Colors.WHITE};
   border: 1px solid ${Colors.BRAND_SHADE};
   ${getMargins}
 `;
 
-export const DateSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: 12px;
-`;
-
 export const Title = styled.h3`
-  margin-top: 0;
-  margin-bottom: 8px;
+  margin: 0 0 6px;
+  color: ${Colors.DARK};
 `;
 
-export const Subheader = styled.div`
+export const Address = styled.div`
   display: flex;
   align-items: center;
-  padding: 4px 0;
+
+  & span {
+    font-size: 12px;
+    color: ${Colors.GRAY};
+    margin-left: 4px;
+  }
 `;
 
-export const Description = styled.p``;
+export const Divider = styled.div`
+  height: 1px;
+  width: 100%;
+  border-radius: 2px;
+  margin: 16px 0;
+  background-color: ${Colors.GRAY_SHADE};
+`;
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;

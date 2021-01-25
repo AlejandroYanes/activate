@@ -1,52 +1,56 @@
 import React, { FunctionComponent } from 'react';
-import { formatTime, getDayOfTheWeek, getShortDate, PositionProps } from 'helpers';
-import { Icons } from 'components/base-components/SvgIcon';
-import Badge from 'components/base-components/Badge';
-import { Card, Content, DateSection, Description, Subheader, Title } from './styled/card';
-import { DateBadge } from './styled/date-badge';
+import Colors from 'styles/colors';
+import { getMonthLabel, PositionProps } from 'helpers';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import IconButton from 'components/base-components/IconButton';
+import Avatar from 'components/base-components/Avatar';
+import { Card, Header, Title, Address, Date, Divider, Footer } from './styled';
+import { Avatars, Users } from '../PresentationCard/styled';
+import Button from '../../../base-components/Button';
 
 interface Props extends PositionProps {
   title: string;
+  address: string;
   date: Date;
-  description: string;
-  comments: number;
+  isBooked: boolean;
 }
 
-// const tomorrow = addDays(new Date(), 1);
+const avatars = [
+  { icon: (<Avatar icon="user1" />) },
+  { icon: (<Avatar icon="user2" />) },
+  { icon: (<Avatar icon="user6" />) },
+];
 
 const SummaryCard: FunctionComponent<Props> = (props) => {
-  const { title, description, date, comments, ...positionProps } = props;
+  const { title, address, date, isBooked, ...positionProps } = props;
 
   return (
     <Card {...positionProps}>
-      <DateSection>
-        <DateBadge>
-          <span>{getDayOfTheWeek(date).slice(0, 3)}</span>
-          <span>{getShortDate(date)}</span>
-          <div />
-          <span>{formatTime(date)}</span>
-        </DateBadge>
-        {/* <DateBadge inverted> */}
-        {/* <span>{getDayOfTheWeek(tomorrow).slice(0, 3)}</span> */}
-        {/* <span>{getShortDate(tomorrow)}</span> */}
-        {/* <div /> */}
-        {/* <span>{formatTime(tomorrow)}</span> */}
-        {/* </DateBadge> */}
-      </DateSection>
-      <Content>
-        <Title>{title}</Title>
-        <Subheader>
-          <Badge
-            sm
-            mR
-            color="success"
-            icon={Icons.MAP_PIN}
-            label="Varadero, Matanzas, Cuba"
-          />
-          <Badge icon={Icons.CLOCK} color="light" label="30 min" sm />
-        </Subheader>
-        <Description>{description}</Description>
-      </Content>
+      <Header>
+        <Date>
+          <span>{`${getMonthLabel(date).slice(0, 3)} ${date.getDate()}`}</span>
+        </Date>
+        <IconButton
+          buttonColor="success"
+          icon={Icons.BOOKMARK_FILLED}
+          color={Colors.SUCCESS_DARK}
+          secondaryColor={isBooked ? Colors.SUCCESS_DARK : 'transparent'}
+          onClick={() => undefined}
+        />
+      </Header>
+      <Title>{title}</Title>
+      <Address>
+        <SvgIcon icon={Icons.MAP_PIN} color={Colors.GRAY} />
+        <span>{address}</span>
+      </Address>
+      <Divider />
+      <Footer>
+        <Users>
+          <Avatars avatars={avatars} maxAvatars={3} />
+          <span>+16k</span>
+        </Users>
+        <Button onClick={() => undefined} label="View" variant="flat" color="success" sm />
+      </Footer>
     </Card>
   );
 };

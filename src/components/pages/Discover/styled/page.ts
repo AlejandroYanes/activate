@@ -4,7 +4,7 @@ import Colors from 'styles/colors';
 export const Header = styled.header`
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.LIGHT_GRAY};
+  background-color: ${Colors.BACKGROUND};
   margin-bottom: 16px;
 `;
 

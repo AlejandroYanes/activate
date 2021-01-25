@@ -5,7 +5,11 @@ export const SideMenu = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 12px;
+  padding: 32px 0 32px 32px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 10;
 `;
 
 export const MenuList = styled.ul`

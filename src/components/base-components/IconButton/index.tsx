@@ -5,7 +5,7 @@ import { StyledIconButton } from './styled';
 
 export interface IconButtonProps extends IconProps, PositionProps {
   variant?: 'base' | 'fill' | 'outline';
-  buttonColor?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  buttonColor?: 'brand' | 'accent' | 'info' | 'success' | 'error' | 'dark' | 'gray' | 'white';
   size?: 'small' | 'medium' | 'large' | 'x-large';
   onClick: (event) => void;
   iconClassName?: string;

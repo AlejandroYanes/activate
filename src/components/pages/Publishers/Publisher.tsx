@@ -1,4 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import Colors from 'styles/colors';
+import Avatar from 'components/base-components/Avatar';
 import Button from 'components/base-components/Button';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import {
@@ -14,8 +16,6 @@ import {
   Stat,
   TextSection,
 } from './styled';
-import Colors from 'styles/colors';
-import Avatar from 'components/base-components/Avatar';
 
 interface Props {
   id: string;
@@ -53,7 +53,13 @@ const Publisher: FunctionComponent<Props> = (props) => {
           </Stat>
         </Extras>
         <Actions>
-          <Button onClick={() => undefined} label="View profile" sm />
+          <Button
+            onClick={() => undefined}
+            label="View profile"
+            color="success"
+            variant="flat"
+            sm
+          />
         </Actions>
       </Footer>
     </PublisherCard>

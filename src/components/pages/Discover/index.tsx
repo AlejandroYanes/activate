@@ -1,9 +1,9 @@
-import React, { FunctionComponent, useEffect, useState, useMemo } from 'react';
-import { AuxPanelSections, usePanelActions } from 'components/providers/PanelSections';
+import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
+import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { PresentationCard } from 'components/experience/EventCard';
-import { Header, Title, Content } from './styled';
+import { Content, Header, Title } from './styled';
 import { events } from './events';
 
 enum Tabs {
@@ -17,12 +17,15 @@ function eventFactory() {
 }
 
 const DiscoverPage: FunctionComponent = () => {
-  const { setPageSections } = usePanelActions();
+  const { addSection, removeSection, setActiveSection } = usePanelActions();
   const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
   const eventCards = useMemo(eventFactory, []);
 
   useEffect(() => {
-    setPageSections([AuxPanelSections.Search]);
+    addSection(AuxPanelSection.Search);
+    setActiveSection(AuxPanelSection.Search);
+
+    return () => removeSection(AuxPanelSection.Search);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

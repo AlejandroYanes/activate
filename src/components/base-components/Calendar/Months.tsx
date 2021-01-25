@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
+import { getMonthLabel } from 'helpers';
 import { months } from './types';
-import { monthFormatter } from './utils';
 import { StyledList as StyledMonths, Item as Month } from './styled/months-years';
 
 interface Props {
@@ -15,7 +15,7 @@ const Months: FunctionComponent<Props> = (props) => {
       <Month
         key={m.getTime()}
         isSelected={m.getMonth() === currentDate.getMonth()}
-        label={monthFormatter.format(m)}
+        label={getMonthLabel(m)}
         onClick={() => onChange(m.getMonth())}
         variant="flat"
         mB

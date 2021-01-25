@@ -42,13 +42,13 @@ const getVariantStyles = (props: ButtonProps) => {
   switch (variant) {
     case 'base':
       return `
-        color: ${color === 'white' ? Colors.WHITE : Colors.DARK};
-        background-color: ${Colors.GRAY_SHADE};
+        color: ${color === 'white' ? Colors.WHITE : Colors[color.toUpperCase()]};
+        background-color: ${Colors.GRAY_LIGHT};
         border: ${borderStyle} transparent;
       `;
     case 'flat':
       return `
-        color: ${Colors.DARK};
+        color: ${Colors[color.toUpperCase()]};
         background-color: transparent;
         border: ${borderStyle} transparent;
       `;
@@ -87,11 +87,6 @@ const getHoveredStyles = (props: ButtonProps) => {
   }
 };
 
-const getFocusStyles = (props: ButtonProps) => {
-  const { color } = props;
-  return `box-shadow: 0px 0px 4px 0px ${Colors[`${color.toUpperCase()}`]};`;
-};
-
 export const Button = styled.button`
   border: none;
   outline: none;
@@ -111,14 +106,10 @@ export const Button = styled.button`
   ${getVariantStyles}
 
   &:active {
-    transform: scale(1.07);
+    transform: scale(0.9);
   }
 
   &:hover, &:focus {
       ${getHoveredStyles}
   }
-
-  // &:focus {
-  //   ${getFocusStyles}
-  // }
 `;

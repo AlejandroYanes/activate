@@ -36,6 +36,12 @@ import MegaphoneIcon from './Megaphone';
 import Megaphone2Icon from './Megaphone2';
 import TicketIcon from './Ticket';
 import GlobeIcon from './Globe';
+import ForwardIcon from './Forward';
+import SendIcon from './Send';
+import MoreVrtIcon from './MoreVrt';
+import FilterIcon from './Filter';
+import FormIcon from './Form';
+import CommentsIcon from './Comments';
 
 export enum Icons {
   HOME = 'home',
@@ -75,6 +81,12 @@ export enum Icons {
   MEGAPHONE2 = 'MEGAPHONE2',
   TICKET = 'ticket',
   GLOBE = 'globe',
+  FORWARD = 'forward',
+  SEND = 'send',
+  MORE_VERT = 'more_vert',
+  FILTER = 'filer',
+  FORM = 'form',
+  COMMENTS = 'comments',
 }
 
 export const icons = {
@@ -115,4 +127,10 @@ export const icons = {
   [Icons.MEGAPHONE2]: (props) => <Megaphone2Icon {...props} />,
   [Icons.TICKET]: (props) => <TicketIcon {...props} />,
   [Icons.GLOBE]: (props) => <GlobeIcon {...props} />,
+  [Icons.FORWARD]: (props) => <ForwardIcon {...props} />,
+  [Icons.SEND]: (props) => <SendIcon {...props} />,
+  [Icons.MORE_VERT]: (props) => <MoreVrtIcon {...props} />,
+  [Icons.FILTER]: (props) => <FilterIcon {...props} />,
+  [Icons.FORM]: (props) => <FormIcon {...props} />,
+  [Icons.COMMENTS]: (props) => <CommentsIcon {...props} />,
 };

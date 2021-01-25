@@ -20,7 +20,7 @@ export const MenuList = styled.ul`
   top: 12px;
   min-width: 250px;
   border-radius: ${elementBorderRadius};
-  background-color: ${Colors.LIGHT_GRAY};
+  background-color: ${Colors.BACKGROUND};
   //border: 1px solid ${Colors.MEDIUM_GRAY};
   box-shadow: 2px 2px 4px ${Colors.MEDIUM_GRAY};
 `;

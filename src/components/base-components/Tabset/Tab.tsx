@@ -13,11 +13,16 @@ interface Props {
   label?: string;
 }
 
-const spring = {
+const markAnimationControls = {
   type: 'spring',
   stiffness: 600,
   damping: 20,
 };
+
+// const variants = {
+//   collapsed: { scaleX: 0 },
+//   expanded: { scaleX: 1, transition: { delay: 2 } },
+// };
 
 function getIconColor(isSelected, isHovered) {
   if (isSelected && isHovered) {
@@ -29,7 +34,7 @@ function getIconColor(isSelected, isHovered) {
   }
 
   if (isHovered) {
-    return Colors.GRAY_DARK;
+    return Colors.BRAND_DARK;
   }
 
   return Colors.GRAY;
@@ -37,7 +42,13 @@ function getIconColor(isSelected, isHovered) {
 
 const Tab: FunctionComponent<Props> = (props) => {
   const { name, label, icon } = props;
-  const { activeTab, onTabChange, fullWidth, compact } = useContext(tabsetContext);
+  const {
+    activeTab,
+    onTabChange,
+    fullWidth,
+    compact,
+    // animateEntrance,
+  } = useContext(tabsetContext);
   const tabReference = useRef(undefined);
   const isHovered = useHoverState(tabReference);
   const isSelected = name === activeTab;
@@ -70,6 +81,9 @@ const Tab: FunctionComponent<Props> = (props) => {
       compact={compact}
       selected={isSelected}
       onClick={handleClick}
+      // initial={animateEntrance ? 'collapsed' : 'expanded'}
+      // animate="expanded"
+      // variants={variants}
     >
       <Content
         data-el="tab-content"
@@ -85,7 +99,11 @@ const Tab: FunctionComponent<Props> = (props) => {
           </RenderIf>
         </Text>
         <RenderIf condition={isSelected}>
-          <Mark layoutId="tabMarker" initial={false} transition={spring} />
+          <Mark
+            layoutId="tabMarker"
+            initial={false}
+            transition={markAnimationControls}
+          />
         </RenderIf>
       </Content>
     </StyledTab>

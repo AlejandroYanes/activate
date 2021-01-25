@@ -1,21 +1,19 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
+import { cardWidth } from 'styles/variables';
 
-export const PublisherCard = styled.div`
+export const PublisherCard = styled.article`
   display: flex;
   flex-direction: column;
   padding: 12px;
   background-color: ${Colors.WHITE};
   border-radius: 10px;
   margin-bottom: 32px;
-  width: 760px;
-  min-width: 450px;
-  border: 1px solid ${Colors.BRAND_SHADE};
+  width: ${cardWidth};
+  max-width: ${cardWidth};
+  box-sizing: border-box;
+  border: 1px solid ${Colors.WHITE};
   transition: all 150ms linear;
-
-  &:hover {
-    box-shadow: 0 0 1px 1px ${Colors.BRAND_SHADE};
-  }
 `;
 
 export const Content = styled.div`

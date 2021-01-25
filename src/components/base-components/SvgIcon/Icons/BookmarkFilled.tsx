@@ -17,6 +17,7 @@ const BookmarkFilledIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         d="M5.5 5C5.5 3.89543 6.39543 3 7.5 3H16.5C17.6046 3 18.5 3.89543 18.5 5V20.4535C18.5 21.3623 17.3856 21.7999 16.7672 21.1339L12.7328 16.7892C12.3372 16.3631 11.6628 16.3631 11.2672 16.7892L7.23279 21.1339C6.61435 21.7999 5.5 21.3623 5.5 20.4535V5Z"
+        strokeWidth={1.5}
         stroke={color}
         fill={secondaryColor || color}
       />

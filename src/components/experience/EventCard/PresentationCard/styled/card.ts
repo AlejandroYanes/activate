@@ -1,58 +1,55 @@
 import styled from 'styled-components';
+import { cardWidth } from 'styles/variables';
 import Colors from 'styles/colors';
 
-export const Card = styled.article`
+const getBorderColor = ({ isBooked }) => isBooked ? Colors.SUCCESS : Colors.WHITE;
+
+export const Card = styled.article.attrs((props: any) => props)`
   display: flex;
   flex-direction: column;
-  background: ${Colors.WHITE};
-  border-radius: 16px;
   overflow: hidden;
-  position: relative;
+  box-sizing: border-box;
+  border-radius: 16px;
+  padding: 16px;
   margin-bottom: 64px;
-  width: 760px;
-
-  &:hover {
-    box-shadow: 0 0 1px 1px ${Colors.BRAND_SHADE};
-  }
-`;
-
-export const ImageSection = styled.div`
-  position: relative;
-`;
-
-export const Image = styled.img`
-  max-width: 100%;
-  max-height: 100%;
-`;
-
-export const Content = styled.main`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 12px;
-  border: 1px solid ${Colors.BRAND_SHADE};
-  border-top: none;
-  border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
-`;
-
-export const Row = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 12px;
+  width: ${cardWidth};
+  background-color: ${Colors.WHITE};
+  border: 1px solid ${getBorderColor};
 
   &:last-child {
     margin-bottom: 0;
   }
 `;
 
-export const Col = styled.div`
+export const Content = styled.main`
+  padding-top: 16px;
   display: flex;
   flex-direction: column;
-  margin-right: auto;
-  max-width: 45%;
-
-  &:last-child {
-    margin-right: 0;
-  }
 `;
+
+export const Description = styled.p`
+  margin-bottom: 0;
+  line-height: 20px;
+`;
+
+export const Divider = styled.div`
+  height: 1px;
+  width: 100%;
+  border-radius: 2px;
+  margin: 16px 0;
+  background-color: ${Colors.GRAY_SHADE};
+`;
+
+// export const PriceBadge = styled.div`
+//   display: flex;
+//   align-items: center;
+//   padding: 6px 8px;
+//   border-radius: 6px;
+//   margin: 0 0 auto auto;
+//    background-color: ${Colors.GRAY_SHADE};
+//   color: ${Colors.GRAY};
+//
+//   & span {
+//     margin-left: 4px;
+//   }
+// `;
