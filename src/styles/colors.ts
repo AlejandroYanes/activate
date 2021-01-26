@@ -1,16 +1,42 @@
 import { getShade } from 'helpers';
 import { StartingTheme } from './themes';
 
-const { BRAND, ACCENT, DARK, ...variations } = StartingTheme;
+export interface ColorScheme {
+  BRAND: string;
+  BRAND_LIGHT: string;
+  BRAND_DARK: string;
+  ACCENT: string;
+  ACCENT_LIGHT: string;
+  ACCENT_DARK: string;
+  DARK: string;
+  DARK_LIGHT: string;
+  DARK_DARK: string;
+  BRAND_SHADE: string;
+  ACCENT_SHADE: string;
+  DARK_SHADE: string;
+  WHITE: string;
+  WHITE_DARK: string;
+  WHITE_SHADE: string;
+  GRAY: string;
+  GRAY_LIGHT: string;
+  GRAY_DARK: string;
+  GRAY_SHADE: string;
+  BACKGROUND: string;
+  MEDIUM_GRAY: string;
+  DARK_GRAY: string;
+  INFO: string;
+  INFO_SHADE: string;
+  WARNING: string;
+  WARNING_SHADE: string;
+  ERROR: string;
+  ERROR_DARK: string;
+  ERROR_SHADE: string;
+  SUCCESS: string;
+  SUCCESS_DARK: string;
+  SUCCESS_SHADE: string;
+}
 
-const Colors = {
-  BRAND,
-  ACCENT,
-  DARK,
-  ...variations,
-  BRAND_SHADE: getShade(BRAND, 0.1),
-  ACCENT_SHADE: getShade(ACCENT),
-  DARK_SHADE: getShade(DARK),
+export const basicColors = {
   WHITE: '#fff',
   WHITE_DARK: '#fff',
   WHITE_SHADE: getShade('#ffffff', 0.05),
@@ -31,6 +57,11 @@ const Colors = {
   SUCCESS: '#15aa85',
   SUCCESS_DARK: '#118e6f',
   SUCCESS_SHADE: getShade('#15aa85'),
+};
+
+const Colors: ColorScheme = {
+  ...StartingTheme,
+  ...basicColors,
 };
 
 export default Colors;

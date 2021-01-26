@@ -15,13 +15,6 @@ const SidePanel: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(activeSection);
 
   useEffect(() => {
-    if (sections.some((section) => section !== activeTab)) {
-      setActiveTab(sections[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sections]);
-
-  useEffect(() => {
     setActiveTab(activeSection);
   }, [activeSection]);
 

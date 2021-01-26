@@ -1,20 +1,23 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import { ColorScheme } from 'styles/colors';
+import { useAppTheme } from 'components/providers/Theme';
 import { Block, Label, StyledLink, StyledBubble } from './styled';
 
 interface MenuBlockProps {
-  label: ReactNode | ((isSelected: boolean) => ReactNode);
+  icon: ReactNode | ((isSelected: boolean, theme: ColorScheme) => ReactNode);
   path?: string;
   currentPath?: string;
   onClick?: (event) => void;
 }
 
 const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
-  const { label, path, currentPath, onClick } = props;
+  const { icon, path, currentPath, onClick } = props;
+  const { colors } = useAppTheme();
   const isSelected = path === currentPath;
 
-  const labelComponent = typeof label === 'function'
-    ? label(isSelected)
-    : label;
+  const labelComponent = typeof icon === 'function'
+    ? icon(isSelected, colors)
+    : icon;
 
   return (
     <Block>

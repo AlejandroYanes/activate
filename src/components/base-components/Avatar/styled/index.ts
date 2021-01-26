@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getMargins } from 'helpers';
 import { AvatarProps } from '..';
 
 const avatarStyles = {
@@ -14,14 +15,15 @@ const avatarStyles = {
 
 const getSizeStyles = (props: AvatarProps) => avatarStyles.size[props.size];
 
-export const StyledAvatar = styled.span.attrs((props: AvatarProps) => props)`
-  ${getSizeStyles}
+export const StyledAvatar = styled.span.attrs((props: any) => props)`
+  ${getSizeStyles};
+  ${getMargins};
 
   &:focus {
     outline: none;
   }
 `;
 
-export const Img = styled.img.attrs((props: AvatarProps) => props)`
+export const Img = styled.img.attrs((props: any) => props)`
   ${getSizeStyles}
 `;

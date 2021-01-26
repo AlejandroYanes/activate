@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Colors from 'styles/colors';
 
 const getContentSpacingStyles = (props) => {
   const { compact, selected } = props;
@@ -33,7 +32,7 @@ export const Text = styled.div.attrs((props: any) => props)`
 
 export const Label = styled.span.attrs((props: any) => props)`
   ${(props) => (props.spaced ? 'margin-left: 8px' : '')};
-  color: ${Colors.GRAY};
+  color: ${({ theme }) => theme.GRAY};
   transition: all 150ms linear;
 `;
 
@@ -41,7 +40,7 @@ export const Mark = styled(motion.div)`
   width: 100%;
   height: 2px;
   border-radius: 50px;
-  background-color: ${Colors.BRAND};
+  background-color: ${({ theme }) => theme.BRAND};
   position: absolute;
   bottom: 0;
 `;
@@ -63,12 +62,12 @@ const getWidthStyles = (props) => {
 };
 
 const getSelectedStyles = (props) => {
-  const { selected } = props;
+  const { selected, theme } = props;
 
   if (selected) {
     return `
       ${Label} {
-        color: ${Colors.BRAND}
+        color: ${theme.BRAND}
       }
     `;
   }
@@ -76,17 +75,17 @@ const getSelectedStyles = (props) => {
 };
 
 const getHoverStyles = (props) => {
-  const { selected } = props;
+  const { selected, theme } = props;
 
   return `
-     background-color: ${Colors.BRAND_SHADE};
+     background-color: ${theme.BRAND_SHADE};
 
     ${Label}{
-      color: ${Colors.BRAND_DARK}
+      color: ${theme.BRAND_DARK}
     }
 
     ${Mark}{
-      background-color: ${selected ? Colors.BRAND_DARK : 'none'};
+      background-color: ${selected ? theme.BRAND_DARK : 'none'};
     }
   `;
 };

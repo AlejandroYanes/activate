@@ -1,28 +1,50 @@
+import { getShade } from '../helpers';
+
 export const StartingTheme = {
   BRAND: '#8F008F',
   BRAND_LIGHT: '#E000E0',
   BRAND_DARK: '#520052',
+  BRAND_SHADE: getShade('#8F008F', 0.1),
   ACCENT: '#009554',
   ACCENT_LIGHT: '#00E07F',
   ACCENT_DARK: '#00522E',
+  ACCENT_SHADE: getShade('#00E07F'),
   DARK: '#161C50',
   DARK_LIGHT: '#4F5CCF',
   DARK_DARK: '#080C21',
+  DARK_SHADE: getShade('#161C50'),
 };
 
-// export const NeonLights = {
-//   BRAND: '#01b4d2',
-//   ACCENT: '#E31373',
-//   DARK: '#0F1B35',
-// };
-//
-// export const SummerVibes = {
-//   BRAND: '#27806e',
-//   ACCENT: '#e5bf3f',
-//   DARK: '#013C59',
-//   LIGHT: '#1798CF',
-// };
-//
+export const NeonLightsTheme = {
+  BRAND: '#018AA2',
+  BRAND_LIGHT: '#20DDFE',
+  BRAND_DARK: '#00343D',
+  BRAND_SHADE: getShade('#019BB7'),
+  ACCENT: '#E31373',
+  ACCENT_LIGHT: '#F368A9',
+  ACCENT_DARK: '#71093A',
+  ACCENT_SHADE: getShade('#E31373'),
+  DARK: '#162950',
+  DARK_LIGHT: '#3159AF',
+  DARK_DARK: '#091020',
+  DARK_SHADE: getShade('#162950'),
+};
+
+export const SummerVibesTheme = {
+  BRAND: '#27806E',
+  BRAND_LIGHT: '#44C5AC',
+  BRAND_DARK: '#0E2F28',
+  BRAND_SHADE: getShade('#27806E'),
+  ACCENT: '#B48F18',
+  ACCENT_LIGHT: '#E5BF3F',
+  ACCENT_DARK: '#48390A',
+  ACCENT_SHADE: getShade('#B48F18'),
+  DARK: '#161C50',
+  DARK_LIGHT: '#4F5CCF',
+  DARK_DARK: '#080C21',
+  DARK_SHADE: getShade('#161C50'),
+};
+
 // export const MidnightLight = {
 //   BRAND: '#ED4D1D',
 //   ACCENT: '#FAB32C',

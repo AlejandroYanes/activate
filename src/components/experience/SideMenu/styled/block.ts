@@ -11,7 +11,7 @@ export const Block = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.BRAND};
+  background-color: ${({ theme }) => theme.BRAND};
 `;
 
 export const StyledLink = styled(Link)`
@@ -28,13 +28,14 @@ export const StyledBubble = styled(SelectedBubble).attrs((props: { selected?: bo
   transition: all .2s;
 `;
 
-const getColorStyle = ({ selected }) => selected ? Colors.BRAND : Colors.WHITE;
+const getColorStyle = ({ selected, theme }) => selected ? theme.BRAND : theme.WHITE;
 
 export const Label = styled.span.attrs((props: { selected: boolean }) => props)`
   display: flex;
   font-size: 20px;
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   color: ${getColorStyle};
   z-index: ${ZLevels.sideMenuBlocks};

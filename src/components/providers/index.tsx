@@ -1,13 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import PanelSectionsProvider from './PanelSections';
+import ThemeProvider from './Theme';
 
 const AppProviders: FunctionComponent = (props) => {
   const { children } = props;
 
   return (
-    <PanelSectionsProvider>
-      {children}
-    </PanelSectionsProvider>
+    <ThemeProvider>
+      <PanelSectionsProvider>
+        {children}
+      </PanelSectionsProvider>
+    </ThemeProvider>
   );
 };
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Colors from '../../../../styles/colors';
+import Colors from 'styles/colors';
 
 export const ActionBlock = styled.li`
   width: 100%;
@@ -9,7 +9,7 @@ export const ActionBlock = styled.li`
   align-items: center;
   justify-content: center;
   color: ${Colors.WHITE};
-  background-color: ${Colors.BRAND};
+  background-color: ${({ theme }) => theme.BRAND};
 `;
 
 export const EmptyBlock = styled.li`
@@ -17,5 +17,5 @@ export const EmptyBlock = styled.li`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.BRAND};
+  background-color: ${({ theme }) => theme.BRAND};
 `;

@@ -1,32 +1,32 @@
 import React from 'react';
+import { ColorScheme } from 'styles/colors';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import Colors from 'styles/colors';
 
-export const homeIcon = (isSelected) => (
+export const homeIcon = (isSelected: boolean, theme: ColorScheme) => (
   <SvgIcon
     icon={Icons.BOOKMARKS}
-    color={isSelected ? Colors.BRAND : Colors.WHITE}
+    color={isSelected ? theme.BRAND : theme.WHITE}
   />
 );
 
-export const discoverIcon = (isSelected) => (
+export const discoverIcon = (isSelected: boolean, theme: ColorScheme) => (
   <SvgIcon
     icon={Icons.COMPASS}
-    color={isSelected ? Colors.BRAND : Colors.WHITE}
+    color={isSelected ? theme.BRAND : theme.WHITE}
   />
 );
 
-export const aboutIcon = (isSelected) => (
+export const aboutIcon = (isSelected: boolean, theme: ColorScheme) => (
   <SvgIcon
     icon={Icons.INFO_CIRCLE}
-    color={isSelected ? Colors.BACKGROUND : Colors.BRAND}
-    secondaryColor={isSelected ? Colors.BRAND : Colors.WHITE}
+    color={isSelected ? theme.BACKGROUND : theme.BRAND}
+    secondaryColor={isSelected ? theme.BRAND : theme.WHITE}
   />
 );
 
-export const publishersIcon = (isSelected) => (
+export const publishersIcon = (isSelected: boolean, theme: ColorScheme) => (
   <SvgIcon
     icon={Icons.MEGAPHONE}
-    color={isSelected ? Colors.BRAND : Colors.WHITE}
+    color={isSelected ? theme.BRAND : theme.WHITE}
   />
 );
