@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 const getLabelColor = (props) => {
-  const { focused } = props;
-  return `color: ${focused ? Colors.BRAND_DARK : Colors.DARK}`;
+  const { focused, theme: { useDarkStyle, colors } } = props;
+  const focusedColor = useDarkStyle ? colors.BRAND : colors.BRAND_DARK;
+  return `color: ${focused ? focusedColor : colors.FONT}`;
 };
 
 export const StyledLabel = styled.label.attrs((props: any) => props)`

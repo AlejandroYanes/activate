@@ -7,7 +7,7 @@ import { BottomSection, Content, StyledSearch } from './styled';
 
 const today = new Date();
 const yesterday = subDays(today, 1);
-const initialSearchState = { event: '', publisher: '', date: [yesterday, today] };
+const initialSearchState = { event: '', publisher: '', date: [yesterday, today], dateTime: today };
 
 const SearchPanel: FunctionComponent = () => {
   const [search, setSearch] = useState(initialSearchState);
@@ -29,11 +29,19 @@ const SearchPanel: FunctionComponent = () => {
             showClear
             mT
           />
+          <Field
+            name="dateTime"
+            label="Date Time test"
+            component={DateTimePicker}
+            type="date-time"
+            showClear
+            mT
+          />
         </Form>
       </Content>
       <BottomSection>
         <Button onClick={() => setSearch(initialSearchState)} label="Clear" variant="base" mR />
-        <Button onClick={() => undefined} label="Search" variant="base" />
+        <Button onClick={() => undefined} label="Search" variant="base" mR />
       </BottomSection>
     </StyledSearch>
   );

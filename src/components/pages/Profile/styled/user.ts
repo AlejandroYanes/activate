@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import Avatar from 'components/base-components/Avatar';
 
 export const ProfileData = styled.div`
@@ -10,7 +9,7 @@ export const ProfileData = styled.div`
   padding: 16px;
   margin-top: 43px;
   margin-bottom: 32px;
-  background-color: ${Colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 
 export const Actions = styled.div`
@@ -25,14 +24,14 @@ export const StyledAvatar = styled(Avatar)`
   left: 50%;
   margin: 0 auto 0 -43px;
   border-radius: 50%;
-  border: 10px solid ${Colors.BACKGROUND};
+  border: 10px solid ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 export const UserName = styled.h2`
   margin-top: 54px;
   margin-bottom: 32px;
   text-align: center;
-  color: ${({ theme }) => theme.BRAND};
+  color: ${({ theme }) => theme.colors.BRAND};
 `;
 
 export const Stats = styled.div`
@@ -52,5 +51,5 @@ export const StatName = styled.span`
 `;
 
 export const StatValue = styled.h2`
-  color: ${({ theme }) => theme.BRAND};
+  color: ${({ theme }) => theme.colors.BRAND};
 `;

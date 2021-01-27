@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import Colors from 'styles/colors';
+import { CheckboxToggle } from 'react-rainbow-components';
 import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import Page from 'components/base-components/Page';
@@ -23,15 +23,22 @@ import {
   ColorSample,
   DetailBox,
   ThemeName,
+  Block,
 } from './styled';
 
 const ProfilePage: FunctionComponent = () => {
-  const { theme: activeTheme, setTheme } = useAppTheme();
+  const {
+    colors,
+    theme: activeTheme,
+    setTheme,
+    useDarkStyle,
+    toggleLightStyle,
+  } = useAppTheme();
 
   const handleThemeChange = useCallback((event) => {
     const { theme } = event.target.dataset;
     setTheme(theme);
-  }, []);
+  }, [setTheme]);
 
   return (
     <Page>
@@ -41,7 +48,7 @@ const ProfilePage: FunctionComponent = () => {
           <IconButton
             onClick={() => undefined}
             icon={Icons.CREATE_PENCIL}
-            color={Colors.DARK}
+            color={colors.FONT}
           />
         </Actions>
         <UserName>Alejandro Yanes</UserName>
@@ -67,12 +74,11 @@ const ProfilePage: FunctionComponent = () => {
             <Palette>
               <ColorSample color={StartingTheme.BRAND} />
               <ColorSample color={StartingTheme.ACCENT} />
-              <ColorSample color={StartingTheme.DARK} />
             </Palette>
             <DetailBox>
               <ThemeName>Activate</ThemeName>
               <RenderIf condition={activeTheme === AppTheme.Default}>
-                <SvgIcon icon={Icons.CHECK_MARK} color={Colors.ACCENT} />
+                <SvgIcon icon={Icons.CHECK_MARK} color={colors.ACCENT} />
               </RenderIf>
             </DetailBox>
           </Theme>
@@ -80,12 +86,11 @@ const ProfilePage: FunctionComponent = () => {
             <Palette>
               <ColorSample color={NeonLightsTheme.BRAND} />
               <ColorSample color={NeonLightsTheme.ACCENT} />
-              <ColorSample color={NeonLightsTheme.DARK} />
             </Palette>
             <DetailBox>
               <ThemeName>Neon Lights</ThemeName>
               <RenderIf condition={activeTheme === AppTheme.NeonLights}>
-                <SvgIcon icon={Icons.CHECK_MARK} color={Colors.ACCENT} />
+                <SvgIcon icon={Icons.CHECK_MARK} color={colors.ACCENT} />
               </RenderIf>
             </DetailBox>
           </Theme>
@@ -93,16 +98,22 @@ const ProfilePage: FunctionComponent = () => {
             <Palette>
               <ColorSample color={SummerVibesTheme.BRAND} />
               <ColorSample color={SummerVibesTheme.ACCENT} />
-              <ColorSample color={SummerVibesTheme.DARK} />
             </Palette>
             <DetailBox>
               <ThemeName>Summer Vibes</ThemeName>
               <RenderIf condition={activeTheme === AppTheme.SummerVibes}>
-                <SvgIcon icon={Icons.CHECK_MARK} color={Colors.ACCENT} />
+                <SvgIcon icon={Icons.CHECK_MARK} color={colors.ACCENT} />
               </RenderIf>
             </DetailBox>
           </Theme>
         </ThemeList>
+        <Block>
+          <CheckboxToggle
+            label="Use Dark Theme"
+            value={useDarkStyle}
+            onClick={toggleLightStyle}
+          />
+        </Block>
       </Settings>
     </Page>
   );

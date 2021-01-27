@@ -1,6 +1,5 @@
 import { AvatarGroup } from 'react-rainbow-components';
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 export const Footer = styled.footer`
   display: flex;
@@ -13,7 +12,7 @@ export const Users = styled.div`
 
   & > span {
     margin-left: 4px;
-    color: ${Colors.GRAY};
+    color: ${({ theme }) => theme.colors.FONT};
     font-size: 14px;
   }
 `;

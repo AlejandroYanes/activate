@@ -36,7 +36,7 @@ export const TextSection = styled.div`
 `;
 
 export const Name = styled.h3`
-  color: ${Colors.DARK};
+  color: ${Colors.FONT};
   font-weight: bold;
   font-size: 16px;
   padding: 0;
@@ -44,7 +44,7 @@ export const Name = styled.h3`
 `;
 
 export const Description = styled.p`
-  color: ${Colors.DARK};
+  color: ${Colors.FONT};
   font-size: 14px;
   line-height: 18px;
   padding: 0;

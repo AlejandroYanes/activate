@@ -16,6 +16,7 @@ interface Props {
 }
 
 const today = new Date();
+const monthButtonStyles = { flexGrow: 1 };
 
 const Header: FunctionComponent<Props> = (props) => {
   const {
@@ -47,18 +48,28 @@ const Header: FunctionComponent<Props> = (props) => {
   return (
     <StyledHeader centerContent={!selectingDay}>
       <RenderIf condition={selectingDay}>
-        <IconButton onClick={selectPrevious} icon={Icons.CHEVRON_LEFT} buttonColor="brand" />
+        <IconButton
+          onClick={selectPrevious}
+          icon={Icons.CHEVRON_LEFT}
+          buttonColor="brand"
+          variant="flat"
+        />
       </RenderIf>
       <Button
         onClick={changeSelection}
         label={label}
         variant="flat"
-        fullWidth
+        style={monthButtonStyles}
         mR
         mL
       />
       <RenderIf condition={selectingDay}>
-        <IconButton onClick={selectNext} icon={Icons.CHEVRON_RIGHT} buttonColor="brand" />
+        <IconButton
+          onClick={selectNext}
+          icon={Icons.CHEVRON_RIGHT}
+          buttonColor="brand"
+          variant="flat"
+        />
       </RenderIf>
     </StyledHeader>
   );

@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import Colors from 'styles/colors';
 import { PositionProps } from 'helpers';
 import { Icons } from 'components/base-components/SvgIcon';
 import { StyledBadge, Icon } from './styled';
+import { useAppColors } from '../../providers/Theme';
+import { ColorScheme } from '../../../styles/colors';
 
 export interface BadgeProps extends PositionProps {
   color: 'brand' | 'info' | 'success' | 'warning' | 'error' | 'light';
@@ -12,15 +13,16 @@ export interface BadgeProps extends PositionProps {
   sm?: boolean;
 }
 
-function resolveIconColor(color: string) {
+function resolveIconColor(color: string, Colors: ColorScheme) {
   if (color === 'light') {
-    return Colors.DARK;
+    return Colors.FONT;
   }
 
   return Colors.WHITE;
 }
 
 const Badge: FunctionComponent<BadgeProps> = (props) => {
+  const Colors = useAppColors();
   const {
     label,
     color,
@@ -36,7 +38,7 @@ const Badge: FunctionComponent<BadgeProps> = (props) => {
         <Icon
           size={sm ? 'small' : 'medium'}
           icon={icon}
-          color={resolveIconColor(color)}
+          color={resolveIconColor(color, Colors)}
           {...iconProps}
         />
       );

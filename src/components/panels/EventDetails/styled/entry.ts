@@ -34,7 +34,7 @@ export const Line = styled.div.attrs((props: any) => props)`
 
   & > span, & > a {
     font-weight: normal;
-    color: ${Colors.DARK};
+    color: ${Colors.FONT};
     line-height: 28px;
   }
 

@@ -85,7 +85,7 @@ const PanelSectionsProvider: FunctionComponent = (props) => {
         resetPanelSections,
       },
     }),
-    [state.sections, state.activeSection, resetPanelSections, addSection, removeSection],
+    [state, resetPanelSections, addSection, removeSection, setActiveSection],
   );
 
   return (

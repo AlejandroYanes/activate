@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import Colors from 'styles/colors';
 import { getMonthLabel, PositionProps } from 'helpers';
+import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import Avatar from 'components/base-components/Avatar';
+import Button from 'components/base-components/Button';
 import { Card, Header, Title, Address, Date, Divider, Footer } from './styled';
 import { Avatars, Users } from '../PresentationCard/styled';
-import Button from '../../../base-components/Button';
 
 interface Props extends PositionProps {
   title: string;
@@ -22,6 +22,7 @@ const avatars = [
 ];
 
 const SummaryCard: FunctionComponent<Props> = (props) => {
+  const Colors = useAppColors();
   const { title, address, date, isBooked, ...positionProps } = props;
 
   return (
@@ -32,15 +33,16 @@ const SummaryCard: FunctionComponent<Props> = (props) => {
         </Date>
         <IconButton
           buttonColor="success"
+          variant="flat"
           icon={Icons.BOOKMARK_FILLED}
-          color={Colors.SUCCESS_DARK}
-          secondaryColor={isBooked ? Colors.SUCCESS_DARK : 'transparent'}
+          color={Colors.ACCENT}
+          secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
           onClick={() => undefined}
         />
       </Header>
       <Title>{title}</Title>
       <Address>
-        <SvgIcon icon={Icons.MAP_PIN} color={Colors.GRAY} />
+        <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
         <span>{address}</span>
       </Address>
       <Divider />
@@ -49,7 +51,7 @@ const SummaryCard: FunctionComponent<Props> = (props) => {
           <Avatars avatars={avatars} maxAvatars={3} />
           <span>+16k</span>
         </Users>
-        <Button onClick={() => undefined} label="View" variant="flat" color="success" sm />
+        <Button onClick={() => undefined} label="View" variant="flat" color="accent" sm />
       </Footer>
     </Card>
   );

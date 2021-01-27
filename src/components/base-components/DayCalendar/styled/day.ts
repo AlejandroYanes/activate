@@ -19,7 +19,7 @@ export const Day = styled.li`
   }
 `;
 
-const getColor = ({ isSelected }) => isSelected ? Colors.WHITE : Colors.DARK;
+const getColor = ({ isSelected, theme }) => isSelected ? theme.BACKGROUND_LIGHT : theme.FONT;
 
 export const DayNumber = styled.span.attrs((props: any) => props)`
   position: absolute;
@@ -34,6 +34,7 @@ export const Mark = styled(motion.div)`
   height: 74px;
   width: 48px;
   border-radius: 20px;
-  border: 6px solid white;
-  background-color: ${Colors.BRAND};
+  pointer-events: none;
+  border: 6px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${({ theme }) => theme.colors.ACCENT};
 `;

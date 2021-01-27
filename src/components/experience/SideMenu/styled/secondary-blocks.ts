@@ -9,7 +9,7 @@ export const ActionBlock = styled.li`
   align-items: center;
   justify-content: center;
   color: ${Colors.WHITE};
-  background-color: ${({ theme }) => theme.BRAND};
+  background-color: ${({ theme }) => theme.colors.BRAND};
 `;
 
 export const EmptyBlock = styled.li`
@@ -17,5 +17,5 @@ export const EmptyBlock = styled.li`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.BRAND};
+  background-color: ${({ theme }) => theme.colors.BRAND};
 `;

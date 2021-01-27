@@ -1,33 +1,32 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { getMargins } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { BadgeProps } from '..';
 
-function resolveFontColor({ color }: BadgeProps) {
+function resolveFontColor({ color, theme }) {
   if (color === 'light') {
-    return Colors.DARK;
+    return theme.colors.FONT;
   }
 
-  return Colors.WHITE;
+  return theme.colors.WHITE;
 }
 
-function resolveBackgroundColor({ color }: BadgeProps) {
+function resolveBackgroundColor({ color, theme }) {
   switch (color) {
     case 'brand':
-      return Colors.BRAND_DARK;
+      return theme.colors.BRAND_DARK;
     case 'info':
-      return Colors.INFO;
+      return theme.colors.INFO;
     case 'success':
-      return Colors.SUCCESS_DARK;
+      return theme.colors.SUCCESS_DARK;
     case 'warning':
-      return Colors.WARNING;
+      return theme.colors.WARNING;
     case 'error':
-      return Colors.ERROR_DARK;
+      return theme.colors.ERROR_DARK;
     case 'light':
-      return Colors.GRAY_SHADE;
+      return theme.colors.GRAY_SHADE;
     default:
-      return Colors.BRAND;
+      return theme.colors.BRAND;
   }
 }
 

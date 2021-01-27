@@ -32,7 +32,7 @@ export const Text = styled.div.attrs((props: any) => props)`
 
 export const Label = styled.span.attrs((props: any) => props)`
   ${(props) => (props.spaced ? 'margin-left: 8px' : '')};
-  color: ${({ theme }) => theme.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
   transition: all 150ms linear;
 `;
 
@@ -40,7 +40,7 @@ export const Mark = styled(motion.div)`
   width: 100%;
   height: 2px;
   border-radius: 50px;
-  background-color: ${({ theme }) => theme.BRAND};
+  background-color: ${({ theme }) => theme.colors.BRAND};
   position: absolute;
   bottom: 0;
 `;
@@ -67,7 +67,7 @@ const getSelectedStyles = (props) => {
   if (selected) {
     return `
       ${Label} {
-        color: ${theme.BRAND}
+        color: ${theme.colors.BRAND}
       }
     `;
   }
@@ -75,17 +75,18 @@ const getSelectedStyles = (props) => {
 };
 
 const getHoverStyles = (props) => {
-  const { selected, theme } = props;
+  const { selected, theme: { colors, useDarkStyle } } = props;
+  const markColor = useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
 
   return `
-     background-color: ${theme.BRAND_SHADE};
+     background-color: ${colors.BRAND_SHADE};
 
     ${Label}{
-      color: ${theme.BRAND_DARK}
+      color: ${useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK}
     }
 
     ${Mark}{
-      background-color: ${selected ? theme.BRAND_DARK : 'none'};
+      background-color: ${selected ? markColor : 'none'};
     }
   `;
 };
@@ -103,6 +104,6 @@ export const StyledTab = styled.li.attrs((props: any) => props)`
   ${getSelectedStyles};
 
   &:hover {
-   ${getHoverStyles}
+    ${getHoverStyles}
   }
 `;

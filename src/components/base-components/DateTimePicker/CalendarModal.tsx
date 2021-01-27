@@ -96,7 +96,7 @@ const CalendarModal: FunctionComponent<Props> = (props) => {
             <CurrentDate isVisible={isDateTime} date={dates as Date} />
             <Footer>
               <Button onClick={onClose} label="Cancel" mR />
-              <Button onClick={sendDateSelected} label="Select" variant="fill" />
+              <Button onClick={sendDateSelected} label="Select" />
             </Footer>
           </RenderIf>
         </StyledCalendarModal>

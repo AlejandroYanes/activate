@@ -20,7 +20,7 @@ export const Option = styled.button`
   box-sizing: border-box;
   font-size: 1rem;
   background-color: transparent;
-  color: ${Colors.DARK};
+  color: ${Colors.FONT};
 
   & > span {
   margin-left: 8px;

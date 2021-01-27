@@ -9,53 +9,34 @@ export const StartingTheme = {
   ACCENT_LIGHT: '#00E07F',
   ACCENT_DARK: '#00522E',
   ACCENT_SHADE: getShade('#00E07F'),
-  DARK: '#161C50',
-  DARK_LIGHT: '#4F5CCF',
-  DARK_DARK: '#080C21',
-  DARK_SHADE: getShade('#161C50'),
 };
 
 export const NeonLightsTheme = {
-  BRAND: '#018AA2',
+  BRAND: '#01798E',
   BRAND_LIGHT: '#20DDFE',
   BRAND_DARK: '#00343D',
-  BRAND_SHADE: getShade('#019BB7'),
+  BRAND_SHADE: getShade('#01798E'),
   ACCENT: '#E31373',
   ACCENT_LIGHT: '#F368A9',
   ACCENT_DARK: '#71093A',
   ACCENT_SHADE: getShade('#E31373'),
-  DARK: '#162950',
-  DARK_LIGHT: '#3159AF',
-  DARK_DARK: '#091020',
-  DARK_SHADE: getShade('#162950'),
 };
 
 export const SummerVibesTheme = {
-  BRAND: '#27806E',
+  BRAND: '#00765E',
   BRAND_LIGHT: '#44C5AC',
   BRAND_DARK: '#0E2F28',
-  BRAND_SHADE: getShade('#27806E'),
-  ACCENT: '#B48F18',
+  BRAND_SHADE: getShade('#00765E'),
+  ACCENT: '#C27700',
   ACCENT_LIGHT: '#E5BF3F',
   ACCENT_DARK: '#48390A',
-  ACCENT_SHADE: getShade('#B48F18'),
-  DARK: '#161C50',
-  DARK_LIGHT: '#4F5CCF',
-  DARK_DARK: '#080C21',
-  DARK_SHADE: getShade('#161C50'),
+  ACCENT_SHADE: getShade('#C27700'),
 };
 
 // export const MidnightLight = {
 //   BRAND: '#ED4D1D',
 //   ACCENT: '#FAB32C',
 //   DARK: '#033951',
-// };
-//
-// export const ScottishSunrise = {
-//   BRAND: '#72CBD3',
-//   ACCENT: '#F8BB8F',
-//   DARK: '#14566D',
-//   LIGHT: '#FDD78C',
 // };
 //
 // export const LifeIsABeach = {

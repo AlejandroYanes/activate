@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
+import { getShade } from 'helpers';
 
 export const StyledBackdrop = styled.main`
   position: fixed;
@@ -12,5 +13,5 @@ export const StyledBackdrop = styled.main`
   justify-content: center;
   align-items: center;
   z-index: ${ZLevels.backdrop};
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: ${({ theme }) => getShade(theme.colors.FONT, 0.4)};
 `;

@@ -1,10 +1,11 @@
 import React, { FunctionComponent, ReactNode, useMemo, useRef } from 'react';
 import { PositionProps } from 'helpers';
 import { useHoverState } from 'hooks/UI';
-import { Button as StyledButton } from './styled';
-import Content from './Content';
-import IconNode from './Icon';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
+import { useAppTheme } from 'components/providers/Theme';
+import IconNode from './Icon';
+import Content from './Content';
+import { Button as StyledButton } from './styled';
 
 export interface ButtonProps extends PositionProps {
   label?: string | number;
@@ -14,12 +15,13 @@ export interface ButtonProps extends PositionProps {
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'base' | 'fill' | 'flat';
-  color?: 'brand' | 'accent' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'font';
   align?: 'start' | 'center' | 'end';
   sm?: boolean;
 }
 
 const Button: FunctionComponent<ButtonProps> = (props) => {
+  const { colors, useDarkStyle } = useAppTheme();
   const {
     label,
     onClick,
@@ -41,6 +43,8 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
       variant={variant}
       icon={leftIcon}
       color={color}
+      colors={colors}
+      useDarkStyle={useDarkStyle}
       sm={sm}
     />
   ), [leftIcon, isHovered, variant, color, sm]);
@@ -51,6 +55,8 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
       variant={variant}
       icon={rightIcon}
       color={color}
+      colors={colors}
+      useDarkStyle={useDarkStyle}
       sm={sm}
     />
   ), [rightIcon, isHovered, variant, color, sm]);

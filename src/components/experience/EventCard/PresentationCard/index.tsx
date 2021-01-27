@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { getMonthLabel } from 'helpers';
-import Colors from 'styles/colors';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
@@ -21,6 +20,7 @@ import {
   Users,
   Avatars,
 } from './styled';
+import { useAppColors } from '../../../providers/Theme';
 
 interface Props {
   title: string;
@@ -38,6 +38,7 @@ const avatars = [
 ];
 
 const PresentationCard: FunctionComponent<Props> = (props) => {
+  const Colors = useAppColors();
   const {
     date,
     title,
@@ -61,7 +62,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
         <TitleAndAddress>
           <Title>{title}</Title>
           <Address>
-            <SvgIcon icon={Icons.MAP_PIN} color={Colors.DARK} />
+            <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
             <span>{address}</span>
           </Address>
         </TitleAndAddress>
@@ -86,6 +87,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
             mR
             size="large"
             buttonColor="info"
+            variant="flat"
             icon={Icons.SEND}
             color={Colors.INFO}
             onClick={() => undefined}
@@ -93,9 +95,10 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
           <IconButton
             size="large"
             buttonColor="success"
+            variant="flat"
             icon={Icons.BOOKMARK_FILLED}
-            color={Colors.SUCCESS}
-            secondaryColor={isBooked ? Colors.SUCCESS : 'transparent'}
+            color={Colors.ACCENT}
+            secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
             onClick={handleBookActionClick}
           />
         </Actions>

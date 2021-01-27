@@ -24,9 +24,14 @@ const markAnimationControls = {
 //   expanded: { scaleX: 1, transition: { delay: 2 } },
 // };
 
-function getIconColor(isSelected: boolean, isHovered: boolean, colors: ColorScheme) {
+function getIconColor(
+  isSelected: boolean,
+  isHovered: boolean,
+  useDarkStyle: boolean,
+  colors: ColorScheme,
+) {
   if (isSelected && isHovered) {
-    return colors.BRAND_DARK;
+    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
   }
 
   if (isSelected) {
@@ -34,14 +39,14 @@ function getIconColor(isSelected: boolean, isHovered: boolean, colors: ColorSche
   }
 
   if (isHovered) {
-    return colors.BRAND_DARK;
+    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
   }
 
   return colors.GRAY;
 }
 
 const Tab: FunctionComponent<Props> = (props) => {
-  const { colors } = useAppTheme();
+  const { colors, useDarkStyle } = useAppTheme();
   const { name, label, icon } = props;
   const {
     activeTab,
@@ -66,7 +71,7 @@ const Tab: FunctionComponent<Props> = (props) => {
       return (
         <SvgIcon
           icon={icon as Icons}
-          color={getIconColor(isSelected, isHovered, colors)}
+          color={getIconColor(isSelected, isHovered, useDarkStyle, colors)}
         />
       );
     }

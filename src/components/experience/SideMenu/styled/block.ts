@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { ZLevels } from 'styles/z-levels';
 import SelectedBubble from '../SelectedBubble';
 
@@ -11,7 +10,7 @@ export const Block = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.BRAND};
+  background-color: ${({ theme }) => theme.colors.BRAND};
 `;
 
 export const StyledLink = styled(Link)`
