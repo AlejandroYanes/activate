@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
+
+const getColor = ({ theme: { useDarkStyle, colors } }) => (
+  useDarkStyle ? colors.GRAY_LIGHT : colors.GRAY_DARK
+);
 
 export const Entry = styled.span`
   display: flex;
@@ -9,17 +12,11 @@ export const Entry = styled.span`
   margin-top: 0;
   margin-bottom: 4px;
   text-align: left;
-  color: ${Colors.GRAY_DARK};
+  color: ${getColor};
 
   & svg {
     margin-right: 6px;
   }
-`;
-
-export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 16px;
 `;
 
 const getAlignment = ({ centered }: any) => (
@@ -34,7 +31,7 @@ export const Line = styled.div.attrs((props: any) => props)`
 
   & > span, & > a {
     font-weight: normal;
-    color: ${Colors.FONT};
+    color: ${({ theme }) => theme.colors.FONT};
     line-height: 28px;
   }
 
