@@ -49,7 +49,7 @@ const ThemeProvider: FunctionComponent = (props) => {
 
   const themeContextValue = useMemo<ThemeContextValue>(
     () => ({ theme, setTheme, toggleLightStyle, ...themeColors }),
-    [theme, themeColors, useDarkStyle, toggleLightStyle],
+    [theme, themeColors, toggleLightStyle],
   );
 
   return (

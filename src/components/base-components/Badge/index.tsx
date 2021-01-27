@@ -45,7 +45,7 @@ const Badge: FunctionComponent<BadgeProps> = (props) => {
     }
 
     return null;
-  }, [icon, iconProps, color, sm]);
+  }, [icon, iconProps, color, Colors, sm]);
 
   return (
     <StyledBadge color={color} sm={sm} {...rest}>

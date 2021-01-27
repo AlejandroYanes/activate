@@ -76,7 +76,7 @@ const Tab: FunctionComponent<Props> = (props) => {
       );
     }
     return icon;
-  }, [icon, isHovered, isSelected, colors]);
+  }, [icon, isHovered, isSelected, colors, useDarkStyle]);
 
   const handleClick = () => onTabChange(name);
 

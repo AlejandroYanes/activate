@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
+import { ZLevels } from '../../../../styles/z-levels';
 
 export const Day = styled.li`
   display: flex;
@@ -24,13 +25,13 @@ const getColor = ({ isSelected, theme }) => isSelected ? theme.BACKGROUND_LIGHT 
 export const DayNumber = styled.span.attrs((props: any) => props)`
   position: absolute;
   margin: auto;
-  z-index: 2;
+  z-index: ${ZLevels.dayComponent};
   color: ${getColor};
 `;
 
 export const Mark = styled(motion.div)`
   position: absolute;
-  z-index: 1;
+  z-index: ${ZLevels.dayComponentMark};
   height: 74px;
   width: 48px;
   border-radius: 20px;

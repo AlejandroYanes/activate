@@ -47,7 +47,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
       useDarkStyle={useDarkStyle}
       sm={sm}
     />
-  ), [leftIcon, isHovered, variant, color, sm]);
+  ), [leftIcon, isHovered, variant, color, sm, useDarkStyle, colors]);
 
   const rightIconNode = useMemo(() => (
     <IconNode
@@ -59,7 +59,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
       useDarkStyle={useDarkStyle}
       sm={sm}
     />
-  ), [rightIcon, isHovered, variant, color, sm]);
+  ), [rightIcon, isHovered, variant, color, sm, useDarkStyle, colors]);
 
   return (
     <StyledButton
