@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import { CheckboxToggle } from 'react-rainbow-components';
 import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
@@ -6,6 +6,7 @@ import Page from 'components/base-components/Page';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
+import { Tab, Tabset } from 'components/base-components/Tabset';
 import {
   Actions,
   ProfileData,
@@ -26,6 +27,12 @@ import {
   Block,
 } from './styled';
 
+enum Tabs {
+  Following = 'Following',
+  Friends = 'Friends',
+  Setting = 'Settings',
+}
+
 const ProfilePage: FunctionComponent = () => {
   const {
     colors,
@@ -34,6 +41,7 @@ const ProfilePage: FunctionComponent = () => {
     useDarkStyle,
     toggleLightStyle,
   } = useAppTheme();
+  const [activeTab, setActiveTab] = useState(Tabs.Setting);
 
   const handleThemeChange = useCallback((event) => {
     const { theme } = event.target.dataset;
@@ -66,6 +74,11 @@ const ProfilePage: FunctionComponent = () => {
             <StatValue>80</StatValue>
           </Stat>
         </Stats>
+        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mT>
+          <Tab name={Tabs.Following} label={Tabs.Following} />
+          <Tab name={Tabs.Friends} label={Tabs.Friends} />
+          <Tab name={Tabs.Setting} label={Tabs.Setting} />
+        </Tabset>
       </ProfileData>
       <Settings>
         <SubTitle>Theme</SubTitle>

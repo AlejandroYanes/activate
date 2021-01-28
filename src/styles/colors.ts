@@ -38,7 +38,7 @@ export interface ColorScheme {
   SUCCESS_SHADE: string;
 }
 
-export const lightThemeColors = {
+export const lightStyleColors = {
   FONT: '#161C50',
   FONT_LIGHT: '#4F5CCF',
   FONT_DARK: '#080C21',
@@ -48,7 +48,7 @@ export const lightThemeColors = {
   BACKGROUND_SHADE: getShade('#f5f6fa'),
 };
 
-export const darkThemeColors = {
+export const darkStyleColors = {
   FONT: '#f5f6fa',
   FONT_LIGHT: '#fff',
   FONT_DARK: '#AFAFAF',
@@ -89,7 +89,7 @@ export const basicColors = {
 const Colors: ColorScheme = {
   ...StartingTheme,
   ...basicColors,
-  ...lightThemeColors,
+  ...lightStyleColors,
 };
 
 export default Colors;

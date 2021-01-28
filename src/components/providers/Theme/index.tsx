@@ -1,6 +1,6 @@
-import React, { createContext, FunctionComponent, useCallback, useContext, useMemo, useState } from 'react';
+import React, { createContext, FunctionComponent, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { basicColors, ColorScheme, darkThemeColors, lightThemeColors } from 'styles/colors';
+import { basicColors, ColorScheme, darkStyleColors, lightStyleColors } from 'styles/colors';
 import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
 
 export enum AppTheme {
@@ -40,7 +40,7 @@ const ThemeProvider: FunctionComponent = (props) => {
       useDarkStyle,
       colors: {
         ...basicColors,
-        ...(useDarkStyle ? darkThemeColors : lightThemeColors),
+        ...(useDarkStyle ? darkStyleColors : lightStyleColors),
         ...themesMap[theme],
       },
     }),
@@ -51,6 +51,13 @@ const ThemeProvider: FunctionComponent = (props) => {
     () => ({ theme, setTheme, toggleLightStyle, ...themeColors }),
     [theme, themeColors, toggleLightStyle],
   );
+
+  useEffect(() => {
+    const colorBase = useDarkStyle ? darkStyleColors : lightStyleColors;
+
+    document.body.style.backgroundColor = colorBase.BACKGROUND;
+    document.body.style.color = colorBase.FONT;
+  }, [useDarkStyle]);
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
