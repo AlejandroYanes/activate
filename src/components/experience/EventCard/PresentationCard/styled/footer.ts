@@ -6,17 +6,6 @@ export const Footer = styled.footer`
   align-items: center;
 `;
 
-export const Users = styled.div`
-  display: flex;
-  align-items: center;
-
-  & > span {
-    margin-left: 4px;
-    color: ${({ theme }) => theme.colors.FONT};
-    font-size: 14px;
-  }
-`;
-
 export const Avatars = styled(AvatarGroup)`
   & > span {
     height: 36px;

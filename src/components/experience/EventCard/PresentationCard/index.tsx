@@ -1,9 +1,11 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { getMonthLabel } from 'helpers';
+import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
+import AvatarGroup from 'components/base-components/AvatarGroup';
 import EventImage from './EventImage';
 import {
   Actions,
@@ -17,10 +19,7 @@ import {
   Header,
   Title,
   TitleAndAddress,
-  Users,
-  Avatars,
 } from './styled';
-import { useAppColors } from '../../../providers/Theme';
 
 interface Props {
   title: string;
@@ -31,11 +30,7 @@ interface Props {
   description?: string;
 }
 
-const avatars = [
-  { icon: (<Avatar icon="user1" />) },
-  { icon: (<Avatar icon="user2" />) },
-  { icon: (<Avatar icon="user6" />) },
-];
+const avatars = ['user1', 'user2', 'user6'];
 
 const PresentationCard: FunctionComponent<Props> = (props) => {
   const Colors = useAppColors();
@@ -78,10 +73,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
       </Content>
       <Divider />
       <Footer>
-        <Users>
-          <Avatars avatars={avatars} maxAvatars={3} />
-          <span>+16k</span>
-        </Users>
+        <AvatarGroup icons={avatars} label="+ 16k" size="small" />
         <Actions>
           <IconButton
             mR
