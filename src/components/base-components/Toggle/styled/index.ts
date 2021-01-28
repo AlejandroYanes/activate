@@ -1,8 +1,2 @@
-import styled from 'styled-components';
-import { getMargins } from 'helpers';
-
-export const StyledToggle = styled.div`
-  display: flex;
-  align-items: center;
-  ${getMargins};
-`;
+export * from './toggle';
+export * from './faux';
