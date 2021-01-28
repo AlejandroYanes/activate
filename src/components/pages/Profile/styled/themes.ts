@@ -3,23 +3,23 @@ import styled from 'styled-components';
 export const ThemeList = styled.ul`
   list-style: none;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
   overflow-y: auto;
   padding: 0;
+  margin: 0;
 `;
 
 export const Theme = styled.li`
   height: 144px;
   width: 184px;
   border-radius: 16px;
-  //margin-right: 32px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
   position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.GRAY_LIGHT};
+  border: 2px solid ${({ theme }) => theme.colors.GRAY};
   transition: all .2s;
 
   &:hover {

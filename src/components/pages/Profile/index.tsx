@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { CheckboxToggle } from 'react-rainbow-components';
 import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import Page from 'components/base-components/Page';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Tab, Tabset } from 'components/base-components/Tabset';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
-import { Tab, Tabset } from 'components/base-components/Tabset';
+import Toggle from 'components/base-components/Toggle';
 import {
   Actions,
   ProfileData,
@@ -75,9 +75,9 @@ const ProfilePage: FunctionComponent = () => {
           </Stat>
         </Stats>
         <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mT>
-          <Tab name={Tabs.Following} label={Tabs.Following} />
-          <Tab name={Tabs.Friends} label={Tabs.Friends} />
-          <Tab name={Tabs.Setting} label={Tabs.Setting} />
+          <Tab name={Tabs.Following} label={Tabs.Following} icon={Icons.MEGAPHONE} />
+          <Tab name={Tabs.Friends} label={Tabs.Friends} icon={Icons.USERS} />
+          <Tab name={Tabs.Setting} label={Tabs.Setting} icon={Icons.SETTINGS} />
         </Tabset>
       </ProfileData>
       <Settings>
@@ -121,10 +121,10 @@ const ProfilePage: FunctionComponent = () => {
           </Theme>
         </ThemeList>
         <Block>
-          <CheckboxToggle
+          <Toggle
             label="Use Dark Theme"
             value={useDarkStyle}
-            onClick={toggleLightStyle}
+            onChange={toggleLightStyle}
           />
         </Block>
       </Settings>

@@ -23,10 +23,3 @@ export const aboutIcon = (isSelected: boolean, theme: ColorScheme) => (
     secondaryColor={isSelected ? theme.BRAND : theme.WHITE}
   />
 );
-
-export const publishersIcon = (isSelected: boolean, theme: ColorScheme) => (
-  <SvgIcon
-    icon={Icons.MEGAPHONE}
-    color={isSelected ? theme.BRAND : theme.WHITE}
-  />
-);

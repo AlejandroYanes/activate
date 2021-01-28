@@ -10,6 +10,9 @@ const AboutPage: FunctionComponent = () => {
       About Page
       <br />
       <Clock value={date} onChange={(event) => setDate(getEventValue(event))} />
+      <br />
+      <br />
+      <br />
     </section>
   );
 };
