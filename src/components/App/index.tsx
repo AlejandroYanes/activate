@@ -14,7 +14,6 @@ const App: FunctionComponent = () => (
   <BrowserRouter>
     <AppProviders>
       <StyledApp>
-        {/*<SideMenu />*/}
         <AppBody>
           <Switch>
             <Route path="/" component={FeedPage} exact />
@@ -25,6 +24,7 @@ const App: FunctionComponent = () => (
             <Redirect to="/" />
           </Switch>
         </AppBody>
+        {/*<SideMenu />*/}
         {/*<SidePanel />*/}
       </StyledApp>
     </AppProviders>

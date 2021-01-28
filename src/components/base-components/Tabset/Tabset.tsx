@@ -8,7 +8,7 @@ export interface TabsetProps extends PositionProps {
   fullWidth?: boolean;
   compact?: boolean;
   activeTab: string;
-  onTabChange: (activeTab) => void;
+  onTabChange: (activeTab: string) => void;
 }
 
 const Tabset: FunctionComponent<TabsetProps> = (props) => {
