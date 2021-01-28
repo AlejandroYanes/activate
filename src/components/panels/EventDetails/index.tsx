@@ -3,8 +3,7 @@ import faker from 'faker';
 import { formatCurrency, formatDateTime } from 'helpers';
 import Button from 'components/base-components/Button';
 import Badge from 'components/base-components/Badge';
-import Avatar from 'components/base-components/Avatar';
-import { Avatars } from 'components/experience/EventCard/PresentationCard/styled';
+import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Entry, Line, Panel } from './styled';
 
 const event = {
@@ -20,11 +19,7 @@ const event = {
   tags: new Array(10).fill(1).map(() => faker.lorem.word()),
 };
 
-const avatars = [
-  { icon: (<Avatar icon="user1" />) },
-  { icon: (<Avatar icon="user2" />) },
-  { icon: (<Avatar icon="user6" />) },
-];
+const avatars = ['user1', 'user2', 'user6'];
 
 const EventDetailsPanel: FunctionComponent = () => {
   const { date, address, price, tags } = event;
@@ -69,8 +64,7 @@ const EventDetailsPanel: FunctionComponent = () => {
       </Line>
       <Entry>Attendance</Entry>
       <Line centered>
-        <Avatars avatars={avatars} maxAvatars={3} />
-        <span style={{ marginLeft: '6px' }}>+ 16k users are coming</span>
+        <AvatarGroup icons={avatars} label="+ 16k" size="small" />
       </Line>
       <Entry>Tags</Entry>
       <Line>
