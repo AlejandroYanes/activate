@@ -18,7 +18,7 @@ export const AppBody = styled.section`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  padding: 32px 0 0;
-  //padding: 32px 398px 0 122px;
+  //padding: 32px 0 0;
+  padding: 32px 398px 0 122px;
   //visibility: hidden;
 `;

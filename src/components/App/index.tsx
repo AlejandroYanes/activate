@@ -24,8 +24,8 @@ const App: FunctionComponent = () => (
             <Redirect to="/" />
           </Switch>
         </AppBody>
-        {/*<SideMenu />*/}
-        {/*<SidePanel />*/}
+        <SideMenu />
+        <SidePanel />
       </StyledApp>
     </AppProviders>
   </BrowserRouter>
