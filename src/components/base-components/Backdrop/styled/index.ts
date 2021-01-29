@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
 import { getShade } from 'helpers';
 
-export const StyledBackdrop = styled.main`
+export const StyledBackdrop = styled.section`
   position: fixed;
   top: 0;
   bottom: 0;

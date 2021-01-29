@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Avatar from 'components/base-components/Avatar';
 
-export const ProfileData = styled.div`
+export const Profile = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;

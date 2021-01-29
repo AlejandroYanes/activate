@@ -13,6 +13,7 @@ export const Card = styled.div`
 
 export const Title = styled.h3`
   margin: 16px 0;
+  line-height: 24px;
   color: ${({ theme }) => theme.colors.FONT};
 `;
 

@@ -10,7 +10,7 @@ const Backdrop: FunctionComponent<Props> = (props) => {
   const { onClick, children } = props;
 
   return ReactDOM.createPortal((
-    <StyledBackdrop onClick={onClick}>
+    <StyledBackdrop onClick={onClick} data-el="backdrop">
       {children}
     </StyledBackdrop>
   ), document.body);
