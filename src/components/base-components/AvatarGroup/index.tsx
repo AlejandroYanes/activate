@@ -17,7 +17,7 @@ const AvatarGroup: FunctionComponent<Props> = (props) => {
     icons.map((icon, index) => (
       <Avatar key={`${icon}-${index}`} size={size} icon={icon} />
     ))
-  ), [icons]);
+  ), [icons, size]);
 
   return (
     <StyledAvatarGroup>

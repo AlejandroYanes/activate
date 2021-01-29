@@ -29,9 +29,24 @@ export const StyledAvatar = styled(Avatar)`
 
 export const UserName = styled.h2`
   margin-top: 54px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
   text-align: center;
   color: ${({ theme }) => theme.colors.BRAND};
+`;
+
+export const Complement = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: 18px;
+  margin-bottom: 32px;
+  color: ${({ theme }) => theme.colors.FONT};
+
+  & span:first-child {
+    margin-bottom: 4px;
+  }
 `;
 
 export const Stats = styled.div`

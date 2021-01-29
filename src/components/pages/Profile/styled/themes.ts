@@ -1,30 +1,13 @@
 import styled from 'styled-components';
 
-export const ThemeList = styled.ul`
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  overflow-y: auto;
-  padding: 0;
-  margin: 0;
-`;
-
-export const Theme = styled.li`
-  height: 144px;
-  width: 184px;
-  border-radius: 16px;
+export const Theme = styled.div`
+  //height: 144px;
+  //width: 184px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
-  position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.GRAY};
-  transition: all .2s;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.ACCENT};
-  }
 `;
 
 export const Palette = styled.div`
@@ -54,4 +37,8 @@ export const DetailBox = styled.div`
 
 export const ThemeName = styled.span`
   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 16px;
+  color: ${({ theme }) => theme.colors.FONT};
 `;

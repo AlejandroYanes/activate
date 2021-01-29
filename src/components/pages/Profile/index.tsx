@@ -1,30 +1,30 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import Page from 'components/base-components/Page';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
+import { PickItem, PickList } from 'components/base-components/PickList';
 import IconButton from 'components/base-components/IconButton';
-import RenderIf from 'components/base-components/RenderIf';
 import Toggle from 'components/base-components/Toggle';
 import {
   Actions,
+  Block,
+  ColorSample,
+  Complement,
+  DetailBox,
+  Palette,
   ProfileData,
+  Settings,
   Stat,
   StatName,
   Stats,
   StatValue,
   StyledAvatar,
-  UserName,
-  Settings,
   SubTitle,
-  ThemeList,
   Theme,
-  Palette,
-  ColorSample,
-  DetailBox,
   ThemeName,
-  Block,
+  UserName,
 } from './styled';
 
 enum Tabs {
@@ -43,11 +43,6 @@ const ProfilePage: FunctionComponent = () => {
   } = useAppTheme();
   const [activeTab, setActiveTab] = useState(Tabs.Setting);
 
-  const handleThemeChange = useCallback((event) => {
-    const { theme } = event.target.dataset;
-    setTheme(theme);
-  }, [setTheme]);
-
   return (
     <Page>
       <ProfileData>
@@ -57,9 +52,14 @@ const ProfilePage: FunctionComponent = () => {
             onClick={() => undefined}
             icon={Icons.CREATE_PENCIL}
             color={colors.FONT}
+            variant="flat"
           />
         </Actions>
         <UserName>Alejandro Yanes</UserName>
+        <Complement>
+          <span>alejandro.yanes49@gmail.com</span>
+          <span>+53 58207203</span>
+        </Complement>
         <Stats>
           <Stat>
             <StatName>Attended</StatName>
@@ -82,47 +82,44 @@ const ProfilePage: FunctionComponent = () => {
       </ProfileData>
       <Settings>
         <SubTitle>Theme</SubTitle>
-        <ThemeList>
-          <Theme data-theme={AppTheme.Default} onClick={handleThemeChange}>
-            <Palette>
-              <ColorSample color={StartingTheme.BRAND} />
-              <ColorSample color={StartingTheme.ACCENT} />
-            </Palette>
-            <DetailBox>
-              <ThemeName>Activate</ThemeName>
-              <RenderIf condition={activeTheme === AppTheme.Default}>
-                <SvgIcon icon={Icons.CHECK_MARK} color={colors.ACCENT} />
-              </RenderIf>
-            </DetailBox>
-          </Theme>
-          <Theme data-theme={AppTheme.NeonLights} onClick={handleThemeChange}>
-            <Palette>
-              <ColorSample color={NeonLightsTheme.BRAND} />
-              <ColorSample color={NeonLightsTheme.ACCENT} />
-            </Palette>
-            <DetailBox>
-              <ThemeName>Neon Lights</ThemeName>
-              <RenderIf condition={activeTheme === AppTheme.NeonLights}>
-                <SvgIcon icon={Icons.CHECK_MARK} color={colors.ACCENT} />
-              </RenderIf>
-            </DetailBox>
-          </Theme>
-          <Theme data-theme={AppTheme.SummerVibes} onClick={handleThemeChange}>
-            <Palette>
-              <ColorSample color={SummerVibesTheme.BRAND} />
-              <ColorSample color={SummerVibesTheme.ACCENT} />
-            </Palette>
-            <DetailBox>
-              <ThemeName>Summer Vibes</ThemeName>
-              <RenderIf condition={activeTheme === AppTheme.SummerVibes}>
-                <SvgIcon icon={Icons.CHECK_MARK} color={colors.ACCENT} />
-              </RenderIf>
-            </DetailBox>
-          </Theme>
-        </ThemeList>
+        <PickList value={activeTheme} onChange={setTheme} color="info">
+          <PickItem value={AppTheme.Default}>
+            <Theme>
+              <Palette>
+                <ColorSample color={StartingTheme.BRAND} />
+                <ColorSample color={StartingTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Activate</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+          <PickItem value={AppTheme.NeonLights}>
+            <Theme>
+              <Palette>
+                <ColorSample color={NeonLightsTheme.BRAND} />
+                <ColorSample color={NeonLightsTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Neon Lights</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+          <PickItem value={AppTheme.SummerVibes}>
+            <Theme>
+              <Palette>
+                <ColorSample color={SummerVibesTheme.BRAND} />
+                <ColorSample color={SummerVibesTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Summer Vibes</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+        </PickList>
         <Block>
           <Toggle
-            label="Use Dark Theme"
+            label="Use Dark Style"
             value={useDarkStyle}
             onChange={toggleLightStyle}
           />

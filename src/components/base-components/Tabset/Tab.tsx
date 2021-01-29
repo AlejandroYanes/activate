@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useContext, useMemo, useRef } from 'react';
+import React, { FunctionComponent, ReactNode, useCallback, useContext, useMemo, useRef } from 'react';
 import { useHoverState } from 'hooks/UI';
 import { ColorScheme } from 'styles/colors';
 import { useAppTheme } from 'components/providers/Theme';
@@ -78,10 +78,11 @@ const Tab: FunctionComponent<Props> = (props) => {
     return icon;
   }, [icon, isHovered, isSelected, colors, useDarkStyle]);
 
-  const handleClick = () => onTabChange(name);
+  const handleClick = useCallback(() => onTabChange(name), [onTabChange, name]);
 
   return (
     <StyledTab
+      data-el="tab"
       ref={tabReference}
       fullWidth={fullWidth}
       compact={compact}
@@ -96,7 +97,7 @@ const Tab: FunctionComponent<Props> = (props) => {
         compact={compact}
         selected={isSelected}
       >
-        <Text compact={compact}>
+        <Text compact={compact} data-el="tab-text">
           <RenderIf condition={!!icon}>
             {iconComponent}
           </RenderIf>

@@ -63,7 +63,7 @@ export const basicColors = {
   WHITE_DARK: '#fff',
   WHITE_SHADE: getShade('#ffffff', 0.05),
   GRAY: '#6b6d76',
-  GRAY_LIGHT: '#eeeaf5',
+  GRAY_LIGHT: '#d7d9e2',
   GRAY_DARK: '#4a4b52',
   GRAY_SHADE: getShade('#6b6d76'),
   MEDIUM_GRAY: '#E5E5E5',
