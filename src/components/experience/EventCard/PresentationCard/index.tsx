@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { getMonthLabel } from 'helpers';
-import Colors from 'styles/colors';
+import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
+import AvatarGroup from 'components/base-components/AvatarGroup';
 import EventImage from './EventImage';
 import {
   Actions,
@@ -18,8 +19,6 @@ import {
   Header,
   Title,
   TitleAndAddress,
-  Users,
-  Avatars,
 } from './styled';
 
 interface Props {
@@ -31,13 +30,10 @@ interface Props {
   description?: string;
 }
 
-const avatars = [
-  { icon: (<Avatar icon="user1" />) },
-  { icon: (<Avatar icon="user2" />) },
-  { icon: (<Avatar icon="user6" />) },
-];
+const avatars = ['user1', 'user2', 'user6'];
 
 const PresentationCard: FunctionComponent<Props> = (props) => {
+  const Colors = useAppColors();
   const {
     date,
     title,
@@ -61,7 +57,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
         <TitleAndAddress>
           <Title>{title}</Title>
           <Address>
-            <SvgIcon icon={Icons.MAP_PIN} color={Colors.DARK} />
+            <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
             <span>{address}</span>
           </Address>
         </TitleAndAddress>
@@ -77,15 +73,13 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
       </Content>
       <Divider />
       <Footer>
-        <Users>
-          <Avatars avatars={avatars} maxAvatars={3} />
-          <span>+16k</span>
-        </Users>
+        <AvatarGroup icons={avatars} label="+ 16k" size="small" />
         <Actions>
           <IconButton
             mR
             size="large"
             buttonColor="info"
+            variant="flat"
             icon={Icons.SEND}
             color={Colors.INFO}
             onClick={() => undefined}
@@ -93,9 +87,10 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
           <IconButton
             size="large"
             buttonColor="success"
+            variant="flat"
             icon={Icons.BOOKMARK_FILLED}
-            color={Colors.SUCCESS}
-            secondaryColor={isBooked ? Colors.SUCCESS : 'transparent'}
+            color={Colors.ACCENT}
+            secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
             onClick={handleBookActionClick}
           />
         </Actions>

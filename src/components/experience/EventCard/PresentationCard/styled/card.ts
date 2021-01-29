@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import { cardWidth } from 'styles/variables';
 import Colors from 'styles/colors';
 
-const getBorderColor = ({ isBooked }) => isBooked ? Colors.SUCCESS : Colors.WHITE;
+const getBorderColor = ({ isBooked, theme }) => (
+  isBooked ? theme.colors.ACCENT : theme.colors.BACKGROUND
+);
 
 export const Card = styled.article.attrs((props: any) => props)`
   display: flex;
@@ -13,7 +15,7 @@ export const Card = styled.article.attrs((props: any) => props)`
   padding: 16px;
   margin-bottom: 64px;
   width: ${cardWidth};
-  background-color: ${Colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   border: 1px solid ${getBorderColor};
 
   &:last-child {
@@ -39,17 +41,3 @@ export const Divider = styled.div`
   margin: 16px 0;
   background-color: ${Colors.GRAY_SHADE};
 `;
-
-// export const PriceBadge = styled.div`
-//   display: flex;
-//   align-items: center;
-//   padding: 6px 8px;
-//   border-radius: 6px;
-//   margin: 0 0 auto auto;
-//    background-color: ${Colors.GRAY_SHADE};
-//   color: ${Colors.GRAY};
-//
-//   & span {
-//     margin-left: 4px;
-//   }
-// `;

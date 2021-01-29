@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { getMargins, PositionProps } from 'helpers';
-import Colors from 'styles/colors';
 import { inputBorderRadius } from 'styles/variables';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
@@ -15,11 +14,21 @@ const getPadding = (count) => count * 20 + 20;
 const getLeftPadding = (props) => `padding-left: ${getPadding(props.leftItems)}px`;
 const getRightPadding = (props) => `padding-right: ${getPadding(props.rightItems)}px`;
 
+const getFocusStyles = (props) => {
+  const { theme: { useDarkStyle, colors } } = props;
+  const focusedColor = useDarkStyle ? colors.BRAND : colors.BRAND_DARK;
+
+  return `
+    border-color: ${focusedColor};
+    color: ${focusedColor};
+  `;
+};
+
 export const StyledInput = styled.input.attrs((props: any) => props)`
   border-radius: ${inputBorderRadius};
-  border: 1px solid ${Colors.MEDIUM_GRAY};
-  background-color: ${Colors.WHITE};
-  color: ${Colors.DARK};
+  border: 1px solid ${({ theme }) => theme.colors.MEDIUM_GRAY};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  color: ${({ theme }) => theme.colors.FONT};
   font-size: 16px;
   letter-spacing: 0.5px;
   outline: none;
@@ -33,16 +42,15 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   transition: all 150ms linear;
 
   &::selection {
-    background-color: ${Colors.BRAND};
-    color: ${Colors.WHITE};
+    background-color: ${({ theme }) => theme.colors.BRAND};
+    color: ${({ theme }) => theme.colors.WHITE};
   }
 
   &:hover {
-    border-color: ${Colors.DARK};
+    border-color: ${({ theme }) => theme.colors.FONT};
   }
 
   &:focus {
-    border-color: ${Colors.BRAND_DARK};
-    color: ${Colors.BRAND_DARK};
+    ${getFocusStyles};
   }
 `;

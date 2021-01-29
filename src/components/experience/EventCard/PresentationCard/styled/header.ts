@@ -34,7 +34,7 @@ export const Title = styled.h3`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: ${Colors.DARK};
+  color: ${({ theme }) => theme.colors.FONT};
 `;
 
 export const Address = styled.div`
@@ -47,6 +47,6 @@ export const Address = styled.div`
     font-size: 16px;
     line-height: 20px;
     margin-left: 4px;
-    color: ${Colors.DARK};
+    color: ${({ theme }) => theme.colors.FONT};
   }
 `;

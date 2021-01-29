@@ -14,7 +14,7 @@ export const StyledTextArea = styled.textarea`
   border-radius: 10px;
   border: 1px solid ${Colors.MEDIUM_GRAY};
   background-color: ${Colors.WHITE};
-  color: ${Colors.DARK};
+  color: ${Colors.FONT};
   font-size: 16px;
   letter-spacing: 0.5px;
   outline: none;
@@ -31,7 +31,7 @@ export const StyledTextArea = styled.textarea`
   }
 
   &:hover {
-    border-color: ${Colors.DARK};
+    border-color: ${Colors.FONT};
   }
 
   &:focus {

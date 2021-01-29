@@ -42,6 +42,9 @@ import MoreVrtIcon from './MoreVrt';
 import FilterIcon from './Filter';
 import FormIcon from './Form';
 import CommentsIcon from './Comments';
+import CreatePenIcon from './CreatePen';
+import EditPenIcon from './EditPen';
+import CheckMarkIcon from './CheckMark';
 
 export enum Icons {
   HOME = 'home',
@@ -87,6 +90,9 @@ export enum Icons {
   FILTER = 'filer',
   FORM = 'form',
   COMMENTS = 'comments',
+  CREATE_PENCIL = 'create-pencil',
+  EDIT_PENCIL = 'edit-pencil',
+  CHECK_MARK = 'check-mark',
 }
 
 export const icons = {
@@ -133,4 +139,7 @@ export const icons = {
   [Icons.FILTER]: (props) => <FilterIcon {...props} />,
   [Icons.FORM]: (props) => <FormIcon {...props} />,
   [Icons.COMMENTS]: (props) => <CommentsIcon {...props} />,
+  [Icons.CREATE_PENCIL]: (props) => <CreatePenIcon {...props} />,
+  [Icons.EDIT_PENCIL]: (props) => <EditPenIcon {...props} />,
+  [Icons.CHECK_MARK]: (props) => <CheckMarkIcon {...props} />,
 };

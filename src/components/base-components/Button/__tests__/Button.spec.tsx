@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
+import ThemeProvider from 'components/providers/Theme';
 import Button from 'components/base-components/Button';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 
 const onClickMock = jest.fn();
 
@@ -15,12 +15,14 @@ describe('Button base component', () => {
     const rightIcon = <SvgIcon icon={Icons.HEART_FILLED} />;
     const leftIcon = <SvgIcon icon={Icons.BELL} />;
     const button = mount(
-      <Button
-        onClick={onClickMock}
-        label="button 1"
-        leftIcon={leftIcon}
-        rightIcon={rightIcon}
-      />,
+      <ThemeProvider>
+        <Button
+          onClick={onClickMock}
+          label="button 1"
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
+        />
+      </ThemeProvider>,
     );
 
     button.simulate('click');
@@ -32,11 +34,13 @@ describe('Button base component', () => {
 
   it('should show the is loading text', () => {
     const button = mount(
-      <Button
-        onClick={onClickMock}
-        label="button 1"
-        isLoading
-      />,
+      <ThemeProvider>
+        <Button
+          onClick={onClickMock}
+          label="button 1"
+          isLoading
+        />
+      </ThemeProvider>,
     );
 
     expect(button.text()).toBe('is loading');
@@ -44,13 +48,15 @@ describe('Button base component', () => {
 
   it('should return the content passed as children over the one generated from props', () => {
     const button = mount(
-      <Button
-        onClick={onClickMock}
-        label="button 1"
-        isLoading
-      >
-        expected text
-      </Button>,
+      <ThemeProvider>
+        <Button
+          onClick={onClickMock}
+          label="button 1"
+          isLoading
+        >
+          expected text
+        </Button>
+      </ThemeProvider>,
     );
 
     expect(button.text()).toBe('expected text');

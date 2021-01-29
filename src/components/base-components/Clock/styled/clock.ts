@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 const outerSize = 280;
 const markerSize = 36;
@@ -21,7 +20,7 @@ export const OuterRing = styled.div`
   right: 0;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.MEDIUM_GRAY};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 export const Content = styled.div`
@@ -31,16 +30,17 @@ export const Content = styled.div`
 `;
 
 const getActiveStyles = (props) => {
-  const { active } = props;
+  const { active, theme } = props;
 
   if (active) {
     return `
-      background-color: ${Colors.BRAND_DARK};
-      color: ${Colors.WHITE};
+      background-color: ${theme.colors.BRAND};
+      color: ${theme.colors.WHITE};
     `;
   }
   return `
     background-color: transparent;
+    color: ${theme.colors.FONT};
   `;
 };
 
@@ -53,7 +53,7 @@ export const Marker = styled.button`
   align-items: center;
   border: none;
   border-radius: 50%;
-  color: ${Colors.DARK};
+  color: ${({ theme }) => theme.colors.FONT};
   height: ${markerSize}px;
   width: ${markerSize}px;
   font-size: ${markerSize / 2}px;
@@ -63,8 +63,8 @@ export const Marker = styled.button`
   transition: all 150ms linear;
 
   &:active {
-    background-color: ${Colors.BRAND_DARK};
-    color: ${Colors.WHITE};
+    background-color: ${({ theme }) => theme.colors.BRAND};
+    color: ${({ theme }) => theme.colors.WHITE};
   }
 `;
 
@@ -77,7 +77,7 @@ export const HourLabel = styled.div`
   margin: auto 25%;
   height: 40px;
   border-radius: 6px;
-  color: ${Colors.DARK};
+  color: ${({ theme }) => theme.colors.FONT};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +94,7 @@ export const HourButton = styled.button.attrs((props: any) => props)`
   transition: all 150ms linear;
 
   &:active {
-    background-color: ${Colors.BRAND_DARK};
-    color: ${Colors.WHITE};
+    background-color: ${({ theme }) => theme.colors.BRAND};
+    color: ${({ theme }) => theme.colors.WHITE};
   }
 `;

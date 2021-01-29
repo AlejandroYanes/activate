@@ -1,10 +1,33 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { inputBorderRadius } from 'styles/variables';
+
+export const Separator = styled.div`
+  width: 1px;
+  background-color: ${({ theme }) => theme.colors.GRAY};
+  height: 20px;
+`;
+
+export const DateStamp = styled.span`
+  margin: 0 16px;
+`;
 
 const getRightPadding = (props) => `${props.padRight ? 38 : 16}px`;
 
 const getDirection = (props) => props.vertical ? 'column' : 'row';
+
+const getFocusStyles = (props) => {
+  const { theme: { useDarkStyle, colors } } = props;
+  const focusedColor = useDarkStyle ? colors.BRAND : colors.BRAND_DARK;
+
+  return `
+    border-color: ${focusedColor};
+    color: ${focusedColor};
+
+    ${Separator} {
+      background-color: ${focusedColor};
+    }
+  `;
+};
 
 export const StyledContent = styled.div.attrs((props: any) => props)`
   display: flex;
@@ -16,25 +39,15 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
   font-size: 16px;
   letter-spacing: 0.5px;
   outline: none;
-  border: 1px solid ${Colors.MEDIUM_GRAY};
-  background-color: ${Colors.WHITE};
+  border: 1px solid ${({ theme }) => theme.colors.MEDIUM_GRAY};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   cursor: pointer;
 
   &:hover {
-    border-color: ${Colors.DARK};
+    border-color: ${({ theme }) => theme.colors.FONT};
   }
 
   &:focus {
-    border-color: ${Colors.BRAND_DARK};
+    ${getFocusStyles};
   }
-`;
-
-export const Separator = styled.div`
-  width: 1px;
-  background-color: ${Colors.GRAY};
-  height: 20px;
-`;
-
-export const DateStamp = styled.span`
-  margin: 0 16px;
 `;

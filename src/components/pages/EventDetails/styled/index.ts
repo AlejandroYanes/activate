@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 export const StyledEventDetail = styled.article`
   display: flex;
@@ -7,13 +6,13 @@ export const StyledEventDetail = styled.article`
   box-sizing: border-box;
   border-radius: 16px;
   padding: 16px;
-  background-color: ${Colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 
 export const Title = styled.h1`
-  color: ${Colors.DARK};
+  color: ${({ theme }) => theme.colors.FONT};
   text-align: center;
-  margin: 0 0 16px;
+  margin: 8px 0 16px;
   font-size: 24px;
 `;
 

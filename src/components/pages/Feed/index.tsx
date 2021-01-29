@@ -1,9 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
 import { addDays } from 'date-fns';
 import DayCalendar from 'components/base-components/DayCalendar';
+import Page from 'components/base-components/Page';
 import { PresentationCard } from 'components/experience/EventCard';
 import { events } from '../Discover/events';
-import { Content, Section, StyledFeed, Subheader, Title } from './styled';
+import { SubHeader } from './styled';
 
 const today = new Date();
 const days = [
@@ -21,19 +22,12 @@ const FeedPage: FunctionComponent = () => {
   const [selectedDay, setSelectedDay] = useState(days[0]);
 
   return (
-    <StyledFeed data-el="feed-page">
-      <Section>
-        <Title>
-          Your upcoming events
-        </Title>
-        <Subheader>
-          <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />
-        </Subheader>
-        <Content>
-          <PresentationCard {...events[0]} />
-        </Content>
-      </Section>
-    </StyledFeed>
+    <Page title="Your upcoming events" data-el="feed-page">
+      <SubHeader>
+        <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />
+      </SubHeader>
+      <PresentationCard {...events[0]} />
+    </Page>
   );
 };
 

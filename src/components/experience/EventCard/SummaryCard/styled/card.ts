@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { getMargins } from 'helpers';
 
 export const Card = styled.div`
@@ -7,14 +6,15 @@ export const Card = styled.div`
   flex-direction: column;
   padding: 16px;
   border-radius: 16px;
-  background-color: ${Colors.WHITE};
-  border: 1px solid ${Colors.BRAND_SHADE};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  border: 1px solid ${({ theme }) => theme.colors.BRAND_SHADE};
   ${getMargins}
 `;
 
 export const Title = styled.h3`
-  margin: 0 0 6px;
-  color: ${Colors.DARK};
+  margin: 16px 0;
+  line-height: 24px;
+  color: ${({ theme }) => theme.colors.FONT};
 `;
 
 export const Address = styled.div`
@@ -22,8 +22,8 @@ export const Address = styled.div`
   align-items: center;
 
   & span {
-    font-size: 12px;
-    color: ${Colors.GRAY};
+    font-size: 14px;
+    color: ${({ theme }) => theme.colors.FONT};
     margin-left: 4px;
   }
 `;
@@ -33,7 +33,7 @@ export const Divider = styled.div`
   width: 100%;
   border-radius: 2px;
   margin: 16px 0;
-  background-color: ${Colors.GRAY_SHADE};
+  background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 `;
 
 export const Footer = styled.div`

@@ -14,7 +14,7 @@ export enum AuxPanelSection {
   EventDetails = 'EventDetails',
 }
 
-interface PanelSectionsValue {
+interface PanelSectionsContextValue {
   sections: AuxPanelSection[];
   activeSection: AuxPanelSection;
   actions: {
@@ -25,33 +25,59 @@ interface PanelSectionsValue {
   };
 }
 
-const PanelSectionsContext = createContext<PanelSectionsValue>(undefined);
+interface PanelSectionsState {
+  sections: AuxPanelSection[];
+  activeSection: AuxPanelSection;
+}
+
+const PanelSectionsContext = createContext<PanelSectionsContextValue>(undefined);
 
 const basicSections: AuxPanelSection[] = [
-  // AuxPanelSection.EventDetails,
   AuxPanelSection.Upcoming,
   AuxPanelSection.Notifications,
 ];
 
+const initialState = {
+  sections: basicSections,
+  activeSection: AuxPanelSection.Upcoming,
+};
+
 const PanelSectionsProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [sections, setSections] = useState<AuxPanelSection[]>(basicSections);
-  const [activeSection, setActiveSection] = useState<AuxPanelSection>(AuxPanelSection.Upcoming);
+  const [state, setState] = useState<PanelSectionsState>(initialState);
 
   const addSection = useCallback((nextSection: AuxPanelSection) => {
-    setSections([...sections, nextSection]);
-  }, [sections]);
+    setState((oldState) => ({
+      ...oldState,
+      sections: [...oldState.sections, nextSection],
+    }));
+  }, []);
 
   const removeSection = useCallback((section: AuxPanelSection) => {
-    setSections(sections.filter((s) => s !== section));
-  }, [sections]);
+    setState((oldState) => {
+      const { sections: oldSections, activeSection: oldActive } = oldState;
+      const nextSections = oldSections.filter((s) => s !== section);
+      const isActiveSection = section === oldActive;
 
-  const resetPanelSections = useCallback(() => setSections(basicSections), []);
+      return {
+        sections: nextSections,
+        activeSection: isActiveSection ? nextSections[0] : oldActive,
+      };
+    });
+  }, []);
 
-  const providerValue = useMemo<PanelSectionsValue>(
+  const setActiveSection = useCallback((section: AuxPanelSection) => {
+    setState((oldState) => ({
+      ...oldState,
+      activeSection: section,
+    }));
+  }, []);
+
+  const resetPanelSections = useCallback(() => setState(initialState), []);
+
+  const providerValue = useMemo<PanelSectionsContextValue>(
     () => ({
-      sections,
-      activeSection,
+      ...state,
       actions: {
         addSection,
         removeSection,
@@ -59,7 +85,7 @@ const PanelSectionsProvider: FunctionComponent = (props) => {
         resetPanelSections,
       },
     }),
-    [sections, resetPanelSections, addSection, removeSection, activeSection],
+    [state, resetPanelSections, addSection, removeSection, setActiveSection],
   );
 
   return (

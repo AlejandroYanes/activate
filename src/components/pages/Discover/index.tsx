@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import Page from 'components/base-components/Page';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { PresentationCard } from 'components/experience/EventCard';
-import { Content, Header, Title } from './styled';
 import { events } from './events';
 
 enum Tabs {
@@ -30,19 +30,14 @@ const DiscoverPage: FunctionComponent = () => {
   }, []);
 
   return (
-    <section>
-      <Header>
-        <Title>Discover new events</Title>
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mB>
-          <Tab name={Tabs.FOR_YOU} label="For you" />
-          <Tab name={Tabs.TRENDING} label="Trending" icon={Icons.FIRE} />
-          <Tab name={Tabs.TODAY} label="Today" />
-        </Tabset>
-      </Header>
-      <Content>
-        {eventCards}
-      </Content>
-    </section>
+    <Page title="Discover new events">
+      <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mB>
+        <Tab name={Tabs.FOR_YOU} label="For you" />
+        <Tab name={Tabs.TRENDING} label="Trending" icon={Icons.FIRE} />
+        <Tab name={Tabs.TODAY} label="Today" />
+      </Tabset>
+      {eventCards}
+    </Page>
   );
 };
 

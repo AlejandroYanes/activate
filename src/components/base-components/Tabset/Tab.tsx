@@ -1,9 +1,9 @@
-import React, { FunctionComponent, ReactNode, useContext, useMemo, useRef } from 'react';
+import React, { FunctionComponent, ReactNode, useCallback, useContext, useMemo, useRef } from 'react';
 import { useHoverState } from 'hooks/UI';
-import Colors from 'styles/colors';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
+import { ColorScheme } from 'styles/colors';
+import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
-import SvgIcon from 'components/base-components/SvgIcon';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import tabsetContext from './context';
 import { Content, Label, Mark, StyledTab, Text } from './styled';
 
@@ -24,23 +24,29 @@ const markAnimationControls = {
 //   expanded: { scaleX: 1, transition: { delay: 2 } },
 // };
 
-function getIconColor(isSelected, isHovered) {
+function getIconColor(
+  isSelected: boolean,
+  isHovered: boolean,
+  useDarkStyle: boolean,
+  colors: ColorScheme,
+) {
   if (isSelected && isHovered) {
-    return Colors.BRAND_DARK;
+    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
   }
 
   if (isSelected) {
-    return Colors.BRAND;
+    return colors.BRAND;
   }
 
   if (isHovered) {
-    return Colors.BRAND_DARK;
+    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
   }
 
-  return Colors.GRAY;
+  return colors.GRAY;
 }
 
 const Tab: FunctionComponent<Props> = (props) => {
+  const { colors, useDarkStyle } = useAppTheme();
   const { name, label, icon } = props;
   const {
     activeTab,
@@ -65,17 +71,18 @@ const Tab: FunctionComponent<Props> = (props) => {
       return (
         <SvgIcon
           icon={icon as Icons}
-          color={getIconColor(isSelected, isHovered)}
+          color={getIconColor(isSelected, isHovered, useDarkStyle, colors)}
         />
       );
     }
     return icon;
-  }, [icon, isHovered, isSelected]);
+  }, [icon, isHovered, isSelected, colors, useDarkStyle]);
 
-  const handleClick = () => onTabChange(name);
+  const handleClick = useCallback(() => onTabChange(name), [onTabChange, name]);
 
   return (
     <StyledTab
+      data-el="tab"
       ref={tabReference}
       fullWidth={fullWidth}
       compact={compact}
@@ -90,7 +97,7 @@ const Tab: FunctionComponent<Props> = (props) => {
         compact={compact}
         selected={isSelected}
       >
-        <Text compact={compact}>
+        <Text compact={compact} data-el="tab-text">
           <RenderIf condition={!!icon}>
             {iconComponent}
           </RenderIf>

@@ -1,28 +1,85 @@
 import React, { FunctionComponent, useState } from 'react';
-import Avatar from 'components/base-components/Avatar';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
-import { ProfileData, StyledProfile, UserName } from './styled';
+import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
+import { AppTheme, useAppTheme } from 'components/providers/Theme';
+import { PickItem, PickList } from 'components/base-components/PickList';
+import Page from 'components/base-components/Page';
+import Toggle from 'components/base-components/Toggle';
+import ProfileData from './ProfileData';
+import {
+  Block,
+  ColorSample,
+  DetailBox,
+  Palette,
+  Settings,
+  SubTitle,
+  Theme,
+  ThemeName,
+} from './styled';
 
-enum Tabs {
-  UPCOMING = 'UPCOMING',
-  SETTINGS = 'SETTINGS',
+export enum ProfileTabs {
+  Following = 'Following',
+  Friends = 'Friends',
+  Setting = 'Settings',
 }
 
 const ProfilePage: FunctionComponent = () => {
-  const [activeTab, setActiveTab] = useState(Tabs.UPCOMING);
+  const {
+    theme: activeTheme,
+    setTheme,
+    useDarkStyle,
+    toggleLightStyle,
+  } = useAppTheme();
+  const [activeTab, setActiveTab] = useState(ProfileTabs.Setting);
 
   return (
-    <StyledProfile>
-      <ProfileData>
-        <Avatar size="x-large" icon="user10" />
-        <UserName>Scarlet</UserName>
-      </ProfileData>
-      <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mB>
-        <Tab name={Tabs.UPCOMING} label="Upcoming Events" icon={Icons.BOOKMARKS} />
-        <Tab name={Tabs.SETTINGS} label="Settings" icon={Icons.SETTINGS} />
-      </Tabset>
-    </StyledProfile>
+    <Page>
+      <ProfileData activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Settings>
+        <SubTitle>Theme</SubTitle>
+        <PickList value={activeTheme} onChange={setTheme} color="info">
+          <PickItem value={AppTheme.Default}>
+            <Theme>
+              <Palette>
+                <ColorSample color={StartingTheme.BRAND} />
+                <ColorSample color={StartingTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Activate</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+          <PickItem value={AppTheme.NeonLights}>
+            <Theme>
+              <Palette>
+                <ColorSample color={NeonLightsTheme.BRAND} />
+                <ColorSample color={NeonLightsTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Neon Lights</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+          <PickItem value={AppTheme.SummerVibes}>
+            <Theme>
+              <Palette>
+                <ColorSample color={SummerVibesTheme.BRAND} />
+                <ColorSample color={SummerVibesTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Summer Vibes</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+        </PickList>
+        <Block>
+          <Toggle
+            label="Use Dark Style"
+            value={useDarkStyle}
+            onChange={toggleLightStyle}
+          />
+        </Block>
+      </Settings>
+    </Page>
   );
 };
 

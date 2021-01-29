@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { getMargins } from 'helpers';
+import { getHoveredStyles, getVariantStyles } from 'components/base-components/Button/styled';
 import { IconButtonProps } from '..';
 
 const getSize = (props: IconButtonProps) => {
@@ -40,56 +40,7 @@ const getSize = (props: IconButtonProps) => {
   }
 };
 
-const getVariantStyles = (props: IconButtonProps) => {
-  const { variant, color } = props;
-  const borderStyle = 'solid 1px ';
-
-  switch (variant) {
-    case 'base':
-      return `
-        color: ${Colors[color.toUpperCase()]};
-        background-color: transparent;
-        border: ${borderStyle} transparent;
-      `;
-    case 'outline':
-      return `
-        color: ${Colors[color.toUpperCase()]};
-        background-color: transparent;
-        border: ${borderStyle} ${Colors[color.toUpperCase()]};
-      `;
-    default: {
-      const fontColor = color === 'white' ? Colors.DARK : Colors.WHITE;
-
-      return `
-        color: ${fontColor};
-        background-color: ${Colors[color.toUpperCase()]};
-        border: ${borderStyle} ${Colors[color.toUpperCase()]};
-      `;
-    }
-  }
-};
-
-const getHoveredStyles = (props: IconButtonProps) => {
-  const { variant, color } = props;
-
-  switch (variant) {
-    case 'base':
-      return `
-        background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
-      `;
-    case 'outline':
-      return `
-        border-color: ${Colors[`${color.toUpperCase()}_DARK`]};
-        background-color: ${Colors[`${color.toUpperCase()}_SHADE`]};
-      `;
-    default:
-      return `
-        background-color: ${Colors[`${color.toUpperCase()}_DARK`]};
-      `;
-  }
-};
-
-const getToggleStyles = (props: IconButtonProps) => {
+const getToggleStyles = (props) => {
   const { toggle } = props;
 
   if (toggle) {

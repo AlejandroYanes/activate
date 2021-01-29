@@ -32,6 +32,15 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
   } = props;
 
   const [showBackdrop, setShowBackdrop] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   const openDatePickerModal = () => setShowBackdrop(true);
   const closeDatePickerModal = (event?) => {
@@ -51,19 +60,22 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
   return (
     <>
       <StyledDateTimePicker id={id} {...rest}>
-        <InputLabel text={label} />
+        <InputLabel text={label} isFocused={isFocused} />
         <Content
           type={type}
           value={value}
           padRight={showClear}
+          isFocused={isFocused}
           onClick={openDatePickerModal}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
         <RenderIf condition={showClear && !!value}>
           <AbsoluteContent floatRight>
             <IconButton
               onClick={handleClear}
               icon={Icons.CLOSE}
-              buttonColor="dark"
+              buttonColor="font"
               size="small"
             />
           </AbsoluteContent>

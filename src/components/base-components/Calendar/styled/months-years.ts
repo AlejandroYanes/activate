@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import Button from 'components/base-components/Button';
 
 export const StyledList = styled.div`
@@ -10,49 +9,31 @@ export const StyledList = styled.div`
 `;
 
 const getBasicStyles = (props) => {
-  const { isSelected } = props;
+  const { isSelected, theme: { useDarkStyle, colors } } = props;
 
   if (isSelected) {
     return `
-    background-color: ${Colors.BRAND};
-    color: ${Colors.WHITE};
+    background-color: ${useDarkStyle ? colors.BRAND_DARK : colors.BRAND};
+    color: ${colors.WHITE};
     `;
   }
   return '';
-
-  // return `
-  //   background-color: transparent;
-  //   color: ${Colors.GRAY};
-  // `;
 };
 
 const getHoverStyles = (props) => {
-  const { isSelected } = props;
+  const { isSelected, theme: { useDarkStyle, colors } } = props;
 
   if (isSelected) {
     return `
-    background-color: ${Colors.BRAND_DARK};
-    color: ${Colors.WHITE};
+    background-color: ${useDarkStyle ? colors.BRAND : colors.BRAND_DARK};
+    color: ${colors.WHITE};
     `;
   }
   return '';
-
-  // return `
-  //   color: ${Colors.GRAY_DARK};
-  //   background-color: ${Colors.GRAY_SHADE};
-  // `;
 };
 
 export const Item = styled(Button).attrs((props: any) => props)`
   width: 30%;
-  //height: 32px;
-  //font-size: 16px;
-  //border-radius: 50px;
-  //margin-bottom: 16px;
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  //cursor: pointer;
   ${getBasicStyles};
 
   &:hover {

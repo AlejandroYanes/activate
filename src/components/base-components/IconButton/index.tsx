@@ -4,8 +4,8 @@ import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
 import { StyledIconButton } from './styled';
 
 export interface IconButtonProps extends IconProps, PositionProps {
-  variant?: 'base' | 'fill' | 'outline';
-  buttonColor?: 'brand' | 'accent' | 'info' | 'success' | 'error' | 'dark' | 'gray' | 'white';
+  variant?: 'base' | 'flat' | 'fill';
+  buttonColor?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'font';
   size?: 'small' | 'medium' | 'large' | 'x-large';
   onClick: (event) => void;
   iconClassName?: string;

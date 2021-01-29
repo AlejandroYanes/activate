@@ -10,7 +10,7 @@ export const MenuItem = styled.li`
   align-items: stretch;
   height: ${elementHeight};
   padding: 0 8px;
-  color: ${Colors.DARK};
+  color: ${Colors.FONT};
   font-size: 1rem;
   transition: font-size ease-in-out 120ms;
 

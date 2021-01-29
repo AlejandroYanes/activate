@@ -1,12 +1,13 @@
 /* eslint-disable max-len */
 import React, { FunctionComponent } from 'react';
-import Colors from 'styles/colors';
+import { useAppColors } from 'components/providers/Theme';
 
 interface Props {
   className?: string;
 }
 
 const SelectedBubble: FunctionComponent<Props> = (props: Props) => {
+  const Colors = useAppColors();
   const { className } = props;
 
   return (

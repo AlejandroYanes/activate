@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { ZLevels } from 'styles/z-levels';
 import SelectedBubble from '../SelectedBubble';
 
@@ -11,7 +10,7 @@ export const Block = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  background-color: ${Colors.BRAND};
+  background-color: ${({ theme }) => theme.colors.BRAND};
 `;
 
 export const StyledLink = styled(Link)`
@@ -28,14 +27,12 @@ export const StyledBubble = styled(SelectedBubble).attrs((props: { selected?: bo
   transition: all .2s;
 `;
 
-const getColorStyle = ({ selected }) => selected ? Colors.BRAND : Colors.WHITE;
-
-export const Label = styled.span.attrs((props: { selected: boolean }) => props)`
+export const Label = styled.span`
   display: flex;
   font-size: 20px;
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
-  color: ${getColorStyle};
   z-index: ${ZLevels.sideMenuBlocks};
 `;

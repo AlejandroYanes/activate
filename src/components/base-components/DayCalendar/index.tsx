@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
-import { getMonthLabel } from 'helpers';
+import { getMonthLabel, PositionProps } from 'helpers';
 import RenderIf from 'components/base-components/RenderIf';
 import { Container, Month, Day, DayNumber, Mark } from './styled';
 
-interface Props {
+interface Props extends PositionProps {
   days: Date[];
   value: Date;
   onChange: (date: Date) => void;
@@ -24,7 +24,7 @@ function matchDays(dateLeft: Date, dateRight: Date) {
 }
 
 const DayCalendar: FunctionComponent<Props> = (props) => {
-  const { days, value, onChange } = props;
+  const { days, value, onChange, ...rest } = props;
 
   const handleDayClick = useCallback((event) => {
     const { day } = event.target.dataset;
@@ -67,7 +67,7 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
   ), [days, value, handleDayClick]);
 
   return (
-    <Container>
+    <Container {...rest}>
       <AnimateSharedLayout>
         {children}
       </AnimateSharedLayout>

@@ -1,18 +1,22 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
+import { ZLevels } from 'styles/z-levels';
 
-export const Panel = styled.aside`
+export const StyledSidePanel = styled.aside`
+  padding: 32px 32px 32px 0;
+  position: fixed;
+  right: 0;
+  z-index: ${ZLevels.sidePanels};
+`;
+
+export const Panel = styled.div`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 16px;
   width: 380px;
-  margin: 32px 32px 32px 0;
+  //margin: 32px 32px 32px 0;
   padding: 16px 0 24px;
-  position: absolute;
-  right: 0;
-  z-index: 10;
-  background-color: ${Colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 
 export const PanelHeader = styled.div`

@@ -12,6 +12,7 @@ import user9 from 'assets/icons/users/user9.svg';
 import user10 from 'assets/icons/users/user10.svg';
 import user11 from 'assets/icons/users/user11.svg';
 import user12 from 'assets/icons/users/user12.svg';
+import { PositionProps } from 'helpers';
 import { StyledAvatar, Img } from './styled';
 
 const icons = {
@@ -29,7 +30,7 @@ const icons = {
   user12,
 };
 
-export interface AvatarProps {
+export interface AvatarProps extends PositionProps {
   icon: string;
   size?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
   alt?: string;
@@ -37,10 +38,10 @@ export interface AvatarProps {
 }
 
 const Avatar: FunctionComponent<AvatarProps> = (props) => {
-  const { icon, size, alt, onClick } = props;
+  const { icon, size, alt, onClick, ...rest } = props;
 
   return (
-    <StyledAvatar onClick={onClick} role="button" tabIndex={0} size={size}>
+    <StyledAvatar onClick={onClick} role="button" tabIndex={0} size={size} {...rest}>
       <Img alt={alt} src={icons[icon]} size={size} />
     </StyledAvatar>
   );

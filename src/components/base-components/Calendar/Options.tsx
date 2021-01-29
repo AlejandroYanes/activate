@@ -60,7 +60,7 @@ const Options: FunctionComponent<Props> = (props) => {
         onClick={() => onSelect(value)}
         label={label}
         leftIcon={icon}
-        color="dark"
+        color="font"
         variant="flat"
         align="start"
         mB

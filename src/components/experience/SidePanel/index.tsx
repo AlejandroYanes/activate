@@ -5,9 +5,9 @@ import { Case, Switch } from 'components/base-components/Switch';
 import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
 import NotificationsPanel from 'components/panels/Notifications';
 import SearchPanel from 'components/panels/Search';
-import { Panel, PanelBody, PanelHeader } from './styled';
+import EventDetailsPanel from 'components/panels/EventDetails';
 import { resolveAvailableTabs } from './sections';
-import EventDetailsPanel from '../../panels/EventDetails';
+import { StyledSidePanel, Panel, PanelBody, PanelHeader } from './styled';
 
 const SidePanel: FunctionComponent = () => {
   const { sections, activeSection } = useActivePanelSections();
@@ -15,32 +15,27 @@ const SidePanel: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(activeSection);
 
   useEffect(() => {
-    if (sections.some((section) => section !== activeTab)) {
-      setActiveTab(sections[0]);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [sections]);
-
-  useEffect(() => {
     setActiveTab(activeSection);
   }, [activeSection]);
 
   return (
-    <Panel>
-      <PanelHeader data-el="aux-panel-header">
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth compact>
-          {availableTabs}
-        </Tabset>
-      </PanelHeader>
-      <PanelBody data-el="aux-panel-body">
-        <Switch by={activeTab}>
-          <Case value={AuxPanelSection.Search} component={SearchPanel} />
-          <Case value={AuxPanelSection.Upcoming} component={UpcomingEventsPanel} />
-          <Case value={AuxPanelSection.EventDetails} component={EventDetailsPanel} />
-          <Case value={AuxPanelSection.Notifications} component={NotificationsPanel} />
-        </Switch>
-      </PanelBody>
-    </Panel>
+    <StyledSidePanel>
+      <Panel>
+        <PanelHeader data-el="aux-panel-header">
+          <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth compact>
+            {availableTabs}
+          </Tabset>
+        </PanelHeader>
+        <PanelBody data-el="aux-panel-body">
+          <Switch by={activeTab}>
+            <Case value={AuxPanelSection.Search} component={SearchPanel} />
+            <Case value={AuxPanelSection.Upcoming} component={UpcomingEventsPanel} />
+            <Case value={AuxPanelSection.EventDetails} component={EventDetailsPanel} />
+            <Case value={AuxPanelSection.Notifications} component={NotificationsPanel} />
+          </Switch>
+        </PanelBody>
+      </Panel>
+    </StyledSidePanel>
   );
 };
 

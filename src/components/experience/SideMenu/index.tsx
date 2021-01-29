@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
 import Avatar from 'components/base-components/Avatar';
 import { EmptyBlock, MenuList, SideMenu as StyledSideMenu } from './styled';
-import { aboutIcon, discoverIcon, homeIcon, publishersIcon } from './icons';
+import { aboutIcon, discoverIcon, homeIcon } from './icons';
 import MenuBlock from './MenuBlock';
 
 const SideMenu: FunctionComponent = () => {
@@ -15,27 +15,22 @@ const SideMenu: FunctionComponent = () => {
         <MenuBlock
           currentPath={pathname}
           path="/profile"
-          label={<Avatar icon="user2" size="x-small" />}
+          icon={<Avatar icon="user2" size="x-small" />}
         />
         <MenuBlock
           currentPath={pathname}
           path="/"
-          label={homeIcon}
+          icon={homeIcon}
         />
         <MenuBlock
           currentPath={pathname}
           path="/discover"
-          label={discoverIcon}
-        />
-        <MenuBlock
-          currentPath={pathname}
-          path="/publishers"
-          label={publishersIcon}
+          icon={discoverIcon}
         />
         <MenuBlock
           currentPath={pathname}
           path="/about"
-          label={aboutIcon}
+          icon={aboutIcon}
         />
         <EmptyBlock />
       </MenuList>
