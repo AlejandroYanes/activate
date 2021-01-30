@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
+import { Title } from 'components/base-components/Typography';
 
 export const Settings = styled.div`
   display: flex;
@@ -9,9 +9,7 @@ export const Settings = styled.div`
   padding: 24px;
 `;
 
-export const SubTitle = styled.h3`
-  font-weight: lighter;
-  color: ${Colors.GRAY};
+export const SubTitle = styled(Title)`
   margin: 0 0 24px;
 `;
 

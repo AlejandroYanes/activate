@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { cardWidth } from 'styles/variables';
+import { Title as TitleComponent } from 'components/base-components/Typography';
 
 export const StyledPage = styled.article`
   display: flex;
@@ -9,8 +10,6 @@ export const StyledPage = styled.article`
   box-sizing: border-box;
 `;
 
-export const Title = styled.h2`
+export const Title = styled(TitleComponent)`
   margin-bottom: 32px;
-  margin-top: 0;
-  color: ${({ theme }) => theme.colors.BRAND};
 `;

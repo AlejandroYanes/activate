@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
+// import { Title } from 'components/base-components/Typography';
 import { StyledPage, Title } from './styled';
 
 interface Props {
@@ -12,7 +13,7 @@ const Page: FunctionComponent<Props> = (props) => {
   return (
     <StyledPage>
       <RenderIf condition={!!title}>
-        <Title>{title}</Title>
+        <Title level={1} bold color="brand">{title}</Title>
       </RenderIf>
       {children}
     </StyledPage>

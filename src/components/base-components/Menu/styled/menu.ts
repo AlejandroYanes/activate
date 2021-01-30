@@ -21,6 +21,6 @@ export const MenuList = styled.ul`
   min-width: 250px;
   border-radius: ${elementBorderRadius};
   background-color: ${Colors.BACKGROUND};
-  //border: 1px solid ${Colors.MEDIUM_GRAY};
-  box-shadow: 2px 2px 4px ${Colors.MEDIUM_GRAY};
+  //border: 1px solid ${Colors.GRAY_LIGHT};
+  box-shadow: 2px 2px 4px ${Colors.GRAY_LIGHT};
 `;

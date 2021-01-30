@@ -26,7 +26,7 @@ const getFocusStyles = (props) => {
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
   border-radius: ${inputBorderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.MEDIUM_GRAY};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY_LIGHT};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   color: ${({ theme }) => theme.colors.FONT};
   font-size: 16px;

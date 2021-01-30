@@ -5,7 +5,8 @@ import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import Button from 'components/base-components/Button';
 import AvatarGroup from 'components/base-components/AvatarGroup';
-import { Card, Header, Title, Address, Date, Divider, Footer } from './styled';
+import { Text, Title } from 'components/base-components/Typography';
+import { Card, Header, Address, Date, Divider, Footer } from './styled';
 
 interface Props extends PositionProps {
   title: string;
@@ -24,7 +25,7 @@ const SummaryCard: FunctionComponent<Props> = (props) => {
     <Card {...positionProps}>
       <Header>
         <Date>
-          <span>{`${getMonthLabel(date).slice(0, 3)} ${date.getDate()}`}</span>
+          <Text size="small">{`${getMonthLabel(date).slice(0, 3)} ${date.getDate()}`}</Text>
         </Date>
         <IconButton
           buttonColor="success"
@@ -35,10 +36,10 @@ const SummaryCard: FunctionComponent<Props> = (props) => {
           onClick={() => undefined}
         />
       </Header>
-      <Title>{title}</Title>
+      <Title level={3} mT mB>{title}</Title>
       <Address>
         <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
-        <span>{address}</span>
+        <Text>{address}</Text>
       </Address>
       <Divider />
       <Footer>

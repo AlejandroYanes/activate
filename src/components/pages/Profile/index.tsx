@@ -1,5 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
-import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
+import {
+  NeonLightsTheme,
+  StartingTheme,
+  SummerVibesTheme,
+} from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import Page from 'components/base-components/Page';
@@ -35,7 +39,7 @@ const ProfilePage: FunctionComponent = () => {
     <Page>
       <ProfileData activeTab={activeTab} setActiveTab={setActiveTab} />
       <Settings>
-        <SubTitle>Theme</SubTitle>
+        <SubTitle level={3}>Theme</SubTitle>
         <PickList value={activeTheme} onChange={setTheme} color="info">
           <PickItem value={AppTheme.Default}>
             <Theme>

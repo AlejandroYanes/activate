@@ -11,7 +11,6 @@ export interface ColorScheme {
   BRAND_SHADE: string;
   ACCENT_SHADE: string;
   WHITE: string;
-  WHITE_DARK: string;
   WHITE_SHADE: string;
   GRAY: string;
   GRAY_LIGHT: string;
@@ -24,8 +23,6 @@ export interface ColorScheme {
   BACKGROUND: string;
   BACKGROUND_LIGHT: string;
   BACKGROUND_SHADE: string;
-  MEDIUM_GRAY: string;
-  DARK_GRAY: string;
   INFO: string;
   INFO_SHADE: string;
   WARNING: string;
@@ -60,14 +57,11 @@ export const darkStyleColors = {
 
 export const basicColors = {
   WHITE: '#fff',
-  WHITE_DARK: '#fff',
   WHITE_SHADE: getShade('#ffffff', 0.05),
   GRAY: '#6b6d76',
-  GRAY_LIGHT: '#d7d9e2',
+  GRAY_LIGHT: '#AFAFAF',
   GRAY_DARK: '#4a4b52',
   GRAY_SHADE: getShade('#6b6d76'),
-  MEDIUM_GRAY: '#E5E5E5',
-  DARK_GRAY: '#AFAFAF',
   INFO: '#0B4F99',
   INFO_LIGHT: '#0F6DD2',
   INFO_DARK: '#05284C',

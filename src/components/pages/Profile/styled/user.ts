@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Avatar from 'components/base-components/Avatar';
+import { Title } from 'components/base-components/Typography';
 
 export const Profile = styled.div`
   position: relative;
@@ -27,26 +28,15 @@ export const StyledAvatar = styled(Avatar)`
   border: 10px solid ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
-export const UserName = styled.h2`
+export const UserName = styled(Title)`
   margin-top: 54px;
-  margin-bottom: 16px;
-  text-align: center;
-  color: ${({ theme }) => theme.colors.BRAND};
 `;
 
 export const Complement = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  font-size: 14px;
-  line-height: 18px;
   margin-bottom: 32px;
-  color: ${({ theme }) => theme.colors.FONT};
-
-  & span:first-child {
-    margin-bottom: 4px;
-  }
 `;
 
 export const Stats = styled.div`
@@ -59,12 +49,8 @@ export const Stat = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
 
-export const StatName = styled.span`
-  margin-bottom: 0;
-`;
-
-export const StatValue = styled.h2`
-  color: ${({ theme }) => theme.colors.BRAND};
+  & > span {
+    margin-bottom: 8px;
+  }
 `;

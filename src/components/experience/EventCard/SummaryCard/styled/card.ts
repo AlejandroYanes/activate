@@ -11,19 +11,12 @@ export const Card = styled.div`
   ${getMargins}
 `;
 
-export const Title = styled.h3`
-  margin: 16px 0;
-  line-height: 24px;
-  color: ${({ theme }) => theme.colors.FONT};
-`;
-
 export const Address = styled.div`
   display: flex;
   align-items: center;
 
   & span {
-    font-size: 14px;
-    color: ${({ theme }) => theme.colors.FONT};
+    margin-top: 2px;
     margin-left: 4px;
   }
 `;

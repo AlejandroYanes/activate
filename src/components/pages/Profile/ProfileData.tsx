@@ -1,27 +1,26 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useAppColors } from 'components/providers/Theme';
-import IconButton from 'components/base-components/IconButton';
+import { ButtonProps } from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
+import { Field, Form } from 'components/base-components/Form';
+import { Title, Text } from 'components/base-components/Typography';
+import IconButton from 'components/base-components/IconButton';
 import Modal from 'components/base-components/Modal';
-import { ButtonProps } from 'components/base-components/Button';
+import Avatar from 'components/base-components/Avatar';
 import { ProfileTabs } from '.';
 import {
   Actions,
   Complement,
   Profile as StyledProfile,
   Stat,
-  StatName,
   Stats,
-  StatValue,
   StyledAvatar,
   UserName,
   Content,
   AvatarSection,
   InfoSection,
 } from './styled';
-import Avatar from '../../base-components/Avatar';
-import { Field, Form } from '../../base-components/Form';
 
 interface Props {
   activeTab: string;
@@ -57,23 +56,24 @@ const ProfileData: FunctionComponent<Props> = (props) => {
             variant="flat"
           />
         </Actions>
-        <UserName>Alejandro Yanes</UserName>
+        <UserName mB align="center" color="brand">Alejandro Yanes</UserName>
         <Complement>
-          <span>alejandro.yanes49@gmail.com</span>
-          <span>+53 58207203</span>
+          <Text>@alejandro94</Text>
+          <Text>alejandro.yanes94@gmail.com</Text>
+          <Text>+53 58207203</Text>
         </Complement>
         <Stats>
           <Stat>
-            <StatName>Attended</StatName>
-            <StatValue>120</StatValue>
+            <Text>Attended</Text>
+            <Title level={2} color="brand">120</Title>
           </Stat>
           <Stat>
-            <StatName>Following</StatName>
-            <StatValue>60</StatValue>
+            <Text>Following</Text>
+            <Title level={2} color="brand">60</Title>
           </Stat>
           <Stat>
-            <StatName>Friends</StatName>
-            <StatValue>80</StatValue>
+            <Text>Friends</Text>
+            <Title level={2} color="brand">80</Title>
           </Stat>
         </Stats>
         <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mT>
@@ -95,6 +95,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         </Tabset>
       </StyledProfile>
       <Modal
+        size="medium"
         header="User Data"
         visible={showModal}
         actions={actions}

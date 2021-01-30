@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Colors from 'styles/colors';
+import { Title as TitleComponent } from 'components/base-components/Typography';
 
 export const Header = styled.header`
   display: flex;
@@ -29,12 +30,10 @@ export const TitleAndAddress = styled.div`
   padding-right: 16px;
 `;
 
-export const Title = styled.h3`
-  margin: 0 0;
+export const Title = styled(TitleComponent)`
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  color: ${({ theme }) => theme.colors.FONT};
 `;
 
 export const Address = styled.div`
@@ -43,10 +42,8 @@ export const Address = styled.div`
   margin-top: 6px;
 
   & span {
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 20px;
+    margin-top: 2px;
     margin-left: 4px;
-    color: ${({ theme }) => theme.colors.FONT};
+    line-height: 20px;
   }
 `;

@@ -1,22 +1,8 @@
 import styled from 'styled-components';
+import { Text } from 'components/base-components/Typography';
 
-const getColor = ({ theme: { useDarkStyle, colors } }) => (
-  useDarkStyle ? colors.GRAY_LIGHT : colors.GRAY_DARK
-);
-
-export const Entry = styled.span`
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: lighter;
-  margin-top: 0;
+export const Entry = styled(Text)`
   margin-bottom: 4px;
-  text-align: left;
-  color: ${getColor};
-
-  & svg {
-    margin-right: 6px;
-  }
 `;
 
 const getAlignment = ({ centered }: any) => (
