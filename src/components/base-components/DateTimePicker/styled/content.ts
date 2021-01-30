@@ -39,7 +39,7 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
   font-size: 16px;
   letter-spacing: 0.5px;
   outline: none;
-  border: 1px solid ${({ theme }) => theme.colors.MEDIUM_GRAY};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY_LIGHT};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   cursor: pointer;
 

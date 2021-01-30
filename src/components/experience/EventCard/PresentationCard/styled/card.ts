@@ -29,11 +29,6 @@ export const Content = styled.main`
   flex-direction: column;
 `;
 
-export const Description = styled.p`
-  margin-bottom: 0;
-  line-height: 20px;
-`;
-
 export const Divider = styled.div`
   height: 1px;
   width: 100%;

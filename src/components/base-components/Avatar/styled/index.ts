@@ -19,7 +19,6 @@ export const StyledAvatar = styled.span.attrs((props: any) => props)`
   ${getSizeStyles};
   ${getMargins};
   border-radius: 50%;
-  border: 1px solid ${({ theme }) => theme.colors.BACKGROUND};
 
   &:focus {
     outline: none;

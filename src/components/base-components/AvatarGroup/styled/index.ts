@@ -6,6 +6,7 @@ export const StyledAvatarGroup = styled.div`
 
   & > span:not(:first-child) {
     margin-left: -14px;
+    border: 3px solid ${({ theme }) => theme.colors.BACKGROUND};
   }
 `;
 

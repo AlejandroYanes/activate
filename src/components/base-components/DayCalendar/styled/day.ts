@@ -20,13 +20,15 @@ export const Day = styled.li`
   }
 `;
 
-const getColor = ({ isSelected, theme }) => isSelected ? theme.BACKGROUND_LIGHT : theme.FONT;
+const getNumberColor = ({ isSelected, theme }) => (
+  isSelected ? theme.colors.WHITE : theme.colors.FONT
+);
 
 export const DayNumber = styled.span.attrs((props: any) => props)`
   position: absolute;
   margin: auto;
   z-index: ${ZLevels.dayComponent};
-  color: ${getColor};
+  color: ${getNumberColor};
 `;
 
 export const Mark = styled(motion.div)`

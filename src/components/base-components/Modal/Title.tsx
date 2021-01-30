@@ -10,7 +10,7 @@ const Title: FunctionComponent<Props> = (props): any => {
 
   if (typeof content === 'string') {
     return (
-      <StyledTitle>{content}</StyledTitle>
+      <StyledTitle level={3}>{content}</StyledTitle>
     );
   }
 

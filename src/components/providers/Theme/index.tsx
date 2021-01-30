@@ -1,12 +1,26 @@
-import React, { createContext, FunctionComponent, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  FunctionComponent,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { basicColors, ColorScheme, darkStyleColors, lightStyleColors } from 'styles/colors';
-import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
+import {
+  NeonLightsTheme,
+  StartingTheme,
+  SummerVibesTheme,
+  MidnightLightsTheme,
+} from 'styles/themes';
 
 export enum AppTheme {
   Default = 'Default',
   NeonLights = 'NeonLights',
   SummerVibes = 'SummerVibes',
+  MidnightLights = 'MidnightLights'
 }
 
 interface ThemeContextValue {
@@ -21,13 +35,14 @@ const themesMap = {
   [AppTheme.Default]: StartingTheme,
   [AppTheme.NeonLights]: NeonLightsTheme,
   [AppTheme.SummerVibes]: SummerVibesTheme,
+  [AppTheme.MidnightLights]: MidnightLightsTheme,
 };
 
 const ThemeContext = createContext<ThemeContextValue>(undefined);
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<AppTheme>(AppTheme.NeonLights);
+  const [theme, setTheme] = useState<AppTheme>(AppTheme.SummerVibes);
   const [useDarkStyle, setUseDarkTheme] = useState(true);
 
   const toggleLightStyle = useCallback(

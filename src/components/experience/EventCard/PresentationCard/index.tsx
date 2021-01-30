@@ -6,6 +6,7 @@ import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
+import { Text, Paragraph } from 'components/base-components/Typography';
 import EventImage from './EventImage';
 import {
   Actions,
@@ -13,7 +14,6 @@ import {
   Card,
   DateBadge,
   Content,
-  Description,
   Divider,
   Footer,
   Header,
@@ -55,10 +55,10 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
           <span>{date.getDate()}</span>
         </DateBadge>
         <TitleAndAddress>
-          <Title>{title}</Title>
+          <Title level={3}>{title}</Title>
           <Address>
             <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
-            <span>{address}</span>
+            <Text>{address}</Text>
           </Address>
         </TitleAndAddress>
         <Avatar icon="user2" size="small" />
@@ -66,9 +66,9 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
       <Content>
         <EventImage src={image} alt="event" />
         <RenderIf condition={!!description}>
-          <Description>
+          <Paragraph mT>
             {description}
-          </Description>
+          </Paragraph>
         </RenderIf>
       </Content>
       <Divider />

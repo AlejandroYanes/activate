@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
+import { Title as TitleComponent } from 'components/base-components/Typography';
 
 const sizeMap = {
   small: '40vw',
@@ -21,13 +22,12 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 `;
 
-export const Title = styled.h3`
+export const Title = styled(TitleComponent)`
   margin: 0;
   padding: 0 0 0 12px;
-  color: ${({ theme }) => theme.colors.FONT};
 `;
 
 export const Content = styled.div`

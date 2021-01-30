@@ -12,8 +12,8 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
 
 export const StyledTextArea = styled.textarea`
   border-radius: 10px;
-  border: 1px solid ${Colors.MEDIUM_GRAY};
-  background-color: ${Colors.WHITE};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY_LIGHT};
+  background-color: ${({ theme }) => theme.colors.WHITE};
   color: ${Colors.FONT};
   font-size: 16px;
   letter-spacing: 0.5px;
