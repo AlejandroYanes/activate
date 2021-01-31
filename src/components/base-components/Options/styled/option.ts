@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { anyPropsAttrs } from 'helpers';
-import { Text as TextComponent } from 'components/base-components/Typography';
-import SvgIcon from '../../SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 
 const sizeMap = {
   small: 20,
