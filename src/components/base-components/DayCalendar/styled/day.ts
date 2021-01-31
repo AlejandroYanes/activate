@@ -14,6 +14,7 @@ export const Day = styled.li`
   border-radius: 8px;
   height: 48px;
   width: 48px;
+  flex-shrink: 0;
 
   &:hover {
     background-color: ${Colors.GRAY_SHADE};
