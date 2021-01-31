@@ -1,10 +1,7 @@
-import React, { FunctionComponent, useState } from 'react';
-import {
-  NeonLightsTheme,
-  StartingTheme,
-  SummerVibesTheme,
-} from 'styles/themes';
+import React, { FunctionComponent, useMemo, useState } from 'react';
+import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import Page from 'components/base-components/Page';
 import Toggle from 'components/base-components/Toggle';
@@ -28,12 +25,20 @@ export enum ProfileTabs {
 
 const ProfilePage: FunctionComponent = () => {
   const {
+    colors,
     theme: activeTheme,
     setTheme,
     useDarkStyle,
     toggleLightStyle,
   } = useAppTheme();
   const [activeTab, setActiveTab] = useState(ProfileTabs.Setting);
+
+  const sunIcon = useMemo(() => (
+    <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
+  ), [colors]);
+  const moonIcon = useMemo(() => (
+    <SvgIcon icon={Icons.MOON} color={colors.ACCENT_DARK} size="small" />
+  ), [colors]);
 
   return (
     <Page>
@@ -77,6 +82,7 @@ const ProfilePage: FunctionComponent = () => {
         </PickList>
         <Block>
           <Toggle
+            nobNode={useDarkStyle ? moonIcon : sunIcon}
             label="Use Dark Style"
             value={useDarkStyle}
             onChange={toggleLightStyle}

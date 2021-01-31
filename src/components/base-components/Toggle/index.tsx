@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { PositionProps } from 'helpers';
 import {
   FauxContainer,
@@ -11,13 +11,14 @@ import {
 } from './styled';
 
 interface Props extends PositionProps {
+  nobNode?: ReactNode;
   label: string;
   value: boolean;
   onChange: (event) => void;
 }
 
 const Toggle: FunctionComponent<Props> = (props) => {
-  const { label, value, onChange, ...rest } = props;
+  const { nobNode, label, value, onChange, ...rest } = props;
 
   const fauxOffPosition = value ? 100 : 0;
   const fauxOnPosition = !value ? -100 : 0;
@@ -30,7 +31,9 @@ const Toggle: FunctionComponent<Props> = (props) => {
         <FauxSlide data-el="faux-slide">
           <FauxOnSide data-el="faux-on-side" position={fauxOnPosition} />
           <FauxOffSide data-el="faux-off-side" position={fauxOffPosition} />
-          <FauxNob data-el="faux-nob" position={nobPosition} />
+          <FauxNob data-el="faux-nob" position={nobPosition}>
+            {nobNode}
+          </FauxNob>
         </FauxSlide>
       </FauxContainer>
       {label}

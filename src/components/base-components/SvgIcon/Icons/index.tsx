@@ -45,6 +45,8 @@ import CommentsIcon from './Comments';
 import CreatePenIcon from './CreatePen';
 import EditPenIcon from './EditPen';
 import CheckMarkIcon from './CheckMark';
+import SunIcon from './Sun';
+import MoonIcon from './Moon';
 
 export enum Icons {
   HOME = 'home',
@@ -93,6 +95,8 @@ export enum Icons {
   CREATE_PENCIL = 'create-pencil',
   EDIT_PENCIL = 'edit-pencil',
   CHECK_MARK = 'check-mark',
+  SUN = 'sun',
+  MOON = 'moon',
 }
 
 export const icons = {
@@ -142,4 +146,6 @@ export const icons = {
   [Icons.CREATE_PENCIL]: (props) => <CreatePenIcon {...props} />,
   [Icons.EDIT_PENCIL]: (props) => <EditPenIcon {...props} />,
   [Icons.CHECK_MARK]: (props) => <CheckMarkIcon {...props} />,
+  [Icons.SUN]: (props) => <SunIcon {...props} />,
+  [Icons.MOON]: (props) => <MoonIcon {...props} />,
 };

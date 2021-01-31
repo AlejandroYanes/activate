@@ -86,10 +86,14 @@ export const FauxOnSide = styled.div.attrs((props: any) => props)`
 
 export const FauxNob = styled.div.attrs((props: any) => props)`
   pointer-events: none;
-  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 20px;
   height: 20px;
   border-radius: 50px;
+  position: absolute;
   margin-top: -10px;
   top: 50%;
   left: ${({ position }) => position};

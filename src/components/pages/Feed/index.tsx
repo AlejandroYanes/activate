@@ -4,10 +4,10 @@ import DayCalendar from 'components/base-components/DayCalendar';
 import Page from 'components/base-components/Page';
 import { PresentationCard } from 'components/experience/EventCard';
 import { Option, Options } from 'components/base-components/Options';
+import { Icons } from 'components/base-components/SvgIcon';
+import RenderIf from 'components/base-components/RenderIf';
 import { events } from '../Discover/events';
 import { SubHeader } from './styled';
-import { Icons } from '../../base-components/SvgIcon';
-import RenderIf from '../../base-components/RenderIf';
 
 const today = new Date();
 const days = [
