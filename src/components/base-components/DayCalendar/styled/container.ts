@@ -1,23 +1,48 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { cardWidth } from 'styles/variables';
+import { anyPropsAttrs, getMargins } from 'helpers';
 
-export const Container = styled.ul`
-  list-style: none;
+export const Wrapper = styled.div`
   display: flex;
-  align-content: stretch;
-  padding: 6px;
-  border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  align-items: center;
   ${getMargins};
+  max-width: ${cardWidth};
 `;
 
-export const Month = styled.li`
-  text-align: center;
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  cursor: default;
-  margin: 0 6px;
-  font-size: 14px;
-  height: 48px;
-  color: ${({ theme }) => theme.colors.GRAY};
+export const ListContainer = styled.div`
+  flex: 1;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+const getCurve = ({ side }) => {
+  if (side === 'right') {
+    return `
+      border-top-right-radius: 16px;
+      border-bottom-right-radius: 16px;
+    `;
+  }
+
+  return `
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  `;
+};
+
+export const Edge = styled.div.attrs(anyPropsAttrs)`
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  ${getCurve};
+  box-sizing: border-box;
+  height: 60px;
+  display: flex;
+  padding: 0 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

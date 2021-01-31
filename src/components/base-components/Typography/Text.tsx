@@ -5,7 +5,7 @@ import { Text as StyledText } from './styled/text';
 interface Props extends PositionProps {
   weight?: 'lighter' | 'normal' | 'bold';
   size?: 'small' | 'medium' | 'large';
-  secondary?: boolean;
+  color?: 'font' | 'gray' | 'white';
 }
 
 const Text: FunctionComponent<Props> = (props) => {
@@ -17,7 +17,7 @@ const Text: FunctionComponent<Props> = (props) => {
 };
 
 Text.defaultProps = {
-  secondary: false,
+  color: 'font',
   weight: 'normal',
   size: 'medium',
 };

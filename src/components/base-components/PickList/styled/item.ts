@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
 
 const sizeMap = { large: '210px', medium: '160px', small: '110px' };
 
-export const StyledItem = styled.li.attrs((props: any) => props)`
+export const StyledItem = styled.li.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -11,7 +12,7 @@ export const StyledItem = styled.li.attrs((props: any) => props)`
   width: ${({ size }) => sizeMap[size]};
 `;
 
-export const Mark = styled.div.attrs((props: any) => props)`
+export const Mark = styled.div.attrs(anyPropsAttrs)`
   position: absolute;
   width: 88px;
   height: 48px;
@@ -71,7 +72,7 @@ const getColorStyles = (props) => {
     `;
 };
 
-export const Touchable = styled.button.attrs((props: any) => props)`
+export const Touchable = styled.button.attrs(anyPropsAttrs)`
   height: 100%;
   width: 100%;
   padding: 0;

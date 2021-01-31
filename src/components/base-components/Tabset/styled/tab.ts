@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import { anyPropsAttrs } from 'helpers';
 
 const getContentSpacingStyles = (props) => {
   const { compact, selected } = props;
@@ -91,7 +92,7 @@ const getHoverStyles = (props) => {
   `;
 };
 
-export const StyledTab = styled.li.attrs((props: any) => props)`
+export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   padding: 8px 12px;
   margin: 0;
   display: flex;
@@ -103,7 +104,8 @@ export const StyledTab = styled.li.attrs((props: any) => props)`
   ${getWidthStyles};
   ${getSelectedStyles};
 
-  &:hover {
+  &:hover, &:focus {
+    outline: none;
     ${getHoverStyles}
   }
 `;
