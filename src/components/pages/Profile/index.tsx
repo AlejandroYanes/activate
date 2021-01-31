@@ -39,7 +39,7 @@ const ProfilePage: FunctionComponent = () => {
     <Page>
       <ProfileData activeTab={activeTab} setActiveTab={setActiveTab} />
       <Settings>
-        <SubTitle level={3}>Theme</SubTitle>
+        <SubTitle level={3} color="gray">Theme</SubTitle>
         <PickList value={activeTheme} onChange={setTheme} color="info">
           <PickItem value={AppTheme.Default}>
             <Theme>

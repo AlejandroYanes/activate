@@ -5,7 +5,7 @@ import { Title as StyledTitle } from './styled/title';
 interface Props extends PositionProps {
   bold?: boolean;
   level?: 1 | 2 | 3;
-  color?: 'brand' | 'accent' | 'font';
+  color?: 'brand' | 'accent' | 'font' | 'gray';
   align?: 'left' | 'center' | 'right';
 }
 

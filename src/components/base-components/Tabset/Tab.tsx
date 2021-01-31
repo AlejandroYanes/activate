@@ -1,4 +1,11 @@
-import React, { FunctionComponent, ReactNode, useCallback, useContext, useMemo, useRef } from 'react';
+import React, {
+  FunctionComponent,
+  ReactNode,
+  useCallback,
+  useContext,
+  useMemo,
+  useRef,
+} from 'react';
 import { useHoverState } from 'hooks/UI';
 import { ColorScheme } from 'styles/colors';
 import { useAppTheme } from 'components/providers/Theme';
@@ -18,11 +25,6 @@ const markAnimationControls = {
   stiffness: 600,
   damping: 20,
 };
-
-// const variants = {
-//   collapsed: { scaleX: 0 },
-//   expanded: { scaleX: 1, transition: { delay: 2 } },
-// };
 
 function getIconColor(
   isSelected: boolean,
@@ -82,15 +84,14 @@ const Tab: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledTab
+      role="button"
+      tabIndex={0}
       data-el="tab"
       ref={tabReference}
       fullWidth={fullWidth}
       compact={compact}
       selected={isSelected}
       onClick={handleClick}
-      // initial={animateEntrance ? 'collapsed' : 'expanded'}
-      // animate="expanded"
-      // variants={variants}
     >
       <Content
         data-el="tab-content"

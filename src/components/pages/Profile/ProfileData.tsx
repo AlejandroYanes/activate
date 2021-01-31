@@ -11,7 +11,6 @@ import Avatar from 'components/base-components/Avatar';
 import { ProfileTabs } from '.';
 import {
   Actions,
-  Complement,
   Profile as StyledProfile,
   Stat,
   Stats,
@@ -47,7 +46,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
   return (
     <>
       <StyledProfile>
-        <StyledAvatar size="x-large" icon="user10" />
+        <StyledAvatar size="x-large" icon="user2" />
         <Actions>
           <IconButton
             onClick={() => setShowModal(true)}
@@ -57,11 +56,6 @@ const ProfileData: FunctionComponent<Props> = (props) => {
           />
         </Actions>
         <UserName mB align="center" color="brand">Alejandro Yanes</UserName>
-        <Complement>
-          <Text>@alejandro94</Text>
-          <Text>alejandro.yanes94@gmail.com</Text>
-          <Text>+53 58207203</Text>
-        </Complement>
         <Stats>
           <Stat>
             <Text>Attended</Text>
@@ -103,7 +97,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
       >
         <Content>
           <AvatarSection>
-            <Avatar size="x-large" icon="user10" />
+            <Avatar size="x-large" icon="user2" />
           </AvatarSection>
           <InfoSection>
             <Form onChange={setData} state={data}>

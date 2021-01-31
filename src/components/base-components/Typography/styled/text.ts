@@ -8,8 +8,8 @@ const sizeMap = {
 };
 
 const getColor = (props) => {
-  const { theme: { colors }, secondary } = props;
-  return secondary ? colors.GRAY : colors.FONT;
+  const { theme: { colors }, color } = props;
+  return colors[color.toUpperCase()];
 };
 
 export const Text = styled.span.attrs(anyPropsAttrs)`

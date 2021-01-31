@@ -36,13 +36,15 @@ export const Complement = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
+  margin-top: 8px;
 `;
 
 export const Stats = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin: 32px 0;
 `;
 
 export const Stat = styled.div`

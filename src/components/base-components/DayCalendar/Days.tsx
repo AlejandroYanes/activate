@@ -28,7 +28,13 @@ const Days: FunctionComponent<Props> = (props) => {
   return days.reduce(({ lastMonth, items }, day) => {
     const isSelected = matchDays(day, value);
     const dayElement = (
-      <Day key={day.getTime()} data-day={day} onClick={handleDayClick}>
+      <Day
+        role="button"
+        tabIndex={0}
+        key={day.getTime()}
+        data-day={day}
+        onClick={handleDayClick}
+      >
         <DayNumber data-day={day} isSelected={isSelected}>
           {day.getDate()}
         </DayNumber>
