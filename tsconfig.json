@@ -24,9 +24,10 @@
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
+    "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "react"
   },
   "include": [
     "src"
