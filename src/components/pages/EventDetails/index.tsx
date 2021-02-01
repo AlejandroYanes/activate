@@ -6,21 +6,22 @@ import { Case, Switch } from 'components/base-components/Switch';
 import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import Description from './Description';
-import { Image, ImageContainer, StyledEventDetail, Title } from './styled';
+import Comments from './Comnments';
+import { Image, ImageContainer, StyledEventDetail, Title } from './styled/page';
 
 const event = {
   title: 'Free Music Workshop - February 2020',
 };
 
 enum Tabs {
-  Details = 'Details',
-  Comments = 'Comments',
+  DetailsSection = 'Details',
+  CommentsSection = 'Comments',
 }
 
 const EventDetails: FunctionComponent = () => {
   const { title } = event;
   const { addSection, removeSection, setActiveSection } = usePanelActions();
-  const [activeTab, setActiveTab] = useState(Tabs.Details);
+  const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
 
   useEffect(() => {
     addSection(AuxPanelSection.EventDetails);
@@ -38,11 +39,12 @@ const EventDetails: FunctionComponent = () => {
           <Image src={eventImg} alt="virtual tour" />
         </ImageContainer>
         <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mT mB>
-          <Tab name={Tabs.Details} label="Details" icon={Icons.FORM} />
-          <Tab name={Tabs.Comments} label="Comments (169)" icon={Icons.COMMENTS} />
+          <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
+          <Tab name={Tabs.CommentsSection} label="Comments (169)" icon={Icons.COMMENTS} />
         </Tabset>
         <Switch by={activeTab}>
-          <Case value={Tabs.Details} component={Description} />
+          <Case value={Tabs.DetailsSection} component={Description} />
+          <Case value={Tabs.CommentsSection} component={Comments} />
         </Switch>
       </StyledEventDetail>
     </Page>

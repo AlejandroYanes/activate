@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import faker from 'faker';
-import { Description as StyledDescription } from './styled';
+import { Description as StyledDescription } from './styled/description';
 
 const description = faker.lorem.paragraphs(5);
 

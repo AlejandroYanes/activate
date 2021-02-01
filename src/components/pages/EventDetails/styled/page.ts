@@ -24,10 +24,3 @@ export const ImageContainer = styled.div`
 export const Image = styled.img`
   max-width: 100%;
 `;
-
-export const Description = styled.p`
-  margin-top: 32px;
-  padding: 0 16px;
-  text-align: justify;
-  line-height: 24px;
-`;
