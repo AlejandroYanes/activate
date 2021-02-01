@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { FunctionComponent } from 'react';
 import user1 from 'assets/icons/users/user1.svg';
 import user2 from 'assets/icons/users/user2.svg';

@@ -50,6 +50,7 @@ const TextArea: FunctionComponent<Props> = (props) => {
       <InputLabel text={label} isFocused={isFocused} />
       <StyledTextArea
         rows={rows}
+        placeholder={placeholder}
         value={value}
         onChange={onChange}
         onFocus={handleFocus}

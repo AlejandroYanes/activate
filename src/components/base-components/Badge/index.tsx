@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { PositionProps } from 'helpers';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconProps, Icons } from 'components/base-components/SvgIcon';
 import { StyledBadge, Icon } from './styled';
 import { useAppColors } from '../../providers/Theme';
 import { ColorScheme } from '../../../styles/colors';
@@ -9,7 +9,7 @@ export interface BadgeProps extends PositionProps {
   color: 'brand' | 'info' | 'success' | 'warning' | 'error' | 'light';
   label: string;
   icon?: Icons;
-  iconProps?: object;
+  iconProps?: IconProps;
   sm?: boolean;
 }
 

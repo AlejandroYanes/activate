@@ -15,61 +15,57 @@
     "@typescript-eslint",
     "eslint-comments",
     "jest",
-    "promise",
-    "unicorn",
     "import",
     "react",
     "react-hooks"
   ],
   "extends": [
-    "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:eslint-comments/recommended",
     "plugin:jest/recommended",
-    "plugin:promise/recommended",
-    "plugin:unicorn/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:react/recommended"
   ],
   "rules": {
-    "max-len": [2, 120],
-    "react/jsx-props-no-spreading": 0,
-    "react/prop-types": 0,
-    "react/button-has-type": 0,
     "jsx-quotes": [
       "error",
       "prefer-double"
     ],
-    "import/no-extraneous-dependencies": 0,
-    "import/prefer-default-export": 0,
+    "max-len": [2, 120],
+    "object-curly-newline": 0,
+    "no-confusing-arrow": 0,
+    "operator-linebreak": [
+      "error",
+      "after", {
+        "overrides": {
+          "?": "before",
+          ":": "before"
+        }
+      }
+    ],
     "react/display-name": 0,
-    "import/no-cycle": 0,
-    "unicorn/consistent-function-scoping": 0,
-    "@typescript-eslint/no-explicit-any": 0,
-    "jsx-a11y/label-has-associated-control": [ 2, {
-      "labelComponents": ["Label"],
-      "labelAttributes": ["title"],
-      "controlComponents": ["Input", "Checkbox", "FancyCheckbox", "Toggle"],
-      "depth": 3
-    }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
-    "object-curly-newline": 0,
-    "unicorn/filename-case": 0,
-    "unicorn/prefer-query-selector": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "no-confusing-arrow": 0,
-    "operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
-    "unicorn/prevent-abbreviations": 0,
-    "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
+    "react/jsx-props-no-spreading": 0,
+    "react/prop-types": 0,
+    "react/button-has-type": 0,
+    "import/no-cycle": 0,
+    "import/no-named-as-default-member": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
     "import/order": ["error", {
       "groups": [
         ["external", "builtin"],
         ["internal", "parent", "sibling", "index"]
       ]
-    }]
+    }],
+    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-explicit-any": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}]
   },
   "settings": {
     "import/parsers": {

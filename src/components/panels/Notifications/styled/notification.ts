@@ -7,7 +7,7 @@ export const StyledNotification = styled(motion.div)`
   position: relative;
   display: flex;
   flex-direction: column;
-  border: 1px solid ${({ theme }) => theme.colors.GRAY};
+  border: 1px solid ${({ theme }) => theme.colors.BRAND_SHADE};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   border-radius: 12px;
   padding: 12px;
