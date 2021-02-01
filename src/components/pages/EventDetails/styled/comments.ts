@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
-export const Comments = styled.div``;
-
-export const Form = styled.div``;
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: flex-end;
+`;

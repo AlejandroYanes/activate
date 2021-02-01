@@ -7,7 +7,7 @@ import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import Description from './Description';
 import Comments from './Comnments';
-import { Image, ImageContainer, StyledEventDetail, Title } from './styled';
+import { Image, ImageContainer, StyledEventDetail, Title } from './styled/page';
 
 const event = {
   title: 'Free Music Workshop - February 2020',
