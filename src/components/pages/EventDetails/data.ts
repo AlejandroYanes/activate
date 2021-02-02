@@ -10,4 +10,5 @@ export const comments = new Array(4)
     },
     date: faker.date.recent(),
     content: faker.lorem.lines(6),
+    response: faker.random.boolean() ? faker.lorem.lines(6) : undefined,
   }));
