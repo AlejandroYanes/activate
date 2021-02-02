@@ -1,7 +1,9 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { addHours, getHours, getMinutes, subHours, setHours, setMinutes } from 'date-fns';
-import { StyledClock, OuterRing, Content, Marker, HourLabel, HourButton } from './styled/clock';
+import { addHours, getHours, getMinutes, setHours, setMinutes, subHours } from 'date-fns';
 import getMarkerPositions from './get-marker-positions';
+import Marker from './Marker';
+import HourButton from './HourButton';
+import { Content, TimeLabel, OuterRing, StyledClock } from './styled/clock';
 
 interface Props {
   value: Date;
@@ -52,110 +54,36 @@ const Clock: FunctionComponent<Props> = (props) => {
   }, []);
 
   const showMinutes = selectionMode === Selection.Minutes;
-  const multiplier = showMinutes ? 5 : 1;
 
   return (
     <StyledClock data-el="clock">
       <OuterRing data-el="outer-ring" ref={outerRingRef}>
         <Content data-el="outer-ring-content">
           <Marker
-            data-el="marker"
-            data-hour={12}
-            data-min={0}
+            hour={12}
+            showMinutes={showMinutes}
             onClick={handleMarkerClick}
-          >
-            {showMinutes ? '00' : 12}
-          </Marker>
+            label={showMinutes ? '00' : '12'}
+          />
           <Marker
-            data-el="marker"
-            data-hour={1}
-            data-min={5}
+            hour={1}
+            showMinutes={showMinutes}
             onClick={handleMarkerClick}
-          >
-            {showMinutes ? '05' : 1}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={2}
-            data-min={10}
-            onClick={handleMarkerClick}
-          >
-            {2 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={3}
-            data-min={15}
-            onClick={handleMarkerClick}
-          >
-            {3 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={4}
-            data-min={20}
-            onClick={handleMarkerClick}
-          >
-            {4 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={5}
-            data-min={25}
-            onClick={handleMarkerClick}
-          >
-            {5 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={6}
-            data-min={30}
-            onClick={handleMarkerClick}
-          >
-            {6 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={7}
-            data-min={35}
-            onClick={handleMarkerClick}
-          >
-            {7 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={8}
-            data-min={40}
-            onClick={handleMarkerClick}
-          >
-            {8 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={9}
-            data-min={45}
-            onClick={handleMarkerClick}
-          >
-            {9 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={10}
-            data-min={50}
-            onClick={handleMarkerClick}
-          >
-            {10 * multiplier}
-          </Marker>
-          <Marker
-            data-el="marker"
-            data-hour={11}
-            data-min={55}
-            onClick={handleMarkerClick}
-          >
-            {11 * multiplier}
-          </Marker>
-          <HourLabel>
+            label={showMinutes ? '05' : '1'}
+          />
+          <Marker hour={2} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={3} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={4} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={5} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={6} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={7} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={8} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={9} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={10} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <Marker hour={11} showMinutes={showMinutes} onClick={handleMarkerClick} />
+          <TimeLabel>
             <HourButton
+              label={hours}
               active={selectionMode === Selection.Hour}
               onClick={() => setSelectionMode(Selection.Hour)}
             >
@@ -163,15 +91,20 @@ const Clock: FunctionComponent<Props> = (props) => {
             </HourButton>
             <span>:</span>
             <HourButton
+              label={minutes}
               active={selectionMode === Selection.Minutes}
               onClick={() => setSelectionMode(Selection.Minutes)}
             >
               {minutes}
             </HourButton>
-            <HourButton onClick={handleMidDayMarkerChange}>
+            <HourButton
+              reduced
+              label={midDayMarker}
+              onClick={handleMidDayMarkerChange}
+            >
               {midDayMarker}
             </HourButton>
-          </HourLabel>
+          </TimeLabel>
         </Content>
       </OuterRing>
     </StyledClock>

@@ -32,7 +32,6 @@ const SideMenu: FunctionComponent = () => {
             variant="fill"
           />
         </ActionBlock>
-        <EmptyBlock />
         <MenuBlock
           currentPath={pathname}
           path="/profile"
