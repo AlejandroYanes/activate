@@ -56,13 +56,16 @@ const CalendarModal: FunctionComponent<Props> = (props) => {
   useEffect(() => {
     if (!isOpen) {
       setActiveTab(Tabs.CalendarTab);
+    }
+  }, [isOpen]);
 
-      if (value !== dates) {
-        setDates(value);
-      }
+  useEffect(() => {
+    if (value !== dates) {
+      const nextDates = useRange ? [new Date()] : new Date();
+      setDates(value || nextDates);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [value]);
 
   if (isOpen) {
     return (

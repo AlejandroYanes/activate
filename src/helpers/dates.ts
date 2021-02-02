@@ -22,7 +22,6 @@ const dateTimeFormatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
   month: 'short',
   year: 'numeric',
-  hour12: true,
   hour: 'numeric',
   minute: 'numeric',
 });

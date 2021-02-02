@@ -21,6 +21,7 @@ export const Option = styled.li.attrs(anyPropsAttrs)`
   border-radius: 16px;
   min-width: 48px;
   position: relative;
+  cursor: pointer;
   height: ${({ size }) => `${sizeMap[size]}px`};
   color: ${({ theme }) => theme.colors.WHITE};
   background-color: transparent;
@@ -56,7 +57,7 @@ const getMarkColorStyles = (props) => {
   if (useDarkStyle) {
     return `
       background-color: ${colors[color.toUpperCase()]};
-      &:hover, &:focus {
+      &:focus {
         background-color: ${colors[`${color.toUpperCase()}_LIGHT`]};
       }
     `;
@@ -64,7 +65,7 @@ const getMarkColorStyles = (props) => {
 
   return `
     background-color: ${colors[color.toUpperCase()]};
-    &:hover, &:focus {
+    &:focus {
       background-color: ${colors[`${color.toUpperCase()}_DARK`]};
     }
   `;

@@ -1,10 +1,20 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { elementBorderRadius } from 'styles/variables';
 
 export const MenuWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const TriggerContainer = styled.button`
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const MenuContainer = styled.div`
@@ -18,9 +28,8 @@ export const MenuList = styled.ul`
   padding: 0;
   position: absolute;
   top: 12px;
-  min-width: 250px;
+  min-width: 200px;
   border-radius: ${elementBorderRadius};
-  background-color: ${Colors.BACKGROUND};
-  //border: 1px solid ${Colors.GRAY_LIGHT};
-  box-shadow: 2px 2px 4px ${Colors.GRAY_LIGHT};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND};
+  border: 1px solid ${({ theme }) => theme.colors.BRAND_SHADE};
 `;

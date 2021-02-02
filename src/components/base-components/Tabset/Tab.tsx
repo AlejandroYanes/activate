@@ -55,7 +55,6 @@ const Tab: FunctionComponent<Props> = (props) => {
     onTabChange,
     fullWidth,
     compact,
-    // animateEntrance,
   } = useContext(tabsetContext);
   const tabReference = useRef(undefined);
   const isHovered = useHoverState(tabReference);

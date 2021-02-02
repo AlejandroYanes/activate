@@ -6,6 +6,7 @@
     "node": true
   },
   "parserOptions": {
+    "parser": "@typescript-eslint/parser",
     "ecmaFeatures": {
       "jsx": true,
       "arrowFunctions": true
@@ -49,6 +50,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
     "react/jsx-props-no-spreading": 0,
+    "react/jsx-closing-tag-location": "error",
     "react/prop-types": 0,
     "react/button-has-type": 0,
     "import/no-cycle": 0,
@@ -61,7 +63,7 @@
         ["internal", "parent", "sibling", "index"]
       ]
     }],
-    "@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^_" }],
     "@typescript-eslint/no-explicit-any": 0,
     "@typescript-eslint/explicit-function-return-type": 0,
     "@typescript-eslint/explicit-module-boundary-types": 0,

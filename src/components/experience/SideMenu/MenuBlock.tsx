@@ -7,11 +7,10 @@ interface MenuBlockProps {
   icon: ReactNode | ((isSelected: boolean, theme: ColorScheme, useDarkStyle: boolean) => ReactNode);
   path?: string;
   currentPath?: string;
-  onClick?: (event) => void;
 }
 
 const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
-  const { icon, path, currentPath, onClick } = props;
+  const { icon, path, currentPath } = props;
   const { colors, useDarkStyle } = useAppTheme();
   const isSelected = path === currentPath;
 
@@ -23,7 +22,7 @@ const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
 
   return (
     <Block>
-      <StyledLink to={path} onClick={onClick}>
+      <StyledLink to={path}>
         <StyledBubble selected={isSelected} />
         <Label>{labelComponent}</Label>
       </StyledLink>

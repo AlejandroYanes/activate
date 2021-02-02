@@ -55,7 +55,7 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
     onChange({ value: date });
   };
 
-  const handleClear = () => onChange({ value: undefined });
+  const handleClear = () => onChange(undefined);
 
   return (
     <>
