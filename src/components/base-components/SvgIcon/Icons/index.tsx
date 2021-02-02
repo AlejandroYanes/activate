@@ -27,7 +27,7 @@ import CompassIcon from './Compass';
 import CloseIcon from './Close';
 import BookmarkIcon from './Bookmark';
 import BookmarksIcon from './Bookmarks';
-import BookmarkAddIcon from './BookmarkAdd';
+import BookmarkAddIcon from './AddBookmark';
 import BookmarkFilledIcon from './BookmarkFilled';
 import FireIcon from './Fire';
 import PublicityIcon from './Publicity';
@@ -47,6 +47,10 @@ import EditPenIcon from './EditPen';
 import CheckMarkIcon from './CheckMark';
 import SunIcon from './Sun';
 import MoonIcon from './Moon';
+import ArrowLeftIcon from './ArrowLeft';
+import RemoveBookmarkIcon from './RemoveBookmark';
+import LightBulbIcon from './LightBulb';
+import InboxIcon from './Inbox';
 
 export enum Icons {
   HOME = 'home',
@@ -77,7 +81,7 @@ export enum Icons {
   CLOSE = 'close',
   BOOKMARK = 'bookmark',
   BOOKMARKS = 'bookmarks',
-  BOOKMARK_ADD = 'bookmarkAdd',
+  ADD_BOOKMARK = 'add-bookmark',
   BOOKMARK_FILLED = 'bookmarkFilled',
   FIRE = 'fire',
   PUBLICITY = 'PUBLICITY',
@@ -97,6 +101,10 @@ export enum Icons {
   CHECK_MARK = 'check-mark',
   SUN = 'sun',
   MOON = 'moon',
+  ARROW_LEFT = 'arrow-left',
+  REMOVE_BOOKMARK = 'remove-bookmark',
+  LIGHT_BULB = 'light-bulb',
+  INBOX = 'inbox',
 }
 
 export const icons = {
@@ -128,7 +136,7 @@ export const icons = {
   [Icons.CLOSE]: (props) => <CloseIcon {...props} />,
   [Icons.BOOKMARK]: (props) => <BookmarkIcon {...props} />,
   [Icons.BOOKMARKS]: (props) => <BookmarksIcon {...props} />,
-  [Icons.BOOKMARK_ADD]: (props) => <BookmarkAddIcon {...props} />,
+  [Icons.ADD_BOOKMARK]: (props) => <BookmarkAddIcon {...props} />,
   [Icons.BOOKMARK_FILLED]: (props) => <BookmarkFilledIcon {...props} />,
   [Icons.FIRE]: (props) => <FireIcon {...props} />,
   [Icons.PUBLICITY]: (props) => <PublicityIcon {...props} />,
@@ -148,4 +156,8 @@ export const icons = {
   [Icons.CHECK_MARK]: (props) => <CheckMarkIcon {...props} />,
   [Icons.SUN]: (props) => <SunIcon {...props} />,
   [Icons.MOON]: (props) => <MoonIcon {...props} />,
+  [Icons.ARROW_LEFT]: (props) => <ArrowLeftIcon {...props} />,
+  [Icons.REMOVE_BOOKMARK]: (props) => <RemoveBookmarkIcon {...props} />,
+  [Icons.LIGHT_BULB]: (props) => <LightBulbIcon {...props} />,
+  [Icons.INBOX]: (props) => <InboxIcon {...props} />,
 };

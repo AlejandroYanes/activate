@@ -19,19 +19,16 @@ function getDateString(
   date: Date,
   type: 'date' | 'date-range' | 'date-time' | 'time' | 'time-range',
 ) {
-  if (date) {
-    switch (type) {
-      case 'date':
-      case 'date-range':
-        return formatDate(date);
-      case 'time':
-      case 'time-range':
-        return formatTime(date);
-      default:
-        return formatDateTime(date);
-    }
+  switch (type) {
+    case 'date':
+    case 'date-range':
+      return formatDate(date);
+    case 'time':
+    case 'time-range':
+      return formatTime(date);
+    default:
+      return formatDateTime(date);
   }
-  return undefined;
 }
 
 const Content: FunctionComponent<Props> = (props) => {
@@ -40,13 +37,19 @@ const Content: FunctionComponent<Props> = (props) => {
   const useRange = type === 'date-range' || type === 'time-range';
 
   const startDate = useMemo(() => {
-    const date = useRange && value ? value[0] : value;
-    return getDateString(date, type);
+    if (value) {
+      const date = useRange ? value[0] : value;
+      return getDateString(date, type);
+    }
+    return undefined;
   }, [type, useRange, value]);
 
   const endDate = useMemo(() => {
-    const date = useRange && value ? value[1] : undefined;
-    return getDateString(date, type);
+    if (value && useRange) {
+      const date = value[1];
+      return getDateString(date, type);
+    }
+    return undefined;
   }, [type, useRange, value]);
 
   const iconColor = useMemo(() => {

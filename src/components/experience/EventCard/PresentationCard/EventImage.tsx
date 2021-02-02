@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ImageContainer, Image } from './styled';
+import { ImageContainer, Image } from './styled/image';
 
 interface Props {
   src: string;

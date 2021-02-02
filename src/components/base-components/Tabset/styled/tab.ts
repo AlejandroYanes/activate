@@ -94,7 +94,7 @@ const getHoverStyles = (props) => {
 
 export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   padding: 8px 12px;
-  margin: 0;
+  margin: 0 6px 0 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -107,5 +107,9 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   &:hover, &:focus {
     outline: none;
     ${getHoverStyles}
+  }
+
+  &:last-child {
+    margin-right: 0;
   }
 `;

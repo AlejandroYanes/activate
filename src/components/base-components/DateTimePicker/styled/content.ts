@@ -34,6 +34,8 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
   flex-direction: ${getDirection};
   justify-content: flex-start;
   align-items: center;
+  box-sizing: border-box;
+  height: 36px;
   padding: 8px ${getRightPadding} 8px 16px;
   border-radius: ${inputBorderRadius};
   font-size: 16px;

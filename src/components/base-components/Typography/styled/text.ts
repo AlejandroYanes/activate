@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { anyPropsAttrs, getMargins } from 'helpers';
 
 const sizeMap = {
-  small: '12px',
+  small: '13px',
   medium: '16px',
   large: '20px',
 };

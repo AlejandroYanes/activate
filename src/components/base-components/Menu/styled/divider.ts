@@ -1,9 +1,12 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
+
+const getColor = ({ theme: { useDarkStyle, colors } }) => (
+  useDarkStyle ? colors.WHITE_SHADE : colors.GRAY_SHADE
+);
 
 export const Divider = styled.div`
   width: 85%;
-  height: 2px;
+  height: 1px;
   margin: 6px auto;
-  background-color: ${Colors.GRAY_DARK};
+  background-color: ${getColor};
 `;

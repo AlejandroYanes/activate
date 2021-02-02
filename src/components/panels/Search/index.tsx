@@ -7,7 +7,7 @@ import { BottomSection, Content, StyledSearch } from './styled';
 
 const today = new Date();
 const yesterday = subDays(today, 1);
-const initialSearchState = { event: '', publisher: '', date: [yesterday, today], dateTime: today };
+const initialSearchState = { event: '', publisher: '', date: [yesterday, today] };
 
 const SearchPanel: FunctionComponent = () => {
   const [search, setSearch] = useState(initialSearchState);
@@ -26,14 +26,6 @@ const SearchPanel: FunctionComponent = () => {
             component={DateTimePicker}
             type="date-range"
             showOptions
-            showClear
-            mT
-          />
-          <Field
-            name="dateTime"
-            label="Date Time test"
-            component={DateTimePicker}
-            type="date-time"
             showClear
             mT
           />

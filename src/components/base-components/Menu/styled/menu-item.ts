@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 const elementBorderRadius = '6px';
 const elementHeight = '40px';
@@ -7,10 +6,10 @@ const elementHeight = '40px';
 export const MenuItem = styled.li`
   box-sizing: border-box;
   display: flex;
-  align-items: stretch;
+  align-items: center;
   height: ${elementHeight};
   padding: 0 8px;
-  color: ${Colors.FONT};
+  color: ${({ theme }) => theme.colors.FONT};
   font-size: 1rem;
   transition: font-size ease-in-out 120ms;
 
@@ -27,11 +26,11 @@ export const MenuItem = styled.li`
 
   &:hover {
     cursor: pointer;
-    background-color: ${Colors.GRAY_SHADE};
+    background-color: ${({ theme }) => theme.colors.BRAND_SHADE};
   }
 
   &:active {
-    font-size: 1.15rem;
+    font-size: 0.95rem;
   }
 `;
 

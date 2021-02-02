@@ -7,7 +7,11 @@ const defaultEvent = {
   date: new Date(2020, 1, 19),
   title: 'Free Music Workshop - February 2020',
   address: 'St. Joseph\'s Hospice',
-  price: [10000.99, 50000.99],
+  author: {
+    name: faker.company.companyName(),
+    userName: `${faker.internet.userName()}`,
+    following: true,
+  },
   image: eventImg,
   description: `
   Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -22,11 +26,12 @@ const fakeEvents = new Array(4).fill('1').map((_item, index) => ({
   date: faker.date.recent(7),
   title: faker.lorem.words(7),
   address: `${faker.address.streetAddress()}, ${faker.address.city()}`,
+  author: {
+    name: faker.company.companyName(),
+    userName: `${faker.internet.userName()}`,
+    following: faker.random.boolean(),
+  },
   image: images[index],
-  price: [
-    parseFloat(faker.finance.amount(10, 30)),
-    parseFloat(faker.finance.amount(31, 100)),
-  ],
   description: undefined,
 }));
 

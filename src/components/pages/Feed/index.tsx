@@ -50,7 +50,7 @@ const FeedPage: FunctionComponent = () => {
           <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />
         </SubHeader>
       </RenderIf>
-      <PresentationCard {...events[0]} />
+      <PresentationCard isAFollowedEvent {...events[0]} />
     </Page>
   );
 };

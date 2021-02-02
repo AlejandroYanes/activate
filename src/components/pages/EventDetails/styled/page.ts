@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { Title } from 'components/base-components/Typography';
+import IconButton from '../../../base-components/IconButton';
 
 export const StyledEventDetail = styled.article`
   display: flex;
@@ -9,11 +11,25 @@ export const StyledEventDetail = styled.article`
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 
-export const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.FONT};
-  text-align: center;
-  margin: 8px 0 16px;
-  font-size: 24px;
+export const Header = styled.header`
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 24px;
+`;
+
+export const BackButton = styled(IconButton)`
+  margin-top: 4px;
+`;
+
+export const SubHeader = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 16px 0 32px;
+`;
+
+export const EventTitle = styled(Title)`
+  flex: 1;
+  margin: 0 16px;
 `;
 
 export const ImageContainer = styled.div`

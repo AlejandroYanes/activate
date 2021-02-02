@@ -1,19 +1,20 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getMonthLabel } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
-import { Text, Paragraph } from 'components/base-components/Typography';
+import { Paragraph, Text } from 'components/base-components/Typography';
 import EventImage from './EventImage';
+import AuthorMenu from './AuthorMenu';
 import {
   Actions,
   Address,
   Card,
-  DateBadge,
   Content,
+  DateBadge,
   Divider,
   Footer,
   Header,
@@ -25,10 +26,16 @@ interface Props {
   title: string;
   address: string;
   date: Date;
-  price: number[];
+  author: {
+    name: string;
+    userName: string;
+    following: boolean;
+  };
   image: string;
   description?: string;
+  isAFollowedEvent?: boolean;
 }
+
 
 const avatars = ['user1', 'user2', 'user6'];
 
@@ -38,8 +45,10 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
     date,
     title,
     address,
+    author,
     image,
     description,
+    isAFollowedEvent,
   } = props;
   const [isBooked, setIsBooked] = useState(false);
 
@@ -55,13 +64,15 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
           <span>{date.getDate()}</span>
         </DateBadge>
         <TitleAndAddress>
-          <Title level={3}>{title}</Title>
+          <Link to="/event-detail">
+            <Title level={3}>{title}</Title>
+          </Link>
           <Address>
             <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
             <Text>{address}</Text>
           </Address>
         </TitleAndAddress>
-        <Avatar icon="user2" size="small" />
+        <AuthorMenu {...author} />
       </Header>
       <Content>
         <EventImage src={image} alt="event" />
@@ -84,15 +95,27 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
             color={Colors.INFO}
             onClick={() => undefined}
           />
-          <IconButton
-            size="large"
-            buttonColor="success"
-            variant="flat"
-            icon={Icons.BOOKMARK_FILLED}
-            color={Colors.ACCENT}
-            secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
-            onClick={handleBookActionClick}
-          />
+          <RenderIf condition={!isAFollowedEvent}>
+            <IconButton
+              size="large"
+              buttonColor="success"
+              variant="flat"
+              icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
+              color={Colors.ACCENT}
+              secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
+              onClick={handleBookActionClick}
+            />
+          </RenderIf>
+          <RenderIf condition={isAFollowedEvent}>
+            <IconButton
+              size="large"
+              buttonColor="success"
+              variant="flat"
+              icon={Icons.REMOVE_BOOKMARK}
+              color={Colors.ERROR}
+              onClick={() => undefined}
+            />
+          </RenderIf>
         </Actions>
       </Footer>
     </Card>
