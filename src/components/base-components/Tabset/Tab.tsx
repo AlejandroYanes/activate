@@ -47,6 +47,11 @@ function getIconColor(
   return colors.GRAY;
 }
 
+const tabVariants = {
+  collapsed: { scaleX: 0, opacity: 0, transition: { duration: 0.5 } },
+  expanded: { scaleX: 1, opacity: 1, transition: { duration: 0.5 } },
+};
+
 const Tab: FunctionComponent<Props> = (props) => {
   const { colors, useDarkStyle } = useAppTheme();
   const { name, label, icon } = props;
@@ -55,6 +60,7 @@ const Tab: FunctionComponent<Props> = (props) => {
     onTabChange,
     fullWidth,
     compact,
+    animateEntrance,
   } = useContext(tabsetContext);
   const tabReference = useRef(undefined);
   const isHovered = useHoverState(tabReference);
@@ -83,6 +89,7 @@ const Tab: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledTab
+      layout
       role="button"
       tabIndex={0}
       data-el="tab"
@@ -91,6 +98,9 @@ const Tab: FunctionComponent<Props> = (props) => {
       compact={compact}
       selected={isSelected}
       onClick={handleClick}
+      variants={tabVariants}
+      initial={animateEntrance ? 'collapsed' : 'expanded'}
+      animate="expanded"
     >
       <Content
         data-el="tab-content"
