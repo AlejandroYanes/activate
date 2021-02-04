@@ -21,13 +21,13 @@ const Tabset: FunctionComponent<TabsetProps> = (props) => {
   }, []);
 
   return (
-    <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
-      <TabSetProvider {...rest} animateEntrance={animateEntrance}>
-        <AnimateSharedLayout>
+    <AnimateSharedLayout>
+      <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
+        <TabSetProvider {...rest} animateEntrance={animateEntrance}>
           {children}
-        </AnimateSharedLayout>
-      </TabSetProvider>
-    </StyledTabset>
+        </TabSetProvider>
+      </StyledTabset>
+    </AnimateSharedLayout>
   );
 };
 

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const outerSize = 280;
-const markerSize = 36;
 
 export const StyledClock = styled.div`
   height: ${outerSize}px;
@@ -29,46 +28,7 @@ export const Content = styled.div`
   height: 100%;
 `;
 
-const getActiveStyles = (props) => {
-  const { active, theme } = props;
-
-  if (active) {
-    return `
-      background-color: ${theme.colors.BRAND};
-      color: ${theme.colors.WHITE};
-    `;
-  }
-  return `
-    background-color: transparent;
-    color: ${theme.colors.FONT};
-  `;
-};
-
-export const Marker = styled.button`
-  outline: none;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  border-radius: 50%;
-  color: ${({ theme }) => theme.colors.FONT};
-  height: ${markerSize}px;
-  width: ${markerSize}px;
-  font-size: ${markerSize / 2}px;
-  line-height: ${markerSize}px;
-  cursor: pointer;
-  ${getActiveStyles};
-  transition: all 150ms linear;
-
-  &:active {
-    background-color: ${({ theme }) => theme.colors.BRAND};
-    color: ${({ theme }) => theme.colors.WHITE};
-  }
-`;
-
-export const HourLabel = styled.div`
+export const TimeLabel = styled.div`
   position: absolute;
   padding: 6px;
   font-size: 26px;
@@ -81,20 +41,4 @@ export const HourLabel = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-export const HourButton = styled.button.attrs((props: any) => props)`
-  outline: none;
-  border: none;
-  border-radius: 6px;
-  padding: 2px;
-  margin: 2px;
-  font-size: 26px;
-  ${getActiveStyles};
-  transition: all 150ms linear;
-
-  &:active {
-    background-color: ${({ theme }) => theme.colors.BRAND};
-    color: ${({ theme }) => theme.colors.WHITE};
-  }
 `;

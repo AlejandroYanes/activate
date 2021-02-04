@@ -1,19 +1,21 @@
 import React, { FunctionComponent, useState } from 'react';
-import { getEventValue } from 'helpers';
-import Clock from 'components/base-components/Clock';
+import Page from 'components/base-components/Page';
+import Button from 'components/base-components/Button';
 
 const AboutPage: FunctionComponent = () => {
-  const [date, setDate] = useState(new Date());
+  const [loading, setLoading] = useState(false);
 
   return (
-    <section>
-      About Page
-      <br />
-      <Clock value={date} onChange={(event) => setDate(getEventValue(event))} />
-      <br />
-      <br />
-      <br />
-    </section>
+    <Page title="About Us">
+      <div>
+        <Button
+          onClick={() => setLoading(!loading)}
+          isLoading={loading}
+          label="testing loading"
+          mB
+        />
+      </div>
+    </Page>
   );
 };
 
