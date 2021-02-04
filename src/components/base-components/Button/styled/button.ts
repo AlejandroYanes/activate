@@ -120,6 +120,7 @@ export const Button = styled.button`
   cursor: pointer;
   transition: all linear 150ms;
   flex-shrink: 0;
+  position: relative;
   ${getMargins};
   ${getSize};
   ${getVariantStyles}

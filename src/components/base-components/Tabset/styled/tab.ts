@@ -92,7 +92,7 @@ const getHoverStyles = (props) => {
   `;
 };
 
-export const StyledTab = styled(motion.li).attrs(anyPropsAttrs)`
+export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   padding: 8px 12px;
   margin: 0 6px 0 0;
   display: flex;

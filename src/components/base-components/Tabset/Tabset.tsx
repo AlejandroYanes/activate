@@ -22,7 +22,7 @@ const Tabset: FunctionComponent<TabsetProps> = (props) => {
 
   return (
     <AnimateSharedLayout>
-      <StyledTabset layout mB={mB} mT={mT} mR={mR} mL={mL}>
+      <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
         <TabSetProvider {...rest} animateEntrance={animateEntrance}>
           {children}
         </TabSetProvider>

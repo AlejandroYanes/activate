@@ -24,14 +24,20 @@ export interface ColorScheme {
   BACKGROUND_LIGHT: string;
   BACKGROUND_SHADE: string;
   INFO: string;
+  INFO_DARK: string;
+  INFO_LIGHT: string;
   INFO_SHADE: string;
   WARNING: string;
+  WARNING_DARK: string;
+  WARNING_LIGHT: string;
   WARNING_SHADE: string;
   ERROR: string;
   ERROR_DARK: string;
+  ERROR_LIGHT: string;
   ERROR_SHADE: string;
   SUCCESS: string;
   SUCCESS_DARK: string;
+  SUCCESS_LIGHT: string;
   SUCCESS_SHADE: string;
 }
 

@@ -1,14 +1,11 @@
-import React, { FunctionComponent, useState } from 'react';
-import { getEventValue } from 'helpers';
-import Clock from 'components/base-components/Clock';
+import React, { FunctionComponent } from 'react';
 import Page from 'components/base-components/Page';
+import SpinningDots from 'components/base-components/Loaders/SpinningDots';
 
 const AboutPage: FunctionComponent = () => {
-  const [date, setDate] = useState(new Date());
-
   return (
     <Page title="About Us">
-      <Clock value={date} onChange={(event) => setDate(getEventValue(event))} />
+      <SpinningDots mT mB size="page" />
     </Page>
   );
 };

@@ -1,23 +1,24 @@
 import React from 'react';
-import { Text } from './styled';
+import RenderIf from 'components/base-components/RenderIf';
+import SpinningDots from 'components/base-components/Loaders/SpinningDots';
+import { Text, LoadingLayer } from './styled';
 
 export default function Content({ label, rightIcon, leftIcon, isLoading, children }) {
   if (children) {
     return children;
   }
 
-  if (isLoading) {
-    return (
-      <Text>is loading</Text>
-    );
-  }
-
   if (label) {
     return (
       <>
         {leftIcon}
-        <Text>{label}</Text>
+        <Text show={!isLoading}>{label}</Text>
         {rightIcon}
+        <RenderIf condition={isLoading}>
+          <LoadingLayer show={isLoading}>
+            <SpinningDots size="x-small" flat />
+          </LoadingLayer>
+        </RenderIf>
       </>
     );
   }

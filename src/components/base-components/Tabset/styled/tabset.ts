@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { getMargins } from 'helpers';
 
-export const StyledTabset = styled(motion.ul).attrs((props: any) => props)`
+export const StyledTabset = styled.ul.attrs((props: any) => props)`
   list-style: none;
   display: flex;
   align-items: center;
