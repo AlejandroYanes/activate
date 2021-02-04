@@ -1,11 +1,20 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import Page from 'components/base-components/Page';
-import SpinningDots from 'components/base-components/Loaders/SpinningDots';
+import Button from 'components/base-components/Button';
 
 const AboutPage: FunctionComponent = () => {
+  const [loading, setLoading] = useState(false);
+
   return (
     <Page title="About Us">
-      <SpinningDots mT mB size="page" />
+      <div>
+        <Button
+          onClick={() => setLoading(!loading)}
+          isLoading={loading}
+          label="testing loading"
+          mB
+        />
+      </div>
     </Page>
   );
 };
