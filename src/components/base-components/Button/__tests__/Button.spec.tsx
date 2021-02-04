@@ -43,7 +43,7 @@ describe('Button base component', () => {
       </ThemeProvider>,
     );
 
-    expect(button.text()).toBe('is loading');
+    expect(button.find('HorizontalDots').exists()).toBe(true);
   });
 
   it('should return the content passed as children over the one generated from props', () => {
