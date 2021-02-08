@@ -5,7 +5,7 @@ export const Text = styled.span.attrs(anyPropsAttrs)`
   font-family: Comfortaa, cursive;
   margin: 0 8px;
   opacity: ${({ show }) => show ? 1 : 0};
-  transition: all 200ms ease-in;
+  transition: all 150ms linear;
 `;
 
 export const LoadingLayer = styled.div.attrs(anyPropsAttrs)`
@@ -19,5 +19,5 @@ export const LoadingLayer = styled.div.attrs(anyPropsAttrs)`
   justify-content: center;
   align-items: center;
   opacity: ${({ show }) => show ? 1 : 0};
-  transition: all 200ms ease-out;
+  transition: all 150ms linear;
 `;

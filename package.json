@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "date-fns": "^2.16.1",
-    "framer": "^1.2.12",
     "framer-motion": "^2.3.0",
     "node-sass": "^4.13.1",
     "react": "^17.0.1",

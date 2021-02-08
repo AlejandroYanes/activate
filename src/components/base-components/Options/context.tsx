@@ -5,6 +5,7 @@ interface OptionsContext {
   onChange: (value) => void;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
+  fullWidth?: boolean;
 }
 
 const pickListContext = createContext<OptionsContext>(undefined);

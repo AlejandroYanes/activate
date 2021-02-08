@@ -10,9 +10,9 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
   position: relative;
 `;
 
-const getPadding = (count) => count * 20 + 20;
-const getLeftPadding = (props) => `padding-left: ${getPadding(props.leftItems)}px`;
-const getRightPadding = (props) => `padding-right: ${getPadding(props.rightItems)}px`;
+const getPadding = (pad: boolean) => (pad ? 1 : 0) * 20 + 20;
+const getLeftPadding = ({ padLeft }) => `padding-left: ${getPadding(padLeft)}px`;
+const getRightPadding = ({ padRight }) => `padding-right: ${getPadding(padRight)}px`;
 
 const getFocusStyles = (props) => {
   const { theme: { useDarkStyle, colors } } = props;
@@ -26,7 +26,7 @@ const getFocusStyles = (props) => {
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
   border-radius: ${inputBorderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.GRAY_LIGHT};
+  border: 1px solid ${({ theme }) => theme.colors.GRAY};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   color: ${({ theme }) => theme.colors.FONT};
   font-size: 16px;
@@ -47,7 +47,7 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   }
 
   &:hover {
-    border-color: ${({ theme }) => theme.colors.FONT};
+    border-color: ${({ theme }) => theme.colors.FONT_SHADE};
   }
 
   &:focus {

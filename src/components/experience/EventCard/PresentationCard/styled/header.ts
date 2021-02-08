@@ -4,7 +4,7 @@ import { Title as TitleComponent } from 'components/base-components/Typography';
 
 export const Header = styled.header`
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
 `;
 
 export const DateBadge = styled.div`
@@ -31,18 +31,17 @@ export const TitleAndAddress = styled.div`
 `;
 
 export const Title = styled(TitleComponent)`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  //white-space: nowrap;
+  //text-overflow: ellipsis;
+  //overflow: hidden;
 `;
 
 export const Address = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 6px;
 
   & span {
-    margin-top: 2px;
     margin-left: 4px;
     line-height: 20px;
   }

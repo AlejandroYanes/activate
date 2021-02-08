@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { anyPropsAttrs } from 'helpers';
 
@@ -66,7 +66,7 @@ const getSelectedStyles = (props) => {
   const { selected, theme } = props;
 
   if (selected) {
-    return `
+    return css`
       ${Label} {
         color: ${theme.colors.BRAND}
       }
@@ -79,11 +79,11 @@ const getHoverStyles = (props) => {
   const { selected, theme: { colors, useDarkStyle } } = props;
   const markColor = useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
 
-  return `
-     background-color: ${colors.BRAND_SHADE};
+  return css`
+    background-color: ${colors.BRAND_SHADE};
 
     ${Label}{
-      color: ${useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK}
+      color: ${useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK};
     }
 
     ${Mark}{
@@ -106,7 +106,7 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
 
   &:hover, &:focus {
     outline: none;
-    ${getHoverStyles}
+    ${getHoverStyles};
   }
 
   &:last-child {

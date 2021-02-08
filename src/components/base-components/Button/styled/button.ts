@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getMargins } from 'helpers';
 import { ButtonProps } from '..';
 
@@ -40,35 +40,25 @@ export const getVariantStyles = ({ theme, ...buttonProps }) => {
   const borderStyle = 'solid 1px ';
 
   switch (variant) {
-    case 'base': {
-      const fontColor = useDarkStyle
-        ? `${colors[`${color.toUpperCase()}_LIGHT`]}`
-        : `${colors[`${color.toUpperCase()}`]}`;
-
-      return `
-        color: ${fontColor};
+    case 'base':
+      return css`
+        color: ${colors[color.toUpperCase()]};
         background-color: ${colors.BACKGROUND};
         border: ${borderStyle} transparent;
       `;
-    }
-    case 'flat': {
-      const fontColor = useDarkStyle
-        ? `${colors[`${color.toUpperCase()}_LIGHT`]}`
-        : `${colors[`${color.toUpperCase()}`]}`;
-
-      return `
+    case 'flat':
+      return css`
         background-color: transparent;
-        color: ${fontColor};
+        color: ${colors[color.toUpperCase()]};
         border: ${borderStyle} transparent;
       `;
-    }
     default: {
       const fontColor = color === 'font' ? colors.BACKGROUND : colors.WHITE;
       const backgroundColor = useDarkStyle
         ? `${colors[`${color.toUpperCase()}_DARK`]}`
         : `${colors[`${color.toUpperCase()}`]}`;
 
-      return `
+      return css`
         color: ${fontColor};
         background-color: ${backgroundColor};
         border: ${borderStyle} ${backgroundColor};
@@ -83,12 +73,12 @@ export const getHoveredStyles = ({ theme, ...buttonProps }) => {
 
   switch (variant) {
     case 'base':
-      return `
+      return css`
         color: ${colors[`${color.toUpperCase()}_${useDarkStyle ? 'LIGHT' : 'DARK'}`]};
         background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
       `;
     case 'flat':
-      return `
+      return css`
         color: ${colors[`${color.toUpperCase()}_${useDarkStyle ? 'LIGHT' : 'DARK'}`]};
         background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
       `;
@@ -97,7 +87,7 @@ export const getHoveredStyles = ({ theme, ...buttonProps }) => {
         ? `${colors[`${color.toUpperCase()}`]}`
         : `${colors[`${color.toUpperCase()}_DARK`]}`;
 
-      return `
+      return css`
         background-color: ${backgroundColor};
         border-color: ${backgroundColor};
         color: ${colors.WHITE};
@@ -118,12 +108,12 @@ export const Button = styled.button`
   justify-content: ${getAlignment};
   padding: 0 8px;
   cursor: pointer;
-  transition: all linear 150ms;
   flex-shrink: 0;
   position: relative;
   ${getMargins};
   ${getSize};
-  ${getVariantStyles}
+  ${getVariantStyles};
+  transition: all linear 150ms;
 
   &:active {
     transform: scale(0.9);

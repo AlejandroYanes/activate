@@ -25,6 +25,7 @@ export const Option = styled.li.attrs(anyPropsAttrs)`
   height: ${({ size }) => `${sizeMap[size]}px`};
   color: ${({ theme }) => theme.colors.WHITE};
   background-color: transparent;
+  ${({ fullWidth }) => fullWidth ? 'flex: 1;' : ''}
 
   &:hover, &:focus {
     outline: none;

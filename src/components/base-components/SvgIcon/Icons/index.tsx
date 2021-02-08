@@ -31,9 +31,7 @@ import BookmarkAddIcon from './AddBookmark';
 import BookmarkFilledIcon from './BookmarkFilled';
 import FireIcon from './Fire';
 import PublicityIcon from './Publicity';
-import PublisherIcon from './Publisher';
 import MegaphoneIcon from './Megaphone';
-import Megaphone2Icon from './Megaphone2';
 import TicketIcon from './Ticket';
 import GlobeIcon from './Globe';
 import ForwardIcon from './Forward';
@@ -51,6 +49,10 @@ import ArrowLeftIcon from './ArrowLeft';
 import RemoveBookmarkIcon from './RemoveBookmark';
 import LightBulbIcon from './LightBulb';
 import InboxIcon from './Inbox';
+import ResumeIcon from './Resume';
+import StarIcon from './Star';
+import BookmarkCheckedIcon from './BookmarkChecked';
+import AddUserIcon from './AddUser';
 
 export enum Icons {
   HOME = 'home',
@@ -85,9 +87,7 @@ export enum Icons {
   BOOKMARK_FILLED = 'bookmarkFilled',
   FIRE = 'fire',
   PUBLICITY = 'PUBLICITY',
-  PUBLISHER = 'PUBLISHER',
   MEGAPHONE = 'MEGAPHONE',
-  MEGAPHONE2 = 'MEGAPHONE2',
   TICKET = 'ticket',
   GLOBE = 'globe',
   FORWARD = 'forward',
@@ -105,6 +105,10 @@ export enum Icons {
   REMOVE_BOOKMARK = 'remove-bookmark',
   LIGHT_BULB = 'light-bulb',
   INBOX = 'inbox',
+  RESUME = 'resume',
+  STAR = 'star',
+  BOOKMARK_CHECKED = 'bookmark-checked',
+  ADD_USER = 'add-user',
 }
 
 export const icons = {
@@ -140,9 +144,7 @@ export const icons = {
   [Icons.BOOKMARK_FILLED]: (props) => <BookmarkFilledIcon {...props} />,
   [Icons.FIRE]: (props) => <FireIcon {...props} />,
   [Icons.PUBLICITY]: (props) => <PublicityIcon {...props} />,
-  [Icons.PUBLISHER]: (props) => <PublisherIcon {...props} />,
   [Icons.MEGAPHONE]: (props) => <MegaphoneIcon {...props} />,
-  [Icons.MEGAPHONE2]: (props) => <Megaphone2Icon {...props} />,
   [Icons.TICKET]: (props) => <TicketIcon {...props} />,
   [Icons.GLOBE]: (props) => <GlobeIcon {...props} />,
   [Icons.FORWARD]: (props) => <ForwardIcon {...props} />,
@@ -160,4 +162,8 @@ export const icons = {
   [Icons.REMOVE_BOOKMARK]: (props) => <RemoveBookmarkIcon {...props} />,
   [Icons.LIGHT_BULB]: (props) => <LightBulbIcon {...props} />,
   [Icons.INBOX]: (props) => <InboxIcon {...props} />,
+  [Icons.RESUME]: (props) => <ResumeIcon {...props} />,
+  [Icons.STAR]: (props) => <StarIcon {...props} />,
+  [Icons.BOOKMARK_CHECKED]: (props) => <BookmarkCheckedIcon {...props} />,
+  [Icons.ADD_USER]: (props) => <AddUserIcon {...props} />,
 };

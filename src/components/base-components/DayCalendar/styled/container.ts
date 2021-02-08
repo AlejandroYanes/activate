@@ -5,8 +5,9 @@ import { anyPropsAttrs, getMargins } from 'helpers';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  ${getMargins};
+  width: 100%;
   max-width: ${cardWidth};
+  ${getMargins};
 `;
 
 export const ListContainer = styled.div`

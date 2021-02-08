@@ -21,7 +21,7 @@ const Tabset: FunctionComponent<TabsetProps> = (props) => {
   }, []);
 
   return (
-    <AnimateSharedLayout>
+    <AnimateSharedLayout type="crossfade">
       <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
         <TabSetProvider {...rest} animateEntrance={animateEntrance}>
           {children}

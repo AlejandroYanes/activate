@@ -12,7 +12,7 @@ const sections = [
   {
     icon: Icons.FILTER,
     label: 'Search',
-    value: AuxPanelSection.Search,
+    value: AuxPanelSection.Filter,
   },
   {
     icon: Icons.BOOKMARKS,

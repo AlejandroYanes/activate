@@ -1,33 +1,35 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react';
+import React, { FunctionComponent, useMemo, useState } from 'react';
 import { PositionProps } from 'helpers';
-import { StyledContainer, StyledInput } from './styled/input';
+import { useAppTheme } from 'components/providers/Theme';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import RenderIf from 'components/base-components/RenderIf';
 import InputLabel from '../base/Label';
 import ClearButton from '../base/ClearButton';
 import AbsoluteContent from '../base/AbsoluteContent';
+import { StyledContainer, StyledInput } from './styled/input';
 
 interface Props extends PositionProps {
   id?: string;
   placeholder?: string;
   label?: string;
+  icon?: Icons;
   value: string;
   onChange: (event) => void;
   onFocus?: (event) => void;
   onBlur?: (event) => void;
-  leftItems?: ReactNode[];
-  rightItems?: ReactNode[];
   showClear?: boolean;
 }
 
 const Input: FunctionComponent<Props> = (props) => {
+  const { colors: Colors, useDarkStyle } = useAppTheme();
   const {
     label,
     placeholder,
+    icon,
     value,
     onChange,
     onFocus,
     onBlur,
-    leftItems,
-    rightItems,
     showClear,
     ...rest
   } = props;
@@ -47,36 +49,37 @@ const Input: FunctionComponent<Props> = (props) => {
     }
   };
 
+  const iconElement = useMemo(() => {
+    const focusedColor = useDarkStyle ? Colors.BRAND : Colors.BRAND_DARK;
+    return (
+      <SvgIcon icon={icon} color={isFocused ? focusedColor : Colors.GRAY} />
+    );
+  }, [icon, isFocused, Colors, useDarkStyle])
+
   return (
     <StyledContainer {...rest}>
       <InputLabel text={label} isFocused={isFocused} />
-      <AbsoluteContent>
-        {leftItems}
-      </AbsoluteContent>
+      <RenderIf condition={!!icon}>
+        <AbsoluteContent>
+          {iconElement}
+        </AbsoluteContent>
+      </RenderIf>
       <StyledInput
-        leftItems={leftItems.length}
-        rightItems={rightItems.length + (showClear ? 1 : 0)}
+        padLeft={!!icon}
+        padRight={showClear}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      <AbsoluteContent floatRight>
-        {rightItems}
-        <ClearButton
-          isFocused={isFocused}
-          showClear={showClear && !!value}
-          onChange={onChange}
-        />
-      </AbsoluteContent>
+      <ClearButton
+        isFocused={isFocused}
+        showClear={showClear && !!value}
+        onClick={onChange}
+      />
     </StyledContainer>
   );
-};
-
-Input.defaultProps = {
-  leftItems: [],
-  rightItems: [],
 };
 
 export default Input;

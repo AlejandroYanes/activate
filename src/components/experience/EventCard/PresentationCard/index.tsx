@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getMonthLabel } from 'helpers';
+import { formatAmount, getMonthLabel } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
@@ -33,6 +33,7 @@ interface Props {
   };
   image: string;
   description?: string;
+  attendees?: number;
   isAFollowedEvent?: boolean;
 }
 
@@ -48,6 +49,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
     author,
     image,
     description,
+    attendees,
     isAFollowedEvent,
   } = props;
   const [isBooked, setIsBooked] = useState(false);
@@ -84,7 +86,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
       </Content>
       <Divider />
       <Footer>
-        <AvatarGroup icons={avatars} label="+ 16k" size="small" />
+        <AvatarGroup icons={avatars} label={formatAmount(attendees)} size="small" />
         <Actions>
           <IconButton
             mR
@@ -109,7 +111,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
           <RenderIf condition={isAFollowedEvent}>
             <IconButton
               size="large"
-              buttonColor="success"
+              buttonColor="error"
               variant="flat"
               icon={Icons.REMOVE_BOOKMARK}
               color={Colors.ERROR}

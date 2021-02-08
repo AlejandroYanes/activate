@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
+import { anyPropsAttrs } from 'helpers';
+import { Layout } from 'components/providers/Layout';
 import SelectedBubble from '../SelectedBubble';
 
 export const Block = styled.li`
   height: 78px;
-  width: 100%;
+  width: 90px;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -18,12 +20,23 @@ export const StyledLink = styled(Link)`
   height: 100%;
 `;
 
-const getRightPosition = ({ selected }) => selected ? '-30px' : '-92px';
+const getPositionStyles = (props) => {
+  const { layout, selected } = props;
 
-export const StyledBubble = styled(SelectedBubble).attrs((props: { selected?: boolean }) => props)`
+  if (layout === Layout.SMALL) {
+    return css`
+      transform: rotate(90deg);
+      top: ${selected ? '24px' : '92px'};
+    `;
+  }
+
+  return css`right: ${selected ? '-30px' : '-92px'}`;
+};
+
+export const StyledBubble = styled(SelectedBubble).attrs(anyPropsAttrs)`
   position: relative;
-  right: ${getRightPosition};
   transform: scaleX(1.05);
+  ${getPositionStyles};
   transition: all .2s;
 `;
 
