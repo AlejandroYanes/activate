@@ -9,6 +9,8 @@ export const StyledBackdrop = styled.section`
   left: 0;
   right: 0;
   display: flex;
+  height: 100%;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;

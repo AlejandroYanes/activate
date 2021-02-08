@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { cardWidth } from 'styles/variables';
 import Colors from 'styles/colors';
 
 const getBorderColor = ({ isBooked, theme }) => (
@@ -14,7 +13,6 @@ export const Card = styled.article.attrs((props: any) => props)`
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 64px;
-  width: ${cardWidth};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   border: 1px solid ${getBorderColor};
 

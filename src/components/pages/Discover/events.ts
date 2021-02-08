@@ -12,6 +12,7 @@ const defaultEvent = {
     userName: `${faker.internet.userName()}`,
     following: true,
   },
+  attendees: faker.random.number(),
   image: eventImg,
   description: `
   Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -32,6 +33,7 @@ const fakeEvents = new Array(4).fill('1').map((_item, index) => ({
     following: faker.random.boolean(),
   },
   image: images[index],
+  attendees: faker.random.number(),
   description: undefined,
 }));
 

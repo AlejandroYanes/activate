@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Avatar from 'components/base-components/Avatar';
-import { Text } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import RenderIf from 'components/base-components/RenderIf';
 import { AuthorDetails, AuthorSection } from './styled/author-menu';
@@ -18,10 +18,10 @@ const AuthorMenu: FunctionComponent<Props> = (props) => {
   return (
     <Menu trigger={avatarMenuTrigger} align="end">
       <AuthorSection>
-        <Avatar icon="user2" size="large" />
+        <Avatar icon="user2" size="medium" />
         <AuthorDetails>
-          <Text>{name}</Text>
           <Text size="small">@{userName}</Text>
+          <Title level={3} color="brand">{name}</Title>
         </AuthorDetails>
       </AuthorSection>
       <MenuItem label="Go to profile" onClick={() => undefined} />

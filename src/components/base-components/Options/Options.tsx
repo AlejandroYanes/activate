@@ -12,11 +12,17 @@ interface Props extends PositionProps {
 }
 
 const Options: FunctionComponent<Props> = (props) => {
-  const { value, onChange, size, color, children, ...rest } = props;
+  const { value, onChange, color, size, fullWidth, children, ...rest } = props;
 
   return (
     <StyledOptions {...rest}>
-      <OptionsProvider value={value} onChange={onChange} size={size} color={color}>
+      <OptionsProvider
+        value={value}
+        onChange={onChange}
+        size={size}
+        color={color}
+        fullWidth={fullWidth}
+      >
         <AnimateSharedLayout>
           {children}
         </AnimateSharedLayout>

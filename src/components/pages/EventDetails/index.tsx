@@ -2,6 +2,7 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import { useHistory } from 'react-router-dom';
 import eventImg from 'assets/images/virtual-tour.jpeg';
 import { useAppColors } from 'components/providers/Theme';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -29,7 +30,8 @@ enum Tabs {
   CommentsSection = 'Comments',
 }
 
-const EventDetails: FunctionComponent = () => {
+const EventDetailsPage: FunctionComponent = () => {
+  const layout = useAppLayout();
   const Colors = useAppColors();
   const { goBack } = useHistory();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
@@ -65,7 +67,12 @@ const EventDetails: FunctionComponent = () => {
           <Image src={eventImg} alt="virtual tour" />
         </ImageContainer>
         <SubHeader>
-          <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth>
+          <Tabset
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            compact={layout === Layout.SMALL}
+            fullWidth
+          >
             <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
             <Tab name={Tabs.CommentsSection} label="Comments (169)" icon={Icons.COMMENTS} />
           </Tabset>
@@ -98,4 +105,4 @@ const EventDetails: FunctionComponent = () => {
   );
 };
 
-export default EventDetails;
+export default EventDetailsPage;

@@ -1,11 +1,7 @@
 import styled from 'styled-components';
-import { ZLevels } from 'styles/z-levels';
 
 export const StyledSidePanel = styled.aside`
   padding: 32px 32px 32px 0;
-  position: fixed;
-  right: 0;
-  z-index: ${ZLevels.sidePanels};
 `;
 
 export const Panel = styled.div`
@@ -16,6 +12,8 @@ export const Panel = styled.div`
   width: 380px;
   height: calc(100vh - 64px);
   padding: 16px 0 24px;
+  position: sticky;
+  top: 32px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 

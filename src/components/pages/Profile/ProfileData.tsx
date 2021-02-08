@@ -4,21 +4,22 @@ import { ButtonProps } from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Field, Form } from 'components/base-components/Form';
-import { Title, Text } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import IconButton from 'components/base-components/IconButton';
 import Modal from 'components/base-components/Modal';
 import Avatar from 'components/base-components/Avatar';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { ProfileTabs } from '.';
 import {
   Actions,
+  AvatarSection,
+  Content,
+  InfoSection,
   Profile as StyledProfile,
   Stat,
   Stats,
   StyledAvatar,
   UserName,
-  Content,
-  AvatarSection,
-  InfoSection,
 } from './styled';
 
 interface Props {
@@ -38,6 +39,7 @@ const userData = {
 };
 
 const ProfileData: FunctionComponent<Props> = (props) => {
+  const layout = useAppLayout();
   const colors = useAppColors();
   const { activeTab, setActiveTab } = props;
   const [showModal, setShowModal] = useState(false);
@@ -70,7 +72,13 @@ const ProfileData: FunctionComponent<Props> = (props) => {
             <Title level={2} color="brand">80</Title>
           </Stat>
         </Stats>
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mT>
+        <Tabset
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          compact={layout === Layout.SMALL}
+          fullWidth
+          mT
+        >
           <Tab
             name={ProfileTabs.Following}
             label={ProfileTabs.Following}
@@ -89,7 +97,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         </Tabset>
       </StyledProfile>
       <Modal
-        size="medium"
+        size={layout === Layout.SMALL ? 'large' : 'medium'}
         header="User Data"
         visible={showModal}
         actions={actions}

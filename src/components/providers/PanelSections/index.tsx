@@ -10,7 +10,7 @@ import React, {
 export enum AuxPanelSection {
   Upcoming = 'Upcoming',
   Notifications = 'Notifications',
-  Search = 'Search',
+  Filter = 'Filter',
   EventDetails = 'EventDetails',
 }
 

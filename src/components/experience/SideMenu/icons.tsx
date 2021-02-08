@@ -16,6 +16,13 @@ export const discoverIcon = (isSelected: boolean, theme: ColorScheme, useDarkSty
   />
 );
 
+export const searchIcon = (isSelected: boolean, theme: ColorScheme, useDarkStyle: boolean) => (
+  <SvgIcon
+    icon={Icons.SEARCH}
+    color={isSelected && !useDarkStyle ? theme.BRAND : theme.WHITE}
+  />
+);
+
 export const aboutIcon = (isSelected: boolean, theme: ColorScheme, useDarkStyle: boolean) => (
   <SvgIcon
     icon={Icons.INFO_CIRCLE}

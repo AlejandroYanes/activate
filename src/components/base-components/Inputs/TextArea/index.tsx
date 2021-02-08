@@ -60,7 +60,7 @@ const TextArea: FunctionComponent<Props> = (props) => {
         <ClearButton
           showClear={showClear && !!value}
           isFocused={isFocused}
-          onChange={onChange}
+          onClick={onChange}
         />
       </AbsoluteContent>
     </StyledContainer>

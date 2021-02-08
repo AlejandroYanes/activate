@@ -1,15 +1,16 @@
 import React, { FunctionComponent } from 'react';
-import { StyledAbsoluteContent } from './styled/absolute-content';
+import { AbsoluteContent as StyledAbsoluteContent } from './styled/absolute-content';
 
 interface Props {
   floatRight?: boolean;
+  style?: any;
 }
 
 const AbsoluteContent: FunctionComponent<Props> = (props) => {
-  const { floatRight, children } = props;
+  const { floatRight, style, children } = props;
 
   return (
-    <StyledAbsoluteContent floatRight={floatRight}>
+    <StyledAbsoluteContent floatRight={floatRight} style={style}>
       {children}
     </StyledAbsoluteContent>
   );

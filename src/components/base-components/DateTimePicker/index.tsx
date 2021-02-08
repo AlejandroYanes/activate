@@ -1,10 +1,7 @@
 import React, { FunctionComponent, useState } from 'react';
 import { PositionProps } from 'helpers';
-import RenderIf from 'components/base-components/RenderIf';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
 import InputLabel from 'components/base-components/Inputs/base/Label';
-import AbsoluteContent from 'components/base-components/Inputs/base/AbsoluteContent';
+import ClearButton from 'components/base-components/Inputs/base/ClearButton';
 import CalendarModal from './CalendarModal';
 import Content from './Content';
 import { StyledDateTimePicker } from './styled';
@@ -70,16 +67,11 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
-        <RenderIf condition={showClear && !!value}>
-          <AbsoluteContent floatRight>
-            <IconButton
-              onClick={handleClear}
-              icon={Icons.CLOSE}
-              buttonColor="font"
-              size="small"
-            />
-          </AbsoluteContent>
-        </RenderIf>
+        <ClearButton
+          showClear={showClear && !!value}
+          isFocused={isFocused}
+          onClick={handleClear}
+        />
       </StyledDateTimePicker>
       <CalendarModal
         isOpen={showBackdrop}
