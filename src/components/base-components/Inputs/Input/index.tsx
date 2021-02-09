@@ -52,7 +52,7 @@ const Input: FunctionComponent<Props> = (props) => {
   const iconElement = useMemo(() => {
     const focusedColor = useDarkStyle ? Colors.BRAND : Colors.BRAND_DARK;
     return (
-      <SvgIcon icon={icon} color={isFocused ? focusedColor : Colors.GRAY} />
+      <SvgIcon icon={icon} color={isFocused ? focusedColor : Colors.FONT} />
     );
   }, [icon, isFocused, Colors, useDarkStyle])
 
