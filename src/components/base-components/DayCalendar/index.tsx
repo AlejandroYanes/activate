@@ -42,8 +42,8 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
   }, []);
 
   return (
-    <Wrapper {...rest} data-el="day-calendar-wrapper">
-      <Edge side="left" data-el="day-calendar-left-edge">
+    <Wrapper {...rest} data-el="day_calendar-wrapper">
+      <Edge side="left" data-el="day_calendar-left_edge">
         <RenderIf condition={showArrows}>
           <IconButton
             onClick={handleLeftEdgeClick}
@@ -53,14 +53,14 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
           />
         </RenderIf>
       </Edge>
-      <ListContainer ref={containerRef} data-el="day-calendar-list-container">
+      <ListContainer ref={containerRef} data-el="day_calendar-list_container">
         <List ref={listRef}>
           <AnimateSharedLayout>
             <Days days={days} value={value} handleDayClick={handleDayClick} />
           </AnimateSharedLayout>
         </List>
       </ListContainer>
-      <Edge side="right" data-el="day-calendar-right-edge">
+      <Edge side="right" data-el="day_calendar-right_edge">
         <RenderIf condition={showArrows}>
           <IconButton
             onClick={handleRightEdgeClick}

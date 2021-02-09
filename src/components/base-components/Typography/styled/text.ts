@@ -15,6 +15,7 @@ const getColor = (props) => {
 export const Text = styled.span.attrs(anyPropsAttrs)`
   font-size: ${({ size }) => sizeMap[size]};
   font-weight: ${({ weight }) => weight};
+  text-align: ${({ align }) => align};
   color: ${getColor};
   ${getMargins};
 `;

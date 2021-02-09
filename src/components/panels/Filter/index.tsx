@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Field, Form } from 'components/base-components/Form';
-import DateTimePicker from 'components/base-components/DateTimePicker';
 import { Option, Options } from 'components/base-components/Options';
 import { Icons } from 'components/base-components/SvgIcon';
+import RenderIf from 'components/base-components/RenderIf';
+import DateTimePicker from 'components/base-components/DateTimePicker';
 import { Content, StyledSearch } from './styled';
-import RenderIf from '../../base-components/RenderIf';
 
 enum EventLocation {
   OnLine = 'OnLine',

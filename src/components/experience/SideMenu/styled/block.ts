@@ -13,6 +13,7 @@ export const Block = styled.li`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.BRAND};
+  transition: all 150ms linear;
 `;
 
 export const StyledLink = styled(Link)`

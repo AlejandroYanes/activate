@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getMargins, PositionProps } from 'helpers';
 import { inputBorderRadius } from 'styles/variables';
 
@@ -14,43 +14,66 @@ const getPadding = (pad: boolean) => (pad ? 1 : 0) * 20 + 20;
 const getLeftPadding = ({ padLeft }) => `padding-left: ${getPadding(padLeft)}px`;
 const getRightPadding = ({ padRight }) => `padding-right: ${getPadding(padRight)}px`;
 
-const getFocusStyles = (props) => {
+export const getColorStyles = (props) => {
   const { theme: { useDarkStyle, colors } } = props;
-  const focusedColor = useDarkStyle ? colors.BRAND : colors.BRAND_DARK;
 
-  return `
-    border-color: ${focusedColor};
-    color: ${focusedColor};
+  if (useDarkStyle) {
+    return css`
+    border: 1px solid ${colors.GRAY_SHADE};
+    background-color: ${colors.BACKGROUND_LIGHT};
+    color: ${colors.FONT};
+    transition: all 150ms linear;
+
+    &::selection {
+      background-color: ${colors.BRAND};
+      color: ${colors.WHITE};
+    }
+
+    &:hover {
+      border-color: ${colors.GRAY_DARK};
+    }
+
+    &:focus {
+      border-color: ${colors.BRAND};
+      color: ${colors.BRAND};
+    }
+    `;
+  }
+
+  return css`
+      border: 1px solid ${colors.GRAY_SHADE};
+      background-color: ${colors.BACKGROUND_LIGHT};
+      color: ${colors.FONT};
+      transition: all 150ms linear;
+
+      &::selection {
+        background-color: ${colors.BRAND};
+        color: ${colors.WHITE};
+      }
+
+      &:hover {
+        border-color: ${colors.GRAY_DARK};
+      }
+
+      &:focus {
+        border-color: ${colors.BRAND};
+        color: ${colors.BRAND};
+      }
   `;
 };
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
   border-radius: ${inputBorderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.GRAY};
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  color: ${({ theme }) => theme.colors.FONT};
   font-size: 16px;
+  font-family: "MPlus Rounded Normal", sans-serif;
   letter-spacing: 0.5px;
   outline: none;
   padding-top: 8px;
   padding-bottom: 8px;
-  ${getLeftPadding};
-  ${getRightPadding};
   margin: 0;
   flex: 1;
   min-width: 0;
-  transition: all 150ms linear;
-
-  &::selection {
-    background-color: ${({ theme }) => theme.colors.BRAND};
-    color: ${({ theme }) => theme.colors.WHITE};
-  }
-
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.FONT_SHADE};
-  }
-
-  &:focus {
-    ${getFocusStyles};
-  }
+  ${getLeftPadding};
+  ${getRightPadding};
+  ${getColorStyles};
 `;

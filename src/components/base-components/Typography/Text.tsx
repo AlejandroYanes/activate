@@ -5,7 +5,8 @@ import { Text as StyledText } from './styled/text';
 interface Props extends PositionProps {
   weight?: 'lighter' | 'normal' | 'bold';
   size?: 'small' | 'medium' | 'large';
-  color?: 'font' | 'gray' | 'white';
+  color?: 'brand' | 'accent' | 'font' | 'gray' | 'white';
+  align?: 'left' | 'center' | 'right';
 }
 
 const Text: FunctionComponent<Props> = (props) => {

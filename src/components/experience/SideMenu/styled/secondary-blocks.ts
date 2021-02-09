@@ -11,6 +11,7 @@ export const ActionBlock = styled.li`
   justify-content: center;
   color: ${Colors.WHITE};
   background-color: ${({ theme }) => theme.colors.BRAND};
+  transition: all 150ms linear;
 `;
 
 export const ActionButton = styled(IconButton)`
@@ -31,4 +32,5 @@ export const EmptyBlock = styled.li`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.colors.BRAND};
+  transition: all 150ms linear;
 `;

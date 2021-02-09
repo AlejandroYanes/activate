@@ -1,4 +1,3 @@
-import { ThemedStyledFunction } from 'styled-components';
 import { PositionProps } from './common-props';
 
 export function getMargins(props) {
@@ -11,12 +10,6 @@ export function getMargins(props) {
   ];
 
   return `margin: ${margins.join(' ')};`;
-}
-
-export function allowAnyProps(
-  styledElement: ThemedStyledFunction<any, any>,
-): ThemedStyledFunction<any, any> {
-  return styledElement.attrs((props: any) => props);
 }
 
 export const anyPropsAttrs = (props: any) => props;

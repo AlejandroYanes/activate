@@ -1,24 +1,22 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
+import { getEventValue } from 'helpers';
 import Page from 'components/base-components/Page';
+import DateTimePicker from 'components/base-components/DateTimePicker';
 import Button from 'components/base-components/Button';
-import { CircledDot } from 'components/base-components/Loaders';
-import NoFriends from '../../base-components/Illustrations/NoFriends';
 
 const AboutPage: FunctionComponent = () => {
-  const [loading, setLoading] = useState(false);
+  const [date, setDate] = useState([] as Date[]);
+
+  const handleDateChange = useCallback((event) => setDate(getEventValue(event)), []);
 
   return (
     <Page title="About Us">
-      {/*<div>*/}
-      {/*  <Button*/}
-      {/*    onClick={() => setLoading(!loading)}*/}
-      {/*    isLoading={loading}*/}
-      {/*    label="testing loading"*/}
-      {/*    mB*/}
-      {/*  />*/}
-      {/*</div>*/}
-      {/*<CircledDot size="small" />*/}
-      <NoFriends />
+      <DateTimePicker onChange={handleDateChange} value={date} type="date-range" showClear />
+      <div style={{ display: 'flex', marginTop: '32px' }}>
+        <Button onClick={() => undefined} label="test" variant="base" mR />
+        <Button onClick={() => undefined} label="test" variant="flat" mR />
+        <Button onClick={() => undefined} label="test" variant="fill" mR />
+      </div>
     </Page>
   );
 };

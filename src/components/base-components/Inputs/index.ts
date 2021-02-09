@@ -1,7 +1,7 @@
 import Input from './Input';
-import Textarea from './TextArea';
+import TextArea from './TextArea';
 
 export {
   Input,
-  Textarea,
+  TextArea,
 };

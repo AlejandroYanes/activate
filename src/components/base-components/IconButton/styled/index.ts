@@ -59,7 +59,7 @@ export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => 
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all ease-in-out 120ms;
+  transition: all 150ms linear;
   ${getMargins};
   ${getSize};
   ${getVariantStyles}

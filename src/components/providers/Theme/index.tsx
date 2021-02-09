@@ -14,13 +14,15 @@ import {
   StartingTheme,
   SummerVibesTheme,
   MidnightLightsTheme,
+  LifeIsABeachTheme,
 } from 'styles/themes';
 
 export enum AppTheme {
   Default = 'Default',
   NeonLights = 'NeonLights',
   SummerVibes = 'SummerVibes',
-  MidnightLights = 'MidnightLights'
+  MidnightLights = 'MidnightLights',
+  LifeIsABeach = 'LifeIsABeach',
 }
 
 interface ThemeContextValue {
@@ -36,6 +38,7 @@ const themesMap = {
   [AppTheme.NeonLights]: NeonLightsTheme,
   [AppTheme.SummerVibes]: SummerVibesTheme,
   [AppTheme.MidnightLights]: MidnightLightsTheme,
+  [AppTheme.LifeIsABeach]: LifeIsABeachTheme,
 };
 
 const ThemeContext = createContext<ThemeContextValue>(undefined);

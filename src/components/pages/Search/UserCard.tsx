@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { useAppColors } from 'components/providers/Theme';
 import Avatar from 'components/base-components/Avatar';
@@ -9,6 +10,8 @@ import { Card, Info } from './styled/user-card';
 
 const UserCard: FunctionComponent = () => {
   const Colors = useAppColors();
+  const { push } = useHistory();
+
   const { userName, name } = useMemo(() => ({
     userName: `@${faker.internet.userName()}`,
     name: `${faker.name.firstName()} ${faker.name.lastName()}`,
@@ -22,7 +25,7 @@ const UserCard: FunctionComponent = () => {
         <Title level={3} color="brand">{name}</Title>
       </Info>
       <IconButton
-        onClick={() => undefined}
+        onClick={() => push('/user')}
         icon={Icons.RESUME}
         color={Colors.INFO}
         buttonColor="info"
