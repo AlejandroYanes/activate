@@ -5,7 +5,7 @@ const dateFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export function formatDate(date: Date): string {
-  return dateFormatter.format(date);
+  return date ? dateFormatter.format(date) : undefined;
 }
 
 const timeFormatter = new Intl.DateTimeFormat('default', {
@@ -15,7 +15,7 @@ const timeFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export function formatTime(date: Date): string {
-  return timeFormatter.format(date);
+  return date ? timeFormatter.format(date) : undefined;
 }
 
 const dateTimeFormatter = new Intl.DateTimeFormat('default', {
@@ -27,7 +27,7 @@ const dateTimeFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export function formatDateTime(date: Date): string {
-  return dateTimeFormatter.format(date);
+  return date ? dateTimeFormatter.format(date) : undefined;
 }
 
 const dayFormatter = new Intl.DateTimeFormat(undefined, {
@@ -35,7 +35,7 @@ const dayFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export function getDayOfTheWeek(date: Date): string {
-  return dayFormatter.format(date);
+  return date ? dayFormatter.format(date) : undefined;
 }
 
 const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -44,7 +44,7 @@ const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
 });
 
 export function getShortDate(date: Date): string {
-  return shortDateFormatter.format(date);
+  return date ? shortDateFormatter.format(date) : undefined;
 }
 
 const monthFormatter = new Intl.DateTimeFormat('default', {
@@ -52,7 +52,7 @@ const monthFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export function getMonthLabel(date: Date): string {
-  return monthFormatter.format(date);
+  return date ? monthFormatter.format(date) : undefined;
 }
 
 const yearFormatter = new Intl.DateTimeFormat('default', {
@@ -60,7 +60,7 @@ const yearFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export function getYear(date: Date): string {
-  return yearFormatter.format(date);
+  return date ? yearFormatter.format(date) : undefined;
 }
 
 const monthYearFormatter = new Intl.DateTimeFormat('default', {
@@ -69,5 +69,5 @@ const monthYearFormatter = new Intl.DateTimeFormat('default', {
 });
 
 export function getMonthYear(date: Date): string {
-  return monthYearFormatter.format(date);
+  return date ? monthYearFormatter.format(date) : undefined;
 }

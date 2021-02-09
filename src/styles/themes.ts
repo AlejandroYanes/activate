@@ -4,7 +4,7 @@ export const StartingTheme = {
   BRAND: '#8F008F',
   BRAND_LIGHT: '#E000E0',
   BRAND_DARK: '#520052',
-  BRAND_SHADE: getShade('#8F008F', 0.1),
+  BRAND_SHADE: getShade('#8F008F'),
   ACCENT: '#009554',
   ACCENT_LIGHT: '#00E07F',
   ACCENT_DARK: '#00522E',
@@ -44,7 +44,7 @@ export const MidnightLightsTheme = {
   ACCENT_SHADE: getShade('#d78e02'),
 };
 
-export const LifeIsABeach = {
+export const LifeIsABeachTheme = {
   BRAND: '#01a3b1',
   BRAND_LIGHT: '#04dff3',
   BRAND_DARK: '#017079',

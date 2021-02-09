@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { inputBorderRadius } from 'styles/variables';
+import { getColorStyles } from 'components/base-components/Inputs/Input/styled/input';
 
 export const Separator = styled.div`
   width: 1px;
@@ -15,20 +16,6 @@ const getRightPadding = (props) => `${props.padRight ? 38 : 16}px`;
 
 const getDirection = (props) => props.vertical ? 'column' : 'row';
 
-const getFocusStyles = (props) => {
-  const { theme: { useDarkStyle, colors } } = props;
-  const focusedColor = useDarkStyle ? colors.BRAND : colors.BRAND_DARK;
-
-  return `
-    border-color: ${focusedColor};
-    color: ${focusedColor};
-
-    ${Separator} {
-      background-color: ${focusedColor};
-    }
-  `;
-};
-
 export const StyledContent = styled.div.attrs((props: any) => props)`
   display: flex;
   flex-direction: ${getDirection};
@@ -41,15 +28,6 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
   font-size: 16px;
   letter-spacing: 0.5px;
   outline: none;
-  border: 1px solid ${({ theme }) => theme.colors.GRAY_LIGHT};
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   cursor: pointer;
-
-  &:hover {
-    border-color: ${({ theme }) => theme.colors.FONT};
-  }
-
-  &:focus {
-    ${getFocusStyles};
-  }
+  ${getColorStyles};
 `;

@@ -42,10 +42,10 @@ export interface ColorScheme {
 }
 
 export const lightStyleColors = {
-  FONT: '#161C50',
-  FONT_LIGHT: '#4F5CCF',
-  FONT_DARK: '#080C21',
-  FONT_SHADE: getShade('#161C50'),
+  FONT: '#151718',
+  FONT_LIGHT: '#2F3437',
+  FONT_DARK: '#090A0B',
+  FONT_SHADE: getShade('#151718'),
   BACKGROUND: '#f5f6fa',
   BACKGROUND_LIGHT: '#fff',
   BACKGROUND_SHADE: getShade('#f5f6fa'),

@@ -1,18 +1,20 @@
 import React, { FunctionComponent, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { formatAmount } from 'helpers';
+import { useAppColors } from 'components/providers/Theme';
 import Avatar from 'components/base-components/Avatar';
 import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import AvatarGroup from 'components/base-components/AvatarGroup';
+import IconButton from 'components/base-components/IconButton';
+import { Icons } from 'components/base-components/SvgIcon';
 import { Actions, Card, Footer, Header, Stat, Stats, Top } from './styled/publisher-card';
-import IconButton from '../../base-components/IconButton';
-import { Icons } from '../../base-components/SvgIcon';
-import { useAppColors } from '../../providers/Theme';
 
 const avatars = ['user1', 'user2', 'user6'];
 
 const PublisherCard: FunctionComponent = () => {
   const Colors = useAppColors();
+  const { push } = useHistory();
   const { name, userName, bio, events, followers } = useMemo(() => ({
     name: `${faker.company.companyName()}, ${faker.company.companySuffix()}`,
     userName: `@${faker.internet.userName()}`,
@@ -47,7 +49,7 @@ const PublisherCard: FunctionComponent = () => {
         <AvatarGroup icons={avatars} size="x-small" />
         <Actions>
           <IconButton
-            onClick={() => undefined}
+            onClick={() => push('/publisher')}
             icon={Icons.RESUME}
             color={Colors.INFO}
             buttonColor="info"

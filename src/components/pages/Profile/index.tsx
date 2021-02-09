@@ -1,13 +1,23 @@
 import React, { FunctionComponent, useMemo, useState } from 'react';
-import { NeonLightsTheme, StartingTheme, SummerVibesTheme } from 'styles/themes';
+import * as faker from 'faker';
+import {
+  NeonLightsTheme,
+  StartingTheme,
+  SummerVibesTheme,
+  MidnightLightsTheme,
+  LifeIsABeachTheme,
+} from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { PickItem, PickList } from 'components/base-components/PickList';
+import { Field, Form } from 'components/base-components/Form';
+import { TextArea } from 'components/base-components/Inputs';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import Toggle from 'components/base-components/Toggle';
+import Button from 'components/base-components/Button';
 import ProfileData from './ProfileData';
 import {
-  Block,
+  Line,
   ColorSample,
   DetailBox,
   Palette,
@@ -23,6 +33,12 @@ export enum ProfileTabs {
   Setting = 'Settings',
 }
 
+const user = {
+  userName: '@alejandro.yanes94',
+  name: 'Alejandro Yanes',
+  bio: faker.lorem.lines(4),
+};
+
 const ProfilePage: FunctionComponent = () => {
   const {
     colors,
@@ -31,7 +47,9 @@ const ProfilePage: FunctionComponent = () => {
     useDarkStyle,
     toggleLightStyle,
   } = useAppTheme();
+
   const [activeTab, setActiveTab] = useState(ProfileTabs.Setting);
+  const [userData, setUserData] = useState(user);
 
   const sunIcon = useMemo(() => (
     <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
@@ -44,6 +62,15 @@ const ProfilePage: FunctionComponent = () => {
     <Page>
       <ProfileData activeTab={activeTab} setActiveTab={setActiveTab} />
       <Settings>
+        <SubTitle level={3} color="gray">Profile Data</SubTitle>
+        <Form state={userData} onChange={setUserData}>
+          <Field name="userName" label="User Name" />
+          <Field name="name" label="Name" mT />
+          <Field name="bio" component={TextArea} label="Bio" mT />
+        </Form>
+        <Line floatRight>
+          <Button onClick={() => undefined} label="Update" mB />
+        </Line>
         <SubTitle level={3} color="gray">Theme</SubTitle>
         <PickList value={activeTheme} onChange={setTheme} color="info">
           <PickItem value={AppTheme.Default}>
@@ -79,15 +106,37 @@ const ProfilePage: FunctionComponent = () => {
               </DetailBox>
             </Theme>
           </PickItem>
+          <PickItem value={AppTheme.MidnightLights}>
+            <Theme>
+              <Palette>
+                <ColorSample color={MidnightLightsTheme.BRAND} />
+                <ColorSample color={MidnightLightsTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Midnight Lights</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
+          <PickItem value={AppTheme.LifeIsABeach}>
+            <Theme>
+              <Palette>
+                <ColorSample color={LifeIsABeachTheme.BRAND} />
+                <ColorSample color={LifeIsABeachTheme.ACCENT} />
+              </Palette>
+              <DetailBox>
+                <ThemeName>Life is a Beach</ThemeName>
+              </DetailBox>
+            </Theme>
+          </PickItem>
         </PickList>
-        <Block>
+        <Line>
           <Toggle
             nobNode={useDarkStyle ? moonIcon : sunIcon}
             label="Use Dark Style"
             value={useDarkStyle}
             onChange={toggleLightStyle}
           />
-        </Block>
+        </Line>
       </Settings>
     </Page>
   );

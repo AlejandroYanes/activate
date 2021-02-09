@@ -25,7 +25,12 @@ const PickItem: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledItem tabIndex={-1} size={size}>
-      <Touchable onClick={handleOnClick} color={color} isSelected={isSelected}>
+      <Touchable
+        onClick={handleOnClick}
+        color={color}
+        isSelected={isSelected}
+        data-pick-item-selected={isSelected}
+      >
         {children}
         <RenderIf condition={isSelected}>
           <Mark color={color}>

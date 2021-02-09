@@ -1,14 +1,14 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import Page from 'components/base-components/Page';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { PresentationCard } from 'components/experience/EventCard';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
+import Page from 'components/base-components/Page';
 import { events } from './events';
-import { useAppColors } from '../../providers/Theme';
 
 enum Tabs {
   FOR_YOU = 'FOR_YOU',

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 const sizeMap = { large: '210px', medium: '160px', small: '110px' };
@@ -7,7 +7,7 @@ export const StyledItem = styled.li.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 0;
+  margin: 0 12px;
   height: ${({ size }) => sizeMap[size]};
   width: ${({ size }) => sizeMap[size]};
 `;
@@ -23,7 +23,7 @@ export const Mark = styled.div.attrs(anyPropsAttrs)`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  transition: all 100ms linear;
+  transition: all 150ms linear;
   background-color: ${({ theme, color }) => theme.colors[color.toUpperCase()]};
 
   & > * {
@@ -42,7 +42,7 @@ const getColorStyles = (props) => {
 
     const hoverColor = colors[`${color.toUpperCase()}_LIGHT`];
 
-    return `
+    return css`
       border: 2px solid ${borderColor};
       &:hover, &:focus {
         outline: none;
@@ -60,7 +60,7 @@ const getColorStyles = (props) => {
 
   const hoverColor = colors[`${color.toUpperCase()}_LIGHT`];
 
-  return `
+  return css`
       border: 2px solid ${borderColor};
       &:hover, &:focus {
         outline: none;

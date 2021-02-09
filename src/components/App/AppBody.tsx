@@ -9,6 +9,8 @@ import DiscoverPage from 'components/pages/Discover';
 import AboutPage from 'components/pages/About';
 import EventDetailsPage from 'components/pages/EventDetails';
 import SearchPage from 'components/pages/Search';
+import PublisherPage from 'components/pages/Publisher';
+import UserPage from 'components/pages/User';
 import { Body, StyledApp } from './styled';
 
 const AppBody: FunctionComponent = () => {
@@ -24,6 +26,8 @@ const AppBody: FunctionComponent = () => {
           <Route path="/discover" component={DiscoverPage} />
           <Route path="/event-detail" component={EventDetailsPage} />
           <Route path="/search" component={SearchPage} />
+          <Route path="/publisher" component={PublisherPage} />
+          <Route path="/user" component={UserPage} />
           <Route path="/about" component={AboutPage} />
           <Redirect to="/" />
         </Switch>

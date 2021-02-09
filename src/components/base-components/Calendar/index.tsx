@@ -24,7 +24,7 @@ const Calendar: FunctionComponent<Props> = (props) => {
   const [viewDate, setViewDate] = useState(startDate || new Date());
 
   useEffect(() => {
-    if (!isEqual(startDate, viewDate)) {
+    if (!!startDate && !isEqual(startDate, viewDate)) {
       setViewDate(startDate);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
