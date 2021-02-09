@@ -10,8 +10,6 @@ interface Props {
   onClick: (event) => void;
 }
 
-const styles = { bottom: '4px' };
-
 const ClearButton: FunctionComponent<Props> = (props) => {
   const { colors: Colors, useDarkStyle } = useAppTheme();
   const { showClear, isFocused, onClick } = props;
@@ -24,7 +22,7 @@ const ClearButton: FunctionComponent<Props> = (props) => {
     const focusedColor = useDarkStyle ? Colors.BRAND : Colors.BRAND_DARK;
 
     return (
-      <AbsoluteContent floatRight style={styles}>
+      <AbsoluteContent floatRight>
         <IconButton
           onClick={clearInput}
           icon={Icons.CLOSE}

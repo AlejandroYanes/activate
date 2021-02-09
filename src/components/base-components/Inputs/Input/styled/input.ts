@@ -10,9 +10,8 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
   position: relative;
 `;
 
-const getPadding = (pad: boolean) => (pad ? 1 : 0) * 20 + 20;
-const getLeftPadding = ({ padLeft }) => `padding-left: ${getPadding(padLeft)}px`;
-const getRightPadding = ({ padRight }) => `padding-right: ${getPadding(padRight)}px`;
+const getLeftPadding = ({ padLeft }) => `padding-left: ${padLeft ? 48 : 20}px`;
+const getRightPadding = ({ padRight }) => `padding-right: ${padRight ? 48 : 20}px`;
 
 export const getColorStyles = (props) => {
   const { theme: { useDarkStyle, colors } } = props;
@@ -68,11 +67,14 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   font-family: "MPlus Rounded Normal", sans-serif;
   letter-spacing: 0.5px;
   outline: none;
-  padding-top: 8px;
-  padding-bottom: 8px;
+  padding-top: 0;
+  padding-bottom: 0;
   margin: 0;
   flex: 1;
   min-width: 0;
+  min-height: 36px;
+  height: 36px;
+  box-sizing: border-box;
   ${getLeftPadding};
   ${getRightPadding};
   ${getColorStyles};

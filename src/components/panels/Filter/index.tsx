@@ -16,7 +16,7 @@ const initialSearchState = {
   location: EventLocation.All,
   address: '',
   publisher: '',
-  date: [],
+  date: undefined,
 };
 
 const FilterPanel: FunctionComponent = () => {
@@ -36,7 +36,7 @@ const FilterPanel: FunctionComponent = () => {
           <RenderIf condition={search.location === EventLocation.OnSite}>
             <Field name="address" label="Address" showClear mB />
           </RenderIf>
-          <Field name="publisher" label="Publisher" showClear mB />
+          <Field name="publisher" label="Publisher" icon={Icons.MEGAPHONE} showClear mB />
           <Field
             name="date"
             label="Date of the event"
