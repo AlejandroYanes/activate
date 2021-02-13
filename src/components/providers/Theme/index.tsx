@@ -3,7 +3,6 @@ import React, {
   FunctionComponent,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -16,6 +15,7 @@ import {
   MidnightLightsTheme,
   LifeIsABeachTheme,
 } from 'styles/themes';
+import { GlobalStyles } from './GlobalStyles';
 
 export enum AppTheme {
   Default = 'Default',
@@ -70,16 +70,10 @@ const ThemeProvider: FunctionComponent = (props) => {
     [theme, themeColors, toggleLightStyle],
   );
 
-  useEffect(() => {
-    const colorBase = useDarkStyle ? darkStyleColors : lightStyleColors;
-
-    document.body.style.backgroundColor = colorBase.BACKGROUND;
-    document.body.style.color = colorBase.FONT;
-  }, [useDarkStyle]);
-
   return (
     <ThemeContext.Provider value={themeContextValue}>
       <StyledThemeProvider theme={themeColors}>
+        <GlobalStyles />
         {children}
       </StyledThemeProvider>
     </ThemeContext.Provider>

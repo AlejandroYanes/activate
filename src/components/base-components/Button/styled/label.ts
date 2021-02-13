@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
-  font-family: Comfortaa, cursive;
+  font-family: "MPlus Rounded Normal", sans-serif;
   margin: 0 8px;
   opacity: ${({ show }) => show ? 1 : 0};
   transition: all 150ms linear;

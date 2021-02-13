@@ -53,6 +53,7 @@ import ResumeIcon from './Resume';
 import StarIcon from './Star';
 import BookmarkCheckedIcon from './BookmarkChecked';
 import AddUserIcon from './AddUser';
+import MessageIcon from './Message';
 
 export enum Icons {
   HOME = 'home',
@@ -109,6 +110,7 @@ export enum Icons {
   STAR = 'star',
   BOOKMARK_CHECKED = 'bookmark-checked',
   ADD_USER = 'add-user',
+  MESSAGE = 'message',
 }
 
 export const icons = {
@@ -166,4 +168,5 @@ export const icons = {
   [Icons.STAR]: (props) => <StarIcon {...props} />,
   [Icons.BOOKMARK_CHECKED]: (props) => <BookmarkCheckedIcon {...props} />,
   [Icons.ADD_USER]: (props) => <AddUserIcon {...props} />,
+  [Icons.MESSAGE]: (props) => <MessageIcon {...props} />,
 };

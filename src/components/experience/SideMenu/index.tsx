@@ -4,10 +4,21 @@ import { useAppColors, useAppTheme } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
+import RenderIf from 'components/base-components/RenderIf';
 import MenuBlock from './MenuBlock';
-import { aboutIcon, discoverIcon, homeIcon, searchIcon } from './icons';
-import { ActionBlock, ActionButton, EmptyBlock, MenuList, SideMenu as StyledSideMenu } from './styled';
-import RenderIf from '../../base-components/RenderIf';
+import {
+  discoverIcon,
+  homeIcon,
+  searchIcon,
+  messageIcon,
+} from './icons';
+import {
+  ActionBlock,
+  ActionButton,
+  EmptyBlock,
+  MenuList,
+  SideMenu as StyledSideMenu,
+} from './styled';
 
 const emptyAction = () => undefined;
 
@@ -61,8 +72,8 @@ const SideMenu: FunctionComponent = () => {
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/about"
-          icon={aboutIcon}
+          path="/messages"
+          icon={messageIcon}
         />
         <EmptyBlock />
         <RenderIf condition={layout !== Layout.SMALL}>

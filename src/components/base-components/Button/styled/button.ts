@@ -55,7 +55,7 @@ export const getVariantStyles = ({ theme, ...buttonProps }) => {
     default: {
       const fontColor = color === 'font' ? colors.BACKGROUND : colors.WHITE;
       const backgroundColor = useDarkStyle
-        ? `${colors[`${color.toUpperCase()}_DARK`]}`
+        ? `${colors[`${color.toUpperCase()}`]}`
         : `${colors[`${color.toUpperCase()}`]}`;
 
       return css`
@@ -84,7 +84,7 @@ export const getHoveredStyles = ({ theme, ...buttonProps }) => {
       `;
     default: {
       const backgroundColor = useDarkStyle
-        ? `${colors[`${color.toUpperCase()}`]}`
+        ? `${colors[`${color.toUpperCase()}_LIGHT`]}`
         : `${colors[`${color.toUpperCase()}_DARK`]}`;
 
       return css`

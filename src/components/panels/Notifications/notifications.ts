@@ -6,5 +6,5 @@ export const notifications = new Array(4).fill('1').map(() => ({
   title: faker.lorem.words(5),
   message: faker.lorem.lines(3),
   date: faker.date.past(),
-  image: images[faker.finance.amount(0, 4, 0)],
+  image: images[faker.random.number({ min: 0, max: 3 })],
 }));

@@ -29,10 +29,10 @@ const DiscoverPage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
 
   useEffect(() => {
-    addSection(AuxPanelSection.Filter);
-    setActiveSection(AuxPanelSection.Filter);
+    addSection(AuxPanelSection.FILTER);
+    setActiveSection(AuxPanelSection.FILTER);
 
-    return () => removeSection(AuxPanelSection.Filter);
+    return () => removeSection(AuxPanelSection.FILTER);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -44,10 +44,10 @@ const EventDetailsPage: FunctionComponent = () => {
   }, []);
 
   useEffect(() => {
-    addSection(AuxPanelSection.EventDetails);
-    setActiveSection(AuxPanelSection.EventDetails);
+    addSection(AuxPanelSection.EVENT_DETAILS);
+    setActiveSection(AuxPanelSection.EVENT_DETAILS);
 
-    return () => removeSection(AuxPanelSection.EventDetails);
+    return () => removeSection(AuxPanelSection.EVENT_DETAILS);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

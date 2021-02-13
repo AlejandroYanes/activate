@@ -7,6 +7,7 @@ interface Props extends PositionProps {
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'font' | 'gray' | 'white';
   align?: 'left' | 'center' | 'right';
+  ellipsis?: boolean;
 }
 
 const Text: FunctionComponent<Props> = (props) => {

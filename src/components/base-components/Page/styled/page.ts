@@ -5,10 +5,12 @@ import { Layout } from 'components/providers/Layout';
 
 const layoutMap = {
   [Layout.FULL]: css`
+    height: 100%;
     width: ${cardWidth};
   `,
   [Layout.MIDDLE]: css`
     width: 90%;
+    height: 100%;
     max-width: ${cardWidth};
   `,
   [Layout.SMALL]: css`

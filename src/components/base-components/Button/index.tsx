@@ -91,6 +91,7 @@ Button.defaultProps = {
   style: undefined,
   leftIcon: null,
   rightIcon: null,
+  isLoading: false,
 };
 
 export default Button;

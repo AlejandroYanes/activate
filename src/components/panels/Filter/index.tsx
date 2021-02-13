@@ -34,7 +34,7 @@ const FilterPanel: FunctionComponent = () => {
             <Option value={EventLocation.OnSite} label="Onsite" icon={Icons.MAP_PIN} />
           </Field>
           <RenderIf condition={search.location === EventLocation.OnSite}>
-            <Field name="address" label="Address" showClear mB />
+            <Field name="address" label="Address" icon={Icons.MAP_PIN} showClear mB />
           </RenderIf>
           <Field name="publisher" label="Publisher" icon={Icons.MEGAPHONE} showClear mB />
           <Field

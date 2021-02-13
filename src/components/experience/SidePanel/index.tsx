@@ -7,6 +7,7 @@ import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
 import NotificationsPanel from 'components/panels/Notifications';
 import EventDetailsPanel from 'components/panels/EventDetails';
 import FilterPanel from 'components/panels/Filter';
+import TalksPanel from 'components/panels/Talks';
 import { resolveAvailableTabs } from './sections';
 import { Panel, PanelBody, PanelHeader, StyledSidePanel } from './styled';
 
@@ -31,10 +32,11 @@ const SidePanel: FunctionComponent = () => {
           </PanelHeader>
           <PanelBody data-el="aux-panel-body">
             <Switch by={activeTab}>
-              <Case value={AuxPanelSection.Filter} component={FilterPanel} />
-              <Case value={AuxPanelSection.Upcoming} component={UpcomingEventsPanel} />
-              <Case value={AuxPanelSection.EventDetails} component={EventDetailsPanel} />
-              <Case value={AuxPanelSection.Notifications} component={NotificationsPanel} />
+              <Case value={AuxPanelSection.FILTER} component={FilterPanel} />
+              <Case value={AuxPanelSection.UPCOMING} component={UpcomingEventsPanel} />
+              <Case value={AuxPanelSection.EVENT_DETAILS} component={EventDetailsPanel} />
+              <Case value={AuxPanelSection.NOTIFICATIONS} component={NotificationsPanel} />
+              <Case value={AuxPanelSection.TALKS} component={TalksPanel} />
             </Switch>
           </PanelBody>
         </Panel>

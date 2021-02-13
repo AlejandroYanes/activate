@@ -8,10 +8,11 @@ import React, {
 } from 'react';
 
 export enum AuxPanelSection {
-  Upcoming = 'Upcoming',
-  Notifications = 'Notifications',
-  Filter = 'Filter',
-  EventDetails = 'EventDetails',
+  UPCOMING = 'UPCOMING',
+  NOTIFICATIONS = 'NOTIFICATIONS',
+  FILTER = 'FILTER',
+  EVENT_DETAILS = 'EVENT_DETAILS',
+  TALKS = 'TALKS',
 }
 
 interface PanelSectionsContextValue {
@@ -33,13 +34,14 @@ interface PanelSectionsState {
 const PanelSectionsContext = createContext<PanelSectionsContextValue>(undefined);
 
 const basicSections: AuxPanelSection[] = [
-  AuxPanelSection.Upcoming,
-  AuxPanelSection.Notifications,
+  AuxPanelSection.UPCOMING,
+  AuxPanelSection.TALKS,
+  AuxPanelSection.NOTIFICATIONS,
 ];
 
 const initialState = {
   sections: basicSections,
-  activeSection: AuxPanelSection.Upcoming,
+  activeSection: AuxPanelSection.UPCOMING,
 };
 
 const PanelSectionsProvider: FunctionComponent = (props) => {
