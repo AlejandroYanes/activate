@@ -25,9 +25,9 @@ describe('Button base component', () => {
       </ThemeProvider>,
     );
 
-    button.simulate('click');
+    button.find('button').simulate('click');
 
-    expect(button.text()).toBe('button 1');
+    expect(button.find('span').text()).toBe('button 1');
     expect(button.find(SvgIcon).length).toBe(2);
     expect(onClickMock).toBeCalled();
   });
