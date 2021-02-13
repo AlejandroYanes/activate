@@ -18,8 +18,9 @@ export const StyledTextArea = styled.textarea`
   outline: none;
   padding: 8px 40px 8px 20px;
   margin: 0;
-  flex: 1;
   min-width: 0;
+  min-height: 40px;
+  box-sizing: border-box;
   resize: none;
   ${getColorStyles};
   transition: all 150ms linear;

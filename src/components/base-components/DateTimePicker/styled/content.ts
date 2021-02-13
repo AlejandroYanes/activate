@@ -22,7 +22,7 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  height: 36px;
+  height: 40px;
   padding: 8px ${getRightPadding} 8px 16px;
   border-radius: ${inputBorderRadius};
   font-size: 16px;

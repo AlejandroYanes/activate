@@ -21,7 +21,7 @@ interface Props extends PositionProps {
 }
 
 const Input: FunctionComponent<Props> = (props) => {
-  const { colors: Colors, useDarkStyle } = useAppTheme();
+  const { colors: Colors } = useAppTheme();
   const {
     label,
     placeholder,
@@ -50,11 +50,10 @@ const Input: FunctionComponent<Props> = (props) => {
   };
 
   const iconElement = useMemo(() => {
-    const focusedColor = useDarkStyle ? Colors.BRAND : Colors.BRAND_DARK;
     return (
-      <SvgIcon icon={icon} color={isFocused ? focusedColor : Colors.FONT} />
+      <SvgIcon icon={icon} color={isFocused ? Colors.BRAND : Colors.FONT} />
     );
-  }, [icon, isFocused, Colors, useDarkStyle])
+  }, [icon, isFocused, Colors])
 
   return (
     <StyledContainer {...rest}>

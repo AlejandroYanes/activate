@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useState } from 'react';
-import { PositionProps } from 'helpers';
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react';
+import autosizeTextArea from 'autosize';
+import { getEventValue, PositionProps } from 'helpers';
 import InputLabel from '../base/Label';
-import { StyledContainer, StyledTextArea } from './styled/text-area';
 import AbsoluteContent from '../base/AbsoluteContent';
 import ClearButton from '../base/ClearButton';
+import { StyledContainer, StyledTextArea } from './styled/text-area';
 
 interface Props extends PositionProps {
   id?: string;
@@ -15,6 +16,8 @@ interface Props extends PositionProps {
   onBlur?: (event) => void;
   showClear?: boolean;
   rows?: number;
+  autosize?: boolean;
+  maxLength?: number;
 }
 
 const TextArea: FunctionComponent<Props> = (props) => {
@@ -27,32 +30,56 @@ const TextArea: FunctionComponent<Props> = (props) => {
     onBlur,
     showClear,
     rows,
+    autosize,
+    maxLength,
     ...rest
   } = props;
   const [isFocused, setIsFocused] = useState(false);
+  const textAreaRef = useRef(undefined);
 
-  const handleFocus = (event) => {
+  const handleFocus = useCallback((event) => {
     setIsFocused(true);
     if (onFocus) {
       onFocus(event);
     }
-  };
+  }, [onFocus]);
 
-  const handleBlur = (event) => {
+  const handleBlur = useCallback((event) => {
     setIsFocused(false);
     if (onBlur) {
       onBlur(event);
     }
-  };
+  }, [onBlur]);
+
+  const handleChange = useCallback((event) => {
+    const txt = getEventValue(event);
+
+    if (maxLength) {
+      if (txt.length <= maxLength) {
+        onChange(event);
+      }
+    } else {
+      onChange(event);
+    }
+  }, [maxLength]);
+
+
+  useEffect(() => {
+    if (autosize) {
+      autosizeTextArea(textAreaRef.current);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <StyledContainer {...rest}>
       <InputLabel text={label} isFocused={isFocused} />
       <StyledTextArea
+        ref={textAreaRef}
         rows={rows}
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={handleChange}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />

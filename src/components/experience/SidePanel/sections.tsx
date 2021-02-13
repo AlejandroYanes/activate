@@ -7,22 +7,27 @@ const sections = [
   {
     icon: Icons.FORM,
     label: 'Details',
-    value: AuxPanelSection.EventDetails,
+    value: AuxPanelSection.EVENT_DETAILS,
   },
   {
     icon: Icons.FILTER,
     label: 'Search',
-    value: AuxPanelSection.Filter,
+    value: AuxPanelSection.FILTER,
   },
   {
     icon: Icons.BOOKMARKS,
     label: 'Upcoming',
-    value: AuxPanelSection.Upcoming,
+    value: AuxPanelSection.UPCOMING,
+  },
+  {
+    icon: Icons.MESSAGE,
+    label: 'Talks',
+    value: AuxPanelSection.TALKS,
   },
   {
     icon: Icons.BELL,
     label: 'Notifications',
-    value: AuxPanelSection.Notifications,
+    value: AuxPanelSection.NOTIFICATIONS,
   },
 ];
 

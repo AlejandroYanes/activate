@@ -5,7 +5,7 @@ import { svgIconStyles } from './styles';
 import { useAppColors } from '../../providers/Theme';
 
 interface Props extends IconProps {
-  size?: 'small' | 'medium' | 'large' | 'x-large';
+  size?: 'small' | 'medium' | 'large' | 'x-large' | 'page';
 }
 
 const SvgIcon: FunctionComponent<Props> = (props) => {

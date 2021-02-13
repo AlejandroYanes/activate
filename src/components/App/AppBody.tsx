@@ -6,12 +6,12 @@ import SidePanel from 'components/experience/SidePanel';
 import FeedPage from 'components/pages/Feed';
 import ProfilePage from 'components/pages/Profile';
 import DiscoverPage from 'components/pages/Discover';
-import AboutPage from 'components/pages/About';
 import EventDetailsPage from 'components/pages/EventDetails';
 import SearchPage from 'components/pages/Search';
 import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
 import { Body, StyledApp } from './styled';
+import MessagesPage from '../pages/Mesagges';
 
 const AppBody: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -28,7 +28,7 @@ const AppBody: FunctionComponent = () => {
           <Route path="/search" component={SearchPage} />
           <Route path="/publisher" component={PublisherPage} />
           <Route path="/user" component={UserPage} />
-          <Route path="/about" component={AboutPage} />
+          <Route path="/messages" component={MessagesPage} />
           <Redirect to="/" />
         </Switch>
       </Body>

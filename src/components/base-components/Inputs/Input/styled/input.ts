@@ -72,8 +72,8 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   margin: 0;
   flex: 1;
   min-width: 0;
-  min-height: 36px;
-  height: 36px;
+  min-height: 40px;
+  height: 40px;
   box-sizing: border-box;
   ${getLeftPadding};
   ${getRightPadding};

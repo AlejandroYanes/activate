@@ -31,6 +31,7 @@ const AuthorMenu: FunctionComponent<Props> = (props) => {
       <RenderIf condition={following}>
         <MenuItem label="Stop following" onClick={() => undefined} />
       </RenderIf>
+      <MenuItem label="Direct Message" onClick={() => undefined} />
     </Menu>
   );
 };
