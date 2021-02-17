@@ -10,8 +10,8 @@ import EventDetailsPage from 'components/pages/EventDetails';
 import SearchPage from 'components/pages/Search';
 import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
+import TalksPage from 'components/pages/Talks';
 import { Body, StyledApp } from './styled';
-import MessagesPage from '../pages/Mesagges';
 
 const AppBody: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -21,15 +21,15 @@ const AppBody: FunctionComponent = () => {
       <SideMenu />
       <Body layout={layout}>
         <Switch>
-          <Route path="/" component={FeedPage} exact />
+          <Route path="/upcoming" component={FeedPage} exact />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/discover" component={DiscoverPage} />
           <Route path="/event-detail" component={EventDetailsPage} />
           <Route path="/search" component={SearchPage} />
           <Route path="/publisher" component={PublisherPage} />
           <Route path="/user" component={UserPage} />
-          <Route path="/messages" component={MessagesPage} />
-          <Redirect to="/" />
+          <Route path="/talks" component={TalksPage} />
+          <Redirect to="/upcoming" />
         </Switch>
       </Body>
       <SidePanel />

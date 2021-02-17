@@ -54,6 +54,10 @@ import StarIcon from './Star';
 import BookmarkCheckedIcon from './BookmarkChecked';
 import AddUserIcon from './AddUser';
 import MessageIcon from './Message';
+import MenuDotsIcon from './MenuDots';
+import LayersIcon from './Layers';
+import GridElementsIcon from './GridElements';
+import MaximizeIcon from './Maximize';
 
 export enum Icons {
   HOME = 'home',
@@ -111,6 +115,10 @@ export enum Icons {
   BOOKMARK_CHECKED = 'bookmark-checked',
   ADD_USER = 'add-user',
   MESSAGE = 'message',
+  MENU_DOTS = 'menu-dots',
+  LAYERS = 'layers',
+  GRID_ELEMENTS = 'grid-elements',
+  MAXIMIZE = 'maximize',
 }
 
 export const icons = {
@@ -169,4 +177,8 @@ export const icons = {
   [Icons.BOOKMARK_CHECKED]: (props) => <BookmarkCheckedIcon {...props} />,
   [Icons.ADD_USER]: (props) => <AddUserIcon {...props} />,
   [Icons.MESSAGE]: (props) => <MessageIcon {...props} />,
+  [Icons.MENU_DOTS]: (props) => <MenuDotsIcon {...props} />,
+  [Icons.LAYERS]: (props) => <LayersIcon {...props} />,
+  [Icons.GRID_ELEMENTS]: (props) => <GridElementsIcon {...props} />,
+  [Icons.MAXIMIZE]: (props) => <MaximizeIcon {...props} />,
 };

@@ -1,18 +1,11 @@
 import styled from 'styled-components';
 import { TextArea } from 'components/base-components/Inputs';
+import { anyPropsAttrs } from 'helpers';
 
-export const Card = styled.section`
-  border-radius: 16px;
-  height: calc(100vh - 64px);
-  display: flex;
-  flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-`;
-
-export const Header = styled.header`
+export const Header = styled.header.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
-  padding: 16px 16px 20px;
+  padding: ${({ small }) => small ? '0 16px 20px' : '16px 16px 20px'};
 `;
 
 export const Info = styled.div`
@@ -47,13 +40,15 @@ export const Content = styled.section`
   padding: 0 16px;
 `;
 
+export const Actions = styled.footer.attrs(anyPropsAttrs)`
+  display: flex;
+  align-items: flex-end;
+  padding: ${({ small }) => small ? '20px 16px 0' : '20px 16px 16px'};
+`;
+
+
 export const TextBox = styled(TextArea)`
   flex: 1;
   margin-right: 16px;
-`;
-
-export const Actions = styled.footer`
-  display: flex;
-  align-items: flex-end;
-  padding: 20px 16px 16px;
+  overflow: hidden;
 `;

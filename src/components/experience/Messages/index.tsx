@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { getEventValue } from 'helpers/events';
 import { useAppColors } from 'components/providers/Theme';
 import Avatar from 'components/base-components/Avatar';
@@ -15,22 +15,26 @@ import {
   Header,
   Info,
   TextBox,
-} from './styled/page';
+} from './styled/messages';
 
 interface Props {
-  image: string;
-  name: string;
-  active: boolean;
+  user: {
+    image: string;
+    name: string;
+    active: boolean;
+  };
+  actions: ReactNode;
+  smallView?: boolean;
 }
 
 const Messages: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
-  const { image, name, active } = props;
+  const { user: { image, name, active }, actions, smallView } = props;
   const [message, setMessage] = useState('');
 
   return (
     <>
-      <Header>
+      <Header small={smallView}>
         <AvatarSection>
           <Avatar icon={image} />
           <RenderIf condition={active}>
@@ -41,18 +45,12 @@ const Messages: FunctionComponent<Props> = (props) => {
           <Text>{name}</Text>
           <Text size="small" color="gray">active 10min ago</Text>
         </Info>
-        <IconButton
-          onClick={() => undefined}
-          icon={Icons.MORE_VERT}
-          color={colors.FONT}
-          buttonColor="font"
-          variant="flat"
-        />
+        {actions}
       </Header>
       <Content>
         <Conversation />
       </Content>
-      <Actions>
+      <Actions small={smallView}>
         <TextBox
           autosize
           rows={1}

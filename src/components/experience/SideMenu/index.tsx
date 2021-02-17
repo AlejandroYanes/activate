@@ -72,7 +72,7 @@ const SideMenu: FunctionComponent = () => {
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/messages"
+          path="/talks"
           icon={messageIcon}
         />
         <EmptyBlock />

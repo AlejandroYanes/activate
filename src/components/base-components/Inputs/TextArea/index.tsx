@@ -2,22 +2,21 @@ import React, { FunctionComponent, useCallback, useEffect, useRef, useState } fr
 import autosizeTextArea from 'autosize';
 import { getEventValue, PositionProps } from 'helpers';
 import InputLabel from '../base/Label';
-import AbsoluteContent from '../base/AbsoluteContent';
-import ClearButton from '../base/ClearButton';
 import { StyledContainer, StyledTextArea } from './styled/text-area';
+import RightNode from './RightNode';
 
 interface Props extends PositionProps {
   id?: string;
   placeholder?: string;
   label?: string;
   value: string;
+  rows?: number;
+  showClear?: boolean;
+  autosize?: boolean;
+  maxLength?: number;
   onChange: (event) => void;
   onFocus?: (event) => void;
   onBlur?: (event) => void;
-  showClear?: boolean;
-  rows?: number;
-  autosize?: boolean;
-  maxLength?: number;
 }
 
 const TextArea: FunctionComponent<Props> = (props) => {
@@ -83,13 +82,13 @@ const TextArea: FunctionComponent<Props> = (props) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      <AbsoluteContent floatRight>
-        <ClearButton
-          showClear={showClear && !!value}
-          isFocused={isFocused}
-          onClick={onChange}
-        />
-      </AbsoluteContent>
+      <RightNode
+        showClear={showClear}
+        value={value}
+        isFocused={isFocused}
+        onChange={onChange}
+        maxLength={maxLength}
+      />
     </StyledContainer>
   );
 };

@@ -16,18 +16,13 @@ interface Props {
   size?: 'small' | 'medium' | 'large';
 }
 
-const clickTrap = (event) => {
-  event.preventDefault();
-  event.stopPropagation();
-};
-
 const Modal: FunctionComponent<Props> = (props) => {
   const { visible, header, onClose, actions, footer, size, children } = props;
 
   if (visible) {
     return (
       <Backdrop onClick={onClose}>
-        <StyledModal size={size} onClick={clickTrap} data-el="modal-container">
+        <StyledModal size={size} data-el="modal-container">
           <Header>
             <Title content={header} />
             <IconButton onClick={onClose} icon={Icons.CLOSE} variant="flat" />
