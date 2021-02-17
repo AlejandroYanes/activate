@@ -10,12 +10,11 @@ const layoutMap = {
 };
 
 const SidePanel: FunctionComponent = () => {
-  // const layout = useAppLayout();
-  // const PanelComponent = layoutMap[layout];
+  const layout = useAppLayout();
+  const PanelComponent = layoutMap[layout];
 
   return (
-    // <PanelComponent />
-    <FixedContainer />
+    <PanelComponent />
   );
 };
 

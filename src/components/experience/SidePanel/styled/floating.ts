@@ -1,8 +1,19 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
+import { Layout } from 'components/providers/Layout';
 
-export const Floating = styled.div`
+const layoutMap = {
+  [Layout.MIDDLE]: css`
+    bottom: 32px;
+  `,
+  [Layout.SMALL]: css`
+    bottom: 90px;
+  `,
+};
+
+export const Floating = styled.div.attrs(anyPropsAttrs)`
   position: fixed;
-  bottom: 10px;
+  ${({ layout }) => layoutMap[layout]};
   right: 8px;
   display: flex;
   flex-direction: column;

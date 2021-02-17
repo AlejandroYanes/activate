@@ -21,6 +21,8 @@ const talks = new Array(faker.random.number({ min: 6, max: 16 }))
     active: faker.random.boolean(),
   }));
 
+const arrowBackStyles = { marginRight: '4px' };
+
 const TalksPanel: FunctionComponent = () => {
   const colors = useAppColors();
   const { push } = useHistory();
@@ -73,23 +75,25 @@ const TalksPanel: FunctionComponent = () => {
     ))
   ), [openTalk]);
 
-  const actions = (
-    <>
-      <IconButton
-        onClick={closeTalk}
-        icon={Icons.ARROW_LEFT}
-        color={colors.FONT}
-        buttonColor="font"
-        variant="flat"
-      />
-      <IconButton
-        onClick={maximizeTalk}
-        icon={Icons.MAXIMIZE}
-        color={colors.FONT}
-        buttonColor="font"
-        variant="flat"
-      />
-    </>
+  const leftAction = (
+    <IconButton
+      style={arrowBackStyles}
+      onClick={closeTalk}
+      icon={Icons.ARROW_LEFT}
+      color={colors.FONT}
+      buttonColor="font"
+      variant="flat"
+    />
+  );
+
+  const rightAction = (
+    <IconButton
+      onClick={maximizeTalk}
+      icon={Icons.MAXIMIZE}
+      color={colors.FONT}
+      buttonColor="font"
+      variant="flat"
+    />
   );
 
   return (
@@ -110,7 +114,12 @@ const TalksPanel: FunctionComponent = () => {
         </Panel>
       </RenderIf>
       <RenderIf condition={showMessages}>
-        <Messages user={activeUser} actions={actions} smallView />
+        <Messages
+          user={activeUser}
+          leftActions={leftAction}
+          rightActions={rightAction}
+          smallView
+        />
       </RenderIf>
     </>
   );

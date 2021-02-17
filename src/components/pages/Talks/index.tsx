@@ -39,7 +39,7 @@ const TalksPage: FunctionComponent = () => {
     <Page>
       <Card>
         <RenderIf condition={!!activeUser} fallback={<SplashScreen />}>
-          <Messages user={activeUser} actions={actions} />
+          <Messages user={activeUser} rightActions={actions} />
         </RenderIf>
       </Card>
     </Page>

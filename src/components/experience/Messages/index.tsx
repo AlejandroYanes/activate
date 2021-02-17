@@ -8,6 +8,7 @@ import IconButton from 'components/base-components/IconButton';
 import { Icons } from 'components/base-components/SvgIcon';
 import Conversation from './Conversation';
 import {
+  Messages as StyledMessages,
   Actions,
   ActiveDot,
   AvatarSection,
@@ -23,18 +24,20 @@ interface Props {
     name: string;
     active: boolean;
   };
-  actions: ReactNode;
+  leftActions?: ReactNode;
+  rightActions?: ReactNode;
   smallView?: boolean;
 }
 
 const Messages: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
-  const { user: { image, name, active }, actions, smallView } = props;
+  const { user: { image, name, active }, leftActions, rightActions, smallView } = props;
   const [message, setMessage] = useState('');
 
   return (
-    <>
+    <StyledMessages>
       <Header small={smallView}>
+        {leftActions}
         <AvatarSection>
           <Avatar icon={image} />
           <RenderIf condition={active}>
@@ -45,7 +48,7 @@ const Messages: FunctionComponent<Props> = (props) => {
           <Text>{name}</Text>
           <Text size="small" color="gray">active 10min ago</Text>
         </Info>
-        {actions}
+        {rightActions}
       </Header>
       <Content>
         <Conversation />
@@ -54,7 +57,7 @@ const Messages: FunctionComponent<Props> = (props) => {
         <TextBox
           autosize
           rows={1}
-          maxLength={500}
+          maxLength={smallView ? 250 : 500}
           value={message}
           onChange={(event) => setMessage(getEventValue(event))}
         />
@@ -66,7 +69,7 @@ const Messages: FunctionComponent<Props> = (props) => {
           size="large"
         />
       </Actions>
-    </>
+    </StyledMessages>
   );
 };
 

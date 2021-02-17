@@ -2,6 +2,12 @@ import styled from 'styled-components';
 import { TextArea } from 'components/base-components/Inputs';
 import { anyPropsAttrs } from 'helpers';
 
+export const Messages = styled.main`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const Header = styled.header.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
