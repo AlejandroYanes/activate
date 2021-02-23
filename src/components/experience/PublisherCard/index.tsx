@@ -10,7 +10,7 @@ import Avatar from 'components/base-components/Avatar';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
-import { Actions, Card, Footer, Header, Info, Stat, Stats, User } from './styled/publisher-card';
+import { Actions, Card, Footer, Header, Info, Stat, Stats, User } from './styled';
 
 const avatars = ['user1', 'user2', 'user6'];
 

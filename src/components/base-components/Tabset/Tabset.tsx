@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { PositionProps } from 'helpers';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { TabSetProvider } from './context';
 import { StyledTabset } from './styled';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 
 export interface TabsetProps extends PositionProps {
   compact?: boolean;

@@ -122,7 +122,7 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   border-radius: 10px;
   overflow: hidden;
   box-sizing: border-box;
-  min-width: 64px;
+  min-width: 44px;
   ${getWidthStyles};
   ${getSelectedStyles};
   transition: all 150ms linear;

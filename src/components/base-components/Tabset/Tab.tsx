@@ -7,17 +7,18 @@ import React, {
   useRef,
 } from 'react';
 import { useHoverState } from 'hooks/UI';
-import { ColorScheme } from 'styles/colors';
 import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import tabsetContext from './context';
 import { Mark, StyledTab, Text, Label } from './styled';
+import { getIconColor } from './get-icon-color';
 
 interface Props {
   name: string;
   icon?: Icons | ReactNode;
   label?: string;
+  onClick?: (activeTab: string) => void;
 }
 
 const markAnimationControls = {
@@ -26,31 +27,9 @@ const markAnimationControls = {
   damping: 20,
 };
 
-function getIconColor(
-  disableFocus: boolean,
-  isSelected: boolean,
-  isHovered: boolean,
-  useDarkStyle: boolean,
-  colors: ColorScheme,
-) {
-  if (isSelected && isHovered && !disableFocus) {
-    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
-  }
-
-  if (isSelected) {
-    return colors.BRAND;
-  }
-
-  if (isHovered && !disableFocus) {
-    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
-  }
-
-  return colors.GRAY;
-}
-
 const Tab: FunctionComponent<Props> = (props) => {
   const { colors, useDarkStyle } = useAppTheme();
-  const { name, label, icon } = props;
+  const { name, label, icon, onClick } = props;
   const {
     activeTab,
     onTabChange,
@@ -62,7 +41,13 @@ const Tab: FunctionComponent<Props> = (props) => {
   const tabReference = useRef(undefined);
   const isHovered = useHoverState(tabReference);
 
-  const handleClick = useCallback(() => onTabChange(name), [onTabChange, name]);
+  const handleClick = useCallback(() => {
+    if (onClick) {
+      onClick(name);
+    } else {
+      onTabChange(name);
+    }
+  }, [onTabChange, name]);
 
   const isSelected = name === activeTab;
   const iconComponent = useMemo(() => {

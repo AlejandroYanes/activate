@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
-import { ZLevels } from '../../../../styles/z-levels';
+import { ZLevels } from 'styles/z-levels';
 
 export const Day = styled.li`
   display: flex;

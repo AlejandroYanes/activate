@@ -11,15 +11,7 @@ import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import Description from './Description';
 import Comments from './Comnments';
-import {
-  BackButton,
-  EventTitle,
-  Header,
-  Image,
-  ImageContainer,
-  StyledEventDetail,
-  SubHeader,
-} from './styled/page';
+import { BackButton, EventTitle, Header, Image, ImageContainer, StyledEventDetail, SubHeader, } from './styled/page';
 
 const event = {
   title: 'Free Music Workshop - February 2020',
@@ -53,7 +45,7 @@ const EventDetailsPage: FunctionComponent = () => {
 
   return (
     <Page>
-      <StyledEventDetail>
+      <StyledEventDetail flat={layout === Layout.SMALL}>
         <Header>
           <BackButton
             variant="flat"
@@ -74,7 +66,7 @@ const EventDetailsPage: FunctionComponent = () => {
             fullWidth
           >
             <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
-            <Tab name={Tabs.CommentsSection} label="Comments (169)" icon={Icons.COMMENTS} />
+            <Tab name={Tabs.CommentsSection} label="Comments" icon={Icons.COMMENTS} />
           </Tabset>
           <IconButton
             mR

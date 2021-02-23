@@ -10,7 +10,7 @@ const layoutMap = {
     padding: 32px 0 0;
   `,
   [Layout.SMALL]: css`
-    padding: 32px 8px 90px;
+    padding: 32px 8px 120px;
   `,
 };
 

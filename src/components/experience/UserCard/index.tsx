@@ -8,7 +8,7 @@ import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
-import { Card, Info } from './styled/user-card';
+import { Card, Info } from './styled';
 
 const UserCard: FunctionComponent = () => {
   const Colors = useAppColors();

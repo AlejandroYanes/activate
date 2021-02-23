@@ -5,5 +5,5 @@ export const Text = styled.div`
   align-items: center;
   justify-content: center;
   margin: 0 auto 8px;
-  min-width: 44px;
+  min-width: 22px;
 `;

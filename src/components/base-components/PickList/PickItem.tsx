@@ -1,16 +1,16 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useAppColors } from 'components/providers/Theme';
+import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { usePickListContext } from './context';
-import { StyledItem, Touchable, Mark } from './styled';
+import { Mark, StyledItem, Touchable } from './styled';
 
 interface Props {
   value: string;
 }
 
 const PickItem: FunctionComponent<Props> = (props) => {
-  const Colors = useAppColors();
+  const { colors: Colors, useDarkStyle } = useAppTheme();
   const { value, children } = props;
   const {
     value: selectedValue,
@@ -34,7 +34,7 @@ const PickItem: FunctionComponent<Props> = (props) => {
         {children}
         <RenderIf condition={isSelected}>
           <Mark color={color}>
-            <SvgIcon icon={Icons.CHECK_MARK} color={Colors.WHITE} />
+            <SvgIcon icon={Icons.CHECK_MARK} color={useDarkStyle ? Colors.ACCENT : Colors.WHITE} />
           </Mark>
         </RenderIf>
       </Touchable>
