@@ -18,3 +18,5 @@ export const StyledBackdrop = styled.section`
    background-color: ${({ theme }) => getShade(theme.colors.GRAY_DARK, 0.4)};
   backdrop-filter: blur(8px);
 `;
+
+export const Container = styled.div``;

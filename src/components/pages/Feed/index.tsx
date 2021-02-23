@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { addDays } from 'date-fns';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import DayCalendar from 'components/base-components/DayCalendar';
 import Page from 'components/base-components/Page';
 import { PresentationCard } from 'components/experience/EventCard';
@@ -32,7 +33,14 @@ enum EventsDisplay {
   ByDate = 'by-date',
 }
 
+const titleByLayoutMap = {
+  [Layout.FULL]: 'Your upcoming events',
+  [Layout.MIDDLE]: 'Your upcoming events',
+  [Layout.SMALL]: 'Upcoming',
+};
+
 const FeedPage: FunctionComponent = () => {
+  const layout = useAppLayout();
   const [selectedDay, setSelectedDay] = useState(days[0]);
   const [option, setOption] = useState(EventsDisplay.ByDate);
 
@@ -44,7 +52,7 @@ const FeedPage: FunctionComponent = () => {
   );
 
   return (
-    <Page title="Your upcoming events" actions={actions} data-el="feed-page">
+    <Page title={titleByLayoutMap[layout]} actions={actions} data-el="feed-page">
       <RenderIf condition={option === EventsDisplay.ByDate}>
         <SubHeader>
           <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />

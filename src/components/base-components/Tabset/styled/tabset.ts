@@ -4,6 +4,7 @@ import { getMargins } from 'helpers';
 export const StyledTabset = styled.ul.attrs((props: any) => props)`
   list-style: none;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   padding: 0;
   margin: 0;

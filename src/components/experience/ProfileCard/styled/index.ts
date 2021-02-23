@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Avatar from 'components/base-components/Avatar';
+import { anyPropsAttrs, getMargins } from '../../../../helpers';
 
 export const Card = styled.div`
   position: relative;
@@ -19,10 +20,25 @@ export const StyledAvatar = styled(Avatar)`
   border: 10px solid ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
-export const Info = styled.div`
+const getAlignStyles = (props) => {
+  const { centered, around } = props;
+
+  if (centered) {
+    return css`justify-content: center;`;
+  }
+
+  if (around) {
+    return css`justify-content: space-around;`;
+  }
+
+  return css`justify-content: space-between`;
+};
+
+export const Info = styled.div.attrs(anyPropsAttrs)`
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  ${getAlignStyles};
+  ${getMargins};
 `;
 
 export const Attr = styled.div`

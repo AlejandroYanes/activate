@@ -6,6 +6,11 @@ interface Props {
   onClick: (e) => void;
 }
 
+const clickTrap = (event) => {
+  event.stopPropagation();
+  event.preventDefault();
+};
+
 const Backdrop: FunctionComponent<Props> = (props) => {
   const { onClick, children } = props;
 
@@ -18,7 +23,9 @@ const Backdrop: FunctionComponent<Props> = (props) => {
 
   return ReactDOM.createPortal((
     <StyledBackdrop onClick={onClick} data-el="backdrop">
-      {children}
+      <div onClick={clickTrap} data-el="backdrop-container">
+        {children}
+      </div>
     </StyledBackdrop>
   ), document.body);
 };

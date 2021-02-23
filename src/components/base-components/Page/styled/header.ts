@@ -15,9 +15,9 @@ const layoutMap = {
   `,
   [Layout.SMALL]: css`
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
   `,
 };
 
@@ -26,8 +26,7 @@ export const Header = styled.header.attrs(anyPropsAttrs)`
    margin-bottom: ${({ spaced }) => spaced ? '32px' : '0px'};
 `;
 
-export const Actions = styled.div.attrs(anyPropsAttrs)`
+export const Actions = styled.div`
   display: flex;
   align-items: center;
-  margin-top: ${({ layout }) => layout === Layout.SMALL ? '20px' : '0'};
 `;

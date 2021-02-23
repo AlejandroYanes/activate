@@ -10,7 +10,7 @@ const layoutMap = {
     padding: 32px 0 0;
   `,
   [Layout.SMALL]: css`
-    padding: 32px 8px 0;
+    padding: 32px 8px 120px;
   `,
 };
 
@@ -20,6 +20,7 @@ export const Body = styled.section.attrs(anyPropsAttrs)`
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
+  overflow: hidden;
   ${({ layout }) => layoutMap[layout]};
   //visibility: hidden;
 `;

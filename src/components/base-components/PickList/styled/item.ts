@@ -12,6 +12,11 @@ export const StyledItem = styled.li.attrs(anyPropsAttrs)`
   width: ${({ size }) => sizeMap[size]};
 `;
 
+const getMarkColor = (props) => {
+  const { theme: { useDarkStyle, colors }, color } = props;
+  return css`background-color: ${useDarkStyle ? colors.FONT : colors[color.toUpperCase()]}`;
+};
+
 export const Mark = styled.div.attrs(anyPropsAttrs)`
   position: absolute;
   width: 88px;
@@ -24,7 +29,7 @@ export const Mark = styled.div.attrs(anyPropsAttrs)`
   align-items: center;
   justify-content: flex-end;
   transition: all 150ms linear;
-  background-color: ${({ theme, color }) => theme.colors[color.toUpperCase()]};
+  ${getMarkColor};
 
   & > * {
     transform: rotate(-45deg);
@@ -37,10 +42,10 @@ const getColorStyles = (props) => {
 
   if (useDarkStyle) {
     const borderColor = isSelected
-      ? colors[color.toUpperCase()]
+      ? colors.FONT
       : colors.GRAY_DARK;
 
-    const hoverColor = colors[`${color.toUpperCase()}_LIGHT`];
+    const hoverColor = colors.FONT;
 
     return css`
       border: 2px solid ${borderColor};
@@ -61,15 +66,15 @@ const getColorStyles = (props) => {
   const hoverColor = colors[`${color.toUpperCase()}_LIGHT`];
 
   return css`
-      border: 2px solid ${borderColor};
-      &:hover, &:focus {
-        outline: none;
-        border-color: ${hoverColor};
-        ${Mark} {
-          background-color: ${hoverColor};
-        }
+    border: 2px solid ${borderColor};
+    &:hover, &:focus {
+      outline: none;
+      border-color: ${hoverColor};
+      ${Mark} {
+        background-color: ${hoverColor};
       }
-    `;
+    }
+  `;
 };
 
 export const Touchable = styled.button.attrs(anyPropsAttrs)`

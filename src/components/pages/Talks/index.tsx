@@ -1,13 +1,17 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { EventChannelList, useEventCenterUpdate } from 'components/event-center';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import { useAppColors } from 'components/providers/Theme';
+import { Icons } from 'components/base-components/SvgIcon';
+import IconButton from 'components/base-components/IconButton';
 import Page from 'components/base-components/Page';
 import RenderIf from 'components/base-components/RenderIf';
-import { Card, } from './styled/page';
+import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
-import Messages from './Messages';
+import { Card, } from './styled/page';
 
-const MessagesPage: FunctionComponent = () => {
+const TalksPage: FunctionComponent = () => {
+  const colors = useAppColors();
   const { setActiveSection } = usePanelActions();
   const [activeUser, setActiveUser] = useState(undefined);
 
@@ -21,15 +25,25 @@ const MessagesPage: FunctionComponent = () => {
     setActiveSection(AuxPanelSection.TALKS);
   }, []);
 
+  const actions = (
+    <IconButton
+      onClick={() => undefined}
+      icon={Icons.MORE_VERT}
+      color={colors.FONT}
+      buttonColor="font"
+      variant="flat"
+    />
+  );
+
   return (
     <Page>
       <Card>
         <RenderIf condition={!!activeUser} fallback={<SplashScreen />}>
-          <Messages {...activeUser} />
+          <Messages user={activeUser} rightActions={actions} />
         </RenderIf>
       </Card>
     </Page>
   );
 };
 
-export default MessagesPage;
+export default TalksPage;
