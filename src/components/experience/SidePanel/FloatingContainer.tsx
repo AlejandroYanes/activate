@@ -29,7 +29,10 @@ const FloatingContainer: FunctionComponent = () => {
       </Floating>
       <RenderIf condition={showPanel}>
         <Backdrop onClick={togglePanel}>
-          <Panel onClose={layout === Layout.SMALL ? togglePanel : undefined} />
+          <Panel
+            showCloseIcon={layout === Layout.SMALL}
+            onClose={layout !== Layout.FULL ? togglePanel : undefined}
+          />
         </Backdrop>
       </RenderIf>
     </>

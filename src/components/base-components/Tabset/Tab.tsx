@@ -12,7 +12,7 @@ import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import tabsetContext from './context';
-import { Content, Label, Mark, StyledTab, Text } from './styled';
+import { Mark, StyledTab, Text, Label } from './styled';
 
 interface Props {
   name: string;
@@ -27,12 +27,13 @@ const markAnimationControls = {
 };
 
 function getIconColor(
+  disableFocus: boolean,
   isSelected: boolean,
   isHovered: boolean,
   useDarkStyle: boolean,
   colors: ColorScheme,
 ) {
-  if (isSelected && isHovered) {
+  if (isSelected && isHovered && !disableFocus) {
     return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
   }
 
@@ -40,17 +41,12 @@ function getIconColor(
     return colors.BRAND;
   }
 
-  if (isHovered) {
+  if (isHovered && !disableFocus) {
     return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
   }
 
   return colors.GRAY;
 }
-
-// const tabVariants = {
-//   collapsed: { scaleX: 0, opacity: 0, transition: { duration: 0.5 } },
-//   expanded: { scaleX: 1, opacity: 1, transition: { duration: 0.5 } },
-// };
 
 const Tab: FunctionComponent<Props> = (props) => {
   const { colors, useDarkStyle } = useAppTheme();
@@ -60,32 +56,26 @@ const Tab: FunctionComponent<Props> = (props) => {
     onTabChange,
     fullWidth,
     compact,
-    // animateEntrance,
+    disableFocus,
   } = useContext(tabsetContext);
+
   const tabReference = useRef(undefined);
   const isHovered = useHoverState(tabReference);
-  const isSelected = name === activeTab;
-  const shouldShowLabel = (
-    !!label &&
-    (
-      (compact && isSelected) ||
-      !compact
-    )
-  );
 
+  const handleClick = useCallback(() => onTabChange(name), [onTabChange, name]);
+
+  const isSelected = name === activeTab;
   const iconComponent = useMemo(() => {
     if (typeof icon === 'string') {
       return (
         <SvgIcon
           icon={icon as Icons}
-          color={getIconColor(isSelected, isHovered, useDarkStyle, colors)}
+          color={getIconColor(disableFocus, isSelected, isHovered, useDarkStyle, colors)}
         />
       );
     }
     return icon;
-  }, [icon, isHovered, isSelected, colors, useDarkStyle]);
-
-  const handleClick = useCallback(() => onTabChange(name), [onTabChange, name]);
+  }, [icon, disableFocus, isHovered, isSelected, colors, useDarkStyle]);
 
   return (
     <StyledTab
@@ -96,29 +86,27 @@ const Tab: FunctionComponent<Props> = (props) => {
       fullWidth={fullWidth}
       compact={compact}
       selected={isSelected}
+      disableFocus={disableFocus}
+      // animateEntrance={animateEntrance}
       onClick={handleClick}
     >
-      <Content
-        data-el="tab-content"
-        compact={compact}
-        selected={isSelected}
-      >
-        <Text compact={compact} data-el="tab-text">
-          <RenderIf condition={!!icon}>
-            {iconComponent}
-          </RenderIf>
-          <RenderIf condition={shouldShowLabel}>
-            <Label spaced={!!icon}>{label}</Label>
-          </RenderIf>
-        </Text>
-        <RenderIf condition={isSelected}>
-          <Mark
-            layoutId="tabMarker"
-            initial={false}
-            transition={markAnimationControls}
-          />
+      <Text data-el="tab-text">
+        <RenderIf condition={!!icon}>
+          {iconComponent}
         </RenderIf>
-      </Content>
+        <RenderIf condition={!!label}>
+          <Label compact={compact} isSelected={isSelected} spaced={!!icon}>
+            {label}
+          </Label>
+        </RenderIf>
+      </Text>
+      <RenderIf condition={isSelected}>
+        <Mark
+          layoutId="tabMarker"
+          initial={false}
+          transition={markAnimationControls}
+        />
+      </RenderIf>
     </StyledTab>
   );
 };

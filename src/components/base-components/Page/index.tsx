@@ -20,7 +20,7 @@ const Page: FunctionComponent<Props> = (props) => {
           <Title level={1} bold color="brand">{title}</Title>
         </RenderIf>
         <RenderIf condition={!!actions}>
-          <Actions layout={layout}>
+          <Actions>
             {actions}
           </Actions>
         </RenderIf>

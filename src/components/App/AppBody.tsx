@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useAppLayout } from 'components/providers/Layout';
-import SideMenu from 'components/experience/SideMenu';
+import NavBar from 'components/experience/NavBar';
 import SidePanel from 'components/experience/SidePanel';
 import FeedPage from 'components/pages/Feed';
 import ProfilePage from 'components/pages/Profile';
@@ -18,7 +18,7 @@ const AppBody: FunctionComponent = () => {
 
   return (
     <StyledApp layout={layout}>
-      <SideMenu />
+      <NavBar />
       <Body layout={layout}>
         <Switch>
           <Route path="/upcoming" component={FeedPage} exact />

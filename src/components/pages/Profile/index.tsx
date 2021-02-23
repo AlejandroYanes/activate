@@ -66,7 +66,7 @@ const ProfilePage: FunctionComponent = () => {
         <Form state={userData} onChange={setUserData}>
           <Field name="userName" label="User Name" />
           <Field name="name" label="Name" mT />
-          <Field name="bio" component={TextArea} label="Bio" mT />
+          <Field name="bio" component={TextArea} label="Bio" maxLength={250} autosize mT />
         </Form>
         <Line floatRight>
           <Button onClick={() => undefined} label="Update" mB />

@@ -3,6 +3,7 @@ import { TabsetProps } from 'components/base-components/Tabset/Tabset';
 
 interface TabsetContext extends TabsetProps {
   animateEntrance?: boolean;
+  disableFocus?: boolean;
 }
 
 const tabsetContext = createContext<TabsetContext>(undefined);

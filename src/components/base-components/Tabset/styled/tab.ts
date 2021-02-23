@@ -1,65 +1,78 @@
 import styled, { css } from 'styled-components';
-import { motion } from 'framer-motion';
 import { anyPropsAttrs } from 'helpers';
+import { Label } from './label';
+import { Mark } from './mark';
 
-const getContentSpacingStyles = (props) => {
-  const { compact, selected } = props;
-
-  if (compact) {
-    if (selected) {
-      return 'padding: 0 12px;';
-    }
-    return 'padding: 0;';
-  }
-  return 'padding: 0 12px;';
-};
-
-export const Content = styled.div.attrs((props: any) => props)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  min-width: 50%;
-  ${getContentSpacingStyles};
-`;
-
-export const Text = styled.div.attrs((props: any) => props)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 8px;
-  min-width: ${({ compact }) => compact ? '20px' : '64px'};
-`;
-
-export const Label = styled.span.attrs((props: any) => props)`
-  ${(props) => (props.spaced ? 'margin-left: 8px' : '')};
-  color: ${({ theme }) => theme.colors.GRAY};
-  transition: all 150ms linear;
-`;
-
-export const Mark = styled(motion.div)`
-  width: 100%;
-  height: 2px;
-  border-radius: 50px;
-  background-color: ${({ theme }) => theme.colors.BRAND};
-  position: absolute;
-  bottom: 0;
-`;
+// const enterAnimation = keyframes`
+//   0% {
+//     flex: 0;
+//     margin: 0;
+//     padding: 0;
+//     min-width: 0;
+//   }
+//
+//   10% {
+//     flex: 0;
+//     margin: 0;
+//     padding: 0;
+//     min-width: 0;
+//   }
+//
+//
+//   100% {
+//     flex: 1;
+//     padding: 8px 12px;
+//     margin: 0 6px 0 0;
+//     min-width: 80px;
+//   }
+// `;
+//
+// const enterCompactAnimation = keyframes`
+//   0% {
+//     flex: 0;
+//     margin: 0;
+//     padding: 0;
+//     min-width: 0;
+//   }
+//
+//   10% {
+//     flex: 0;
+//     margin: 0;
+//     padding: 0;
+//     min-width: 0;
+//   }
+//
+//   100% {
+//     padding: 8px 12px;
+//     margin: 0 6px 0 0;
+//     min-width: 20px;
+//   }
+// `;
+//
+// const getAnimation = (props) => {
+//   const { animateEntrance, compact } = props;
+//
+//   if (animateEntrance) {
+//     if (compact) {
+//       return css`
+//         animation: ${enterCompactAnimation} 166ms linear;
+//       `;
+//     }
+//
+//     return css`
+//         animation: ${enterAnimation} 166ms linear;
+//       `;
+//   }
+// };
 
 const getWidthStyles = (props) => {
-  const { fullWidth, compact, selected } = props;
-  const shouldUseFullwidth = (
-    fullWidth &&
-    (
-      (compact && selected) ||
-      !compact
-    )
-  );
+  const { compact, selected } = props;
 
-  return `
-    min-width: ${compact ? '20px' : '80px'};
-    ${shouldUseFullwidth ? 'flex: 1' : ''}
-  `;
+  if (!compact || selected) {
+    return css`flex: 1`;
+  }
+
+  return css`flex: 0`;
 };
 
 const getSelectedStyles = (props) => {
@@ -76,7 +89,12 @@ const getSelectedStyles = (props) => {
 };
 
 const getHoverStyles = (props) => {
-  const { selected, theme: { colors, useDarkStyle } } = props;
+  const { disableFocus, selected, theme: { colors, useDarkStyle } } = props;
+
+  if (disableFocus) {
+    return '';
+  }
+
   const markColor = useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
 
   return css`
@@ -93,6 +111,7 @@ const getHoverStyles = (props) => {
 };
 
 export const StyledTab = styled.li.attrs(anyPropsAttrs)`
+  position: relative;
   padding: 8px 12px;
   margin: 0 6px 0 0;
   display: flex;
@@ -101,8 +120,12 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   justify-content: center;
   cursor: pointer;
   border-radius: 10px;
+  overflow: hidden;
+  box-sizing: border-box;
+  min-width: 64px;
   ${getWidthStyles};
   ${getSelectedStyles};
+  transition: all 150ms linear;
 
   &:hover, &:focus {
     outline: none;

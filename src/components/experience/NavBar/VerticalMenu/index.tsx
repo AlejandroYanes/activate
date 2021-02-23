@@ -1,14 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppColors, useAppTheme } from 'components/providers/Theme';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { useAppLayout } from 'components/providers/Layout';
 import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
-import RenderIf from 'components/base-components/RenderIf';
 import MenuBlock from './MenuBlock';
 import {
   discoverIcon,
-  homeIcon,
+  bookmarksIcon,
   searchIcon,
   messageIcon,
 } from './icons';
@@ -22,29 +21,24 @@ import {
 
 const emptyAction = () => undefined;
 
-const SideMenu: FunctionComponent = () => {
+const VerticalMenu: FunctionComponent = () => {
   const layout = useAppLayout();
   const Colors = useAppColors();
   const { pathname } = useLocation();
   const { useDarkStyle, toggleLightStyle } = useAppTheme();
 
   return (
-    <StyledSideMenu layout={layout}>
-      <MenuList layout={layout}>
-        <RenderIf condition={layout !== Layout.SMALL}>
-          <ActionBlock>
-            <ActionButton
-              onClick={toggleLightStyle}
-              icon={useDarkStyle ? Icons.MOON : Icons.SUN}
-              color={Colors.WHITE}
-              buttonColor="brand"
-              variant="fill"
-            />
-          </ActionBlock>
-        </RenderIf>
-        <RenderIf condition={layout === Layout.SMALL}>
-          <EmptyBlock />
-        </RenderIf>
+    <StyledSideMenu>
+      <MenuList>
+        <ActionBlock>
+          <ActionButton
+            onClick={toggleLightStyle}
+            icon={useDarkStyle ? Icons.MOON : Icons.SUN}
+            color={Colors.WHITE}
+            buttonColor="brand"
+            variant="fill"
+          />
+        </ActionBlock>
         <MenuBlock
           layout={layout}
           currentPath={pathname}
@@ -54,8 +48,8 @@ const SideMenu: FunctionComponent = () => {
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/"
-          icon={homeIcon}
+          path="/upcoming"
+          icon={bookmarksIcon}
         />
         <MenuBlock
           layout={layout}
@@ -76,21 +70,19 @@ const SideMenu: FunctionComponent = () => {
           icon={messageIcon}
         />
         <EmptyBlock />
-        <RenderIf condition={layout !== Layout.SMALL}>
-          <ActionBlock>
-            <ActionButton
-              onClick={emptyAction}
-              icon={Icons.LOGOUT}
-              color={Colors.WHITE}
-              secondaryColor={Colors.WHITE}
-              buttonColor="brand"
-              variant="fill"
-            />
-          </ActionBlock>
-        </RenderIf>
+        <ActionBlock>
+          <ActionButton
+            onClick={emptyAction}
+            icon={Icons.LOGOUT}
+            color={Colors.WHITE}
+            secondaryColor={Colors.WHITE}
+            buttonColor="brand"
+            variant="fill"
+          />
+        </ActionBlock>
       </MenuList>
     </StyledSideMenu>
   );
 };
 
-export default SideMenu;
+export default VerticalMenu;

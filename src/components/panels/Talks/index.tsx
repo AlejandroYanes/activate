@@ -2,6 +2,7 @@ import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom';
 import faker from 'faker';
 import { EventChannelList, notifyEventChannel } from 'components/event-center';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
 import IconButton from 'components/base-components/IconButton';
 import { Icons } from 'components/base-components/SvgIcon';
@@ -10,6 +11,10 @@ import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import Messages from 'components/experience/Messages';
 import { Action, ActiveDot, AvatarSection, Info, Panel, Talk } from './styled';
+
+interface Props {
+  onClose?: () => void;
+}
 
 const talks = new Array(faker.random.number({ min: 6, max: 16 }))
   .fill(1)
@@ -23,10 +28,13 @@ const talks = new Array(faker.random.number({ min: 6, max: 16 }))
 
 const arrowBackStyles = { marginRight: '4px' };
 
-const TalksPanel: FunctionComponent = () => {
+const TalksPanel: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
+  const layout = useAppLayout();
   const { push } = useHistory();
   const { pathname } = useLocation();
+
+  const { onClose } = props;
 
   const [showMessages, setShowMessages] = useState(false);
   const [activeUser, setActiveUser] = useState(undefined);
@@ -37,12 +45,15 @@ const TalksPanel: FunctionComponent = () => {
 
     if (pathname.includes('talks')) {
       notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
+      if (onClose) {
+        onClose();
+      }
     } else {
       setActiveUser(user);
       setShowMessages(true);
     }
 
-  }, [pathname]);
+  }, [pathname, onClose]);
 
   const closeTalk = useCallback(() => {
     setActiveUser(undefined);
@@ -55,6 +66,9 @@ const TalksPanel: FunctionComponent = () => {
     push('/talks');
     setTimeout(() => {
       notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, activeUser);
+      if (onClose) {
+        onClose();
+      }
     }, 100);
   }, [activeUser]);
 
@@ -117,7 +131,7 @@ const TalksPanel: FunctionComponent = () => {
         <Messages
           user={activeUser}
           leftActions={leftAction}
-          rightActions={rightAction}
+          rightActions={layout !== Layout.SMALL ? rightAction : undefined}
           smallView
         />
       </RenderIf>
