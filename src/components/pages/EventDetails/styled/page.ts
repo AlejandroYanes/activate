@@ -1,14 +1,25 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
 import { Title } from 'components/base-components/Typography';
-import IconButton from '../../../base-components/IconButton';
+import IconButton from 'components/base-components/IconButton';
 
-export const StyledEventDetail = styled.article`
+const getStyles = (props) => {
+  const { flat, theme } = props;
+
+  if (!flat) {
+    return css`
+      padding: 16px;
+      background-color: ${theme.colors.BACKGROUND_LIGHT};
+    `;
+  }
+};
+
+export const StyledEventDetail = styled.article.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   border-radius: 16px;
-  padding: 16px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  ${getStyles};
 `;
 
 export const Header = styled.header`

@@ -14,7 +14,7 @@ const layoutMap = {
     max-width: ${cardWidth};
   `,
   [Layout.SMALL]: css`
-    max-width: 100%;
+    width: 100%;
   `,
 };
 

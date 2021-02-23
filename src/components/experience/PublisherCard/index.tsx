@@ -1,20 +1,24 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import faker from 'faker';
 import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
-import Avatar from 'components/base-components/Avatar';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Paragraph, Text, Title } from 'components/base-components/Typography';
+import { Icons } from 'components/base-components/SvgIcon';
+import Avatar from 'components/base-components/Avatar';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
-import { Actions, Card, Footer, Header, Stat, Stats, Top } from './styled/publisher-card';
+import RenderIf from 'components/base-components/RenderIf';
+import { Actions, Card, Footer, Header, Info, Stat, Stats, User } from './styled';
 
 const avatars = ['user1', 'user2', 'user6'];
 
 const PublisherCard: FunctionComponent = () => {
   const Colors = useAppColors();
+  const layout = useAppLayout();
   const { push } = useHistory();
+
   const { name, userName, bio, events, followers } = useMemo(() => ({
     name: `${faker.company.companyName()}, ${faker.company.companySuffix()}`,
     userName: `@${faker.internet.userName()}`,
@@ -23,40 +27,48 @@ const PublisherCard: FunctionComponent = () => {
     followers: faker.random.number(),
   }), []);
 
+  const isSmallLayout = layout === Layout.SMALL;
+
   return (
     <Card>
-      <Top>
-        <Avatar icon="user2" size="medium" />
-        <Header>
-          <Text size="small">{userName}</Text>
-          <Title level={3} color="brand">{name}</Title>
-        </Header>
-        <Stats>
-          <Stat>
+      <Header asColumn={isSmallLayout}>
+        <User>
+          <Avatar icon="user2" size="medium" />
+          <Link to="/publisher">
+            <Info>
+              <Text size="small">{userName}</Text>
+              <Title level={3} color="brand">{name}</Title>
+            </Info>
+          </Link>
+        </User>
+        <Stats spaced={isSmallLayout}>
+          <Stat padded={!isSmallLayout}>
             <Text size="small">Events</Text>
             <Title level={3} color="accent">{formatAmount(events)}</Title>
           </Stat>
-          <Stat>
+          <Stat padded={!isSmallLayout}>
             <Text size="small">Followers</Text>
             <Title level={3} color="accent">{formatAmount(followers)}</Title>
           </Stat>
         </Stats>
-      </Top>
+      </Header>
       <Paragraph mB>
         {bio}
       </Paragraph>
       <Footer>
         <AvatarGroup icons={avatars} size="x-small" />
         <Actions>
-          <IconButton
-            onClick={() => push('/publisher')}
-            icon={Icons.RESUME}
-            color={Colors.INFO}
-            buttonColor="info"
-            variant="flat"
-            size="large"
-            mR
-          />
+          <RenderIf condition={!isSmallLayout}>
+            <IconButton
+              onClick={() => push('/publisher')}
+              icon={Icons.RESUME}
+              color={Colors.INFO}
+              buttonColor="info"
+              variant="flat"
+              size="large"
+              mR
+            />
+          </RenderIf>
           <IconButton
             onClick={() => undefined}
             icon={Icons.STAR}

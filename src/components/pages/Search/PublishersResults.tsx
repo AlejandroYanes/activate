@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import PublisherCard from './PublisherCard';
+import PublisherCard from 'components/experience/PublisherCard';
 
 const PublishersResults: FunctionComponent = () => {
   return (

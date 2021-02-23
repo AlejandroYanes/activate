@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import * as faker from 'faker';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
 import { PresentationCard } from 'components/experience/EventCard';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -25,6 +26,8 @@ enum UserTabs {
 
 const UserPage: FunctionComponent = () => {
   const Colors = useAppColors();
+  const layout = useAppLayout();
+
   const [activeTab, setActiveTab] = useState(UserTabs.EVENTS);
   const { friendCount, followingCount, ...rest } = user;
 
@@ -50,7 +53,13 @@ const UserPage: FunctionComponent = () => {
         action={action}
         {...rest}
       >
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mT>
+        <Tabset
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          compact={layout === Layout.SMALL}
+          fullWidth
+          mT
+        >
           <Tab name={UserTabs.EVENTS} label="Events" icon={Icons.CALENDAR_FILLED} />
           <Tab name={UserTabs.FOLLOWING} label="Following" icon={Icons.MEGAPHONE} />
           <Tab name={UserTabs.FRIENDS} label="Friends" icon={Icons.USERS} />

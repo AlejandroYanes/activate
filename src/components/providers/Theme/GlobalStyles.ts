@@ -53,6 +53,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   * {
+    -webkit-tap-highlight-color: transparent;
     scrollbar-width: thin;
     ${getFirefoxScrollBarColor};
   }

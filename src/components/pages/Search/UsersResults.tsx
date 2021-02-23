@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import UserCard from './UserCard';
+import UserCard from 'components/experience/UserCard';
 
 const UsersResults: FunctionComponent = () => {
   return (

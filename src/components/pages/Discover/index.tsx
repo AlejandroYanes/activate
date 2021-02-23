@@ -1,12 +1,9 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
-import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { PresentationCard } from 'components/experience/EventCard';
 import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
 import Page from 'components/base-components/Page';
 import { events } from './events';
 
@@ -21,10 +18,14 @@ function eventFactory() {
   return events.map((event) => <PresentationCard key={event.id} {...event} />);
 }
 
+const titleByLayoutMap = {
+  [Layout.FULL]: 'Discover new events',
+  [Layout.MIDDLE]: 'Discover new events',
+  [Layout.SMALL]: 'Discover',
+};
+
 const DiscoverPage: FunctionComponent = () => {
-  const Colors = useAppColors();
   const layout = useAppLayout();
-  const { push } = useHistory();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
   const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
 
@@ -38,19 +39,8 @@ const DiscoverPage: FunctionComponent = () => {
 
   const eventCards = useMemo(eventFactory, []);
 
-  const action = useMemo(() => (
-    <IconButton
-      onClick={() => push('/search')}
-      icon={Icons.SEARCH}
-      color={Colors.BRAND}
-      buttonColor="brand"
-      variant="flat"
-      size="large"
-    />
-  ), []);
-
   return (
-    <Page title="Discover new events" actions={action}>
+    <Page title={titleByLayoutMap[layout]}>
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}

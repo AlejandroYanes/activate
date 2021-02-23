@@ -36,14 +36,6 @@ const PickList: FunctionComponent<Props> = (props) => {
     if (listWidth > containerWidth) {
       setShowArrows(true);
     }
-
-    setTimeout(() => {
-      const selectedItem = document.querySelector('button[data-pick-item-selected=true]');
-
-      if (selectedItem) {
-        selectedItem.scrollIntoView();
-      }
-    }, 10);
   }, []);
 
   return (

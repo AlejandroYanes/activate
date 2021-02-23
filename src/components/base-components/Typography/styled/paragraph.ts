@@ -11,5 +11,4 @@ export const Paragraph = styled.p.attrs(anyPropsAttrs)`
   ${({ size }) => sizeMap[size]};
   ${getMargins};
   padding: 0 6px;
-  text-align: justify;
 `;

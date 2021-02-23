@@ -4,6 +4,7 @@ export const Panel = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
+  padding: 0 8px;
 `;
 
 export const Action = styled.div`
