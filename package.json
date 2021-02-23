@@ -1,7 +1,7 @@
 {
   "name": "activate",
   "version": "0.1.0",
-  "homepage": "http://alejandroyanes.github.io/",
+  "homepage": "http://alejandroyanes.github.io/activate",
   "repository": "https://github.com/AlejandroYanes/activate",
   "private": false,
   "scripts": {
