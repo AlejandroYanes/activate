@@ -1,9 +1,9 @@
 {
   "name": "activate",
   "version": "0.1.0",
-  "homepage": "http://alejandroyanes.github.io/activate",
+  "homepage": "https://activate-dev.herokuapp.com/",
   "repository": "https://github.com/AlejandroYanes/activate",
-  "private": false,
+  "private": true,
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
