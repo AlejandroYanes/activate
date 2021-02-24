@@ -2,7 +2,7 @@
   "name": "activate",
   "version": "0.1.0",
   "homepage": "https://activate-dev.herokuapp.com/",
-  "repository": "https://github.com/AlejandroYanes/activate",
+  "repository": "https://github.com/PureTech2/activate",
   "private": true,
   "scripts": {
     "start": "react-scripts start",
