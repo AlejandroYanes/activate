@@ -56,9 +56,9 @@ export const darkStyleColors = {
   FONT_LIGHT: '#fff',
   FONT_DARK: '#AFAFAF',
   FONT_SHADE: getShade('#ffffff'),
-  BACKGROUND: '#0D1116',
-  BACKGROUND_LIGHT: '#090C11',
-  BACKGROUND_SHADE: getShade('#0D1116'),
+  BACKGROUND: '#1F1F1F',
+  BACKGROUND_LIGHT: '#141414',
+  BACKGROUND_SHADE: getShade('#1F1F1F'),
 };
 
 export const basicColors = {

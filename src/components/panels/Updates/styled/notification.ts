@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import Colors from 'styles/colors';
 import { getMargins } from 'helpers';
 
-export const StyledNotification = styled(motion.div)`
+export const StyledNotification = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;

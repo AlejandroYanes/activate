@@ -23,7 +23,7 @@ interface Props {
 
 const markAnimationControls = {
   type: 'spring',
-  stiffness: 600,
+  stiffness: 300,
   damping: 20,
 };
 

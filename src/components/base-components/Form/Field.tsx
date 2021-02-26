@@ -6,9 +6,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { getEventValue } from 'helpers';
-import { useDebounce } from 'hooks/UI/use-debounce';
-import { checkValidationRules, FunctionRule, Rule } from 'helpers/form-validations';
+import { getEventValue, checkValidationRules, FunctionRule, Rule } from 'helpers';
+import { useDebounce } from 'hooks/UI';
 import { Input } from 'components/base-components/Inputs';
 import FormContext from './context';
 

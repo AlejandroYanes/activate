@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
+import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import faker from 'faker';
 import {
   LifeIsABeachTheme,
@@ -15,11 +15,16 @@ import Button from 'components/base-components/Button';
 import Toggle from 'components/base-components/Toggle';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import {
-  Settings as StyledSettings,
+  NotificationDuration,
+  NotificationType,
+  showNotification,
+} from 'components/experience/NotificationCenter';
+import {
   ColorSample,
   DetailBox,
   Line,
   Palette,
+  Settings as StyledSettings,
   SubTitle,
   Theme,
   ThemeName,
@@ -41,6 +46,15 @@ const Settings: FunctionComponent = () => {
   } = useAppTheme();
 
   const [userData, setUserData] = useState(user);
+
+  const handleShowNotification = useCallback(() => {
+    showNotification({
+      type: NotificationType.INFO,
+      duration: NotificationDuration.INDEFINITE,
+      id: faker.random.uuid(),
+      message: faker.lorem.words(20),
+    });
+  }, []);
 
   const sunIcon = useMemo(() => (
     <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
@@ -126,6 +140,7 @@ const Settings: FunctionComponent = () => {
           onChange={toggleLightStyle}
         />
       </Line>
+      <Button onClick={handleShowNotification} label="show notification" />
     </StyledSettings>
   );
 };

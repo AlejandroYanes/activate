@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useAppLayout } from 'components/providers/Layout';
 import NavBar from 'components/experience/NavBar';
+import { NotificationCenter } from 'components/experience/NotificationCenter';
 import SidePanel from 'components/experience/SidePanel';
 import FeedPage from 'components/pages/Feed';
 import ProfilePage from 'components/pages/Profile';
@@ -33,6 +34,7 @@ const AppBody: FunctionComponent = () => {
         </Switch>
       </Body>
       <SidePanel />
+      <NotificationCenter />
     </StyledApp>
   );
 };

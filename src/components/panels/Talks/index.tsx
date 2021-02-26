@@ -1,68 +1,57 @@
-import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import faker from 'faker';
-import { EventChannelList, notifyEventChannel } from 'components/event-center';
+import React, { FunctionComponent, useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { EventChannelList, notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
-import IconButton from 'components/base-components/IconButton';
+import { Case, Switch } from 'components/base-components/Switch';
 import { Icons } from 'components/base-components/SvgIcon';
-import Avatar from 'components/base-components/Avatar';
-import { Text } from 'components/base-components/Typography';
-import RenderIf from 'components/base-components/RenderIf';
+import IconButton from 'components/base-components/IconButton';
 import Messages from 'components/experience/Messages';
-import { Action, ActiveDot, AvatarSection, Info, Panel, Talk } from './styled';
+import TalksList from './TalksList';
 
 interface Props {
   onClose?: () => void;
 }
 
-const talks = new Array(faker.random.number({ min: 6, max: 16 }))
-  .fill(1)
-  .map(() => ({
-    id: faker.random.uuid(),
-    image: `user${faker.random.number({ min: 1, max: 12 })}`,
-    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-    txt: faker.lorem.words(10),
-    active: faker.random.boolean(),
-  }));
-
 const arrowBackStyles = { marginRight: '4px' };
+
+export enum TalkViews {
+  TALK_LIST = 'TALK_LIST',
+  CONTACT_LIST = 'CONTACT_LIST',
+  MESSAGES = 'MESSAGES',
+}
 
 const TalksPanel: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
   const layout = useAppLayout();
   const { push } = useHistory();
-  const { pathname } = useLocation();
 
   const { onClose } = props;
 
-  const [showMessages, setShowMessages] = useState(false);
-  const [activeUser, setActiveUser] = useState(undefined);
+  const [{ activeView, activeUser }, setState] = useState({
+    activeView: TalkViews.TALK_LIST,
+    activeUser: undefined,
+  });
 
-  const openTalk = useCallback((event) => {
-    const { id } = event.target.dataset;
-    const user = talks.find((t) => t.id === id);
-
-    if (pathname.includes('talks')) {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
-      if (onClose) {
-        onClose();
-      }
-    } else {
-      setActiveUser(user);
-      setShowMessages(true);
-    }
-
-  }, [pathname, onClose]);
+  const openTalk = useCallback((user) => {
+    setState({
+      activeView: TalkViews.MESSAGES,
+      activeUser: user,
+    })
+  }, []);
 
   const closeTalk = useCallback(() => {
-    setActiveUser(undefined);
-    setShowMessages(false);
+    setState({
+      activeView: TalkViews.TALK_LIST,
+      activeUser: undefined,
+    });
   }, []);
 
   const maximizeTalk = useCallback(() => {
-    setActiveUser(undefined);
-    setShowMessages(false);
+    setState({
+      activeView: TalkViews.TALK_LIST,
+      activeUser: undefined,
+    });
     push('/talks');
     setTimeout(() => {
       notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, activeUser);
@@ -72,22 +61,12 @@ const TalksPanel: FunctionComponent<Props> = (props) => {
     }, 100);
   }, [activeUser]);
 
-  const talksElements = useMemo(() => (
-    talks.map(({ id, image, name, txt, active }) => (
-      <Talk key={id} data-id={id} onClick={openTalk}>
-        <AvatarSection>
-          <Avatar icon={image} />
-          <RenderIf condition={active}>
-            <ActiveDot />
-          </RenderIf>
-        </AvatarSection>
-        <Info>
-          <Text align="left">{name}</Text>
-          <Text align="left" size="small" color="gray" ellipsis>{txt}</Text>
-        </Info>
-      </Talk>
-    ))
-  ), [openTalk]);
+  const openContactList = useCallback(() => {
+    setState({
+      activeView: TalkViews.CONTACT_LIST,
+      activeUser: undefined,
+    });
+  }, [])
 
   const leftAction = (
     <IconButton
@@ -111,31 +90,31 @@ const TalksPanel: FunctionComponent<Props> = (props) => {
   );
 
   return (
-    <>
-      <RenderIf condition={!showMessages}>
-        <Panel>
-          {talksElements}
-          <Action>
-            <IconButton
-              onClick={() => undefined}
-              icon={Icons.ADD_USER}
-              color={colors.WHITE}
-              buttonColor="accent"
-              variant="fill"
-              size="large"
-            />
-          </Action>
-        </Panel>
-      </RenderIf>
-      <RenderIf condition={showMessages}>
-        <Messages
-          user={activeUser}
-          leftActions={leftAction}
-          rightActions={layout !== Layout.SMALL ? rightAction : undefined}
-          smallView
-        />
-      </RenderIf>
-    </>
+    <Switch by={activeView}>
+      <Case
+        value={TalkViews.TALK_LIST}
+        component={TalksList}
+        openTalk={openTalk}
+        openContactList={openContactList}
+        onClose={onClose}
+      />
+      <Case
+        value={TalkViews.CONTACT_LIST}
+        component={TalksList}
+        openTalk={openTalk}
+        openContactList={openContactList}
+        onClose={onClose}
+        asContactList
+      />
+      <Case
+        value={TalkViews.MESSAGES}
+        component={Messages}
+        user={activeUser}
+        leftActions={leftAction}
+        rightActions={layout !== Layout.SMALL ? rightAction : undefined}
+        smallView
+      />
+    </Switch>
   );
 };
 

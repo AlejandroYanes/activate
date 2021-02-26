@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { getEventValue } from 'helpers/events';
+import { getEventValue } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';

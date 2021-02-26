@@ -5,7 +5,7 @@ import { Case, Switch } from 'components/base-components/Switch';
 import { Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
 import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
-import NotificationsPanel from 'components/panels/Notifications';
+import UpdatesPanel from 'components/panels/Updates';
 import EventDetailsPanel from 'components/panels/EventDetails';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
@@ -25,7 +25,7 @@ const Panel: FunctionComponent<Props> = (props) => {
 
   const { showCloseIcon, onClose } = props;
 
-  const [activeTab, setActiveTab] = useState(AuxPanelSection.NOTIFICATIONS);
+  const [activeTab, setActiveTab] = useState(AuxPanelSection.UPDATES);
   const availableTabs = useMemo(() => resolveAvailableTabs(sections), [sections]);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ const Panel: FunctionComponent<Props> = (props) => {
           <Case value={AuxPanelSection.FILTER} component={FilterPanel} />
           <Case value={AuxPanelSection.UPCOMING} component={UpcomingEventsPanel} />
           <Case value={AuxPanelSection.EVENT_DETAILS} component={EventDetailsPanel} />
-          <Case value={AuxPanelSection.NOTIFICATIONS} component={NotificationsPanel} />
+          <Case value={AuxPanelSection.UPDATES} component={UpdatesPanel} />
           <Case value={AuxPanelSection.TALKS} component={TalksPanel} onClose={onClose} />
         </Switch>
       </PanelBody>
