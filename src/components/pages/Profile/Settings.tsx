@@ -49,7 +49,7 @@ const Settings: FunctionComponent = () => {
 
   const handleShowNotification = useCallback(() => {
     showNotification({
-      type: NotificationType.INFO,
+      type: NotificationType.ERROR,
       duration: NotificationDuration.INDEFINITE,
       id: faker.random.uuid(),
       message: faker.lorem.words(20),
@@ -140,7 +140,7 @@ const Settings: FunctionComponent = () => {
           onChange={toggleLightStyle}
         />
       </Line>
-      <Button onClick={handleShowNotification} label="show notification" />
+      <Button onClick={handleShowNotification} label="show notification" mT />
     </StyledSettings>
   );
 };

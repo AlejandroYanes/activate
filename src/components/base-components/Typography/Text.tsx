@@ -5,7 +5,7 @@ import { Text as StyledText } from './styled/text';
 interface Props extends PositionProps {
   weight?: 'lighter' | 'normal' | 'bold';
   size?: 'small' | 'medium' | 'large';
-  color?: 'brand' | 'accent' | 'font' | 'gray' | 'white';
+  color?: 'brand' | 'accent' | 'gray' | 'white' | 'font' | 'background';
   align?: 'left' | 'center' | 'right';
   ellipsis?: boolean;
 }

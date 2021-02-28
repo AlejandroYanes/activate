@@ -1,11 +1,14 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { EventChannelList, useEventCenterUpdate } from 'event-center';
+import { useAppLayout } from 'components/providers/Layout';
 import { NotificationModel } from './types';
 import Notification from './Notification';
 import { Notifications } from './styled/list';
 
 const NotificationCenter: FunctionComponent = () => {
+  const layout = useAppLayout();
+
   const [notifications, setNotifications] = useState<NotificationModel[]>([]);
 
   const handlePushedNotification = useCallback((notification) => {
@@ -29,7 +32,7 @@ const NotificationCenter: FunctionComponent = () => {
   ), [notifications, handleRemoveNotification]);
 
   return (
-    <Notifications>
+    <Notifications layout={layout}>
       <AnimateSharedLayout>
         <AnimatePresence>
           {notificationCards}

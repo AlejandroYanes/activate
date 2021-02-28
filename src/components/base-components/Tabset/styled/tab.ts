@@ -3,68 +3,6 @@ import { anyPropsAttrs } from 'helpers';
 import { Label } from './label';
 import { Mark } from './mark';
 
-// const enterAnimation = keyframes`
-//   0% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//   10% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//
-//   100% {
-//     flex: 1;
-//     padding: 8px 12px;
-//     margin: 0 6px 0 0;
-//     min-width: 80px;
-//   }
-// `;
-//
-// const enterCompactAnimation = keyframes`
-//   0% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//   10% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//   100% {
-//     padding: 8px 12px;
-//     margin: 0 6px 0 0;
-//     min-width: 20px;
-//   }
-// `;
-//
-// const getAnimation = (props) => {
-//   const { animateEntrance, compact } = props;
-//
-//   if (animateEntrance) {
-//     if (compact) {
-//       return css`
-//         animation: ${enterCompactAnimation} 166ms linear;
-//       `;
-//     }
-//
-//     return css`
-//         animation: ${enterAnimation} 166ms linear;
-//       `;
-//   }
-// };
-
 const getWidthStyles = (props) => {
   const { compact, selected } = props;
 

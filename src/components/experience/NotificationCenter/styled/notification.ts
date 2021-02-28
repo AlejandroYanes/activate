@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { cardWidth } from 'styles/variables';
-import { anyPropsAttrs } from 'helpers';
-import { Text } from 'components/base-components/Typography';
+import { anyPropsAttrs, getShade } from 'helpers';
 
 export const Notification = styled(motion.li)`
   padding: 16px;
@@ -10,14 +9,22 @@ export const Notification = styled(motion.li)`
   border-radius: 16px;
   display: flex;
   align-items: flex-start;
-  width: ${cardWidth};
-  max-width: ${cardWidth};
-  background-color: ${({ color }) => color};
+  max-width: calc(${cardWidth} / 1.6);
+  box-sizing: border-box;
+  background-color: ${({ theme }) => getShade(theme.colors.FONT_DARK, 0.8)};
+  backdrop-filter: blur(8px);
+
+  &:last-child {
+    margin-top: 32px;
+  }
 `;
 
-export const Message = styled(Text)`
+export const Content = styled.div`
   flex: 1;
-  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  box-sizing: border-box;
 `;
 
 export const Icon = styled.div.attrs(anyPropsAttrs)`

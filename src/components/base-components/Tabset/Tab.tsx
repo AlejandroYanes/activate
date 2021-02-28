@@ -6,13 +6,13 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import { useHoverState } from 'hooks/UI';
+import { useFocusState, useHoverState } from 'hooks/UI';
 import { useAppTheme } from 'components/providers/Theme';
+import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import tabsetContext from './context';
+import Icon from './Icon';
 import { Mark, StyledTab, Text, Label } from './styled';
-import { getIconColor } from './get-icon-color';
+import tabsetContext from './context';
 
 interface Props {
   name: string;
@@ -40,6 +40,7 @@ const Tab: FunctionComponent<Props> = (props) => {
 
   const tabReference = useRef(undefined);
   const isHovered = useHoverState(tabReference);
+  const isFocused = useFocusState(tabReference);
 
   const handleClick = useCallback(() => {
     if (onClick) {
@@ -53,14 +54,18 @@ const Tab: FunctionComponent<Props> = (props) => {
   const iconComponent = useMemo(() => {
     if (typeof icon === 'string') {
       return (
-        <SvgIcon
+        <Icon
           icon={icon as Icons}
-          color={getIconColor(disableFocus, isSelected, isHovered, useDarkStyle, colors)}
+          disableFocus={disableFocus}
+          isHovered={isHovered || isFocused}
+          isSelected={isSelected}
+          useDarkStyle={useDarkStyle}
+          colors={colors}
         />
       );
     }
     return icon;
-  }, [icon, disableFocus, isHovered, isSelected, colors, useDarkStyle]);
+  }, [icon, disableFocus, isHovered, isFocused, isSelected, colors, useDarkStyle]);
 
   return (
     <StyledTab
