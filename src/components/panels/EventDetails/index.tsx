@@ -30,19 +30,19 @@ const EventDetailsPanel: FunctionComponent = () => {
 
   return (
     <Panel>
-      <Entry color="gray">
+      <Entry color="secondary">
         Date
       </Entry>
       <Line>
         <span>{formatDateTime(date)}</span>
       </Line>
-      <Entry color="gray">
+      <Entry color="secondary">
         Address
       </Entry>
       <Line>
         <span>{address}</span>
       </Line>
-      <Entry color="gray">
+      <Entry color="secondary">
         Price
       </Entry>
       <Line centered>
@@ -58,15 +58,15 @@ const EventDetailsPanel: FunctionComponent = () => {
           style={{ marginLeft: 'auto' }}
         />
       </Line>
-      <Entry color="gray">Available at</Entry>
+      <Entry color="secondary">Available at</Entry>
       <Line>
         <a href="https://faketicketweb.com">https://faketicketweb.com</a>
       </Line>
-      <Entry color="gray">Attendance</Entry>
+      <Entry color="secondary">Attendance</Entry>
       <Line centered>
         <AvatarGroup icons={avatars} label="+ 16k" size="small" />
       </Line>
-      <Entry color="gray">Tags</Entry>
+      <Entry color="secondary">Tags</Entry>
       <Line>
         {tagElements}
       </Line>

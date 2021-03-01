@@ -1,15 +1,36 @@
 import { getShade } from 'helpers';
-import { StartingTheme } from './themes';
 
 export interface ColorScheme {
   BRAND: string;
-  BRAND_LIGHT: string;
-  BRAND_DARK: string;
-  ACCENT: string;
-  ACCENT_LIGHT: string;
-  ACCENT_DARK: string;
+  BRAND_HIGHLIGHT: string;
+  BRAND_FONT: string;
+  BRAND_FONT_HIGHLIGHT: string;
   BRAND_SHADE: string;
+  ACCENT: string;
+  ACCENT_HIGHLIGHT: string;
+  ACCENT_FONT: string;
+  ACCENT_FONT_HIGHLIGHT: string;
   ACCENT_SHADE: string;
+  INFO: string;
+  INFO_HIGHLIGHT: string;
+  INFO_FONT: string;
+  INFO_FONT_HIGHLIGHT: string;
+  INFO_SHADE: string;
+  WARNING: string;
+  WARNING_HIGHLIGHT: string;
+  WARNING_FONT: string;
+  WARNING_FONT_HIGHLIGHT: string;
+  WARNING_SHADE: string;
+  ERROR: string;
+  ERROR_HIGHLIGHT: string;
+  ERROR_FONT: string;
+  ERROR_FONT_HIGHLIGHT: string;
+  ERROR_SHADE: string;
+  SUCCESS: string;
+  SUCCESS_HIGHLIGHT: string;
+  SUCCESS_FONT: string;
+  SUCCESS_FONT_HIGHLIGHT: string;
+  SUCCESS_SHADE: string;
   WHITE: string;
   WHITE_SHADE: string;
   GRAY: string;
@@ -17,34 +38,16 @@ export interface ColorScheme {
   GRAY_DARK: string;
   GRAY_SHADE: string;
   FONT: string;
-  FONT_LIGHT: string;
-  FONT_DARK: string;
+  FONT_SECONDARY: string;
   FONT_SHADE: string;
   BACKGROUND: string;
   BACKGROUND_LIGHT: string;
   BACKGROUND_SHADE: string;
-  INFO: string;
-  INFO_DARK: string;
-  INFO_LIGHT: string;
-  INFO_SHADE: string;
-  WARNING: string;
-  WARNING_DARK: string;
-  WARNING_LIGHT: string;
-  WARNING_SHADE: string;
-  ERROR: string;
-  ERROR_DARK: string;
-  ERROR_LIGHT: string;
-  ERROR_SHADE: string;
-  SUCCESS: string;
-  SUCCESS_DARK: string;
-  SUCCESS_LIGHT: string;
-  SUCCESS_SHADE: string;
 }
 
 export const lightStyleColors = {
   FONT: '#151718',
-  FONT_LIGHT: '#2F3437',
-  FONT_DARK: '#090A0B',
+  FONT_SECONDARY: '#4a4b52',
   FONT_SHADE: getShade('#151718'),
   BACKGROUND: '#f5f6fa',
   BACKGROUND_LIGHT: '#fff',
@@ -53,43 +56,25 @@ export const lightStyleColors = {
 
 export const darkStyleColors = {
   FONT: '#f5f6fa',
-  FONT_LIGHT: '#fff',
-  FONT_DARK: '#AFAFAF',
+  FONT_SECONDARY: '#AFAFAF',
   FONT_SHADE: getShade('#ffffff'),
   BACKGROUND: '#1F1F1F',
   BACKGROUND_LIGHT: '#141414',
   BACKGROUND_SHADE: getShade('#1F1F1F'),
 };
 
-export const basicColors = {
-  WHITE: '#fff',
+export const fixedColors = {
+  WHITE: '#ffffff',
   WHITE_SHADE: getShade('#ffffff', 0.05),
   GRAY: '#6b6d76',
   GRAY_LIGHT: '#AFAFAF',
   GRAY_DARK: '#4a4b52',
   GRAY_SHADE: getShade('#6b6d76'),
+};
+
+export const basicColors = {
   INFO: '#0B4F99',
-  INFO_LIGHT: '#0F6DD2',
-  INFO_DARK: '#05284C',
-  INFO_SHADE: getShade('#0B4F99'),
   WARNING: '#AB830D',
-  WARNING_LIGHT: '#DCA911',
-  WARNING_DARK: '#5F4907',
-  WARNING_SHADE: getShade('#AB830D'),
   ERROR: '#AE1E1E',
-  ERROR_LIGHT: '#DC2E2F',
-  ERROR_DARK: '#7A1515',
-  ERROR_SHADE: getShade('#AE1E1E'),
   SUCCESS: '#107F63',
-  SUCCESS_LIGHT: '#16B68E',
-  SUCCESS_DARK: '#07362B',
-  SUCCESS_SHADE: getShade('#107F63'),
 };
-
-const Colors: ColorScheme = {
-  ...StartingTheme,
-  ...basicColors,
-  ...lightStyleColors,
-};
-
-export default Colors;

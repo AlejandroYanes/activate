@@ -57,7 +57,7 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
   return (
     <>
       <StyledDateTimePicker id={id} {...rest}>
-        <InputLabel text={label} isFocused={isFocused} />
+        <InputLabel text={label} />
         <Content
           type={type}
           value={value}
@@ -69,7 +69,6 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
         />
         <ClearButton
           showClear={showClear && !!value}
-          isFocused={isFocused}
           onClick={handleClear}
         />
       </StyledDateTimePicker>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const StyledDays = styled.table`
   width: 100%;
@@ -22,7 +22,7 @@ export const StyledDay = styled.td`
 `;
 
 const getBasicStyles = (props) => {
-  const { disabled, isSelected, isHighlighted, theme: { useDarkStyle, colors } } = props;
+  const { disabled, isSelected, isHighlighted, theme: { colors } } = props;
 
   if (disabled) {
     return 'pointer-event: none';
@@ -39,7 +39,7 @@ const getBasicStyles = (props) => {
   if (isHighlighted) {
     return `
       background-color: ${colors.BRAND_SHADE};
-      color: ${useDarkStyle ? colors.BRAND : colors.BRAND_DARK};
+      color: ${colors.BRAND_FONT};
       cursor: pointer;
     `;
   }
@@ -50,24 +50,26 @@ const getBasicStyles = (props) => {
 };
 
 const getHoverStyle = (props) => {
-  const { disabled, isSelected, isHighlighted, theme } = props;
+  const { disabled, isSelected, isHighlighted, theme: { colors } } = props;
 
   if (disabled) {
     return undefined;
   }
 
   if (isSelected) {
-    return `
-      background-color: ${theme.colors.BRAND_DARK};
-      color: ${theme.colors.WHITE};
+    return css`
+      background-color: ${colors.BRAND_HIGHLIGHT};
+      color: ${colors.WHITE};
     `;
   }
 
   if (isHighlighted) {
-    return undefined;
+    return css`
+      color: ${colors.BRAND_FONT_HIGHLIGHT};
+    `;
   }
 
-  return `background-color: ${theme.colors.GRAY_SHADE}`;
+  return `background-color: ${colors.GRAY_SHADE}`;
 };
 
 export const StyledDayButton = styled.button.attrs((props: any) => props)`

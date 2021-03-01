@@ -16,10 +16,10 @@ const Concentric: FunctionComponent<Props> = (props) => {
       strokeLinecap="round"
       {...props}
     >
-      <Circle cx="170" cy="170" r="160" stroke={Colors.BRAND_LIGHT} />
-      <Circle cx="170" cy="170" r="135" stroke={Colors.ACCENT_LIGHT} />
-      <Circle cx="170" cy="170" r="110" stroke={Colors.SUCCESS_LIGHT} />
-      <Circle cx="170" cy="170" r="85" stroke={Colors.ERROR_LIGHT} />
+      <Circle cx="170" cy="170" r="160" stroke={Colors.BRAND} />
+      <Circle cx="170" cy="170" r="135" stroke={Colors.ACCENT} />
+      <Circle cx="170" cy="170" r="110" stroke={Colors.SUCCESS} />
+      <Circle cx="170" cy="170" r="85" stroke={Colors.ERROR} />
     </Wrapper>
   );
 };

@@ -18,6 +18,7 @@ const Years: FunctionComponent<Props> = (props) => {
         label={y}
         onClick={() => onChange(y)}
         variant="flat"
+        color="font"
         mB
       />
     ));

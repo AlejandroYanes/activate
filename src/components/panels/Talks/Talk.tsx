@@ -27,7 +27,7 @@ const Talk: FunctionComponent<Props> = (props) => {
       <Info>
         <Text align="left">{name}</Text>
         <RenderIf condition={!!txt}>
-          <Text align="left" size="small" color="gray" ellipsis>{txt}</Text>
+          <Text align="left" size="small" color="secondary" ellipsis>{txt}</Text>
         </RenderIf>
       </Info>
     </StyledTalk>

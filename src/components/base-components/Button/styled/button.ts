@@ -26,71 +26,70 @@ const getSize = (props: ButtonProps) => {
 
 const getAlignment = (props: ButtonProps) => {
   const { align } = props;
-
-  if (align === 'center') {
-    return align;
-  }
-
-  return `flex-${align}`;
+  return align === 'center' ? align : `flex-${align}`;
 };
 
 export const getVariantStyles = ({ theme, ...buttonProps }) => {
-  const { useDarkStyle, colors } = theme;
+  const { colors } = theme;
   const { variant, color } = buttonProps as ButtonProps;
   const borderStyle = 'solid 1px ';
 
   switch (variant) {
-    case 'base':
+    case 'base': {
+      const fontColor = color === 'font'
+        ? colors.FONT
+        : colors[`${color.toUpperCase()}_FONT`];
+
+      const fontHoverColor = color === 'font'
+        ? colors.FONT
+        : colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];
+
       return css`
-        color: ${colors[color.toUpperCase()]};
+        color: ${fontColor};
         background-color: ${colors.BACKGROUND};
         border: ${borderStyle} transparent;
+
+        &:hover, &:focus {
+          color: ${fontHoverColor};
+          background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
+        }
       `;
-    case 'flat':
+    }
+    case 'flat': {
+      const fontColor = color === 'font'
+        ? colors.FONT
+        : colors[`${color.toUpperCase()}_FONT`];
+
+      const fontHoverColor = color === 'font'
+        ? colors.FONT
+        : colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];
+
       return css`
         background-color: transparent;
-        color: ${colors[color.toUpperCase()]};
+        color: ${fontColor};
         border: ${borderStyle} transparent;
+
+        &:hover, &:focus {
+          color: ${fontHoverColor};
+          background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
+        }
       `;
-    default: {
+    }
+    case 'fill': {
       const fontColor = color === 'font' ? colors.BACKGROUND : colors.WHITE;
-      const backgroundColor = useDarkStyle
-        ? `${colors[`${color.toUpperCase()}`]}`
-        : `${colors[`${color.toUpperCase()}`]}`;
+      const backgroundColor = colors[color.toUpperCase()];
+      const backgroundHoverColor = colors[`${color.toUpperCase()}_HIGHLIGHT`];
 
       return css`
         color: ${fontColor};
         background-color: ${backgroundColor};
         border: ${borderStyle} ${backgroundColor};
-      `;
-    }
-  }
-};
 
-export const getHoveredStyles = ({ theme, ...buttonProps }) => {
-  const { useDarkStyle, colors } = theme;
-  const { variant, color } = buttonProps as ButtonProps;
-
-  switch (variant) {
-    case 'base':
-      return css`
-        color: ${colors[`${color.toUpperCase()}_${useDarkStyle ? 'LIGHT' : 'DARK'}`]};
-        background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
-      `;
-    case 'flat':
-      return css`
-        color: ${colors[`${color.toUpperCase()}_${useDarkStyle ? 'LIGHT' : 'DARK'}`]};
-        background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
-      `;
-    default: {
-      const backgroundColor = useDarkStyle
-        ? `${colors[`${color.toUpperCase()}_LIGHT`]}`
-        : `${colors[`${color.toUpperCase()}_DARK`]}`;
-
-      return css`
-        background-color: ${backgroundColor};
-        border-color: ${backgroundColor};
-        color: ${colors.WHITE};
+        &:hover, &:focus {
+          background-color: ${backgroundHoverColor};
+          border-color: ${backgroundHoverColor};
+          color: ${colors.WHITE};
+        }
       `;
     }
   }
@@ -110,16 +109,12 @@ export const Button = styled.button`
   cursor: pointer;
   flex-shrink: 0;
   position: relative;
-  ${getMargins};
-  ${getSize};
-  ${getVariantStyles};
   transition: all linear 150ms;
+  ${getSize};
+  ${getMargins};
+  ${getVariantStyles};
 
   &:active {
     transform: scale(0.9);
-  }
-
-  &:hover, &:focus {
-    ${getHoveredStyles}
   }
 `;

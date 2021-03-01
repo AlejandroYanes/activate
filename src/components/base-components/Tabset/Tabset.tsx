@@ -26,7 +26,7 @@ const Tabset: FunctionComponent<TabsetProps> = (props) => {
         <TabSetProvider
           {...rest}
           animateEntrance={animateEntrance}
-          disableFocus={layout !== Layout.FULL}
+          // disableFocus={layout !== Layout.FULL}
         >
           {children}
         </TabSetProvider>

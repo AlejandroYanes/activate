@@ -53,23 +53,13 @@ export const FauxOffSide = styled.div.attrs((props: any) => props)`
 `;
 
 const getOnColors = (props) => {
-  const { theme: { useDarkStyle, colors } } = props;
-
-  if (useDarkStyle) {
-    return `
-      background-color: ${colors.ACCENT_DARK};
-
-      &:hover, &:focus {
-        background-color: ${colors.ACCENT};
-      }
-    `;
-  }
+  const { theme: { colors } } = props;
 
   return `
       background-color: ${colors.ACCENT};
 
       &:hover, &:focus {
-        background-color: ${colors.ACCENT_DARK};
+        background-color: ${colors.ACCENT_HIGHLIGHT};
       }
     `;
 };

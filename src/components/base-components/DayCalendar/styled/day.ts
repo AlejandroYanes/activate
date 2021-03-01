@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Colors from 'styles/colors';
 import { ZLevels } from 'styles/z-levels';
 
 export const Day = styled.li`
@@ -18,7 +17,7 @@ export const Day = styled.li`
 
   &:hover, &:focus {
     outline: none;
-    background-color: ${Colors.GRAY_SHADE};
+    background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
   }
 `;
 

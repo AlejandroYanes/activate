@@ -5,30 +5,27 @@ import { Icons } from 'components/base-components/SvgIcon';
 import AbsoluteContent from './AbsoluteContent';
 
 interface Props {
-  isFocused?: boolean;
   showClear?: boolean;
   onClick: (event) => void;
   style?: any;
 }
 
 const ClearButton: FunctionComponent<Props> = (props) => {
-  const { colors: Colors, useDarkStyle } = useAppTheme();
-  const { showClear, isFocused, onClick, style } = props;
+  const { colors: Colors } = useAppTheme();
+  const { showClear, onClick, style } = props;
 
   if (showClear) {
     const clearInput = () => {
       onClick({ target: { value: '' } });
     };
 
-    const focusedColor = useDarkStyle ? Colors.BRAND : Colors.BRAND_DARK;
-
     return (
       <AbsoluteContent style={style} floatRight>
         <IconButton
           onClick={clearInput}
           icon={Icons.CLOSE}
-          buttonColor={isFocused ? 'brand' : 'font'}
-          color={isFocused ? focusedColor : Colors.FONT}
+          buttonColor="font"
+          color={Colors.FONT}
           size="small"
         />
       </AbsoluteContent>

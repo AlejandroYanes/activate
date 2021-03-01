@@ -13,7 +13,6 @@ export function getIconColor(options: Options) {
     disableFocus,
     isSelected,
     isHovered,
-    useDarkStyle,
     colors,
   } = options;
 
@@ -21,17 +20,13 @@ export function getIconColor(options: Options) {
     return colors.BRAND;
   }
 
-  if (isSelected && isHovered) {
-    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
+  if (isHovered) {
+    return colors.BRAND_FONT_HIGHLIGHT;
   }
 
   if (isSelected) {
-    return colors.BRAND;
+    return colors.BRAND_FONT;
   }
 
-  if (isHovered) {
-    return useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
-  }
-
-  return colors.BRAND;
+  return colors.FONT_SECONDARY;
 }

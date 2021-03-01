@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 const getBorderColor = ({ isBooked, theme }) => (
   isBooked ? theme.colors.ACCENT : theme.colors.BACKGROUND
@@ -32,5 +31,5 @@ export const Divider = styled.div`
   width: 100%;
   border-radius: 2px;
   margin: 16px 0;
-  background-color: ${Colors.GRAY_SHADE};
+  background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 `;

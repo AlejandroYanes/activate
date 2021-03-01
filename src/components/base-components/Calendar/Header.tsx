@@ -51,7 +51,7 @@ const Header: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={selectPrevious}
           icon={Icons.CHEVRON_LEFT}
-          buttonColor="brand"
+          buttonColor="font"
           variant="flat"
         />
       </RenderIf>
@@ -60,6 +60,7 @@ const Header: FunctionComponent<Props> = (props) => {
         label={label}
         variant="flat"
         style={monthButtonStyles}
+        color="font"
         mR
         mL
       />
@@ -67,7 +68,7 @@ const Header: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={selectNext}
           icon={Icons.CHEVRON_RIGHT}
-          buttonColor="brand"
+          buttonColor="font"
           variant="flat"
         />
       </RenderIf>

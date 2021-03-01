@@ -37,8 +37,6 @@ const Notification: FunctionComponent<Props> = (props) => {
 
   const { id, type, duration, message, onClose } = props;
 
-  console.log(type, duration);
-
   useEffect(() => {
     if (duration !== NotificationDuration.INDEFINITE) {
       setTimeout(() => onClose(id), duration);

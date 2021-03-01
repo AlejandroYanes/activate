@@ -1,26 +1,30 @@
-import { hslToRgb, rgbToHsl } from 'helpers';
+import { hslToRgb, rgbToHsl } from 'helpers/colors-hsl';
+import { hexToRgb, rgbToHex } from './colors-rgb';
+import { getBrightness, getContrastRatio } from './color-attrs';
 
-export function hexToRgb(color: string | number[]) {
-  if (typeof color === 'string') {
-    const aRgbHex = color.slice(1).match(/.{1,2}/g);
-    return [
-      parseInt(aRgbHex[0], 16),
-      parseInt(aRgbHex[1], 16),
-      parseInt(aRgbHex[2], 16),
-    ];
-  }
-  return color;
-}
-
-export function getShade(color: string | number[], alpha = 0.1) {
-  const rgbColor = hexToRgb(color);
+export function getShade(hexColor: string, alpha = 0.1): string {
+  const rgbColor = hexToRgb(hexColor);
   const rgbString = rgbColor.join(',');
   return `rgba(${rgbString}, ${alpha})`;
 }
 
-export function changeColorLight(color: string | number[], amount: number) {
-  const hslColor = rgbToHsl(hexToRgb(color));
-  const lightenColor = [hslColor[0], hslColor[1], amount * 100];
-  const rgbString = hslToRgb(lightenColor).join(',');
-  return `rgb(${rgbString})`;
+export function changeColorLight(hexColor: string, amount: number): string {
+  const [hue, sat, light] = rgbToHsl(hexToRgb(hexColor));
+  const changedColor = [hue, sat, light + (amount * 100)];
+  return rgbToHex(hslToRgb(changedColor));
+}
+
+export function balanceColorRatio(color: string, background: string, targetRatio = 4.5): string {
+  const colorChangeFactor = getBrightness(background) > 128
+    ? -0.01
+    : 0.01;
+  let balancedColor = color;
+  let ratio = getContrastRatio(balancedColor, background);
+
+  while(ratio < targetRatio) {
+    balancedColor = changeColorLight(balancedColor, colorChangeFactor);
+    ratio = getContrastRatio(balancedColor, background);
+  }
+
+  return balancedColor;
 }

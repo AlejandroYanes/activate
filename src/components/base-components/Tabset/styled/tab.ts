@@ -13,37 +13,41 @@ const getWidthStyles = (props) => {
   return css`flex: 0`;
 };
 
-const getSelectedStyles = (props) => {
-  const { selected, theme } = props;
+const getColorStyles = (props) => {
+  const { selected, disableFocus, theme: { colors } } = props;
 
-  if (selected) {
-    return css`
-      ${Label} {
-        color: ${theme.colors.BRAND}
-      }
-    `;
-  }
-  return '';
-};
-
-const getHoverStyles = (props) => {
-  const { disableFocus, selected, theme: { colors, useDarkStyle } } = props;
-
-  if (disableFocus) {
-    return '';
-  }
-
-  const markColor = useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
-
-  return css`
-    background-color: ${colors.BRAND_SHADE};
-
-    ${Label}{
-      color: ${useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK};
+  const basicStyles = css`
+    ${Label} {
+      color: ${selected ? colors.BRAND_FONT : colors.FONT_SECONDARY};
     }
 
-    ${Mark}{
-      background-color: ${selected ? markColor : 'none'};
+    ${Mark} {
+      background-color: ${colors.BRAND_FONT};
+    }
+
+    &:focus {
+      outline: none;
+    }
+  `;
+
+  if (disableFocus) {
+    return basicStyles;
+  }
+
+  return css`
+    ${basicStyles};
+
+    &:hover, &:focus {
+      outline: none;
+      background-color: ${colors.BRAND_SHADE};
+
+      ${Label} {
+        color: ${colors.BRAND_FONT_HIGHLIGHT};
+      }
+
+      ${Mark} {
+        background-color: ${colors.BRAND_FONT_HIGHLIGHT};
+      }
     }
   `;
 };
@@ -62,13 +66,8 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   box-sizing: border-box;
   min-width: 44px;
   ${getWidthStyles};
-  ${getSelectedStyles};
+  ${getColorStyles};
   transition: all 150ms linear;
-
-  &:hover, &:focus {
-    outline: none;
-    ${getHoverStyles};
-  }
 
   &:last-child {
     margin-right: 0;

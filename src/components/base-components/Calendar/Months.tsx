@@ -18,6 +18,7 @@ const Months: FunctionComponent<Props> = (props) => {
         label={getMonthLabel(m)}
         onClick={() => onChange(m.getMonth())}
         variant="flat"
+        color="font"
         mB
       />
     ))

@@ -23,14 +23,32 @@ const getEllipsisStyles = (props) => {
 
 const getColor = (props) => {
   const { theme: { colors }, color } = props;
-  return colors[color.toUpperCase()];
+
+  if (color === 'secondary') {
+    return `color: ${colors.FONT_SECONDARY}`;
+  }
+
+  if (color === 'font') {
+    return `color: ${colors.FONT}`;
+  }
+
+  if (color === 'background') {
+    return `color: ${colors.BACKGROUND}`;
+  }
+
+  if (color === 'white') {
+    return `color: ${colors.WHITE}`;
+  }
+
+  const fontColor = colors[`${color.toUpperCase()}_FONT`];
+  return `color: ${fontColor}`;
 };
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
   font-size: ${({ size }) => sizeMap[size]};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};
-  color: ${getColor};
+  ${getColor};
   ${getEllipsisStyles};
   ${getMargins};
 `;

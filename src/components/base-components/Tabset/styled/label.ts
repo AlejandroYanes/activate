@@ -27,8 +27,8 @@ const getWidthStyles = (props) => {
 
 export const Label = styled.span.attrs(anyPropsAttrs)`
   ${getWidthStyles};
-  color: ${({ theme }) => theme.colors.BRAND};
   white-space: nowrap;
+  font-size: 18px;
   letter-spacing: 0.2px;
   text-transform: capitalize;
   transition: all 150ms linear;

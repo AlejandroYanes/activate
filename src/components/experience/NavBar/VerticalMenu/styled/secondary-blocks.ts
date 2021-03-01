@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import IconButton from 'components/base-components/IconButton';
 
 export const ActionBlock = styled.li`
@@ -9,7 +8,7 @@ export const ActionBlock = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: ${Colors.WHITE};
+  color: ${({ theme }) => theme.colors.WHITE};
   background-color: ${({ theme }) => theme.colors.BRAND};
   transition: all 150ms linear;
 `;

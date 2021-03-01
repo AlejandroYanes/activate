@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { Title as TitleComponent } from 'components/base-components/Typography';
 
 export const Header = styled.header`
@@ -14,7 +13,7 @@ export const DateBadge = styled.div`
   padding: 10px;
   margin-right: 10px;
   border-radius: 10px;
-  background-color: ${Colors.GRAY_SHADE};
+  background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 
   & span:nth-child(1) {
     font-size: 12px;
