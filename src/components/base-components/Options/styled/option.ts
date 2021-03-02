@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { anyPropsAttrs } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
@@ -56,7 +56,7 @@ const getMarkColorStyles = (props) => {
   const { theme: { useDarkStyle, colors }, color } = props;
 
   if (useDarkStyle) {
-    return `
+    return css`
       background-color: ${colors[color.toUpperCase()]};
       &:focus {
         background-color: ${colors[`${color.toUpperCase()}_LIGHT`]};
@@ -64,7 +64,7 @@ const getMarkColorStyles = (props) => {
     `;
   }
 
-  return `
+  return css`
     background-color: ${colors[color.toUpperCase()]};
     &:focus {
       background-color: ${colors[`${color.toUpperCase()}_DARK`]};

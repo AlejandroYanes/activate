@@ -27,7 +27,7 @@ const sections = [
   {
     icon: Icons.BELL,
     label: 'Notifications',
-    value: AuxPanelSection.NOTIFICATIONS,
+    value: AuxPanelSection.UPDATES,
   },
 ];
 

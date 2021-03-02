@@ -28,12 +28,10 @@ const Header: FunctionComponent<Props> = (props) => {
   } = props;
 
   const label = useMemo(() => {
-    if (selecting === DateElement.Day && currentDate.getFullYear() === today.getFullYear()) {
-      return monthFormatter.format(currentDate);
-    }
-
     if (selecting === DateElement.Day) {
-      return monthYearFormatter.format(currentDate);
+      return currentDate.getFullYear() === today.getFullYear()
+        ? monthFormatter.format(currentDate)
+        : monthYearFormatter.format(currentDate);
     }
 
     if (selecting === DateElement.Month || selecting === DateElement.Year) {
@@ -51,7 +49,7 @@ const Header: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={selectPrevious}
           icon={Icons.CHEVRON_LEFT}
-          buttonColor="brand"
+          buttonColor="font"
           variant="flat"
         />
       </RenderIf>
@@ -60,6 +58,7 @@ const Header: FunctionComponent<Props> = (props) => {
         label={label}
         variant="flat"
         style={monthButtonStyles}
+        color="font"
         mR
         mL
       />
@@ -67,7 +66,7 @@ const Header: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={selectNext}
           icon={Icons.CHEVRON_RIGHT}
-          buttonColor="brand"
+          buttonColor="font"
           variant="flat"
         />
       </RenderIf>

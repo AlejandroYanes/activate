@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { PositionProps } from 'helpers';
 import { useAppTheme } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
@@ -33,31 +33,16 @@ const Input: FunctionComponent<Props> = (props) => {
     showClear,
     ...rest
   } = props;
-  const [isFocused, setIsFocused] = useState(false);
-
-  const handleFocus = (event) => {
-    setIsFocused(true);
-    if (onFocus) {
-      onFocus(event);
-    }
-  };
-
-  const handleBlur = (event) => {
-    setIsFocused(false);
-    if (onBlur) {
-      onBlur(event);
-    }
-  };
 
   const iconElement = useMemo(() => {
     return (
-      <SvgIcon icon={icon} color={isFocused ? Colors.BRAND : Colors.FONT} />
+      <SvgIcon icon={icon} color={Colors.FONT} />
     );
-  }, [icon, isFocused, Colors])
+  }, [icon, Colors])
 
   return (
     <StyledContainer {...rest}>
-      <InputLabel text={label} isFocused={isFocused} />
+      <InputLabel text={label} />
       <RenderIf condition={!!icon}>
         <AbsoluteContent>
           {iconElement}
@@ -69,11 +54,10 @@ const Input: FunctionComponent<Props> = (props) => {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
       <ClearButton
-        isFocused={isFocused}
         showClear={showClear && !!value}
         onClick={onChange}
       />

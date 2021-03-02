@@ -1,6 +1,6 @@
 export * from './are-props-equal';
 export * from './colors';
-export * from './colors-hsl';
+export * from './color-attrs';
 export * from './common-props';
 export * from './dates';
 export * from './events';

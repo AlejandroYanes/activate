@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 export const Item = styled.li`
   display: flex;
@@ -20,7 +19,7 @@ export const LeftSide = styled.div`
 `;
 
 export const Label = styled.label`
-  color: ${Colors.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -32,6 +31,6 @@ export const RightSide = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${Colors.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
   padding: 6px;
 `;

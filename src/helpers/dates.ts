@@ -43,7 +43,7 @@ const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
   month: 'short',
 });
 
-export function getShortDate(date: Date): string {
+export function formatShortDate(date: Date): string {
   return date ? shortDateFormatter.format(date) : undefined;
 }
 

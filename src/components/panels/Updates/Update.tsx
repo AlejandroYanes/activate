@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { PositionProps } from 'helpers';
+import { formatShortDate, PositionProps } from 'helpers';
 import {
   StyledNotification,
   Header,
@@ -17,20 +17,7 @@ interface Props extends PositionProps {
   message: string;
 }
 
-const dateFormatter = new Intl.DateTimeFormat('default', {
-  day: 'numeric',
-  month: 'short',
-});
-
-// const item = {
-//   hidden: { y: 20, opacity: 0 },
-//   visible: {
-//     y: 0,
-//     opacity: 1,
-//   },
-// };
-
-const Notification: FunctionComponent<Props> = (props) => {
+const Update: FunctionComponent<Props> = (props) => {
   const { image, title, date, message, ...margins } = props;
 
   return (
@@ -39,7 +26,7 @@ const Notification: FunctionComponent<Props> = (props) => {
         <Image src={image} alt="event" />
         <TitleSection>
           <Title>{title}</Title>
-          <DateStamp>{dateFormatter.format(date)}</DateStamp>
+          <DateStamp>{formatShortDate(date)}</DateStamp>
         </TitleSection>
       </Header>
       <Message>{message}</Message>
@@ -47,4 +34,4 @@ const Notification: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default Notification;
+export default Update;

@@ -9,7 +9,16 @@ const sizeMap = {
 
 const getColorFromColor = (props) => {
   const { theme: { colors }, color } = props;
-  return `color: ${colors[color.toUpperCase()]}`;
+
+  if (color === 'secondary') {
+    return `color: ${colors.FONT_SECONDARY}`;
+  }
+
+  if (color === 'font') {
+    return `color: ${colors.FONT}`;
+  }
+  const fontColor = colors[`${color.toUpperCase()}_FONT`];
+  return `color: ${fontColor}`;
 };
 
 const getWeight = ({ bold }) => `font-weight: ${bold ? 600 : 500}`;

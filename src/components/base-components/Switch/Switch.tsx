@@ -4,7 +4,7 @@ import { CaseProps } from 'components/base-components/Switch/Case';
 interface SwitchProps {
   by: any;
   compareBy?: string;
-  comparisonFunction?: (a, b) => boolean;
+  comparisonFunction?: (by, caseValue) => boolean;
 }
 
 const Switch: FunctionComponent<SwitchProps> = (props) => {
@@ -12,16 +12,16 @@ const Switch: FunctionComponent<SwitchProps> = (props) => {
 
   const cases: CaseProps[] = React.Children.map(children, ((child: any) => child.props));
 
-  const validCase = cases.find((caseChild) => {
+  const validCase = cases.find((childCase) => {
     if (comparisonFunction) {
-      return comparisonFunction(by, caseChild.value);
+      return comparisonFunction(by, childCase.value);
     }
 
     if (compareBy) {
-      return by[compareBy] === caseChild.value[compareBy];
+      return by[compareBy] === childCase.value[compareBy];
     }
 
-    return by === caseChild.value;
+    return by === childCase.value;
   });
 
   if (validCase) {

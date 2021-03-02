@@ -9,11 +9,11 @@ export const StyledList = styled.div`
 `;
 
 const getBasicStyles = (props) => {
-  const { isSelected, theme: { useDarkStyle, colors } } = props;
+  const { isSelected, theme: { colors } } = props;
 
   if (isSelected) {
     return `
-    background-color: ${useDarkStyle ? colors.BRAND_DARK : colors.BRAND};
+    background-color: ${colors.BRAND};
     color: ${colors.WHITE};
     `;
   }
@@ -21,11 +21,11 @@ const getBasicStyles = (props) => {
 };
 
 const getHoverStyles = (props) => {
-  const { isSelected, theme: { useDarkStyle, colors } } = props;
+  const { isSelected, theme: { colors } } = props;
 
   if (isSelected) {
     return `
-    background-color: ${useDarkStyle ? colors.BRAND : colors.BRAND_DARK};
+    background-color: ${colors.BRAND_HIGHLIGHT};
     color: ${colors.WHITE};
     `;
   }

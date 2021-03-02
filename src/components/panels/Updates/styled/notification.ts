@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
-import Colors from 'styles/colors';
 import { getMargins } from 'helpers';
 
-export const StyledNotification = styled(motion.div)`
+export const StyledNotification = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -42,7 +40,7 @@ export const Title = styled.h2`
 export const DateStamp = styled.span`
   font-size: 0.75rem;
   letter-spacing: 0.5px;
-  color: ${Colors.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
   margin-top: 6px;
 `;
 

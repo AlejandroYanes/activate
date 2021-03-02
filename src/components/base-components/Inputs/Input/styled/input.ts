@@ -14,33 +14,10 @@ const getLeftPadding = ({ padLeft }) => `padding-left: ${padLeft ? 48 : 20}px`;
 const getRightPadding = ({ padRight }) => `padding-right: ${padRight ? 48 : 20}px`;
 
 export const getColorStyles = (props) => {
-  const { theme: { useDarkStyle, colors } } = props;
-
-  if (useDarkStyle) {
-    return css`
-    border: 1px solid ${colors.GRAY_SHADE};
-    background-color: ${colors.BACKGROUND_LIGHT};
-    color: ${colors.FONT};
-    transition: all 150ms linear;
-
-    &::selection {
-      background-color: ${colors.BRAND};
-      color: ${colors.WHITE};
-    }
-
-    &:hover {
-      border-color: ${colors.GRAY_DARK};
-    }
-
-    &:focus {
-      border-color: ${colors.BRAND};
-      color: ${colors.BRAND};
-    }
-    `;
-  }
+  const { theme: { colors } } = props;
 
   return css`
-      border: 1px solid ${colors.GRAY_SHADE};
+      border: 1px solid ${colors.FONT_SHADE};
       background-color: ${colors.BACKGROUND_LIGHT};
       color: ${colors.FONT};
       transition: all 150ms linear;
@@ -51,18 +28,17 @@ export const getColorStyles = (props) => {
       }
 
       &:hover {
-        border-color: ${colors.GRAY_DARK};
+        border-color: ${colors.FONT};
       }
 
       &:focus {
         border-color: ${colors.BRAND};
-        color: ${colors.BRAND};
+        color: ${colors.FONT};
       }
   `;
 };
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
-  border-radius: ${inputBorderRadius};
   font-size: 16px;
   font-family: "MPlus Rounded Normal", sans-serif;
   letter-spacing: 0.5px;
@@ -75,6 +51,8 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   min-height: 40px;
   height: 40px;
   box-sizing: border-box;
+  border-radius: ${inputBorderRadius};
+  transition: all 150ms linear;
   ${getLeftPadding};
   ${getRightPadding};
   ${getColorStyles};

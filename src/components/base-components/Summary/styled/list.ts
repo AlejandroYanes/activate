@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 import { getMargins } from 'helpers';
 
 export const StyledSummary = styled.div`
@@ -7,7 +6,7 @@ export const StyledSummary = styled.div`
   flex-direction: column;
   border-radius: 12px;
   overflow: hidden;
-  background-color: ${Colors.WHITE};
+  background-color: ${({ theme }) => theme.colors.WHITE};
   padding-bottom: 10px;
   ${getMargins};
 `;
@@ -20,7 +19,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.label`
-  color: ${Colors.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
 `;
 
 export const List = styled.ul`
@@ -36,5 +35,5 @@ export const Separator = styled.div`
   height: 1px;
   width: 94%;
   border-radius: 6px;
-  background-color: ${Colors.GRAY_SHADE};
+  background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 `;

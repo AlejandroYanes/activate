@@ -2,15 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { StyledLabel } from './styled/label';
 
 interface Props {
-  isFocused?: boolean;
   text: string;
 }
 
 const InputLabel: FunctionComponent<Props> = (props) => {
-  const { text, isFocused } = props;
+  const { text } = props;
 
   if (text) {
-    return <StyledLabel focused={isFocused}>{text}</StyledLabel>;
+    return <StyledLabel>{text}</StyledLabel>;
   }
 
   return null;

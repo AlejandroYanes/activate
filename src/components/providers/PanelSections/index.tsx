@@ -9,7 +9,7 @@ import React, {
 
 export enum AuxPanelSection {
   UPCOMING = 'UPCOMING',
-  NOTIFICATIONS = 'NOTIFICATIONS',
+  UPDATES = 'UPDATES',
   FILTER = 'FILTER',
   EVENT_DETAILS = 'EVENT_DETAILS',
   TALKS = 'TALKS',
@@ -36,7 +36,7 @@ const PanelSectionsContext = createContext<PanelSectionsContextValue>(undefined)
 const basicSections: AuxPanelSection[] = [
   AuxPanelSection.UPCOMING,
   AuxPanelSection.TALKS,
-  AuxPanelSection.NOTIFICATIONS,
+  AuxPanelSection.UPDATES,
 ];
 
 const initialState = {

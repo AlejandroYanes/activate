@@ -7,22 +7,23 @@ import React, {
   useState,
 } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { basicColors, ColorScheme, darkStyleColors, lightStyleColors } from 'styles/colors';
+import { ColorScheme} from 'styles/colors';
 import {
   NeonLightsTheme,
   StartingTheme,
   SummerVibesTheme,
-  MidnightLightsTheme,
+  DuskLightsTheme,
   LifeIsABeachTheme,
 } from 'styles/themes';
 import { GlobalStyles } from './GlobalStyles';
+import composeColorScheme from './compose-color-scheme';
 
 export enum AppTheme {
   Default = 'Default',
   NeonLights = 'NeonLights',
   SummerVibes = 'SummerVibes',
-  MidnightLights = 'MidnightLights',
   LifeIsABeach = 'LifeIsABeach',
+  DuskLights = 'DuskLights',
 }
 
 interface ThemeContextValue {
@@ -37,15 +38,15 @@ const themesMap = {
   [AppTheme.Default]: StartingTheme,
   [AppTheme.NeonLights]: NeonLightsTheme,
   [AppTheme.SummerVibes]: SummerVibesTheme,
-  [AppTheme.MidnightLights]: MidnightLightsTheme,
   [AppTheme.LifeIsABeach]: LifeIsABeachTheme,
+  [AppTheme.DuskLights]: DuskLightsTheme,
 };
 
 const ThemeContext = createContext<ThemeContextValue>(undefined);
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<AppTheme>(AppTheme.Default);
+  const [theme, setTheme] = useState<AppTheme>(AppTheme.SummerVibes);
   const [useDarkStyle, setUseDarkTheme] = useState(false);
 
   const toggleLightStyle = useCallback(
@@ -54,14 +55,14 @@ const ThemeProvider: FunctionComponent = (props) => {
   );
 
   const themeColors = useMemo(
-    () => ({
-      useDarkStyle,
-      colors: {
-        ...basicColors,
-        ...(useDarkStyle ? darkStyleColors : lightStyleColors),
-        ...themesMap[theme],
-      },
-    }),
+    () => {
+      const themeColors = themesMap[theme];
+
+      return {
+        useDarkStyle,
+        colors: composeColorScheme(themeColors, useDarkStyle),
+      };
+    },
     [theme, useDarkStyle],
   );
 

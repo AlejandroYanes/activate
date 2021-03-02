@@ -32,8 +32,8 @@ function getDateString(
 }
 
 const Content: FunctionComponent<Props> = (props) => {
-  const { colors, useDarkStyle } = useAppTheme();
-  const { type, value, isFocused, padRight, onClick, onFocus, onBlur } = props;
+  const { colors } = useAppTheme();
+  const { type, value, padRight, onClick, onFocus, onBlur } = props;
   const useRange = type === 'date-range' || type === 'time-range';
 
   const startDate = useMemo(() => {
@@ -52,16 +52,6 @@ const Content: FunctionComponent<Props> = (props) => {
     return undefined;
   }, [type, useRange, value]);
 
-  const iconColor = useMemo(() => {
-    if (isFocused) {
-      return useDarkStyle
-        ? colors.BRAND
-        : colors.BRAND_DARK;
-    }
-
-    return colors.FONT;
-  }, [isFocused, useDarkStyle, colors]);
-
   const iconSize = type === 'date-time' && useRange ? 'large' : 'medium';
 
   return (
@@ -74,7 +64,7 @@ const Content: FunctionComponent<Props> = (props) => {
     >
       <SvgIcon
         size={iconSize}
-        color={iconColor}
+        color={colors.FONT}
         icon={Icons.CALENDAR_FILLED}
       />
       <DateStamp>{startDate}</DateStamp>

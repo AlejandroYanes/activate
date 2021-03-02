@@ -14,10 +14,10 @@ const HorizontalDots: FunctionComponent<Props> = (props) => {
 
   return (
     <Wrapper size={size} {...rest}>
-      <Dot size={size} color={flat ? Colors.WHITE : Colors.BRAND_LIGHT} />
-      <Dot size={size} color={flat ? Colors.WHITE : Colors.ACCENT_LIGHT} />
-      <Dot size={size} color={flat ? Colors.WHITE : Colors.INFO_LIGHT} />
-      <Dot size={size} color={flat ? Colors.WHITE : Colors.ERROR_LIGHT} />
+      <Dot size={size} color={flat ? Colors.WHITE : Colors.BRAND} />
+      <Dot size={size} color={flat ? Colors.WHITE : Colors.ACCENT} />
+      <Dot size={size} color={flat ? Colors.WHITE : Colors.INFO} />
+      <Dot size={size} color={flat ? Colors.WHITE : Colors.ERROR} />
     </Wrapper>
   );
 };

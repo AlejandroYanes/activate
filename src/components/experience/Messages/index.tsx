@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { getEventValue } from 'helpers/events';
+import { getEventValue } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
@@ -46,7 +46,7 @@ const Messages: FunctionComponent<Props> = (props) => {
         </AvatarSection>
         <Info>
           <Text>{name}</Text>
-          <Text size="small" color="gray">active 10min ago</Text>
+          <Text size="small" color="secondary">active 10min ago</Text>
         </Info>
         {rightActions}
       </Header>
@@ -58,6 +58,7 @@ const Messages: FunctionComponent<Props> = (props) => {
           autosize
           rows={1}
           maxLength={smallView ? 250 : 500}
+          placeholder="Type your message here"
           value={message}
           onChange={(event) => setMessage(getEventValue(event))}
         />

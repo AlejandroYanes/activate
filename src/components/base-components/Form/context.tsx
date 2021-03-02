@@ -1,5 +1,5 @@
 import React, { createContext, FunctionComponent, useMemo } from 'react';
-import { ValidationRules } from 'helpers/form-validations';
+import { ValidationRules } from 'helpers';
 
 interface Props {
   state: any;

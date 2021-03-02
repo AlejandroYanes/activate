@@ -1,11 +1,10 @@
 import { createGlobalStyle, css } from 'styled-components';
 
 const getWebkitScrollBarThumbColor = (props) => {
-  const { theme: { colors, useDarkStyle } } = props;
-  const color = useDarkStyle ? colors.ACCENT : colors.ACCENT_LIGHT;
+  const { theme: { colors } } = props;
 
   return css`
-    background-color: ${color};
+    background-color: ${colors.ACCENT};
   `;
 };
 
@@ -19,7 +18,7 @@ const getFirefoxScrollBarColor = (props) => {
   }
 
   return css`
-    scrollbar-color: ${colors.ACCENT_LIGHT} ${colors.BACKGROUND_SHADE};
+    scrollbar-color: ${colors.ACCENT} ${colors.BACKGROUND_SHADE};
   `;
 };
 
@@ -34,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   *::selection, input::selection, textarea::selection {
-    background-color: ${({ theme }) => theme.colors.BRAND_DARK};
+    background-color: ${({ theme }) => theme.colors.BRAND_HIGHLIGHT};
     color: ${({ theme }) => theme.colors.WHITE};
   }
 

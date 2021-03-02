@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Colors from 'styles/colors';
 
 export const Options = styled.div`
   width: 25%;
@@ -20,22 +19,22 @@ export const Option = styled.button`
   box-sizing: border-box;
   font-size: 1rem;
   background-color: transparent;
-  color: ${Colors.FONT};
+  color: ${({ theme }) => theme.colors.FONT};
 
   & > span {
   margin-left: 8px;
   }
 
   &:hover, &:focus {
-    background-color: ${Colors.BRAND_SHADE};
+    background-color: ${({ theme }) => theme.colors.BRAND_SHADE};
 
     & > span {
-      color: ${Colors.BRAND_DARK};
+      color: ${({ theme }) => theme.colors.BRAND_DARK};
     }
 
     & > svg {
       g {
-        stroke: ${Colors.BRAND_DARK};
+        stroke: ${({ theme }) => theme.colors.BRAND_DARK};
       }
     }
   }

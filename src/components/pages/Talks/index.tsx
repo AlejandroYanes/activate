@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
-import { EventChannelList, useEventCenterUpdate } from 'components/event-center';
+import { EventChannelList, useEventCenterUpdate } from 'event-center';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';

@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getMargins } from 'helpers';
-import { getHoveredStyles, getVariantStyles } from 'components/base-components/Button/styled';
+import { getVariantStyles } from 'components/base-components/Button/styled';
 import { IconButtonProps } from '..';
 
 const getSize = (props: IconButtonProps) => {
@@ -41,10 +41,48 @@ const getSize = (props: IconButtonProps) => {
 };
 
 const getToggleStyles = (props) => {
-  const { toggle } = props;
+  const { toggle, theme, variant, color } = props;
 
   if (toggle) {
-    return getHoveredStyles(props);
+    const { colors } = theme;
+
+    switch (variant) {
+      case 'base': {
+        const fontHoverColor = color === 'font'
+          ? colors.FONT
+          : colors[`${color.toUpperCase()}_HIGHLIGHT`];
+
+        return css`
+        &:hover, &:focus {
+          color: ${fontHoverColor};
+          background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
+        }
+      `;
+      }
+      case 'flat': {
+        const fontHoverColor = color === 'font'
+          ? colors.FONT
+          : colors[`${color.toUpperCase()}_HIGHLIGHT`];
+
+        return css`
+        &:hover, &:focus {
+          color: ${fontHoverColor};
+          background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
+        }
+      `;
+      }
+      case 'fill': {
+        const backgroundHoverColor = colors[`${color.toUpperCase()}_HIGHLIGHT`];
+
+        return css`
+       &:hover, &:focus {
+          background-color: ${backgroundHoverColor};
+          border-color: ${backgroundHoverColor};
+          color: ${colors.WHITE};
+        }
+      `;
+      }
+    }
   }
   return undefined;
 };
@@ -67,9 +105,5 @@ export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => 
 
   &:active {
     transform: scale(0.9);
-  }
-
-  &:hover, &:focus {
-      ${getHoveredStyles}
   }
 `;

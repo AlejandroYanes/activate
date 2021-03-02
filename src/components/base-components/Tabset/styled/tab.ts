@@ -3,68 +3,6 @@ import { anyPropsAttrs } from 'helpers';
 import { Label } from './label';
 import { Mark } from './mark';
 
-// const enterAnimation = keyframes`
-//   0% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//   10% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//
-//   100% {
-//     flex: 1;
-//     padding: 8px 12px;
-//     margin: 0 6px 0 0;
-//     min-width: 80px;
-//   }
-// `;
-//
-// const enterCompactAnimation = keyframes`
-//   0% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//   10% {
-//     flex: 0;
-//     margin: 0;
-//     padding: 0;
-//     min-width: 0;
-//   }
-//
-//   100% {
-//     padding: 8px 12px;
-//     margin: 0 6px 0 0;
-//     min-width: 20px;
-//   }
-// `;
-//
-// const getAnimation = (props) => {
-//   const { animateEntrance, compact } = props;
-//
-//   if (animateEntrance) {
-//     if (compact) {
-//       return css`
-//         animation: ${enterCompactAnimation} 166ms linear;
-//       `;
-//     }
-//
-//     return css`
-//         animation: ${enterAnimation} 166ms linear;
-//       `;
-//   }
-// };
-
 const getWidthStyles = (props) => {
   const { compact, selected } = props;
 
@@ -75,37 +13,41 @@ const getWidthStyles = (props) => {
   return css`flex: 0`;
 };
 
-const getSelectedStyles = (props) => {
-  const { selected, theme } = props;
+const getColorStyles = (props) => {
+  const { selected, disableFocus, theme: { colors } } = props;
 
-  if (selected) {
-    return css`
-      ${Label} {
-        color: ${theme.colors.BRAND}
-      }
-    `;
-  }
-  return '';
-};
-
-const getHoverStyles = (props) => {
-  const { disableFocus, selected, theme: { colors, useDarkStyle } } = props;
-
-  if (disableFocus) {
-    return '';
-  }
-
-  const markColor = useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK;
-
-  return css`
-    background-color: ${colors.BRAND_SHADE};
-
-    ${Label}{
-      color: ${useDarkStyle ? colors.BRAND_LIGHT : colors.BRAND_DARK};
+  const basicStyles = css`
+    ${Label} {
+      color: ${selected ? colors.BRAND_FONT : colors.FONT_SECONDARY};
     }
 
-    ${Mark}{
-      background-color: ${selected ? markColor : 'none'};
+    ${Mark} {
+      background-color: ${colors.BRAND_FONT};
+    }
+
+    &:focus {
+      outline: none;
+    }
+  `;
+
+  if (disableFocus) {
+    return basicStyles;
+  }
+
+  return css`
+    ${basicStyles};
+
+    &:hover, &:focus {
+      outline: none;
+      background-color: ${colors.BRAND_SHADE};
+
+      ${Label} {
+        color: ${colors.BRAND_FONT_HIGHLIGHT};
+      }
+
+      ${Mark} {
+        background-color: ${colors.BRAND_FONT_HIGHLIGHT};
+      }
     }
   `;
 };
@@ -124,13 +66,8 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   box-sizing: border-box;
   min-width: 44px;
   ${getWidthStyles};
-  ${getSelectedStyles};
+  ${getColorStyles};
   transition: all 150ms linear;
-
-  &:hover, &:focus {
-    outline: none;
-    ${getHoverStyles};
-  }
 
   &:last-child {
     margin-right: 0;

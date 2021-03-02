@@ -2,10 +2,10 @@ import React, { FunctionComponent, useMemo, useState } from 'react';
 import faker from 'faker';
 import {
   LifeIsABeachTheme,
-  MidnightLightsTheme,
   NeonLightsTheme,
   StartingTheme,
-  SummerVibesTheme
+  SummerVibesTheme,
+  DuskLightsTheme,
 } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import { PickItem, PickList } from 'components/base-components/PickList';
@@ -15,11 +15,11 @@ import Button from 'components/base-components/Button';
 import Toggle from 'components/base-components/Toggle';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import {
-  Settings as StyledSettings,
   ColorSample,
   DetailBox,
   Line,
   Palette,
+  Settings as StyledSettings,
   SubTitle,
   Theme,
   ThemeName,
@@ -46,21 +46,21 @@ const Settings: FunctionComponent = () => {
     <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
   ), [colors]);
   const moonIcon = useMemo(() => (
-    <SvgIcon icon={Icons.MOON} color={colors.ACCENT_DARK} size="small" />
+    <SvgIcon icon={Icons.MOON} color={colors.ACCENT_HIGHLIGHT} size="small" />
   ), [colors]);
 
   return (
     <StyledSettings>
-      <SubTitle level={3} color="gray">Profile Data</SubTitle>
+      <SubTitle level={3} color="secondary">Profile Data</SubTitle>
       <Form state={userData} onChange={setUserData}>
         <Field name="userName" label="User Name" />
         <Field name="name" label="Name" mT />
         <Field name="bio" component={TextArea} label="Bio" maxLength={250} autosize mT />
       </Form>
       <Line floatRight>
-        <Button onClick={() => undefined} label="Update" mB />
+        <Button onClick={() => undefined} label="Update" variant="flat" mB />
       </Line>
-      <SubTitle level={3} color="gray">Theme</SubTitle>
+      <SubTitle level={3} color="secondary">Theme</SubTitle>
       <PickList value={activeTheme} onChange={setTheme} color="info">
         <PickItem value={AppTheme.Default}>
           <Theme>
@@ -95,17 +95,6 @@ const Settings: FunctionComponent = () => {
             </DetailBox>
           </Theme>
         </PickItem>
-        <PickItem value={AppTheme.MidnightLights}>
-          <Theme>
-            <Palette>
-              <ColorSample color={MidnightLightsTheme.BRAND} />
-              <ColorSample color={MidnightLightsTheme.ACCENT} />
-            </Palette>
-            <DetailBox>
-              <ThemeName>Midnight Lights</ThemeName>
-            </DetailBox>
-          </Theme>
-        </PickItem>
         <PickItem value={AppTheme.LifeIsABeach}>
           <Theme>
             <Palette>
@@ -114,6 +103,17 @@ const Settings: FunctionComponent = () => {
             </Palette>
             <DetailBox>
               <ThemeName>Life is a Beach</ThemeName>
+            </DetailBox>
+          </Theme>
+        </PickItem>
+        <PickItem value={AppTheme.DuskLights}>
+          <Theme>
+            <Palette>
+              <ColorSample color={DuskLightsTheme.BRAND} />
+              <ColorSample color={DuskLightsTheme.ACCENT} />
+            </Palette>
+            <DetailBox>
+              <ThemeName>Dusk Lights</ThemeName>
             </DetailBox>
           </Theme>
         </PickItem>
