@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
@@ -37,6 +37,10 @@ const Notification: FunctionComponent<Props> = (props) => {
 
   const { id, type, duration, message, onClose } = props;
 
+  const handleOnClose = useCallback(() => {
+    onClose(id);
+  }, [onClose]);
+
   useEffect(() => {
     if (duration !== NotificationDuration.INDEFINITE) {
       setTimeout(() => onClose(id), duration);
@@ -58,8 +62,8 @@ const Notification: FunctionComponent<Props> = (props) => {
         <Text color="background">{message}</Text>
       </Content>
       <IconButton
-        onClick={() => onClose(id)}
         icon={Icons.CLOSE}
+        onClick={handleOnClose}
         color={colors.BACKGROUND}
         buttonColor="background"
       />
