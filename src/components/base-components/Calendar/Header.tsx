@@ -28,12 +28,10 @@ const Header: FunctionComponent<Props> = (props) => {
   } = props;
 
   const label = useMemo(() => {
-    if (selecting === DateElement.Day && currentDate.getFullYear() === today.getFullYear()) {
-      return monthFormatter.format(currentDate);
-    }
-
     if (selecting === DateElement.Day) {
-      return monthYearFormatter.format(currentDate);
+      return currentDate.getFullYear() === today.getFullYear()
+        ? monthFormatter.format(currentDate)
+        : monthYearFormatter.format(currentDate);
     }
 
     if (selecting === DateElement.Month || selecting === DateElement.Year) {
