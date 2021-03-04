@@ -27,11 +27,18 @@ interface Props {
   leftActions?: ReactNode;
   rightActions?: ReactNode;
   smallView?: boolean;
+  inverseColors?: boolean;
 }
 
 const Messages: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
-  const { user: { image, name, active }, leftActions, rightActions, smallView } = props;
+  const {
+    user: { image, name, active },
+    leftActions,
+    rightActions,
+    smallView,
+    inverseColors,
+  } = props;
   const [message, setMessage] = useState('');
 
   return (
@@ -51,7 +58,7 @@ const Messages: FunctionComponent<Props> = (props) => {
         {rightActions}
       </Header>
       <Content>
-        <Conversation />
+        <Conversation inverseColors={inverseColors} />
       </Content>
       <Actions small={smallView}>
         <TextBox

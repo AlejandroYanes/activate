@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
-import { ActiveDot, AvatarSection, Info, Talk as StyledTalk } from './styled';
+import { ActiveDot, AvatarSection, Info, Talk as StyledTalk } from './styled/talk';
 
 interface Props {
   id: string;

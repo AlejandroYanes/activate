@@ -7,7 +7,7 @@ import { Case, Switch } from 'components/base-components/Switch';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import Messages from 'components/experience/Messages';
-import TalksList from './TalksList';
+import TalksList from 'components/experience/TalkList';
 
 interface Props {
   onClose?: () => void;

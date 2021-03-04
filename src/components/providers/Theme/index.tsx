@@ -47,7 +47,7 @@ const ThemeContext = createContext<ThemeContextValue>(undefined);
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
   const [theme, setTheme] = useState<AppTheme>(AppTheme.SummerVibes);
-  const [useDarkStyle, setUseDarkTheme] = useState(false);
+  const [useDarkStyle, setUseDarkTheme] = useState(true);
 
   const toggleLightStyle = useCallback(
     () => setUseDarkTheme((oldState) => !oldState),

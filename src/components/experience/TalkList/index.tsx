@@ -7,13 +7,13 @@ import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
 import Talk from './Talk';
-import { Action, Panel } from './styled';
+import { Action, Panel } from './styled/panel';
 
 interface Props {
   asContactList?: boolean;
   openTalk: (user) => void;
-  openContactList: () => void;
-  onClose: () => void;
+  openContactList?: () => void;
+  onClose?: () => void;
 }
 
 const talks = new Array(faker.random.number({ min: 6, max: 16 }))
@@ -45,7 +45,7 @@ const TalksList: FunctionComponent<Props> = (props) => {
       openTalk(user);
     }
 
-  }, [pathname, onClose]);
+  }, [openTalk, pathname, onClose]);
 
   const talksElements = useMemo(() => (
     talks.map((talk) => (
@@ -56,7 +56,7 @@ const TalksList: FunctionComponent<Props> = (props) => {
         onClick={handleClick}
       />
     ))
-  ), [openTalk, handleClick, asContactList]);
+  ), [handleClick, asContactList]);
 
   return (
     <Panel>

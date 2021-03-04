@@ -9,7 +9,7 @@ const SplashScreen: FunctionComponent = () => {
 
   return (
     <StyledSplashScreen>
-      <SvgIcon icon={Icons.MESSAGE} color={colors.BRAND} size="page" />
+      <SvgIcon icon={Icons.MESSAGE} color={colors.BRAND_FONT} size="page" />
       <Title mT level={2} color="brand">Select a Talk</Title>
     </StyledSplashScreen>
   );
