@@ -5,13 +5,15 @@ import { Icons } from 'components/base-components/SvgIcon';
 import { NavBar } from './styled';
 
 enum Menus {
-  PROFILE = 'profile',
-  UPCOMING = 'upcoming',
-  DISCOVER = 'discover',
-  SEARCH = 'search',
+  PROFILE = '/profile',
+  UPCOMING = '/upcoming',
+  DISCOVER = '/discover',
+  SEARCH = '/search',
+  TALKS = '#talks',
+  UPDATES = '#updates',
 }
 
-const tabs = ['profile', 'upcoming', 'discover', 'search'];
+const tabs = ['/profile', '/upcoming', '/discover', '/search'];
 
 const HorizontalMenu: FunctionComponent = () => {
   const { push } = useHistory();
@@ -19,16 +21,16 @@ const HorizontalMenu: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState<string>(Menus.UPCOMING);
 
   const handleTabClick = useCallback((tab) => {
-    push(`/${tab}`);
+    push(`${tab}`);
   }, []);
 
   useEffect(() => {
-    const pageUrl = pathname.split('/')[1];
+    // const pageUrl = pathname.split('/')[1];
 
-    if (!tabs.includes(pageUrl)) {
+    if (!tabs.includes(pathname)) {
       setActiveTab(undefined);
     } else {
-      setActiveTab(pageUrl);
+      setActiveTab(pathname);
     }
   }, [pathname]);
 
@@ -38,6 +40,8 @@ const HorizontalMenu: FunctionComponent = () => {
         <Tab name={Menus.UPCOMING} icon={Icons.BOOKMARKS} onClick={handleTabClick} />
         <Tab name={Menus.DISCOVER} icon={Icons.COMPASS} onClick={handleTabClick} />
         <Tab name={Menus.SEARCH} icon={Icons.SEARCH} onClick={handleTabClick} />
+        <Tab name={Menus.TALKS} icon={Icons.MESSAGE} onClick={handleTabClick} />
+        <Tab name={Menus.UPDATES} icon={Icons.BELL} onClick={handleTabClick} />
         <Tab name={Menus.PROFILE} icon={Icons.USER} onClick={handleTabClick} />
       </Tabset>
     </NavBar>
