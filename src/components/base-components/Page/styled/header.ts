@@ -7,23 +7,25 @@ const layoutMap = {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: ${({ spaced }: any) => spaced ? '32px' : '0px'};
   `,
   [Layout.MIDDLE]: css`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: ${({ spaced }: any) => spaced ? '32px' : '0px'};
   `,
   [Layout.SMALL]: css`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    padding: 8px 16px 8px 16px;
   `,
 };
 
 export const Header = styled.header.attrs(anyPropsAttrs)`
   ${({ layout }) => layoutMap[layout]};
-   margin-bottom: ${({ spaced }) => spaced ? '32px' : '0px'};
+  background-color: ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
 export const Actions = styled.div`

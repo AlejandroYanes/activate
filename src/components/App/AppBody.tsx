@@ -19,9 +19,9 @@ const AppBody: FunctionComponent = () => {
   const layout = useAppLayout();
 
   return (
-    <StyledApp layout={layout}>
+    <StyledApp layout={layout} data-el="app">
       <NavBar />
-      <Body layout={layout}>
+      <Body layout={layout} data-el="app-body">
         <Switch>
           <Route path="/upcoming" component={FeedPage} exact />
           <Route path="/profile" component={ProfilePage} />

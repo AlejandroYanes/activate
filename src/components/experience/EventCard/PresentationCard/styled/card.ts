@@ -1,4 +1,17 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Layout } from '../../../../providers/Layout';
+
+const stylesMap = {
+  [Layout.FULL]: css`
+    margin-bottom: 64px;
+  `,
+  [Layout.MIDDLE]: css`
+    margin-bottom: 64px;
+  `,
+  [Layout.SMALL]: css`
+    margin-bottom: 32px;
+  `,
+};
 
 const getBorderColor = ({ isBooked, theme }) => (
   isBooked ? theme.colors.ACCENT : theme.colors.BACKGROUND
@@ -11,8 +24,8 @@ export const Card = styled.article.attrs((props: any) => props)`
   box-sizing: border-box;
   border-radius: 16px;
   padding: 16px;
-  margin-bottom: 64px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  ${({ layout }) => stylesMap[layout]};
   border: 1px solid ${getBorderColor};
 
   &:last-child {

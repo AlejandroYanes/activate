@@ -21,6 +21,7 @@ import {
   Title,
   TitleAndAddress,
 } from './styled';
+import { useAppLayout } from '../../../providers/Layout';
 
 interface Props {
   title: string;
@@ -41,6 +42,7 @@ interface Props {
 const avatars = ['user1', 'user2', 'user6'];
 
 const PresentationCard: FunctionComponent<Props> = (props) => {
+  const layout = useAppLayout();
   const Colors = useAppColors();
   const {
     date,
@@ -59,7 +61,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
   }, []);
 
   return (
-    <Card isBooked={isBooked}>
+    <Card isBooked={isBooked} layout={layout}>
       <Header>
         <DateBadge>
           <span>{getMonthLabel(date).slice(0, 3)}</span>
@@ -89,7 +91,14 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
         <AvatarGroup icons={avatars} label={formatAmount(attendees)} size="small" />
         <Actions>
           <IconButton
-            mR
+            size="large"
+            buttonColor="success"
+            variant="flat"
+            icon={Icons.SHARE}
+            color={Colors.SUCCESS}
+            onClick={() => undefined}
+          />
+          <IconButton
             size="large"
             buttonColor="info"
             variant="flat"

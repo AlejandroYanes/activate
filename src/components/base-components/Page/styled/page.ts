@@ -7,21 +7,28 @@ const layoutMap = {
   [Layout.FULL]: css`
     height: 100%;
     width: ${cardWidth};
+    margin-bottom: 32px;
   `,
   [Layout.MIDDLE]: css`
     width: 90%;
     height: 100%;
     max-width: ${cardWidth};
+    margin-bottom: 32px;
   `,
   [Layout.SMALL]: css`
     width: 100%;
+    height: 100%;
   `,
 };
 
 export const StyledPage = styled.section.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
-  margin-bottom: 32px;
-  box-sizing: border-box;
   ${({ layout }) => layoutMap[layout]};
+`;
+
+export const Content = styled.section`
+  flex: 1;
+  overflow: hidden auto;
+  padding: 16px 6px 24px 6px;
 `;

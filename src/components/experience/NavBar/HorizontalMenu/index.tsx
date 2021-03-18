@@ -42,7 +42,6 @@ const HorizontalMenu: FunctionComponent = () => {
         <Tab name={Menus.SEARCH} icon={Icons.SEARCH} onClick={handleTabClick} />
         <Tab name={Menus.TALKS} icon={Icons.MESSAGE} onClick={handleTabClick} />
         <Tab name={Menus.UPDATES} icon={Icons.BELL} onClick={handleTabClick} />
-        <Tab name={Menus.PROFILE} icon={Icons.USER} onClick={handleTabClick} />
       </Tabset>
     </NavBar>
   );

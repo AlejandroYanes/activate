@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
 
 export const StyledTalksModal = styled.article`
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   left: 0;

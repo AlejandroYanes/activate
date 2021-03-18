@@ -1,17 +1,25 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
 import { Title } from 'components/base-components/Typography';
-import { useAppLayout } from 'components/providers/Layout';
-import { StyledPage, Header, Actions } from './styled';
+import { Layout, useAppLayout } from 'components/providers/Layout';
+import { StyledPage, Header, Actions, Content } from './styled';
 
 interface Props {
   title?: string;
   actions?: ReactNode;
 }
 
+const wrapperMap = {
+  [Layout.FULL]: React.Fragment,
+  [Layout.MIDDLE]: React.Fragment,
+  [Layout.SMALL]: Content,
+};
+
 const Page: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
+
   const { title, actions, children } = props;
+  const Wrapper = wrapperMap[layout];
 
   return (
     <StyledPage layout={layout} data-el="page">
@@ -25,7 +33,9 @@ const Page: FunctionComponent<Props> = (props) => {
           </Actions>
         </RenderIf>
       </Header>
-      {children}
+      <Wrapper>
+        {children}
+      </Wrapper>
     </StyledPage>
   );
 };

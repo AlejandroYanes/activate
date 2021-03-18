@@ -6,9 +6,11 @@ interface Props {
   name: string;
 }
 
+const emptyComponent = () => null;
+
 const ModalRenderer: FunctionComponent<Props> = (props) => {
   const { name } = props;
-  const Component = ModalMap[name];
+  const Component = ModalMap[name] || emptyComponent;
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden';
