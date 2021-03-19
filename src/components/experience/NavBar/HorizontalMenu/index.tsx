@@ -25,8 +25,6 @@ const HorizontalMenu: FunctionComponent = () => {
   }, []);
 
   useEffect(() => {
-    // const pageUrl = pathname.split('/')[1];
-
     if (!tabs.includes(pathname)) {
       setActiveTab(undefined);
     } else {

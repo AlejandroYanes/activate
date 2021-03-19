@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { EventChannelList, notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
@@ -25,6 +25,7 @@ const TalksPanel: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
   const layout = useAppLayout();
   const { push } = useHistory();
+  const { pathname } = useLocation();
 
   const { onClose } = props;
 
@@ -34,11 +35,19 @@ const TalksPanel: FunctionComponent<Props> = (props) => {
   });
 
   const openTalk = useCallback((user) => {
-    setState({
-      activeView: TalkViews.MESSAGES,
-      activeUser: user,
-    })
-  }, []);
+    if (pathname.includes('talks')) {
+      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
+      setState({
+        activeView: TalkViews.TALK_LIST,
+        activeUser: undefined,
+      });
+    } else {
+      setState({
+        activeView: TalkViews.MESSAGES,
+        activeUser: user,
+      });
+    }
+  }, [pathname]);
 
   const closeTalk = useCallback(() => {
     setState({
@@ -96,14 +105,12 @@ const TalksPanel: FunctionComponent<Props> = (props) => {
         component={TalksList}
         openTalk={openTalk}
         openContactList={openContactList}
-        onClose={onClose}
       />
       <Case
         value={TalkViews.CONTACT_LIST}
         component={TalksList}
         openTalk={openTalk}
         openContactList={openContactList}
-        onClose={onClose}
         asContactList
       />
       <Case

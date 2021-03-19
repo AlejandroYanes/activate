@@ -52,7 +52,7 @@ export const PrimaryGlobalStyles = createGlobalStyle`
   }
 
   *::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   *::-webkit-scrollbar-track {

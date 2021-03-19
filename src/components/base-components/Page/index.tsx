@@ -1,8 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import RenderIf from 'components/base-components/RenderIf';
-import { Title } from 'components/base-components/Typography';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { StyledPage, Header, Actions, Content } from './styled';
+import Header from './Header';
+import { StyledPage, Content } from './styled';
 
 interface Props {
   title?: string;
@@ -23,16 +22,7 @@ const Page: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledPage layout={layout} data-el="page">
-      <Header layout={layout} spaced={!!title || !!actions} data-el="page-header">
-        <RenderIf condition={!!title}>
-          <Title level={1} bold color="brand">{title}</Title>
-        </RenderIf>
-        <RenderIf condition={!!actions}>
-          <Actions>
-            {actions}
-          </Actions>
-        </RenderIf>
-      </Header>
+      <Header title={title} actions={actions} />
       <Wrapper>
         {children}
       </Wrapper>

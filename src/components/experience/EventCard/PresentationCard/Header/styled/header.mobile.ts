@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Title as TitleComponent } from 'components/base-components/Typography';
 
 export const Header = styled.header`
   display: flex;
@@ -29,19 +28,13 @@ export const TitleAndAddress = styled.div`
   padding-right: 16px;
 `;
 
-export const Title = styled(TitleComponent)`
-  //white-space: nowrap;
-  //text-overflow: ellipsis;
-  //overflow: hidden;
-`;
-
 export const Address = styled.div`
   display: flex;
   align-items: flex-start;
   margin-top: 6px;
 
   & span {
-    margin-left: 4px;
+    //margin-left: 4px;
     line-height: 20px;
   }
 `;

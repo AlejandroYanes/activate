@@ -1,16 +1,15 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { useHistory, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import faker from 'faker';
-import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Paragraph, Text, Title } from 'components/base-components/Typography';
+import { Paragraph } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
-import Avatar from 'components/base-components/Avatar';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
-import { Actions, Card, Footer, Header, Info, Stat, Stats, User } from './styled';
+import Header from './Header';
+import { Actions, Card, Footer } from './styled';
 
 const avatars = ['user1', 'user2', 'user6'];
 
@@ -31,27 +30,7 @@ const PublisherCard: FunctionComponent = () => {
 
   return (
     <Card>
-      <Header asColumn={isSmallLayout}>
-        <User>
-          <Avatar icon="user2" size="medium" />
-          <Link to="/publisher">
-            <Info>
-              <Text size="small">{userName}</Text>
-              <Title level={3} color="brand">{name}</Title>
-            </Info>
-          </Link>
-        </User>
-        <Stats spaced={isSmallLayout}>
-          <Stat padded={!isSmallLayout}>
-            <Text size="small">Events</Text>
-            <Title level={3} color="accent">{formatAmount(events)}</Title>
-          </Stat>
-          <Stat padded={!isSmallLayout}>
-            <Text size="small">Followers</Text>
-            <Title level={3} color="accent">{formatAmount(followers)}</Title>
-          </Stat>
-        </Stats>
-      </Header>
+      <Header userName={userName} name={name} events={events} followers={followers} />
       <Paragraph mB>
         {bio}
       </Paragraph>

@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import faker from 'faker';
-import { EventChannelList, notifyEventChannel } from 'event-center';
 import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
@@ -11,9 +10,8 @@ import { Action, Panel } from './styled/panel';
 
 interface Props {
   asContactList?: boolean;
-  openTalk: (user) => void;
+  openTalk?: (user) => void;
   openContactList?: () => void;
-  onClose?: () => void;
 }
 
 const talks = new Array(faker.random.number({ min: 6, max: 16 }))
@@ -30,22 +28,14 @@ const TalksList: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
   const { pathname } = useLocation();
 
-  const { asContactList, openTalk, openContactList, onClose } = props;
+  const { asContactList, openTalk, openContactList } = props;
 
   const handleClick = useCallback((event) => {
     const { id } = event.target.dataset;
     const user = talks.find((t) => t.id === id);
+    openTalk(user);
 
-    if (pathname.includes('talks')) {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
-      if (onClose) {
-        onClose();
-      }
-    } else {
-      openTalk(user);
-    }
-
-  }, [openTalk, pathname, onClose]);
+  }, [openTalk, pathname]);
 
   const talksElements = useMemo(() => (
     talks.map((talk) => (

@@ -1,26 +1,14 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { formatAmount, getMonthLabel } from 'helpers';
+import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
-import { Paragraph, Text } from 'components/base-components/Typography';
+import { Paragraph } from 'components/base-components/Typography';
+import Header from './Header';
 import EventImage from './EventImage';
-import AuthorMenu from './AuthorMenu';
-import {
-  Actions,
-  Address,
-  Card,
-  Content,
-  DateBadge,
-  Divider,
-  Footer,
-  Header,
-  Title,
-  TitleAndAddress,
-} from './styled';
+import { Actions, Card, Content, Divider, Footer, } from './styled';
 import { useAppLayout } from '../../../providers/Layout';
 
 interface Props {
@@ -62,22 +50,7 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
 
   return (
     <Card isBooked={isBooked} layout={layout}>
-      <Header>
-        <DateBadge>
-          <span>{getMonthLabel(date).slice(0, 3)}</span>
-          <span>{date.getDate()}</span>
-        </DateBadge>
-        <TitleAndAddress>
-          <Link to="/event-detail">
-            <Title level={3}>{title}</Title>
-          </Link>
-          <Address>
-            <SvgIcon icon={Icons.MAP_PIN} color={Colors.FONT} />
-            <Text>{address}</Text>
-          </Address>
-        </TitleAndAddress>
-        <AuthorMenu {...author} />
-      </Header>
+      <Header title={title} address={address} author={author} date={date} />
       <Content>
         <EventImage src={image} alt="event" />
         <RenderIf condition={!!description}>

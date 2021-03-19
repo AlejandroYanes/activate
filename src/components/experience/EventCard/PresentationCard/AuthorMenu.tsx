@@ -3,6 +3,8 @@ import Avatar from 'components/base-components/Avatar';
 import { Text, Title } from 'components/base-components/Typography';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import RenderIf from 'components/base-components/RenderIf';
+import { Icons } from 'components/base-components/SvgIcon';
+import IconButton from 'components/base-components/IconButton';
 import { AuthorDetails, AuthorSection } from './styled/author-menu';
 
 interface Props {
@@ -11,7 +13,9 @@ interface Props {
   following: boolean;
 }
 
-const avatarMenuTrigger = <Avatar icon="user2" size="small" />;
+const avatarMenuTrigger = ({ toggleMenu }) => (
+  <IconButton icon={Icons.MORE_VERT} onClick={toggleMenu} />
+);
 
 const AuthorMenu: FunctionComponent<Props> = (props) => {
   const { name, userName, following } = props;
@@ -21,7 +25,7 @@ const AuthorMenu: FunctionComponent<Props> = (props) => {
         <Avatar icon="user2" size="medium" />
         <AuthorDetails>
           <Text size="small">@{userName}</Text>
-          <Title level={3} color="brand">{name}</Title>
+          <Title level={3} color="brand" bold>{name}</Title>
         </AuthorDetails>
       </AuthorSection>
       <MenuItem label="Go to profile" onClick={() => undefined} />

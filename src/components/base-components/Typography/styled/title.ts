@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getMargins } from 'helpers';
 
 const sizeMap = {
@@ -17,16 +17,32 @@ const getColorFromColor = (props) => {
   if (color === 'font') {
     return `color: ${colors.FONT}`;
   }
+
   const fontColor = colors[`${color.toUpperCase()}_FONT`];
   return `color: ${fontColor}`;
 };
 
 const getWeight = ({ bold }) => `font-weight: ${bold ? 600 : 500}`;
 
-export const Title = styled.h1.attrs(anyPropsAttrs)`
-  font-size: ${({ level }) => sizeMap[level]};
-  text-align: ${({ align }) => align};
+const commonStyles = css`
+  font-size: ${({ level }: any) => sizeMap[level]};
+  text-align: ${({ align }: any) => align};
   ${getColorFromColor};
   ${getWeight};
   ${getMargins};
+`;
+
+export const H1 = styled.h1.attrs(anyPropsAttrs)`
+  font-family: "MPlus Rounded Thin", sans-serif;
+  ${commonStyles};
+`;
+
+export const H2 = styled.h2.attrs(anyPropsAttrs)`
+  font-family: "MPlus Rounded Light", sans-serif;
+  ${commonStyles};
+`;
+
+export const H3 = styled.h3.attrs(anyPropsAttrs)`
+  font-family: "MPlus Rounded Normal", sans-serif;
+  ${commonStyles};
 `;
