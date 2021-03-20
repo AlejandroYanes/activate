@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const circleAnimation = keyframes`
   25% {
@@ -46,7 +46,7 @@ export const Wrapper = styled.div.attrs(anyPropsAttrs)`
   width: 132px;
   height: 132px;
   position: relative;
-  ${getMargins};
+  ${getPositionStyles};
 
   & div {
     width: 18px;

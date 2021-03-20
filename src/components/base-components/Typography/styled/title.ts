@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const sizeMap = {
   1: '32px',
@@ -29,7 +29,7 @@ const commonStyles = css`
   text-align: ${({ align }: any) => align};
   ${getColorFromColor};
   ${getWeight};
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 export const H1 = styled.h1.attrs(anyPropsAttrs)`

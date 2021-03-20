@@ -2,20 +2,20 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import { useHistory, useLocation } from 'react-router-dom';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
-import { NavBar } from './styled';
+import { TabBar } from './styled';
 
 enum Menus {
   PROFILE = '/profile',
   UPCOMING = '/upcoming',
   DISCOVER = '/discover',
   SEARCH = '/search',
-  TALKS = '#talks',
+  TALKS = '/talks',
   UPDATES = '#updates',
 }
 
 const tabs = ['/profile', '/upcoming', '/discover', '/search'];
 
-const HorizontalMenu: FunctionComponent = () => {
+const BottomTabBar: FunctionComponent = () => {
   const { push } = useHistory();
   const { pathname } = useLocation();
   const [activeTab, setActiveTab] = useState<string>(Menus.UPCOMING);
@@ -33,7 +33,7 @@ const HorizontalMenu: FunctionComponent = () => {
   }, [pathname]);
 
   return (
-    <NavBar>
+    <TabBar>
       <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth>
         <Tab name={Menus.UPCOMING} icon={Icons.BOOKMARKS} onClick={handleTabClick} />
         <Tab name={Menus.DISCOVER} icon={Icons.COMPASS} onClick={handleTabClick} />
@@ -41,8 +41,8 @@ const HorizontalMenu: FunctionComponent = () => {
         <Tab name={Menus.TALKS} icon={Icons.MESSAGE} onClick={handleTabClick} />
         <Tab name={Menus.UPDATES} icon={Icons.BELL} onClick={handleTabClick} />
       </Tabset>
-    </NavBar>
+    </TabBar>
   );
 };
 
-export default HorizontalMenu;
+export default BottomTabBar;

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const sizeMap = {
   small: '13px',
@@ -50,5 +50,5 @@ export const Text = styled.span.attrs(anyPropsAttrs)`
   text-align: ${({ align }) => align};
   ${getColor};
   ${getEllipsisStyles};
-  ${getMargins};
+  ${getPositionStyles};
 `;

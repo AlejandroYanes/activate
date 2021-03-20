@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import { cardWidth } from 'styles/variables';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   max-width: ${cardWidth};
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 export const ListContainer = styled.div`

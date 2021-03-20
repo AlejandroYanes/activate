@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const sizeMap = {
   'x-small': 'width: 16px; height: 16px',
@@ -11,7 +11,7 @@ const sizeMap = {
 
 export const Wrapper = styled.div.attrs(anyPropsAttrs)`
   position: relative;
-  ${getMargins};
+  ${getPositionStyles};
   ${({ size }) => sizeMap[size]};
 
   & div:first-child{

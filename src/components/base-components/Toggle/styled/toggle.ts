@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 
 export const StyledToggle = styled.div`
   display: flex;
   align-items: center;
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 export const HiddenInput = styled.input`

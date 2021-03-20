@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
+import { useAppLayout } from 'components/providers/Layout';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
@@ -9,7 +10,6 @@ import { Paragraph } from 'components/base-components/Typography';
 import Header from './Header';
 import EventImage from './EventImage';
 import { Actions, Card, Content, Divider, Footer, } from './styled';
-import { useAppLayout } from '../../../providers/Layout';
 
 interface Props {
   title: string;
@@ -29,7 +29,7 @@ interface Props {
 
 const avatars = ['user1', 'user2', 'user6'];
 
-const PresentationCard: FunctionComponent<Props> = (props) => {
+const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
   const Colors = useAppColors();
   const {
@@ -106,4 +106,4 @@ const PresentationCard: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default PresentationCard;
+export default EventCard;

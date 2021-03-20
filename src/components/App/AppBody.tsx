@@ -1,38 +1,21 @@
 import React, { FunctionComponent } from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import { useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import NavBar from 'components/experience/NavBar';
+import BottomTabBar from 'components/experience/BottomTabBar';
+import SidePanel from 'components/experience/SidePanel';
 import NotificationCenter from 'components/experience/NotificationCenter';
 import ModalStack  from 'components/experience/ModalStack';
-import SidePanel from 'components/experience/SidePanel';
-import FeedPage from 'components/pages/Feed';
-import ProfilePage from 'components/pages/Profile';
-import DiscoverPage from 'components/pages/Discover';
-import EventDetailsPage from 'components/pages/EventDetails';
-import SearchPage from 'components/pages/Search';
-import PublisherPage from 'components/pages/Publisher';
-import UserPage from 'components/pages/User';
-import TalksPage from 'components/pages/Talks';
+import Routes from './Routes';
 import { Body, StyledApp } from './styled';
 
-const AppBody: FunctionComponent = () => {
+const PrimaryBody: FunctionComponent = () => {
   const layout = useAppLayout();
 
   return (
     <StyledApp layout={layout} data-el="app">
       <NavBar />
       <Body layout={layout} data-el="app-body">
-        <Switch>
-          <Route path="/upcoming" component={FeedPage} exact />
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/discover" component={DiscoverPage} />
-          <Route path="/event-detail" component={EventDetailsPage} />
-          <Route path="/search" component={SearchPage} />
-          <Route path="/publisher" component={PublisherPage} />
-          <Route path="/user" component={UserPage} />
-          <Route path="/talks" component={TalksPage} />
-          <Redirect to="/upcoming" />
-        </Switch>
+        <Routes />
       </Body>
       <SidePanel />
       <NotificationCenter />
@@ -41,4 +24,30 @@ const AppBody: FunctionComponent = () => {
   );
 };
 
-export default AppBody;
+const MobileBody: FunctionComponent = () => {
+  const layout = useAppLayout();
+
+  return (
+    <StyledApp layout={layout} data-el="app">
+      <BottomTabBar />
+      <Body layout={layout} data-el="app-body">
+        <Routes />
+      </Body>
+      <NotificationCenter />
+      <ModalStack />
+    </StyledApp>
+  );
+};
+
+const bodyMap = {
+  [Layout.FULL]: PrimaryBody,
+  [Layout.MIDDLE]: PrimaryBody,
+  [Layout.SMALL]: MobileBody,
+};
+
+export default function AppBody() {
+  const layout = useAppLayout();
+  const BodyComponent = bodyMap[layout];
+
+  return <BodyComponent />;
+}

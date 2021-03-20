@@ -32,7 +32,7 @@ const SearchPage: FunctionComponent = () => {
   }, []);
 
   return (
-    <Page title={titleByLayoutMap[layout]}>
+    <Page title={titleByLayoutMap[layout]} withTabBar>
       <Input value={search} onChange={handleSearch} icon={Icons.SEARCH} showClear />
       <Tabset
         activeTab={activeTab}

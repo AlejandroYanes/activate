@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { BadgeProps } from '..';
 
@@ -40,7 +40,7 @@ export const StyledBadge = styled.div.attrs((props: any) => props)`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${getMargins};
+  ${getPositionStyles};
   font-size: ${resolveSize};
   color: ${resolveFontColor};
   background-color: ${resolveBackgroundColor};

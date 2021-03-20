@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
 
-export const NavBar = styled.div`
+export const TabBar = styled.div`
   display: flex;
   align-items: stretch;
   padding: 8px;

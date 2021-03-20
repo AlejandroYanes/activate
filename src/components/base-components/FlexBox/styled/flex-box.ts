@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 
 const getLayoutStyles = (props) => {
   const { direction, align, justify, width, height } = props;
@@ -16,5 +16,5 @@ const getLayoutStyles = (props) => {
 export const StyledFlexBox = styled.div`
   display: flex;
   ${getLayoutStyles};
-  ${getMargins}
+  ${getPositionStyles}
 `;

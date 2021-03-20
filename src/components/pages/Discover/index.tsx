@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import { PresentationCard } from 'components/experience/EventCard';
+import EventCard from 'components/experience/EventCard';
 import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import { events } from './events';
@@ -15,7 +15,7 @@ enum Tabs {
 }
 
 function eventFactory() {
-  return events.map((event) => <PresentationCard key={event.id} {...event} />);
+  return events.map((event) => <EventCard key={event.id} {...event} />);
 }
 
 const titleByLayoutMap = {
@@ -30,17 +30,23 @@ const DiscoverPage: FunctionComponent = () => {
   const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
 
   useEffect(() => {
-    addSection(AuxPanelSection.FILTER);
-    setActiveSection(AuxPanelSection.FILTER);
+    if (layout !== Layout.SMALL) {
+      addSection(AuxPanelSection.FILTER);
+      setActiveSection(AuxPanelSection.FILTER);
+    }
 
-    return () => removeSection(AuxPanelSection.FILTER);
+    return () => {
+      if (layout !== Layout.SMALL) {
+        removeSection(AuxPanelSection.FILTER);
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const eventCards = useMemo(eventFactory, []);
 
   return (
-    <Page title={titleByLayoutMap[layout]}>
+    <Page title={titleByLayoutMap[layout]} withTabBar>
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Layout } from '../../../../providers/Layout';
+import { Layout } from 'components/providers/Layout';
 
 const stylesMap = {
   [Layout.FULL]: css`

@@ -13,9 +13,11 @@ const ModalRenderer: FunctionComponent<Props> = (props) => {
   const Component = ModalMap[name] || emptyComponent;
 
   useEffect(() => {
-    document.body.style.overflowY = 'hidden';
+    const rootElement = document.getElementById('root');
+    rootElement.style.display = 'none';
+
     return () => {
-      document.body.style.overflowY = 'auto';
+      rootElement.style.display = 'block';
     }
   }, []);
 

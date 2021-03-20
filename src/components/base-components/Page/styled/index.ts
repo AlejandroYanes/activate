@@ -27,8 +27,13 @@ export const StyledPage = styled.section.attrs(anyPropsAttrs)`
   ${({ layout }) => layoutMap[layout]};
 `;
 
-export const Content = styled.section`
+const spacingMap = {
+  true: 'padding: 16px 6px 96px 6px;',
+  false: 'padding: 16px 6px 16px 6px;',
+};
+
+export const Content = styled.section.attrs(anyPropsAttrs)`
   flex: 1;
   overflow: hidden auto;
-  padding: 16px 6px 96px 6px;
+  ${({ withTabBar }) => spacingMap[withTabBar]};
 `;

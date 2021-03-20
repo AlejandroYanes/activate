@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 
 export const StyledNotification = styled.div`
   position: relative;
@@ -9,7 +9,7 @@ export const StyledNotification = styled.div`
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   border-radius: 12px;
   padding: 12px;
-  ${getMargins}
+  ${getPositionStyles}
 `;
 
 export const Header = styled.div`

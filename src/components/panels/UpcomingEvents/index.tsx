@@ -1,18 +1,10 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import faker from 'faker';
-import { SummaryCard } from 'components/experience/EventCard';
-import { Wrapper } from './styled';
-
-const events = new Array(3).fill(1).map(() => ({
-  id: faker.random.uuid(),
-  title: faker.lorem.words(5),
-  date: faker.date.future(),
-  address: faker.address.streetAddress(),
-  isBooked: true,
-}));
+import UpcomingEvent from './UmpcomingEvent';
+import { Wrapper } from './styled/content';
+import { events } from '../../pages/Discover/events';
 
 function eventFactory() {
-  return events.map((event) => <SummaryCard key={event.id} {...event} mB />);
+  return events.slice(0,3).map((event) => <UpcomingEvent key={event.id} {...event} />);
 }
 
 const UpcomingEventsPanel: FunctionComponent = () => {

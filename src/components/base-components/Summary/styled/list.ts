@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 
 export const StyledSummary = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ export const StyledSummary = styled.div`
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.WHITE};
   padding-bottom: 10px;
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 export const Header = styled.div`

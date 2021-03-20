@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const wrapperSizeMap = {
   'x-small': 'height: 12px; width: 56px',
@@ -13,7 +13,7 @@ export const Wrapper = styled.div.attrs(anyPropsAttrs)`
   align-items: center;
   justify-content: space-between;
   ${({ size }) => wrapperSizeMap[size]};
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 const dotSizeMap = {
