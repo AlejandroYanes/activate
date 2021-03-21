@@ -25,8 +25,8 @@ const sections = [
     value: AuxPanelSection.TALKS,
   },
   {
-    icon: Icons.BELL,
-    label: 'Notifications',
+    icon: Icons.TIME_HISTORY,
+    label: 'Updates',
     value: AuxPanelSection.UPDATES,
   },
 ];

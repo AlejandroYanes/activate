@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import UpcomingEvent from './UmpcomingEvent';
-import { Wrapper } from './styled/content';
 import { events } from '../../pages/Discover/events';
+import UpcomingEvent from './UpcomingEvent';
+import { Wrapper } from './styled/content';
 
 function eventFactory() {
   return events.slice(0,3).map((event) => <UpcomingEvent key={event.id} {...event} />);

@@ -1,6 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
-import { Title as TitleComponent } from 'components/base-components/Typography';
 
 const sizeMap = {
   small: '40vw',
@@ -8,32 +7,41 @@ const sizeMap = {
   large: '90vw',
 };
 
+const commonStyles = css`
+  padding: 16px;
+  border-radius: 16px;
+  min-height: 150px;
+  width: ${({ size }: any) => sizeMap[size]};
+`;
+
+const styleMap = {
+  small: commonStyles,
+  medium: commonStyles,
+  large: commonStyles,
+  mobile: `
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    padding: 16px 0 0 0;
+  `,
+};
+
 export const StyledModal = styled.article.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
-  padding: 16px;
-  min-height: 150px;
-  width: ${({ size }) => sizeMap[size]};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-`;
-
-export const Header = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-`;
-
-export const Title = styled(TitleComponent)`
-  margin: 0;
-  padding: 0 0 0 12px;
+  ${({ size }) => styleMap[size]};
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow: hidden auto;
 `;
 
 export const Footer = styled.footer`

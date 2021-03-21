@@ -9,7 +9,7 @@ enum Menus {
   UPCOMING = '/upcoming',
   DISCOVER = '/discover',
   SEARCH = '/search',
-  TALKS = '/talks',
+  TALKS = '#talks',
   UPDATES = '#updates',
 }
 
@@ -39,7 +39,7 @@ const BottomTabBar: FunctionComponent = () => {
         <Tab name={Menus.DISCOVER} icon={Icons.COMPASS} onClick={handleTabClick} />
         <Tab name={Menus.SEARCH} icon={Icons.SEARCH} onClick={handleTabClick} />
         <Tab name={Menus.TALKS} icon={Icons.MESSAGE} onClick={handleTabClick} />
-        <Tab name={Menus.UPDATES} icon={Icons.BELL} onClick={handleTabClick} />
+        <Tab name={Menus.UPDATES} icon={Icons.TIME_HISTORY} onClick={handleTabClick} />
       </Tabset>
     </TabBar>
   );

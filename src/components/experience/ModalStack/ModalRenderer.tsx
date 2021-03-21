@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { ModalMap } from './types';
+import { ModalMap } from 'components/modals';
 
 interface Props {
   name: string;

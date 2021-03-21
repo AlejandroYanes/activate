@@ -58,6 +58,7 @@ import MenuDotsIcon from './MenuDots';
 import LayersIcon from './Layers';
 import GridElementsIcon from './GridElements';
 import MaximizeIcon from './Maximize';
+import TimeHistoryIcon from './TimeHistory';
 
 export enum Icons {
   HOME = 'home',
@@ -119,6 +120,7 @@ export enum Icons {
   LAYERS = 'layers',
   GRID_ELEMENTS = 'grid-elements',
   MAXIMIZE = 'maximize',
+  TIME_HISTORY = 'history',
 }
 
 export const icons = {
@@ -181,4 +183,5 @@ export const icons = {
   [Icons.LAYERS]: (props) => <LayersIcon {...props} />,
   [Icons.GRID_ELEMENTS]: (props) => <GridElementsIcon {...props} />,
   [Icons.MAXIMIZE]: (props) => <MaximizeIcon {...props} />,
+  [Icons.TIME_HISTORY]: (props) => <TimeHistoryIcon {...props} />,
 };

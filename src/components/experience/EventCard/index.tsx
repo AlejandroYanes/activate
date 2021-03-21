@@ -65,24 +65,16 @@ const EventCard: FunctionComponent<Props> = (props) => {
         <Actions>
           <IconButton
             size="large"
-            buttonColor="success"
-            variant="flat"
-            icon={Icons.SHARE}
-            color={Colors.SUCCESS}
-            onClick={() => undefined}
-          />
-          <IconButton
-            size="large"
             buttonColor="info"
             variant="flat"
-            icon={Icons.SEND}
+            icon={Icons.FORWARD}
             color={Colors.INFO}
             onClick={() => undefined}
           />
           <RenderIf condition={!isAFollowedEvent}>
             <IconButton
               size="large"
-              buttonColor="success"
+              buttonColor="accent"
               variant="flat"
               icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
               color={Colors.ACCENT}
@@ -90,16 +82,16 @@ const EventCard: FunctionComponent<Props> = (props) => {
               onClick={handleBookActionClick}
             />
           </RenderIf>
-          <RenderIf condition={isAFollowedEvent}>
-            <IconButton
-              size="large"
-              buttonColor="error"
-              variant="flat"
-              icon={Icons.REMOVE_BOOKMARK}
-              color={Colors.ERROR}
-              onClick={() => undefined}
-            />
-          </RenderIf>
+          {/*<RenderIf condition={isAFollowedEvent}>*/}
+          {/*  <IconButton*/}
+          {/*    size="large"*/}
+          {/*    buttonColor="error"*/}
+          {/*    variant="flat"*/}
+          {/*    icon={Icons.REMOVE_BOOKMARK}*/}
+          {/*    color={Colors.ERROR}*/}
+          {/*    onClick={() => undefined}*/}
+          {/*  />*/}
+          {/*</RenderIf>*/}
         </Actions>
       </Footer>
     </Card>

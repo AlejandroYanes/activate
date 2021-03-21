@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const Liner = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  top: 4px;
+  left: 6px;
+  bottom: 4px;
   width: 2px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.ACCENT};
@@ -15,14 +15,16 @@ export const Event = styled.div`
   display: flex;
   flex-direction: row;
   align-items: stretch;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 16px;
   position: relative;
+  transition: all 250ms linear;
 
   &:hover {
+    background-color: ${({ theme }) => theme.colors.FONT_SHADE};
+
     ${Liner} {
       top: 8px;
-      left: 2px;
       bottom: 8px;
     }
   }

@@ -19,7 +19,6 @@ const PrimaryBody: FunctionComponent = () => {
       </Body>
       <SidePanel />
       <NotificationCenter />
-      <ModalStack />
     </StyledApp>
   );
 };
