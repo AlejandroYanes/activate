@@ -22,14 +22,10 @@ const getFirefoxScrollBarColor = (props) => {
   `;
 };
 
-export const GlobalStyles = createGlobalStyle`
+const commonStyles = css`
   body {
     background-color: ${({ theme }: any) => theme.colors.BACKGROUND};
     color: ${({ theme }: any) => theme.colors.FONT};
-
-    &::-webkit-scrollbar-track {
-      background: ${({ theme }) => theme.colors.BACKGROUND};
-    }
   }
 
   *::selection, input::selection, textarea::selection {
@@ -37,8 +33,26 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.WHITE};
   }
 
+  div, section, article, main, header, footer {
+    box-sizing: border-box;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+`;
+
+export const PrimaryGlobalStyles = createGlobalStyle`
+  ${commonStyles};
+
+  body {
+    &::-webkit-scrollbar-track {
+      background: ${({ theme }) => theme.colors.BACKGROUND};
+    }
+  }
+
   *::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   *::-webkit-scrollbar-track {
@@ -56,4 +70,8 @@ export const GlobalStyles = createGlobalStyle`
     scrollbar-width: thin;
     ${getFirefoxScrollBarColor};
   }
+`;
+
+export const MobileGlobalStyles = createGlobalStyle`
+  ${commonStyles};
 `;

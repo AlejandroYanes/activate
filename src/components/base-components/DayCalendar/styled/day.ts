@@ -35,8 +35,8 @@ export const DayNumber = styled.span.attrs((props: any) => props)`
 export const Mark = styled(motion.div)`
   position: absolute;
   z-index: ${ZLevels.dayComponentMark};
-  height: 74px;
-  width: 48px;
+  height: 86px;
+  width: 60px;
   border-radius: 20px;
   pointer-events: none;
   border: 6px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};

@@ -37,7 +37,7 @@ const Comments: FunctionComponent = () => {
           onClick={toggleModal}
         />
       </Footer>
-      <Modal header="Leave your comment" onClose={toggleModal} visible={showModal}>
+      <Modal title="Leave your comment" onClose={toggleModal} visible={showModal}>
         <Form state={comment} onChange={setComment}>
           <Field name="text" component={TextArea} />
         </Form>

@@ -1,33 +1,45 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import RenderIf from 'components/base-components/RenderIf';
-import { Title } from 'components/base-components/Typography';
-import { useAppLayout } from 'components/providers/Layout';
-import { StyledPage, Header, Actions } from './styled';
+import { Layout, useAppLayout } from 'components/providers/Layout';
+import Header from './Header';
+import { StyledPage, Content } from './styled';
 
 interface Props {
   title?: string;
   actions?: ReactNode;
+  asModal?: boolean;
+  withTabBar?: boolean;
 }
+
+const wrapperMap = {
+  [Layout.FULL]: ({ children }) => (
+    <>{children}</>
+  ),
+  [Layout.MIDDLE]: ({ children }) => (
+    <>{children}</>
+  ),
+  [Layout.SMALL]: Content,
+};
 
 const Page: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { title, actions, children } = props;
+
+  const { title, actions, asModal, withTabBar, children } = props;
+
+  const Wrapper = wrapperMap[layout];
 
   return (
     <StyledPage layout={layout} data-el="page">
-      <Header layout={layout} spaced={!!title || !!actions} data-el="page-header">
-        <RenderIf condition={!!title}>
-          <Title level={1} bold color="brand">{title}</Title>
-        </RenderIf>
-        <RenderIf condition={!!actions}>
-          <Actions>
-            {actions}
-          </Actions>
-        </RenderIf>
-      </Header>
-      {children}
+      <Header title={title} actions={actions} />
+      <Wrapper asModal={asModal} withTabBar={withTabBar}>
+        {children}
+      </Wrapper>
     </StyledPage>
   );
+};
+
+Page.defaultProps = {
+  withTabBar: false,
+  asModal: false,
 };
 
 export default Page;

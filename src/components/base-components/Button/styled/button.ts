@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 import { ButtonProps } from '..';
 
 const getSize = (props: ButtonProps) => {
@@ -111,7 +111,7 @@ export const Button = styled.button`
   position: relative;
   transition: all linear 150ms;
   ${getSize};
-  ${getMargins};
+  ${getPositionStyles};
   ${getVariantStyles};
 
   &:active {

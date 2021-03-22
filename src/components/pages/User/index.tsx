@@ -2,11 +2,11 @@ import React, { FunctionComponent, useState } from 'react';
 import * as faker from 'faker';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
-import { PresentationCard } from 'components/experience/EventCard';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import IconButton from 'components/base-components/IconButton';
+import EventCard from 'components/experience/EventCard';
 import ProfileCard from 'components/experience/ProfileCard';
 import { events } from '../Discover/events';
 
@@ -65,9 +65,9 @@ const UserPage: FunctionComponent = () => {
           <Tab name={UserTabs.FRIENDS} label="Friends" icon={Icons.USERS} />
         </Tabset>
       </ProfileCard>
-      <PresentationCard {...events[0]} />
-      <PresentationCard {...events[2]} />
-      <PresentationCard {...events[4]} />
+      <EventCard {...events[0]} />
+      <EventCard {...events[2]} />
+      <EventCard {...events[4]} />
     </Page>
   );
 };

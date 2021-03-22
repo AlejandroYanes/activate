@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 import { getVariantStyles } from 'components/base-components/Button/styled';
 import { IconButtonProps } from '..';
 
@@ -98,7 +98,7 @@ export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => 
   justify-content: center;
   cursor: pointer;
   transition: all 150ms linear;
-  ${getMargins};
+  ${getPositionStyles};
   ${getSize};
   ${getVariantStyles}
   ${getToggleStyles}
