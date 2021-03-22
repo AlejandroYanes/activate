@@ -82,16 +82,6 @@ const EventCard: FunctionComponent<Props> = (props) => {
               onClick={handleBookActionClick}
             />
           </RenderIf>
-          {/*<RenderIf condition={isAFollowedEvent}>*/}
-          {/*  <IconButton*/}
-          {/*    size="large"*/}
-          {/*    buttonColor="error"*/}
-          {/*    variant="flat"*/}
-          {/*    icon={Icons.REMOVE_BOOKMARK}*/}
-          {/*    color={Colors.ERROR}*/}
-          {/*    onClick={() => undefined}*/}
-          {/*  />*/}
-          {/*</RenderIf>*/}
         </Actions>
       </Footer>
     </Card>

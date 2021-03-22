@@ -27,13 +27,25 @@ export const StyledPage = styled.section.attrs(anyPropsAttrs)`
   ${({ layout }) => layoutMap[layout]};
 `;
 
-const spacingMap = {
-  true: 'padding: 16px 6px 96px 6px;',
-  false: 'padding: 16px 6px 16px 6px;',
+const withTabBarStyles = {
+  true: 'padding: 0 6px 96px 6px;',
+  false: 'padding: 0 6px 16px 6px;',
+};
+
+const asModalStyles = {
+  true: 'padding-top: 0',
+  false: 'padding-top: 16px;',
+};
+
+const getSpacingStyles = ({ asModal, withTabBar }) => {
+  return `
+    ${withTabBarStyles[withTabBar]};
+    ${asModalStyles[asModal]};
+  `;
 };
 
 export const Content = styled.section.attrs(anyPropsAttrs)`
   flex: 1;
   overflow: hidden auto;
-  ${({ withTabBar }) => spacingMap[withTabBar]};
+  ${getSpacingStyles};
 `;

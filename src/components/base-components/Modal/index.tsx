@@ -7,7 +7,7 @@ import { Content, StyledModal } from './styled';
 
 interface Props {
   visible: boolean;
-  title: string | ReactNode;
+  title?: string | ReactNode;
   onClose: () => void;
   actions?: ButtonProps[];
   footer?: ReactNode;

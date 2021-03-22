@@ -23,7 +23,7 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
       {/*  <span>{date.getDate()}</span>*/}
       {/*</DateBadge>*/}
       <TitleAndAddress>
-        <Link to="/event-detail">
+        <Link to="#event-details">
           <Title level={3}>{title}</Title>
         </Link>
         <Address>
