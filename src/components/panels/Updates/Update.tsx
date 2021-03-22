@@ -1,35 +1,39 @@
 import React, { FunctionComponent } from 'react';
-import { formatShortDate, PositionProps } from 'helpers';
-import {
-  StyledNotification,
-  Header,
-  Image,
-  TitleSection,
-  Title,
-  DateStamp,
-  Message,
-} from './styled';
+import { formatShortDate } from 'helpers';
+import { Text } from 'components/base-components/Typography';
+import Avatar from 'components/base-components/Avatar';
+import FlexBox from 'components/base-components/FlexBox';
+import RenderIf from 'components/base-components/RenderIf';
+import Message from './Message';
+import { StyledNotification, UnReadDot } from './styled/update';
+import { UpdateType, EventLinkingUpdate, UserLinkingUpdate } from './types';
 
-interface Props extends PositionProps {
-  image: string;
-  title: string;
+interface Props {
+  type: UpdateType;
   date: Date;
-  message: string;
+  content: EventLinkingUpdate | UserLinkingUpdate;
+  read: boolean;
 }
 
 const Update: FunctionComponent<Props> = (props) => {
-  const { image, title, date, message, ...margins } = props;
+  const { date, type, content, read, ...rest } = props;
 
   return (
-    <StyledNotification {...margins}>
-      <Header>
-        <Image src={image} alt="event" />
-        <TitleSection>
-          <Title>{title}</Title>
-          <DateStamp>{formatShortDate(date)}</DateStamp>
-        </TitleSection>
-      </Header>
-      <Message>{message}</Message>
+    <StyledNotification {...rest}>
+      <Avatar icon={content.user.avatarUrl} size="x-small" />
+      <RenderIf condition={read}>
+        <UnReadDot />
+      </RenderIf>
+      <FlexBox direction="column" padding="0 0 0 6px">
+        <Message type={type} content={content} />
+        <Text
+          size="small"
+          color="secondary"
+          margin="6px 0 0 0"
+        >
+          {formatShortDate(date)}
+        </Text>
+      </FlexBox>
     </StyledNotification>
   );
 };

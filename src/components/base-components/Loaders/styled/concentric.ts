@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const sizeMap = {
   small: 'height: 20px; width: 20px',
@@ -10,7 +10,7 @@ const sizeMap = {
 
 export const Wrapper = styled.svg.attrs(anyPropsAttrs)`
   ${({ size }) => sizeMap[size]};
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 const preloader = keyframes`

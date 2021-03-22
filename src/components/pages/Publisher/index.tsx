@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import * as faker from 'faker';
 import { useAppColors } from 'components/providers/Theme';
-import { PresentationCard } from 'components/experience/EventCard';
+import EventCard from 'components/experience/EventCard';
 import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import IconButton from 'components/base-components/IconButton';
@@ -42,9 +42,9 @@ const PublisherPage: FunctionComponent = () => {
         action={action}
         {...rest}
       />
-      <PresentationCard {...events[3]} />
-      <PresentationCard {...events[0]} />
-      <PresentationCard {...events[1]} />
+      <EventCard {...events[3]} />
+      <EventCard {...events[0]} />
+      <EventCard {...events[1]} />
     </Page>
   );
 };

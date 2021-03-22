@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 import { AvatarProps } from '..';
 
 const avatarStyles = {
@@ -17,7 +17,7 @@ const getSizeStyles = (props: AvatarProps) => avatarStyles.size[props.size];
 
 export const StyledAvatar = styled.span.attrs((props: any) => props)`
   ${getSizeStyles};
-  ${getMargins};
+  ${getPositionStyles};
   border-radius: 50%;
 
   &:focus {

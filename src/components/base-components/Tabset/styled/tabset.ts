@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 
 export const StyledTabset = styled.ul.attrs((props: any) => props)`
   list-style: none;
@@ -10,5 +10,5 @@ export const StyledTabset = styled.ul.attrs((props: any) => props)`
   margin: 0;
   width: 100%;
   background-color: transparent;
-  ${getMargins};
+  ${getPositionStyles};
 `;

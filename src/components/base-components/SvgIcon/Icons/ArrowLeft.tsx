@@ -17,7 +17,8 @@ const ArrowLeftIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         fillRule="evenodd"
-        clipRule="evenodd" d="M6.41412 13L12.707 19.2929L11.2928 20.7071L2.58569 12L11.2928 3.29289L12.707 4.70711L6.41412 11H20.9999V13H6.41412Z"
+        clipRule="evenodd"
+        d="M6.41412 13L12.707 19.2929L11.2928 20.7071L2.58569 12L11.2928 3.29289L12.707 4.70711L6.41412 11H20.9999V13H6.41412Z"
         fill={color}
       />
     </svg>

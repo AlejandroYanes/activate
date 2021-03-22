@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-import { getMargins, PositionProps } from 'helpers';
+import { getPositionStyles, PositionProps } from 'helpers';
 import { inputBorderRadius } from 'styles/variables';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
-  ${getMargins};
+  ${getPositionStyles};
   display: flex;
   flex-direction: column;
   background-color: transparent;

@@ -26,7 +26,7 @@ const Toggle: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledToggle {...rest}>
-      <HiddenInput type="checkbox" checked={value} />
+      <HiddenInput type="checkbox" checked={value} readOnly />
       <FauxContainer data-el="faux-container" onClick={onChange}>
         <FauxSlide data-el="faux-slide">
           <FauxOnSide data-el="faux-on-side" position={fauxOnPosition} />

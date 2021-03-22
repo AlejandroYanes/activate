@@ -8,9 +8,7 @@ interface Props {
   footer?: ReactNode;
 }
 
-const Footer: FunctionComponent<Props> = (props): any => {
-  const { footer, actions } = props;
-
+const ActionsRenderer = ({ actions }) => {
   const actionElements = useMemo(() => {
     if (actions && Array.isArray(actions)) {
       return actions.map((action, index) => <Button key={index} {...action} />);
@@ -18,14 +16,22 @@ const Footer: FunctionComponent<Props> = (props): any => {
     return null;
   }, [actions]);
 
+  return (
+    <StyledFooter>
+      {actionElements}
+    </StyledFooter>
+  );
+};
+
+const Footer: FunctionComponent<Props> = (props): any => {
+  const { footer, actions } = props;
+
   if (footer) {
     return footer;
   }
 
   return (
-    <StyledFooter>
-      {actionElements}
-    </StyledFooter>
+    <ActionsRenderer actions={actions} />
   );
 };
 

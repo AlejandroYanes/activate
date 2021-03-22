@@ -6,7 +6,7 @@ import FloatingContainer from './FloatingContainer';
 const layoutMap = {
   [Layout.FULL]: FixedContainer,
   [Layout.MIDDLE]: FloatingContainer,
-  [Layout.SMALL]: FloatingContainer,
+  [Layout.SMALL]: () => null,
 };
 
 const SidePanel: FunctionComponent = () => {

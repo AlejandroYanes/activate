@@ -8,13 +8,14 @@ interface Props extends PositionProps {
   color?: 'brand' | 'accent' | 'white' | 'font' | 'secondary' | 'background';
   align?: 'left' | 'center' | 'right';
   ellipsis?: boolean;
+  as?: string;
 }
 
 const Text: FunctionComponent<Props> = (props) => {
-  const { children, ...rest } = props;
+  const { children, as, ...rest } = props;
 
   return (
-    <StyledText {...rest}>{children}</StyledText>
+    <StyledText as={as as any} {...rest}>{children}</StyledText>
   );
 };
 
@@ -22,6 +23,7 @@ Text.defaultProps = {
   color: 'font',
   weight: 'normal',
   size: 'medium',
+  as: 'span'
 };
 
 export default Text;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { getMargins } from 'helpers';
+import { getPositionStyles } from 'helpers';
 
 export const Host = styled.section`
   display: flex;
@@ -10,7 +10,7 @@ export const Host = styled.section`
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 export const ScrollWrapper = styled.div`

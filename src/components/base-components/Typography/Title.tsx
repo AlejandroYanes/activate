@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { Title as StyledTitle } from './styled/title';
+import { H1, H2, H3 } from './styled/title';
 
 interface Props extends PositionProps {
   bold?: boolean;
@@ -9,11 +9,18 @@ interface Props extends PositionProps {
   align?: 'left' | 'center' | 'right';
 }
 
+const componentMap = {
+  1: H1,
+  2: H2,
+  3: H3,
+};
+
 const Title: FunctionComponent<Props> = (props) => {
   const { level, children, ...rest } = props;
+  const Component = componentMap[level];
 
   return (
-    <StyledTitle as={`h${level}` as any} level={level} {...rest}>{children}</StyledTitle>
+    <Component level={level} {...rest}>{children}</Component>
   );
 };
 

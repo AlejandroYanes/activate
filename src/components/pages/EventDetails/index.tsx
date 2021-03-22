@@ -1,35 +1,51 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import faker from 'faker';
 import { useHistory } from 'react-router-dom';
 import eventImg from 'assets/images/virtual-tour.jpeg';
+import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
-import IconButton from 'components/base-components/IconButton';
+import { Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
+import IconButton from 'components/base-components/IconButton';
 import Page from 'components/base-components/Page';
+import FlexBox from 'components/base-components/FlexBox';
+import AvatarGroup from 'components/base-components/AvatarGroup';
 import Description from './Description';
 import Comments from './Comnments';
-import { BackButton, EventTitle, Header, Image, ImageContainer, StyledEventDetail, SubHeader, } from './styled/page';
+import {
+  Image,
+  ImageContainer,
+  StyledEventDetail,
+} from './styled/page';
 
-const event = {
-  title: 'Free Music Workshop - February 2020',
-};
+interface Props {
+  asModal?: boolean;
+}
 
 enum Tabs {
   DetailsSection = 'Details',
   CommentsSection = 'Comments',
 }
 
-const EventDetailsPage: FunctionComponent = () => {
-  const layout = useAppLayout();
+const event = {
+  title: 'Free Music Workshop - February 2020',
+  attendees: faker.random.number({ min: 100, max: 50000 }),
+};
+
+const avatars = ['user1', 'user2', 'user6'];
+
+const EventDetailsPage: FunctionComponent<Props> = (props) => {
   const Colors = useAppColors();
   const { goBack } = useHistory();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
+
+  const { asModal } = props;
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
   const [isBooked, setIsBooked] = useState(false);
-  const { title } = event;
+  const { title, attendees } = event;
 
   const handleBookActionClick = useCallback(() => {
     setIsBooked((previousState) => !previousState);
@@ -44,39 +60,35 @@ const EventDetailsPage: FunctionComponent = () => {
   }, []);
 
   return (
-    <Page>
-      <StyledEventDetail flat={layout === Layout.SMALL}>
-        <Header>
-          <BackButton
+    <Page asModal={asModal}>
+      <StyledEventDetail asModal={asModal}>
+        <FlexBox align="flex-start" padding="0 0 16px 0">
+          <IconButton
             variant="flat"
             buttonColor="font"
             onClick={goBack}
             icon={Icons.ARROW_LEFT}
+            margin="4px 0 0 0"
           />
-          <EventTitle level={2}>{title}</EventTitle>
-        </Header>
+          <Title level={2} padding="0 0 0 6px">{title}</Title>
+        </FlexBox>
         <ImageContainer>
           <Image src={eventImg} alt="virtual tour" />
         </ImageContainer>
-        <SubHeader>
-          <Tabset
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            compact={layout === Layout.SMALL}
-            fullWidth
-          >
-            <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
-            <Tab name={Tabs.CommentsSection} label="Comments" icon={Icons.COMMENTS} />
-          </Tabset>
+        <FlexBox align="center" margin="8px 0">
+          <AvatarGroup
+            icons={avatars}
+            label={formatAmount(attendees)}
+            size="small"
+          />
           <IconButton
-            mR
-            mL
             size="large"
             buttonColor="info"
             variant="flat"
             icon={Icons.SEND}
             color={Colors.INFO}
             onClick={() => undefined}
+            margin="0 0 0 auto"
           />
           <IconButton
             size="large"
@@ -87,7 +99,16 @@ const EventDetailsPage: FunctionComponent = () => {
             secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
             onClick={handleBookActionClick}
           />
-        </SubHeader>
+        </FlexBox>
+        <Tabset
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          mT
+          mB
+        >
+          <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
+          <Tab name={Tabs.CommentsSection} label="Comments" icon={Icons.COMMENTS} />
+        </Tabset>
         <Switch by={activeTab}>
           <Case value={Tabs.DetailsSection} component={Description} />
           <Case value={Tabs.CommentsSection} component={Comments} />

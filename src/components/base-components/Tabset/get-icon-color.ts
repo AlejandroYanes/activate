@@ -17,7 +17,7 @@ export function getIconColor(options: Options) {
   } = options;
 
   if (disableFocus) {
-    return colors.BRAND;
+    return isSelected ? colors.BRAND_FONT : colors.FONT_SECONDARY;
   }
 
   if (isHovered) {

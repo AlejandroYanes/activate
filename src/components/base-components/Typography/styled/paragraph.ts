@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const sizeMap = {
   small: css`font-size: 12px; line-height: 20px;`,
@@ -9,6 +9,6 @@ const sizeMap = {
 
 export const Paragraph = styled.p.attrs(anyPropsAttrs)`
   ${({ size }) => sizeMap[size]};
-  ${getMargins};
+  ${getPositionStyles};
   padding: 0 6px;
 `;

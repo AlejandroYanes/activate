@@ -1,15 +1,22 @@
 import { PositionProps } from './common-props';
 
-export function getMargins(props) {
-  const { mT, mR, mB, mL } = props as PositionProps;
-  const margins = [
-    mT ? '1.5rem' : '0',
-    mR ? '1.5rem' : '0',
-    mB ? '1.5rem' : '0',
-    mL ? '1.5rem' : '0',
-  ];
+export function getPositionStyles(props) {
+  const { padding, margin,  mT, mR, mB, mL } = props as PositionProps;
+  const margins = !!margin
+    ? margin
+    :[
+      mT ? '1.5rem' : '0',
+      mR ? '1.5rem' : '0',
+      mB ? '1.5rem' : '0',
+      mL ? '1.5rem' : '0',
+    ].join(' ');
 
-  return `margin: ${margins.join(' ')};`;
+  const paddings = padding ? `padding: ${padding}` : '';
+
+  return `
+    margin: ${margins};
+    ${paddings};
+  `;
 }
 
 export const anyPropsAttrs = (props: any) => props;

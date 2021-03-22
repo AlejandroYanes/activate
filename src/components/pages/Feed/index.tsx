@@ -3,7 +3,7 @@ import { addDays } from 'date-fns';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import DayCalendar from 'components/base-components/DayCalendar';
 import Page from 'components/base-components/Page';
-import { PresentationCard } from 'components/experience/EventCard';
+import EventCard from 'components/experience/EventCard';
 import { Option, Options } from 'components/base-components/Options';
 import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
@@ -52,13 +52,18 @@ const FeedPage: FunctionComponent = () => {
   );
 
   return (
-    <Page title={titleByLayoutMap[layout]} actions={actions} data-el="feed-page">
+    <Page
+      title={titleByLayoutMap[layout]}
+      actions={actions}
+      withTabBar
+      data-el="feed-page"
+    >
       <RenderIf condition={option === EventsDisplay.ByDate}>
         <SubHeader>
           <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />
         </SubHeader>
       </RenderIf>
-      <PresentationCard isAFollowedEvent {...events[0]} />
+      <EventCard isAFollowedEvent {...events[0]} />
     </Page>
   );
 };
