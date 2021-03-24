@@ -52,7 +52,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
     <Card isBooked={isBooked} layout={layout}>
       <Header title={title} address={address} author={author} date={date} />
       <Content>
-        <EventImage src={image} alt="event" />
+        <EventImage src={image} alt={title} />
         <RenderIf condition={!!description}>
           <Paragraph mT>
             {description}

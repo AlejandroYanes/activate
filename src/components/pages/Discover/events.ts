@@ -10,7 +10,7 @@ const defaultEvent = {
   address: 'St. Joseph\'s Hospice',
   author: {
     name: faker.company.companyName(),
-    userName: `${faker.internet.userName()}`,
+    userName: `@${faker.internet.userName()}`,
     following: true,
   },
   attendees: faker.random.number(),

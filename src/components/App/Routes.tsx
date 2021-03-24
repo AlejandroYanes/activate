@@ -15,7 +15,7 @@ export default function Routes() {
       <Route path="/upcoming" component={FeedPage} />
       <Route path="/profile" component={ProfilePage} />
       <Route path="/discover" component={DiscoverPage} />
-      <Route path="/event-detail" component={EventDetailsPage} />
+      <Route path="/event-details" component={EventDetailsPage} />
       <Route path="/search" component={SearchPage} />
       <Route path="/publisher" component={PublisherPage} />
       <Route path="/user" component={UserPage} />

@@ -1,6 +1,7 @@
 import TalksModal from './Talks';
 import UpdatesModal from './Updates';
 import EventDetailsModal from './EventDetails';
+import ProfileModal from './Profile';
 
 export enum Modals {
   TALKS = '#talks',
@@ -8,6 +9,7 @@ export enum Modals {
   TALKS_MESSAGES = '#talks-messages',
   UPDATES = '#updates',
   EVENT_DETAILS = '#event-details',
+  PROFILE = '#profile',
 }
 
 export const ModalMap = {
@@ -16,4 +18,5 @@ export const ModalMap = {
   [Modals.TALKS_MESSAGES]: TalksModal,
   [Modals.UPDATES]: UpdatesModal,
   [Modals.EVENT_DETAILS]: EventDetailsModal,
+  [Modals.PROFILE]: ProfileModal,
 };

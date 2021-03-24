@@ -2,17 +2,16 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import faker from 'faker';
 import { useHistory } from 'react-router-dom';
 import eventImg from 'assets/images/virtual-tour.jpeg';
-import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Title } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
-import AvatarGroup from 'components/base-components/AvatarGroup';
+import Avatar from 'components/base-components/Avatar';
 import Description from './Description';
 import Comments from './Comnments';
 import {
@@ -32,10 +31,11 @@ enum Tabs {
 
 const event = {
   title: 'Free Music Workshop - February 2020',
-  attendees: faker.random.number({ min: 100, max: 50000 }),
+  author: {
+    userName: `@${faker.internet.userName()}`,
+    name: faker.company.companyName(),
+  },
 };
-
-const avatars = ['user1', 'user2', 'user6'];
 
 const EventDetailsPage: FunctionComponent<Props> = (props) => {
   const Colors = useAppColors();
@@ -45,7 +45,7 @@ const EventDetailsPage: FunctionComponent<Props> = (props) => {
   const { asModal } = props;
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
   const [isBooked, setIsBooked] = useState(false);
-  const { title, attendees } = event;
+  const { title, author } = event;
 
   const handleBookActionClick = useCallback(() => {
     setIsBooked((previousState) => !previousState);
@@ -76,16 +76,18 @@ const EventDetailsPage: FunctionComponent<Props> = (props) => {
           <Image src={eventImg} alt="virtual tour" />
         </ImageContainer>
         <FlexBox align="center" margin="8px 0">
-          <AvatarGroup
-            icons={avatars}
-            label={formatAmount(attendees)}
-            size="small"
-          />
+          <FlexBox align="center">
+            <Avatar icon="user6" />
+            <FlexBox direction="column" padding="0 0 0 6px">
+              <Text size="small" color="secondary">{author.userName}</Text>
+              <Text>{author.name}</Text>
+            </FlexBox>
+          </FlexBox>
           <IconButton
             size="large"
             buttonColor="info"
             variant="flat"
-            icon={Icons.SEND}
+            icon={Icons.FORWARD}
             color={Colors.INFO}
             onClick={() => undefined}
             margin="0 0 0 auto"
@@ -93,7 +95,7 @@ const EventDetailsPage: FunctionComponent<Props> = (props) => {
           <IconButton
             size="large"
             variant="flat"
-            buttonColor="success"
+            buttonColor="accent"
             icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
             color={Colors.ACCENT}
             secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}

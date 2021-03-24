@@ -16,7 +16,7 @@ const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
       <Header layout={layout} data-el="page-header">
         <Title level={1} bold color="brand">{title}</Title>
         <Actions>
-          <Link to="/profile">
+          <Link to="#profile">
             <Avatar icon="user2" />
           </Link>
         </Actions>

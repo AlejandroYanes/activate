@@ -1,12 +1,11 @@
 import React, { FunctionComponent, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import {
+  DuskLightsTheme,
   LifeIsABeachTheme,
   NeonLightsTheme,
   StartingTheme,
   SummerVibesTheme,
-  DuskLightsTheme,
 } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import { PickItem, PickList } from 'components/base-components/PickList';
@@ -40,7 +39,6 @@ const Settings: FunctionComponent = () => {
     useDarkStyle,
     toggleLightStyle,
   } = useAppTheme();
-  const { push } = useHistory();
 
   const [userData, setUserData] = useState(user);
 
@@ -128,8 +126,6 @@ const Settings: FunctionComponent = () => {
           onChange={toggleLightStyle}
         />
       </Line>
-
-      <Button onClick={() => push('#talks')} label="open talks" color="accent" variant="fill" mT />
     </StyledSettings>
   );
 };

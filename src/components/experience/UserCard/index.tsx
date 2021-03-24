@@ -8,7 +8,8 @@ import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
-import { Card, Info } from './styled';
+import FlexBox from 'components/base-components/FlexBox';
+import { Card } from './styled';
 
 const UserCard: FunctionComponent = () => {
   const Colors = useAppColors();
@@ -25,12 +26,12 @@ const UserCard: FunctionComponent = () => {
   return (
     <Card>
       <Avatar icon="user2" size="medium" />
-      <Info>
+      <FlexBox direction="column" padding="0 0 0 16px" grow>
        <Link to="user">
          <Text size="small">{userName}</Text>
          <Title level={3} color="brand">{name}</Title>
        </Link>
-      </Info>
+      </FlexBox>
       <RenderIf condition={!isSmallLayout}>
         <IconButton
           onClick={() => push('/user')}

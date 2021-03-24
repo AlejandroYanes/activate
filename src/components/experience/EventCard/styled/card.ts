@@ -4,12 +4,15 @@ import { Layout } from 'components/providers/Layout';
 const stylesMap = {
   [Layout.FULL]: css`
     margin-bottom: 64px;
+    padding: 16px;
   `,
   [Layout.MIDDLE]: css`
     margin-bottom: 64px;
+    padding: 16px;
   `,
   [Layout.SMALL]: css`
     margin-bottom: 32px;
+    padding: 8px;
   `,
 };
 
@@ -23,7 +26,6 @@ export const Card = styled.article.attrs((props: any) => props)`
   overflow: hidden;
   box-sizing: border-box;
   border-radius: 16px;
-  padding: 16px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   ${({ layout }) => stylesMap[layout]};
   border: 1px solid ${getBorderColor};

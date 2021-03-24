@@ -25,3 +25,15 @@ export const Line = styled.div.attrs((props: any) => props)`
     margin-right: 6px;
   }
 `;
+
+export const StyledLink = styled.a`
+  font-weight: normal;
+  color: ${({ theme }) => theme.colors.FONT};
+  line-height: 28px;
+  padding-left: 6px;
+  transition: all 150ms linear;
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.BRAND_FONT};
+  }
+`

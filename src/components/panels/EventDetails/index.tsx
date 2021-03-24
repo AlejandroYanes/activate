@@ -1,10 +1,13 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import faker from 'faker';
 import { formatCurrency, formatDateTime } from 'helpers';
+import { Text } from 'components/base-components/Typography';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Button from 'components/base-components/Button';
 import Badge from 'components/base-components/Badge';
 import AvatarGroup from 'components/base-components/AvatarGroup';
-import { Entry, Line, Panel } from './styled';
+import FlexBox from 'components/base-components/FlexBox';
+import { Panel, StyledLink } from './styled';
 
 const event = {
   date: new Date(),
@@ -30,46 +33,38 @@ const EventDetailsPanel: FunctionComponent = () => {
 
   return (
     <Panel>
-      <Entry color="secondary">
-        Date
-      </Entry>
-      <Line>
-        <span>{formatDateTime(date)}</span>
-      </Line>
-      <Entry color="secondary">
-        Address
-      </Entry>
-      <Line>
-        <span>{address}</span>
-      </Line>
-      <Entry color="secondary">
-        Price
-      </Entry>
-      <Line centered>
-        <span>
+      <FlexBox align="center" mB>
+        <SvgIcon icon={Icons.CALENDAR_FILLED} />
+        <Text padding="0 0 0 6px">{formatDateTime(date)}</Text>
+      </FlexBox>
+      <FlexBox align="flex-start" mB>
+        <SvgIcon icon={Icons.MAP_PIN} height={26} width={26} />
+        <Text padding="0 0 0 6px">{address}</Text>
+      </FlexBox>
+      <FlexBox align="center" mB>
+        <SvgIcon icon={Icons.TICKET} />
+        <Text padding="0 0 0 6px">
           {`${formatCurrency(price)} - ${formatCurrency(price)}`}
-        </span>
+        </Text>
         <Button
           sm
           color="brand"
           variant="fill"
           label="Buy a ticket"
           onClick={() => undefined}
-          style={{ marginLeft: 'auto' }}
+          margin="0 0 0 auto"
         />
-      </Line>
-      <Entry color="secondary">Available at</Entry>
-      <Line>
-        <a href="https://faketicketweb.com">https://faketicketweb.com</a>
-      </Line>
-      <Entry color="secondary">Attendance</Entry>
-      <Line centered>
-        <AvatarGroup icons={avatars} label="+ 16k" size="small" />
-      </Line>
-      <Entry color="secondary">Tags</Entry>
-      <Line>
+      </FlexBox>
+      <FlexBox align="center" mB>
+        <SvgIcon icon={Icons.GLOBE} />
+        <StyledLink href="https://faketicketweb.com">
+          https://faketicketweb.com
+        </StyledLink>
+      </FlexBox>
+      <AvatarGroup icons={avatars} label="+ 16k" size="small" mB />
+      <FlexBox wrap="wrap">
         {tagElements}
-      </Line>
+      </FlexBox>
     </Panel>
   );
 };

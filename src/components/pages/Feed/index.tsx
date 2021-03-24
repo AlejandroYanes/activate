@@ -64,6 +64,7 @@ const FeedPage: FunctionComponent = () => {
         </SubHeader>
       </RenderIf>
       <EventCard isAFollowedEvent {...events[0]} />
+      <EventCard isAFollowedEvent {...events[1]} />
     </Page>
   );
 };

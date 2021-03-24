@@ -4,7 +4,7 @@ import { getMonthLabel } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { Title, Text } from 'components/base-components/Typography';
-import AuthorMenu from '../AuthorMenu';
+import ActionsMenu from '../ActionsMenu';
 import { Address, DateBadge, Header, TitleAndAddress } from './styled/header.primary';
 import { HeaderProps } from './index';
 
@@ -19,7 +19,7 @@ const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
         <span>{date.getDate()}</span>
       </DateBadge>
       <TitleAndAddress>
-        <Link to="/event-detail">
+        <Link to="/event-details">
           <Title level={3}>{title}</Title>
         </Link>
         <Address>
@@ -27,7 +27,7 @@ const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
           <Text>{address}</Text>
         </Address>
       </TitleAndAddress>
-      <AuthorMenu {...author} />
+      <ActionsMenu {...author} />
     </Header>
   );
 };
