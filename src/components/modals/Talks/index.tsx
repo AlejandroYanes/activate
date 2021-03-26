@@ -1,11 +1,12 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
+import faker from 'faker';
 import { useAppColors } from 'components/providers/Theme';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import Modal from 'components/base-components/Modal';
-import TalksList from 'components/experience/TalkList';
+import UsersList from 'components/experience/UsersList';
 import Messages from 'components/experience/Messages';
 import { Modals } from 'components/modals';
 
@@ -47,20 +48,48 @@ const TalksModal: FunctionComponent = () => {
     }
   }, [activeView]);
 
+  const users = useMemo(() => (
+    new Array(faker.random.number({ min: 6, max: 16 }))
+      .fill(1)
+      .map(() => ({
+        id: faker.random.uuid(),
+        image: `user${faker.random.number({ min: 1, max: 12 })}`,
+        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+        secondary: (
+          activeView === Modals.TALKS_CONTACTS
+            ? `@${faker.internet.userName()}`
+            : faker.lorem.words(20)
+        ),
+        active: faker.random.boolean(),
+      }))
+  ), [activeView]);
+
+  const showContactsButton = (
+    <IconButton
+      size="large"
+      variant="fill"
+      buttonColor="accent"
+      color={colors.WHITE}
+      icon={Icons.ADD_USER}
+      onClick={openContactList}
+    />
+  );
+
   return (
     <Modal title={title} onClose={goBack} size="mobile" visible>
       <Switch by={activeView}>
         <Case
           value={Modals.TALKS}
-          component={TalksList}
-          openTalk={openTalk}
-          openContactList={openContactList}
+          component={UsersList}
+          onClick={openTalk}
+          action={showContactsButton}
+          users={users}
         />
         <Case
           value={Modals.TALKS_CONTACTS}
-          component={TalksList}
-          openTalk={openTalk}
-          asContactList
+          component={UsersList}
+          onClick={openTalk}
+          users={users}
         />
         <Case
           value={Modals.TALKS_MESSAGES}

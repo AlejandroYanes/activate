@@ -17,7 +17,7 @@ const getLayoutStyles = (props) => {
     flex-direction: ${direction};
     justify-content: ${justify};
     align-items: ${align};
-    flex-wrap: ${wrap};
+    flex-wrap: ${wrap ? 'wrap' : 'initial'};
     width: ${typeof width === 'number' ? `${width}px` : width};
     height: ${typeof height === 'number' ? `${height}px` : height};
     ${grow ? 'flex: 1;' : ''};

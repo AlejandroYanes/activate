@@ -10,6 +10,7 @@ const avatarStyles = {
     medium: { width: '52px', height: '52px' },
     large: { width: '64px', height: '64px' },
     'x-large': { width: '86px', height: '86px' },
+    'xx-large': { width: '102px', height: '102px' },
   },
 };
 

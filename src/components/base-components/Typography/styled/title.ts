@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
+import { getEllipsisStyles } from './text';
 
 const sizeMap = {
   1: '32px',
@@ -7,7 +8,17 @@ const sizeMap = {
   3: '20px',
 };
 
-const getColorFromColor = (props) => {
+const getTextStyles = (props) => {
+  const { level, align, weight } = props;
+
+  return `
+    font-size: ${sizeMap[level]};
+    text-align: ${align};
+    font-weight: ${weight};
+  `;
+};
+
+const getColor = (props) => {
   const { theme: { colors }, color } = props;
 
   if (color === 'secondary') {
@@ -22,27 +33,24 @@ const getColorFromColor = (props) => {
   return `color: ${fontColor}`;
 };
 
-const getWeight = ({ bold }) => `font-weight: ${bold ? 600 : 500}`;
-
 const commonStyles = css`
-  font-size: ${({ level }: any) => sizeMap[level]};
-  text-align: ${({ align }: any) => align};
-  ${getColorFromColor};
-  ${getWeight};
+  ${getTextStyles};
+  ${getColor};
+  ${getEllipsisStyles};
   ${getPositionStyles};
 `;
 
 export const H1 = styled.h1.attrs(anyPropsAttrs)`
-  font-family: "MPlus Rounded Thin", sans-serif;
+  padding: 12px 0;
   ${commonStyles};
 `;
 
 export const H2 = styled.h2.attrs(anyPropsAttrs)`
-  font-family: "MPlus Rounded Light", sans-serif;
+  padding: 10px 0;
   ${commonStyles};
 `;
 
 export const H3 = styled.h3.attrs(anyPropsAttrs)`
-  font-family: "MPlus Rounded Normal", sans-serif;
+  padding: 8px 0;
   ${commonStyles};
 `;

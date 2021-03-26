@@ -62,7 +62,7 @@ const EventDetailsPanel: FunctionComponent = () => {
         </StyledLink>
       </FlexBox>
       <AvatarGroup icons={avatars} label="+ 16k" size="small" mB />
-      <FlexBox wrap="wrap">
+      <FlexBox wrap>
         {tagElements}
       </FlexBox>
     </Panel>

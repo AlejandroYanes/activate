@@ -1,5 +1,8 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
-import { AuxPanelSection, useActivePanelSections } from 'components/providers/PanelSections';
+import {
+  AuxPanelSection,
+  useActivePanelSections,
+} from 'components/providers/PanelSections';
 import { useAppLayout } from 'components/providers/Layout';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Tabset } from 'components/base-components/Tabset';

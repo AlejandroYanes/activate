@@ -23,7 +23,7 @@ export const Info = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 0 8px;
+  padding: 0 0 0 8px;
   margin: 0;
   border: none;
   text-overflow: ellipsis;
@@ -35,7 +35,7 @@ export const Info = styled.div`
   }
 `;
 
-export const Talk = styled.button`
+export const Talk = styled.li`
   display: flex;
   align-items: center;
   padding: 6px 4px;

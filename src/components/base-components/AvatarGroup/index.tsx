@@ -38,7 +38,13 @@ const AvatarGroup: FunctionComponent<Props> = (props) => {
     <StyledAvatarGroup {...rest}>
       {avatars}
       <RenderIf condition={!!label}>
-        <Text as="label" margin="0 0 0 6px" size={resolveTextSize(props)}>{label}</Text>
+        <Text
+          as="label"
+          margin="0 0 0 6px"
+          size={resolveTextSize(props)}
+        >
+          {label}
+        </Text>
       </RenderIf>
     </StyledAvatarGroup>
   );

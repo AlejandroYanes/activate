@@ -31,7 +31,7 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
         <Avatar icon="user2" size="medium" />
         <AuthorDetails>
           <Text size="small">{userName}</Text>
-          <Title level={3} color="brand" bold>{name}</Title>
+          <Title level={3} color="brand">{name}</Title>
         </AuthorDetails>
       </AuthorSection>
       <MenuItem label="Go to profile" onClick={() => undefined} />

@@ -20,7 +20,7 @@ import {
 
 interface Props {
   user: {
-    image: string;
+    avatarUrl: string;
     name: string;
     active: boolean;
   };
@@ -33,7 +33,7 @@ interface Props {
 const Messages: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
   const {
-    user: { image, name, active },
+    user: { avatarUrl, name, active },
     leftActions,
     rightActions,
     smallView,
@@ -46,7 +46,7 @@ const Messages: FunctionComponent<Props> = (props) => {
       <Header small={smallView}>
         {leftActions}
         <AvatarSection>
-          <Avatar icon={image} />
+          <Avatar icon={avatarUrl} />
           <RenderIf condition={active}>
             <ActiveDot />
           </RenderIf>

@@ -3,10 +3,11 @@ import { PositionProps } from 'helpers';
 import { H1, H2, H3 } from './styled/title';
 
 interface Props extends PositionProps {
-  bold?: boolean;
   level?: 1 | 2 | 3;
   color?: 'brand' | 'accent' | 'font' | 'secondary';
   align?: 'left' | 'center' | 'right';
+  weight?: 'thin' | 'normal' | 'bold';
+  ellipsis?: boolean;
 }
 
 const componentMap = {
@@ -28,6 +29,7 @@ Title.defaultProps = {
   level: 1,
   color: 'font',
   align: 'left',
+  weight: 'normal',
 };
 
 export default Title;

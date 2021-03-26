@@ -11,25 +11,25 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
 
   return (
     <FlexBox direction="column" align="stretch">
-      <FlexBox direction="row" align="center" justify="flex-start">
+      <FlexBox direction="row" align="flex-start" justify="flex-start">
         <Avatar icon="user2" size="medium" />
-        <FlexBox justify="space-around" margin="0 0 0 auto">
-          <FlexBox direction="column" align="center" padding="0 16px">
-            <Text size="small">Events</Text>
-            <Title level={3} color="accent">{formatAmount(events)}</Title>
-          </FlexBox>
-          <FlexBox direction="column" align="center">
-            <Text size="small">Followers</Text>
-            <Title level={3} color="accent">{formatAmount(followers)}</Title>
-          </FlexBox>
+        <FlexBox direction="column" padding="0 0 0 16px">
+          <Link to="/publisher">
+            <Text size="small">{userName}</Text>
+            <Title level={3} color="brand">{name}</Title>
+          </Link>
         </FlexBox>
       </FlexBox>
-      <Link to="/publisher">
-        <FlexBox direction="column" padding="16px 0 20px 6px">
-          <Text size="small">{userName}</Text>
-          <Title level={3} color="brand">{name}</Title>
+      <FlexBox justify="space-around" margin="0 0 0 auto">
+        <FlexBox direction="column" align="center" padding="0 16px">
+          <Text size="small">Events</Text>
+          <Title level={3} color="accent">{formatAmount(events)}</Title>
         </FlexBox>
-      </Link>
+        <FlexBox direction="column" align="center">
+          <Text size="small">Followers</Text>
+          <Title level={3} color="accent">{formatAmount(followers)}</Title>
+        </FlexBox>
+      </FlexBox>
     </FlexBox>
   );
 };

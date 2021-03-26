@@ -5,44 +5,10 @@
   src: local('Comfortaa'), url('../../assets/fonts/Comfortaa-VariableFont_wght.ttf');
 }
 
-@font-face {
-  font-family: 'Rosarina';
-  src: local('Rosarina'), url('../../assets/fonts/rosarina.ttf');
-}
-
-@font-face {
-  font-family: 'Podriq';
-  src: local('Podriq'), url('../../assets/fonts/Podriq.otf');
-}
-
-@font-face {
-  font-family: 'Podriq Thick';
-  src: local('Podriq Thick'), url('../../assets/fonts/Podriq-Thick.otf');
-}
-
-@font-face {
-  font-family: 'Podriq Thin';
-  src: local('Podriq Thin'), url('../../assets/fonts/Podriq-Thin.otf');
-}
-
-@font-face {
-  font-family: 'MPlus Rounded Normal';
-  src: local('MPlus Rounded Normal'), url('../../assets/fonts/MPLUSRounded1c-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'MPlus Rounded Light';
-  src: local('MPlus Rounded Light'), url('../../assets/fonts/MPLUSRounded1c-Light.ttf');
-}
-
-@font-face {
-  font-family: 'MPlus Rounded Thin';
-  src: local('MPlus Rounded Thin'), url('../../assets/fonts/MPLUSRounded1c-Thin.ttf');
-}
 
 body {
   margin: 0;
-  font-family: 'MPlus Rounded Normal', sans-serif;
+  font-family: Comfortaa, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;

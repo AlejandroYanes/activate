@@ -7,7 +7,7 @@ const sizeMap = {
   large: '20px',
 };
 
-const getEllipsisStyles = (props) => {
+export const getEllipsisStyles = (props) => {
   const { ellipsis } = props;
 
   if (ellipsis) {

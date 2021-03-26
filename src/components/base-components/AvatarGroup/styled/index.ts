@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
-export const StyledAvatarGroup = styled.div`
+export const StyledAvatarGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
   ${getPositionStyles};

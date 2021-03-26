@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { TextArea } from 'components/base-components/Inputs';
+import { mobileHeaderHeight } from 'styles/variables';
 import { anyPropsAttrs } from 'helpers';
+import { TextArea } from 'components/base-components/Inputs';
 
 export const Messages = styled.main`
   height: 100%;
@@ -11,7 +12,8 @@ export const Messages = styled.main`
 export const Header = styled.header.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
-  padding: ${({ small }) => small ? '0 16px 20px' : '16px 16px 20px'};
+  height: ${mobileHeaderHeight}px;
+  padding: ${({ small }) => small ? '0 16px 0' : '16px 16px 0'};
 `;
 
 export const Info = styled.div`

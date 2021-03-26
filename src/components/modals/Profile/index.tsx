@@ -1,51 +1,85 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import faker from 'faker';
 import { formatAmount } from 'helpers';
+import { Text, Title } from 'components/base-components/Typography';
+import { Tab, Tabset } from 'components/base-components/Tabset';
+import { Case, Switch } from 'components/base-components/Switch';
+import { Icons } from 'components/base-components/SvgIcon';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import { Text, Title } from 'components/base-components/Typography';
 import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
-import PublishersResults from '../../pages/Search/PublishersResults';
-import UsersResults from '../../pages/Search/UsersResults';
-import Settings from '../../pages/Profile/Settings';
+import UsersList from 'components/experience/UsersList';
 
 enum ProfileTabs {
   Following = 'Following',
   Friends = 'Friends',
-  Setting = 'Settings',
 }
 
+const users = new Array(faker.random.number({ min: 6, max: 16 }))
+  .fill(1)
+  .map(() => ({
+    id: faker.random.uuid(),
+    image: `user${faker.random.number({ min: 1, max: 12 })}`,
+    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+    secondary: `@${faker.internet.userName()}`,
+    active: faker.random.boolean(),
+  }));
+
 const ProfileModal: FunctionComponent = () => {
-  const { goBack } = useHistory();
+  const { push, goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.Following);
 
+  const goToSettings = useCallback(() => {
+    push('#settings');
+  }, []);
+
   const header = (
-    <FlexBox align="center" height={62}>
+    <FlexBox align="center" grow width="100%">
       <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} />
+      <Title level={2} padding="0 0 0 6px" ellipsis>
+        Alejandro Yanes
+      </Title>
+      <IconButton
+        onClick={goToSettings}
+        icon={Icons.SETTINGS}
+        margin="0 0 0 auto"
+      />
     </FlexBox>
   );
 
   return (
     <Modal visible title={header} onClose={goBack} size="mobile">
-      <FlexBox direction="column" align="stretch" padding="0 6px">
-        <FlexBox align="center">
-          <Avatar size="x-large" icon="user2" />
+      <FlexBox
+        data-el="profile-modal-body"
+        direction="column"
+        align="stretch"
+        padding="0 6px"
+      >
+        <FlexBox
+          data-el="avatar-section"
+          align="center"
+          padding="0 8px"
+        >
+          <Avatar size="xx-large" icon="user2" />
           <FlexBox justify="space-around" grow>
             <FlexBox direction="column" align="center">
-              <Text>Events</Text>
-              <Title level={2} color="accent">{formatAmount(23466)}</Title>
+              <Text>Following</Text>
+              <Title level={2} color="accent">{formatAmount(55422)}</Title>
             </FlexBox>
             <FlexBox direction="column" align="center">
-              <Text>Followers</Text>
-              <Title level={2} color="accent">{formatAmount(55422)}</Title>
+              <Text>Friends</Text>
+              <Title level={2} color="accent">{formatAmount(23466)}</Title>
             </FlexBox>
           </FlexBox>
         </FlexBox>
-        <FlexBox direction="column" align="flex-start" padding="16px 8px">
+        <FlexBox
+          data-el="user-section"
+          direction="column"
+          align="flex-start"
+          padding="16px 8px"
+        >
           <Text>@alejandro.yanes94</Text>
           <Title level={2} color="brand">
             Alejandro Yanes De la Cruz
@@ -55,7 +89,6 @@ const ProfileModal: FunctionComponent = () => {
           activeTab={activeTab}
           onTabChange={setActiveTab}
           fullWidth
-          compact
           mT
           mB
         >
@@ -69,16 +102,18 @@ const ProfileModal: FunctionComponent = () => {
             label={ProfileTabs.Friends}
             icon={Icons.USERS}
           />
-          <Tab
-            name={ProfileTabs.Setting}
-            label={ProfileTabs.Setting}
-            icon={Icons.SETTINGS}
-          />
         </Tabset>
         <Switch by={activeTab}>
-          <Case value={ProfileTabs.Following} component={PublishersResults} />
-          <Case value={ProfileTabs.Friends} component={UsersResults} />
-          <Case value={ProfileTabs.Setting} component={Settings} />
+          <Case
+            value={ProfileTabs.Following}
+            component={UsersList}
+            users={users}
+          />
+          <Case
+            value={ProfileTabs.Friends}
+            component={UsersList}
+            users={users}
+          />
         </Switch>
       </FlexBox>
     </Modal>
