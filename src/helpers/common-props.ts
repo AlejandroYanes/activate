@@ -8,6 +8,7 @@ export interface PositionProps {
   mB?: boolean;
   mL?: boolean;
   fullWidth?: boolean;
+  ellipsis?: boolean;
   className?: string;
   style?: CSSProperties;
 }

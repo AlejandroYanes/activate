@@ -2,6 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import faker from 'faker';
 import { formatAmount } from 'helpers';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
 import { Text, Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
@@ -16,6 +17,7 @@ const Separator = () => <div style={{ flex: 1 }} />;
 
 const PublisherCard: FunctionComponent = () => {
   const colors = useAppColors();
+  const layout = useAppLayout();
 
   const {
     avatarUrl,
@@ -32,10 +34,12 @@ const PublisherCard: FunctionComponent = () => {
     friendsFollowing: faker.random.number({ min: 0, max: 1 }),
   }), []);
 
+  const link = `${layout === Layout.SMALL ? '#' : '/'}publisher`;
+
   return (
     <Card>
       <Avatar icon={avatarUrl} size="large" margin="0 auto 8px" />
-      <Link to="/publisher">
+      <Link to={link}>
         <FlexBox direction="column" align="center">
           <Title level={3} align="center">{name}</Title>
           <Text align="center">{userName}</Text>

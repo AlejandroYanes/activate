@@ -35,8 +35,8 @@ FlexBox.defaultProps = {
   direction: 'row',
   justify: 'flex-start',
   align: 'flex-start',
-  width: 'initial',
-  height: 'initial',
+  width: '',
+  height: '',
   as: 'div',
 };
 

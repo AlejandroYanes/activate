@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getPositionStyles } from 'helpers';
-import { getEllipsisStyles } from './text';
+import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
 
 const sizeMap = {
   1: '32px',
@@ -34,6 +33,7 @@ const getColor = (props) => {
 };
 
 const commonStyles = css`
+  white-space: normal;
   ${getTextStyles};
   ${getColor};
   ${getEllipsisStyles};

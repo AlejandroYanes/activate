@@ -2,6 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import faker from 'faker';
 import { useAppColors } from 'components/providers/Theme';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
@@ -15,16 +16,19 @@ const Separator = () => <div style={{ flex: 1 }} />;
 
 const UserCard: FunctionComponent = () => {
   const colors = useAppColors();
+  const layout = useAppLayout();
 
   const { userName, name } = useMemo(() => ({
     userName: `@${faker.internet.userName()}`,
     name: `${faker.name.firstName()} ${faker.name.lastName()}`,
   }), []);
 
+  const link = `${layout === Layout.SMALL ? '#' : '/'}user`;
+
   return (
     <Card>
       <Avatar icon="user12" size="large" margin="0 auto 8px" />
-      <Link to="/user">
+      <Link to={link}>
         <FlexBox direction="column" align="center">
           <Title level={3} align="center">{name}</Title>
           <Text align="center">{userName}</Text>

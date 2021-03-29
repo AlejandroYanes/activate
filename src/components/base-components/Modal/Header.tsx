@@ -31,7 +31,7 @@ const MobileHeader = ({ title, onClose }) => (
     direction="row"
     justify="flex-start"
     align="center"
-    padding="0 16px 0"
+    padding="0 6px 0"
     height={mobileHeaderHeight}
   >
     <RenderIf condition={typeof title === 'string'} fallback={title}>

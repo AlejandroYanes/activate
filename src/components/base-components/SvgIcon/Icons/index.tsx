@@ -59,6 +59,7 @@ import LayersIcon from './Layers';
 import GridElementsIcon from './GridElements';
 import MaximizeIcon from './Maximize';
 import TimeHistoryIcon from './TimeHistory';
+import StarFilledIcon from './StarFilled';
 
 export enum Icons {
   HOME = 'home',
@@ -113,6 +114,7 @@ export enum Icons {
   INBOX = 'inbox',
   RESUME = 'resume',
   STAR = 'star',
+  STAR_FILLED = 'star-filled',
   BOOKMARK_CHECKED = 'bookmark-checked',
   ADD_USER = 'add-user',
   MESSAGE = 'message',
@@ -176,6 +178,7 @@ export const icons = {
   [Icons.INBOX]: (props) => <InboxIcon {...props} />,
   [Icons.RESUME]: (props) => <ResumeIcon {...props} />,
   [Icons.STAR]: (props) => <StarIcon {...props} />,
+  [Icons.STAR_FILLED]: (props) => <StarFilledIcon {...props} />,
   [Icons.BOOKMARK_CHECKED]: (props) => <BookmarkCheckedIcon {...props} />,
   [Icons.ADD_USER]: (props) => <AddUserIcon {...props} />,
   [Icons.MESSAGE]: (props) => <MessageIcon {...props} />,

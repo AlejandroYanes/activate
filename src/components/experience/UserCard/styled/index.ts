@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
 
-export const Card = styled.article`
+export const Card = styled.article.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   align-items: center;

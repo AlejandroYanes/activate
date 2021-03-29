@@ -32,15 +32,10 @@ const withTabBarStyles = {
   false: 'padding: 0 6px 16px 6px;',
 };
 
-const asModalStyles = {
-  true: 'padding-top: 0',
-  false: 'padding-top: 16px;',
-};
-
-const getSpacingStyles = ({ asModal, withTabBar }) => {
+const getSpacingStyles = ({ withTabBar }) => {
   return `
     ${withTabBarStyles[withTabBar]};
-    ${asModalStyles[asModal]};
+    padding-top: 16px;
   `;
 };
 

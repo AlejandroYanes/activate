@@ -19,4 +19,18 @@ export function getPositionStyles(props) {
   `;
 }
 
+export const getEllipsisStyles = (props) => {
+  const { ellipsis } = props;
+
+  if (ellipsis) {
+    return `
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    `;
+  }
+
+  return null;
+};
+
 export const anyPropsAttrs = (props: any) => props;

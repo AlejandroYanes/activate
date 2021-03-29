@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getPositionStyles } from 'helpers';
+import { getEllipsisStyles, getPositionStyles } from 'helpers';
 
 const getLayoutStyles = (props) => {
   const {
@@ -29,4 +29,5 @@ export const StyledFlexBox = styled.div`
   display: flex;
   ${getLayoutStyles};
   ${getPositionStyles}
+  ${getEllipsisStyles};
 `;

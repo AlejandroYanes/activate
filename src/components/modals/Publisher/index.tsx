@@ -1,8 +1,8 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { formatAmount } from 'helpers';
-import { Text, Title } from 'components/base-components/Typography';
+import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Icons } from 'components/base-components/SvgIcon';
@@ -11,11 +11,21 @@ import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import UsersList from 'components/experience/UsersList';
+import EventCard from 'components/experience/EventCard';
+import { events } from '../../pages/Discover/events';
 
 enum ProfileTabs {
-  Following = 'Following',
-  Friends = 'Friends',
+  FOLLOWERS = 'Followers',
+  EVENTS = 'Events',
 }
+
+const publisher = {
+  name: faker.company.companyName(),
+  userName: `@${faker.internet.userName()}`,
+  eventsCount: faker.random.number(200),
+  followersCount: faker.random.number(2000),
+  bio: faker.lorem.lines(4),
+};
 
 const users = new Array(faker.random.number({ min: 6, max: 16 }))
   .fill(1)
@@ -27,23 +37,35 @@ const users = new Array(faker.random.number({ min: 6, max: 16 }))
     active: faker.random.boolean(),
   }));
 
-const ProfileModal: FunctionComponent = () => {
-  const { push, goBack } = useHistory();
-  const [activeTab, setActiveTab] = useState(ProfileTabs.Following);
+const EventsList = () => (
+  <>
+    <EventCard {...events[3]} />
+    <EventCard {...events[0]} />
+    <EventCard {...events[1]} />
+  </>
+);
 
-  const goToSettings = useCallback(() => {
-    push('#settings');
-  }, []);
+const PublisherModal: FunctionComponent = () => {
+  const { goBack } = useHistory();
+  const [activeTab, setActiveTab] = useState(ProfileTabs.EVENTS);
+
+  const {
+    name,
+    userName,
+    followersCount,
+    eventsCount,
+    bio,
+  } = publisher;
 
   const header = (
     <FlexBox align="center" grow width="100%">
       <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} />
       <Title level={3} padding="0 0 0 6px" ellipsis>
-        Alejandro Yanes De la Cruz
+        {name}
       </Title>
       <IconButton
-        onClick={goToSettings}
-        icon={Icons.SETTINGS}
+        onClick={() => undefined}
+        icon={Icons.STAR}
         margin="0 0 0 auto"
       />
     </FlexBox>
@@ -60,17 +82,17 @@ const ProfileModal: FunctionComponent = () => {
         <FlexBox
           data-el="avatar-section"
           align="center"
-          padding="0 8px"
+          padding="8px"
         >
           <Avatar size="xx-large" icon="user2" />
           <FlexBox justify="space-around" grow>
             <FlexBox direction="column" align="center">
-              <Text>Following</Text>
-              <Title level={2} color="accent">{formatAmount(55422)}</Title>
+              <Text>Events</Text>
+              <Title level={2} color="accent">{formatAmount(eventsCount)}</Title>
             </FlexBox>
             <FlexBox direction="column" align="center">
-              <Text>Friends</Text>
-              <Title level={2} color="accent">{formatAmount(23466)}</Title>
+              <Text>Followers</Text>
+              <Title level={2} color="accent">{formatAmount(followersCount)}</Title>
             </FlexBox>
           </FlexBox>
         </FlexBox>
@@ -80,11 +102,12 @@ const ProfileModal: FunctionComponent = () => {
           align="flex-start"
           padding="16px 8px"
         >
-          <Text>@alejandro.yanes94</Text>
+          <Text>{userName}</Text>
           <Title level={2} color="brand">
-            Alejandro Yanes De la Cruz
+            {name}
           </Title>
         </FlexBox>
+        <Paragraph>{bio}</Paragraph>
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
@@ -93,26 +116,25 @@ const ProfileModal: FunctionComponent = () => {
           mB
         >
           <Tab
-            name={ProfileTabs.Following}
-            label={ProfileTabs.Following}
-            icon={Icons.MEGAPHONE}
+            name={ProfileTabs.EVENTS}
+            label={ProfileTabs.EVENTS}
+            icon={Icons.CALENDAR_FILLED}
           />
           <Tab
-            name={ProfileTabs.Friends}
-            label={ProfileTabs.Friends}
-            icon={Icons.USERS}
+            name={ProfileTabs.FOLLOWERS}
+            label={ProfileTabs.FOLLOWERS}
+            icon={Icons.MEGAPHONE}
           />
         </Tabset>
         <Switch by={activeTab}>
           <Case
-            value={ProfileTabs.Following}
+            value={ProfileTabs.FOLLOWERS}
             component={UsersList}
             users={users}
           />
           <Case
-            value={ProfileTabs.Friends}
-            component={UsersList}
-            users={users}
+            value={ProfileTabs.EVENTS}
+            component={EventsList}
           />
         </Switch>
       </FlexBox>
@@ -120,4 +142,4 @@ const ProfileModal: FunctionComponent = () => {
   );
 };
 
-export default ProfileModal;
+export default PublisherModal;

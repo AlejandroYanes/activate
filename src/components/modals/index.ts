@@ -3,6 +3,8 @@ import UpdatesModal from './Updates';
 import EventDetailsModal from './EventDetails';
 import ProfileModal from './Profile';
 import SettingsModal from './Settings';
+import PublisherModal from './Publisher';
+import UserModal from './User';
 
 export enum Modals {
   TALKS = '#talks',
@@ -12,6 +14,8 @@ export enum Modals {
   EVENT_DETAILS = '#event-details',
   PROFILE = '#profile',
   SETTINGS = '#settings',
+  PUBLISHER = '#publisher',
+  USER = '#user',
 }
 
 export const ModalMap = {
@@ -22,4 +26,6 @@ export const ModalMap = {
   [Modals.EVENT_DETAILS]: EventDetailsModal,
   [Modals.PROFILE]: ProfileModal,
   [Modals.SETTINGS]: SettingsModal,
+  [Modals.PUBLISHER]: PublisherModal,
+  [Modals.USER]: UserModal,
 };

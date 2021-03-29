@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-
-const getHeight = (props) => props.height ? `${props.height}px` : 'initial';
+import { getPositionStyles } from 'helpers';
 
 export const ImageContainer = styled.div.attrs((props: any) => props)`
   border-radius: 16px;
   overflow: hidden;
   max-height: 400px;
-  height: ${getHeight};
+  ${getPositionStyles};
 `;
 
 export const Image = styled.img`

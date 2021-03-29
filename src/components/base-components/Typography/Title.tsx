@@ -7,7 +7,6 @@ interface Props extends PositionProps {
   color?: 'brand' | 'accent' | 'font' | 'secondary';
   align?: 'left' | 'center' | 'right';
   weight?: 'thin' | 'normal' | 'bold';
-  ellipsis?: boolean;
 }
 
 const componentMap = {

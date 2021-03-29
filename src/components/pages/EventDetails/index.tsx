@@ -3,7 +3,10 @@ import faker from 'faker';
 import { useHistory } from 'react-router-dom';
 import eventImg from 'assets/images/virtual-tour.jpeg';
 import { useAppColors } from 'components/providers/Theme';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import {
+  AuxPanelSection,
+  usePanelActions,
+} from 'components/providers/PanelSections';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
@@ -12,17 +15,12 @@ import IconButton from 'components/base-components/IconButton';
 import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
+import EventImage from 'components/experience/EventImage';
 import Description from './Description';
 import Comments from './Comnments';
 import {
-  Image,
-  ImageContainer,
   StyledEventDetail,
 } from './styled/page';
-
-interface Props {
-  asModal?: boolean;
-}
 
 enum Tabs {
   DetailsSection = 'Details',
@@ -37,12 +35,11 @@ const event = {
   },
 };
 
-const EventDetailsPage: FunctionComponent<Props> = (props) => {
+const EventDetailsPage: FunctionComponent = () => {
   const Colors = useAppColors();
   const { goBack } = useHistory();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
 
-  const { asModal } = props;
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
   const [isBooked, setIsBooked] = useState(false);
   const { title, author } = event;
@@ -60,8 +57,8 @@ const EventDetailsPage: FunctionComponent<Props> = (props) => {
   }, []);
 
   return (
-    <Page asModal={asModal}>
-      <StyledEventDetail asModal={asModal}>
+    <Page>
+      <StyledEventDetail>
         <FlexBox align="flex-start" padding="0 0 16px 0">
           <IconButton
             variant="flat"
@@ -72,9 +69,7 @@ const EventDetailsPage: FunctionComponent<Props> = (props) => {
           />
           <Title level={2} padding="0 0 0 6px">{title}</Title>
         </FlexBox>
-        <ImageContainer>
-          <Image src={eventImg} alt="virtual tour" />
-        </ImageContainer>
+        <EventImage src={eventImg} alt="virtual tour" />
         <FlexBox align="center" margin="8px 0">
           <FlexBox align="center">
             <Avatar icon="user6" />
