@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { headerHeight, mobileHeaderHeight } from 'styles/variables';
+import { headerHeight } from 'styles/variables';
 import { Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import Avatar from 'components/base-components/Avatar';
