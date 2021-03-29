@@ -29,7 +29,7 @@ export const Action = styled.div`
   border-radius: 50%;
   position: absolute;
   display: flex;
-  bottom: 0;
+  bottom: 8px;
   right: 12px;
 `;
 

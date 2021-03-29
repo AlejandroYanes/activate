@@ -6,15 +6,15 @@ import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
 import IconButton from 'components/base-components/IconButton';
 import { Icons } from 'components/base-components/SvgIcon';
+import FlexBox from 'components/base-components/FlexBox';
 import Conversation from './Conversation';
 import {
   Messages as StyledMessages,
-  Actions,
+  Footer,
   ActiveDot,
   AvatarSection,
   Content,
   Header,
-  Info,
   TextBox,
 } from './styled/messages';
 
@@ -26,7 +26,7 @@ interface Props {
   };
   leftActions?: ReactNode;
   rightActions?: ReactNode;
-  smallView?: boolean;
+  viewMode?: 'page' | 'panel' | 'mobile';
   inverseColors?: boolean;
 }
 
@@ -36,14 +36,14 @@ const Messages: FunctionComponent<Props> = (props) => {
     user: { avatarUrl, name, active },
     leftActions,
     rightActions,
-    smallView,
+    viewMode,
     inverseColors,
   } = props;
   const [message, setMessage] = useState('');
 
   return (
-    <StyledMessages>
-      <Header small={smallView}>
+    <StyledMessages viewMode={viewMode}>
+      <Header viewMode={viewMode}>
         {leftActions}
         <AvatarSection>
           <Avatar icon={avatarUrl} />
@@ -51,23 +51,23 @@ const Messages: FunctionComponent<Props> = (props) => {
             <ActiveDot />
           </RenderIf>
         </AvatarSection>
-        <Info>
+        <FlexBox direction="column" padding="0 8px" grow>
           <Text>{name}</Text>
-          <Text size="small" color="secondary">active 10min ago</Text>
-        </Info>
+          <Text size="small" color="secondary" margin="4px 0 0">active 10min ago</Text>
+        </FlexBox>
         {rightActions}
       </Header>
       <Content>
         <Conversation inverseColors={inverseColors} />
       </Content>
-      <Actions small={smallView}>
+      <Footer viewMode={viewMode}>
         <TextBox
           autosize
           rows={1}
-          maxLength={smallView ? 250 : 500}
-          placeholder="Type your message here"
+          maxLength={250}
           value={message}
           onChange={(event) => setMessage(getEventValue(event))}
+          placeholder="Type your message here"
         />
         <IconButton
           onClick={() => undefined}
@@ -76,7 +76,7 @@ const Messages: FunctionComponent<Props> = (props) => {
           buttonColor="accent"
           size="large"
         />
-      </Actions>
+      </Footer>
     </StyledMessages>
   );
 };

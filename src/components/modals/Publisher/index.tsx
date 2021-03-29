@@ -77,7 +77,7 @@ const PublisherModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px"
+        padding="0 6px 16px"
       >
         <FlexBox
           data-el="avatar-section"

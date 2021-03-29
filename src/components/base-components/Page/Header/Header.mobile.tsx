@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { mobileHeaderHeight } from 'styles/variables';
+import { headerHeight, mobileHeaderHeight } from 'styles/variables';
 import { Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import Avatar from 'components/base-components/Avatar';
@@ -17,7 +17,7 @@ const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
         justify="space-between"
         align="center"
         padding="0 16px"
-        height={mobileHeaderHeight}
+        height={headerHeight}
         data-el="page-header"
       >
         <Title level={1} color="brand">{title}</Title>

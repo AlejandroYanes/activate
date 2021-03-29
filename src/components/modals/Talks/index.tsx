@@ -96,7 +96,7 @@ const TalksModal: FunctionComponent = () => {
           component={Messages}
           user={(location?.state as any)?.user}
           leftActions={leftAction}
-          smallView
+          viewMode="mobile"
         />
       </Switch>
     </Modal>

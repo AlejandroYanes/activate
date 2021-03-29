@@ -5,15 +5,14 @@ import { Icons } from 'components/base-components/SvgIcon';
 import { TabBar } from './styled';
 
 enum Menus {
-  PROFILE = '/profile',
-  UPCOMING = '/upcoming',
+  UPCOMING = '/',
   DISCOVER = '/discover',
   SEARCH = '/search',
   TALKS = '#talks',
   UPDATES = '#updates',
 }
 
-const tabs = ['/profile', '/upcoming', '/discover', '/search'];
+const tabs = ['/', '/upcoming', '/discover', '/search'];
 
 const BottomTabBar: FunctionComponent = () => {
   const { push } = useHistory();

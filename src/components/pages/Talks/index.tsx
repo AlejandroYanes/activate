@@ -1,6 +1,15 @@
-import React, { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { EventChannelList, useEventCenterUpdate } from 'event-center';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import {
+  AuxPanelSection,
+  usePanelActions,
+} from 'components/providers/PanelSections';
 import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
@@ -20,7 +29,10 @@ const TalksPage: FunctionComponent = () => {
     setActiveUser(user);
   }, []);
 
-  useEventCenterUpdate(EventChannelList.USER_SELECTED_FOR_CHAT, receiveActiveUser);
+  useEventCenterUpdate(
+    EventChannelList.USER_SELECTED_FOR_CHAT,
+    receiveActiveUser,
+  );
 
   useEffect(() => {
     setActiveSection(AuxPanelSection.TALKS);
@@ -40,7 +52,7 @@ const TalksPage: FunctionComponent = () => {
     <Page>
       <Card>
         <RenderIf condition={!!activeUser} fallback={<SplashScreen />}>
-          <Messages user={activeUser} rightActions={actions} />
+          <Messages user={activeUser} rightActions={actions} viewMode="page" />
         </RenderIf>
       </Card>
     </Page>

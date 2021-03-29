@@ -16,6 +16,7 @@ import { events } from '../../pages/Discover/events';
 
 enum ProfileTabs {
   FOLLOWING = 'Following',
+  FRIENDS = 'Friends',
   EVENTS = 'Events',
 }
 
@@ -77,7 +78,7 @@ const UserModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px"
+        padding="0 6px 16px"
       >
         <FlexBox
           data-el="avatar-section"
@@ -123,18 +124,28 @@ const UserModal: FunctionComponent = () => {
           <Tab
             name={ProfileTabs.FOLLOWING}
             label={ProfileTabs.FOLLOWING}
+            icon={Icons.MEGAPHONE}
+          />
+          <Tab
+            name={ProfileTabs.FRIENDS}
+            label={ProfileTabs.FRIENDS}
             icon={Icons.USERS}
           />
         </Tabset>
         <Switch by={activeTab}>
+          <Case
+            value={ProfileTabs.EVENTS}
+            component={EventsList}
+          />
           <Case
             value={ProfileTabs.FOLLOWING}
             component={UsersList}
             users={users}
           />
           <Case
-            value={ProfileTabs.EVENTS}
-            component={EventsList}
+            value={ProfileTabs.FRIENDS}
+            component={UsersList}
+            users={users}
           />
         </Switch>
       </FlexBox>

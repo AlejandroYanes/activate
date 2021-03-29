@@ -1,27 +1,25 @@
 import styled from 'styled-components';
-import { mobileHeaderHeight } from 'styles/variables';
+import { headerHeight, mobileHeaderHeight } from 'styles/variables';
 import { anyPropsAttrs } from 'helpers';
 import { TextArea } from 'components/base-components/Inputs';
 
-export const Messages = styled.main`
+export const Messages = styled.main.attrs(anyPropsAttrs)`
   height: 100%;
   display: flex;
   flex-direction: column;
+  ${({ viewMode }) => viewMode === 'page' ? 'padding-bottom: 16px' : ''};
 `;
+
+const getSizeStyles = ({ viewMode }) => (
+  viewMode === 'mobile'
+    ? `padding: 0 6px; height: ${mobileHeaderHeight}px;`
+    : `padding: 0 16px; height: ${headerHeight}px;`
+);
 
 export const Header = styled.header.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
-  height: ${mobileHeaderHeight}px;
-  padding: ${({ small }) => small ? '0 16px 0' : '16px 16px 0'};
-`;
-
-export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 16px 0 8px;
-  flex: 1;
+  ${getSizeStyles};
 `;
 
 export const AvatarSection = styled.div`
@@ -48,10 +46,10 @@ export const Content = styled.section`
   padding: 0 16px;
 `;
 
-export const Actions = styled.footer.attrs(anyPropsAttrs)`
+export const Footer = styled.footer.attrs(anyPropsAttrs)`
   display: flex;
   align-items: flex-end;
-  padding: ${({ small }) => small ? '20px 16px 0' : '20px 16px 16px'};
+  padding: ${({ viewMode }) => viewMode === 'mobile' ? '12px 6px' : '16px 16px 0'};
 `;
 
 

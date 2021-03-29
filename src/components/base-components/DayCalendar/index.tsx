@@ -39,7 +39,7 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
     if (listWidth > containerWidth) {
       setShowArrows(true);
     }
-  }, []);
+  }, [days]);
 
   return (
     <Wrapper {...rest} data-el="day_calendar-wrapper">

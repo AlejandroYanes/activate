@@ -48,7 +48,7 @@ const VerticalMenu: FunctionComponent = () => {
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/upcoming"
+          path="/"
           icon={bookmarksIcon}
         />
         <MenuBlock

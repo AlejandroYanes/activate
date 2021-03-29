@@ -157,7 +157,7 @@ const TalksPanel: FunctionComponent<Props> = (props) => {
         user={activeUser}
         leftActions={leftAction}
         rightActions={layout !== Layout.SMALL ? rightAction : undefined}
-        smallView
+        viewMode="panel"
       />
     </Switch>
   );

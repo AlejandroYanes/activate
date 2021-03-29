@@ -60,6 +60,7 @@ import GridElementsIcon from './GridElements';
 import MaximizeIcon from './Maximize';
 import TimeHistoryIcon from './TimeHistory';
 import StarFilledIcon from './StarFilled';
+import ListIcon from './List';
 
 export enum Icons {
   HOME = 'home',
@@ -123,6 +124,7 @@ export enum Icons {
   GRID_ELEMENTS = 'grid-elements',
   MAXIMIZE = 'maximize',
   TIME_HISTORY = 'history',
+  LIST = 'list',
 }
 
 export const icons = {
@@ -187,4 +189,5 @@ export const icons = {
   [Icons.GRID_ELEMENTS]: (props) => <GridElementsIcon {...props} />,
   [Icons.MAXIMIZE]: (props) => <MaximizeIcon {...props} />,
   [Icons.TIME_HISTORY]: (props) => <TimeHistoryIcon {...props} />,
+  [Icons.LIST]: (props) => <ListIcon {...props} />,
 };
