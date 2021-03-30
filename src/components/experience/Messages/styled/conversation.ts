@@ -17,7 +17,7 @@ const getBackgroundColor = (props) => {
 };
 
 export const TextBubble = styled.div.attrs(anyPropsAttrs)`
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 6px 10px;
   min-height: 40px;
   min-width: 120px;

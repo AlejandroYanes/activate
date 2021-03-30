@@ -10,22 +10,15 @@ export const DateBadge = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 10px;
-  margin-right: 10px;
-  border-radius: 10px;
+  border-radius: 6px;
   background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 
   & span:nth-child(1) {
     font-size: 12px;
     letter-spacing: 0.2px;
     text-transform: uppercase;
+    margin-bottom: 6px;
   }
-`;
-
-export const TitleAndAddress = styled.div`
-  display: block;
-  width: 80%;
-  margin-right: auto;
-  padding-right: 16px;
 `;
 
 export const Address = styled.div`

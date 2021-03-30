@@ -1,40 +1,21 @@
 import styled from 'styled-components';
 
-export const Header = styled.header`
-  display: flex;
-  align-items: flex-start;
-`;
-
 export const DateBadge = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10px;
-  margin-right: 10px;
-  border-radius: 10px;
+  padding: 6px;
+  border-radius: 4px;
   background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 
   & span:nth-child(1) {
-    font-size: 12px;
+    font-size: 10px;
     letter-spacing: 0.2px;
     text-transform: uppercase;
+    margin-bottom: 6px;
   }
-`;
 
-export const TitleAndAddress = styled.div`
-  display: block;
-  width: 80%;
-  margin-right: auto;
-  padding-right: 16px;
-`;
-
-export const Address = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-top: 6px;
-
-  & span {
-    //margin-left: 4px;
-    line-height: 20px;
+  & span:nth-child(2) {
+    font-size: 14px;
   }
 `;

@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getPositionStyles } from 'helpers';
+import styled from 'styled-components';
+import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
 
 const sizeMap = {
   small: '13px',
@@ -7,19 +7,7 @@ const sizeMap = {
   large: '20px',
 };
 
-const getEllipsisStyles = (props) => {
-  const { ellipsis } = props;
 
-  if (ellipsis) {
-    return css`
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-    `;
-  }
-
-  return null;
-};
 
 const getColor = (props) => {
   const { theme: { colors }, color } = props;
@@ -45,6 +33,7 @@ const getColor = (props) => {
 };
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
+  white-space: normal;
   font-size: ${({ size }) => sizeMap[size]};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};

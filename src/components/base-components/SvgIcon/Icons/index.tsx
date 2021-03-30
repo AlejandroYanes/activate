@@ -59,6 +59,8 @@ import LayersIcon from './Layers';
 import GridElementsIcon from './GridElements';
 import MaximizeIcon from './Maximize';
 import TimeHistoryIcon from './TimeHistory';
+import StarFilledIcon from './StarFilled';
+import ListIcon from './List';
 
 export enum Icons {
   HOME = 'home',
@@ -113,6 +115,7 @@ export enum Icons {
   INBOX = 'inbox',
   RESUME = 'resume',
   STAR = 'star',
+  STAR_FILLED = 'star-filled',
   BOOKMARK_CHECKED = 'bookmark-checked',
   ADD_USER = 'add-user',
   MESSAGE = 'message',
@@ -121,6 +124,7 @@ export enum Icons {
   GRID_ELEMENTS = 'grid-elements',
   MAXIMIZE = 'maximize',
   TIME_HISTORY = 'history',
+  LIST = 'list',
 }
 
 export const icons = {
@@ -176,6 +180,7 @@ export const icons = {
   [Icons.INBOX]: (props) => <InboxIcon {...props} />,
   [Icons.RESUME]: (props) => <ResumeIcon {...props} />,
   [Icons.STAR]: (props) => <StarIcon {...props} />,
+  [Icons.STAR_FILLED]: (props) => <StarFilledIcon {...props} />,
   [Icons.BOOKMARK_CHECKED]: (props) => <BookmarkCheckedIcon {...props} />,
   [Icons.ADD_USER]: (props) => <AddUserIcon {...props} />,
   [Icons.MESSAGE]: (props) => <MessageIcon {...props} />,
@@ -184,4 +189,5 @@ export const icons = {
   [Icons.GRID_ELEMENTS]: (props) => <GridElementsIcon {...props} />,
   [Icons.MAXIMIZE]: (props) => <MaximizeIcon {...props} />,
   [Icons.TIME_HISTORY]: (props) => <TimeHistoryIcon {...props} />,
+  [Icons.LIST]: (props) => <ListIcon {...props} />,
 };

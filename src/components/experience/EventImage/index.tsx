@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ImageContainer, Image } from './styled/image';
+import { PositionProps } from 'helpers';
+import { Image, ImageContainer } from './styled/image';
 
-interface Props {
+interface Props extends PositionProps {
   src: string;
   alt?: string;
 }
@@ -19,11 +19,9 @@ const EventImage: FunctionComponent<Props> = (props) => {
   }, []);
 
   return (
-    <Link to="/event-detail">
-      <ImageContainer height={height}>
-        <Image ref={imageRef} onLoad={handleOnLoad} {...props} />
-      </ImageContainer>
-    </Link>
+    <ImageContainer height={height}>
+      <Image ref={imageRef} onLoad={handleOnLoad} {...props} />
+    </ImageContainer>
   );
 };
 

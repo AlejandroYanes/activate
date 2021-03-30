@@ -12,15 +12,15 @@ import TalksPage from 'components/pages/Talks';
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/upcoming" component={FeedPage} />
+      <Route path="/" component={FeedPage} exact />
       <Route path="/profile" component={ProfilePage} />
       <Route path="/discover" component={DiscoverPage} />
-      <Route path="/event-detail" component={EventDetailsPage} />
+      <Route path="/event-details" component={EventDetailsPage} />
       <Route path="/search" component={SearchPage} />
       <Route path="/publisher" component={PublisherPage} />
       <Route path="/user" component={UserPage} />
       <Route path="/talks" component={TalksPage} />
-      <Redirect to="/upcoming" />
+      <Redirect to="/" />
     </Switch>
   );
 }

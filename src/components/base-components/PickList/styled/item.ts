@@ -14,7 +14,11 @@ export const StyledItem = styled.li.attrs(anyPropsAttrs)`
 
 const getMarkColor = (props) => {
   const { theme: { useDarkStyle, colors }, color } = props;
-  return css`background-color: ${useDarkStyle ? colors.FONT : colors[color.toUpperCase()]}`;
+  const markColor = useDarkStyle
+    ? colors.FONT
+    : colors[color.toUpperCase()];
+
+  return css`background-color: ${markColor}`;
 };
 
 export const Mark = styled.div.attrs(anyPropsAttrs)`
@@ -43,12 +47,12 @@ const getColorStyles = (props) => {
   if (useDarkStyle) {
     const borderColor = isSelected
       ? colors.FONT
-      : colors.GRAY_DARK;
+      : colors.FONT_SHADE;
 
     const hoverColor = colors.FONT;
 
     return css`
-      border: 2px solid ${borderColor};
+      border: 1px solid ${borderColor};
       &:hover, &:focus {
         outline: none;
         border-color: ${hoverColor};
@@ -61,12 +65,12 @@ const getColorStyles = (props) => {
 
   const borderColor = isSelected
     ? colors[color.toUpperCase()]
-    : colors.GRAY_LIGHT;
+    : colors.FONT_SHADE;
 
   const hoverColor = colors[`${color.toUpperCase()}_LIGHT`];
 
   return css`
-    border: 2px solid ${borderColor};
+    border: 1px solid ${borderColor};
     &:hover, &:focus {
       outline: none;
       border-color: ${hoverColor};

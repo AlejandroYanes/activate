@@ -1,11 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import React, { FunctionComponent, useMemo } from 'react';
+import { PositionProps } from 'helpers';
 import Avatar from 'components/base-components/Avatar';
+import RenderIf from 'components/base-components/RenderIf';
+import { Text } from 'components/base-components/Typography';
 import { StyledAvatarGroup } from './styled';
-import RenderIf from '../RenderIf';
-import { Text } from '../Typography';
 
-interface Props {
+interface Props extends PositionProps {
   label?: string;
   icons: string[];
   size?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
@@ -25,7 +26,7 @@ function resolveTextSize({ size }: Props) {
 }
 
 const AvatarGroup: FunctionComponent<Props> = (props) => {
-  const { label, icons, size } = props;
+  const { label, icons, size, ...rest } = props;
 
   const avatars = useMemo(() => (
     icons.map((icon, index) => (
@@ -34,10 +35,16 @@ const AvatarGroup: FunctionComponent<Props> = (props) => {
   ), [icons, size]);
 
   return (
-    <StyledAvatarGroup>
+    <StyledAvatarGroup {...rest}>
       {avatars}
       <RenderIf condition={!!label}>
-        <Text as="label" margin="0 0 0 6px" size={resolveTextSize(props)}>{label}</Text>
+        <Text
+          as="label"
+          margin="0 0 0 6px"
+          size={resolveTextSize(props)}
+        >
+          {label}
+        </Text>
       </RenderIf>
     </StyledAvatarGroup>
   );

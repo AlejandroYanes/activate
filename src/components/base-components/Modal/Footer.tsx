@@ -30,9 +30,13 @@ const Footer: FunctionComponent<Props> = (props): any => {
     return footer;
   }
 
-  return (
-    <ActionsRenderer actions={actions} />
-  );
+  if (actions) {
+    return (
+      <ActionsRenderer actions={actions} />
+    );
+  }
+
+  return null;
 };
 
 export default Footer;

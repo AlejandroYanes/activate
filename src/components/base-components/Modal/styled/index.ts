@@ -26,7 +26,7 @@ const styleMap = {
     right: 0;
     height: 100%;
     width: 100%;
-    padding: 16px 0 0 0;
+    padding: 0;
   `,
 };
 

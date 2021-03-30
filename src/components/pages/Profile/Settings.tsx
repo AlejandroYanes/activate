@@ -1,12 +1,11 @@
 import React, { FunctionComponent, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import {
+  DuskLightsTheme,
   LifeIsABeachTheme,
   NeonLightsTheme,
   StartingTheme,
   SummerVibesTheme,
-  DuskLightsTheme,
 } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
 import { PickItem, PickList } from 'components/base-components/PickList';
@@ -26,13 +25,17 @@ import {
   ThemeName,
 } from './styled';
 
+interface Props {
+  asPanel?: boolean;
+}
+
 const user = {
   userName: '@alejandro.yanes94',
   name: 'Alejandro Yanes',
   bio: faker.lorem.lines(4),
 };
 
-const Settings: FunctionComponent = () => {
+const Settings: FunctionComponent<Props> = (props) => {
   const {
     colors,
     theme: activeTheme,
@@ -40,7 +43,7 @@ const Settings: FunctionComponent = () => {
     useDarkStyle,
     toggleLightStyle,
   } = useAppTheme();
-  const { push } = useHistory();
+  const { asPanel } = props;
 
   const [userData, setUserData] = useState(user);
 
@@ -52,12 +55,19 @@ const Settings: FunctionComponent = () => {
   ), [colors]);
 
   return (
-    <StyledSettings>
+    <StyledSettings smallView={asPanel}>
       <SubTitle level={3} color="secondary">Profile Data</SubTitle>
       <Form state={userData} onChange={setUserData}>
         <Field name="userName" label="User Name" />
         <Field name="name" label="Name" mT />
-        <Field name="bio" component={TextArea} label="Bio" maxLength={250} autosize mT />
+        <Field
+          name="bio"
+          label="Bio"
+          component={TextArea}
+          maxLength={250}
+          autosize
+          mT
+        />
       </Form>
       <Line floatRight>
         <Button onClick={() => undefined} label="Update" variant="flat" mB />
@@ -128,8 +138,6 @@ const Settings: FunctionComponent = () => {
           onChange={toggleLightStyle}
         />
       </Line>
-
-      <Button onClick={() => push('#talks')} label="open talks" color="accent" variant="fill" mT />
     </StyledSettings>
   );
 };

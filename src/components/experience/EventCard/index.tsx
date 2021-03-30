@@ -1,14 +1,15 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { formatAmount } from 'helpers';
 import { useAppColors } from 'components/providers/Theme';
-import { useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
+import EventImage from 'components/experience/EventImage';
 import Header from './Header';
-import EventImage from './EventImage';
 import { Actions, Card, Content, Divider, Footer, } from './styled';
 
 interface Props {
@@ -48,11 +49,15 @@ const EventCard: FunctionComponent<Props> = (props) => {
     setIsBooked((previousState) => !previousState);
   }, []);
 
+  const link = layout !== Layout.SMALL ? '/event-details' : '#event-details';
+
   return (
     <Card isBooked={isBooked} layout={layout}>
       <Header title={title} address={address} author={author} date={date} />
       <Content>
-        <EventImage src={image} alt="event" />
+        <Link to={link}>
+          <EventImage src={image} alt={title} />
+        </Link>
         <RenderIf condition={!!description}>
           <Paragraph mT>
             {description}

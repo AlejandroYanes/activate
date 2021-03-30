@@ -7,7 +7,6 @@ interface Props extends PositionProps {
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'white' | 'font' | 'secondary' | 'background';
   align?: 'left' | 'center' | 'right';
-  ellipsis?: boolean;
   as?: string;
 }
 

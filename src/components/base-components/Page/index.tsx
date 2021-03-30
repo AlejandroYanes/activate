@@ -6,7 +6,6 @@ import { StyledPage, Content } from './styled';
 interface Props {
   title?: string;
   actions?: ReactNode;
-  asModal?: boolean;
   withTabBar?: boolean;
 }
 
@@ -23,14 +22,14 @@ const wrapperMap = {
 const Page: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
 
-  const { title, actions, asModal, withTabBar, children } = props;
+  const { title, actions, withTabBar, children } = props;
 
   const Wrapper = wrapperMap[layout];
 
   return (
     <StyledPage layout={layout} data-el="page">
       <Header title={title} actions={actions} />
-      <Wrapper asModal={asModal} withTabBar={withTabBar}>
+      <Wrapper withTabBar={withTabBar}>
         {children}
       </Wrapper>
     </StyledPage>
@@ -39,7 +38,6 @@ const Page: FunctionComponent<Props> = (props) => {
 
 Page.defaultProps = {
   withTabBar: false,
-  asModal: false,
 };
 
 export default Page;

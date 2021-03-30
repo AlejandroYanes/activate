@@ -1,4 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import { mobileHeaderHeight } from 'styles/variables';
 import { Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
@@ -30,8 +31,8 @@ const MobileHeader = ({ title, onClose }) => (
     direction="row"
     justify="flex-start"
     align="center"
-    padding="0 16px 20px"
-    height={62}
+    padding="0 6px 0"
+    height={mobileHeaderHeight}
   >
     <RenderIf condition={typeof title === 'string'} fallback={title}>
       <IconButton onClick={onClose} icon={Icons.ARROW_LEFT} variant="flat" />
@@ -41,10 +42,10 @@ const MobileHeader = ({ title, onClose }) => (
 );
 
 const sizeMap = {
-  'small': PrimaryHeader,
-  'medium': PrimaryHeader,
-  'large': PrimaryHeader,
-  'mobile': MobileHeader,
+  small: PrimaryHeader,
+  medium: PrimaryHeader,
+  large: PrimaryHeader,
+  mobile: MobileHeader,
 };
 
 const Header: FunctionComponent<Props> = (props) => {

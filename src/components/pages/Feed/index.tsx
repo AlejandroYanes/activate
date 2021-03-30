@@ -7,8 +7,8 @@ import EventCard from 'components/experience/EventCard';
 import { Option, Options } from 'components/base-components/Options';
 import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
+import FlexBox from 'components/base-components/FlexBox';
 import { events } from '../Discover/events';
-import { SubHeader } from './styled';
 
 const today = new Date();
 const days = [
@@ -46,8 +46,14 @@ const FeedPage: FunctionComponent = () => {
 
   const actions = (
     <Options size="small" value={option} onChange={setOption}>
-      <Option value={EventsDisplay.ByDate} label="By Date" icon={Icons.CALENDAR_FILLED} />
-      <Option value={EventsDisplay.All} label="All" icon={Icons.GRID} />
+      <Option
+        value={EventsDisplay.ByDate}
+        label="By Date"
+        icon={Icons.CALENDAR_FILLED} />
+      <Option
+        value={EventsDisplay.All}
+        label="All"
+        icon={Icons.LIST} />
     </Options>
   );
 
@@ -59,11 +65,12 @@ const FeedPage: FunctionComponent = () => {
       data-el="feed-page"
     >
       <RenderIf condition={option === EventsDisplay.ByDate}>
-        <SubHeader>
+        <FlexBox align="center" padding="0 0 32px 0">
           <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />
-        </SubHeader>
+        </FlexBox>
       </RenderIf>
       <EventCard isAFollowedEvent {...events[0]} />
+      <EventCard isAFollowedEvent {...events[1]} />
     </Page>
   );
 };

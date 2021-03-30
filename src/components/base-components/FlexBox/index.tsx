@@ -5,16 +5,27 @@ import { StyledFlexBox } from './styled/flex-box';
 interface Props extends PositionProps {
   direction?: 'column' | 'column-reverse' | 'row' | 'row-reverse';
   align?: 'flex-start' | 'flex-end' | 'center' | 'stretch';
-  justify?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'space-between' | 'space-around';
+  justify?: (
+    'flex-start' |
+    'flex-end' |
+    'center' |
+    'stretch' |
+    'space-between' |
+    'space-around'
+    );
   width?: number | string;
   height?: number | string;
+  wrap?: boolean;
+  grow?: boolean;
+  flex?: string;
+  as?: string;
 }
 
 const FlexBox: FunctionComponent<Props> = (props) => {
-  const { children, ...rest } = props;
+  const { children, as, ...rest } = props;
 
   return (
-    <StyledFlexBox {...rest}>
+    <StyledFlexBox as={as as any} {...rest}>
       {children}
     </StyledFlexBox>
   );
@@ -24,8 +35,9 @@ FlexBox.defaultProps = {
   direction: 'row',
   justify: 'flex-start',
   align: 'flex-start',
-  width: 'initial',
-  height: 'initial',
+  width: '',
+  height: '',
+  as: 'div',
 };
 
 export default FlexBox;
