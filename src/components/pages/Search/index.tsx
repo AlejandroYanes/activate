@@ -37,8 +37,7 @@ const SearchPage: FunctionComponent = () => {
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        compact={layout === Layout.SMALL}
-        fullWidth
+        fullWidth={layout !== Layout.SMALL}
         mT
         mB
       >

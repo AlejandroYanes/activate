@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { Icons } from 'components/base-components/SvgIcon';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import ProfileCard from 'components/experience/ProfileCard';
 import { ProfileTabs } from '.';
@@ -11,7 +10,6 @@ interface Props {
 }
 
 const ProfileData: FunctionComponent<Props> = (props) => {
-  const layout = useAppLayout();
   const { activeTab, setActiveTab } = props;
 
   return (
@@ -27,7 +25,6 @@ const ProfileData: FunctionComponent<Props> = (props) => {
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        compact={layout === Layout.SMALL}
         fullWidth
         mT
       >

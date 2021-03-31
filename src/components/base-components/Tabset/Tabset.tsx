@@ -1,34 +1,32 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { PositionProps } from 'helpers';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { TabSetProvider } from './context';
-import { StyledTabset } from './styled';
+import { List, StyledTabset } from './styled';
 
-export interface TabsetProps extends PositionProps {
-  compact?: boolean;
+interface TabsetProps extends PositionProps {
+  bordered?: boolean;
   activeTab: string;
   onTabChange: (activeTab) => void;
 }
 
 const Tabset: FunctionComponent<TabsetProps> = (props) => {
   const layout = useAppLayout();
-  const { children, mT, mR, mB, mL, ...rest } = props;
-  const [animateEntrance, setAnimateEntrance] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => setAnimateEntrance(true), 100);
-  }, []);
+  const { activeTab, onTabChange, bordered, fullWidth, children, ...rest } = props;
 
   return (
     <AnimateSharedLayout type="crossfade">
-      <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
+      <StyledTabset bordered={bordered} fullWidth={fullWidth} {...rest}>
         <TabSetProvider
-          {...rest}
-          animateEntrance={animateEntrance}
+          activeTab={activeTab}
+          onTabChange={onTabChange}
+          fullWidth={fullWidth}
           disableFocus={layout !== Layout.FULL}
         >
-          {children}
+          <List>
+            {children}
+          </List>
         </TabSetProvider>
       </StyledTabset>
     </AnimateSharedLayout>

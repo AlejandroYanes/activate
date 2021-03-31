@@ -48,5 +48,5 @@ export const Label = styled.span`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: ${ZLevels.sideMenuBlocks};
+  z-index: ${ZLevels.componentLevel1};
 `;

@@ -38,7 +38,7 @@ const Panel: FunctionComponent<Props> = (props) => {
   return (
     <StyledPanel layout={layout} data-el="aux-panel">
       <PanelHeader data-el="aux-panel-header">
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth compact>
+        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth bordered>
           {availableTabs}
         </Tabset>
         <RenderIf condition={showCloseIcon}>

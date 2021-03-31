@@ -50,8 +50,7 @@ const DiscoverPage: FunctionComponent = () => {
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        compact={layout === Layout.SMALL}
-        fullWidth
+        fullWidth={layout !== Layout.SMALL}
         mB
       >
         <Tab name={Tabs.FOR_YOU} label="For you" icon={Icons.INBOX} />

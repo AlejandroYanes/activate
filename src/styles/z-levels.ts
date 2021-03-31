@@ -1,9 +1,7 @@
 export const ZLevels = {
-  notifications: '10',
-  backdropComponents: '9',
-  backdrop: '8',
-  sideMenuBlocks: '7',
-  sidePanels: '6',
-  dayComponent: '2',
-  dayComponentMark: '1',
+  notifications: 10,
+  backdrop: 8,
+  bottomTabBar: 6,
+  componentLevel2: 2,
+  componentLevel1: 1,
 };

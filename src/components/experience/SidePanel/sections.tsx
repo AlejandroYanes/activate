@@ -34,7 +34,7 @@ const sections = [
 export function resolveAvailableTabs(activeSections: AuxPanelSection[]) {
   return sections
     .filter((section) => activeSections.some((s) => s === section.value))
-    .map(({ icon, label, value }) => (
-      <Tab key={value} name={value} icon={icon} label={label} />
+    .map(({ icon, value }) => (
+      <Tab key={value} name={value} icon={icon} />
     ));
 }

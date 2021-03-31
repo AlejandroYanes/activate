@@ -1,9 +1,10 @@
-import React, { createContext, useMemo, FunctionComponent } from 'react';
-import { TabsetProps } from 'components/base-components/Tabset/Tabset';
+import React, { createContext, FunctionComponent, useMemo } from 'react';
 
-interface TabsetContext extends TabsetProps {
-  animateEntrance?: boolean;
+interface TabsetContext {
+  activeTab: string;
+  onTabChange: (activeTab) => void;
   disableFocus?: boolean;
+  fullWidth?: boolean;
 }
 
 const tabsetContext = createContext<TabsetContext>(undefined);

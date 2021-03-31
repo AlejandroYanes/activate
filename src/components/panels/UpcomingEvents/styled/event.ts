@@ -21,7 +21,7 @@ export const Event = styled.div`
   transition: all 250ms linear;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.FONT_SHADE};
+    background-color: ${({ theme }) => theme.colors.BACKGROUND};
 
     ${Liner} {
       top: 8px;

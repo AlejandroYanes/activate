@@ -6,8 +6,8 @@ export const Mark = styled(motion.div)`
   height: 2px;
   border-radius: 50px;
   position: absolute;
-  bottom: 8px;
-  left: max(12px, 15%);
-  right: max(12px, 15%);
-  z-index: ${ZLevels.dayComponentMark};
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  z-index: ${ZLevels.componentLevel1};
 `;
