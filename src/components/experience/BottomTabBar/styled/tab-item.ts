@@ -25,9 +25,3 @@ export const Mark = styled(motion.div)`
     transform: rotate(90deg) scale(0.9);
   }
 `;
-
-export const BubbleSVG = styled(motion.svg)`
-  position: absolute;
-  top: 0;
-  transform: rotate(90deg);
-`;
