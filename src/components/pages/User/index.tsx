@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
 import * as faker from 'faker';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
@@ -26,7 +25,6 @@ enum UserTabs {
 
 const UserPage: FunctionComponent = () => {
   const Colors = useAppColors();
-  const layout = useAppLayout();
 
   const [activeTab, setActiveTab] = useState(UserTabs.EVENTS);
   const { friendCount, followingCount, ...rest } = user;
@@ -56,7 +54,6 @@ const UserPage: FunctionComponent = () => {
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
-          compact={layout === Layout.SMALL}
           fullWidth
           mT
         >

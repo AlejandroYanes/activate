@@ -75,7 +75,7 @@ const EventDetailsPage: FunctionComponent = () => {
             <Avatar icon="user6" />
             <FlexBox direction="column" padding="0 0 0 6px">
               <Text size="small" color="secondary">{author.userName}</Text>
-              <Text>{author.name}</Text>
+              <Text padding="4px 0">{author.name}</Text>
             </FlexBox>
           </FlexBox>
           <IconButton
@@ -100,6 +100,8 @@ const EventDetailsPage: FunctionComponent = () => {
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
+          fullWidth
+          bordered
           mT
           mB
         >

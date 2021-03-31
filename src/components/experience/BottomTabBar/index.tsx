@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { Tab, Tabset } from 'components/base-components/Tabset';
+import { AnimateSharedLayout } from 'framer-motion';
 import { Icons } from 'components/base-components/SvgIcon';
-import { TabBar } from './styled';
+import TabItem from './TabItem';
+import { TabBar, List } from './styled';
 
 enum Menus {
   UPCOMING = '/',
@@ -32,14 +33,41 @@ const BottomTabBar: FunctionComponent = () => {
   }, [pathname]);
 
   return (
-    <TabBar>
-      <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth>
-        <Tab name={Menus.UPCOMING} icon={Icons.BOOKMARKS} onClick={handleTabClick} />
-        <Tab name={Menus.DISCOVER} icon={Icons.COMPASS} onClick={handleTabClick} />
-        <Tab name={Menus.SEARCH} icon={Icons.SEARCH} onClick={handleTabClick} />
-        <Tab name={Menus.TALKS} icon={Icons.MESSAGE} onClick={handleTabClick} />
-        <Tab name={Menus.UPDATES} icon={Icons.TIME_HISTORY} onClick={handleTabClick} />
-      </Tabset>
+    <TabBar id="bottom-tab-bar">
+      <AnimateSharedLayout>
+        <List>
+          <TabItem
+            icon={Icons.BOOKMARKS}
+            value={Menus.UPCOMING}
+            activeTab={activeTab}
+            onClick={handleTabClick}
+          />
+          <TabItem
+            icon={Icons.COMPASS}
+            value={Menus.DISCOVER}
+            activeTab={activeTab}
+            onClick={handleTabClick}
+          />
+          <TabItem
+            icon={Icons.SEARCH}
+            value={Menus.SEARCH}
+            activeTab={activeTab}
+            onClick={handleTabClick}
+          />
+          <TabItem
+            icon={Icons.MESSAGE}
+            value={Menus.TALKS}
+            activeTab={activeTab}
+            onClick={handleTabClick}
+          />
+          <TabItem
+            icon={Icons.TIME_HISTORY}
+            value={Menus.UPDATES}
+            activeTab={activeTab}
+            onClick={handleTabClick}
+          />
+        </List>
+      </AnimateSharedLayout>
     </TabBar>
   );
 };

@@ -11,7 +11,7 @@ import { useAppTheme } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import Icon from './Icon';
-import { Mark, StyledTab, Text, Label } from './styled';
+import { Mark, StyledTab, Label } from './styled';
 import tabsetContext from './context';
 
 interface Props {
@@ -34,7 +34,6 @@ const Tab: FunctionComponent<Props> = (props) => {
     activeTab,
     onTabChange,
     fullWidth,
-    compact,
     disableFocus,
   } = useContext(tabsetContext);
 
@@ -74,22 +73,18 @@ const Tab: FunctionComponent<Props> = (props) => {
       data-el="tab"
       ref={tabReference}
       fullWidth={fullWidth}
-      compact={compact}
       selected={isSelected}
       disableFocus={disableFocus}
-      // animateEntrance={animateEntrance}
       onClick={handleClick}
     >
-      <Text data-el="tab-text">
-        <RenderIf condition={!!icon}>
-          {iconComponent}
-        </RenderIf>
-        <RenderIf condition={!!label}>
-          <Label compact={compact} isSelected={isSelected} spaced={!!icon}>
-            {label}
-          </Label>
-        </RenderIf>
-      </Text>
+      <RenderIf condition={!!icon}>
+        {iconComponent}
+      </RenderIf>
+      <RenderIf condition={!!label}>
+        <Label isSelected={isSelected} spaced={!!icon}>
+          {label}
+        </Label>
+      </RenderIf>
       <RenderIf condition={isSelected}>
         <Mark
           layoutId="tabMarker"

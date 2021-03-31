@@ -1,25 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 const getWidthStyles = (props) => {
-  const { compact, isSelected, spaced } = props;
+  const { spaced } = props;
 
-  if (compact) {
-    if (isSelected) {
-      return css`
-        margin-left: ${spaced ? '8px' : '0'};
-        width: auto;
-      `;
-    }
-
-    return css`
-      width: 0;
-      margin-left: 0;
-      overflow: hidden;
-    `;
-  }
-
-  return css`
+  return `
     margin-left: ${spaced ? '8px' : '0'};
     width: auto;
   `;

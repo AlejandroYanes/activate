@@ -89,7 +89,7 @@ const ProfileModal: FunctionComponent = () => {
           activeTab={activeTab}
           onTabChange={setActiveTab}
           fullWidth
-          mT
+          bordered
           mB
         >
           <Tab

@@ -28,13 +28,13 @@ const getNumberColor = ({ isSelected, theme }) => (
 export const DayNumber = styled.span.attrs((props: any) => props)`
   position: absolute;
   margin: auto;
-  z-index: ${ZLevels.dayComponent};
+  z-index: ${ZLevels.componentLevel2};
   color: ${getNumberColor};
 `;
 
 export const Mark = styled(motion.div)`
   position: absolute;
-  z-index: ${ZLevels.dayComponentMark};
+  z-index: ${ZLevels.componentLevel1};
   height: 86px;
   width: 60px;
   border-radius: 20px;
