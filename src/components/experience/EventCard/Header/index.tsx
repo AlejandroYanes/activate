@@ -15,9 +15,9 @@ export interface HeaderProps {
 }
 
 const componentLayout = {
-  [Layout.FULL]: PrimaryHeader,
-  [Layout.MIDDLE]: PrimaryHeader,
-  [Layout.SMALL]: MobileHeader,
+  [Layout.DESKTOP]: PrimaryHeader,
+  [Layout.TABLET]: PrimaryHeader,
+  [Layout.MOBILE]: MobileHeader,
 };
 
 const Header: FunctionComponent<HeaderProps> = (props) => {

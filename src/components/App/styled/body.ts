@@ -3,7 +3,7 @@ import { anyPropsAttrs } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const layoutMap = {
-  [Layout.FULL]: css`
+  [Layout.DESKTOP]: css`
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@ const layoutMap = {
     padding: 32px 0 0;
     overflow: hidden;
   `,
-  [Layout.MIDDLE]: css`
+  [Layout.TABLET]: css`
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -19,7 +19,7 @@ const layoutMap = {
     padding: 32px 0 0;
     overflow: hidden;
   `,
-  [Layout.SMALL]: css`
+  [Layout.MOBILE]: css`
     height: 100%;
     max-height: 100%;
     flex: 1;

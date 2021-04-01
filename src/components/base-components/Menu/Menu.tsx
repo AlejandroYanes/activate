@@ -44,7 +44,10 @@ const Menu: FunctionComponent<Props> = (props) => {
       </TriggerContainer>
     );
   }, [trigger, toggleMenu]);
-  const menuListStyles = useMemo(() => ({ [align === 'end' ? 'right' : 'left']: 0 }), [align]);
+  const menuListStyles = useMemo(
+    () => ({ [align === 'end' ? 'right' : 'left']: 0 }),
+    [align],
+  );
 
   useEffect(() => {
     const handleClickOutside = (event) => {

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import IconButton from 'components/base-components/IconButton';
 
 export const ActionBlock = styled.li`
-  width: 90px;
   height: 78px;
   display: flex;
   flex-direction: column;

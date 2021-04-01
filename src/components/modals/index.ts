@@ -5,6 +5,7 @@ import ProfileModal from './Profile';
 import SettingsModal from './Settings';
 import PublisherModal from './Publisher';
 import UserModal from './User';
+import FiltersModal from './Filters';
 
 export enum Modals {
   TALKS = '#talks',
@@ -16,6 +17,7 @@ export enum Modals {
   SETTINGS = '#settings',
   PUBLISHER = '#publisher',
   USER = '#user',
+  FILTERS = '#filters',
 }
 
 export const ModalMap = {
@@ -28,4 +30,5 @@ export const ModalMap = {
   [Modals.SETTINGS]: SettingsModal,
   [Modals.PUBLISHER]: PublisherModal,
   [Modals.USER]: UserModal,
+  [Modals.FILTERS]: FiltersModal,
 };

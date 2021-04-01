@@ -23,7 +23,7 @@ const getScrollStyles = ({ fullWidth }) => (
 );
 
 export const StyledTabset = styled.div.attrs(anyPropsAttrs)`
-  height: 48px;
+  height: 49px;
   box-sizing: content-box;
   width: 100%;
   ${getBorderStyles};

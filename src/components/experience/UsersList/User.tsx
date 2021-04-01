@@ -21,7 +21,7 @@ const User: FunctionComponent<Props> = (props) => {
       <AvatarSection>
         <Avatar icon={avatarUrl} />
         <RenderIf condition={active}>
-          <ActiveDot />
+          <ActiveDot data-el="active-dot" />
         </RenderIf>
       </AvatarSection>
       <Info>

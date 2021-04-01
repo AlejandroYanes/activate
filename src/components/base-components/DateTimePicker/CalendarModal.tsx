@@ -5,9 +5,14 @@ import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import Button from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
-import { ClockWrapper, Footer, StyledCalendarModal, Expander } from './styled/calendar-modal';
 import Clock from '../Clock';
 import CurrentDate from './CurrentDate';
+import {
+  ClockWrapper,
+  Footer,
+  StyledCalendarModal,
+  Expander,
+} from './styled/calendar-modal';
 
 interface Props {
   isOpen: boolean;

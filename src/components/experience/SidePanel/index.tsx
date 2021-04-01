@@ -1,12 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import FixedContainer from './FixedContainer';
-import FloatingContainer from './FloatingContainer';
+import Panel from './Panel';
 
 const layoutMap = {
-  [Layout.FULL]: FixedContainer,
-  [Layout.MIDDLE]: FloatingContainer,
-  [Layout.SMALL]: () => null,
+  [Layout.DESKTOP]: Panel,
+  [Layout.TABLET]: () => null,
 };
 
 const SidePanel: FunctionComponent = () => {

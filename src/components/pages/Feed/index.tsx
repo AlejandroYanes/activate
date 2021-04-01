@@ -1,14 +1,14 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useMemo, useState } from 'react';
 import { addDays } from 'date-fns';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import DayCalendar from 'components/base-components/DayCalendar';
 import Page from 'components/base-components/Page';
 import EventCard from 'components/experience/EventCard';
-import { Option, Options } from 'components/base-components/Options';
-import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
 import { events } from '../Discover/events';
+import { Option, Options } from '../../base-components/Options';
+import { Icons } from '../../base-components/SvgIcon';
 
 const today = new Date();
 const days = [
@@ -34,9 +34,9 @@ enum EventsDisplay {
 }
 
 const titleByLayoutMap = {
-  [Layout.FULL]: 'Your upcoming events',
-  [Layout.MIDDLE]: 'Your upcoming events',
-  [Layout.SMALL]: 'Upcoming',
+  [Layout.DESKTOP]: 'Your upcoming events',
+  [Layout.TABLET]: 'Upcoming',
+  [Layout.MOBILE]: 'Upcoming',
 };
 
 const FeedPage: FunctionComponent = () => {
@@ -44,24 +44,28 @@ const FeedPage: FunctionComponent = () => {
   const [selectedDay, setSelectedDay] = useState(days[0]);
   const [option, setOption] = useState(EventsDisplay.ByDate);
 
-  const actions = (
-    <Options size="small" value={option} onChange={setOption}>
-      <Option
-        value={EventsDisplay.ByDate}
-        label="By Date"
-        icon={Icons.CALENDAR_FILLED} />
-      <Option
-        value={EventsDisplay.All}
-        label="All"
-        icon={Icons.LIST} />
-    </Options>
-  );
+  const actions = useMemo(() => {
+    if (layout !== Layout.MOBILE) {
+      return (
+        <Options size="small" value={option} onChange={setOption}>
+          <Option
+            value={EventsDisplay.ByDate}
+            label="By Date"
+            icon={Icons.CALENDAR_FILLED} />
+          <Option
+            value={EventsDisplay.All}
+            label="All"
+            icon={Icons.LIST} />
+        </Options>
+      );
+    }
+    return null;
+  }, [layout, option]);
 
   return (
     <Page
       title={titleByLayoutMap[layout]}
       actions={actions}
-      withTabBar
       data-el="feed-page"
     >
       <RenderIf condition={option === EventsDisplay.ByDate}>

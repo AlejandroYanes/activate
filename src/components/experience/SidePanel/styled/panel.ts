@@ -8,7 +8,7 @@ export const StyledSidePanel = styled.aside`
 `;
 
 const layoutMap = {
-  [Layout.FULL]: css`
+  [Layout.DESKTOP]: css`
     width: 380px;
     border-radius: 16px;
     height: calc(100vh - 64px);
@@ -16,7 +16,7 @@ const layoutMap = {
     position: sticky;
     top: 32px;
   `,
-  [Layout.MIDDLE]: css`
+  [Layout.TABLET]: css`
     width: 380px;
     border-radius: 16px;
     height: calc(100vh - 64px);
@@ -26,7 +26,7 @@ const layoutMap = {
   `,
 };
 
-export const Panel = styled.section.attrs(anyPropsAttrs)`
+export const StyledPanel = styled.section.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;

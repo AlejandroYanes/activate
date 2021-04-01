@@ -46,7 +46,10 @@ function merge<T>(base: T, target: T) {
 
 export function useHoverState(ref, options?: HoverOptions) {
   const [isHovered, setIsHovered] = useState(false);
-  const mergedOptions = useMemo<HoverOptions>(() => merge(defaultOptions, options), [options]);
+  const mergedOptions = useMemo<HoverOptions>(
+    () => merge(defaultOptions, options),
+    [options],
+  );
 
   const activateHover = useCallback((event) => {
     const { clientX, clientY, target } = event;

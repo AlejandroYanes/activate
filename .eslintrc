@@ -34,7 +34,7 @@
       "error",
       "prefer-double"
     ],
-    "max-len": [2, 120],
+    "max-len": [2, 90],
     "object-curly-newline": 0,
     "no-confusing-arrow": 0,
     "operator-linebreak": [

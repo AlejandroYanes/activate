@@ -14,13 +14,13 @@ import { TextArea } from 'components/base-components/Inputs';
 import Button from 'components/base-components/Button';
 import Toggle from 'components/base-components/Toggle';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Title } from 'components/base-components/Typography';
 import {
   ColorSample,
   DetailBox,
   Line,
   Palette,
-  Settings as StyledSettings,
-  SubTitle,
+  StyledSettings,
   Theme,
   ThemeName,
 } from './styled';
@@ -34,6 +34,8 @@ const user = {
   name: 'Alejandro Yanes',
   bio: faker.lorem.lines(4),
 };
+
+const emptyAction = () => undefined;
 
 const Settings: FunctionComponent<Props> = (props) => {
   const {
@@ -55,8 +57,8 @@ const Settings: FunctionComponent<Props> = (props) => {
   ), [colors]);
 
   return (
-    <StyledSettings smallView={asPanel}>
-      <SubTitle level={3} color="secondary">Profile Data</SubTitle>
+    <StyledSettings asPanel={asPanel}>
+      <Title level={3} color="secondary" margin="0 0 24px">Profile Data</Title>
       <Form state={userData} onChange={setUserData}>
         <Field name="userName" label="User Name" />
         <Field name="name" label="Name" mT />
@@ -69,10 +71,13 @@ const Settings: FunctionComponent<Props> = (props) => {
           mT
         />
       </Form>
-      <Line floatRight>
-        <Button onClick={() => undefined} label="Update" variant="flat" mB />
-      </Line>
-      <SubTitle level={3} color="secondary">Theme</SubTitle>
+      <Button
+        onClick={emptyAction}
+        label="Update"
+        variant="flat"
+        margin="24px 0 24px auto"
+      />
+      <Title level={3} color="secondary" margin="0 0 24px">Theme</Title>
       <PickList value={activeTheme} onChange={setTheme} color="info">
         <PickItem value={AppTheme.Default}>
           <Theme>

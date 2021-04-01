@@ -34,7 +34,10 @@ const PickItem: FunctionComponent<Props> = (props) => {
         {children}
         <RenderIf condition={isSelected}>
           <Mark color={color}>
-            <SvgIcon icon={Icons.CHECK_MARK} color={useDarkStyle ? Colors.ACCENT : Colors.WHITE} />
+            <SvgIcon
+              icon={Icons.CHECK_MARK}
+              color={useDarkStyle ? Colors.ACCENT : Colors.WHITE}
+            />
           </Mark>
         </RenderIf>
       </Touchable>

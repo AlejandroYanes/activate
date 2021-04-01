@@ -2,15 +2,15 @@ import styled, { css } from 'styled-components';
 import { Layout } from 'components/providers/Layout';
 
 const stylesMap = {
-  [Layout.FULL]: css`
+  [Layout.DESKTOP]: css`
     margin-bottom: 64px;
     padding: 16px;
   `,
-  [Layout.MIDDLE]: css`
+  [Layout.TABLET]: css`
     margin-bottom: 64px;
     padding: 16px;
   `,
-  [Layout.SMALL]: css`
+  [Layout.MOBILE]: css`
     margin-bottom: 32px;
     padding: 8px;
   `,

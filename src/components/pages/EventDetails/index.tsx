@@ -65,7 +65,6 @@ const EventDetailsPage: FunctionComponent = () => {
             buttonColor="font"
             onClick={goBack}
             icon={Icons.ARROW_LEFT}
-            margin="4px 0 0 0"
           />
           <Title level={2} padding="0 0 0 6px">{title}</Title>
         </FlexBox>

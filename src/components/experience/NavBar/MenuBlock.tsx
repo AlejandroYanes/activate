@@ -1,11 +1,12 @@
-import React, { FunctionComponent, ReactNode, useMemo } from 'react';
-import { ColorScheme } from 'styles/colors';
+import React, { FunctionComponent, ReactNode } from 'react';
 import { useAppTheme } from 'components/providers/Theme';
 import { Layout } from 'components/providers/Layout';
-import { Block, Label, StyledLink, StyledBubble } from './styled';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import RenderIf from 'components/base-components/RenderIf';
+import { Block, Label, StyledBubble, StyledLink } from './styled';
 
 interface MenuBlockProps {
-  icon: ReactNode | ((isSelected: boolean, theme: ColorScheme, useDarkStyle: boolean) => ReactNode);
+  icon: Icons | ReactNode;
   path?: string;
   currentPath?: string;
   layout: Layout;
@@ -16,17 +17,18 @@ const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
   const { icon, path, currentPath, layout } = props;
   const isSelected = path === currentPath;
 
-  const labelComponent = useMemo(() => (
-    typeof icon === 'function'
-      ? icon(isSelected, colors, useDarkStyle)
-      : icon
-  ), [icon, isSelected, colors, useDarkStyle]);
-
   return (
     <Block>
       <StyledLink to={path}>
         <StyledBubble layout={layout} selected={isSelected} />
-        <Label>{labelComponent}</Label>
+        <Label>
+          <RenderIf condition={typeof icon === 'string'} fallback={icon}>
+            <SvgIcon
+              icon={icon as Icons}
+              color={isSelected && !useDarkStyle ? colors.BRAND : colors.WHITE}
+            />
+          </RenderIf>
+        </Label>
       </StyledLink>
     </Block>
   );

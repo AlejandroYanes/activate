@@ -8,7 +8,7 @@ import FlexBox from 'components/base-components/FlexBox';
 import { HeaderProps } from './index';
 
 const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
-  const { title } = props;
+  const { title, actions } = props;
 
   return (
     <RenderIf condition={!!title}>
@@ -22,6 +22,7 @@ const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
       >
         <Title level={1} color="brand">{title}</Title>
         <FlexBox align="center">
+          {actions}
           <Link to="#profile">
             <Avatar icon="user2" />
           </Link>

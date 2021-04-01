@@ -21,7 +21,9 @@ export function notifyEventChannel(channel: EventChannelList, payload?) {
 
 export function useEventCenterUpdates(channelList: EventChannelList[], observer) {
   useEffect(() => {
-    const subscriptions = channelList.map((channel) => listenToEventChannel(channel, observer));
+    const subscriptions = channelList.map(
+      (channel) => listenToEventChannel(channel, observer)
+    );
     return () => {
       subscriptions.forEach((subscription) => subscription.unsubscribe());
     };

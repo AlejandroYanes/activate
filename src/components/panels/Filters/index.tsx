@@ -19,7 +19,7 @@ const initialSearchState = {
   date: undefined,
 };
 
-const FilterPanel: FunctionComponent = () => {
+const FiltersPanel: FunctionComponent = () => {
   const [search, setSearch] = useState(initialSearchState);
 
   const handleChange = useCallback((nextValue) => setSearch(nextValue), []);
@@ -49,4 +49,4 @@ const FilterPanel: FunctionComponent = () => {
   );
 };
 
-export default FilterPanel;
+export default FiltersPanel;

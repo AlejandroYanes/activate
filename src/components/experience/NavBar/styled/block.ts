@@ -7,7 +7,6 @@ import SelectedBubble from '../SelectedBubble';
 
 export const Block = styled.li`
   height: 78px;
-  width: 90px;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -24,7 +23,7 @@ export const StyledLink = styled(Link)`
 const getPositionStyles = (props) => {
   const { layout, selected } = props;
 
-  if (layout === Layout.SMALL) {
+  if (layout === Layout.MOBILE) {
     return css`
       transform: rotate(90deg);
       top: ${selected ? '24px' : '92px'};

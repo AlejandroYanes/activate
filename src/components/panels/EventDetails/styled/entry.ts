@@ -30,7 +30,7 @@ export const StyledLink = styled.a`
   font-weight: normal;
   color: ${({ theme }) => theme.colors.FONT};
   line-height: 28px;
-  padding-left: 6px;
+  //padding-left: 6px;
   transition: all 150ms linear;
 
   &:hover {

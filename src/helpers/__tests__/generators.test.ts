@@ -6,6 +6,10 @@ describe('generateUID function', () => {
     const secondTry = generateUID();
     const thirdTry = generateUID();
 
-    expect(firstTry === secondTry || secondTry === thirdTry || firstTry === thirdTry).toBe(false);
+    expect(
+      firstTry === secondTry ||
+      secondTry === thirdTry ||
+      firstTry === thirdTry
+    ).toBe(false);
   });
 });

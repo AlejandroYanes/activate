@@ -1,5 +1,12 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { addDays, addMonths, endOfMonth, endOfWeek, startOfMonth, startOfWeek } from 'date-fns';
+import {
+  addDays,
+  addMonths,
+  endOfMonth,
+  endOfWeek,
+  startOfMonth,
+  startOfWeek,
+} from 'date-fns';
 import { generateUID } from 'helpers';
 import { Icons } from 'components/base-components/SvgIcon';
 import Button from 'components/base-components/Button';

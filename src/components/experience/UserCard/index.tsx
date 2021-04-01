@@ -23,7 +23,7 @@ const UserCard: FunctionComponent = () => {
     name: `${faker.name.firstName()} ${faker.name.lastName()}`,
   }), []);
 
-  const link = `${layout === Layout.SMALL ? '#' : '/'}user`;
+  const link = `${layout === Layout.MOBILE ? '#' : '/'}user`;
 
   return (
     <Card>

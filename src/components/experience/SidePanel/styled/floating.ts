@@ -3,10 +3,10 @@ import { anyPropsAttrs } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const layoutMap = {
-  [Layout.MIDDLE]: css`
+  [Layout.TABLET]: css`
     bottom: 32px;
   `,
-  [Layout.SMALL]: css`
+  [Layout.MOBILE]: css`
     bottom: 90px;
   `,
 };
