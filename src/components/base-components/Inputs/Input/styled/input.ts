@@ -40,7 +40,7 @@ export const getColorStyles = (props) => {
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
   font-size: 16px;
-  font-family: "MPlus Rounded Normal", sans-serif;
+  font-family: Comfortaa, sans-serif;
   letter-spacing: 0.5px;
   outline: none;
   padding-top: 0;

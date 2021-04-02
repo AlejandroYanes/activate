@@ -15,9 +15,16 @@ interface Props {
 
 const Info: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { leftStatLabel, leftStatValue, userName, name, rightStatLabel, rightStatValue } = props;
+  const {
+    leftStatLabel,
+    leftStatValue,
+    userName,
+    name,
+    rightStatLabel,
+    rightStatValue,
+  } = props;
 
-  if (layout === Layout.SMALL) {
+  if (layout === Layout.MOBILE) {
     return (
       <>
         <StyledInfo centered>

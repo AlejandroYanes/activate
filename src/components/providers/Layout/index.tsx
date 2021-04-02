@@ -8,9 +8,9 @@ import React, {
 } from 'react';
 
 export enum Layout {
-  FULL = 'FULL',
-  MIDDLE = 'MIDDLE',
-  SMALL = 'SMALL',
+  DESKTOP = 'DESKTOP',
+  TABLET = 'TABLET',
+  MOBILE = 'MOBILE',
 }
 
 interface Breakpoint {
@@ -20,9 +20,9 @@ interface Breakpoint {
 }
 
 const breakpoints: Breakpoint[] = [
-  { layout: Layout.SMALL, query: '(max-width: 460px)', matches: false },
-  { layout: Layout.MIDDLE, query: '(max-width: 1260px)', matches: false },
-  { layout: Layout.FULL, query: '(max-width: 1366px)', matches: false },
+  { layout: Layout.MOBILE, query: '(max-width: 767px)', matches: false },
+  { layout: Layout.TABLET, query: '(max-width: 1260px)', matches: false },
+  { layout: Layout.DESKTOP, query: '(max-width: 1366px)', matches: false },
 ];
 
 function getActiveLayout() {
@@ -32,7 +32,7 @@ function getActiveLayout() {
   }));
   const activeLayout = matchedBreakpoints.find((bp) => bp.matches);
 
-  return activeLayout?.layout || Layout.FULL;
+  return activeLayout?.layout || Layout.DESKTOP;
 }
 
 const LayoutContext = createContext<Layout>(undefined);

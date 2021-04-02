@@ -1,16 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppColors, useAppTheme } from 'components/providers/Theme';
-import { useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
+import RenderIf from 'components/base-components/RenderIf';
 import MenuBlock from './MenuBlock';
-import {
-  discoverIcon,
-  bookmarksIcon,
-  searchIcon,
-  messageIcon,
-} from './icons';
 import {
   ActionBlock,
   ActionButton,
@@ -19,7 +14,7 @@ import {
   SideMenu as StyledSideMenu,
 } from './styled';
 
-const emptyAction = () => undefined;
+// const emptyAction = () => undefined;
 
 const VerticalMenu: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -28,7 +23,7 @@ const VerticalMenu: FunctionComponent = () => {
   const { useDarkStyle, toggleLightStyle } = useAppTheme();
 
   return (
-    <StyledSideMenu>
+    <StyledSideMenu layout={layout}>
       <MenuList>
         <ActionBlock>
           <ActionButton
@@ -49,37 +44,45 @@ const VerticalMenu: FunctionComponent = () => {
           layout={layout}
           currentPath={pathname}
           path="/"
-          icon={bookmarksIcon}
+          icon={Icons.BOOKMARKS}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
           path="/discover"
-          icon={discoverIcon}
+          icon={Icons.COMPASS}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
           path="/search"
-          icon={searchIcon}
+          icon={Icons.SEARCH}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
           path="/talks"
-          icon={messageIcon}
+          icon={Icons.MESSAGE}
         />
-        <EmptyBlock />
-        <ActionBlock>
-          <ActionButton
-            onClick={emptyAction}
-            icon={Icons.LOGOUT}
-            color={Colors.WHITE}
-            secondaryColor={Colors.WHITE}
-            buttonColor="brand"
-            variant="fill"
+        <RenderIf condition={layout !== Layout.DESKTOP}>
+          <MenuBlock
+            layout={layout}
+            currentPath={pathname}
+            path="#updates"
+            icon={Icons.TIME_HISTORY}
           />
-        </ActionBlock>
+        </RenderIf>
+        <EmptyBlock />
+        {/*<ActionBlock>*/}
+        {/*  <ActionButton*/}
+        {/*    onClick={emptyAction}*/}
+        {/*    icon={Icons.LOGOUT}*/}
+        {/*    color={Colors.WHITE}*/}
+        {/*    secondaryColor={Colors.WHITE}*/}
+        {/*    buttonColor="brand"*/}
+        {/*    variant="fill"*/}
+        {/*  />*/}
+        {/*</ActionBlock>*/}
       </MenuList>
     </StyledSideMenu>
   );

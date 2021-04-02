@@ -1,9 +1,12 @@
 import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Layout, useAppLayout } from 'components/providers/Layout';
+import { useAppColors } from 'components/providers/Theme';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import EventCard from 'components/experience/EventCard';
 import { Icons } from 'components/base-components/SvgIcon';
+import IconButton from 'components/base-components/IconButton';
+import EventCard from 'components/experience/EventCard';
 import Page from 'components/base-components/Page';
 import { events } from './events';
 
@@ -19,38 +22,58 @@ function eventFactory() {
 }
 
 const titleByLayoutMap = {
-  [Layout.FULL]: 'Discover new events',
-  [Layout.MIDDLE]: 'Discover new events',
-  [Layout.SMALL]: 'Discover',
+  [Layout.DESKTOP]: 'Discover new events',
+  [Layout.TABLET]: 'Discover new events',
+  [Layout.MOBILE]: 'Discover',
 };
 
 const DiscoverPage: FunctionComponent = () => {
   const layout = useAppLayout();
+  const colors = useAppColors();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
+  const { push } = useHistory();
+
   const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
 
   useEffect(() => {
-    if (layout !== Layout.SMALL) {
+    if (layout !== Layout.MOBILE) {
       addSection(AuxPanelSection.FILTER);
       setActiveSection(AuxPanelSection.FILTER);
-    }
 
-    return () => {
-      if (layout !== Layout.SMALL) {
+      return () => {
         removeSection(AuxPanelSection.FILTER);
-      }
+      };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const eventCards = useMemo(eventFactory, []);
 
+  const rightAction = useMemo(() => {
+    if (layout !== Layout.DESKTOP) {
+      const sizeProps: any = layout === Layout.TABLET
+      ? { width: 22, height: 22, size: 'large' }
+      : {size: 'large', margin: '0 8px 0 0'};
+
+      return (
+        <IconButton
+          onClick={() => push('#filters')}
+          icon={Icons.FILTER}
+          color={colors.BRAND_FONT}
+          {...sizeProps}
+        />
+      );
+    }
+
+    return null;
+  }, [layout]);
+
   return (
-    <Page title={titleByLayoutMap[layout]} withTabBar>
+    <Page title={titleByLayoutMap[layout]} actions={rightAction}>
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        fullWidth={layout !== Layout.SMALL}
+        fullWidth={layout !== Layout.MOBILE}
         mB
       >
         <Tab name={Tabs.FOR_YOU} label="For you" icon={Icons.INBOX} />

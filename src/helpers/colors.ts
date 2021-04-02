@@ -14,7 +14,11 @@ export function changeColorLight(hexColor: string, amount: number): string {
   return rgbToHex(hslToRgb(changedColor));
 }
 
-export function balanceColorRatio(color: string, background: string, targetRatio = 4.5): string {
+export function balanceColorRatio(
+  color: string,
+  background: string,
+  targetRatio = 4.5,
+): string {
   const colorChangeFactor = getBrightness(background) > 128
     ? -0.01
     : 0.01;

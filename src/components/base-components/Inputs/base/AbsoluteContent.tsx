@@ -10,7 +10,11 @@ const AbsoluteContent: FunctionComponent<Props> = (props) => {
   const { floatRight, style, children } = props;
 
   return (
-    <StyledAbsoluteContent floatRight={floatRight} style={style} data-el="absolute-content">
+    <StyledAbsoluteContent
+      floatRight={floatRight}
+      style={style}
+      data-el="absolute-content"
+    >
       {children}
     </StyledAbsoluteContent>
   );

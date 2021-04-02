@@ -10,7 +10,7 @@ import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
 import Header from './Header';
-import { Actions, Card, Content, Divider, Footer, } from './styled';
+import { Actions, Card, Content, Divider, Footer } from './styled';
 
 interface Props {
   title: string;
@@ -49,7 +49,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
     setIsBooked((previousState) => !previousState);
   }, []);
 
-  const link = layout !== Layout.SMALL ? '/event-details' : '#event-details';
+  const link = layout !== Layout.MOBILE ? '/event-details' : '#event-details';
 
   return (
     <Card isBooked={isBooked} layout={layout}>

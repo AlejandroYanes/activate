@@ -1,5 +1,12 @@
 import React, { FunctionComponent, useEffect, useState } from 'react';
-import { addMonths, differenceInDays, isEqual, setMonth, setYear, subMonths } from 'date-fns';
+import {
+  addMonths,
+  differenceInDays,
+  isEqual,
+  setMonth,
+  setYear,
+  subMonths,
+} from 'date-fns';
 import RenderIf from 'components/base-components/RenderIf';
 import { DateSection, StyledCalendar } from './styled/calendar';
 import Options from './Options';

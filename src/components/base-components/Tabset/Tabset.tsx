@@ -22,7 +22,7 @@ const Tabset: FunctionComponent<TabsetProps> = (props) => {
           activeTab={activeTab}
           onTabChange={onTabChange}
           fullWidth={fullWidth}
-          disableFocus={layout !== Layout.FULL}
+          disableFocus={layout !== Layout.DESKTOP}
         >
           <List>
             {children}

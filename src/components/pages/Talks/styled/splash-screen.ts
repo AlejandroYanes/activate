@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SplashScreen = styled.div`
+export const StyledSplashScreen = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;

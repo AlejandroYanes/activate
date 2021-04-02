@@ -1,4 +1,10 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { PositionProps } from 'helpers';
 import RenderIf from 'components/base-components/RenderIf';

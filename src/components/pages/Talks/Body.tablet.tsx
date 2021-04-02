@@ -1,18 +1,13 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
 import faker from 'faker';
-import { EventChannelList, notifyEventChannel } from 'event-center';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAppColors } from 'components/providers/Theme';
-import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
-import { Text } from 'components/base-components/Typography';
 import IconButton from 'components/base-components/IconButton';
+import { Icons } from 'components/base-components/SvgIcon';
+import FlexBox from 'components/base-components/FlexBox';
+import { Text } from 'components/base-components/Typography';
+import { Case, Switch } from 'components/base-components/Switch';
 import Messages from 'components/experience/Messages';
 import UsersList from 'components/experience/UsersList';
-import FlexBox from 'components/base-components/FlexBox';
-
-const arrowBackStyles = { marginRight: '4px' };
 
 enum TalkViews {
   TALK_LIST = 'TALK_LIST',
@@ -20,11 +15,21 @@ enum TalkViews {
   MESSAGES = 'MESSAGES',
 }
 
-const TalksPanel: FunctionComponent = () => {
+const arrowBackStyles = { marginRight: '4px' };
+
+const UserView = (props) => (
+  <FlexBox
+    direction="column"
+    align="stretch"
+    padding="0 0 16px 0"
+    height="100%"
+  >
+    <UsersList {...props} />
+  </FlexBox>
+);
+
+const TabletBody: FunctionComponent = () => {
   const colors = useAppColors();
-  const layout = useAppLayout();
-  const { push } = useHistory();
-  const { pathname } = useLocation();
 
   const [{ activeView, activeUser }, setState] = useState({
     activeView: TalkViews.TALK_LIST,
@@ -32,19 +37,11 @@ const TalksPanel: FunctionComponent = () => {
   });
 
   const openTalk = useCallback((user) => {
-    if (pathname.includes('talks')) {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
-      setState({
-        activeView: TalkViews.TALK_LIST,
-        activeUser: undefined,
-      });
-    } else {
-      setState({
-        activeView: TalkViews.MESSAGES,
-        activeUser: user,
-      });
-    }
-  }, [pathname]);
+    setState({
+      activeView: TalkViews.MESSAGES,
+      activeUser: user,
+    });
+  }, []);
 
   const closeTalk = useCallback(() => {
     setState({
@@ -52,17 +49,6 @@ const TalksPanel: FunctionComponent = () => {
       activeUser: undefined,
     });
   }, []);
-
-  const maximizeTalk = useCallback(() => {
-    setState({
-      activeView: TalkViews.TALK_LIST,
-      activeUser: undefined,
-    });
-    push('/talks');
-    setTimeout(() => {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, activeUser);
-    }, 100);
-  }, [activeUser]);
 
   const openContactList = useCallback(() => {
     setState({
@@ -81,7 +67,7 @@ const TalksPanel: FunctionComponent = () => {
         secondary: (
           activeView === TalkViews.CONTACT_LIST
             ? `@${faker.internet.userName()}`
-            : faker.lorem.words(20)
+            : faker.lorem.words(10)
         ),
         active: faker.random.boolean(),
       }))
@@ -100,8 +86,8 @@ const TalksPanel: FunctionComponent = () => {
 
   const rightAction = (
     <IconButton
-      onClick={maximizeTalk}
-      icon={Icons.MAXIMIZE}
+      onClick={() => undefined}
+      icon={Icons.MORE_VERT}
       color={colors.FONT}
       buttonColor="font"
       variant="flat"
@@ -119,7 +105,13 @@ const TalksPanel: FunctionComponent = () => {
     />
   );
 
-  const header = (
+  const talksHeader = (
+    <FlexBox align="center" height="100%" padding="0 0 0 16px">
+      <Text>Select a talk</Text>
+    </FlexBox>
+  );
+
+  const newTalkHeader = (
     <FlexBox align="center" height="100%" padding="0 0 0 16px">
       {leftAction}
       <Text>Select a contact</Text>
@@ -130,28 +122,29 @@ const TalksPanel: FunctionComponent = () => {
     <Switch by={activeView}>
       <Case
         value={TalkViews.TALK_LIST}
-        component={UsersList}
+        component={UserView}
         action={showContactsButton}
         onClick={openTalk}
         users={users}
+        header={talksHeader}
       />
       <Case
         value={TalkViews.CONTACT_LIST}
-        component={UsersList}
+        component={UserView}
         onClick={openTalk}
         users={users}
-        header={header}
+        header={newTalkHeader}
       />
       <Case
         value={TalkViews.MESSAGES}
         component={Messages}
         user={activeUser}
         leftActions={leftAction}
-        rightActions={layout !== Layout.MOBILE ? rightAction : undefined}
-        viewMode="panel"
+        rightActions={rightAction}
+        viewMode="page"
       />
     </Switch>
   );
 };
 
-export default TalksPanel;
+export default TabletBody;

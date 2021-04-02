@@ -34,7 +34,7 @@ const PublisherCard: FunctionComponent = () => {
     friendsFollowing: faker.random.number({ min: 0, max: 1 }),
   }), []);
 
-  const link = `${layout === Layout.SMALL ? '#' : '/'}publisher`;
+  const link = `${layout === Layout.MOBILE ? '#' : '/'}publisher`;
 
   return (
     <Card>

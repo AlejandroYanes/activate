@@ -17,9 +17,9 @@ enum Tabs {
 }
 
 const titleByLayoutMap = {
-  [Layout.FULL]: 'Search for anything',
-  [Layout.MIDDLE]: 'Search for anything',
-  [Layout.SMALL]: 'Search',
+  [Layout.DESKTOP]: 'Search for anything',
+  [Layout.TABLET]: 'Search for anything',
+  [Layout.MOBILE]: 'Search',
 };
 
 const SearchPage: FunctionComponent = () => {
@@ -32,12 +32,12 @@ const SearchPage: FunctionComponent = () => {
   }, []);
 
   return (
-    <Page title={titleByLayoutMap[layout]} withTabBar>
+    <Page title={titleByLayoutMap[layout]}>
       <Input value={search} onChange={handleSearch} icon={Icons.SEARCH} showClear />
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
-        fullWidth={layout !== Layout.SMALL}
+        fullWidth={layout !== Layout.MOBILE}
         mT
         mB
       >

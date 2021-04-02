@@ -13,6 +13,7 @@ export const ActiveDot = styled.div`
   bottom: 2px;
   right: -2px;
   border-radius: 50%;
+  box-sizing: content-box;
   background-color: ${({ theme }) => theme.colors.SUCCESS};
   border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;

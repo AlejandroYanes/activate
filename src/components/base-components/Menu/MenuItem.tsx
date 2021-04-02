@@ -1,7 +1,11 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import { MenuItem as StyledMenuItem, MenuItemIcon, MenuItemLabel } from './styled/menu-item';
+import {
+  MenuItem as StyledMenuItem,
+  MenuItemIcon,
+  MenuItemLabel,
+} from './styled/menu-item';
 import { useMenuContext } from './context';
 
 interface Props {

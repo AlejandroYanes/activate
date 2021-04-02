@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useAppColors } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { Title } from 'components/base-components/Typography';
-import { SplashScreen as StyledSplashScreen } from './styled/splash-screen';
+import { StyledSplashScreen } from './styled/splash-screen';
 
 const SplashScreen: FunctionComponent = () => {
   const colors = useAppColors();

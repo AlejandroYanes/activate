@@ -2,7 +2,6 @@ import React, { FunctionComponent, useMemo } from 'react';
 import faker from 'faker';
 import { formatCurrency, formatDateTime } from 'helpers';
 import { Text } from 'components/base-components/Typography';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Button from 'components/base-components/Button';
 import Badge from 'components/base-components/Badge';
 import AvatarGroup from 'components/base-components/AvatarGroup';
@@ -28,35 +27,37 @@ const EventDetailsPanel: FunctionComponent = () => {
   const { date, address, price, tags } = event;
 
   const tagElements = useMemo(() => (
-    tags.map((tag) => <Badge key={tag} label={tag} color="light" sm mR mT />)
+    tags.map((tag) => <Badge key={tag} label={tag} color="light" sm mR mB />)
   ), [tags]);
 
   return (
     <Panel>
-      <FlexBox align="center" mB>
-        <SvgIcon icon={Icons.CALENDAR_FILLED} />
-        <Text padding="0 0 0 6px">{formatDateTime(date)}</Text>
+      <FlexBox direction="column" mB>
+        <Text color="secondary" padding="0 0 4px 0">Date</Text>
+        <Text>{formatDateTime(date)}</Text>
       </FlexBox>
-      <FlexBox align="flex-start" mB>
-        <SvgIcon icon={Icons.MAP_PIN} height={26} width={26} />
-        <Text padding="0 0 0 6px">{address}</Text>
+      <FlexBox direction="column" mB>
+        <Text color="secondary" padding="0 0 4px 0">Address</Text>
+        <Text>{address}</Text>
       </FlexBox>
-      <FlexBox align="center" mB>
-        <SvgIcon icon={Icons.TICKET} />
-        <Text padding="0 0 0 6px">
-          {`${formatCurrency(price)} - ${formatCurrency(price)}`}
-        </Text>
-        <Button
-          sm
-          color="brand"
-          variant="fill"
-          label="Buy a ticket"
-          onClick={() => undefined}
-          margin="0 0 0 auto"
-        />
+      <FlexBox direction="column" mB>
+        <Text color="secondary" padding="0 0 4px 0">Price</Text>
+        <FlexBox align="center" width="100%">
+          <Text margin="6px 0 0 0">
+            {`${formatCurrency(price)} - ${formatCurrency(price)}`}
+          </Text>
+          <Button
+            sm
+            color="brand"
+            variant="fill"
+            label="Buy a ticket"
+            onClick={() => undefined}
+            margin="0 0 0 auto"
+          />
+        </FlexBox>
       </FlexBox>
-      <FlexBox align="center" mB>
-        <SvgIcon icon={Icons.GLOBE} />
+      <FlexBox direction="column" mB>
+        <Text color="secondary" padding="0 0 4px 0">Available at</Text>
         <StyledLink href="https://faketicketweb.com">
           https://faketicketweb.com
         </StyledLink>

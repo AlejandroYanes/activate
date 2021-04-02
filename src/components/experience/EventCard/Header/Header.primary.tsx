@@ -9,6 +9,8 @@ import ActionsMenu from '../ActionsMenu';
 import { DateBadge } from './styled/header.primary';
 import { HeaderProps } from './index';
 
+const linkStyles = { width: '100%' };
+
 const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
   const colors = useAppColors();
   const { date, title, address, author } = props;
@@ -19,13 +21,13 @@ const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
         <span>{getMonthLabel(date).slice(0, 3)}</span>
         <span>{date.getDate()}</span>
       </DateBadge>
-      <FlexBox grow height="100%" direction="column" padding="0 24px 0 10px">
-        <Link to="/event-details">
-          <Title level={3} padding="0">{title}</Title>
+      <FlexBox grow height="100%" direction="column" padding="0 20px 0 10px" ellipsis>
+        <Link to="/event-details" style={linkStyles}>
+          <Title level={3} padding="0" ellipsis>{title}</Title>
         </Link>
-        <FlexBox align="center" margin="14px 0 0 0">
+        <FlexBox align="flex-start" margin="10px 0 0 0" width="100%">
           <SvgIcon icon={Icons.MAP_PIN} color={colors.FONT} />
-          <Text padding="0 0 0 6px">{address}</Text>
+          <Text padding="2px 0 0 6px" ellipsis>{address}</Text>
         </FlexBox>
       </FlexBox>
       <ActionsMenu {...author} />

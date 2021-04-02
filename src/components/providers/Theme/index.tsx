@@ -7,17 +7,18 @@ import React, {
   useState,
 } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { ColorScheme} from 'styles/colors';
+import { ColorScheme } from 'styles/colors';
 import {
+  DuskLightsTheme,
+  LifeIsABeachTheme,
   NeonLightsTheme,
   StartingTheme,
   SummerVibesTheme,
-  DuskLightsTheme,
-  LifeIsABeachTheme,
 } from 'styles/themes';
-import { PrimaryGlobalStyles, MobileGlobalStyles } from './GlobalStyles';
+import { Layout } from 'components/providers/Layout';
+import RenderByLayout from 'components/base-components/RenderByLayout';
+import { MobileGlobalStyles, PrimaryGlobalStyles } from './GlobalStyles';
 import composeColorScheme from './compose-color-scheme';
-import { Layout, useAppLayout } from '../Layout';
 
 export enum AppTheme {
   Default = 'Default',
@@ -46,14 +47,12 @@ const themesMap = {
 const ThemeContext = createContext<ThemeContextValue>(undefined);
 
 const globalStyles = {
-  [Layout.FULL]: PrimaryGlobalStyles,
-  [Layout.MIDDLE]: PrimaryGlobalStyles,
-  [Layout.SMALL]: MobileGlobalStyles,
+  [Layout.DESKTOP]: PrimaryGlobalStyles,
+  [Layout.TABLET]: PrimaryGlobalStyles,
+  [Layout.MOBILE]: MobileGlobalStyles,
 };
 
 const ThemeProvider: FunctionComponent = (props) => {
-  const layout = useAppLayout();
-
   const { children } = props;
   const [theme, setTheme] = useState<AppTheme>(AppTheme.SummerVibes);
   const [useDarkStyle, setUseDarkTheme] = useState(true);
@@ -80,12 +79,13 @@ const ThemeProvider: FunctionComponent = (props) => {
     [theme, themeColors, toggleLightStyle],
   );
 
-  const GlobalStyles = globalStyles[layout];
-
   return (
     <ThemeContext.Provider value={themeContextValue}>
       <StyledThemeProvider theme={themeColors}>
-        <GlobalStyles />
+        <RenderByLayout
+          options={globalStyles}
+          fallback={PrimaryGlobalStyles}
+        />
         {children}
       </StyledThemeProvider>
     </ThemeContext.Provider>

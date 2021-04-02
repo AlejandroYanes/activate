@@ -4,9 +4,9 @@ import { anyPropsAttrs } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const layoutMap = {
-  [Layout.FULL]: css`margin: 0 32px 0 0`,
-  [Layout.MIDDLE]: css`margin: 0 32px 0 0`,
-  [Layout.SMALL]: css`margin: 0 8px 0 8px`,
+  [Layout.DESKTOP]: css`margin: 0 32px 0 0`,
+  [Layout.TABLET]: css`margin: 0 32px 0 0`,
+  [Layout.MOBILE]: css`margin: 0 8px 0 8px`,
 };
 
 export const Notifications = styled.ul.attrs(anyPropsAttrs)`

@@ -12,10 +12,10 @@ import UpdatesPanel from 'components/panels/Updates';
 import EventDetailsPanel from 'components/panels/EventDetails';
 import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
-import FilterPanel from 'components/panels/Filter';
+import FilterPanel from 'components/panels/Filters';
 import TalksPanel from 'components/panels/Talks';
 import { resolveAvailableTabs } from './sections';
-import { Panel as StyledPanel, PanelBody, PanelHeader } from './styled';
+import { StyledSidePanel, StyledPanel, PanelBody, PanelHeader } from './styled';
 
 interface Props {
   showCloseIcon?: boolean;
@@ -36,25 +36,27 @@ const Panel: FunctionComponent<Props> = (props) => {
   }, [activeSection]);
 
   return (
-    <StyledPanel layout={layout} data-el="aux-panel">
-      <PanelHeader data-el="aux-panel-header">
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth bordered>
-          {availableTabs}
-        </Tabset>
-        <RenderIf condition={showCloseIcon}>
-          <IconButton onClick={onClose} icon={Icons.CLOSE} mL />
-        </RenderIf>
-      </PanelHeader>
-      <PanelBody data-el="aux-panel-body">
-        <Switch by={activeTab}>
-          <Case value={AuxPanelSection.FILTER} component={FilterPanel} />
-          <Case value={AuxPanelSection.UPCOMING} component={UpcomingEventsPanel} />
-          <Case value={AuxPanelSection.EVENT_DETAILS} component={EventDetailsPanel} />
-          <Case value={AuxPanelSection.UPDATES} component={UpdatesPanel} />
-          <Case value={AuxPanelSection.TALKS} component={TalksPanel} onClose={onClose} />
-        </Switch>
-      </PanelBody>
-    </StyledPanel>
+    <StyledSidePanel>
+      <StyledPanel layout={layout} data-el="aux-panel">
+        <PanelHeader data-el="aux-panel-header">
+          <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth bordered>
+            {availableTabs}
+          </Tabset>
+          <RenderIf condition={showCloseIcon}>
+            <IconButton onClick={onClose} icon={Icons.CLOSE} mL />
+          </RenderIf>
+        </PanelHeader>
+        <PanelBody data-el="aux-panel-body">
+          <Switch by={activeTab}>
+            <Case value={AuxPanelSection.FILTER} component={FilterPanel} />
+            <Case value={AuxPanelSection.UPCOMING} component={UpcomingEventsPanel} />
+            <Case value={AuxPanelSection.EVENT_DETAILS} component={EventDetailsPanel} />
+            <Case value={AuxPanelSection.UPDATES} component={UpdatesPanel} />
+            <Case value={AuxPanelSection.TALKS} component={TalksPanel} />
+          </Switch>
+        </PanelBody>
+      </StyledPanel>
+    </StyledSidePanel>
   );
 };
 
