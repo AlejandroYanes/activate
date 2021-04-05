@@ -127,6 +127,7 @@ const TabletBody: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={talksHeader}
+        scroll
       />
       <Case
         value={TalkViews.CONTACT_LIST}
@@ -134,6 +135,7 @@ const TabletBody: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={newTalkHeader}
+        scroll
       />
       <Case
         value={TalkViews.MESSAGES}

@@ -11,7 +11,7 @@ interface Props {
   onClose: () => void;
   actions?: ButtonProps[];
   footer?: ReactNode;
-  size?: 'small' | 'medium' | 'large' | 'mobile';
+  size?: 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
 }
 
 const Modal: FunctionComponent<Props> = (props) => {
@@ -22,7 +22,7 @@ const Modal: FunctionComponent<Props> = (props) => {
       <Backdrop onClick={onClose}>
         <StyledModal size={size} data-el="modal-container">
           <Header size={size} title={title} onClose={onClose} />
-          <Content>
+          <Content data-el="modal-content">
             {children}
           </Content>
           <Footer footer={footer} actions={actions} />

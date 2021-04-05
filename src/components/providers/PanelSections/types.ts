@@ -1,0 +1,7 @@
+export enum AuxPanelSection {
+  UPCOMING = 'UPCOMING',
+  UPDATES = 'UPDATES',
+  FILTER = 'FILTER',
+  EVENT_DETAILS = 'EVENT_DETAILS',
+  TALKS = 'TALKS',
+}

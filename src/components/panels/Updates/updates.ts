@@ -35,7 +35,7 @@ export const updates = new Array(7).fill('1').map((_v, index) => {
 
   return {
     id: faker.random.uuid(),
-    date: faker.date.past(),
+    date: faker.date.recent(),
     type: index,
     content: generateUpdate(index),
     read: faker.random.boolean(),

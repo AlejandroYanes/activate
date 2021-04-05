@@ -1,3 +1,10 @@
+import {
+  differenceInMinutes,
+  differenceInHours,
+  differenceInDays,
+  differenceInMonths,
+} from 'date-fns';
+
 const dateFormatter = new Intl.DateTimeFormat('default', {
   day: 'numeric',
   month: 'short',
@@ -70,4 +77,42 @@ const monthYearFormatter = new Intl.DateTimeFormat('default', {
 
 export function getMonthYear(date: Date): string {
   return date ? monthYearFormatter.format(date) : undefined;
+}
+
+function resolveTimeUnit(date: Date, baseDate: Date) {
+  const units = [
+    { unit: 'month', diffFunction: differenceInMonths },
+    { unit: 'day', diffFunction: differenceInDays },
+    { unit: 'hour', diffFunction: differenceInHours },
+    { unit: 'minute', diffFunction: differenceInMinutes },
+  ];
+
+  const unitOfTime = units.find((unit) => unit.diffFunction(baseDate, date) !== 0);
+
+  if (!!unitOfTime) {
+    const { diffFunction, unit } = unitOfTime;
+    const difference = diffFunction(baseDate, date);
+
+    return {
+      unit: Math.abs(difference) === 1 ? unit : `${unit}s`,
+      diff: difference,
+    };
+  }
+
+  return { unit: 'equal' };
+}
+
+const relativeTimeFormatter = new Intl.RelativeTimeFormat('default', {
+  style: 'long',
+  numeric: "auto"
+});
+
+export function getRelativeTime(baseDate: Date, date:Date) {
+  const { unit, diff } = resolveTimeUnit(baseDate, date);
+
+  if (unit === 'equal') {
+    return 'Right now';
+  }
+
+  return relativeTimeFormatter.format(diff, unit as any);
 }

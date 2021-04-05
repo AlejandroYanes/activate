@@ -8,11 +8,13 @@ const FiltersModal: FunctionComponent = () => {
   const layout = useAppLayout();
   const { goBack } = useHistory();
 
+  const modalSize = layout === Layout.TABLET ? 'drawer' : 'mobile';
+
   return (
     <Modal
       title="Filters"
       onClose={goBack}
-      size={layout === Layout.TABLET ? 'medium' : 'mobile'}
+      size={modalSize}
       visible
     >
       <FiltersPanel />

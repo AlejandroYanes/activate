@@ -8,11 +8,13 @@ const UpdatesModal: FunctionComponent = () => {
   const layout = useAppLayout();
   const { goBack } = useHistory();
 
+  const modalSize = layout !== Layout.MOBILE ? 'drawer' : 'mobile';
+
   return (
     <Modal
       title="Updates"
       onClose={goBack}
-      size={layout === Layout.TABLET ? 'medium' : 'mobile'}
+      size={modalSize}
       visible
     >
       <UpdatesPanel />

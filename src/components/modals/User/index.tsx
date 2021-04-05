@@ -13,6 +13,7 @@ import IconButton from 'components/base-components/IconButton';
 import UsersList from 'components/experience/UsersList';
 import EventCard from 'components/experience/EventCard';
 import { events } from '../../pages/Discover/events';
+import { users } from '../Profile/users';
 
 enum ProfileTabs {
   FOLLOWING = 'Following',
@@ -28,16 +29,6 @@ const user = {
   bio: faker.lorem.lines(4),
 };
 
-const users = new Array(faker.random.number({ min: 6, max: 16 }))
-  .fill(1)
-  .map(() => ({
-    id: faker.random.uuid(),
-    image: `user${faker.random.number({ min: 1, max: 12 })}`,
-    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-    secondary: `@${faker.internet.userName()}`,
-    active: faker.random.boolean(),
-  }));
-
 const EventsList = () => (
   <>
     <EventCard {...events[3]} />
@@ -45,6 +36,8 @@ const EventsList = () => (
     <EventCard {...events[1]} />
   </>
 );
+
+const emptyAction = () => undefined;
 
 const UserModal: FunctionComponent = () => {
   const { goBack } = useHistory();
@@ -141,11 +134,13 @@ const UserModal: FunctionComponent = () => {
             value={ProfileTabs.FOLLOWING}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
           <Case
             value={ProfileTabs.FRIENDS}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
         </Switch>
       </FlexBox>

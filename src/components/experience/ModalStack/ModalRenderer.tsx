@@ -1,18 +1,24 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { ModalMap } from 'components/modals';
-import { Layout, useAppLayout } from '../../providers/Layout';
+import { DesktopModals, MobileModals, TabletModals } from 'components/modals';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 
 interface Props {
   name: string;
 }
+
+const modalsMap = {
+  [Layout.DESKTOP]: DesktopModals,
+  [Layout.TABLET]: TabletModals,
+  [Layout.MOBILE]: MobileModals,
+};
 
 const emptyComponent = () => null;
 
 const ModalRenderer: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
   const { name } = props;
-  const Component = ModalMap[name] || emptyComponent;
+  const Component = modalsMap[layout][name] || emptyComponent;
 
   useEffect(() => {
     if (layout === Layout.MOBILE) {

@@ -84,12 +84,14 @@ const TalksModal: FunctionComponent = () => {
           onClick={openTalk}
           action={showContactsButton}
           users={users}
+          scroll
         />
         <Case
           value={Modals.TALKS_CONTACTS}
           component={UsersList}
           onClick={openTalk}
           users={users}
+          scroll
         />
         <Case
           value={Modals.TALKS_MESSAGES}

@@ -134,6 +134,7 @@ const TalksPanel: FunctionComponent = () => {
         action={showContactsButton}
         onClick={openTalk}
         users={users}
+        scroll
       />
       <Case
         value={TalkViews.CONTACT_LIST}
@@ -141,6 +142,7 @@ const TalksPanel: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={header}
+        scroll
       />
       <Case
         value={TalkViews.MESSAGES}
