@@ -37,6 +37,8 @@ const EventsList = () => (
   </>
 );
 
+const emptyAction = () => undefined;
+
 const UserModal: FunctionComponent = () => {
   const { goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.EVENTS);
@@ -132,11 +134,13 @@ const UserModal: FunctionComponent = () => {
             value={ProfileTabs.FOLLOWING}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
           <Case
             value={ProfileTabs.FRIENDS}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
         </Switch>
       </FlexBox>

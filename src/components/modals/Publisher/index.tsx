@@ -36,6 +36,8 @@ const EventsList = () => (
   </>
 );
 
+const emptyAction = () => undefined;
+
 const PublisherModal: FunctionComponent = () => {
   const { goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.EVENTS);
@@ -122,6 +124,7 @@ const PublisherModal: FunctionComponent = () => {
             value={ProfileTabs.FOLLOWERS}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
           <Case
             value={ProfileTabs.EVENTS}

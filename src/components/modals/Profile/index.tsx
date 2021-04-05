@@ -17,6 +17,8 @@ enum ProfileTabs {
   Friends = 'Friends',
 }
 
+const emptyAction = () => undefined;
+
 const ProfileModal: FunctionComponent = () => {
   const { push, goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.Following);
@@ -98,11 +100,13 @@ const ProfileModal: FunctionComponent = () => {
             value={ProfileTabs.Following}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
           <Case
             value={ProfileTabs.Friends}
             component={UsersList}
             users={users}
+            onClick={emptyAction}
           />
         </Switch>
       </FlexBox>

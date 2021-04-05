@@ -14,7 +14,7 @@ interface Props {
     secondary?: string;
     active?: boolean;
   }[];
-  onClick?: (user) => void;
+  onClick: (user) => void;
   action?: ReactNode;
   selectedUsers?: { id: string, [x: string]: any }[];
   scroll?: boolean;
