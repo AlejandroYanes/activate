@@ -23,7 +23,7 @@ interface Props {
 const UsersList: FunctionComponent<Props> = (props) => {
   const { header, users, selectedUsers, onClick, action, scroll } = props;
 
-  const talksElements = useMemo(() => (
+  const userElements = useMemo(() => (
     users.map((user) => (
       <User
         key={user.id}
@@ -43,7 +43,7 @@ const UsersList: FunctionComponent<Props> = (props) => {
         </FlexBox>
       </RenderIf>
       <List>
-        {talksElements}
+        {userElements}
       </List>
       <RenderIf condition={!!action}>
         <Action>

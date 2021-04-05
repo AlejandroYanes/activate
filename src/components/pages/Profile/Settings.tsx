@@ -24,8 +24,6 @@ import {
   Theme,
   ThemeName,
 } from './styled';
-import { getEventValue } from '../../../helpers';
-import Checkbox from '../../base-components/Checkbox';
 
 interface Props {
   asPanel?: boolean;
@@ -50,7 +48,6 @@ const Settings: FunctionComponent<Props> = (props) => {
   const { asPanel } = props;
 
   const [userData, setUserData] = useState(user);
-  const [isChecked, setIsChecked] = useState(false);
 
   const sunIcon = useMemo(() => (
     <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
@@ -144,13 +141,6 @@ const Settings: FunctionComponent<Props> = (props) => {
           label="Use Dark Style"
           value={useDarkStyle}
           onChange={toggleLightStyle}
-        />
-      </Line>
-      <Line>
-        <Checkbox
-          label="allow search"
-          value={isChecked}
-          onChange={(e) => setIsChecked(getEventValue(e))}
         />
       </Line>
     </StyledSettings>
