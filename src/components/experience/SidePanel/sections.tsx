@@ -6,27 +6,22 @@ import { Tab } from 'components/base-components/Tabset';
 const sections = [
   {
     icon: Icons.FORM,
-    label: 'Details',
     value: AuxPanelSection.EVENT_DETAILS,
   },
   {
     icon: Icons.FILTER,
-    label: 'Search',
     value: AuxPanelSection.FILTER,
   },
   {
     icon: Icons.BOOKMARKS,
-    label: 'Upcoming',
     value: AuxPanelSection.UPCOMING,
   },
   {
     icon: Icons.MESSAGE,
-    label: 'Talks',
     value: AuxPanelSection.TALKS,
   },
   {
     icon: Icons.TIME_HISTORY,
-    label: 'Updates',
     value: AuxPanelSection.UPDATES,
   },
 ];

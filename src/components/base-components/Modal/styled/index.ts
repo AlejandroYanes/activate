@@ -18,6 +18,17 @@ const styleMap = {
   small: commonStyles,
   medium: commonStyles,
   large: commonStyles,
+  drawer: `
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 380px;
+    padding: 0;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  `,
   mobile: `
     position: absolute;
     top: 0;

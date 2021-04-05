@@ -12,7 +12,7 @@ const FiltersModal: FunctionComponent = () => {
     <Modal
       title="Filters"
       onClose={goBack}
-      size={layout === Layout.TABLET ? 'medium' : 'mobile'}
+      size={layout === Layout.TABLET ? 'drawer' : 'mobile'}
       visible
     >
       <FiltersPanel />

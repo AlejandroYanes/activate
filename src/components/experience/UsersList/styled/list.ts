@@ -1,17 +1,11 @@
 import styled from 'styled-components';
-import { mobileHeaderHeight } from 'styles/variables';
+import { anyPropsAttrs } from 'helpers';
 
-export const Section = styled.section`
-  height: 100%;
+export const Section = styled.section.attrs(anyPropsAttrs)`
   position: relative;
   display: flex;
   flex-direction: column;
-`;
-
-export const Header = styled.header`
-  position: sticky;
-  top: 0;
-  height: ${mobileHeaderHeight}px;
+  ${({ scroll }) => scroll ? 'height: 100%' : ''};
 `;
 
 export const List = styled.ul`

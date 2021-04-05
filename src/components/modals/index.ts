@@ -6,6 +6,7 @@ import SettingsModal from './Settings';
 import PublisherModal from './Publisher';
 import UserModal from './User';
 import FiltersModal from './Filters';
+import InviteUsersModal from './Invite';
 
 export enum Modals {
   TALKS = '#talks',
@@ -18,9 +19,20 @@ export enum Modals {
   PUBLISHER = '#publisher',
   USER = '#user',
   FILTERS = '#filters',
+  INVITE = '#invite',
 }
 
-export const ModalMap = {
+export const DesktopModals = {
+  [Modals.INVITE]: InviteUsersModal,
+};
+
+export const TabletModals = {
+  [Modals.UPDATES]: UpdatesModal,
+  [Modals.FILTERS]: FiltersModal,
+  [Modals.INVITE]: InviteUsersModal,
+};
+
+export const MobileModals = {
   [Modals.TALKS]: TalksModal,
   [Modals.TALKS_CONTACTS]: TalksModal,
   [Modals.TALKS_MESSAGES]: TalksModal,
@@ -31,4 +43,5 @@ export const ModalMap = {
   [Modals.PUBLISHER]: PublisherModal,
   [Modals.USER]: UserModal,
   [Modals.FILTERS]: FiltersModal,
+  [Modals.INVITE]: InviteUsersModal,
 };

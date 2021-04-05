@@ -1,50 +1,46 @@
-import React, { FunctionComponent, ReactNode, useCallback, useMemo } from 'react';
+import React, { FunctionComponent, ReactNode, useMemo } from 'react';
+import { mobileHeaderHeight } from 'styles/variables';
 import RenderIf from 'components/base-components/RenderIf';
+import FlexBox from 'components/base-components/FlexBox';
 import User from './User';
-import { Action, Section, Header, List } from './styled/list';
+import { Action, List, Section } from './styled/list';
 
 interface Props {
   header?: ReactNode;
   users: {
     id: string;
     avatarUrl: string;
-    userName: string;
     name: string;
     secondary?: string;
     active?: boolean;
   }[];
   onClick?: (user) => void;
   action?: ReactNode;
+  selectedUsers?: { id: string, [x: string]: any }[];
+  scroll?: boolean;
 }
 
 const UsersList: FunctionComponent<Props> = (props) => {
-  const { header, users, onClick, action } = props;
-
-  const handleClick = useCallback((event) => {
-    if (onClick) {
-      const { id } = event.target.dataset;
-      const user = users.find((t) => t.id === id);
-      onClick(user);
-    }
-
-  }, [users, onClick]);
+  const { header, users, selectedUsers, onClick, action, scroll } = props;
 
   const talksElements = useMemo(() => (
     users.map((user) => (
       <User
         key={user.id}
-        {...user}
-        onClick={handleClick}
+        user={user}
+        showSelection={!!selectedUsers}
+        isSelected={selectedUsers && selectedUsers.some(u => u.id === user.id)}
+        onClick={onClick}
       />
     ))
-  ), [users, handleClick]);
+  ), [users, selectedUsers]);
 
   return (
-    <Section data-el="user-list">
+    <Section data-el="user-list" scroll={scroll}>
       <RenderIf condition={!!header}>
-        <Header>
+        <FlexBox height={mobileHeaderHeight}>
           {header}
-        </Header>
+        </FlexBox>
       </RenderIf>
       <List>
         {talksElements}

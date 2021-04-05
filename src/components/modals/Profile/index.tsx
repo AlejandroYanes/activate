@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import faker from 'faker';
 import { formatAmount } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -11,21 +10,12 @@ import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import IconButton from 'components/base-components/IconButton';
 import UsersList from 'components/experience/UsersList';
+import { users } from './users';
 
 enum ProfileTabs {
   Following = 'Following',
   Friends = 'Friends',
 }
-
-const users = new Array(faker.random.number({ min: 6, max: 16 }))
-  .fill(1)
-  .map(() => ({
-    id: faker.random.uuid(),
-    image: `user${faker.random.number({ min: 1, max: 12 })}`,
-    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-    secondary: `@${faker.internet.userName()}`,
-    active: faker.random.boolean(),
-  }));
 
 const ProfileModal: FunctionComponent = () => {
   const { push, goBack } = useHistory();

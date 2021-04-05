@@ -12,7 +12,7 @@ const UpdatesModal: FunctionComponent = () => {
     <Modal
       title="Updates"
       onClose={goBack}
-      size={layout === Layout.TABLET ? 'medium' : 'mobile'}
+      size={layout === Layout.TABLET ? 'drawer' : 'mobile'}
       visible
     >
       <UpdatesPanel />

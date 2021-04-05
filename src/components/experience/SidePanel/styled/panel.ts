@@ -37,6 +37,7 @@ export const StyledPanel = styled.section.attrs(anyPropsAttrs)`
 
 export const PanelHeader = styled.header`
   padding: 0 16px;
+  margin-bottom: 6px;
   box-sizing: border-box;
   z-index: 1;
   display: flex;
@@ -47,6 +48,6 @@ export const PanelHeader = styled.header`
 export const PanelBody = styled.main`
   box-sizing: border-box;
   padding: 0;
-  overflow: auto;
+  overflow: hidden auto;
   flex: 1;
 `;

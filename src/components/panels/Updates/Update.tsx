@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { formatShortDate } from 'helpers';
+import { getRelativeTime } from 'helpers';
 import { Text } from 'components/base-components/Typography';
 import Avatar from 'components/base-components/Avatar';
 import FlexBox from 'components/base-components/FlexBox';
@@ -14,6 +14,8 @@ interface Props {
   content: EventLinkingUpdate | UserLinkingUpdate;
   read: boolean;
 }
+
+const today = new Date();
 
 const Update: FunctionComponent<Props> = (props) => {
   const { date, type, content, read, ...rest } = props;
@@ -31,7 +33,7 @@ const Update: FunctionComponent<Props> = (props) => {
           color="secondary"
           margin="6px 0 0 0"
         >
-          {formatShortDate(date)}
+          {getRelativeTime(today, date)}
         </Text>
       </FlexBox>
     </StyledNotification>

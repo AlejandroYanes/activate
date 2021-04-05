@@ -10,6 +10,7 @@ import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
 import Header from './Header';
+import ForwardButton from './ForwardButton';
 import { Actions, Card, Content, Divider, Footer } from './styled';
 
 interface Props {
@@ -68,14 +69,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
       <Footer>
         <AvatarGroup icons={avatars} label={formatAmount(attendees)} size="small" />
         <Actions>
-          <IconButton
-            size="large"
-            buttonColor="info"
-            variant="flat"
-            icon={Icons.FORWARD}
-            color={Colors.INFO}
-            onClick={() => undefined}
-          />
+          <ForwardButton />
           <RenderIf condition={!isAFollowedEvent}>
             <IconButton
               size="large"

@@ -6,14 +6,9 @@ import React, {
   useMemo,
   useState,
 } from 'react';
+import { AuxPanelSection } from './types';
 
-export enum AuxPanelSection {
-  UPCOMING = 'UPCOMING',
-  UPDATES = 'UPDATES',
-  FILTER = 'FILTER',
-  EVENT_DETAILS = 'EVENT_DETAILS',
-  TALKS = 'TALKS',
-}
+export { AuxPanelSection };
 
 interface PanelSectionsContextValue {
   sections: AuxPanelSection[];
