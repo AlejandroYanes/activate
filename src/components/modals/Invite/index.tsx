@@ -32,6 +32,8 @@ const InviteUsersModal: FunctionComponent = () => {
     });
   }, []);
 
+  const modalSize = layout !== Layout.MOBILE ? 'drawer' : 'mobile';
+
   const footer = (
     <FlexBox justify="flex-end" align="center" width="100%" padding="8px">
       <Button onClick={goBack} label="Cancel" color="brand" variant="flat" mR />
@@ -49,7 +51,7 @@ const InviteUsersModal: FunctionComponent = () => {
       title="Invite users to"
       footer={footer}
       onClose={goBack}
-      size={layout !== Layout.MOBILE ? 'drawer' : 'mobile'}
+      size={modalSize}
       visible
     >
       <FlexBox direction="column" align="stretch" padding="0 16px">
