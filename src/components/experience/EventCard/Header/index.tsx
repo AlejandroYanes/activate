@@ -8,10 +8,10 @@ export interface HeaderProps {
   address: string;
   date: Date;
   author: {
-    name: string;
-    userName: string;
-    following: boolean;
+    id: string;
+    avatarUrl: string;
   };
+  hideAuthor?: boolean;
 }
 
 const componentLayout = {

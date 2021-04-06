@@ -6,9 +6,9 @@ import Page from 'components/base-components/Page';
 import EventCard from 'components/experience/EventCard';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
+import { Option, Options } from 'components/base-components/Options';
+import { Icons } from 'components/base-components/SvgIcon';
 import { events } from '../Discover/events';
-import { Option, Options } from '../../base-components/Options';
-import { Icons } from '../../base-components/SvgIcon';
 
 const today = new Date();
 const days = [
@@ -35,7 +35,7 @@ enum EventsDisplay {
 
 const titleByLayoutMap = {
   [Layout.DESKTOP]: 'Your upcoming events',
-  [Layout.TABLET]: 'Upcoming',
+  [Layout.TABLET]: 'Upcoming events',
   [Layout.MOBILE]: 'Upcoming',
 };
 
@@ -50,12 +50,14 @@ const FeedPage: FunctionComponent = () => {
         <Options size="small" value={option} onChange={setOption}>
           <Option
             value={EventsDisplay.ByDate}
+            icon={Icons.CALENDAR_FILLED}
             label="By Date"
-            icon={Icons.CALENDAR_FILLED} />
+          />
           <Option
             value={EventsDisplay.All}
+            icon={Icons.LIST}
             label="All"
-            icon={Icons.LIST} />
+          />
         </Options>
       );
     }

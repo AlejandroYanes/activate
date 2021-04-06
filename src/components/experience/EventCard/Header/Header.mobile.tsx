@@ -5,7 +5,8 @@ import { useAppColors } from 'components/providers/Theme';
 import { Text, Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import ActionsMenu from '../ActionsMenu';
+import Avatar from 'components/base-components/Avatar';
+import RenderIf from 'components/base-components/RenderIf';
 import { HeaderProps } from './index';
 import { DateBadge } from './styled/header.mobile';
 
@@ -13,7 +14,7 @@ const titleStyles: any = { whiteSpace: 'normal' };
 
 const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
   const colors = useAppColors();
-  const { date, address, title, author } = props;
+  const { date, address, title, author, hideAuthor } = props;
 
   return (
     <FlexBox>
@@ -37,7 +38,11 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
           <Text size="small" padding="0 0 0 6px" ellipsis>{address}</Text>
         </FlexBox>
       </FlexBox>
-      <ActionsMenu {...author} />
+     <RenderIf condition={!hideAuthor}>
+       <Link to="#publisher">
+         <Avatar icon={author.avatarUrl} />
+       </Link>
+     </RenderIf>
     </FlexBox>
   );
 };

@@ -74,7 +74,7 @@ const EventDetailsPage: FunctionComponent = () => {
             <Avatar icon="user6" />
             <FlexBox direction="column" padding="0 0 0 6px">
               <Text size="small" color="secondary">{author.userName}</Text>
-              <Text padding="4px 0">{author.name}</Text>
+              <Text padding="4px 0 0 0">{author.name}</Text>
             </FlexBox>
           </FlexBox>
           <IconButton

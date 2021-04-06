@@ -24,10 +24,8 @@ const styleMap = {
     bottom: 0;
     right: 0;
     height: 100%;
-    width: 380px;
+    width: 480px;
     padding: 0;
-    border-top-left-radius: 16px;
-    border-bottom-left-radius: 16px;
   `,
   mobile: `
     position: absolute;

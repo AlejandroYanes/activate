@@ -7,7 +7,7 @@ import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from '../RenderIf';
 
 interface Props {
-  title: string | ReactNode;
+  title?: string | ReactNode;
   size?: 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
   onClose: () => void;
 }

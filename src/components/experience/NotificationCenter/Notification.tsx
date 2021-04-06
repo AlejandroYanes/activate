@@ -6,6 +6,7 @@ import { Text } from 'components/base-components/Typography';
 import Icon from './Icon';
 import { Content, Notification as StyledNotification } from './styled/notification';
 import { NotificationDuration, NotificationModel, NotificationType } from './types';
+import RenderIf from '../../base-components/RenderIf';
 
 interface Props extends NotificationModel {
   onClose: (id: string) => void;
@@ -17,7 +18,11 @@ const variants = {
   exit: { x: 50, opacity: 0, transition: { duration: 0.3 } },
 };
 
-function resolveTitle(type) {
+function resolveTitle(title: string, type: NotificationType) {
+  if (title) {
+    return title;
+  }
+
   switch (type as NotificationType) {
     case NotificationType.SUCCESS:
       return 'Good, we made it:';
@@ -35,7 +40,7 @@ function resolveTitle(type) {
 const Notification: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
 
-  const { id, type, duration, message, onClose } = props;
+  const { id, type, duration, title, message, onClose } = props;
 
   const handleOnClose = useCallback(() => {
     onClose(id);
@@ -58,8 +63,10 @@ const Notification: FunctionComponent<Props> = (props) => {
     >
       <Icon type={type} />
       <Content>
-        <Text color="background">{resolveTitle(type)}</Text>
-        <Text color="background">{message}</Text>
+        <Text color="background">{resolveTitle(title, type)}</Text>
+        <RenderIf condition={typeof message === 'string'} fallback={message}>
+          <Text color="background">{message}</Text>
+        </RenderIf>
       </Content>
       <IconButton
         icon={Icons.CLOSE}

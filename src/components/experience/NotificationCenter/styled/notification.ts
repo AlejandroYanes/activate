@@ -5,7 +5,7 @@ import { anyPropsAttrs, getShade } from 'helpers';
 
 const getBackgroundColor = (props) => {
   const { theme: { colors } } = props;
-  const color = getShade(colors.FONT, 0.8);
+  const color = getShade(colors.FONT, 0.65);
 
   return css`
     background-color: ${color};

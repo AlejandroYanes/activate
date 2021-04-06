@@ -1,5 +1,6 @@
 import faker from 'faker';
 import { UpdateType } from './types';
+import { events } from '../../pages/Discover/events';
 
 const eventUpdates = [
   UpdateType.INVITATION,
@@ -17,7 +18,7 @@ function generateUpdate(type: UpdateType) {
       },
       event: {
         id: faker.random.uuid(),
-        name: faker.lorem.words(6),
+        name: events[faker.random.number({ min: 0, max: 1 })].title,
         going: faker.random.boolean(),
       },
     };

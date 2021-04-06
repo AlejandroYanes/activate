@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export enum NotificationType {
   INFO = 'INFO',
   SUCCESS = 'SUCCESS',
@@ -15,5 +17,6 @@ export interface NotificationModel {
   id: string;
   type?: NotificationType;
   duration?: NotificationDuration;
-  message: string;
+  title?: string;
+  message: string | ReactNode;
 }

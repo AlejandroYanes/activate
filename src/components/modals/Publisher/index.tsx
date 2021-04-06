@@ -14,6 +14,7 @@ import UsersList from 'components/experience/UsersList';
 import EventCard from 'components/experience/EventCard';
 import { events } from '../../pages/Discover/events';
 import { users } from '../Profile/users';
+import { Layout, useAppLayout } from '../../providers/Layout';
 
 enum ProfileTabs {
   FOLLOWERS = 'Followers',
@@ -30,15 +31,16 @@ const publisher = {
 
 const EventsList = () => (
   <>
-    <EventCard {...events[3]} />
-    <EventCard {...events[0]} />
-    <EventCard {...events[1]} />
+    <EventCard {...events[3]} isAFollowedEvent={faker.random.boolean()} hideAuthor />
+    <EventCard {...events[0]} isAFollowedEvent={faker.random.boolean()} hideAuthor />
+    <EventCard {...events[1]} isAFollowedEvent={faker.random.boolean()} hideAuthor />
   </>
 );
 
 const emptyAction = () => undefined;
 
 const PublisherModal: FunctionComponent = () => {
+  const layout = useAppLayout();
   const { goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.EVENTS);
 
@@ -64,8 +66,10 @@ const PublisherModal: FunctionComponent = () => {
     </FlexBox>
   );
 
+  const modalSize = layout === Layout.MOBILE ? 'mobile' : 'drawer';
+
   return (
-    <Modal visible title={header} onClose={goBack} size="mobile">
+    <Modal visible title={header} onClose={goBack} size={modalSize}>
       <FlexBox
         data-el="profile-modal-body"
         direction="column"
