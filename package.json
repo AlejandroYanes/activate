@@ -9,6 +9,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:all": "react-scripts test --watchAll=false",
+    "test:ci": "react-scripts test --watchAll=false --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
     "eject": "react-scripts eject",
     "test:e2e": "cypress open",
     "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
@@ -38,6 +39,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "output": "./junit.xml",
+    "classNameTemplate": "{classname} - {title}",
+    "titleTemplate": "{classname} - {title}",
+    "ancestorSeparator": " > ",
+    "usePathForSuiteName": "true"
   },
   "dependencies": {
     "autosize": "^4.0.2",
