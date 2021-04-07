@@ -2,15 +2,14 @@ import {
   FunctionComponent,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
-import { MenuWrapper, TriggerContainer, MenuContainer, MenuList } from './styled/menu';
+import Backdrop from 'components/base-components/Backdrop';
+import { MenuWrapper, TriggerContainer, MenuList } from './styled/menu';
 import { MenuProvider } from './context';
-import Backdrop from '../Backdrop';
 
 interface TriggerProps {
   isOpen: boolean;
