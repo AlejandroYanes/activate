@@ -35,8 +35,8 @@
       "prefer-double"
     ],
     "max-len": [2, 90],
-    "object-curly-newline": 0,
-    "no-confusing-arrow": 0,
+    "object-curly-newline": "off",
+    "no-confusing-arrow": "off",
     "operator-linebreak": [
       "error",
       "after", {
@@ -46,17 +46,19 @@
         }
       }
     ],
-    "react/display-name": 0,
+    "react/display-name": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
-    "react/jsx-props-no-spreading": 0,
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-closing-tag-location": "error",
-    "react/prop-types": 0,
-    "react/button-has-type": 0,
-    "import/no-cycle": 0,
-    "import/no-named-as-default-member": 0,
-    "import/no-extraneous-dependencies": 0,
-    "import/prefer-default-export": 0,
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
+    "react/button-has-type": "off",
+    "import/no-cycle": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
     "import/order": ["error", {
       "groups": [
         ["external", "builtin"],
@@ -64,10 +66,10 @@
       ]
     }],
     "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^_" }],
-    "@typescript-eslint/no-explicit-any": 0,
-    "@typescript-eslint/explicit-function-return-type": 0,
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}]
   },
   "settings": {

@@ -11,6 +11,7 @@ const defaultEvent = {
   author: {
     id: faker.random.uuid(),
     avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    name: faker.company.companyName(),
   },
   attendees: faker.random.number(),
   image: virtualTourImg,
@@ -30,6 +31,7 @@ const defaultEvent2 = {
   author: {
     id: faker.random.uuid(),
     avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    name: faker.company.companyName(),
   },
   attendees: faker.random.number(),
   image: pqMontanoImg,
@@ -49,6 +51,7 @@ const fakeEvents = new Array(4).fill('1').map((_item, index) => ({
   author: {
     id: faker.random.uuid(),
     avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    name: faker.company.companyName(),
   },
   image: images[index],
   attendees: faker.random.number(),

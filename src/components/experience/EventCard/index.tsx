@@ -13,9 +13,9 @@ import {
 import Header from './Header';
 import ForwardButton from './ForwardButton';
 import ActionsMenu from './ActionsMenu';
-import { Actions, Card, Content, Divider, Footer } from './styled';
 import BookmarkButton from './BookmarkButton';
 import UnfollowModal from './UnfollowModal';
+import { Actions, Card, Content, Divider, Footer } from './styled';
 
 interface Props {
   title: string;
@@ -24,6 +24,7 @@ interface Props {
   author: {
     id: string;
     avatarUrl: string;
+    name: string;
   };
   image: string;
   description?: string;
@@ -31,7 +32,6 @@ interface Props {
   isAFollowedEvent?: boolean;
   hideAuthor?: boolean;
 }
-
 
 const avatars = ['user1', 'user2', 'user6', 'user12'];
 
@@ -113,7 +113,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
               onClick={handleBookmark}
             />
             <ForwardButton />
-            <ActionsMenu />
+            <ActionsMenu author={author.name} />
           </Actions>
         </Footer>
       </Card>

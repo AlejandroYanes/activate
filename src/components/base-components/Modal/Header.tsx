@@ -35,7 +35,11 @@ const DrawerHeader = ({ title, onClose }) => (
     height={mobileHeaderHeight}
   >
     <RenderIf condition={typeof title === 'string'} fallback={title}>
-      <IconButton onClick={onClose} icon={Icons.ARROW_LEFT} variant="flat" />
+      <IconButton
+        onClick={onClose}
+        icon={Icons.ARROW_LEFT}
+        variant="flat"
+      />
       <Title margin="0" padding="0 0 0 12px" level={3} color="font">{title}</Title>
     </RenderIf>
   </FlexBox>

@@ -18,16 +18,16 @@
     "strictNullChecks": false,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": false,
     "noUnusedLocals": false,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "include": [
     "src"

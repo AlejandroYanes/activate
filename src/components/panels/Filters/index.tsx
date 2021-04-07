@@ -29,7 +29,7 @@ const FiltersPanel: FunctionComponent = () => {
       <Form state={search} onChange={handleChange}>
         <Field name="location" component={Options} fullWidth mB>
           <Option value={EventLocation.OnLine} label="Online" icon={Icons.GLOBE} />
-          <Option value={EventLocation.All} label="All" icon={Icons.GRID} />
+          <Option value={EventLocation.All} label="All" icon={Icons.LIST} />
           <Option value={EventLocation.OnSite} label="Onsite" icon={Icons.MAP_PIN} />
         </Field>
         <RenderIf condition={search.location === EventLocation.OnSite}>

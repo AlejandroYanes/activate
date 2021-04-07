@@ -1,4 +1,4 @@
-import React, {
+import {
   FunctionComponent,
   ReactNode,
   useCallback,
@@ -10,6 +10,7 @@ import React, {
 import RenderIf from 'components/base-components/RenderIf';
 import { MenuWrapper, TriggerContainer, MenuContainer, MenuList } from './styled/menu';
 import { MenuProvider } from './context';
+import Backdrop from '../Backdrop';
 
 interface TriggerProps {
   isOpen: boolean;
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const Menu: FunctionComponent<Props> = (props) => {
-  const { trigger, align, children, ...otherProps } = props;
+  const { trigger, children, ...otherProps } = props;
   const [isOpen, setIsOpen] = useState(false);
   const menuReference = useRef(undefined);
 
@@ -44,35 +45,18 @@ const Menu: FunctionComponent<Props> = (props) => {
       </TriggerContainer>
     );
   }, [trigger, toggleMenu]);
-  const menuListStyles = useMemo(
-    () => ({ [align === 'end' ? 'right' : 'left']: 0 }),
-    [align],
-  );
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuReference.current && !menuReference.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <MenuWrapper ref={menuReference} data-el="menu-wrapper">
       {triggerElement}
       <RenderIf condition={isOpen}>
-        <MenuContainer>
+        <Backdrop onClick={toggleMenu}>
           <MenuProvider closeMenu={toggleMenu}>
-            <MenuList style={menuListStyles} data-el="menu-list">
+            <MenuList data-el="menu-list">
               {children}
             </MenuList>
           </MenuProvider>
-        </MenuContainer>
+        </Backdrop>
       </RenderIf>
     </MenuWrapper>
   );

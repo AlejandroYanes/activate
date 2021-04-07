@@ -12,11 +12,12 @@ interface Props {
   label: string;
   icon?: JSX.Element | Icons;
   onClick: (event) => void;
+  danger?: boolean;
 }
 
 const MenuItem: FunctionComponent<Props> = (props) => {
   const { closeMenu } = useMenuContext();
-  const { label, icon, onClick } = props;
+  const { label, icon, danger, onClick } = props;
 
   const handleClick = useCallback((event) => {
     onClick(event);
@@ -30,7 +31,7 @@ const MenuItem: FunctionComponent<Props> = (props) => {
   ), [icon]);
 
   return (
-    <StyledMenuItem role="button" onClick={handleClick}>
+    <StyledMenuItem role="button" danger={danger} onClick={handleClick}>
       <RenderIf condition={!!icon}>
         {itemIcon}
       </RenderIf>

@@ -54,7 +54,7 @@ const IconButton: FunctionComponent<IconButtonProps> = (props) => {
 
 IconButton.defaultProps = {
   variant: 'flat',
-  buttonColor: 'brand',
+  buttonColor: 'font',
   size: 'medium',
 };
 

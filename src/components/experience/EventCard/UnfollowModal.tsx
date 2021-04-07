@@ -14,15 +14,24 @@ interface Props {
   onClose: () => void;
 }
 
+function resolveSize(layout: Layout) {
+  switch (layout) {
+    case Layout.DESKTOP:
+      return 'small';
+    case Layout.TABLET:
+      return 'medium';
+    default:
+      return 'large';
+  }
+}
+
 const UnfollowModal: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
   const colors = useAppColors();
   const { isVisible, title, onAccept, onClose } = props;
 
-  const modalSize = layout === Layout.MOBILE ? 'large' : 'medium';
-
   return (
-    <Modal size={modalSize} visible={isVisible} onClose={onClose}>
+    <Modal size={resolveSize(layout)} visible={isVisible} onClose={onClose}>
       <FlexBox direction="column" align="center">
         <SvgIcon
           icon={Icons.REMOVE_BOOKMARK}
