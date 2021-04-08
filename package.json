@@ -18,7 +18,10 @@
     "analize": "source-map-explorer 'build/static/js/*.js'"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "husky": {
     "hooks": {
@@ -37,6 +40,14 @@
       "last 1 safari version"
     ]
   },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "output": "./junit.xml",
+    "classNameTemplate": "{classname} - {title}",
+    "titleTemplate": "{classname} - {title}",
+    "ancestorSeparator": " > ",
+    "usePathForSuiteName": "true"
+  },
   "dependencies": {
     "autosize": "^4.0.2",
     "date-fns": "^2.16.1",
@@ -45,20 +56,18 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "4.0.0",
+    "react-scripts": "4.0.3",
     "rxjs": "^6.6.3",
     "styled-components": "^5.0.1",
-    "faker": "^4.1.0",
-    "ts-node": "^8.3.0",
-    "typescript": "4.0.5"
+    "faker": "^4.1.0"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/react-hooks": "^3.1.1",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/autosize": "^3.0.7",
-    "@types/enzyme": "^3.9.0",
+    "@testing-library/jest-dom": "5.11.10",
+    "@testing-library/react": "11.2.6",
+    "@testing-library/react-hooks": "5.1.1",
+    "@testing-library/user-event": "13.1.1",
+    "@types/autosize": "3.0.7",
+    "@types/enzyme": "3.10.8",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/expect": "^1.20.4",
     "@types/faker": "^4.1.5",
@@ -86,15 +95,9 @@
     "gh-pages": "^3.1.0",
     "husky": "^4.2.5",
     "source-map-explorer": "^2.5.2",
-    "jest-junit": "^12.0.0",
-    "ts-jest": "^26.5.0"
-  },
-  "jest-junit": {
-    "suiteName": "jest tests",
-    "output": "./junit.xml",
-    "classNameTemplate": "{classname} - {title}",
-    "titleTemplate": "{classname} - {title}",
-    "ancestorSeparator": " > ",
-    "usePathForSuiteName": "true"
+    "ts-jest": "^26.5.0",
+    "ts-node": "^8.3.0",
+    "typescript": "4.1.5",
+    "jest-junit": "^12.0.0"
   }
 }

@@ -24,12 +24,13 @@ export enum Modals {
 
 export const DesktopModals = {
   [Modals.INVITE]: InviteUsersModal,
+  [Modals.PUBLISHER]: PublisherModal,
 };
 
 export const TabletModals = {
+  ...DesktopModals,
   [Modals.UPDATES]: UpdatesModal,
   [Modals.FILTERS]: FiltersModal,
-  [Modals.INVITE]: InviteUsersModal,
 };
 
 export const MobileModals = {

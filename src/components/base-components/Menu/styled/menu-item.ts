@@ -1,17 +1,36 @@
 import styled from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
 
-const elementBorderRadius = '6px';
-const elementHeight = '40px';
+const elementBorderRadius = '16px';
 
-export const MenuItem = styled.li`
+const getActionStyles = (props) => {
+  const { danger, theme: { colors } } = props;
+  const backgroundColor = danger ? colors.ERROR : colors.BRAND;
+  const highlightColor = danger ? colors.ERROR_HIGHLIGHT : colors.BRAND_HIGHLIGHT;
+
+  return `
+      &:hover {
+      cursor: pointer;
+      color: ${colors.WHITE};
+      background-color: ${backgroundColor};
+    }
+
+    &:active {
+      background-color: ${highlightColor};
+    }
+    `;
+};
+
+export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   box-sizing: border-box;
   display: flex;
+  justify-content: center;
   align-items: center;
-  height: ${elementHeight};
+  height: 48px;
   padding: 0 8px;
   color: ${({ theme }) => theme.colors.FONT};
   font-size: 1rem;
-  transition: font-size ease-in-out 120ms;
+  transition: all 150ms linear;
 
   &:first-child {
     border-top-right-radius: ${elementBorderRadius};
@@ -24,15 +43,7 @@ export const MenuItem = styled.li`
     border-bottom-left-radius: ${elementBorderRadius};
   }
 
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.WHITE};
-    background-color: ${({ theme }) => theme.colors.BRAND};
-  }
-
-  &:active {
-    font-size: 0.95rem;
-  }
+  ${getActionStyles};
 `;
 
 export const MenuItemIcon = styled.div`

@@ -6,7 +6,7 @@ export const Mark = styled(motion.div)`
   height: 2px;
   border-radius: 50px;
   position: absolute;
-  bottom: -1px;
+  bottom: -3px;
   left: 0;
   right: 0;
   z-index: ${ZLevels.componentLevel1};

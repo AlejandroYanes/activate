@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { elementBorderRadius } from 'styles/variables';
 
 export const MenuWrapper = styled.div`
   display: flex;
@@ -22,14 +21,14 @@ export const MenuContainer = styled.div`
 `;
 
 export const MenuList = styled.ul`
-  z-index: 1;
   list-style: none;
+  //z-index: 1;
   margin: 0;
   padding: 0;
-  position: absolute;
-  top: 12px;
-  min-width: 200px;
-  border-radius: ${elementBorderRadius};
-  background-color: ${({ theme }) => theme.colors.BACKGROUND};
-  border: 1px solid ${({ theme }) => theme.colors.BRAND_SHADE};
+  //position: absolute;
+  //top: 12px;
+  min-width: 400px;
+  border-radius: 16px;
+  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  //box-shadow: 0 0 8px 2px ${({ theme }) => theme.colors.FONT_SHADE};
 `;

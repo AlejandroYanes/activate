@@ -23,7 +23,6 @@ const getBorderColor = ({ isBooked, theme }) => (
 export const Card = styled.article.attrs((props: any) => props)`
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   box-sizing: border-box;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};

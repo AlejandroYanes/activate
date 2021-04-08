@@ -1,16 +1,20 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatAmount } from 'helpers';
-import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
+import {
+  NotificationType,
+  showNotification,
+} from 'components/experience/NotificationCenter';
 import Header from './Header';
 import ForwardButton from './ForwardButton';
+import ActionsMenu from './ActionsMenu';
+import BookmarkButton from './BookmarkButton';
+import UnfollowModal from './UnfollowModal';
 import { Actions, Card, Content, Divider, Footer } from './styled';
 
 interface Props {
@@ -18,22 +22,21 @@ interface Props {
   address: string;
   date: Date;
   author: {
+    id: string;
+    avatarUrl: string;
     name: string;
-    userName: string;
-    following: boolean;
   };
   image: string;
   description?: string;
   attendees?: number;
   isAFollowedEvent?: boolean;
+  hideAuthor?: boolean;
 }
 
-
-const avatars = ['user1', 'user2', 'user6'];
+const avatars = ['user1', 'user2', 'user6', 'user12'];
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const Colors = useAppColors();
   const {
     date,
     title,
@@ -43,48 +46,90 @@ const EventCard: FunctionComponent<Props> = (props) => {
     description,
     attendees,
     isAFollowedEvent,
+    hideAuthor,
   } = props;
-  const [isBooked, setIsBooked] = useState(false);
+  const [{ isBooked, showUnfollowModal }, setState] = useState({
+    isBooked: isAFollowedEvent,
+    showUnfollowModal: false,
+  });
 
-  const handleBookActionClick = useCallback(() => {
-    setIsBooked((previousState) => !previousState);
+  const handleBookmark = useCallback(() => {
+    if (isBooked) {
+      setState({
+        isBooked,
+        showUnfollowModal: true,
+      });
+    } else {
+      showNotification({
+        id: 'following-event',
+        type: NotificationType.SUCCESS,
+        title: 'Congrats',
+        message: `You are now following the event: ${title}`,
+      });
+      setState({ isBooked: true, showUnfollowModal: false });
+    }
+  }, [isBooked]);
+
+  const handleUnfollow = useCallback(() => {
+    setState({ isBooked: false, showUnfollowModal: false });
+  }, []);
+
+  const closeModal = useCallback(() => {
+    setState({ isBooked: true, showUnfollowModal: false });
   }, []);
 
   const link = layout !== Layout.MOBILE ? '/event-details' : '#event-details';
 
   return (
-    <Card isBooked={isBooked} layout={layout}>
-      <Header title={title} address={address} author={author} date={date} />
-      <Content>
-        <Link to={link}>
-          <EventImage src={image} alt={title} />
-        </Link>
-        <RenderIf condition={!!description}>
-          <Paragraph mT>
-            {description}
-          </Paragraph>
-        </RenderIf>
-      </Content>
-      <Divider />
-      <Footer>
-        <AvatarGroup icons={avatars} label={formatAmount(attendees)} size="small" />
-        <Actions>
-          <ForwardButton />
-          <RenderIf condition={!isAFollowedEvent}>
-            <IconButton
-              size="large"
-              buttonColor="accent"
-              variant="flat"
-              icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
-              color={Colors.ACCENT}
-              secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
-              onClick={handleBookActionClick}
-            />
+    <>
+      <Card isBooked={isBooked} layout={layout}>
+        <Header
+          date={date}
+          title={title}
+          address={address}
+          author={author}
+          hideAuthor={hideAuthor}
+        />
+        <Content>
+          <Link to={link}>
+            <EventImage src={image} alt={title} />
+          </Link>
+          <RenderIf condition={!!description}>
+            <Paragraph mT>
+              {description}
+            </Paragraph>
           </RenderIf>
-        </Actions>
-      </Footer>
-    </Card>
+        </Content>
+        <Divider />
+        <Footer>
+          <AvatarGroup
+            icons={avatars}
+            label={formatAmount(attendees)}
+            size="small"
+          />
+          <Actions>
+            <BookmarkButton
+              isBooked={isBooked}
+              onClick={handleBookmark}
+            />
+            <ForwardButton />
+            <ActionsMenu author={author.name} />
+          </Actions>
+        </Footer>
+      </Card>
+      <UnfollowModal
+        title={title}
+        isVisible={showUnfollowModal}
+        onAccept={handleUnfollow}
+        onClose={closeModal}
+      />
+    </>
   );
+};
+
+EventCard.defaultProps = {
+  isAFollowedEvent: false,
+    hideAuthor: false,
 };
 
 export default EventCard;
