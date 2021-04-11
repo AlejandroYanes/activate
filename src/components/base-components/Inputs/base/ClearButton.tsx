@@ -6,17 +6,19 @@ import AbsoluteContent from './AbsoluteContent';
 
 interface Props {
   showClear?: boolean;
+  returnValue?: any;
   onClick: (event) => void;
   style?: any;
 }
 
 const ClearButton: FunctionComponent<Props> = (props) => {
   const { colors: Colors } = useAppTheme();
-  const { showClear, onClick, style } = props;
+  const { showClear, returnValue, onClick, style } = props;
 
   if (showClear) {
-    const clearInput = () => {
-      onClick({ target: { value: '' } });
+    const clearInput = (event) => {
+      event.stopPropagation();
+      onClick(returnValue);
     };
 
     return (
@@ -33,6 +35,10 @@ const ClearButton: FunctionComponent<Props> = (props) => {
   }
 
   return null;
+};
+
+ClearButton.defaultProps = {
+  returnValue: '',
 };
 
 export default ClearButton;

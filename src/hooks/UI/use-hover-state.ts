@@ -60,8 +60,14 @@ export function useHoverState(ref, options?: HoverOptions) {
       bottom: bottomOffset,
       right: rightOffset,
     } = mergedOptions.offset;
-    const xIsInsideRage = left + leftOffset <= clientX && right - rightOffset >= clientX;
-    const yIsInsideRage = top + topOffset <= clientY && bottom - bottomOffset >= clientY;
+    const xIsInsideRage = (
+      left + leftOffset <= clientX &&
+      right - rightOffset >= clientX
+    );
+    const yIsInsideRage = (
+      top + topOffset <= clientY &&
+      bottom - bottomOffset >= clientY
+    );
 
     if (xIsInsideRage && yIsInsideRage) {
       setIsHovered(true);

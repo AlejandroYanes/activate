@@ -33,4 +33,15 @@ export const getEllipsisStyles = (props) => {
   return null;
 };
 
+export const getBrandColor = ({ theme }) => theme.colors.BRAND;
+export const getBrandFontColor = ({ theme }) => theme.colors.BRAND_FONT;
+export const getBrandHlColor = ({ theme }) => theme.colors.BRAND_HIGHLIGHT;
+export const getAccentColor = ({ theme }) => theme.colors.ACCENT;
+export const getAccentHlColor = ({ theme }) => theme.colors.ACCENT_HIGHLIGHT;
+export const getAccentFontColor = ({ theme }) => theme.colors.ACCENT_FONT;
+export const getFontColor = ({ theme }) => theme.colors.FONT;
+export const getFontShadeColor = ({ theme }) => theme.colors.FONT_SHADE;
+export const getBgdColor = ({ theme }) => theme.colors.BACKGROUND;
+export const getBgdLightColor = ({ theme }) => theme.colors.BACKGROUND_LIGHT;
+
 export const anyPropsAttrs = (props: any) => props;

@@ -28,8 +28,8 @@ const markAnimationControls = {
 };
 
 const Tab: FunctionComponent<Props> = (props) => {
-  const { colors, useDarkStyle } = useAppTheme();
   const { name, label, icon, onClick } = props;
+  const { colors, useDarkStyle } = useAppTheme();
   const {
     activeTab,
     onTabChange,

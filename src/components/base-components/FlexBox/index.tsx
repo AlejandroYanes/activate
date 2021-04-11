@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { forwardRef, FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
 import { StyledFlexBox } from './styled/flex-box';
 
@@ -19,17 +19,18 @@ interface Props extends PositionProps {
   grow?: boolean;
   flex?: string;
   as?: string;
+  ref?: any;
 }
 
-const FlexBox: FunctionComponent<Props> = (props) => {
+const FlexBox: FunctionComponent<Props> = forwardRef((props, ref) => {
   const { children, as, ...rest } = props;
 
   return (
-    <StyledFlexBox as={as as any} {...rest}>
+    <StyledFlexBox as={as as any} ref={ref} {...rest}>
       {children}
     </StyledFlexBox>
   );
-};
+});
 
 FlexBox.defaultProps = {
   direction: 'row',

@@ -21,7 +21,6 @@ export interface ButtonProps extends PositionProps {
 }
 
 const Button: FunctionComponent<ButtonProps> = (props) => {
-  const { colors, useDarkStyle } = useAppTheme();
   const {
     label,
     onClick,
@@ -34,8 +33,9 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     sm,
     ...rest
   } = props;
-  const buttonReference = useRef(undefined);
-  const isHovered = useHoverState(buttonReference);
+  const { colors, useDarkStyle } = useAppTheme();
+  const buttonRef = useRef(undefined);
+  const isHovered = useHoverState(buttonRef);
 
   const leftIconNode = useMemo(() => (
     <IconNode
@@ -63,7 +63,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
 
   return (
     <StyledButton
-      ref={buttonReference}
+      ref={buttonRef}
       onClick={onClick}
       variant={variant}
       color={color}
