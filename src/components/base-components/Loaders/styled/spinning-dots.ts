@@ -9,22 +9,35 @@ const sizeMap = {
   page: 'width: 100px; height: 100px',
 };
 
+const dotsSizeMap = {
+  'x-small': 'width: 6px; height: 6px',
+  small: 'width: 8px; height: 8px',
+  medium: 'width: 16px; height: 16px',
+  large: 'width: 24px; height: 24px',
+  page: 'width: 48px; height: 48px',
+}
+
 export const Wrapper = styled.div.attrs(anyPropsAttrs)`
   position: relative;
+  box-sizing: content-box;
   ${getPositionStyles};
   ${({ size }) => sizeMap[size]};
 
   & div:first-child{
     animation-delay:-2s;
+    ${({ size }) => dotsSizeMap[size]};
   }
   & div:nth-child(2){
     animation-delay:-1.5s;
+    ${({ size }) => dotsSizeMap[size]};
   }
   & div:nth-child(3){
     animation-delay:-1s;
+    ${({ size }) => dotsSizeMap[size]};
   }
   & div:nth-child(4){
     animation-delay:-0.5s;
+    ${({ size }) => dotsSizeMap[size]};
   }
 `;
 

@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { getEventValue, checkValidationRules, FunctionRule, Rule } from 'helpers';
+import { checkValidationRules, FunctionRule, Rule } from 'helpers';
 import { useDebounce } from 'hooks/UI';
 import { Input } from 'components/base-components/Inputs';
 import FormContext from './context';
@@ -39,13 +39,9 @@ const Field: FunctionComponent<Props> = (props) => {
   const WrappedComponent = component || Input;
   const inputId = id || name;
 
-  const handleChange = useCallback((event) => {
-    if (event && event.persist) {
-      event.persist();
-    }
-    const nextValue = getEventValue(event);
+  const handleChange = useCallback((nextValue) => {
     const callback = onChange
-      ? () => onChange(event, setField, state)
+      ? () => onChange(nextValue, setField, state)
       : () => setField({ [name]: nextValue });
 
     setInputState({

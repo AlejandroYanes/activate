@@ -61,6 +61,7 @@ import MaximizeIcon from './Maximize';
 import TimeHistoryIcon from './TimeHistory';
 import StarFilledIcon from './StarFilled';
 import ListIcon from './List';
+import TagIcon from './Tag';
 
 export enum Icons {
   HOME = 'home',
@@ -125,6 +126,7 @@ export enum Icons {
   MAXIMIZE = 'maximize',
   TIME_HISTORY = 'history',
   LIST = 'list',
+  TAG = 'tag',
 }
 
 export const icons = {
@@ -190,4 +192,5 @@ export const icons = {
   [Icons.MAXIMIZE]: (props) => <MaximizeIcon {...props} />,
   [Icons.TIME_HISTORY]: (props) => <TimeHistoryIcon {...props} />,
   [Icons.LIST]: (props) => <ListIcon {...props} />,
+  [Icons.TAG]: (props) => <TagIcon {...props} />,
 };

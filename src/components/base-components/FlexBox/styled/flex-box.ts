@@ -26,6 +26,7 @@ const getLayoutStyles = (props) => {
 };
 
 export const StyledFlexBox = styled.div`
+  position: relative;
   display: flex;
   ${getLayoutStyles};
   ${getPositionStyles}

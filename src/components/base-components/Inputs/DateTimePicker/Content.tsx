@@ -3,7 +3,9 @@ import { formatDate, formatDateTime, formatTime } from 'helpers';
 import { useAppTheme } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import { StyledContent, Separator, DateStamp } from './styled/content';
+import { Text } from 'components/base-components/Typography';
+import AbsoluteContent from '../base/AbsoluteContent';
+import { StyledContent, Separator } from './styled/content';
 
 interface Props {
   value: Date | Date[];
@@ -62,15 +64,17 @@ const Content: FunctionComponent<Props> = (props) => {
       padRight={padRight}
       tabIndex={0}
     >
-      <SvgIcon
-        size={iconSize}
-        color={colors.FONT}
-        icon={Icons.CALENDAR_FILLED}
-      />
-      <DateStamp>{startDate}</DateStamp>
+      <AbsoluteContent>
+        <SvgIcon
+          size={iconSize}
+          color={colors.FONT}
+          icon={Icons.CALENDAR_FILLED}
+        />
+      </AbsoluteContent>
+      <Text padding="0 16px 0 0">{startDate}</Text>
       <RenderIf condition={!!endDate}>
         <Separator />
-        <DateStamp>{endDate}</DateStamp>
+        <Text padding="0 0 0 16px">{endDate}</Text>
       </RenderIf>
     </StyledContent>
   );

@@ -21,7 +21,13 @@ const spring = {
 const Option: FunctionComponent<Props> = (props) => {
   const Colors = useAppColors();
   const { value, label, icon } = props;
-  const { color, size, fullWidth, value: selectedValue, onChange } = useOptionsContext();
+  const {
+    color,
+    size,
+    fullWidth,
+    value: selectedValue,
+    onChange,
+  } = useOptionsContext();
   const isSelected = value === selectedValue;
 
   const handleOnClick = useCallback(() => {
@@ -39,7 +45,11 @@ const Option: FunctionComponent<Props> = (props) => {
     >
       <Label>
         <RenderIf condition={!!icon}>
-          <Icon icon={icon} size={size} color={isSelected ? Colors.WHITE : Colors.FONT} />
+          <Icon
+            icon={icon}
+            size={size}
+            color={isSelected ? Colors.WHITE : Colors.FONT}
+          />
         </RenderIf>
         <Text size={size} color={isSelected ? 'white' : 'font'}>{label}</Text>
       </Label>

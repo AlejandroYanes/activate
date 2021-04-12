@@ -10,7 +10,7 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
   position: relative;
 `;
 
-const getLeftPadding = ({ padLeft }) => `padding-left: ${padLeft ? 48 : 20}px`;
+const getLeftPadding = ({ padLeft }) => `padding-left: ${padLeft ? 52 : 20}px`;
 const getRightPadding = ({ padRight }) => `padding-right: ${padRight ? 48 : 20}px`;
 
 export const getColorStyles = (props) => {

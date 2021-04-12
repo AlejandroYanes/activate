@@ -1,19 +1,15 @@
-import React, { FunctionComponent, useState } from 'react';
-import { PositionProps } from 'helpers';
-import InputLabel from 'components/base-components/Inputs/base/Label';
-import ClearButton from 'components/base-components/Inputs/base/ClearButton';
+import React, { FunctionComponent, useMemo, useState } from 'react';
+import InputLabel from '../base/Label';
+import ClearButton from '../base/ClearButton';
 import CalendarModal from './CalendarModal';
 import Content from './Content';
+import { InputProps } from '../types';
 import { StyledDateTimePicker } from './styled';
 
-interface Props extends PositionProps {
-  id?: string;
-  label?: string;
+interface Props extends InputProps {
   value: Date | Date[];
-  onChange: (event) => void;
   type?: 'date' | 'date-range' | 'date-time' | 'time' | 'time-range';
   showOptions?: boolean;
-  showClear?: boolean;
 }
 
 const DateTimePicker: FunctionComponent<Props> = (props) => {
@@ -49,10 +45,19 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
 
   const handleDateSelected = (date) => {
     setShowBackdrop(false);
-    onChange({ value: date });
+    onChange(date);
   };
 
-  const handleClear = () => onChange(undefined);
+  const showClearButton = useMemo(() => {
+    const useRange = type === 'date-range' || type === 'time-range';
+    let hasValue = !!value;
+
+    if (useRange) {
+     hasValue = !!value && (value as Date[]).length > 0;
+    }
+
+    return showClear && hasValue;
+  }, [showClear, type, value]);
 
   return (
     <>
@@ -68,8 +73,9 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
           onBlur={handleBlur}
         />
         <ClearButton
-          showClear={showClear && !!value}
-          onClick={handleClear}
+          returnValue={null}
+          showClear={showClearButton}
+          onClick={onChange}
         />
       </StyledDateTimePicker>
       <CalendarModal

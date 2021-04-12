@@ -5,7 +5,7 @@ import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import Button from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
-import Clock from '../Clock';
+import Clock from 'components/base-components/Clock';
 import CurrentDate from './CurrentDate';
 import {
   ClockWrapper,

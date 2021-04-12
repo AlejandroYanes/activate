@@ -14,10 +14,10 @@ const SpinningDots: FunctionComponent<Props> = (props) => {
 
   return (
     <Wrapper {...rest}>
-      <Dot color={flat ? Colors.WHITE : Colors.BRAND} />
-      <Dot color={flat ? Colors.WHITE : Colors.ACCENT} />
-      <Dot color={flat ? Colors.WHITE : Colors.INFO} />
-      <Dot color={flat ? Colors.WHITE : Colors.ERROR} />
+      <Dot color={flat ? Colors.FONT : Colors.INFO} />
+      <Dot color={flat ? Colors.FONT : Colors.SUCCESS} />
+      <Dot color={flat ? Colors.FONT : Colors.WARNING} />
+      <Dot color={flat ? Colors.FONT : Colors.ERROR} />
     </Wrapper>
   );
 };

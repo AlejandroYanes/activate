@@ -1,11 +1,9 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import { PositionProps } from 'helpers';
-import { useAppTheme } from 'components/providers/Theme';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import RenderIf from 'components/base-components/RenderIf';
+import React, { FunctionComponent, useCallback } from 'react';
+import { getEventValue, PositionProps } from 'helpers';
+import { Icons } from 'components/base-components/SvgIcon';
 import InputLabel from '../base/Label';
 import ClearButton from '../base/ClearButton';
-import AbsoluteContent from '../base/AbsoluteContent';
+import InputIcon from '../base/Icon';
 import { StyledContainer, StyledInput } from './styled/input';
 
 interface Props extends PositionProps {
@@ -14,14 +12,13 @@ interface Props extends PositionProps {
   label?: string;
   icon?: Icons;
   value: string;
-  onChange: (event) => void;
+  onChange: (value: string) => void;
   onFocus?: (event) => void;
   onBlur?: (event) => void;
   showClear?: boolean;
 }
 
 const Input: FunctionComponent<Props> = (props) => {
-  const { colors: Colors } = useAppTheme();
   const {
     label,
     placeholder,
@@ -34,26 +31,20 @@ const Input: FunctionComponent<Props> = (props) => {
     ...rest
   } = props;
 
-  const iconElement = useMemo(() => {
-    return (
-      <SvgIcon icon={icon} color={Colors.FONT} />
-    );
-  }, [icon, Colors])
+  const handleOnChange = useCallback((event) => {
+    onChange(getEventValue(event));
+  }, [onChange]);
 
   return (
     <StyledContainer {...rest}>
       <InputLabel text={label} />
-      <RenderIf condition={!!icon}>
-        <AbsoluteContent>
-          {iconElement}
-        </AbsoluteContent>
-      </RenderIf>
+      <InputIcon icon={icon} />
       <StyledInput
         padLeft={!!icon}
         padRight={showClear}
         placeholder={placeholder}
         value={value}
-        onChange={onChange}
+        onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
       />
