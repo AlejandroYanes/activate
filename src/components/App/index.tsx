@@ -1,14 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import { BrowserRouter } from 'react-router-dom';
 import AppProviders from 'components/providers';
-import AppBody from './AppBody';
+import Routes from 'components/routes';
 
 const App: FunctionComponent = () => (
-  <BrowserRouter>
-    <AppProviders>
-      <AppBody />
-    </AppProviders>
-  </BrowserRouter>
+  <AppProviders>
+    <Routes />
+  </AppProviders>
 );
 
 export default App;

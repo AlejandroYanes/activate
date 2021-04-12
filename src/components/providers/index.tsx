@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import PanelSectionsProvider from './PanelSections';
 import ThemeProvider from './Theme';
 import LayoutProvider from './Layout';
+import AuthProvider from './Auth';
 
 const AppProviders: FunctionComponent = (props) => {
   const { children } = props;
@@ -10,7 +11,9 @@ const AppProviders: FunctionComponent = (props) => {
     <LayoutProvider>
       <ThemeProvider>
         <PanelSectionsProvider>
-          {children}
+          <AuthProvider>
+            {children}
+          </AuthProvider>
         </PanelSectionsProvider>
       </ThemeProvider>
     </LayoutProvider>

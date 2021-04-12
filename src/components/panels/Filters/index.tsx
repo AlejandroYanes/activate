@@ -84,7 +84,6 @@ const FiltersPanel: FunctionComponent = () => {
           options={categories}
           icon={Icons.TAG}
           anchorTo={panelRef}
-          showSearch
           showClear
           multiple
           mB
