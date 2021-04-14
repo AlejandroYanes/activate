@@ -6,14 +6,14 @@ import TabItem from './TabItem';
 import { TabBar, List } from './styled';
 
 enum Menus {
-  UPCOMING = '/',
-  DISCOVER = '/discover',
-  SEARCH = '/search',
+  UPCOMING = '/app',
+  DISCOVER = '/app/discover',
+  SEARCH = '/app/search',
   TALKS = '#talks',
   UPDATES = '#updates',
 }
 
-const tabs = ['/', '/upcoming', '/discover', '/search'];
+const tabs = ['/app', '/app/upcoming', '/app/discover', '/app/search'];
 
 const BottomTabBar: FunctionComponent = () => {
   const { push } = useHistory();

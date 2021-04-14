@@ -6,6 +6,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
 import Backdrop from 'components/base-components/Backdrop';
 import { MenuWrapper, TriggerContainer, MenuList } from './styled/menu';
@@ -25,6 +26,7 @@ interface Props {
 
 const Menu: FunctionComponent<Props> = (props) => {
   const { trigger, children, ...otherProps } = props;
+  const layout = useAppLayout();
   const [isOpen, setIsOpen] = useState(false);
   const menuReference = useRef(undefined);
 
@@ -51,7 +53,7 @@ const Menu: FunctionComponent<Props> = (props) => {
       <RenderIf condition={isOpen}>
         <Backdrop onClick={toggleMenu}>
           <MenuProvider closeMenu={toggleMenu}>
-            <MenuList data-el="menu-list">
+            <MenuList layout={layout} data-el="menu-list">
               {children}
             </MenuList>
           </MenuProvider>

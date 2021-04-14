@@ -21,7 +21,7 @@ interface Props {
   onClick?: (activeTab: string) => void;
 }
 
-const markAnimationControls = {
+const springAnimation = {
   type: 'spring',
   stiffness: 300,
   damping: 20,
@@ -89,7 +89,7 @@ const Tab: FunctionComponent<Props> = (props) => {
         <Mark
           layoutId="tabMarker"
           initial={false}
-          transition={markAnimationControls}
+          transition={springAnimation}
         />
       </RenderIf>
     </StyledTab>

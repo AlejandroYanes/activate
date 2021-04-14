@@ -6,7 +6,8 @@ import SidePanel from 'components/experience/SidePanel';
 import NotificationCenter from 'components/experience/NotificationCenter';
 import ModalStack from 'components/experience/ModalStack';
 import BottomTabBar from 'components/experience/BottomTabBar';
-import { Body, StyledApp } from './styled';
+import { StyledApp } from './styled/app-layout';
+import { Body } from './styled/body';
 
 const PrimaryBody: FunctionComponent = (props) => {
   const { children } = props;

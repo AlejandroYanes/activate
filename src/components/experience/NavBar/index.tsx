@@ -14,8 +14,6 @@ import {
   SideMenu as StyledSideMenu,
 } from './styled';
 
-// const emptyAction = () => undefined;
-
 const VerticalMenu: FunctionComponent = () => {
   const layout = useAppLayout();
   const Colors = useAppColors();
@@ -37,31 +35,31 @@ const VerticalMenu: FunctionComponent = () => {
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/profile"
+          path="/app/profile"
           icon={<Avatar icon="user2" size="x-small" />}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/"
+          path="/app"
           icon={Icons.BOOKMARKS}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/discover"
+          path="/app/discover"
           icon={Icons.COMPASS}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/search"
+          path="/app/search"
           icon={Icons.SEARCH}
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
-          path="/talks"
+          path="/app/talks"
           icon={Icons.MESSAGE}
         />
         <RenderIf condition={layout !== Layout.DESKTOP}>
@@ -73,16 +71,6 @@ const VerticalMenu: FunctionComponent = () => {
           />
         </RenderIf>
         <EmptyBlock />
-        {/*<ActionBlock>*/}
-        {/*  <ActionButton*/}
-        {/*    onClick={emptyAction}*/}
-        {/*    icon={Icons.LOGOUT}*/}
-        {/*    color={Colors.WHITE}*/}
-        {/*    secondaryColor={Colors.WHITE}*/}
-        {/*    buttonColor="brand"*/}
-        {/*    variant="fill"*/}
-        {/*  />*/}
-        {/*</ActionBlock>*/}
       </MenuList>
     </StyledSideMenu>
   );

@@ -1,42 +1,41 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { PositionProps } from 'helpers';
+import { Text } from 'components/base-components/Typography';
 import {
   FauxContainer,
   FauxNob,
-  FauxOffSide,
-  FauxOnSide,
-  FauxSlide,
   HiddenInput,
   StyledToggle,
 } from './styled';
+import RenderIf from '../RenderIf';
 
 interface Props extends PositionProps {
   nobNode?: ReactNode;
-  label: string;
+  label?: string;
   value: boolean;
   onChange: (event) => void;
 }
 
+const springAnimation = {
+  type: 'spring',
+  stiffness: 300,
+  damping: 20,
+};
+
 const Toggle: FunctionComponent<Props> = (props) => {
   const { nobNode, label, value, onChange, ...rest } = props;
-
-  const fauxOffPosition = value ? 100 : 0;
-  const fauxOnPosition = !value ? -100 : 0;
-  const nobPosition = value ? '50%' : '2px';
 
   return (
     <StyledToggle {...rest}>
       <HiddenInput type="checkbox" checked={value} readOnly />
-      <FauxContainer data-el="faux-container" onClick={onChange}>
-        <FauxSlide data-el="faux-slide">
-          <FauxOnSide data-el="faux-on-side" position={fauxOnPosition} />
-          <FauxOffSide data-el="faux-off-side" position={fauxOffPosition} />
-          <FauxNob data-el="faux-nob" position={nobPosition}>
-            {nobNode}
-          </FauxNob>
-        </FauxSlide>
+      <FauxContainer data-el="faux-container" checked={value} onClick={onChange}>
+        <FauxNob layout transition={springAnimation} data-el="faux-nob">
+          {nobNode}
+        </FauxNob>
       </FauxContainer>
-      {label}
+      <RenderIf condition={!!label}>
+        <Text padding="0 0 0 8px">{label}</Text>
+      </RenderIf>
     </StyledToggle>
   );
 };

@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
+import { Layout } from 'components/providers/Layout';
 
 export const MenuWrapper = styled.div`
   display: flex;
@@ -20,15 +22,17 @@ export const MenuContainer = styled.div`
   position: relative;
 `;
 
-export const MenuList = styled.ul`
+const menuListStyleMap = {
+  [Layout.DESKTOP]: 'min-width: 400px;',
+  [Layout.TABLET]: 'min-width: 400px;',
+  [Layout.MOBILE]: 'min-width: 90vw',
+};
+
+export const MenuList = styled.ul.attrs(anyPropsAttrs)`
   list-style: none;
-  //z-index: 1;
   margin: 0;
   padding: 0;
-  //position: absolute;
-  //top: 12px;
-  min-width: 400px;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  //box-shadow: 0 0 8px 2px ${({ theme }) => theme.colors.FONT_SHADE};
+  ${({ layout }) => menuListStyleMap[layout]};
 `;

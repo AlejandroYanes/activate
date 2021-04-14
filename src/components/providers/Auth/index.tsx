@@ -26,7 +26,7 @@ interface AuthContext {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: false,
+  isLoggedIn: true,
   user: undefined,
 };
 
