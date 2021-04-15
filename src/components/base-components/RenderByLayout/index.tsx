@@ -2,9 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useAppLayout } from 'components/providers/Layout';
 
 interface Props {
-  options: {
-    [s: string]: any,
-  };
+  options: { [s: string]: any };
   fallback: any;
   [x: string]: any;
 }

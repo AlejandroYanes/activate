@@ -4,7 +4,7 @@ import {
   DuskLightsTheme,
   LifeIsABeachTheme,
   NeonLightsTheme,
-  StartingTheme,
+  GrapesTheme,
   SummerVibesTheme,
 } from 'styles/themes';
 import { AppTheme, useAppTheme } from 'components/providers/Theme';
@@ -79,14 +79,14 @@ const Settings: FunctionComponent<Props> = (props) => {
       />
       <Title level={3} color="secondary" margin="0 0 24px">Theme</Title>
       <PickList value={activeTheme} onChange={setTheme} color="info">
-        <PickItem value={AppTheme.Default}>
+        <PickItem value={AppTheme.Grapes}>
           <Theme>
             <Palette>
-              <ColorSample color={StartingTheme.BRAND} />
-              <ColorSample color={StartingTheme.ACCENT} />
+              <ColorSample color={GrapesTheme.BRAND} />
+              <ColorSample color={GrapesTheme.ACCENT} />
             </Palette>
             <DetailBox>
-              <ThemeName>Activate</ThemeName>
+              <ThemeName>Grapes</ThemeName>
             </DetailBox>
           </Theme>
         </PickItem>

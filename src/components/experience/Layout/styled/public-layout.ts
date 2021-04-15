@@ -10,7 +10,7 @@ const layoutMap = {
     align-items: stretch;
     max-width: 1366px;
     margin: 0 auto;
-    padding: 0 32px 32px;
+    padding: 0 48px 32px;
   `,
   [Layout.TABLET]: `
     position: relative;

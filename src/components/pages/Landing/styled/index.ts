@@ -4,9 +4,13 @@ import { headerHeight, mobileHeaderHeight } from 'styles/variables';
 import { Layout } from 'components/providers/Layout';
 
 const headerStyleMap = {
-  [Layout.DESKTOP]: `
+  [Layout.DESKTOP]: css`
     height: ${headerHeight}px;
     min-height: ${headerHeight}px;
+
+    & > h2 {
+      position: fixed;
+    }
   `,
   [Layout.TABLET]: `
     height: ${headerHeight}px;
@@ -21,7 +25,7 @@ const headerStyleMap = {
 export const Header = styled.header.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   ${({ layout }) => headerStyleMap[layout]};
 `;
 
@@ -30,6 +34,10 @@ const contentStyleMap = {
     display: flex;
     align-items: stretch;
     margin-top: 20px;
+
+    & > div:first-child {
+      position: fixed;
+    }
   `,
   [Layout.TABLET]: css`
     display: flex;
@@ -71,8 +79,8 @@ export const LeftBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 40%;
   margin-bottom: 32px;
+  flex: 1;
 `;
 
 export const RightBlock = styled.div`
@@ -80,4 +88,18 @@ export const RightBlock = styled.div`
   flex-direction: column;
   width: 680px;
   margin: 0 0 0 auto;
+`;
+
+const illustrationStylesMap = {
+  [Layout.DESKTOP]: '',
+  [Layout.TABLET]: 'height: 200px',
+  [Layout.MOBILE]: '',
+};
+
+export const IllustrationBox = styled.div.attrs(anyPropsAttrs)`
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  ${({ layout }) => illustrationStylesMap[layout]};
 `;

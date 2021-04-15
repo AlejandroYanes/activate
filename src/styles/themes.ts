@@ -1,4 +1,4 @@
-export const StartingTheme = {
+export const GrapesTheme = {
   BRAND: '#8F008F',
   ACCENT: '#009554',
 };
