@@ -12,7 +12,7 @@ import {
   DuskLightsTheme,
   LifeIsABeachTheme,
   NeonLightsTheme,
-  StartingTheme,
+  GrapesTheme,
   SummerVibesTheme,
 } from 'styles/themes';
 import { Layout } from 'components/providers/Layout';
@@ -21,7 +21,7 @@ import { MobileGlobalStyles, PrimaryGlobalStyles } from './GlobalStyles';
 import composeColorScheme from './compose-color-scheme';
 
 export enum AppTheme {
-  Default = 'Default',
+  Grapes = 'Grapes',
   NeonLights = 'NeonLights',
   SummerVibes = 'SummerVibes',
   LifeIsABeach = 'LifeIsABeach',
@@ -37,7 +37,7 @@ interface ThemeContextValue {
 }
 
 const themesMap = {
-  [AppTheme.Default]: StartingTheme,
+  [AppTheme.Grapes]: GrapesTheme,
   [AppTheme.NeonLights]: NeonLightsTheme,
   [AppTheme.SummerVibes]: SummerVibesTheme,
   [AppTheme.LifeIsABeach]: LifeIsABeachTheme,
@@ -54,7 +54,7 @@ const globalStyles = {
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<AppTheme>(AppTheme.LifeIsABeach);
+  const [theme, setTheme] = useState<AppTheme>(AppTheme.DuskLights);
   const [useDarkStyle, setUseDarkTheme] = useState(true);
 
   const toggleLightStyle = useCallback(

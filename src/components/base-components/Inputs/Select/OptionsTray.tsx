@@ -11,7 +11,7 @@ import { SpinningDots } from 'components/base-components/Loaders';
 import Search from './Search';
 import Option from './Option';
 import { Edge, OptionsList, StyledOptionsTray } from './styled/tray';
-import getFloatingStyles, { getMinHeight } from './get-floating-styles';
+import getFloatingStyles from './get-floating-styles';
 import { SelectOption } from './index';
 
 interface Props {
@@ -41,7 +41,7 @@ const OptionsTray: FunctionComponent<Props> = (props) => {
 
   const [state, setState] = useState({
     hidden: true,
-    height: getMinHeight(showSearch),
+    height: 10,
     float: 'bottom',
   });
   const trayRef = useRef(undefined);
@@ -75,7 +75,7 @@ const OptionsTray: FunctionComponent<Props> = (props) => {
       setState({ ...trayFloatingValues, hidden: false });
     } else {
       setState({
-        height: getMinHeight(showSearch),
+        height: 10,
         float: 'bottom',
         hidden: true,
       });

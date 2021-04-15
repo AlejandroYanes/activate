@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   .cls-1{fill:#13637f;stroke:#14667c;}
-  .cls-1,.cls-10,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke - miterlimit:10;}
+  .cls-1,.cls-10,.cls-12,.cls-13,.cls-14,.cls-15,.cls-16,.cls-2,.cls-3,.cls-4,.cls-5,.cls-6,.cls-7,.cls-8,.cls-9{stroke-miterlimit:10;}
   .cls-2{fill:#eab0ac;stroke:#e8afaa;}
   .cls-3{fill:#167199;stroke:#177596;}
   .cls-11,.cls-4{fill:#f9bbb4;}

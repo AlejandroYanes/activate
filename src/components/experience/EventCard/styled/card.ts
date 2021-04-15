@@ -24,6 +24,7 @@ export const Card = styled.article.attrs((props: any) => props)`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  width: 100%;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   ${({ layout }) => stylesMap[layout]};

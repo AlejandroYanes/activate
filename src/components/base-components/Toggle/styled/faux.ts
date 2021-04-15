@@ -1,24 +1,6 @@
 import styled from 'styled-components';
-
-const animationSpeed = 150;
-
-export const FauxContainer = styled.div`
-  display: flex;
-  height: 24px;
-  min-width: 44px;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-right: 8px;
-`;
-
-export const FauxSlide = styled.div`
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-`;
+import { motion } from 'framer-motion';
+import { anyPropsAttrs } from 'helpers';
 
 const getOffColors = (props) => {
   const { theme: { useDarkStyle, colors } } = props;
@@ -42,16 +24,6 @@ const getOffColors = (props) => {
     `;
 };
 
-export const FauxOffSide = styled.div.attrs((props: any) => props)`
-  width: 44px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${({ position }) => `${position}%`};
-  transition: all linear ${animationSpeed}ms;
-  ${getOffColors};
-`;
-
 const getOnColors = (props) => {
   const { theme: { colors } } = props;
 
@@ -64,17 +36,27 @@ const getOnColors = (props) => {
     `;
 };
 
-export const FauxOnSide = styled.div.attrs((props: any) => props)`
-  width: 44px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${({ position }) => `${position}%`};
-  transition: all linear ${animationSpeed}ms;
-  ${getOnColors};
+const getStyles = (props) => {
+  const { checked } = props;
+
+  return `
+    justify-content: ${checked ? 'flex-end' : 'flex-start'};
+    ${checked ? getOnColors(props) : getOffColors(props)}
+  `;
+};
+
+export const FauxContainer = styled.div.attrs(anyPropsAttrs)`
+  display: flex;
+  align-items: center;
+  height: 24px;
+  min-width: 48px;
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 2px;
+  ${getStyles};
 `;
 
-export const FauxNob = styled.div.attrs((props: any) => props)`
+export const FauxNob = styled(motion.div)`
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -83,10 +65,5 @@ export const FauxNob = styled.div.attrs((props: any) => props)`
   width: 20px;
   height: 20px;
   border-radius: 50px;
-  position: absolute;
-  margin-top: -10px;
-  top: 50%;
-  left: ${({ position }) => position};
   background-color: ${({ theme }) => theme.colors.WHITE};
-  transition: all linear ${animationSpeed}ms;
 `;

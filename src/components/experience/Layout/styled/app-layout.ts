@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const layoutMap = {
-  [Layout.DESKTOP]: css`
+  [Layout.DESKTOP]: `
     position: relative;
     display: flex;
     flex-direction: row;
@@ -11,18 +11,17 @@ const layoutMap = {
     max-width: 1366px;
     margin: 0 auto;
   `,
-  [Layout.TABLET]: css`
+  [Layout.TABLET]: `
     position: relative;
     display: flex;
     flex-direction: row;
     align-items: stretch;
   `,
-  [Layout.MOBILE]: css`
+  [Layout.MOBILE]: `
     height: 100%;
     overflow: hidden;
-    flex-grow: 1;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: stretch;
     position: absolute;
     top: 0;

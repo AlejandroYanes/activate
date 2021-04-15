@@ -2,21 +2,22 @@ import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import NavBar from 'components/experience/NavBar';
-import BottomTabBar from 'components/experience/BottomTabBar';
 import SidePanel from 'components/experience/SidePanel';
 import NotificationCenter from 'components/experience/NotificationCenter';
-import ModalStack  from 'components/experience/ModalStack';
-import Routes from './Routes';
-import { Body, StyledApp } from './styled';
+import ModalStack from 'components/experience/ModalStack';
+import BottomTabBar from 'components/experience/BottomTabBar';
+import { StyledApp } from './styled/app-layout';
+import { Body } from './styled/body';
 
-const PrimaryBody: FunctionComponent = () => {
+const PrimaryBody: FunctionComponent = (props) => {
+  const { children } = props;
   const layout = useAppLayout();
 
   return (
     <StyledApp layout={layout} data-el="app">
       <NavBar />
       <Body layout={layout} data-el="app-body">
-        <Routes />
+        {children}
       </Body>
       <SidePanel />
       <NotificationCenter />
@@ -25,14 +26,15 @@ const PrimaryBody: FunctionComponent = () => {
   );
 };
 
-const TabletBody: FunctionComponent = () => {
+const TabletBody: FunctionComponent = (props) => {
+  const { children } = props;
   const layout = useAppLayout();
 
   return (
     <StyledApp layout={layout} data-el="app">
       <NavBar />
       <Body layout={layout} data-el="app-body">
-        <Routes />
+        {children}
       </Body>
       <NotificationCenter />
       <ModalStack />
@@ -40,14 +42,15 @@ const TabletBody: FunctionComponent = () => {
   );
 };
 
-const MobileBody: FunctionComponent = () => {
+const MobileBody: FunctionComponent = (props) => {
+  const { children } = props;
   const layout = useAppLayout();
 
   return (
     <StyledApp layout={layout} data-el="app">
       <BottomTabBar />
       <Body layout={layout} data-el="app-body">
-        <Routes />
+        {children}
       </Body>
       <NotificationCenter />
       <ModalStack />
@@ -61,8 +64,9 @@ const bodyMap = {
   [Layout.MOBILE]: MobileBody,
 };
 
-export default function AppBody() {
-  return (
-    <RenderByLayout options={bodyMap} fallback={PrimaryBody} />
-  );
-}
+
+const AuthLayout: FunctionComponent = (props) => (
+  <RenderByLayout options={bodyMap} fallback={PrimaryBody} {...props} />
+);
+
+export default AuthLayout;
