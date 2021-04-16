@@ -4,7 +4,7 @@ import { useAppTheme } from 'components/providers/Theme';
 import { Title } from 'components/base-components/Typography';
 import Toggle from 'components/base-components/Toggle';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import { StyledApp, Header } from './styled/public-layout';
+import { StyledApp, Header, Content } from './styled/public-layout';
 
 const PublicLayout: FunctionComponent = (props) => {
   const { children } = props;
@@ -33,7 +33,9 @@ const PublicLayout: FunctionComponent = (props) => {
           onChange={toggleLightStyle}
         />
       </Header>
-      {children}
+      <Content layout={layout}>
+        {children}
+      </Content>
     </StyledApp>
   );
 };

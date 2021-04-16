@@ -6,7 +6,6 @@ const contentStyleMap = {
   [Layout.DESKTOP]: css`
     display: flex;
     align-items: stretch;
-    margin-top: 20px;
 
     & > div:first-child {
       position: fixed;
@@ -16,7 +15,6 @@ const contentStyleMap = {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin-top: 20px;
 
     & > div:first-child {
       width: 100%;
@@ -31,7 +29,6 @@ const contentStyleMap = {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    margin: 32px 0;
 
     & > div:first-child {
       width: 100%;

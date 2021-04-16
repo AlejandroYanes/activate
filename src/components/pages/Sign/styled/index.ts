@@ -12,4 +12,8 @@ export const LeftBlock = styled.div`
 
 export const RightBlock = styled.div`
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 0 48px;
 `;

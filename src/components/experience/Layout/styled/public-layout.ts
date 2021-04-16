@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getBgdColor } from 'helpers';
+import { headerHeight, mobileHeaderHeight } from 'styles/variables';
+import { ZLevels } from 'styles/z-levels';
 import { Layout } from 'components/providers/Layout';
-import { headerHeight, mobileHeaderHeight } from '../../../../styles/variables';
-import { ZLevels } from '../../../../styles/z-levels';
 
 const layoutMap = {
   [Layout.DESKTOP]: `
@@ -30,7 +30,7 @@ const layoutMap = {
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 0 8px;
+    padding: 0;
   `,
 };
 
@@ -41,7 +41,7 @@ export const StyledApp = styled.main.attrs(anyPropsAttrs)`
 `;
 
 const headerStyleMap = {
-  [Layout.DESKTOP]: css`
+  [Layout.DESKTOP]: `
     height: ${headerHeight}px;
     min-height: ${headerHeight}px;
   `,
@@ -52,6 +52,7 @@ const headerStyleMap = {
   [Layout.MOBILE]: `
     height: ${mobileHeaderHeight}px;
     min-height: ${mobileHeaderHeight}px;
+    padding: 0 8px;
   `,
 };
 
@@ -64,4 +65,23 @@ export const Header = styled.header.attrs(anyPropsAttrs)`
   top: 0;
   z-index: ${ZLevels.componentLevel2};
   ${({ layout }) => headerStyleMap[layout]};
+`;
+
+const contentStyleMap = {
+  [Layout.DESKTOP]: `
+  margin-top: 20px;
+  `,
+  [Layout.TABLET]: `
+  margin-top: 20px;
+  `,
+  [Layout.MOBILE]: css`
+    padding: 32px 8px;
+    overflow: hidden auto;
+  `,
+};
+
+export const Content = styled.section.attrs(anyPropsAttrs)`
+  display: flex;
+  flex-direction: column;
+  ${({ layout }) => contentStyleMap[layout]}
 `;
