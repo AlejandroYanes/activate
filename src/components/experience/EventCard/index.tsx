@@ -31,6 +31,7 @@ interface Props {
   attendees?: number;
   isAFollowedEvent?: boolean;
   hideAuthor?: boolean;
+  hideFooter?: boolean;
 }
 
 const avatars = ['user1', 'user2', 'user6', 'user12'];
@@ -47,6 +48,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
     attendees,
     isAFollowedEvent,
     hideAuthor,
+    hideFooter,
   } = props;
   const [{ isBooked, showUnfollowModal }, setState] = useState({
     isBooked: isAFollowedEvent,
@@ -100,22 +102,24 @@ const EventCard: FunctionComponent<Props> = (props) => {
             </Paragraph>
           </RenderIf>
         </Content>
-        <Divider />
-        <Footer>
-          <AvatarGroup
-            icons={avatars}
-            label={formatAmount(attendees)}
-            size="small"
-          />
-          <Actions>
-            <BookmarkButton
-              isBooked={isBooked}
-              onClick={handleBookmark}
+        <RenderIf condition={!hideFooter}>
+          <Divider />
+          <Footer>
+            <AvatarGroup
+              icons={avatars}
+              label={formatAmount(attendees)}
+              size="small"
             />
-            <ForwardButton />
-            <ActionsMenu author={author.name} />
-          </Actions>
-        </Footer>
+            <Actions>
+              <BookmarkButton
+                isBooked={isBooked}
+                onClick={handleBookmark}
+              />
+              <ForwardButton />
+              <ActionsMenu author={author.name} />
+            </Actions>
+          </Footer>
+        </RenderIf>
       </Card>
       <UnfollowModal
         title={title}

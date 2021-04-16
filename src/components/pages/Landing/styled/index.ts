@@ -1,33 +1,6 @@
 import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
-import { headerHeight, mobileHeaderHeight } from 'styles/variables';
 import { Layout } from 'components/providers/Layout';
-
-const headerStyleMap = {
-  [Layout.DESKTOP]: css`
-    height: ${headerHeight}px;
-    min-height: ${headerHeight}px;
-
-    & > h2 {
-      position: fixed;
-    }
-  `,
-  [Layout.TABLET]: `
-    height: ${headerHeight}px;
-    min-height: ${headerHeight}px;
-  `,
-  [Layout.MOBILE]: `
-    height: ${mobileHeaderHeight}px;
-    min-height: ${mobileHeaderHeight}px;
-  `,
-};
-
-export const Header = styled.header.attrs(anyPropsAttrs)`
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  ${({ layout }) => headerStyleMap[layout]};
-`;
 
 const contentStyleMap = {
   [Layout.DESKTOP]: css`

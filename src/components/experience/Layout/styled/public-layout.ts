@@ -1,6 +1,8 @@
-import styled from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import styled, { css } from 'styled-components';
+import { anyPropsAttrs, getBgdColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
+import { headerHeight, mobileHeaderHeight } from '../../../../styles/variables';
+import { ZLevels } from '../../../../styles/z-levels';
 
 const layoutMap = {
   [Layout.DESKTOP]: `
@@ -36,4 +38,30 @@ export const StyledApp = styled.main.attrs(anyPropsAttrs)`
   width: 100%;
   height: 100%;
   ${({ layout }) => layoutMap[layout]};
+`;
+
+const headerStyleMap = {
+  [Layout.DESKTOP]: css`
+    height: ${headerHeight}px;
+    min-height: ${headerHeight}px;
+  `,
+  [Layout.TABLET]: `
+    height: ${headerHeight}px;
+    min-height: ${headerHeight}px;
+  `,
+  [Layout.MOBILE]: `
+    height: ${mobileHeaderHeight}px;
+    min-height: ${mobileHeaderHeight}px;
+  `,
+};
+
+export const Header = styled.header.attrs(anyPropsAttrs)`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: ${getBgdColor};
+  position: sticky;
+  top: 0;
+  z-index: ${ZLevels.componentLevel2};
+  ${({ layout }) => headerStyleMap[layout]};
 `;
