@@ -62,6 +62,8 @@ import TimeHistoryIcon from './TimeHistory';
 import StarFilledIcon from './StarFilled';
 import ListIcon from './List';
 import TagIcon from './Tag';
+import GoogleIcon from './Google';
+import FacebookIcon from './Facebook';
 
 export enum Icons {
   HOME = 'home',
@@ -127,6 +129,8 @@ export enum Icons {
   TIME_HISTORY = 'history',
   LIST = 'list',
   TAG = 'tag',
+  GOOGLE = 'google',
+  FACEBOOK = 'facebook',
 }
 
 export const icons = {
@@ -193,4 +197,6 @@ export const icons = {
   [Icons.TIME_HISTORY]: (props) => <TimeHistoryIcon {...props} />,
   [Icons.LIST]: (props) => <ListIcon {...props} />,
   [Icons.TAG]: (props) => <TagIcon {...props} />,
+  [Icons.GOOGLE]: (props) => <GoogleIcon {...props} />,
+  [Icons.FACEBOOK]: (props) => <FacebookIcon {...props} />,
 };

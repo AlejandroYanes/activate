@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { motion } from 'framer-motion';
 import { anyPropsAttrs } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
@@ -45,7 +46,7 @@ export const Content = styled.section.attrs(anyPropsAttrs)`
   ${({ layout }) => contentStyleMap[layout]};
 `;
 
-export const LeftBlock = styled.div`
+export const LeftBlock = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: flex-start;

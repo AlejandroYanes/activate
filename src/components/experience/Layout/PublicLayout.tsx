@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { useAppLayout } from 'components/providers/Layout';
 import { useAppTheme } from 'components/providers/Theme';
 import { Title } from 'components/base-components/Typography';
@@ -24,8 +25,10 @@ const PublicLayout: FunctionComponent = (props) => {
 
   return (
     <StyledApp layout={layout} data-el="app">
-      <Header layout={layout}>
-        <Title level={2}>Activate</Title>
+      <Header layout={layout} data-el="app-header">
+        <Link to="/">
+          <Title level={2}>Activate</Title>
+        </Link>
         <Toggle
           margin="0 0 0 auto"
           nobNode={useDarkStyle ? moonIcon : sunIcon}
@@ -33,7 +36,7 @@ const PublicLayout: FunctionComponent = (props) => {
           onChange={toggleLightStyle}
         />
       </Header>
-      <Content layout={layout}>
+      <Content layout={layout} data-el="app-body">
         {children}
       </Content>
     </StyledApp>

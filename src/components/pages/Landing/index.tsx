@@ -11,13 +11,18 @@ import { Content, IllustrationBox, LeftBlock, RightBlock } from './styled';
 
 const emptyAction = () => undefined;
 
+const blockVariants = {
+  start: { transform: 'translateX(-20%)', opacity: 0 },
+  enter: { transform: 'translateX(0%)', opacity: 1, transition: { delay: 0.2 } },
+};
+
 const LandingPage: FunctionComponent = () => {
   const layout = useAppLayout();
 
   return (
     <PublicLayout>
       <Content layout={layout}>
-        <LeftBlock>
+        <LeftBlock variants={blockVariants} initial="start" animate="enter">
           <Title level={1} color="brand" padding="6px 0">
             Find any <b>event</b>
           </Title>

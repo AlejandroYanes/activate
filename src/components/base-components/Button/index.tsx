@@ -1,8 +1,7 @@
-import React, { FunctionComponent, ReactNode, useMemo, useRef } from 'react';
+import React, { FunctionComponent, ReactNode, useRef } from 'react';
 import { PositionProps } from 'helpers';
 import { useHoverState } from 'hooks/UI';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
-import { useAppTheme } from 'components/providers/Theme';
 import IconNode from './Icon';
 import Content from './Content';
 import { Button as StyledButton } from './styled';
@@ -33,33 +32,28 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     sm,
     ...rest
   } = props;
-  const { colors, useDarkStyle } = useAppTheme();
   const buttonRef = useRef(undefined);
   const isHovered = useHoverState(buttonRef);
 
-  const leftIconNode = useMemo(() => (
+  const leftIconNode = (
     <IconNode
       isHovered={isHovered}
       variant={variant}
       icon={leftIcon}
       color={color}
-      colors={colors}
-      useDarkStyle={useDarkStyle}
       sm={sm}
     />
-  ), [leftIcon, isHovered, variant, color, sm, useDarkStyle, colors]);
+  );
 
-  const rightIconNode = useMemo(() => (
+  const rightIconNode = (
     <IconNode
       isHovered={isHovered}
       variant={variant}
       icon={rightIcon}
       color={color}
-      colors={colors}
-      useDarkStyle={useDarkStyle}
       sm={sm}
     />
-  ), [rightIcon, isHovered, variant, color, sm, useDarkStyle, colors]);
+  );
 
   return (
     <StyledButton
