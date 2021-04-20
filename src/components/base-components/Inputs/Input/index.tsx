@@ -1,24 +1,12 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { getEventValue, PositionProps } from 'helpers';
-import { Icons } from 'components/base-components/SvgIcon';
+import { getEventValue } from 'helpers';
 import InputLabel from '../base/Label';
 import ClearButton from '../base/ClearButton';
 import InputIcon from '../base/Icon';
+import { InputProps } from '../types';
 import { StyledContainer, StyledInput } from './styled/input';
 
-interface Props extends PositionProps {
-  id?: string;
-  placeholder?: string;
-  label?: string;
-  icon?: Icons;
-  value: string;
-  onChange: (value: string) => void;
-  onFocus?: (event) => void;
-  onBlur?: (event) => void;
-  showClear?: boolean;
-}
-
-const Input: FunctionComponent<Props> = (props) => {
+const Input: FunctionComponent<InputProps> = (props) => {
   const {
     label,
     placeholder,

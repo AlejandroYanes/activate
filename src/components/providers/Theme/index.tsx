@@ -54,7 +54,7 @@ const globalStyles = {
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<AppTheme>(AppTheme.Grapes);
+  const [theme, setTheme] = useState<AppTheme>(AppTheme.SummerVibes);
   const [useDarkStyle, setUseDarkTheme] = useState(true);
 
   const toggleLightStyle = useCallback(

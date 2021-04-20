@@ -10,6 +10,7 @@ import RenderIf from 'components/base-components/RenderIf';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import { Content, OAuthBox, SignBox } from './styled';
+import PasswordInput from '../../base-components/Inputs/PasswordInput';
 
 const emptyAction = () => undefined;
 
@@ -48,7 +49,12 @@ const SignPage: FunctionComponent = () => {
           <RenderIf condition={signAction === SignAction.SIGN_UP}>
             <Field name="email" label="Email" mB />
           </RenderIf>
-          <Field name="password" label="Password" mB />
+          <Field
+            name="password"
+            label="Password"
+            component={PasswordInput}
+            mB
+          />
           <ActionBox signAction={signAction} />
         </Form>
         <OAuthBox layout={layout}>
