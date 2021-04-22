@@ -104,7 +104,7 @@ export const Button = styled.button`
     transform: scale(0.9);
   }
 
-  & svg, path, rect, circle {
+  & > svg * {
     transition: all linear 150ms;
   }
 `;

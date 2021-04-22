@@ -7,10 +7,10 @@ import Button from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import RenderIf from 'components/base-components/RenderIf';
+import { PasswordInput } from 'components/base-components/Inputs';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import { Content, OAuthBox, SignBox } from './styled';
-import PasswordInput from '../../base-components/Inputs/PasswordInput';
 
 const emptyAction = () => undefined;
 
@@ -23,7 +23,7 @@ const SignPage: FunctionComponent = () => {
   const layout = useAppLayout();
   const [signAction, setSignAction] = useState<SignAction>(SignAction.SIGN_IN);
   const [credentials, setCredentials] = useState({
-    userName: '',
+    email: '',
     password: '',
   });
 
@@ -45,10 +45,7 @@ const SignPage: FunctionComponent = () => {
           </Tabset>
         </FlexBox>
         <Form onChange={setCredentials} state={credentials}>
-          <Field name="userName" label="User Name" mB />
-          <RenderIf condition={signAction === SignAction.SIGN_UP}>
-            <Field name="email" label="Email" mB />
-          </RenderIf>
+        <Field name="email" label="Email" mB />
           <Field
             name="password"
             label="Password"
@@ -65,12 +62,14 @@ const SignPage: FunctionComponent = () => {
             <Button
               onClick={emptyAction}
               leftIcon={Icons.GOOGLE}
-              label={`${signAction} with Google`}
+              label="Use Google"
+              padding="0 16px"
             />
             <Button
               onClick={emptyAction}
               leftIcon={Icons.FACEBOOK}
-              label={`${signAction} with Facebook`}
+              label="Use Facebook"
+              padding="0 16px"
             />
           </div>
         </OAuthBox>

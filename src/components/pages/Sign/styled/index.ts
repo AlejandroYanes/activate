@@ -31,8 +31,7 @@ const rightBlockStyleMap = {
   `,
   [Layout.TABLET]: css`
     width: 100%;
-    max-width: 620px;
-    padding: 0 48px;
+    max-width: 524px;
     margin: 0 auto;
   `,
   [Layout.MOBILE]: css`
@@ -49,6 +48,7 @@ const oAuthBoxStyleMap = {
   [Layout.DESKTOP]: css`
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 50px 0 0 0;
 
     & > span {
@@ -59,11 +59,19 @@ const oAuthBoxStyleMap = {
     & > div {
       display: flex;
       justify-content: space-between;
+
+      & > button:first-child {
+        margin-right: 16px;
+      }
+      & > button:last-child {
+        margin-left: 16px;
+      }
     }
   `,
   [Layout.TABLET]: css`
     display: flex;
     flex-direction: column;
+    align-items: center;
     margin: 60px 0 0 0;
 
     & > span {
@@ -74,6 +82,13 @@ const oAuthBoxStyleMap = {
     & > div {
       display: flex;
       justify-content: space-between;
+
+      & > button:first-child {
+        margin-right: 16px;
+      }
+      & > button:last-child {
+        margin-left: 16px;
+      }
     }
   `,
   [Layout.MOBILE]: css`

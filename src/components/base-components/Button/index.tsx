@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, useRef } from 'react';
 import { PositionProps } from 'helpers';
-import { useHoverState } from 'hooks/UI';
+import { useFocusState, useHoverState } from 'hooks/UI';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
 import IconNode from './Icon';
 import Content from './Content';
@@ -34,10 +34,11 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
   } = props;
   const buttonRef = useRef(undefined);
   const isHovered = useHoverState(buttonRef);
+  const isFocused = useFocusState(buttonRef);
 
   const leftIconNode = (
     <IconNode
-      isHovered={isHovered}
+      isHovered={isHovered || isFocused}
       variant={variant}
       icon={leftIcon}
       color={color}
@@ -47,7 +48,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
 
   const rightIconNode = (
     <IconNode
-      isHovered={isHovered}
+      isHovered={isHovered || isFocused}
       variant={variant}
       icon={rightIcon}
       color={color}
