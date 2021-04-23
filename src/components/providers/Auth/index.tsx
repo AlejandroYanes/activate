@@ -9,7 +9,7 @@ import {
 
 interface User {
   sub: string;
-  name: string;
+  email: string;
 }
 
 interface AuthState {

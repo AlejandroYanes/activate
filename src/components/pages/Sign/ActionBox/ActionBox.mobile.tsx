@@ -9,8 +9,6 @@ import { Text } from 'components/base-components/Typography';
 import { SignAction } from '../';
 import { ActionBoxProps } from './';
 
-const emptyAction = () => undefined;
-
 const termsLabel = (
   <Text>
     I accept the <Link to="/terms">Terms of Service</Link>
@@ -18,7 +16,7 @@ const termsLabel = (
 );
 
 const MobileActionBox: FunctionComponent<ActionBoxProps> = (props) => {
-  const { signAction } = props;
+  const { signAction, onClick } = props;
 
   return (
     <FlexBox
@@ -45,7 +43,7 @@ const MobileActionBox: FunctionComponent<ActionBoxProps> = (props) => {
         />
       </RenderIf>
       <Button
-        onClick={emptyAction}
+        onClick={onClick}
         label={signAction}
         variant="fill"
         mT

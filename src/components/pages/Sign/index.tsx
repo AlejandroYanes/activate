@@ -1,4 +1,7 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useCallback, useState } from 'react';
+import authApi from 'api/auth';
+import { AuthCredentials } from 'models/user';
+import { useAuthActions } from 'components/providers/Auth';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
@@ -21,11 +24,26 @@ export enum SignAction {
 
 const SignPage: FunctionComponent = () => {
   const layout = useAppLayout();
+  const { login } = useAuthActions();
   const [signAction, setSignAction] = useState<SignAction>(SignAction.SIGN_IN);
-  const [credentials, setCredentials] = useState({
+  const [credentials, setCredentials] = useState<AuthCredentials>({
     email: '',
     password: '',
   });
+
+  const authenticate = useCallback(() => {
+    // const action = (
+    //   signAction === SignAction.SIGN_IN
+    //     ? authApi.signIn
+    //     : authApi.signUp
+    // );
+
+    authApi.signIn({ ...credentials } as any)
+      .then((response) => {
+        const { data: { email, sub } } = response;
+        login({ sub, email });
+      });
+  }, [signAction, credentials]);
 
   return (
     <Content layout={layout}>
@@ -45,14 +63,14 @@ const SignPage: FunctionComponent = () => {
           </Tabset>
         </FlexBox>
         <Form onChange={setCredentials} state={credentials}>
-        <Field name="email" label="Email" mB />
+          <Field name="email" label="Email" mB />
           <Field
             name="password"
             label="Password"
             component={PasswordInput}
             mB
           />
-          <ActionBox signAction={signAction} />
+          <ActionBox signAction={signAction} onClick={authenticate} />
         </Form>
         <OAuthBox layout={layout}>
           <Text color="secondary">

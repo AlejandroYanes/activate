@@ -6,7 +6,16 @@ export enum ApiContentType {
   MULTIPART = 'multipart/form-data',
 }
 
-export interface ListResponseModel<T = any> {
+export interface ApiResponse {
+  statusCode: number;
+  success: boolean;
+}
+
+export interface ApiErrorResponse extends ApiResponse {
+  validationErrors?: { [field: string]: string[] };
+}
+
+export interface ListResponseModel<T = any> extends ApiResponse {
   results: T[];
   count: number;
 }

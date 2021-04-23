@@ -6,6 +6,7 @@ import { Title } from 'components/base-components/Typography';
 import Toggle from 'components/base-components/Toggle';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { StyledApp, Header, Content } from './styled/public-layout';
+import NotificationCenter from '../NotificationCenter';
 
 const PublicLayout: FunctionComponent = (props) => {
   const { children } = props;
@@ -39,6 +40,7 @@ const PublicLayout: FunctionComponent = (props) => {
       <Content layout={layout} data-el="app-body">
         {children}
       </Content>
+      <NotificationCenter />
     </StyledApp>
   );
 };

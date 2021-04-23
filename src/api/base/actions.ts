@@ -2,7 +2,7 @@ import axios from 'axios';
 import { generateQueryString, QueryParams } from 'helpers';
 import { ApiContentType } from './types';
 
-const { REACT_API_URL } = process.env;
+const { REACT_APP_API_URL } = process.env;
 
 interface GetOptions {
   params?: QueryParams;
@@ -11,7 +11,7 @@ interface GetOptions {
 }
 
 const axiosInstance = axios.create({
-  baseURL: REACT_API_URL,
+  baseURL: REACT_APP_API_URL,
   paramsSerializer: generateQueryString
 });
 
