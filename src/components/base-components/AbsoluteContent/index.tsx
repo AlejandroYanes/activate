@@ -7,6 +7,8 @@ interface Props extends PositionProps {
   right?: string | number;
   bottom?: string | number;
   left?: string | number;
+  height?: string | number;
+  width?: string | number;
 }
 
 const AbsoluteContent: FunctionComponent<Props> = (props) => {
@@ -20,10 +22,12 @@ const AbsoluteContent: FunctionComponent<Props> = (props) => {
 };
 
 AbsoluteContent.defaultProps = {
-  top: 'initial',
-  right: 'initial',
-  bottom: 'initial',
-  left: 'initial',
+  top: '',
+  right: '',
+  bottom: '',
+  left: '',
+  width: '',
+  height: '',
 };
 
 export default AbsoluteContent;

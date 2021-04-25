@@ -59,6 +59,7 @@ export const getWarningColor = ({ theme }) => theme.colors.WARNING;
 export const getWarningShadeColor = ({ theme }) => theme.colors.WARNING_SHADE;
 
 export const getErrorColor = ({ theme }) => theme.colors.ERROR;
+export const getErrorFontColor = ({ theme }) => theme.colors.ERROR_FONT;
 export const getErrorShadeColor = ({ theme }) => theme.colors.ERROR_SHADE;
 
 export const getGrayColor = ({ theme }) => theme.colors.GRAY;

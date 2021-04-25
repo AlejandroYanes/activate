@@ -14,10 +14,13 @@ const getLeftPadding = ({ padLeft }) => `padding-left: ${padLeft ? 52 : 20}px`;
 const getRightPadding = ({ padRight }) => `padding-right: ${padRight ? 48 : 20}px`;
 
 export const getColorStyles = (props) => {
-  const { theme: { colors } } = props;
+  const { theme: { colors }, error } = props;
+
+  const hoverBorderColor = error ? colors.ERROR_SHADE : colors.BRAND_SHADE;
+  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND;
 
   return css`
-      border: 1px solid ${colors.FONT_SHADE};
+      border: 1px solid transparent;
       background-color: ${colors.BACKGROUND_LIGHT};
       color: ${colors.FONT};
       transition: all 150ms linear;
@@ -28,12 +31,11 @@ export const getColorStyles = (props) => {
       }
 
       &:hover {
-        border-color: ${colors.FONT};
+        background-color: ${hoverBorderColor};
       }
 
       &:focus {
-        border-color: ${colors.BRAND};
-        color: ${colors.FONT};
+        border-color: ${focusBorderColor};
       }
   `;
 };

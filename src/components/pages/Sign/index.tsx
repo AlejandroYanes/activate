@@ -1,7 +1,4 @@
-import { FunctionComponent, useCallback, useState } from 'react';
-import authApi from 'api/auth';
-import { AuthCredentials } from 'models/user';
-import { useAuthActions } from 'components/providers/Auth';
+import { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
@@ -14,36 +11,25 @@ import { PasswordInput } from 'components/base-components/Inputs';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import { Content, OAuthBox, SignBox } from './styled';
+import useSignPageState, { SignAction, validationRules } from './state';
 
 const emptyAction = () => undefined;
 
-export enum SignAction {
-  SIGN_IN = 'Sign In',
-  SIGN_UP = 'Sign Up'
-}
-
 const SignPage: FunctionComponent = () => {
   const layout = useAppLayout();
-  const { login } = useAuthActions();
-  const [signAction, setSignAction] = useState<SignAction>(SignAction.SIGN_IN);
-  const [credentials, setCredentials] = useState<AuthCredentials>({
-    email: '',
-    password: '',
-  });
-
-  const authenticate = useCallback(() => {
-    // const action = (
-    //   signAction === SignAction.SIGN_IN
-    //     ? authApi.signIn
-    //     : authApi.signUp
-    // );
-
-    authApi.signIn({ ...credentials } as any)
-      .then((response) => {
-        const { data: { email, sub } } = response;
-        login({ sub, email });
-      });
-  }, [signAction, credentials]);
+  const {
+    state: {
+      signAction,
+      credentials,
+      errors,
+    },
+    actions: {
+      setSignAction,
+      setCredentials,
+      setErrors,
+      authenticate,
+    },
+  } = useSignPageState();
 
   return (
     <Content layout={layout}>
@@ -62,7 +48,13 @@ const SignPage: FunctionComponent = () => {
             <Tab name={SignAction.SIGN_UP} label={SignAction.SIGN_UP} />
           </Tabset>
         </FlexBox>
-        <Form onChange={setCredentials} state={credentials}>
+        <Form
+          state={credentials}
+          onChange={setCredentials}
+          errors={errors}
+          onError={setErrors}
+          rules={validationRules}
+        >
           <Field name="email" label="Email" mB />
           <Field
             name="password"

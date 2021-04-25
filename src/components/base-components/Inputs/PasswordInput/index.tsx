@@ -6,6 +6,7 @@ import IconButton from 'components/base-components/IconButton';
 import AbsoluteContent from '../base/AbsoluteContent';
 import InputLabel from '../base/Label';
 import InputIcon from '../base/Icon';
+import ErrorText from '../base/ErrorText';
 import { StyledContainer, StyledInput } from '../Input/styled/input';
 import { InputProps } from '../types';
 
@@ -18,6 +19,8 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
     onChange,
     onFocus,
     onBlur,
+    required,
+    error,
     ...rest
   } = props;
 
@@ -34,14 +37,15 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
 
   return (
     <StyledContainer {...rest}>
-      <InputLabel text={label} />
+      <InputLabel text={label} required={required} />
       <InputIcon icon={icon} />
       <StyledInput
         type={showPassword ? 'text' : 'password'}
-        padLeft={!!icon}
         padRight
-        placeholder={placeholder}
+        padLeft={!!icon}
         value={value}
+        error={error}
+        placeholder={placeholder}
         onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -55,6 +59,7 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
           size="small"
         />
       </AbsoluteContent>
+      <ErrorText text={error} />
     </StyledContainer>
   );
 };

@@ -6,7 +6,7 @@ import { Field } from 'components/base-components/Form';
 import Button from 'components/base-components/Button';
 import Checkbox from 'components/base-components/Checkbox';
 import { Text } from 'components/base-components/Typography';
-import { SignAction } from '../';
+import { SignAction } from '../state';
 import { ActionBoxProps } from './';
 
 const termsLabel = (

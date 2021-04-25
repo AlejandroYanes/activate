@@ -3,6 +3,7 @@ import { getEventValue } from 'helpers';
 import InputLabel from '../base/Label';
 import ClearButton from '../base/ClearButton';
 import InputIcon from '../base/Icon';
+import ErrorText from '../base/ErrorText';
 import { InputProps } from '../types';
 import { StyledContainer, StyledInput } from './styled/input';
 
@@ -16,6 +17,8 @@ const Input: FunctionComponent<InputProps> = (props) => {
     onFocus,
     onBlur,
     showClear,
+    required,
+    error,
     ...rest
   } = props;
 
@@ -25,13 +28,14 @@ const Input: FunctionComponent<InputProps> = (props) => {
 
   return (
     <StyledContainer {...rest}>
-      <InputLabel text={label} />
+      <InputLabel text={label} required={required} />
       <InputIcon icon={icon} />
       <StyledInput
+        value={value}
+        error={!!error}
         padLeft={!!icon}
         padRight={showClear}
         placeholder={placeholder}
-        value={value}
         onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
@@ -40,6 +44,7 @@ const Input: FunctionComponent<InputProps> = (props) => {
         showClear={showClear && !!value}
         onClick={onChange}
       />
+      <ErrorText text={error} />
     </StyledContainer>
   );
 };
