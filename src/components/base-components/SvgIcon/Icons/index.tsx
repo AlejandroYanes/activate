@@ -64,6 +64,7 @@ import ListIcon from './List';
 import TagIcon from './Tag';
 import GoogleIcon from './Google';
 import FacebookIcon from './Facebook';
+import InstagramIcon from './Instagram';
 import LockIcon from './Lock';
 import UnlockIcon from './Unlock';
 
@@ -133,6 +134,7 @@ export enum Icons {
   TAG = 'tag',
   GOOGLE = 'google',
   FACEBOOK = 'facebook',
+  INSTAGRAM = 'instagram',
   LOCK = 'lock',
   UNLOCK = 'unlock',
 }
@@ -205,4 +207,5 @@ export const icons = {
   [Icons.FACEBOOK]: (props) => <FacebookIcon {...props} />,
   [Icons.LOCK]: (props) => <LockIcon {...props} />,
   [Icons.UNLOCK]: (props) => <UnlockIcon {...props} />,
+  [Icons.INSTAGRAM]: (props) => <InstagramIcon {...props} />,
 };

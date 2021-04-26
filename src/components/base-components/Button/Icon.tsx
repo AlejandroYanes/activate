@@ -18,7 +18,7 @@ function resolveIconColor(
   colors: ColorScheme,
 ) {
   if (variant === 'fill') {
-    return colors.FONT;
+    return colors.WHITE;
   }
 
   const colorHash = colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];

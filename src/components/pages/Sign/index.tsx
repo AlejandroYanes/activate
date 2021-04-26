@@ -1,13 +1,14 @@
 import { FunctionComponent } from 'react';
+import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
-import Button from 'components/base-components/Button';
-import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import RenderIf from 'components/base-components/RenderIf';
 import { PasswordInput } from 'components/base-components/Inputs';
+import { Icons } from 'components/base-components/SvgIcon';
+import FlexBox from 'components/base-components/FlexBox';
+import RenderIf from 'components/base-components/RenderIf';
+import IconButton from 'components/base-components/IconButton';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import { Content, OAuthBox, SignBox } from './styled';
@@ -17,6 +18,7 @@ const emptyAction = () => undefined;
 
 const SignPage: FunctionComponent = () => {
   const layout = useAppLayout();
+  const colors = useAppColors();
   const {
     state: {
       signAction,
@@ -69,17 +71,29 @@ const SignPage: FunctionComponent = () => {
             Or use your social media
           </Text>
           <div>
-            <Button
+            <IconButton
               onClick={emptyAction}
-              leftIcon={Icons.GOOGLE}
-              label="Use Google"
-              padding="0 16px"
+              icon={Icons.GOOGLE}
+              color={colors.WHITE}
+              buttonColor="accent"
+              variant="fill"
+              size="large"
             />
-            <Button
+            <IconButton
               onClick={emptyAction}
-              leftIcon={Icons.FACEBOOK}
-              label="Use Facebook"
-              padding="0 16px"
+              icon={Icons.FACEBOOK}
+              color={colors.WHITE}
+              buttonColor="accent"
+              variant="fill"
+              size="large"
+            />
+            <IconButton
+              onClick={emptyAction}
+              icon={Icons.INSTAGRAM}
+              color={colors.WHITE}
+              buttonColor="accent"
+              variant="fill"
+              size="large"
             />
           </div>
         </OAuthBox>

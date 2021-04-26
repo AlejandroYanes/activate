@@ -44,75 +44,26 @@ export const SignBox = styled.div.attrs(anyPropsAttrs)`
   ${({ layout }) => rightBlockStyleMap[layout]};
 `;
 
-const oAuthBoxStyleMap = {
-  [Layout.DESKTOP]: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 50px 0 0 0;
-
-    & > span {
-      padding: 0 0 20px 0;
-      text-align: center;
-    }
-
-    & > div {
-      display: flex;
-      justify-content: space-between;
-
-      & > button:first-child {
-        margin-right: 16px;
-      }
-      & > button:last-child {
-        margin-left: 16px;
-      }
-    }
-  `,
-  [Layout.TABLET]: css`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 60px 0 0 0;
-
-    & > span {
-      padding: 0 0 20px 0;
-      text-align: center;
-    }
-
-    & > div {
-      display: flex;
-      justify-content: space-between;
-
-      & > button:first-child {
-        margin-right: 16px;
-      }
-      & > button:last-child {
-        margin-left: 16px;
-      }
-    }
-  `,
-  [Layout.MOBILE]: css`
-    display: flex;
-    flex-direction: column;
-    margin: 60px 0 0 0;
-
-    & > span {
-      padding: 0 0 20px 0;
-      text-align: center;
-    }
-
-    & > div {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-
-      & > button:first-child {
-        margin-bottom: 20px;
-      }
-    }
-  `,
-};
-
 export const OAuthBox = styled.div.attrs(anyPropsAttrs)`
-  ${({ layout }) => oAuthBoxStyleMap[layout]};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 0 0;
+
+  & > span {
+    padding: 0 0 20px 0;
+    text-align: center;
+  }
+
+  & > div {
+    display: flex;
+    justify-content: center;
+
+    & > button:first-child {
+      margin-right: 16px;
+    }
+    & > button:last-child {
+      margin-left: 16px;
+    }
+  }
 `;
