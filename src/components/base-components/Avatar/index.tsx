@@ -1,32 +1,32 @@
 import React, { FunctionComponent } from 'react';
-import user1 from 'assets/icons/users/user1.svg';
-import user2 from 'assets/icons/users/user2.svg';
-import user3 from 'assets/icons/users/user3.svg';
-import user4 from 'assets/icons/users/user4.svg';
-import user5 from 'assets/icons/users/user5.svg';
-import user6 from 'assets/icons/users/user6.svg';
-import user7 from 'assets/icons/users/user7.svg';
-import user8 from 'assets/icons/users/user8.svg';
-import user9 from 'assets/icons/users/user9.svg';
-import user10 from 'assets/icons/users/user10.svg';
-import user11 from 'assets/icons/users/user11.svg';
-import user12 from 'assets/icons/users/user12.svg';
 import { PositionProps } from 'helpers';
-import { StyledAvatar, Img } from './styled';
+import User1 from './users/User1';
+import User2 from './users/User2';
+import User3 from './users/User3';
+import User4 from './users/User4';
+import User5 from './users/User5';
+import User6 from './users/User6';
+import User7 from './users/User7';
+import User8 from './users/User8';
+import User9 from './users/User9';
+import User10 from './users/User10';
+import User11 from './users/User11';
+import User12 from './users/User12';
+import { StyledAvatar } from './styled';
 
-const icons = {
-  user1,
-  user2,
-  user3,
-  user4,
-  user5,
-  user6,
-  user7,
-  user8,
-  user9,
-  user10,
-  user11,
-  user12,
+const users = {
+  user1: User1,
+  user2: User2,
+  user3: User3,
+  user4: User4,
+  user5: User5,
+  user6: User6,
+  user7: User7,
+  user8: User8,
+  user9: User9,
+  user10: User10,
+  user11: User11,
+  user12: User12,
 };
 
 export interface AvatarProps extends PositionProps {
@@ -37,11 +37,12 @@ export interface AvatarProps extends PositionProps {
 }
 
 const Avatar: FunctionComponent<AvatarProps> = (props) => {
-  const { icon, size, alt, onClick, ...rest } = props;
+  const { icon, size, onClick, ...rest } = props;
+  const SelectedUser = users[icon];
 
   return (
     <StyledAvatar onClick={onClick} role="button" tabIndex={0} size={size} {...rest}>
-      <Img alt={alt} src={icons[icon]} size={size} />
+      <SelectedUser />
     </StyledAvatar>
   );
 };
