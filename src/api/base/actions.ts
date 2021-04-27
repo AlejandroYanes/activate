@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { generateQueryString, QueryParams } from 'helpers';
+import { generateQueryString, QueryParams, getAuthToken } from 'helpers';
 import { ApiContentType } from './types';
 
 const { REACT_APP_API_URL } = process.env;
@@ -32,7 +32,7 @@ export function get(endpoint: string, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       'Authorization': (
         authenticated
-          ? `Bearer ${window.sessionStorage.getItem('token')}`
+          ? `Bearer ${getAuthToken()}`
           : ''
       ),
       ...headers,
@@ -49,7 +49,7 @@ export function post(endpoint: string, data: any, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       'Authorization': (
         authenticated
-          ? `Bearer ${window.sessionStorage.getItem('token')}`
+          ? `Bearer ${getAuthToken()}`
           : ''
       ),
       ...headers,
@@ -66,7 +66,7 @@ export function put(endpoint: string, data: any, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       'Authorization': (
         authenticated
-          ? `Bearer ${window.sessionStorage.getItem('token')}`
+          ? `Bearer ${getAuthToken()}`
           : ''
       ),
       ...headers,
@@ -83,7 +83,7 @@ export function del(endpoint: string, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       'Authorization': (
         authenticated
-          ? `Bearer ${window.sessionStorage.getItem('token')}`
+          ? `Bearer ${getAuthToken()}`
           : ''
       ),
       ...headers,
