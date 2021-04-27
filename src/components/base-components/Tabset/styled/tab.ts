@@ -59,7 +59,7 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   border-top-right-radius: 10px;
   box-sizing: border-box;
   min-width: 44px;
-  height: 48px;
+  height: 44px;
   ${getWidthStyles};
   ${getColorStyles};
   transition: all 150ms linear;

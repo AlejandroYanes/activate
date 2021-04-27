@@ -81,7 +81,7 @@ const PublisherModal: FunctionComponent = () => {
           align="center"
           padding="8px"
         >
-          <Avatar size="xx-large" icon="user2" />
+          <Avatar size="xx-large" icon="user1" />
           <FlexBox justify="space-around" grow>
             <FlexBox direction="column" align="center">
               <Text>Events</Text>

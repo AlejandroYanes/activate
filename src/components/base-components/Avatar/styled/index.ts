@@ -1,22 +1,19 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
-import { AvatarProps } from '..';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
-const avatarStyles = {
-  size: {
-    'xx-small': { width: '20px', height: '20px' },
-    'x-small': { width: '28px', height: '28px' },
-    small: { width: '36px', height: '36px' },
-    medium: { width: '52px', height: '52px' },
-    large: { width: '64px', height: '64px' },
-    'x-large': { width: '86px', height: '86px' },
-    'xx-large': { width: '102px', height: '102px' },
-  },
+const avatarSizes = {
+  'xx-small': { width: '20px', height: '20px' },
+  'x-small': { width: '28px', height: '28px' },
+  small: { width: '36px', height: '36px' },
+  medium: { width: '52px', height: '52px' },
+  large: { width: '64px', height: '64px' },
+  'x-large': { width: '86px', height: '86px' },
+  'xx-large': { width: '102px', height: '102px' },
 };
 
-const getSizeStyles = (props: AvatarProps) => avatarStyles.size[props.size];
+const getSizeStyles = ({ size }) => avatarSizes[size];
 
-export const StyledAvatar = styled.span.attrs((props: any) => props)`
+export const StyledAvatar = styled.span.attrs(anyPropsAttrs)`
   ${getSizeStyles};
   ${getPositionStyles};
   border-radius: 50%;
@@ -24,8 +21,8 @@ export const StyledAvatar = styled.span.attrs((props: any) => props)`
   &:focus {
     outline: none;
   }
-`;
 
-export const Img = styled.img.attrs((props: any) => props)`
-  ${getSizeStyles}
+  & > svg {
+    ${getSizeStyles};
+  }
 `;

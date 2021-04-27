@@ -9,7 +9,7 @@ import {
 
 interface User {
   sub: string;
-  name: string;
+  email: string;
 }
 
 interface AuthState {
@@ -26,7 +26,7 @@ interface AuthContext {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: true,
+  isLoggedIn: false,
   user: undefined,
 };
 

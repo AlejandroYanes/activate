@@ -40,6 +40,11 @@ const commonStyles = css`
   * {
     -webkit-tap-highlight-color: transparent;
   }
+
+  a {
+    text-decoration: none;
+    color: ${({theme}) => theme.colors.BRAND_FONT_HIGHLIGHT};
+  }
 `;
 
 export const PrimaryGlobalStyles = createGlobalStyle`

@@ -12,4 +12,6 @@ export interface InputProps extends PositionProps {
   onFocus?: (event) => void;
   onBlur?: (event) => void;
   showClear?: boolean;
+  required?: boolean;
+  error?: string;
 }

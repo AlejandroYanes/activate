@@ -19,15 +19,16 @@ const getScrollStyles = ({ fullWidth }) => (
         display: none;
       }
     `
-    : ''
+    : `
+      width: 100%;
+    `
 );
 
 export const StyledTabset = styled.div.attrs(anyPropsAttrs)`
-  height: 49px;
+  height: 48px;
   box-sizing: content-box;
-  width: 100%;
   ${getBorderStyles};
-  ${getScrollStyles};
+   ${getScrollStyles};
   ${getPositionStyles};
 `;
 

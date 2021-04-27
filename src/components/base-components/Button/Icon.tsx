@@ -1,13 +1,12 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { ColorScheme } from 'styles/colors';
+import { useAppTheme } from 'components/providers/Theme';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 
 interface Props {
   icon?: Icons | ReactNode;
   variant?: 'base' | 'fill' | 'flat';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'font';
-  colors: ColorScheme;
-  useDarkStyle: boolean;
   isHovered: boolean;
   sm: boolean;
 }
@@ -17,16 +16,12 @@ function resolveIconColor(
   color: string,
   isHovered: boolean,
   colors: ColorScheme,
-  useDarkStyle: boolean,
 ) {
-  const colorHash = useDarkStyle
-    ? colors[`${color.toUpperCase()}`]
-    : colors[`${color.toUpperCase()}_DARK`];
-  const fontColor = color === 'font' ? colors.FONT : colors.WHITE;
-
   if (variant === 'fill') {
-    return fontColor;
+    return colors.WHITE;
   }
+
+  const colorHash = colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];
 
   if (variant === 'flat') {
     return isHovered ? colorHash : colors.FONT;
@@ -36,7 +31,8 @@ function resolveIconColor(
 }
 
 const IconNode: FunctionComponent<Props> = (props): any => {
-  const { icon, color, colors, useDarkStyle, variant, isHovered, sm } = props;
+  const { icon, color, variant, isHovered, sm } = props;
+  const { colors } = useAppTheme();
 
   if (!icon) {
     return null;
@@ -47,7 +43,7 @@ const IconNode: FunctionComponent<Props> = (props): any => {
       <SvgIcon
         size={sm ? 'small' : 'medium'}
         icon={icon as Icons}
-        color={resolveIconColor(variant, color, isHovered, colors, useDarkStyle)}
+        color={resolveIconColor(variant, color, isHovered, colors)}
       />
     );
   }

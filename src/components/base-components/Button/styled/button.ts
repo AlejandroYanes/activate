@@ -32,42 +32,30 @@ const getAlignment = (props: ButtonProps) => {
 export const getVariantStyles = ({ theme, ...buttonProps }) => {
   const { colors } = theme;
   const { variant, color } = buttonProps as ButtonProps;
-  const borderStyle = 'solid 1px ';
 
   switch (variant) {
     case 'base': {
-      const fontColor = color === 'font'
-        ? colors.FONT
-        : colors[`${color.toUpperCase()}_FONT`];
-
       const fontHoverColor = color === 'font'
         ? colors.FONT
         : colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];
 
       return css`
-        color: ${fontColor};
-        background-color: ${colors.BACKGROUND};
-        border: ${borderStyle} transparent;
+        color: ${colors.FONT};
+        background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
 
         &:hover, &:focus {
           color: ${fontHoverColor};
-          background-color: ${colors[`${color.toUpperCase()}_SHADE`]};
         }
       `;
     }
     case 'flat': {
-      const fontColor = color === 'font'
-        ? colors.FONT
-        : colors[`${color.toUpperCase()}_FONT`];
-
       const fontHoverColor = color === 'font'
         ? colors.FONT
         : colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];
 
       return css`
         background-color: transparent;
-        color: ${fontColor};
-        border: ${borderStyle} transparent;
+        color: ${colors.FONT};
 
         &:hover, &:focus {
           color: ${fontHoverColor};
@@ -83,11 +71,9 @@ export const getVariantStyles = ({ theme, ...buttonProps }) => {
       return css`
         color: ${fontColor};
         background-color: ${backgroundColor};
-        border: ${borderStyle} ${backgroundColor};
 
         &:hover, &:focus {
           background-color: ${backgroundHoverColor};
-          border-color: ${backgroundHoverColor};
           color: ${colors.WHITE};
         }
       `;
@@ -116,5 +102,9 @@ export const Button = styled.button`
 
   &:active {
     transform: scale(0.9);
+  }
+
+  & > svg * {
+    transition: all linear 150ms;
   }
 `;

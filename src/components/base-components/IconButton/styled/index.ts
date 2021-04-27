@@ -27,9 +27,9 @@ const getSize = (props: IconButtonProps) => {
       `;
     case 'x-large':
       return `
-        height: 46px;
-        width: 46px;
-        min-width: 46px;
+        height: 70px;
+        width: 70px;
+        min-width: 70px;
       `;
     default:
       return `

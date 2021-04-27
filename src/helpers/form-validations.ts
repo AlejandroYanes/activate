@@ -28,6 +28,14 @@ export const commonRules = {
     type: RuleType.Required,
     message: 'This field is required',
   },
+  email: {
+    type: RuleType.Email,
+    message: 'This field is not a valid email',
+  },
+  website: {
+    type: RuleType.WebSite,
+    message: 'The site url must be a valid url',
+  },
 };
 
 function hasValue(value) {

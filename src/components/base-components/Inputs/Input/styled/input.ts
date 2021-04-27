@@ -14,10 +14,13 @@ const getLeftPadding = ({ padLeft }) => `padding-left: ${padLeft ? 52 : 20}px`;
 const getRightPadding = ({ padRight }) => `padding-right: ${padRight ? 48 : 20}px`;
 
 export const getColorStyles = (props) => {
-  const { theme: { colors } } = props;
+  const { theme: { colors }, error } = props;
+
+  const hoverBorderColor = error ? colors.ERROR_SHADE : colors.BRAND_SHADE;
+  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND;
 
   return css`
-      border: 1px solid ${colors.FONT_SHADE};
+      border: 1px solid transparent;
       background-color: ${colors.BACKGROUND_LIGHT};
       color: ${colors.FONT};
       transition: all 150ms linear;
@@ -28,12 +31,11 @@ export const getColorStyles = (props) => {
       }
 
       &:hover {
-        border-color: ${colors.FONT};
+        background-color: ${hoverBorderColor};
       }
 
       &:focus {
-        border-color: ${colors.BRAND};
-        color: ${colors.FONT};
+        border-color: ${focusBorderColor};
       }
   `;
 };
@@ -48,8 +50,8 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   margin: 0;
   flex: 1;
   min-width: 0;
-  min-height: 40px;
-  height: 40px;
+  min-height: 36px;
+  height: 36px;
   box-sizing: border-box;
   border-radius: ${inputBorderRadius};
   transition: all 150ms linear;

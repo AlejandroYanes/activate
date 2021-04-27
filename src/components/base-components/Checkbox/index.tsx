@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, ReactNode, useCallback } from 'react';
 import { PositionProps } from 'helpers';
 import { useUniqueIds } from 'hooks/UI';
 import { Text } from 'components/base-components/Typography';
@@ -9,7 +9,7 @@ import Faux from './Faux';
 interface Props extends PositionProps {
   id?: string;
   name?: string;
-  label?: string;
+  label?: string | ReactNode;
   value: boolean;
   onChange?: (event) => void;
   disabled?: boolean;
