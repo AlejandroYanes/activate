@@ -7,11 +7,12 @@ import { Mark, StyledItem, Touchable } from './styled';
 
 interface Props {
   value: string;
+  dashed?: boolean;
 }
 
 const PickItem: FunctionComponent<Props> = (props) => {
-  const { colors: Colors, useDarkStyle } = useAppTheme();
-  const { value, children } = props;
+  const { colors: Colors } = useAppTheme();
+  const { value, dashed, children } = props;
   const {
     value: selectedValue,
     onChange,
@@ -26,17 +27,18 @@ const PickItem: FunctionComponent<Props> = (props) => {
   return (
     <StyledItem tabIndex={-1} size={size}>
       <Touchable
-        onClick={handleOnClick}
         color={color}
+        dashed={dashed}
         isSelected={isSelected}
+        onClick={handleOnClick}
         data-pick-item-selected={isSelected}
       >
         {children}
         <RenderIf condition={isSelected}>
-          <Mark color={color}>
+          <Mark color={color} data-el="pick_item-mark">
             <SvgIcon
               icon={Icons.CHECK_MARK}
-              color={useDarkStyle ? Colors.ACCENT : Colors.WHITE}
+              color={Colors.WHITE}
             />
           </Mark>
         </RenderIf>

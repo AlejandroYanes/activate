@@ -13,5 +13,6 @@ export function getEventValue(event) {
 
     return event;
   }
+  
   return undefined;
 }

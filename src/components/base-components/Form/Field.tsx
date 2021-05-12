@@ -40,18 +40,16 @@ const Field: FunctionComponent<Props> = (props) => {
   const inputId = id || name;
 
   const handleChange = useCallback((nextValue) => {
-    const callback = onChange
-      ? () => onChange(nextValue, setField, state)
-      : () => setField({ [name]: nextValue });
-
-    setInputState({
-      value: nextValue,
-      isDirty: true,
-    });
-    if (skipDebounce) {
-      callback();
+    if (onChange) {
+      const callback =  () => onChange(nextValue, setField, state);
+      skipDebounce ? callback() : debounceCall(callback);
     } else {
-      debounceCall(callback);
+      setInputState({
+        value: nextValue,
+        isDirty: true,
+      });
+      const callback = () => setField({ [name]: nextValue });
+      skipDebounce ? callback() : debounceCall(callback);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, setField, onChange]);

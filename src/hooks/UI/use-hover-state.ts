@@ -88,6 +88,7 @@ export function useHoverState(ref, options?: HoverOptions) {
         component.removeEventListener('mouseleave', deactivateHover);
       };
     }
+    
     return undefined;
   }, [ref, activateHover, deactivateHover]);
 

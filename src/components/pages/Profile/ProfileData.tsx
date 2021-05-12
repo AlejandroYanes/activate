@@ -18,7 +18,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
 
   return (
     <ProfileCard
-      image="user2"
+      image="user7"
       name="Alejandro Yanes"
       userName="@alejandro.yanes94"
       leftStatLabel="Following"

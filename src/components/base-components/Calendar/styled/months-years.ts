@@ -17,6 +17,7 @@ const getBasicStyles = (props) => {
     color: ${colors.WHITE};
     `;
   }
+  
   return '';
 };
 
@@ -29,6 +30,7 @@ const getHoverStyles = (props) => {
     color: ${colors.WHITE};
     `;
   }
+  
   return '';
 };
 

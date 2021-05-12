@@ -13,6 +13,7 @@ const ActionsRenderer = ({ actions }) => {
     if (actions && Array.isArray(actions)) {
       return actions.map((action, index) => <Button key={index} {...action} />);
     }
+    
     return null;
   }, [actions]);
 

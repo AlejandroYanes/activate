@@ -33,7 +33,7 @@ const commonStyles = css`
     color: ${({ theme }) => theme.colors.WHITE};
   }
 
-  div, section, article, main, header, footer {
+  div, section, article, aside, main, header, footer {
     box-sizing: border-box;
   }
 

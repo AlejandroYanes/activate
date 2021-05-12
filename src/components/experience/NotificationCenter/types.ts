@@ -14,7 +14,7 @@ export enum NotificationDuration {
 }
 
 export interface NotificationModel {
-  id: string;
+  id?: string;
   type?: NotificationType;
   duration?: NotificationDuration;
   title?: string;

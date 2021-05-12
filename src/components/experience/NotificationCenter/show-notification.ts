@@ -1,5 +1,6 @@
 import { EventChannelList, notifyEventChannel } from 'event-center';
 import { NotificationDuration, NotificationModel, NotificationType } from './types';
+import { generateUID } from '../../../helpers';
 
 const defaultValues = {
   type: NotificationType.INFO,
@@ -9,6 +10,6 @@ const defaultValues = {
 export function showNotification(notification: NotificationModel) {
   notifyEventChannel(
     EventChannelList.PUSHED_NOTIFICATION,
-    { ...defaultValues, ...notification },
+    { ...defaultValues, id: generateUID(), ...notification },
   );
 }

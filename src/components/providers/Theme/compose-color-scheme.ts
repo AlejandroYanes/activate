@@ -10,6 +10,7 @@ import {
 
 function expandColors(colors, lightColors, useDarkStyle: boolean) {
   const { BACKGROUND } = lightColors;
+  
   return Object.keys(colors).reduce((acc, color) => {
     const colorValue = colors[color];
     const colorFactor = useDarkStyle ? colorVariation : -colorVariation;

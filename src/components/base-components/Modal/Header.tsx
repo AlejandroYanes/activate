@@ -73,6 +73,7 @@ const Header: FunctionComponent<Props> = (props) => {
 
   if (title) {
     const HeaderComponent = sizeMap[size];
+    
     return (
       <HeaderComponent title={title} onClose={onClose} />
     );

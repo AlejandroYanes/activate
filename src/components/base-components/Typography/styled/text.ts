@@ -29,12 +29,14 @@ const getColor = (props) => {
   }
 
   const fontColor = colors[`${color.toUpperCase()}_FONT`];
+
   return `color: ${fontColor}`;
 };
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
   white-space: normal;
   font-size: ${({ size }) => sizeMap[size]};
+  line-height: ${({ size }) => `calc(${sizeMap[size]} + 4px)`};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};
   ${getColor};

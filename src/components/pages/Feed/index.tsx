@@ -61,6 +61,7 @@ const FeedPage: FunctionComponent = () => {
         </Options>
       );
     }
+    
     return null;
   }, [layout, option]);
 

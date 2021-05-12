@@ -11,6 +11,7 @@ import { Wrapper, ListContainer, Edge, StyledList } from './styled';
 import IconButton from '../IconButton';
 import { Icons } from '../SvgIcon';
 import RenderIf from '../RenderIf';
+import { useAppLayout } from '../../providers/Layout';
 
 interface Props extends PositionProps {
   value: string;
@@ -23,6 +24,7 @@ const sizeMap = { large: 210, medium: 160, small: 110 };
 
 const PickList: FunctionComponent<Props> = (props) => {
   const { value, onChange, size, color, children, ...rest } = props;
+  const layout = useAppLayout();
   const [showArrows, setShowArrows] = useState(false);
   const containerRef = useRef(undefined);
   const listRef = useRef(undefined);
@@ -41,38 +43,46 @@ const PickList: FunctionComponent<Props> = (props) => {
 
     if (listWidth > containerWidth) {
       setShowArrows(true);
+    } else {
+      setShowArrows(false);
     }
-  }, []);
+  }, [layout]);
 
   return (
     <Wrapper {...rest} data-el="pick_list-wrapper">
-      <Edge side="left" data-el="pick_list-left_edge">
-        <RenderIf condition={showArrows}>
+      <RenderIf condition={showArrows}>
+        <Edge side="left" data-el="pick_list-left_edge">
           <IconButton
             onClick={handleLeftEdgeClick}
             icon={Icons.CHEVRON_LEFT}
             variant="flat"
             buttonColor="font"
           />
-        </RenderIf>
-      </Edge>
+        </Edge>
+      </RenderIf>
       <ListContainer ref={containerRef} data-el="pick_list-list_container">
         <StyledList ref={listRef}>
-          <PickListProvider value={value} onChange={onChange} size={size} color={color}>
+          <PickListProvider
+            size={size}
+            color={color}
+            value={value}
+            onChange={onChange}
+          >
             {children}
           </PickListProvider>
         </StyledList>
       </ListContainer>
-      <Edge side="right" data-el="pick_list-right_edge">
-        <RenderIf condition={showArrows}>
+      <RenderIf condition={showArrows}>
+        <Edge side="right" data-el="pick_list-right_edge">
           <IconButton
             onClick={handleRightEdgeClick}
             icon={Icons.CHEVRON_RIGHT}
             variant="flat"
             buttonColor="font"
           />
-        </RenderIf>
-      </Edge>
+        </Edge>
+      </RenderIf>
+
     </Wrapper>
   );
 };

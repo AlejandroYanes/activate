@@ -66,8 +66,8 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
       {...rest}
     >
       <Content
-        isLoading={isLoading}
         label={label}
+        isLoading={isLoading}
         leftIcon={leftIconNode}
         rightIcon={rightIconNode}
       >

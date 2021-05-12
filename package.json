@@ -12,7 +12,7 @@
     "test:ci": "react-scripts test --watchAll=false --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
     "eject": "react-scripts eject",
     "test:e2e": "cypress open",
-    "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
+    "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}' --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "analize": "source-map-explorer 'build/static/js/*.js'"
@@ -25,7 +25,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run lint"
+      "pre-commit": "npm run lint"
     }
   },
   "browserslist": {

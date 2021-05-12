@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { UpdateType } from './types';
-import { events } from '../../pages/Discover/events';
+import { events } from 'components/pages/Discover/events';
 
 const eventUpdates = [
   UpdateType.INVITATION,
@@ -40,5 +40,5 @@ export const updates = new Array(7).fill('1').map((_v, index) => {
     type: index,
     content: generateUpdate(index),
     read: faker.random.boolean(),
-};
+  };
 });

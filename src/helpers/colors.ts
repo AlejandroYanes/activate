@@ -5,12 +5,14 @@ import { getBrightness, getContrastRatio } from './color-attrs';
 export function getShade(hexColor: string, alpha = 0.1): string {
   const rgbColor = hexToRgb(hexColor);
   const rgbString = rgbColor.join(',');
+  
   return `rgba(${rgbString}, ${alpha})`;
 }
 
 export function changeColorLight(hexColor: string, amount: number): string {
   const [hue, sat, light] = rgbToHsl(hexToRgb(hexColor));
   const changedColor = [hue, sat, light + (amount * 100)];
+  
   return rgbToHex(hslToRgb(changedColor));
 }
 

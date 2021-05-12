@@ -25,8 +25,8 @@ export default function useSignPageState() {
       setCredentials: useAtomicSet(dispatch, SignStateActions.SET_CREDENTIALS),
       setErrors: useAtomicSet(dispatch, SignStateActions.SET_ERRORS),
       authenticate: useCallback(
-        authenticate(dispatch, login, state.credentials),
-        [state.credentials],
+        authenticate(dispatch, login, state.credentials, state.signAction),
+        [state.credentials, state.signAction],
       ),
     },
   };

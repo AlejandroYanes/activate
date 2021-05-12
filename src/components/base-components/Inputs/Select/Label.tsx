@@ -9,8 +9,8 @@ interface Props {
 const Label: FunctionComponent<Props> = (props) => {
   const { value } = props;
   const text = Array.isArray(value)
-  ? (value as SelectOption[]).map(v => v.label).join(', ')
-  : value?.label;
+    ? (value as SelectOption[]).map(v => v.label).join(', ')
+    : value?.label;
 
   return (
     <Text ellipsis>{text}</Text>

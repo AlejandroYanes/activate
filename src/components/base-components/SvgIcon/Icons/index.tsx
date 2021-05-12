@@ -67,6 +67,7 @@ import FacebookIcon from './Facebook';
 import InstagramIcon from './Instagram';
 import LockIcon from './Lock';
 import UnlockIcon from './Unlock';
+import CameraAddIcon from './CameraAdd';
 
 export enum Icons {
   HOME = 'home',
@@ -137,6 +138,7 @@ export enum Icons {
   INSTAGRAM = 'instagram',
   LOCK = 'lock',
   UNLOCK = 'unlock',
+  CAMERA_ADD = 'camera-add',
 }
 
 export const icons = {
@@ -208,4 +210,5 @@ export const icons = {
   [Icons.LOCK]: (props) => <LockIcon {...props} />,
   [Icons.UNLOCK]: (props) => <UnlockIcon {...props} />,
   [Icons.INSTAGRAM]: (props) => <InstagramIcon {...props} />,
+  [Icons.CAMERA_ADD]: (props) => <CameraAddIcon {...props} />,
 };

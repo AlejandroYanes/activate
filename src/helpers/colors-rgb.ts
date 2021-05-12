@@ -1,12 +1,14 @@
 export function hexToRgb(color: string | number[]): number[] {
   if (typeof color === 'string') {
     const aRgbHex = color.slice(1).match(/.{1,2}/g);
+    
     return [
       parseInt(aRgbHex[0], 16),
       parseInt(aRgbHex[1], 16),
       parseInt(aRgbHex[2], 16),
     ];
   }
+  
   return color;
 }
 

@@ -133,7 +133,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
 
 EventCard.defaultProps = {
   isAFollowedEvent: false,
-    hideAuthor: false,
+  hideAuthor: false,
 };
 
 export default EventCard;

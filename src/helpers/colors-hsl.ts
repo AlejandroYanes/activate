@@ -56,5 +56,6 @@ export function hslToRgb(color: number[]) {
   if (hPrime <= 3) { return withLight(0, C, X); }
   if (hPrime <= 4) { return withLight(0, X, C); }
   if (hPrime <= 5) { return withLight(X, 0, C); }
+
   return withLight(C, 0, X);
 }

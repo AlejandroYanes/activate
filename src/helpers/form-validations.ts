@@ -109,7 +109,12 @@ export function checkValidationRules(
   return error;
 }
 
-export function validateEntity(entity, rules: ValidationRules) {
+interface Validation {
+  hasErrors: boolean;
+  errors: { [field: string]: string };
+}
+
+export function validateEntity(entity, rules: ValidationRules): Validation {
   const fieldsToValidate = Object.keys(rules);
   const errors = fieldsToValidate.reduce((accumulated, field) => ({
     ...accumulated,

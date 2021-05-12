@@ -43,6 +43,7 @@ const Content: FunctionComponent<Props> = (props) => {
       const date = useRange ? value[0] : value;
       return getDateString(date, type);
     }
+
     return undefined;
   }, [type, useRange, value]);
 
@@ -51,6 +52,7 @@ const Content: FunctionComponent<Props> = (props) => {
       const date = value[1];
       return getDateString(date, type);
     }
+
     return undefined;
   }, [type, useRange, value]);
 

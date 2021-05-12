@@ -17,6 +17,7 @@ const CurrentDate: FunctionComponent<Props> = (props) => {
       </StyledFooter>
     );
   }
+  
   return null;
 };
 

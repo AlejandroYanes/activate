@@ -36,7 +36,7 @@ const VerticalMenu: FunctionComponent = () => {
           layout={layout}
           currentPath={pathname}
           path="/app/profile"
-          icon={<Avatar icon="user2" size="x-small" />}
+          icon={<Avatar icon="user7" size="x-small" />}
         />
         <MenuBlock
           layout={layout}

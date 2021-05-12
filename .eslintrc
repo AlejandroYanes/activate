@@ -7,6 +7,10 @@
   },
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "tsconfig.json",
+      "sourceType": "module"
+    },
     "ecmaFeatures": {
       "jsx": true,
       "arrowFunctions": true
@@ -52,6 +56,9 @@
     "react/jsx-props-no-spreading": "off",
     "react/jsx-closing-tag-location": "error",
     "react/jsx-uses-react": "off",
+    "react/jsx-closing-bracket-location": [2, "tag-aligned"],
+    "react/jsx-max-props-per-line": [2, { "when": "multiline" }],
+    "react/jsx-first-prop-new-line": [2, "multiline"],
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
     "react/button-has-type": "off",
@@ -62,7 +69,7 @@
     "import/order": ["error", {
       "groups": [
         ["external", "builtin"],
-        ["internal", "parent", "sibling", "index"]
+        ["parent", "sibling", "internal", "index"]
       ]
     }],
     "@typescript-eslint/no-unused-vars": ["warn", { "varsIgnorePattern": "^_" }],
@@ -70,7 +77,8 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-ts-comment": "off",
-    "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}]
+    "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
+    "indent": ["error", 2, { "SwitchCase": 1 }]
   },
   "settings": {
     "import/parsers": {

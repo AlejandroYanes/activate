@@ -13,11 +13,14 @@ export const generateParams = (obj) => {
               if (hasValue(val)) {
                 return `${key}=${val}`;
               }
+
               return null;
             }).join('&');
           }
+
           return `${key}=${value}`;
         }
+
         return null;
       })
       .join('&');
@@ -27,8 +30,10 @@ export const generateParams = (obj) => {
     queryParam = queryParam[queryParam.length - 1] === '&'
       ? queryParam.slice(0, Math.max(0, queryParam.length - 1))
       : queryParam;
+
     return queryParam;
   }
+
   return '';
 };
 
@@ -75,6 +80,7 @@ export function generateQueryObject(filters, page, pageSize, take) {
       }
     });
   }
+
   return queryParams;
 }
 
@@ -87,5 +93,6 @@ export interface QueryParams {
 
 export function generateQueryString({ filters, page, pageSize, take }: QueryParams) {
   const params = generateQueryObject(filters, page, pageSize, take);
+
   return generateParams(params);
 }

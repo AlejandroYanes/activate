@@ -29,8 +29,10 @@ const RenderIf: FunctionComponent<Props> = (props) => {
         </div>
       );
     }
+    
     return fallback;
   }
+  
   return null;
 };
 
