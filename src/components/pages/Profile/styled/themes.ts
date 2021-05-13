@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Theme = styled.div`
-  //height: 144px;
-  //width: 184px;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;

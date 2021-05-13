@@ -16,7 +16,6 @@ export const StyledAvatar = styled(Avatar)`
   top: -43px;
   left: 50%;
   margin: 0 auto 0 -43px;
-  border-radius: 50%;
   border: 10px solid ${({ theme }) => theme.colors.BACKGROUND};
 `;
 

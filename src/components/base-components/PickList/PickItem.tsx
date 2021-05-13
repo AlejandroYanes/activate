@@ -3,7 +3,7 @@ import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { usePickListContext } from './context';
-import { Mark, StyledItem, Touchable } from './styled';
+import { Mark, StyledItem, Touchable } from './styled/item';
 
 interface Props {
   value: string;
@@ -31,6 +31,7 @@ const PickItem: FunctionComponent<Props> = (props) => {
         dashed={dashed}
         isSelected={isSelected}
         onClick={handleOnClick}
+        data-pick-item-value={value}
         data-pick-item-selected={isSelected}
       >
         {children}

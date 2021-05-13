@@ -12,15 +12,40 @@ const avatarSizes = {
 
 const getSizeStyles = ({ size }) => avatarSizes[size];
 
-export const StyledAvatar = styled.div.attrs(anyPropsAttrs)`
-  ${getSizeStyles};
-  ${getPositionStyles};
-  border-radius: 50%;
-  overflow: hidden;
+const getClickableStyles = (props) => {
+  const { clickable, theme: { colors } } = props;
 
-  &:focus {
-    outline: none;
+  if (clickable) {
+    return `
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 150ms linear;
+
+      &:active {
+        transform: scale(0.9);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: ${colors.ACCENT};
+      }
+    `;
   }
+
+  return `
+      &:focus {
+        outline: none;
+      }
+  `;
+};
+
+export const StyledAvatar = styled.div.attrs(anyPropsAttrs)`
+  border-radius: 50%;
+  box-sizing: content-box;
+  overflow: hidden;
+  ${getSizeStyles};
+  ${getClickableStyles};
+  ${getPositionStyles};
 
   & > svg {
     ${getSizeStyles};

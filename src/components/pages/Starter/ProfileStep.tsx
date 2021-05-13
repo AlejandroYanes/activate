@@ -7,9 +7,9 @@ import Avatar from 'components/base-components/Avatar';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import Button from 'components/base-components/Button';
 import { ManWriting } from 'components/base-components/Illustrations';
+import RenderIf from 'components/base-components/RenderIf';
 import { Step, Content, Aside } from './styled/step';
 import { HiddenInput } from './styled/profile';
-import RenderIf from '../../base-components/RenderIf';
 
 interface Props {
   onNext: (profile) => void;
@@ -21,16 +21,25 @@ interface Profile {
   avatarUrl: string | File;
 }
 
+enum AvatarOptions {
+  ADD = 'add',
+  PHOTO = 'PHOTO',
+  USER_1 = 'user1',
+  USER_2 = 'user2',
+  USER_3 = 'user3',
+  USER_4 = 'user4',
+}
+
 const ProfileStep: FunctionComponent<Props> = (props) => {
   const { onNext } = props;
   const [profile, setProfile] = useState<Profile>({} as Profile);
   const [errors, setErrors] = useState<any>({});
+  const [image, setImage] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const filePickerRef = useRef(undefined);
 
   const handleAvatarFieldChange = useCallback((value, setFields) => {
-    console.log(value);
-    if (value === 'add' && !imagePreview) {
+    if (value === AvatarOptions.ADD) {
       filePickerRef.current.click();
     } else {
       setFields({ avatarUrl: value });
@@ -44,8 +53,9 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
       const reader = new FileReader();
       reader.onload = () => {
         const preview = reader.result;
+        setImage(image);
         setImagePreview(preview);
-        setProfile((old) => ({ ...old, avatarUrl: image }));
+        setProfile((old) => ({ ...old, avatarUrl: AvatarOptions.PHOTO }));
       };
 
       reader.readAsDataURL(image);
@@ -73,30 +83,30 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
             onChange={handleAvatarFieldChange}
             size="small"
           >
-            <PickItem value="add">
-              <RenderIf condition={!imagePreview}>
-                <SvgIcon icon={Icons.CAMERA_ADD} size="x-large" />
-              </RenderIf>
-              <RenderIf condition={imagePreview}>
-                <Avatar url={imagePreview} size="large" />
-              </RenderIf>
+            <PickItem value={AvatarOptions.ADD}>
+              <SvgIcon icon={Icons.CAMERA_ADD} size="x-large" />
             </PickItem>
-            <PickItem value="user1">
+            <RenderIf condition={imagePreview}>
+              <PickItem value={AvatarOptions.PHOTO}>
+                <Avatar url={imagePreview} size="large" />
+              </PickItem>
+            </RenderIf>
+            <PickItem value={AvatarOptions.USER_1}>
               <Avatar icon="user5" size="large" />
             </PickItem>
-            <PickItem value="user2">
+            <PickItem value={AvatarOptions.USER_2}>
               <Avatar icon="user2" size="large" />
             </PickItem>
-            <PickItem value="user3">
+            <PickItem value={AvatarOptions.USER_3}>
               <Avatar icon="user6" size="large" />
             </PickItem>
-            <PickItem value="user4">
+            <PickItem value={AvatarOptions.USER_4}>
               <Avatar icon="user7" size="large" />
             </PickItem>
           </Field>
           <HiddenInput
             type="file"
-            accept=".jpg,.png"
+            accept=".jpg,.jpeg,.png"
             ref={filePickerRef}
             onChange={handleFileInputChange}
           />

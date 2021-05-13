@@ -17,6 +17,7 @@ const Avatar: FunctionComponent<AvatarProps> = (props) => {
 
   return (
     <StyledAvatar
+      clicable={!!onClick}
       onClick={onClick}
       role={onClick ? 'button' : ''}
       tabIndex={onClick ? 1 : -1}

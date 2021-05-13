@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   ${getPositionStyles};
 `;
 
-export const ListContainer = styled.div`
+export const StyledListContainer = styled.div`
   flex: 1;
   display: flex;
   overflow-x: auto;
