@@ -1,9 +1,10 @@
 import { useCallback, useReducer } from 'react';
 import { UserInfo } from 'models/user';
-import { useAuthData } from 'components/providers/Auth';
+import { useAuthActions, useAuthData } from 'components/providers/Auth';
 import { useAtomicCall, useAtomicSet } from 'helpers';
-import starterReducer, { StarterActions } from './reducer';
 import verifyUser from './actions/verify-user';
+import updateProfile from './actions/update-profile';
+import starterReducer, { StarterActions } from './reducer';
 
 export * from './reducer';
 export * from './rules';
@@ -18,6 +19,7 @@ function initState(userInfo: UserInfo) {
 
 export default function useStarterState() {
   const { userInfo } = useAuthData();
+  const { login } = useAuthActions();
   const [state, dispatch] = useReducer(starterReducer, userInfo, initState);
 
   return {
@@ -26,7 +28,8 @@ export default function useStarterState() {
       setActiveStep: useAtomicSet(dispatch, StarterActions.SET_STEP),
       goNextStep: useAtomicCall(dispatch, StarterActions.GO_NEXT_STEP),
       goPrevStep: useAtomicCall(dispatch, StarterActions.GO_PREV_STEP),
-      verify: useCallback(verifyUser(dispatch), []),
+      verify: useCallback(verifyUser(dispatch, login), []),
+      updateProfile: useCallback(updateProfile(dispatch, login), []),
     },
   };
 }

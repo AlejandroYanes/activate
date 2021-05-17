@@ -6,7 +6,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { UserInfo, VerificationLevel } from 'models/user';
+import { UserInfo } from 'models/user';
 import { getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
 
 interface AuthState {
@@ -18,14 +18,13 @@ interface AuthContext {
   state: AuthState;
   actions: {
     login: (user: UserInfo) => void;
-    updateUserInfo: (user: UserInfo) => void;
     logout: () => void;
   },
 }
 
 const initialState: AuthState = {
-  isLoggedIn: true,
-  userInfo: { verificationLevel: VerificationLevel.CODE_VERIFIED } as any,
+  isLoggedIn: false,
+  userInfo: undefined,
 };
 
 const AuthContext = createContext<AuthContext>(undefined);
@@ -38,16 +37,6 @@ const AuthProvider: FunctionComponent = (props) => {
     storeAuthToken(userInfo.accessToken);
     storeUserInfo(userInfo);
     setState({ isLoggedIn: true, userInfo });
-  }, []);
-
-  const updateUserInfo = useCallback((userInfo: UserInfo) => {
-    setState((oldState) => ({
-      ...oldState,
-      userInfo: {
-        ...oldState.userInfo,
-        ...userInfo,
-      },
-    }));
   }, []);
 
   const logout = useCallback(() => {
@@ -65,7 +54,6 @@ const AuthProvider: FunctionComponent = (props) => {
     state,
     actions: {
       login,
-      updateUserInfo,
       logout,
     },
   }), [state, login, logout]);

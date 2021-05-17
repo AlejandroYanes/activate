@@ -10,20 +10,18 @@ export enum VerificationLevel {
   INTERESTS_ADDED,
 }
 
-export interface UserInfo {
-  sub: string;
-  email: string;
+export interface ProfileDto {
+  name: string;
+  lastName: string;
   userName: string;
-  fullName: string;
-  avatarUrl: string;
+  email: string;
+  avatar?: string;
+  usePhoto?: boolean;
   verificationLevel: VerificationLevel;
-  accessToken: string;
 }
 
-export interface ProfileDto {
-  name?: string;
-  lastName?: string;
-  email?: string;
-  avatarUrl?: string;
-  verificationLevel?: VerificationLevel;
+export interface UserInfo extends ProfileDto {
+  sub: string;
+  fullName: string;
+  accessToken: string;
 }

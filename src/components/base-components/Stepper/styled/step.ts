@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getBrandHlColor } from 'helpers';
+import { anyPropsAttrs } from 'helpers';
 
 const stepSize = 40;
 const borderSize = 2;
@@ -7,9 +7,31 @@ const borderSize = 2;
 const getContainerStyles = (props) => {
   const { isActive, theme: { colors } } = props;
   const borderColor = isActive ? colors.BRAND : 'transparent';
+  const hoverColor = isActive ? colors.BRAND_HIGHLIGHT : colors.BRAND_SHADE;
+  const focusColor = colors.BRAND_HIGHLIGHT;
 
   return `
     border-color: ${borderColor};
+
+    &:hover {
+    outline: none;
+    border-color: ${hoverColor};
+
+    > span {
+      color: ${({ theme }) => theme.colors.WHITE};
+      background-color: ${hoverColor};
+    }
+  }
+
+    &:focus, &:active {
+    outline: none;
+    border-color: ${focusColor};
+
+    > span {
+      color: ${({ theme }) => theme.colors.WHITE};
+      background-color: ${focusColor};
+    }
+  }
   `;
 };
 
@@ -27,16 +49,6 @@ export const Container = styled.button.attrs(anyPropsAttrs)`
   cursor: pointer;
   ${getContainerStyles};
   transition: all 150ms linear;
-
-  &:focus, &:active {
-    outline: none;
-    border-color: ${getBrandHlColor};
-
-    > span {
-      color: ${({ theme }) => theme.colors.WHITE};
-      background-color: ${getBrandHlColor};
-    }
-  }
 `;
 
 const getStepStyles = (props) => {

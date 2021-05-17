@@ -26,15 +26,15 @@ export interface ValidationRules {
 export const commonRules = {
   required: {
     type: RuleType.Required,
-    message: 'This field is required',
+    message: 'We need this information',
   },
   email: {
     type: RuleType.Email,
-    message: 'This field is not a valid email',
+    message: 'This is not a valid email',
   },
   website: {
     type: RuleType.WebSite,
-    message: 'The site url must be a valid url',
+    message: 'This is not a valid url',
   },
 };
 

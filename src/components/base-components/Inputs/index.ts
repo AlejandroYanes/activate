@@ -4,6 +4,7 @@ import DateTimePicker from './DateTimePicker';
 import Select from './Select';
 import PasswordInput from './PasswordInput';
 import NumberInput from './NumberInput';
+import ErrorText from './base/ErrorText';
 
 export {
   Input,
@@ -12,4 +13,5 @@ export {
   Select,
   PasswordInput,
   NumberInput,
+  ErrorText,
 };

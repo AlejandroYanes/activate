@@ -1,9 +1,15 @@
+import { ProfileDto } from 'models/user';
+
 export enum StarterActions {
   SET_STEP = 'SET_STEP',
   GO_NEXT_STEP = 'GO_NEXT_STEP',
   GO_PREV_STEP = 'GO_PREV_STEP',
   START_API_CALL = 'START_API_CALL',
   FINISH_API_CALL = 'FINISH_API_CALL',
+}
+
+export interface ProfilePayload extends ProfileDto {
+  image?: File;
 }
 
 export interface StarterState {

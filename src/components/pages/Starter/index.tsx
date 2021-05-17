@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
-import VerificationStep from './VerificationStep';
+import VerificationStep from './steps/VerificationStep';
+import ProfileStep from './steps/ProfileStep';
 import useStarterState from './state';
-import ProfileStep from './ProfileStep';
 import { StyledStepper } from './styled/stepper';
 
 const StarterPage: FunctionComponent = () => {
@@ -12,8 +12,9 @@ const StarterPage: FunctionComponent = () => {
     },
     actions: {
       setActiveStep,
-      goNextStep,
+      // goNextStep,
       verify,
+      updateProfile,
     },
   } = useStarterState();
 
@@ -23,7 +24,7 @@ const StarterPage: FunctionComponent = () => {
         verify={verify}
         isLoading={callingAPI}
       />
-      <ProfileStep onNext={goNextStep} />
+      <ProfileStep onNext={updateProfile} isLoading={callingAPI} />
       <div>step 3</div>
     </StyledStepper>
   );
