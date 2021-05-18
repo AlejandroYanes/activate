@@ -8,7 +8,7 @@ import Checkbox from '../../base-components/Checkbox';
 interface Props {
   user: {
     id: string;
-    avatarUrl: string;
+    avatar: string;
     active?: boolean;
     name: string;
     secondary?: string;
@@ -28,7 +28,7 @@ const User: FunctionComponent<Props> = (props) => {
 
   const {
     id,
-    avatarUrl,
+    avatar,
     active,
     name,
     secondary,
@@ -42,7 +42,7 @@ const User: FunctionComponent<Props> = (props) => {
         <Checkbox value={isSelected} padding="0 6px 0 4px" />
       </RenderIf>
       <AvatarSection>
-        <Avatar icon={avatarUrl} />
+        <Avatar icon={avatar} />
         <RenderIf condition={active}>
           <ActiveDot data-el="active-dot" />
         </RenderIf>

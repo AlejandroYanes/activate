@@ -89,7 +89,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
                 ref={filePickerRef}
                 onChange={handleImageChange}
               />
-              <ErrorText text={errors.avatarUrl} />
+              <ErrorText text={errors.avatar} />
             </FlexBox>
           </FlexBox>
           <FlexBox width="100%" justify="flex-end" mT>

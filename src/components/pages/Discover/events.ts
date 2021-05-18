@@ -10,7 +10,7 @@ const defaultEvent = {
   address: 'St. Joseph\'s Hospice',
   author: {
     id: faker.random.uuid(),
-    avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
     name: faker.company.companyName(),
   },
   attendees: faker.random.number(),
@@ -30,7 +30,7 @@ const defaultEvent2 = {
   address: 'Arcos de Belen, calle Acosta e/ Compostela y Picota',
   author: {
     id: faker.random.uuid(),
-    avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
     name: faker.company.companyName(),
   },
   attendees: faker.random.number(),
@@ -50,7 +50,7 @@ const fakeEvents = new Array(4).fill('1').map((_item, index) => ({
   address: `${faker.address.streetAddress()}, ${faker.address.city()}`,
   author: {
     id: faker.random.uuid(),
-    avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
     name: faker.company.companyName(),
   },
   image: images[index],

@@ -13,7 +13,7 @@ function generateUpdate(type: UpdateType) {
   if (eventUpdates.some(t => t === type)) {
     return {
       user: {
-        avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+        avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
         name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       },
       event: {
@@ -26,7 +26,7 @@ function generateUpdate(type: UpdateType) {
 
   return {
     user: {
-      avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+      avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
     },
   };

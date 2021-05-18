@@ -53,7 +53,7 @@ const TalksModal: FunctionComponent = () => {
       .fill(1)
       .map(() => ({
         id: faker.random.uuid(),
-        avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+        avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
         name: `${faker.name.firstName()} ${faker.name.lastName()}`,
         secondary: (
           activeView === Modals.TALKS_CONTACTS

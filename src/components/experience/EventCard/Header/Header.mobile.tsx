@@ -40,7 +40,7 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
       </FlexBox>
       <RenderIf condition={!hideAuthor}>
         <Link to="#publisher">
-          <Avatar icon={author.avatarUrl} />
+          <Avatar icon={author.avatar} />
         </Link>
       </RenderIf>
     </FlexBox>

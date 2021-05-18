@@ -23,7 +23,7 @@ interface Props {
   date: Date;
   author: {
     id: string;
-    avatarUrl: string;
+    avatar: string;
     name: string;
   };
   image: string;
@@ -34,7 +34,7 @@ interface Props {
   hideFooter?: boolean;
 }
 
-const avatars = ['user1', 'user2', 'user6', 'user12'];
+const avatars = ['user1', 'user2', 'user3', 'user4'];
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();

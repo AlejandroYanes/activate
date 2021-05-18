@@ -9,7 +9,7 @@ export interface HeaderProps {
   date: Date;
   author: {
     id: string;
-    avatarUrl: string;
+    avatar: string;
   };
   hideAuthor?: boolean;
 }

@@ -9,7 +9,7 @@ interface Props {
   header?: ReactNode;
   users: {
     id: string;
-    avatarUrl: string;
+    avatar: string;
     name: string;
     secondary?: string;
     active?: boolean;
