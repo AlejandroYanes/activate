@@ -8,6 +8,7 @@ import {
 import { ProfilePayload } from 'components/pages/Starter/state';
 import { profileRules } from '../rules';
 import { ProfileStepActions } from '../reducer';
+import { AvatarOptions } from '../types';
 
 export default function handleSubmit(
   dispatch,
@@ -18,26 +19,36 @@ export default function handleSubmit(
     const { hasErrors, errors } = validateEntity(profile, profileRules);
 
     if (hasErrors) {
-      dispatch({
+      return dispatch({
         type: ProfileStepActions.SET_ERRORS,
         payload: errors,
       });
-    } else {
-      const payload = { ...profile, usePhoto: !!image, image };
-      onNext(payload)
-        .catch((error: ApiErrorResponse) => {
-          if (error.errorType === ErrorType.VALIDATION) {
-            dispatch({
-              type: ProfileStepActions.SET_ERRORS,
-              payload: errors,
-            });
-          } else {
-            showNotification({
-              type: NotificationType.ERROR,
-              message: 'There is been an issue with your profile',
-            });
-          }
-        });
     }
+
+    const onError = (error: ApiErrorResponse) => {
+      if (!error) return;
+
+      if (error.errorType === ErrorType.VALIDATION) {
+        dispatch({
+          type: ProfileStepActions.SET_ERRORS,
+          payload: errors,
+        });
+      } else {
+        showNotification({
+          type: NotificationType.ERROR,
+          message: 'There is been an issue with your profile',
+        });
+      }
+    }
+
+    const profileImage = (
+      profile.avatar === AvatarOptions.PHOTO
+        ? image
+        : undefined
+    );
+    const payload = { ...profile, image: profileImage };
+
+    return onNext(payload)
+      .then(onError);
   };
 }

@@ -12,7 +12,6 @@ const StarterPage: FunctionComponent = () => {
     },
     actions: {
       setActiveStep,
-      // goNextStep,
       verify,
       updateProfile,
     },

@@ -10,7 +10,7 @@ export default function updateProfile(dispatch, updateUserInfo) {
     const { image, ...rest } = profile;
 
     const onProfileUpdated = (response) => {
-      if (profile.usePhoto) {
+      if (!!profile.image) {
         return authApi.updateAvatar(image);
       }
       return response;

@@ -16,7 +16,6 @@ export interface ProfileDto {
   userName: string;
   email: string;
   avatar?: string;
-  usePhoto?: boolean;
   verificationLevel: VerificationLevel;
 }
 
