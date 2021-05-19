@@ -5,7 +5,7 @@ import {
   getBgdLightColor,
   getBrandColor,
   getBrandHlColor,
-  getInfoShadeColor,
+  getBrandShadeColor,
   getPositionStyles,
   getWarningColor,
 } from 'helpers';
@@ -40,7 +40,8 @@ export const Wrapper = styled.div`
   // hair
   .cls-10{fill:${getAccentColor};}
   .cls-11{stroke:#d8dfff;}
+  // top left rect
   .cls-12 {
-    fill: ${getInfoShadeColor};
+    fill: ${getBrandShadeColor};
   }
 `;

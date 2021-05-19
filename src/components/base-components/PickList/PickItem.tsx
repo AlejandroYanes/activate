@@ -18,11 +18,16 @@ const PickItem: FunctionComponent<Props> = (props) => {
     onChange,
     size,
     color,
+    multiple,
   } = usePickListContext();
 
   const handleOnClick = useCallback(() => onChange(value), [onChange, value]);
 
-  const isSelected = selectedValue === value;
+  const isSelected = (
+    multiple
+      ? (selectedValue as string[]).some(v => v === value)
+      : selectedValue === value
+  );
 
   return (
     <StyledItem tabIndex={-1} size={size}>

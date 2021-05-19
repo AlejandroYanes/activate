@@ -2,7 +2,7 @@
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
-const FacebookIcon: FunctionComponent<IconProps> = (props) => {
+const MusicIcon: FunctionComponent<IconProps> = (props) => {
   const { color, height, width, className, style } = props;
 
   return (
@@ -17,10 +17,10 @@ const FacebookIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         fill={color}
-        d="M15.12,5.32H17V2.14A26.11,26.11,0,0,0,14.26,2C11.54,2,9.68,3.66,9.68,6.7V9.32H6.61v3.56H9.68V22h3.68V12.88h3.06l.46-3.56H13.36V7.05C13.36,6,13.64,5.32,15.12,5.32Z"
+        d="M21.65,2.24a1,1,0,0,0-.8-.23l-13,2A1,1,0,0,0,7,5V15.35A3.45,3.45,0,0,0,5.5,15,3.5,3.5,0,1,0,9,18.5V10.86L20,9.17v4.18A3.45,3.45,0,0,0,18.5,13,3.5,3.5,0,1,0,22,16.5V3A1,1,0,0,0,21.65,2.24ZM5.5,20A1.5,1.5,0,1,1,7,18.5,1.5,1.5,0,0,1,5.5,20Zm13-2A1.5,1.5,0,1,1,20,16.5,1.5,1.5,0,0,1,18.5,18ZM20,7.14,9,8.83v-3L20,4.17Z"
       />
     </svg>
   );
 };
 
-export default FacebookIcon;
+export default MusicIcon;

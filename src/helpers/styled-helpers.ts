@@ -43,6 +43,7 @@ export const getAccentHlColor = ({ theme }) => theme.colors.ACCENT_HIGHLIGHT;
 export const getAccentFontColor = ({ theme }) => theme.colors.ACCENT_FONT;
 
 export const getFontColor = ({ theme }) => theme.colors.FONT;
+export const getFontSecColor = ({ theme }) => theme.colors.FONT_SECONDARY;
 export const getFontShadeColor = ({ theme }) => theme.colors.FONT_SHADE;
 
 export const getBgdColor = ({ theme }) => theme.colors.BACKGROUND;
@@ -50,7 +51,6 @@ export const getBgdLightColor = ({ theme }) => theme.colors.BACKGROUND_LIGHT;
 
 export const getSuccessColor = ({ theme }) => theme.colors.SUCCESS;
 export const getSuccessShadeColor = ({ theme }) => theme.colors.SUCCESS_SHADE;
-
 
 export const getInfoColor = ({ theme }) => theme.colors.INFO;
 export const getInfoShadeColor = ({ theme }) => theme.colors.INFO_SHADE;

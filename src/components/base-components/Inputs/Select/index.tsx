@@ -10,9 +10,9 @@ import {
 import { getEventValue } from 'helpers';
 import { useHoverState } from 'hooks/UI';
 import FlexBox from 'components/base-components/FlexBox';
+import { InputProps } from '../types';
 import InputLabel from '../base/Label';
 import InputIcon from '../base/Icon';
-import { InputProps } from '../types';
 import OptionsTray from './OptionsTray';
 import RightNode from './RightNode';
 import { Content, TrayContainer } from './styled';
@@ -83,7 +83,7 @@ const Select: FunctionComponent<Props> = (props) => {
       }
 
       document.addEventListener('mousedown', handleClickOutside);
-      
+
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
       };

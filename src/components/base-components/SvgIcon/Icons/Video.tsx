@@ -2,7 +2,7 @@
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
-const FacebookIcon: FunctionComponent<IconProps> = (props) => {
+const VideoIcon: FunctionComponent<IconProps> = (props) => {
   const { color, height, width, className, style } = props;
 
   return (
@@ -17,10 +17,10 @@ const FacebookIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         fill={color}
-        d="M15.12,5.32H17V2.14A26.11,26.11,0,0,0,14.26,2C11.54,2,9.68,3.66,9.68,6.7V9.32H6.61v3.56H9.68V22h3.68V12.88h3.06l.46-3.56H13.36V7.05C13.36,6,13.64,5.32,15.12,5.32Z"
+        d="M21.53,7.15a1,1,0,0,0-1,0L17,8.89A3,3,0,0,0,14,6H5A3,3,0,0,0,2,9v6a3,3,0,0,0,3,3h9a3,3,0,0,0,3-2.89l3.56,1.78A1,1,0,0,0,21,17a1,1,0,0,0,.53-.15A1,1,0,0,0,22,16V8A1,1,0,0,0,21.53,7.15ZM15,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V9A1,1,0,0,1,5,8h9a1,1,0,0,1,1,1Zm5-.62-3-1.5V11.12l3-1.5Z"
       />
     </svg>
   );
 };
 
-export default FacebookIcon;
+export default VideoIcon;

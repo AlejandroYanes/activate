@@ -10,7 +10,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding-right: 32px;
+  padding-right: 48px;
   min-width: 0;
 `;
 

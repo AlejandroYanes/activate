@@ -1,8 +1,9 @@
 import React, { createContext, FunctionComponent, useContext, useMemo } from 'react';
 
 interface PickListContext {
-  value: string;
+  value: string | string[];
   onChange: (value) => void;
+  multiple?: boolean;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
 }

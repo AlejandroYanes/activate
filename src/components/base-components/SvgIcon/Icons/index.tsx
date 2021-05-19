@@ -68,6 +68,18 @@ import InstagramIcon from './Instagram';
 import LockIcon from './Lock';
 import UnlockIcon from './Unlock';
 import CameraAddIcon from './CameraAdd';
+import CameraIcon from './Camera';
+import MusicIcon from './Music';
+import VideoIcon from './Video';
+import AtomIcon from './Atom';
+import BookIcon from './Book';
+import GlassMartiniIcon from './GlassMartini';
+import BookOpenIcon from './BookOpen';
+import HeartBeatIcon from './HeartBeat';
+import PaletteIcon from './Palette';
+import BasketballIcon from './Basketball';
+import FlaskIcon from './Flask';
+import RestaurantIcon from './Restaurant';
 
 export enum Icons {
   HOME = 'home',
@@ -98,7 +110,7 @@ export enum Icons {
   CLOSE = 'close',
   BOOKMARK = 'bookmark',
   BOOKMARKS = 'bookmarks',
-  ADD_BOOKMARK = 'add-bookmark',
+  ADD_BOOKMARK = 'add_bookmark',
   BOOKMARK_FILLED = 'bookmarkFilled',
   FIRE = 'fire',
   PUBLICITY = 'PUBLICITY',
@@ -111,24 +123,24 @@ export enum Icons {
   FILTER = 'filer',
   FORM = 'form',
   COMMENTS = 'comments',
-  CREATE_PENCIL = 'create-pencil',
-  EDIT_PENCIL = 'edit-pencil',
-  CHECK_MARK = 'check-mark',
+  CREATE_PENCIL = 'create_pencil',
+  EDIT_PENCIL = 'edit_pencil',
+  CHECK_MARK = 'check_mark',
   SUN = 'sun',
   MOON = 'moon',
-  ARROW_LEFT = 'arrow-left',
-  REMOVE_BOOKMARK = 'remove-bookmark',
-  LIGHT_BULB = 'light-bulb',
+  ARROW_LEFT = 'arrow_left',
+  REMOVE_BOOKMARK = 'remove_bookmark',
+  LIGHT_BULB = 'light_bulb',
   INBOX = 'inbox',
   RESUME = 'resume',
   STAR = 'star',
-  STAR_FILLED = 'star-filled',
-  BOOKMARK_CHECKED = 'bookmark-checked',
-  ADD_USER = 'add-user',
+  STAR_FILLED = 'star_filled',
+  BOOKMARK_CHECKED = 'bookmark_checked',
+  ADD_USER = 'add_user',
   MESSAGE = 'message',
-  MENU_DOTS = 'menu-dots',
+  MENU_DOTS = 'menu_dots',
   LAYERS = 'layers',
-  GRID_ELEMENTS = 'grid-elements',
+  GRID_ELEMENTS = 'grid_elements',
   MAXIMIZE = 'maximize',
   TIME_HISTORY = 'history',
   LIST = 'list',
@@ -138,7 +150,19 @@ export enum Icons {
   INSTAGRAM = 'instagram',
   LOCK = 'lock',
   UNLOCK = 'unlock',
-  CAMERA_ADD = 'camera-add',
+  CAMERA_ADD = 'camera_add',
+  CAMERA = 'camera',
+  MUSIC = 'music',
+  VIDEO = 'video',
+  ATOM = 'atom',
+  BOOK = 'book',
+  BOOK_OPEN = 'book_open',
+  GLASS_MARTINI = 'glass_martini',
+  HEART_BEAT = 'heart_beat',
+  PALETTE = 'palette',
+  BASKETBALL = 'basketball',
+  FLASK = 'flask',
+  RESTAURANT = 'restaurant',
 }
 
 export const icons = {
@@ -211,4 +235,16 @@ export const icons = {
   [Icons.UNLOCK]: (props) => <UnlockIcon {...props} />,
   [Icons.INSTAGRAM]: (props) => <InstagramIcon {...props} />,
   [Icons.CAMERA_ADD]: (props) => <CameraAddIcon {...props} />,
+  [Icons.CAMERA]: (props) => <CameraIcon {...props} />,
+  [Icons.MUSIC]: (props) => <MusicIcon {...props} />,
+  [Icons.VIDEO]: (props) => <VideoIcon {...props} />,
+  [Icons.ATOM]: (props) => <AtomIcon {...props} />,
+  [Icons.BOOK]: (props) => <BookIcon {...props} />,
+  [Icons.BOOK_OPEN]: (props) => <BookOpenIcon {...props} />,
+  [Icons.GLASS_MARTINI]: (props) => <GlassMartiniIcon {...props} />,
+  [Icons.HEART_BEAT]: (props) => <HeartBeatIcon {...props} />,
+  [Icons.PALETTE]: (props) => <PaletteIcon {...props} />,
+  [Icons.BASKETBALL]: (props) => <BasketballIcon {...props} />,
+  [Icons.FLASK]: (props) => <FlaskIcon {...props} />,
+  [Icons.RESTAURANT]: (props) => <RestaurantIcon {...props} />,
 };

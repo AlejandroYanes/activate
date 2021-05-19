@@ -2,11 +2,12 @@ import {
   createContext,
   FunctionComponent,
   useCallback,
-  useContext, useEffect,
+  useContext,
+  useEffect,
   useMemo,
   useState,
 } from 'react';
-import { UserInfo } from 'models/user';
+import { UserInfo, VerificationLevel } from 'models/user';
 import { getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
 
 interface AuthState {
@@ -23,8 +24,8 @@ interface AuthContext {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: false,
-  userInfo: undefined,
+  isLoggedIn: true,
+  userInfo: { verificationLevel: VerificationLevel.USER_INFO_ADDED } as UserInfo,
 };
 
 const AuthContext = createContext<AuthContext>(undefined);

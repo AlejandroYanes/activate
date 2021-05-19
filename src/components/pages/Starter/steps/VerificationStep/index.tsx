@@ -10,12 +10,12 @@ import { Step, Content, Aside } from '../../styled/step';
 import { codeRules } from '../../state';
 
 interface Props {
-  verify: (code: number) => void;
+  onVerify: (code: number) => void;
   isLoading?: boolean;
 }
 
 const VerificationStep: FunctionComponent<Props> = (props) => {
-  const { verify, isLoading } = props;
+  const { onVerify: verify, isLoading } = props;
   const [form, setForm] = useState<any>({ code: '' });
   const [errors, setErrors] = useState<any>({});
 

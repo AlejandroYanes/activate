@@ -60,6 +60,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
                 onChange={handleAvatarChange}
                 size="small"
                 layout="grid"
+                color="brand"
                 cols={3}
               >
                 <PickItem value={AvatarOptions.WOMAN_1}>
