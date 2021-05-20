@@ -64,23 +64,23 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
                 cols={3}
               >
                 <PickItem value={AvatarOptions.WOMAN_1}>
-                  <Avatar icon={AvatarOptions.WOMAN_1} size="large" />
+                  <Avatar src={AvatarOptions.WOMAN_1} size="large" />
                 </PickItem>
                 <PickItem value={AvatarOptions.MAN_1}>
-                  <Avatar icon={AvatarOptions.MAN_1} size="large" />
+                  <Avatar src={AvatarOptions.MAN_1} size="large" />
                 </PickItem>
                 <PickItem value={AvatarOptions.ADD}>
                   <SvgIcon icon={Icons.CAMERA_ADD} size="x-large" />
                 </PickItem>
                 <PickItem value={AvatarOptions.WOMAN_2}>
-                  <Avatar icon={AvatarOptions.WOMAN_2} size="large" />
+                  <Avatar src={AvatarOptions.WOMAN_2} size="large" />
                 </PickItem>
                 <PickItem value={AvatarOptions.MAN_2}>
-                  <Avatar icon={AvatarOptions.MAN_2} size="large" />
+                  <Avatar src={AvatarOptions.MAN_2} size="large" />
                 </PickItem>
                 <RenderIf condition={!!imagePreview}>
                   <PickItem value={AvatarOptions.PHOTO}>
-                    <Avatar url={imagePreview} size="large" />
+                    <Avatar src={imagePreview} size="large" />
                   </PickItem>
                 </RenderIf>
               </Field>

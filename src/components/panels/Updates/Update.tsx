@@ -22,7 +22,7 @@ const Update: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledNotification {...rest}>
-      <Avatar icon={content.user.avatar} size="x-small" />
+      <Avatar src={content.user.avatar} size="x-small" />
       <RenderIf condition={read}>
         <UnReadDot />
       </RenderIf>

@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useMemo, useState } from 'react';
 import InputLabel from '../base/Label';
-import ClearButton from '../base/ClearButton';
 import CalendarModal from './CalendarModal';
 import Content from './Content';
 import { InputProps } from '../types';
@@ -68,14 +67,11 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
           value={value}
           padRight={showClear}
           isFocused={isFocused}
+          showClearButton={showClearButton}
           onClick={openDatePickerModal}
+          onChange={onChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
-        />
-        <ClearButton
-          returnValue={null}
-          showClear={showClearButton}
-          onClick={onChange}
         />
       </StyledDateTimePicker>
       <CalendarModal

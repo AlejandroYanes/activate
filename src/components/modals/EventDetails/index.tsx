@@ -55,7 +55,7 @@ const EventDetailsModal: FunctionComponent = () => {
         <EventImage src={eventImg} alt="virtual tour" />
         <FlexBox align="center" margin="12px 0">
           <FlexBox align="flex-start">
-            <Avatar icon="user6" />
+            <Avatar src="user2" />
             <FlexBox direction="column" padding="0 0 0 6px">
               <Text size="small" color="secondary">{author.userName}</Text>
               <Text padding="6px 0">{author.name}</Text>

@@ -39,7 +39,7 @@ const Comment: FunctionComponent<Props> = (props) => {
   return (
     <StyledComment>
       <Header>
-        <Avatar icon={img} size="medium" />
+        <Avatar src={img} size="medium" />
         <Details>
           <Text>{name}</Text>
           <Text size="small">{formatDate(date)}</Text>

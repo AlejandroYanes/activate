@@ -78,7 +78,7 @@ const UserModal: FunctionComponent = () => {
           align="center"
           padding="8px"
         >
-          <Avatar size="xx-large" icon="user2" />
+          <Avatar size="xx-large" src="user2" />
           <FlexBox justify="space-around" grow>
             <FlexBox direction="column" align="center">
               <Text>Following</Text>

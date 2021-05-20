@@ -6,13 +6,16 @@ import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
 import AbsoluteContent from '../base/AbsoluteContent';
 import { StyledContent, Separator } from './styled/content';
+import ClearButton from '../base/ClearButton';
 
 interface Props {
+  showClearButton?: boolean;
   value: Date | Date[];
   type: 'date' | 'date-range' | 'date-time' | 'time' | 'time-range';
   padRight: boolean;
   isFocused: boolean;
   onClick: () => void;
+  onChange: (event) => void;
   onFocus: () => void;
   onBlur: () => void;
 }
@@ -35,7 +38,16 @@ function getDateString(
 
 const Content: FunctionComponent<Props> = (props) => {
   const { colors } = useAppTheme();
-  const { type, value, padRight, onClick, onFocus, onBlur } = props;
+  const {
+    type,
+    value,
+    padRight,
+    showClearButton,
+    onClick,
+    onChange,
+    onFocus,
+    onBlur,
+  } = props;
   const useRange = type === 'date-range' || type === 'time-range';
 
   const startDate = useMemo(() => {
@@ -78,6 +90,11 @@ const Content: FunctionComponent<Props> = (props) => {
         <Separator />
         <Text padding="0 0 0 16px">{endDate}</Text>
       </RenderIf>
+      <ClearButton
+        returnValue={null}
+        showClear={showClearButton}
+        onClick={onChange}
+      />
     </StyledContent>
   );
 };

@@ -61,7 +61,7 @@ const PublisherPage: FunctionComponent = () => {
   return (
     <Page>
       <ProfileCard
-        image="user6"
+        avatar="user4"
         leftStatLabel="Events"
         leftStatValue={eventsCount}
         rightStatLabel="Followers"

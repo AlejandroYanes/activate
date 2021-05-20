@@ -2,8 +2,8 @@ import React, { FunctionComponent, useCallback } from 'react';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
+import Checkbox from 'components/base-components/Checkbox';
 import { ActiveDot, AvatarSection, Info, Talk as StyledTalk } from './styled/user';
-import Checkbox from '../../base-components/Checkbox';
 
 interface Props {
   user: {
@@ -42,7 +42,7 @@ const User: FunctionComponent<Props> = (props) => {
         <Checkbox value={isSelected} padding="0 6px 0 4px" />
       </RenderIf>
       <AvatarSection>
-        <Avatar icon={avatar} />
+        <Avatar src={avatar} />
         <RenderIf condition={active}>
           <ActiveDot data-el="active-dot" />
         </RenderIf>

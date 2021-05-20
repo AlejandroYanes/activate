@@ -21,7 +21,7 @@ const event = {
   tags: new Array(10).fill(1).map(() => faker.lorem.word()),
 };
 
-const avatars = ['user1', 'user2', 'user6'];
+const avatars = ['user1', 'user2', 'user3'];
 
 const EventDetailsPanel: FunctionComponent = () => {
   const { date, address, price, tags } = event;

@@ -33,7 +33,7 @@ const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
       </FlexBox>
       <RenderIf condition={!hideAuthor}>
         <Link to="#publisher">
-          <Avatar icon={author.avatar} />
+          <Avatar src={author.avatar} />
         </Link>
       </RenderIf>
     </FlexBox>

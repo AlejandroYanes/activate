@@ -1,13 +1,13 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const avatarSizes = {
-  'x-small': { width: '20px', height: '20px' },
-  small: { width: '28px', height: '28px' },
-  medium: { width: '36px', height: '36px' },
-  large: { width: '64px', height: '64px' },
-  'x-large': { width: '86px', height: '86px' },
-  'xx-large': { width: '102px', height: '102px' },
+  'x-small': { width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' },
+  small: { width: '28px', height: '28px', minWidth: '28px', minHeight: '28px' },
+  medium: { width: '36px', height: '36px', minWidth: '36px', minHeight: '36px' },
+  large: { width: '64px', height: '64px', minWidth: '64px', minHeight: '64px' },
+  'x-large': { width: '86px', height: '86px', minWidth: '86px', minHeight: '86px' },
+  'xx-large': { width: '102px', height: '102px', minWidth: '102px', minHeight: '102px' },
 };
 
 const getSizeStyles = ({ size }) => avatarSizes[size];
@@ -16,7 +16,7 @@ const getClickableStyles = (props) => {
   const { clickable, theme: { colors } } = props;
 
   if (clickable) {
-    return `
+    return css`
       cursor: pointer;
       border: 1px solid transparent;
       transition: all 150ms linear;
@@ -32,7 +32,7 @@ const getClickableStyles = (props) => {
     `;
   }
 
-  return `
+  return css`
       &:focus {
         outline: none;
       }

@@ -12,7 +12,7 @@ import Avatar from 'components/base-components/Avatar';
 import FlexBox from 'components/base-components/FlexBox';
 import { Card } from './styled';
 
-const avatars = ['user1', 'user2', 'user6', 'user11', 'user8'];
+const avatars = ['user1', 'user2', 'user3', 'user4', 'user2'];
 const Separator = () => <div style={{ flex: 1 }} />;
 
 const PublisherCard: FunctionComponent = () => {
@@ -38,7 +38,7 @@ const PublisherCard: FunctionComponent = () => {
 
   return (
     <Card>
-      <Avatar icon={avatar} size="large" margin="0 auto 8px" />
+      <Avatar src={avatar} size="large" margin="0 auto 8px" />
       <Link to={link}>
         <FlexBox direction="column" align="center">
           <Title level={3} align="center">{name}</Title>
