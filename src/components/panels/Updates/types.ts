@@ -10,7 +10,7 @@ export enum UpdateType {
 
 export interface EventLinkingUpdate {
   user: {
-    avatarUrl: string;
+    avatar: string;
     name: string;
   };
   event: {
@@ -23,7 +23,7 @@ export interface EventLinkingUpdate {
 
 export interface UserLinkingUpdate {
   user: {
-    avatarUrl: string;
+    avatar: string;
     name: string;
   };
 }

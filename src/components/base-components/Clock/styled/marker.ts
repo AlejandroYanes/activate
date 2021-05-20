@@ -11,6 +11,7 @@ export const getActiveStyles = (props) => {
       color: ${theme.colors.WHITE};
     `;
   }
+  
   return `
     background-color: transparent;
     color: ${theme.colors.FONT};

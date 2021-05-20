@@ -84,6 +84,7 @@ const getToggleStyles = (props) => {
       }
     }
   }
+  
   return undefined;
 };
 

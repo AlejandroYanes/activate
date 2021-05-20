@@ -3,40 +3,48 @@ import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { usePickListContext } from './context';
-import { Mark, StyledItem, Touchable } from './styled';
+import { Mark, StyledItem, Touchable } from './styled/item';
 
 interface Props {
   value: string;
+  dashed?: boolean;
 }
 
 const PickItem: FunctionComponent<Props> = (props) => {
-  const { colors: Colors, useDarkStyle } = useAppTheme();
-  const { value, children } = props;
+  const { colors: Colors } = useAppTheme();
+  const { value, dashed, children } = props;
   const {
     value: selectedValue,
     onChange,
     size,
     color,
+    multiple,
   } = usePickListContext();
 
   const handleOnClick = useCallback(() => onChange(value), [onChange, value]);
 
-  const isSelected = selectedValue === value;
+  const isSelected = (
+    multiple
+      ? (selectedValue as string[]).some(v => v === value)
+      : selectedValue === value
+  );
 
   return (
     <StyledItem tabIndex={-1} size={size}>
       <Touchable
-        onClick={handleOnClick}
         color={color}
+        dashed={dashed}
         isSelected={isSelected}
+        onClick={handleOnClick}
+        data-pick-item-value={value}
         data-pick-item-selected={isSelected}
       >
         {children}
         <RenderIf condition={isSelected}>
-          <Mark color={color}>
+          <Mark color={color} data-el="pick_item-mark">
             <SvgIcon
               icon={Icons.CHECK_MARK}
-              color={useDarkStyle ? Colors.ACCENT : Colors.WHITE}
+              color={Colors.WHITE}
             />
           </Mark>
         </RenderIf>

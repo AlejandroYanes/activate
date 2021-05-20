@@ -52,8 +52,8 @@ const DiscoverPage: FunctionComponent = () => {
   const rightAction = useMemo(() => {
     if (layout !== Layout.DESKTOP) {
       const sizeProps: any = layout === Layout.TABLET
-      ? { width: 22, height: 22, size: 'large' }
-      : {size: 'large', margin: '0 8px 0 0'};
+        ? { width: 22, height: 22, size: 'large' }
+        : {size: 'large', margin: '0 8px 0 0'};
 
       return (
         <IconButton

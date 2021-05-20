@@ -74,6 +74,23 @@ export function put(endpoint: string, data: any, options: Options = {}) {
   });
 }
 
+export function patch(endpoint: string, data: any, options: Options = {}) {
+  const { headers, params, authenticated } = options;
+
+  return axiosInstance.patch(endpoint, data, {
+    params,
+    headers: {
+      'Content-Type': ApiContentType.JSON,
+      'Authorization': (
+        authenticated
+          ? `Bearer ${getAuthToken()}`
+          : ''
+      ),
+      ...headers,
+    },
+  });
+}
+
 export function del(endpoint: string, options: Options = {}) {
   const { headers, params, authenticated } = options;
 

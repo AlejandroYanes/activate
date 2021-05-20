@@ -4,20 +4,20 @@ import { useAppColors } from 'components/providers/Theme';
 import { Wrapper, Dot } from './styled/spinning-dots';
 
 interface Props extends PositionProps {
-  flat?: boolean;
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'page';
+  color?: 'brand' | 'accent' | 'font' | 'white';
 }
 
 const SpinningDots: FunctionComponent<Props> = (props) => {
   const Colors = useAppColors();
-  const { flat, ...rest } = props;
+  const { color, ...rest } = props;
 
   return (
     <Wrapper {...rest}>
-      <Dot color={flat ? Colors.FONT : Colors.INFO} />
-      <Dot color={flat ? Colors.FONT : Colors.SUCCESS} />
-      <Dot color={flat ? Colors.FONT : Colors.WARNING} />
-      <Dot color={flat ? Colors.FONT : Colors.ERROR} />
+      <Dot color={color ? Colors[color.toUpperCase()] : Colors.INFO} />
+      <Dot color={color ? Colors[color.toUpperCase()] : Colors.SUCCESS} />
+      <Dot color={color ? Colors[color.toUpperCase()] : Colors.WARNING} />
+      <Dot color={color ? Colors[color.toUpperCase()] : Colors.ERROR} />
     </Wrapper>
   );
 };

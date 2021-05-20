@@ -53,7 +53,7 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
     let hasValue = !!value;
 
     if (useRange) {
-     hasValue = !!value && (value as Date[]).length > 0;
+      hasValue = !!value && (value as Date[]).length > 0;
     }
 
     return showClear && hasValue;

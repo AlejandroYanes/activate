@@ -19,20 +19,20 @@ const HourButton: FunctionComponent<Props> = (props) => {
   const { active, reduced, label, onClick } = props;
 
   return (
-  <StyledHourButton active={active} onClick={onClick}>
-    <AnimatePresence initial={false}>
-      <HourLabel
-        reduced={reduced}
-        key={label}
-        variants={hourLabelVariants}
-        initial="up"
-        animate="enter"
-        exit="down"
-      >
-        {label}
-      </HourLabel>
-    </AnimatePresence>
-  </StyledHourButton>
+    <StyledHourButton active={active} onClick={onClick}>
+      <AnimatePresence initial={false}>
+        <HourLabel
+          reduced={reduced}
+          key={label}
+          variants={hourLabelVariants}
+          initial="up"
+          animate="enter"
+          exit="down"
+        >
+          {label}
+        </HourLabel>
+      </AnimatePresence>
+    </StyledHourButton>
   );
 };
 

@@ -4,6 +4,7 @@ import { IconProps } from '../icon-props';
 
 const ErrorIcon: FunctionComponent<IconProps> = (props) => {
   const { color, height, width, className, style } = props;
+  
   return (
     <svg
       className={className}

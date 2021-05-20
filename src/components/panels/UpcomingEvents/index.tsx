@@ -9,6 +9,7 @@ function eventFactory() {
 
 const UpcomingEventsPanel: FunctionComponent = () => {
   const eventCards = useMemo(eventFactory, []);
+  
   return (
     <Wrapper>
       {eventCards}

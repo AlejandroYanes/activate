@@ -1,6 +1,6 @@
 import faker from 'faker';
 import { UpdateType } from './types';
-import { events } from '../../pages/Discover/events';
+import { events } from 'components/pages/Discover/events';
 
 const eventUpdates = [
   UpdateType.INVITATION,
@@ -13,7 +13,7 @@ function generateUpdate(type: UpdateType) {
   if (eventUpdates.some(t => t === type)) {
     return {
       user: {
-        avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+        avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
         name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       },
       event: {
@@ -26,7 +26,7 @@ function generateUpdate(type: UpdateType) {
 
   return {
     user: {
-      avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+      avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
     },
   };
@@ -40,5 +40,5 @@ export const updates = new Array(7).fill('1').map((_v, index) => {
     type: index,
     content: generateUpdate(index),
     read: faker.random.boolean(),
-};
+  };
 });

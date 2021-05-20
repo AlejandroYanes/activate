@@ -1,6 +1,5 @@
 import { commonRules, Rule, RuleType } from 'helpers/form-validations';
 
-// /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.\[\]{}\(\)?\-“!@#%&\/,><\’:;|_~`])\S/
 const validPasswordRule: Rule = {
   type: RuleType.MatchRegExp,
   value: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.\[\]{}()?\-“!@#%&\/,><’:;|_~`])\S/,

@@ -64,6 +64,9 @@ const SignPage: FunctionComponent = () => {
             component={PasswordInput}
             mB
           />
+          <RenderIf condition={!!errors.signError}>
+            <Text color="error" padding="8px 0 8px 20px">{errors.signError}</Text>
+          </RenderIf>
           <ActionBox signAction={signAction} onClick={authenticate} />
         </Form>
         <OAuthBox layout={layout}>

@@ -20,13 +20,13 @@ const PublisherCard: FunctionComponent = () => {
   const layout = useAppLayout();
 
   const {
-    avatarUrl,
+    avatar,
     name,
     userName,
     events,
     followers,
   } = useMemo(() => ({
-    avatarUrl: `user${faker.random.number({ min: 1, max: 12 })}`,
+    avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
     name: `${faker.company.companyName()}, ${faker.company.companySuffix()}`,
     userName: `@${faker.internet.userName()}`,
     events: faker.random.number(),
@@ -38,7 +38,7 @@ const PublisherCard: FunctionComponent = () => {
 
   return (
     <Card>
-      <Avatar icon={avatarUrl} size="large" margin="0 auto 8px" />
+      <Avatar icon={avatar} size="large" margin="0 auto 8px" />
       <Link to={link}>
         <FlexBox direction="column" align="center">
           <Title level={3} align="center">{name}</Title>

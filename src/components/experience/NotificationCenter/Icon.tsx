@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { NotificationType } from './types';
+import { NotificationType } from 'notifications';
 import { useAppColors } from 'components/providers/Theme';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { Icon as StyledIcon } from './styled/notification';

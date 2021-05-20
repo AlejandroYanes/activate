@@ -47,7 +47,7 @@ export interface ColorScheme {
 
 export const lightStyleColors = {
   FONT: '#151718',
-  FONT_SECONDARY: '#4a4b52',
+  FONT_SECONDARY: '#57585f',
   FONT_SHADE: getShade('#151718'),
   BACKGROUND: '#f5f6fa',
   BACKGROUND_LIGHT: '#fff',
@@ -56,7 +56,7 @@ export const lightStyleColors = {
 
 export const darkStyleColors = {
   FONT: '#f5f6fa',
-  FONT_SECONDARY: '#AFAFAF',
+  FONT_SECONDARY: '#b1b1b4',
   FONT_SHADE: getShade('#ffffff'),
   BACKGROUND: '#1F1F1F',
   BACKGROUND_LIGHT: '#141414',

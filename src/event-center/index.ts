@@ -10,6 +10,7 @@ export function listenToEventChannel(channel: EventChannelList, observer) {
   if (!eventCenter[channel]) {
     eventCenter[channel] = new Subject();
   }
+  
   return eventCenter[channel].subscribe(observer);
 }
 
@@ -24,6 +25,7 @@ export function useEventCenterUpdates(channelList: EventChannelList[], observer)
     const subscriptions = channelList.map(
       (channel) => listenToEventChannel(channel, observer)
     );
+    
     return () => {
       subscriptions.forEach((subscription) => subscription.unsubscribe());
     };
@@ -33,6 +35,7 @@ export function useEventCenterUpdates(channelList: EventChannelList[], observer)
 export function useEventCenterUpdate(channel: EventChannelList, observer) {
   useEffect(() => {
     const subscription = listenToEventChannel(channel, observer);
+    
     return () => {
       subscription.unsubscribe();
     };

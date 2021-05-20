@@ -1,15 +1,17 @@
 import React, { FunctionComponent } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import LandingPage from 'components/pages/Landing';
+import LandingRoute from './LandingRoute';
+import SignRoute from './SignRoute';
+import StarterRoute from './StarterRoute';
 import AuthRoutes from './AuthRoutes';
-import PublicRoutes from './PublicRoutes';
 
 const Routes: FunctionComponent = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact component={LandingPage} />
-        <Route path="/public" component={PublicRoutes} />
+        <Route path="/" exact component={LandingRoute} />
+        <Route path="/sign" component={SignRoute} />
+        <Route path="/starter" component={StarterRoute} />
         <Route path="/app" component={AuthRoutes} />
         <Redirect to="/" />
       </Switch>

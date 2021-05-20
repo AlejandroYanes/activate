@@ -1,15 +1,12 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatAmount } from 'helpers';
+import { NotificationType, showNotification } from 'notifications';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
-import {
-  NotificationType,
-  showNotification,
-} from 'components/experience/NotificationCenter';
 import Header from './Header';
 import ForwardButton from './ForwardButton';
 import ActionsMenu from './ActionsMenu';
@@ -23,7 +20,7 @@ interface Props {
   date: Date;
   author: {
     id: string;
-    avatarUrl: string;
+    avatar: string;
     name: string;
   };
   image: string;
@@ -34,7 +31,7 @@ interface Props {
   hideFooter?: boolean;
 }
 
-const avatars = ['user1', 'user2', 'user6', 'user12'];
+const avatars = ['user1', 'user2', 'user3', 'user4'];
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
@@ -133,7 +130,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
 
 EventCard.defaultProps = {
   isAFollowedEvent: false,
-    hideAuthor: false,
+  hideAuthor: false,
 };
 
 export default EventCard;

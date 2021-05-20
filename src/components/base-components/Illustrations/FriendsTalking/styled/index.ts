@@ -3,12 +3,12 @@ import {
   getAccentColor,
   getBgdLightColor,
   getBrandColor,
+  getBrandHlColor,
   getGrayLightColor,
-  getInfoColor,
   getInfoShadeColor,
   getPositionStyles,
   getSuccessColor,
-  getWarningColor
+  getWarningColor,
 } from 'helpers';
 
 export const Wrapper = styled.div`
@@ -20,14 +20,18 @@ export const Wrapper = styled.div`
     stroke-linecap:round;
     stroke-linejoin:round;
   }
-  .cls-2{stroke:${getInfoColor};}
+  // left triangle
+  .cls-2{stroke:${getWarningColor};}
   .cls-2,.cls-3{stroke-width:10px;}
-  .cls-3{stroke:${getInfoColor};}
+  // circle and right triangle
+  .cls-3{stroke:${getWarningColor};}
   .cls-4{fill:${getGrayLightColor};}
+  // talks panel
   .cls-5{fill:${getInfoShadeColor};opacity:0.67;isolation:isolate;}
   .cls-6{fill:#fff;}
   .cls-7{fill:#3c3744;}
-  .cls-8{fill:${getBrandColor};}
+  // body
+  .cls-8{fill:${getBrandHlColor};}
   .cls-9{stroke:${getBrandColor};stroke-width:25px;}
   .cls-10{fill:${getWarningColor};}
   .cls-11{fill:${getBrandColor};}

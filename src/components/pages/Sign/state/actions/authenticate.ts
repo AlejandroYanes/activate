@@ -1,15 +1,24 @@
+import { AxiosResponse } from 'axios';
 import authApi from 'api/auth';
-import { SignStateActions } from '../reducer';
-import { validateEntity } from '../../../../../helpers';
+import { ApiErrorResponse, ApiErrorType } from 'api/base';
+import { AuthCredentials, UserInfo } from 'models/user';
+import { NotificationType, showNotification } from 'notifications';
+import { validateEntity } from 'helpers';
 import { validationRules } from '../rules';
+import { SignAction, SignStateActions } from '../reducer';
 
-export default function authenticate(dispatch, login, credentials) {
+export default function authenticate(
+  dispatch,
+  setUserInfo,
+  credentials: AuthCredentials,
+  signAction: SignAction,
+) {
   return () => {
-    // const action = (
-    //   signAction === SignAction.SIGN_IN
-    //     ? authApi.signIn
-    //     : authApi.signUp
-    // );
+    const action = (
+      signAction === SignAction.SIGN_IN
+        ? authApi.signIn
+        : authApi.signUp
+    );
 
     const { errors, hasErrors } = validateEntity(credentials, validationRules);
 
@@ -20,19 +29,29 @@ export default function authenticate(dispatch, login, credentials) {
       });
     }
 
-    setTimeout(() => {
-      dispatch({
-        type: SignStateActions.START_CALLING_API,
-      });
-    }, 250);
+    dispatch({ type: SignStateActions.START_CALLING_API });
 
-    authApi.signIn({ ...credentials } as any)
-      .then((response) => {
-        const { data: { email, sub } } = response;
-        login({ sub, email });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const onSuccess = (response: AxiosResponse<UserInfo>) => {
+      const { data: userInfo } = response;
+      setUserInfo(userInfo);
+    };
+
+    const onError = (response: ApiErrorResponse) => {
+      if (response.errorType === ApiErrorType.VALIDATION) {
+        dispatch({
+          type: SignStateActions.SET_ERRORS,
+          payload: response.validationErrors,
+        });
+      } else {
+        showNotification({
+          type: NotificationType.ERROR,
+          message: response.errorMessage,
+        });
+      }
+    };
+
+    return action(credentials)
+      .then(onSuccess)
+      .catch(onError);
   }
 }

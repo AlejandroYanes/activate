@@ -26,15 +26,15 @@ export interface ValidationRules {
 export const commonRules = {
   required: {
     type: RuleType.Required,
-    message: 'This field is required',
+    message: 'We need this information',
   },
   email: {
     type: RuleType.Email,
-    message: 'This field is not a valid email',
+    message: 'This is not a valid email',
   },
   website: {
     type: RuleType.WebSite,
-    message: 'The site url must be a valid url',
+    message: 'This is not a valid url',
   },
 };
 
@@ -109,7 +109,12 @@ export function checkValidationRules(
   return error;
 }
 
-export function validateEntity(entity, rules: ValidationRules) {
+interface Validation {
+  hasErrors: boolean;
+  errors: { [field: string]: string };
+}
+
+export function validateEntity(entity, rules: ValidationRules): Validation {
   const fieldsToValidate = Object.keys(rules);
   const errors = fieldsToValidate.reduce((accumulated, field) => ({
     ...accumulated,

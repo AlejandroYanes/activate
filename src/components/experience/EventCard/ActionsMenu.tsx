@@ -22,6 +22,7 @@ const menuTrigger = ({ toggleMenu, ...rest }) => (
 
 const ActionsMenu: FunctionComponent<Props> = (props) => {
   const { author, ...positionProps } = props;
+  
   return (
     <Menu trigger={menuTrigger} align="end" {...positionProps}>
       <MenuItem label="Open details" onClick={emptyAction} />

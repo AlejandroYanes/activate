@@ -14,16 +14,10 @@ const FacebookIcon: FunctionComponent<IconProps> = (props) => {
       style={style}
       width={width}
       height={height}
-      version="1.1"
-      id="Capa_1"
-      x="0px"
-      y="0px"
     >
       <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M7,12h3.2v10h3.4V12H17V8.7h-3.4V7c0-0.9,0.8-1.7,1.7-1.7H17V2h-1.7c-2.8,0-5.1,2.2-5.1,5v1.7H7V12z"
         fill={color}
+        d="M15.12,5.32H17V2.14A26.11,26.11,0,0,0,14.26,2C11.54,2,9.68,3.66,9.68,6.7V9.32H6.61v3.56H9.68V22h3.68V12.88h3.06l.46-3.56H13.36V7.05C13.36,6,13.64,5.32,15.12,5.32Z"
       />
     </svg>
   );

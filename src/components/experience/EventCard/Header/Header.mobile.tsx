@@ -38,11 +38,11 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
           <Text size="small" padding="0 0 0 6px" ellipsis>{address}</Text>
         </FlexBox>
       </FlexBox>
-     <RenderIf condition={!hideAuthor}>
-       <Link to="#publisher">
-         <Avatar icon={author.avatarUrl} />
-       </Link>
-     </RenderIf>
+      <RenderIf condition={!hideAuthor}>
+        <Link to="#publisher">
+          <Avatar icon={author.avatar} />
+        </Link>
+      </RenderIf>
     </FlexBox>
   );
 };

@@ -16,31 +16,31 @@ const AuthRoutes: FunctionComponent = () => {
   const { pathname } = useLocation();
   const { isLoggedIn } = useAuthData();
 
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
+    const to = {
+      pathname: '/sign',
+      state: { from: pathname },
+    };
+
     return (
-      <AuthLayout>
-        <Switch>
-          <Route path="/app" component={FeedPage} exact />
-          <Route path="/app/profile" component={ProfilePage} />
-          <Route path="/app/discover" component={DiscoverPage} />
-          <Route path="/app/event-details" component={EventDetailsPage} />
-          <Route path="/app/search" component={SearchPage} />
-          <Route path="/app/publisher" component={PublisherPage} />
-          <Route path="/app/user" component={UserPage} />
-          <Route path="/app/talks" component={TalksPage} />
-          <Redirect to="/app" />
-        </Switch>
-      </AuthLayout>
+      <Redirect to={to} />
     );
   }
 
-  const to = {
-    pathname: '/',
-    state: { from: pathname },
-  };
-
   return (
-    <Redirect to={to} />
+    <AuthLayout>
+      <Switch>
+        <Route path="/app" component={FeedPage} exact />
+        <Route path="/app/profile" component={ProfilePage} />
+        <Route path="/app/discover" component={DiscoverPage} />
+        <Route path="/app/event-details" component={EventDetailsPage} />
+        <Route path="/app/search" component={SearchPage} />
+        <Route path="/app/publisher" component={PublisherPage} />
+        <Route path="/app/user" component={UserPage} />
+        <Route path="/app/talks" component={TalksPage} />
+        <Redirect to="/app" />
+      </Switch>
+    </AuthLayout>
   );
 };
 

@@ -5,6 +5,9 @@ import ManLookingLaptop from './ManLookingLaptop';
 import PhoneWithContent from './PhoneWithContent';
 import PhoneWithWoman from './PhoneWithWoman';
 import FriendsTalking from './FriendsTalking';
+import ManWithCheckList from './ManWithCheckList';
+import ManWriting from './ManWriting';
+import ManHoldingBubble from './ManHoldingBubble';
 
 export {
   NoFriends,
@@ -14,4 +17,7 @@ export {
   PhoneWithContent,
   PhoneWithWoman,
   FriendsTalking,
+  ManWithCheckList,
+  ManWriting,
+  ManHoldingBubble,
 };

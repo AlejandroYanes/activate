@@ -29,6 +29,7 @@ const getColor = (props) => {
   }
 
   const fontColor = colors[`${color.toUpperCase()}_FONT`];
+  
   return `color: ${fontColor}`;
 };
 
