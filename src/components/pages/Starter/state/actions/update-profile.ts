@@ -1,7 +1,8 @@
 import { AxiosResponse } from 'axios';
-import { UserInfo, VerificationLevel } from 'models/user';
-import { ApiErrorResponse } from 'api/base';
 import authApi from 'api/auth';
+import { ApiErrorResponse, ApiErrorType } from 'api/base';
+import { UserInfo, VerificationLevel } from 'models/user';
+import { NotificationType, showNotification } from 'notifications';
 import { ProfilePayload, StarterActions } from '../reducer';
 
 export default function updateProfile(dispatch, updateUserInfo) {
@@ -24,6 +25,14 @@ export default function updateProfile(dispatch, updateUserInfo) {
 
     const onError = (error: ApiErrorResponse) => {
       dispatch({ type: StarterActions.FINISH_API_CALL });
+
+      if (error.errorType === ApiErrorType.ERROR) {
+        return showNotification({
+          type: NotificationType.ERROR,
+          message: 'There has is been an issue with your profile',
+        });
+      }
+
       return error;
     };
 

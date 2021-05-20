@@ -10,7 +10,7 @@ import {
 
 function expandColors(colors, lightColors, useDarkStyle: boolean) {
   const { BACKGROUND } = lightColors;
-  
+
   return Object.keys(colors).reduce((acc, color) => {
     const colorValue = colors[color];
     const colorFactor = useDarkStyle ? colorVariation : -colorVariation;
@@ -27,7 +27,7 @@ function expandColors(colors, lightColors, useDarkStyle: boolean) {
   }, {} as ColorScheme);
 }
 
-export default function composeColorScheme(theme, useDarkStyle): ColorScheme {
+export function composeColorScheme(theme, useDarkStyle): ColorScheme {
   const lightColors = useDarkStyle ? darkStyleColors : lightStyleColors;
 
   const expandedColors = expandColors(

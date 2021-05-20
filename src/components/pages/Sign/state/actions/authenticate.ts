@@ -1,10 +1,18 @@
-import { ApiErrorResponse, ErrorType } from 'api/base';
+import { AxiosResponse } from 'axios';
 import authApi from 'api/auth';
+import { ApiErrorResponse, ApiErrorType } from 'api/base';
+import { AuthCredentials, UserInfo } from 'models/user';
+import { NotificationType, showNotification } from 'notifications';
 import { validateEntity } from 'helpers';
 import { validationRules } from '../rules';
 import { SignAction, SignStateActions } from '../reducer';
 
-export default function authenticate(dispatch, login, credentials, signAction) {
+export default function authenticate(
+  dispatch,
+  setUserInfo,
+  credentials: AuthCredentials,
+  signAction: SignAction,
+) {
   return () => {
     const action = (
       signAction === SignAction.SIGN_IN
@@ -21,30 +29,28 @@ export default function authenticate(dispatch, login, credentials, signAction) {
       });
     }
 
-    dispatch({
-      type: SignStateActions.START_CALLING_API,
-    });
+    dispatch({ type: SignStateActions.START_CALLING_API });
 
-    const onSuccess = (response) => {
+    const onSuccess = (response: AxiosResponse<UserInfo>) => {
       const { data: userInfo } = response;
-      login(userInfo);
+      setUserInfo(userInfo);
     };
 
-    const onError = (err: ApiErrorResponse) => {
-      if (err.errorType === ErrorType.VALIDATION) {
+    const onError = (response: ApiErrorResponse) => {
+      if (response.errorType === ApiErrorType.VALIDATION) {
         dispatch({
           type: SignStateActions.SET_ERRORS,
-          payload: err.validationErrors,
+          payload: response.validationErrors,
         });
       } else {
-        dispatch({
-          type: SignStateActions.SET_ERRORS,
-          payload: { signError: err.errorMessage },
+        showNotification({
+          type: NotificationType.ERROR,
+          message: response.errorMessage,
         });
       }
     };
 
-    action(credentials)
+    return action(credentials)
       .then(onSuccess)
       .catch(onError);
   }

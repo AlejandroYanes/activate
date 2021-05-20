@@ -6,13 +6,13 @@ export enum ApiContentType {
   MULTIPART = 'multipart/form-data',
 }
 
-export enum ErrorType {
+export enum ApiErrorType {
   ERROR = 'error',
   VALIDATION = 'validation',
 }
 
 export interface ApiErrorResponse {
-  errorType: ErrorType,
+  errorType: ApiErrorType,
   errorMessage?: string;
   validationErrors?: { [field: string]: string[] };
 }

@@ -24,7 +24,11 @@ const Step: FunctionComponent<Props> = (props) => {
       <RenderIf condition={!hideStart}>
         <Guide isActive={isActive} />
       </RenderIf>
-      <Container isActive={isActive} onClick={handleOnClick}>
+      <Container
+        data-el={`stepper-step-${value}`}
+        isActive={isActive}
+        onClick={handleOnClick}
+      >
         <StyledStep isActive={isActive}>{value + 1}</StyledStep>
       </Container>
       <RenderIf condition={!hideEnd}>

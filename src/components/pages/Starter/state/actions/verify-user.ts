@@ -1,11 +1,8 @@
 import { AxiosResponse } from 'axios';
-import { UserInfo } from 'models/user';
-import { ApiErrorResponse } from 'api/base';
 import authApi from 'api/auth';
-import {
-  NotificationType,
-  showNotification,
-} from 'components/experience/NotificationCenter';
+import { ApiErrorResponse } from 'api/base';
+import { UserInfo } from 'models/user';
+import { NotificationType, showNotification } from 'notifications';
 import { StarterActions } from '../reducer';
 
 export default function verifyUser(dispatch, updateUserInfo) {
@@ -18,10 +15,10 @@ export default function verifyUser(dispatch, updateUserInfo) {
       dispatch({ type: StarterActions.GO_NEXT_STEP });
     };
 
-    const onError = (err: ApiErrorResponse) => {
+    const onError = (response: ApiErrorResponse) => {
       showNotification({
         type: NotificationType.ERROR,
-        message: err.errorMessage,
+        message: response.errorMessage,
       });
       dispatch({ type: StarterActions.FINISH_API_CALL });
     };

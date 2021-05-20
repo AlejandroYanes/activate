@@ -7,7 +7,7 @@ import Button from 'components/base-components/Button';
 import { ManWithCheckList } from 'components/base-components/Illustrations';
 import { Field, Form } from 'components/base-components/Form';
 import { Step, Content, Aside } from '../../styled/step';
-import { codeRules } from '../../state';
+import { codeRules } from './rules';
 
 interface Props {
   onVerify: (code: number) => void;

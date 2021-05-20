@@ -1,12 +1,16 @@
 import React, { FunctionComponent, useCallback, useEffect } from 'react';
+import {
+  NotificationDuration,
+  NotificationModel,
+  NotificationType,
+} from 'notifications';
 import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
 import IconButton from 'components/base-components/IconButton';
 import { Text } from 'components/base-components/Typography';
+import RenderIf from 'components/base-components/RenderIf';
 import Icon from './Icon';
 import { Content, Notification as StyledNotification } from './styled/notification';
-import { NotificationDuration, NotificationModel, NotificationType } from './types';
-import RenderIf from '../../base-components/RenderIf';
 
 interface Props extends NotificationModel {
   onClose: (id: string) => void;

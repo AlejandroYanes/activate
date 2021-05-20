@@ -15,7 +15,7 @@ export interface ProfileDto {
   lastName: string;
   userName: string;
   email: string;
-  avatar?: string;
+  avatar: string;
   verificationLevel: VerificationLevel;
 }
 

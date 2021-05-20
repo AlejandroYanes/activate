@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { EventChannelList, useEventCenterUpdate } from 'event-center';
+import { NotificationModel } from 'notifications';
 import { useAppLayout } from 'components/providers/Layout';
-import { NotificationModel } from './types';
 import Notification from './Notification';
 import { Notifications } from './styled/list';
 

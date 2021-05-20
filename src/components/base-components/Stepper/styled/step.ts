@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 const stepSize = 40;
@@ -10,7 +10,7 @@ const getContainerStyles = (props) => {
   const hoverColor = isActive ? colors.BRAND_HIGHLIGHT : colors.BRAND_SHADE;
   const focusColor = colors.BRAND_HIGHLIGHT;
 
-  return `
+  return css`
     border-color: ${borderColor};
 
     &:hover {
@@ -18,7 +18,7 @@ const getContainerStyles = (props) => {
     border-color: ${hoverColor};
 
     > span {
-      color: ${({ theme }) => theme.colors.WHITE};
+      color: ${colors.FONT};
       background-color: ${hoverColor};
     }
   }
@@ -57,7 +57,7 @@ const getStepStyles = (props) => {
   const fontColor = isActive ? colors.WHITE : colors.FONT;
   const size = isActive ? stepSize - 10 - borderSize : stepSize - borderSize;
 
-  return `
+  return css`
       background-color: ${bgColor};
       color: ${fontColor};
       width: ${size}px;

@@ -1,10 +1,6 @@
 import { ProfileDto } from 'models/user';
-import { ApiErrorResponse, ErrorType } from 'api/base';
+import { ApiErrorResponse, ApiErrorType } from 'api/base';
 import { validateEntity } from 'helpers';
-import {
-  NotificationType,
-  showNotification,
-} from 'components/experience/NotificationCenter';
 import { ProfilePayload } from 'components/pages/Starter/state';
 import { profileRules } from '../rules';
 import { ProfileStepActions } from '../reducer';
@@ -25,18 +21,11 @@ export default function handleSubmit(
       });
     }
 
-    const onError = (error: ApiErrorResponse) => {
-      if (!error) return;
-
-      if (error.errorType === ErrorType.VALIDATION) {
+    const onResponse = (response: ApiErrorResponse) => {
+      if (response && response.errorType === ApiErrorType.VALIDATION) {
         dispatch({
           type: ProfileStepActions.SET_ERRORS,
-          payload: errors,
-        });
-      } else {
-        showNotification({
-          type: NotificationType.ERROR,
-          message: 'There is been an issue with your profile',
+          payload: response.validationErrors,
         });
       }
     }
@@ -49,6 +38,6 @@ export default function handleSubmit(
     const payload = { ...profile, image: profileImage };
 
     return onNext(payload)
-      .then(onError);
+      .then(onResponse);
   };
 }

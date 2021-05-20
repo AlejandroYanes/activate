@@ -96,6 +96,22 @@ const InterestsStep: FunctionComponent<Props> = (props) => {
             />
             <Text color="brand">Cooking</Text>
           </PickItem>
+          <PickItem value={Icons.PET}>
+            <SvgIcon
+              icon={Icons.PET}
+              color={colors.BRAND_FONT}
+              size="x-large"
+            />
+            <Text color="brand">Pets</Text>
+          </PickItem>
+          <PickItem value={Icons.FASHION}>
+            <SvgIcon
+              icon={Icons.FASHION}
+              color={colors.BRAND_FONT}
+              size="x-large"
+            />
+            <Text color="brand">Fashion</Text>
+          </PickItem>
           <PickItem value={Icons.BASKETBALL}>
             <SvgIcon
               icon={Icons.BASKETBALL}

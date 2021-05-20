@@ -15,10 +15,10 @@ import {
   GrapesTheme,
   SummerVibesTheme,
 } from 'styles/themes';
+import { composeColorScheme } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import { MobileGlobalStyles, PrimaryGlobalStyles } from './GlobalStyles';
-import composeColorScheme from './compose-color-scheme';
 
 export enum AppTheme {
   Grapes = 'Grapes',
@@ -54,7 +54,7 @@ const globalStyles = {
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<AppTheme>(AppTheme.DuskLights);
+  const [theme, setTheme] = useState<AppTheme>(AppTheme.NeonLights);
   const [useDarkStyle, setUseDarkTheme] = useState(true);
 
   const toggleLightStyle = useCallback(

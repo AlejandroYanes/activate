@@ -1,15 +1,12 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { formatAmount } from 'helpers';
+import { NotificationType, showNotification } from 'notifications';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
-import {
-  NotificationType,
-  showNotification,
-} from 'components/experience/NotificationCenter';
 import Header from './Header';
 import ForwardButton from './ForwardButton';
 import ActionsMenu from './ActionsMenu';

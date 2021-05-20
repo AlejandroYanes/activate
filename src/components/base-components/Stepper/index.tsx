@@ -12,7 +12,8 @@ interface Props extends PositionProps {
 const Stepper: FunctionComponent<Props> = (props) => {
   const { activeStep, onChange, children, ...rest } = props;
   const steps = React.Children.map(children, (child: any) => child);
-  const step = steps[activeStep];
+  const isValidStep = activeStep >= 0 && activeStep < steps.length;
+  const step = isValidStep ? steps[activeStep] : steps[0];
 
   return (
     <StyledStepper {...rest} data-el="stepper">
@@ -29,7 +30,7 @@ const Stepper: FunctionComponent<Props> = (props) => {
           onChange={onChange}
         />
       </FlexBox>
-      <Content data-el="stepper--content">
+      <Content data-el="stepper-content">
         {step}
       </Content>
     </StyledStepper>

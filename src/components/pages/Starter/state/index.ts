@@ -7,7 +7,6 @@ import updateProfile from './actions/update-profile';
 import starterReducer, { StarterActions } from './reducer';
 
 export * from './reducer';
-export * from './rules';
 
 function initState(userInfo: UserInfo) {
   return {

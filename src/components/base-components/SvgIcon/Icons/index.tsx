@@ -80,6 +80,8 @@ import PaletteIcon from './Palette';
 import BasketballIcon from './Basketball';
 import FlaskIcon from './Flask';
 import RestaurantIcon from './Restaurant';
+import PetIcon from './Pet';
+import FashionIcon from './Fashion';
 
 export enum Icons {
   HOME = 'home',
@@ -163,6 +165,8 @@ export enum Icons {
   BASKETBALL = 'basketball',
   FLASK = 'flask',
   RESTAURANT = 'restaurant',
+  PET = 'pet',
+  FASHION = 'fashion',
 }
 
 export const icons = {
@@ -247,4 +251,6 @@ export const icons = {
   [Icons.BASKETBALL]: (props) => <BasketballIcon {...props} />,
   [Icons.FLASK]: (props) => <FlaskIcon {...props} />,
   [Icons.RESTAURANT]: (props) => <RestaurantIcon {...props} />,
+  [Icons.PET]: (props) => <PetIcon {...props} />,
+  [Icons.FASHION]: (props) => <FashionIcon {...props} />,
 };
