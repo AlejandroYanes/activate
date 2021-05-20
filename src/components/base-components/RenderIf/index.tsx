@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import './styles.scss';
+import { Fallback } from './styled';
 
 interface Props {
   condition: boolean;
@@ -24,15 +24,15 @@ const RenderIf: FunctionComponent<Props> = (props) => {
   if (fallback) {
     if (typeof fallback === 'string') {
       return (
-        <div className="lpm-render-if__fallback-wrapper">
+        <Fallback>
           {fallback}
-        </div>
+        </Fallback>
       );
     }
-    
+
     return fallback;
   }
-  
+
   return null;
 };
 
