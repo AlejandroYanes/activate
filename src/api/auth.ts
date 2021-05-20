@@ -12,7 +12,7 @@ const authApi = {
     return post(`${endpoint}/signup`, credentials, { authenticated: false });
   },
   verify: (code: number): Promise<AxiosResponse<UserInfo>> => {
-    return post(`${endpoint}/verify`, { code }, { authenticated: true });
+    return patch(`${endpoint}/verify`, { code }, { authenticated: true });
   },
   updateProfile: (profileData: ProfileDto): Promise<AxiosResponse<UserInfo>> => {
     return patch(`${endpoint}/profile`, profileData, { authenticated: true });
