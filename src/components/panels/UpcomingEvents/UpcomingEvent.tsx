@@ -14,7 +14,7 @@ interface Props {
   date: Date;
 }
 
-const avatars = ['user1', 'user2', 'user6'];
+const avatars = ['user1', 'user2', 'user4'];
 
 const UpcomingEvent: FunctionComponent<Props> = (props) => {
   const { title, date, address } = props;
@@ -34,7 +34,7 @@ const UpcomingEvent: FunctionComponent<Props> = (props) => {
             <Text size="small" margin="0 0 0 6px">{address}</Text>
           </FlexBox>
           <FlexBox>
-            <AvatarGroup icons={avatars} label="and 120 more" size="xx-small" />
+            <AvatarGroup icons={avatars} label="and 120 more" size="x-small" />
           </FlexBox>
         </FlexBox>
       </Event>

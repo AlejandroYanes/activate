@@ -1,15 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { getPositionStyles } from 'helpers';
+import { Layout } from 'components/providers/Layout';
+
+const stepperStyles = {
+  [Layout.DESKTOP]: css`
+    display: flex;
+    align-items: flex-start;
+  `,
+  [Layout.TABLET]: css`
+    display: flex;
+    align-items: flex-start;
+  `,
+  [Layout.MOBILE]: css`
+    display: flex;
+    flex-direction: column;
+  `,
+};
 
 export const StyledStepper = styled.article`
-  display: flex;
+  ${({ theme }) => stepperStyles[theme.layout]};
   ${getPositionStyles};
-`;
-
-export const Content = styled.main`
-  display: flex;
-  flex-direction: column;
-  padding-left: 32px;
-  min-width: 0;
-  flex: 1;
 `;

@@ -11,7 +11,7 @@ import FlexBox from 'components/base-components/FlexBox';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Card } from './styled';
 
-const avatars = ['user1', 'user2', 'user6', 'user11', 'user8'];
+const avatars = ['user1', 'user2', 'user3', 'user4', 'user4'];
 const Separator = () => <div style={{ flex: 1 }} />;
 
 const UserCard: FunctionComponent = () => {
@@ -27,7 +27,7 @@ const UserCard: FunctionComponent = () => {
 
   return (
     <Card>
-      <Avatar icon="user12" size="large" margin="0 auto 8px" />
+      <Avatar src="user4" size="large" margin="0 auto 8px" />
       <Link to={link}>
         <FlexBox direction="column" align="center">
           <Title level={3} align="center">{name}</Title>

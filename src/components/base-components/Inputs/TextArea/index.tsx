@@ -40,10 +40,10 @@ const TextArea: FunctionComponent<Props> = (props) => {
 
     if (maxLength) {
       if (txt.length <= maxLength) {
-        onChange(event);
+        onChange(txt);
       }
     } else {
-      onChange(event);
+      onChange(txt);
     }
   }, [maxLength]);
 

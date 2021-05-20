@@ -64,7 +64,7 @@ const UserPage: FunctionComponent = () => {
   return (
     <Page>
       <ProfileCard
-        image="user8"
+        avatar="user4"
         leftStatLabel="Following"
         leftStatValue={followingCount}
         rightStatLabel="Friends"

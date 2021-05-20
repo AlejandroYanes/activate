@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import FlexBox from 'components/base-components/FlexBox';
 import Steps from './Steps';
-import { StyledStepper, Content } from './styled/stepper';
+import { StyledStepper, StepsContainer, Content } from './styled';
 
 interface Props extends PositionProps {
   activeStep: number;
@@ -17,19 +16,13 @@ const Stepper: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledStepper {...rest} data-el="stepper">
-      <FlexBox
-        as="aside"
-        direction="column"
-        align="center"
-        padding="0 8px"
-        data-el="stepper--numbers"
-      >
+      <StepsContainer data-el="stepper--numbers">
         <Steps
           count={steps.length}
           activeStep={activeStep}
           onChange={onChange}
         />
-      </FlexBox>
+      </StepsContainer>
       <Content data-el="stepper-content">
         {step}
       </Content>

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Container, Guide, StyledStep } from './styled/step';
+import { Container, Guide, StyledStep } from './styled';
 import RenderIf from '../RenderIf';
 
 interface Props {

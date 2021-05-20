@@ -24,7 +24,7 @@ const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
         <FlexBox align="center">
           {actions}
           <Link to="#profile">
-            <Avatar icon="user2" />
+            <Avatar src="user2" />
           </Link>
         </FlexBox>
       </FlexBox>

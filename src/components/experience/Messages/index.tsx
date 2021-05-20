@@ -46,7 +46,7 @@ const Messages: FunctionComponent<Props> = (props) => {
       <Header viewMode={viewMode}>
         {leftActions}
         <AvatarSection>
-          <Avatar icon={avatar} />
+          <Avatar src={avatar} />
           <RenderIf condition={active}>
             <ActiveDot />
           </RenderIf>

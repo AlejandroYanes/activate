@@ -6,11 +6,11 @@ export const StyledAvatarGroup = styled.div.attrs(anyPropsAttrs)`
   align-items: center;
   ${getPositionStyles};
 
-  & > span {
+  & > div[data-el="avatar"] {
     border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   }
 
-  & > span:not(:first-child) {
+  & > div[data-el="avatar"]:not(:first-child) {
     margin-left: -12px;
   }
 `;

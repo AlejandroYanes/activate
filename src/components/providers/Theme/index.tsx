@@ -16,7 +16,7 @@ import {
   SummerVibesTheme,
 } from 'styles/themes';
 import { composeColorScheme } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import { MobileGlobalStyles, PrimaryGlobalStyles } from './GlobalStyles';
 
@@ -34,6 +34,7 @@ interface ThemeContextValue {
   useDarkStyle: boolean;
   toggleLightStyle: () => void;
   colors: ColorScheme;
+  layout: Layout;
 }
 
 const themesMap = {
@@ -56,32 +57,34 @@ const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
   const [theme, setTheme] = useState<AppTheme>(AppTheme.NeonLights);
   const [useDarkStyle, setUseDarkTheme] = useState(true);
+  const layout = useAppLayout();
 
   const toggleLightStyle = useCallback(
     () => setUseDarkTheme((oldState) => !oldState),
     [],
   );
 
-  const themeColors = useMemo(
+  const themeProps = useMemo(
     () => {
       const themeColors = themesMap[theme];
 
       return {
+        layout,
         useDarkStyle,
         colors: composeColorScheme(themeColors, useDarkStyle),
       };
     },
-    [theme, useDarkStyle],
+    [theme, useDarkStyle, layout],
   );
 
   const themeContextValue = useMemo<ThemeContextValue>(
-    () => ({ theme, setTheme, toggleLightStyle, ...themeColors }),
-    [theme, themeColors, toggleLightStyle],
+    () => ({ theme, setTheme, toggleLightStyle, ...themeProps }),
+    [theme, themeProps, toggleLightStyle],
   );
 
   return (
     <ThemeContext.Provider value={themeContextValue}>
-      <StyledThemeProvider theme={themeColors}>
+      <StyledThemeProvider theme={themeProps}>
         <RenderByLayout
           options={globalStyles}
           fallback={PrimaryGlobalStyles}

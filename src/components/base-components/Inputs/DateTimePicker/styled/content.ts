@@ -17,6 +17,7 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
   letter-spacing: 0.5px;
   outline: none;
   cursor: pointer;
+  position: relative;
   ${getColorStyles};
 `;
 

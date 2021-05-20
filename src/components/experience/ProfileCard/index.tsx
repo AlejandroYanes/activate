@@ -4,7 +4,7 @@ import Info from './Info';
 import { Actions, Card, StyledAvatar } from './styled';
 
 interface Props {
-  image: string;
+  avatar: string;
   name: string;
   userName: string;
   bio?: string;
@@ -17,7 +17,7 @@ interface Props {
 
 const ProfileCard: FunctionComponent<Props> = (props) => {
   const {
-    image,
+    avatar,
     action,
     bio,
     children,
@@ -26,7 +26,7 @@ const ProfileCard: FunctionComponent<Props> = (props) => {
 
   return (
     <Card>
-      <StyledAvatar size="x-large" icon={image} />
+      <StyledAvatar size="x-large" src={avatar} />
       <Actions>
         {action}
       </Actions>

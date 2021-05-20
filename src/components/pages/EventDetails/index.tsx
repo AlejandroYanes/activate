@@ -71,7 +71,7 @@ const EventDetailsPage: FunctionComponent = () => {
         <EventImage src={eventImg} alt="virtual tour" />
         <FlexBox align="center" margin="8px 0">
           <FlexBox align="center">
-            <Avatar icon="user6" />
+            <Avatar src="user3" />
             <FlexBox direction="column" padding="0 0 0 6px">
               <Text size="small" color="secondary">{author.userName}</Text>
               <Text padding="4px 0 0 0">{author.name}</Text>

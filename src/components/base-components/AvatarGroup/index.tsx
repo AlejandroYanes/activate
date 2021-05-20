@@ -9,7 +9,7 @@ import { StyledAvatarGroup } from './styled';
 interface Props extends PositionProps {
   label?: string;
   icons: string[];
-  size?: 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
+  size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
 }
 
 function resolveTextSize({ size }: Props) {
@@ -18,7 +18,6 @@ function resolveTextSize({ size }: Props) {
     case 'x-large':
       return 'large';
     case 'x-small':
-    case 'xx-small':
       return 'small';
     default:
       return 'medium';
@@ -30,7 +29,7 @@ const AvatarGroup: FunctionComponent<Props> = (props) => {
 
   const avatars = useMemo(() => (
     icons.map((icon, index) => (
-      <Avatar key={`${icon}-${index}`} size={size} icon={icon} />
+      <Avatar key={`${icon}-${index}`} size={size} src={icon} />
     ))
   ), [icons, size]);
 
@@ -48,6 +47,10 @@ const AvatarGroup: FunctionComponent<Props> = (props) => {
       </RenderIf>
     </StyledAvatarGroup>
   );
+};
+
+AvatarGroup.defaultProps = {
+  size: 'small',
 };
 
 export default AvatarGroup;
