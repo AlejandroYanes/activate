@@ -1,22 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Layout } from 'components/providers/Layout';
+
+const stepStyles = {
+  [Layout.DESKTOP]: css`
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+  `,
+  [Layout.TABLET]: css`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  `,
+  [Layout.MOBILE]: css`
+    display: flex;
+    flex-direction: column;
+  `,
+};
 
 export const Step = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: stretch;
-`;
-
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding-right: 48px;
-  min-width: 0;
-`;
-
-export const Aside = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  ${({ theme }) => stepStyles[theme.layout]};
 `;
