@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { UserInfo, VerificationLevel } from 'models/user';
+import { UserInfo } from 'models/user';
 import { getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
 
 interface AuthState {
@@ -24,11 +24,8 @@ interface AuthContext {
 }
 
 const initialState: AuthState = {
-  isLoggedIn: true,
-  userInfo: {
-    avatar: 'user3',
-    verificationLevel: VerificationLevel.INTERESTS_ADDED,
-  } as UserInfo,
+  isLoggedIn: false,
+  userInfo: undefined,
 };
 
 const AuthContext = createContext<AuthContext>(undefined);
