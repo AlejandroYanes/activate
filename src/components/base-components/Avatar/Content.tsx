@@ -1,5 +1,4 @@
 import { FunctionComponent, useState, memo } from 'react';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import User1 from './users/User1';
 import User2 from './users/User2';
 import User3 from './users/User3';
@@ -36,13 +35,10 @@ const Content: FunctionComponent<Props> = (props) => {
   }
 
   const showDrawnAvatar = (
-    !isImage &&
-    (
-      src === 'user1' ||
-      src === 'user2' ||
-      src === 'user3' ||
-      src === 'user4'
-    )
+    src === 'user1' ||
+    src === 'user2' ||
+    src === 'user3' ||
+    src === 'user4'
   );
 
   if (showDrawnAvatar) {
@@ -50,7 +46,7 @@ const Content: FunctionComponent<Props> = (props) => {
     return <SelectedUser />;
   }
 
-  return <SvgIcon icon={Icons.USER} />;
+  return null;
 };
 
 export default memo(Content);
