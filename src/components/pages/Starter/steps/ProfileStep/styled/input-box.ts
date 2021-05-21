@@ -1,15 +1,16 @@
 import styled, { css } from 'styled-components';
-import { getPositionStyles } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
-const stepperStyles = {
+const inputBoxStyles = {
   [Layout.DESKTOP]: css`
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    width: 45%;
   `,
   [Layout.TABLET]: css`
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    width: 45%;
   `,
   [Layout.MOBILE]: css`
     display: flex;
@@ -17,7 +18,6 @@ const stepperStyles = {
   `,
 };
 
-export const StyledStepper = styled.article`
-  ${({ theme }) => stepperStyles[theme.layout]};
-  ${getPositionStyles};
+export const InputBox = styled.div`
+  ${({ theme }) => inputBoxStyles[theme.layout]};
 `;

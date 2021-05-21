@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import VerificationStep from './steps/VerificationStep';
 import ProfileStep from './steps/ProfileStep';
 import useStarterState from './state';
-import { StyledStepper } from './styled/stepper';
+import { StyledStepper } from './styled';
 import InterestsStep from './steps/InterestsStep';
 
 const StarterPage: FunctionComponent = () => {

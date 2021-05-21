@@ -1,21 +1,28 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useAppColors } from 'components/providers/Theme';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
-import { ManHoldingBubble } from 'components/base-components/Illustrations';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import FlexBox from 'components/base-components/FlexBox';
-import Button from 'components/base-components/Button';
-import { Aside, Content, Step } from '../../styled/step';
+import { Content, Step } from '../../styled';
+import Illustration from '../Illustration';
+import { FinishButton } from './styled';
 
 interface Props {
   onNext: () => void;
   isLoading?: boolean;
 }
 
+const colsMap = {
+  [Layout.DESKTOP]: 4,
+  [Layout.TABLET]: 4,
+  [Layout.MOBILE]: 3,
+};
+
 const InterestsStep: FunctionComponent<Props> = (props) => {
   const { isLoading, onNext } = props;
   const colors = useAppColors();
+  const layout = useAppLayout();
   const [interests, setInterests] = useState([]);
 
   return (
@@ -27,9 +34,9 @@ const InterestsStep: FunctionComponent<Props> = (props) => {
           value={interests}
           layout="grid"
           size="small"
-          cols={4}
+          cols={colsMap[layout]}
           color="brand"
-          margin="20px 0 0 0"
+          padding="20px 0 0 0"
           multiple
         >
           <PickItem value={Icons.MUSIC}>
@@ -129,18 +136,14 @@ const InterestsStep: FunctionComponent<Props> = (props) => {
             <Text color="brand">Night Out</Text>
           </PickItem>
         </PickList>
-        <FlexBox justify="flex-end">
-          <Button
-            label="Finish"
-            onClick={onNext}
-            isLoading={isLoading}
-            variant="fill"
-          />
-        </FlexBox>
+        <FinishButton
+          label="Finish"
+          onClick={onNext}
+          isLoading={isLoading}
+          variant="fill"
+        />
       </Content>
-      <Aside>
-        <ManHoldingBubble width={420} />
-      </Aside>
+      <Illustration step={3} />
     </Step>
   );
 };

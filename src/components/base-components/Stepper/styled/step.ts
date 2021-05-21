@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
+import { Layout } from 'components/providers/Layout';
 
 const stepSize = 40;
 const borderSize = 2;
@@ -76,17 +77,31 @@ export const StyledStep = styled.span.attrs(anyPropsAttrs)`
   transition: all 150ms linear;
 `;
 
+const guideStyles = {
+  [Layout.DESKTOP]: css`
+    width: ${borderSize}px;
+    height: ${stepSize * 0.65}px;
+  `,
+  [Layout.TABLET]: css`
+    width: ${borderSize}px;
+    height: ${stepSize * 0.65}px;
+  `,
+  [Layout.MOBILE]: css`
+    height: ${borderSize}px;
+    flex: 1;
+  `,
+};
+
 const getGuideStyles = (props) => {
   const { isActive, theme: { colors } } = props;
   const bgColor = isActive ? colors.BRAND : colors.FONT_SHADE;
 
-  return `
+  return css`
       background-color: ${bgColor};
     `;
 };
 
 export const Guide = styled.div.attrs(anyPropsAttrs)`
-  width: ${borderSize}px;
-  height: ${stepSize * 0.65}px;
+  ${({ theme }) => guideStyles[theme.layout]}
   ${getGuideStyles};
 `;

@@ -1,12 +1,12 @@
 import React, { FunctionComponent, useState } from 'react';
 import { validateEntity } from 'helpers';
-import FlexBox from 'components/base-components/FlexBox';
 import { Text, Title } from 'components/base-components/Typography';
 import { NumberInput } from 'components/base-components/Inputs';
 import Button from 'components/base-components/Button';
-import { ManWithCheckList } from 'components/base-components/Illustrations';
 import { Field, Form } from 'components/base-components/Form';
-import { Step, Content, Aside } from '../../styled/step';
+import { Content, Step } from '../../styled';
+import Illustration from '../Illustration';
+import { CodeBox } from './styled';
 import { codeRules } from './rules';
 
 interface Props {
@@ -36,10 +36,11 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
         <Text as="p" padding="16px 0 0 0">
           We sent you a 6 digit code to your email,
           we use this code to verify you are a real person.
-          <br />
+        </Text>
+        <Text as="p" padding="8px 0 0 0">
           Please check your email and type the code here.
         </Text>
-        <FlexBox align="flex-start" margin="32px 0 0 0" width={320}>
+        <CodeBox>
           <Form
             onChange={setForm}
             state={form}
@@ -56,17 +57,14 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
           <Button
             onClick={verifyUserCode}
             isLoading={isLoading}
-            padding="0 12px"
+            padding="0 16px"
             label="Verify"
             variant="fill"
             color="brand"
-            margin="24px 0 0 24px"
           />
-        </FlexBox>
+        </CodeBox>
       </Content>
-      <Aside>
-        <ManWithCheckList width={420} />
-      </Aside>
+      <Illustration step={1} />
     </Step>
   );
 };

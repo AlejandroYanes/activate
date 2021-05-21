@@ -1,23 +1,24 @@
 import styled, { css } from 'styled-components';
-import { getPositionStyles } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
-const stepperStyles = {
+const avatarsBoxStyles = {
   [Layout.DESKTOP]: css`
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    padding-left: 48px;
   `,
   [Layout.TABLET]: css`
     display: flex;
-    align-items: stretch;
+    flex-direction: column;
+    padding-left: 48px;
   `,
   [Layout.MOBILE]: css`
     display: flex;
     flex-direction: column;
+    padding-top: 48px;
   `,
 };
 
-export const StyledStepper = styled.article`
-  ${({ theme }) => stepperStyles[theme.layout]};
-  ${getPositionStyles};
+export const AvatarsBox = styled.div`
+  ${({ theme }) => avatarsBoxStyles[theme.layout]};
 `;
