@@ -25,7 +25,7 @@ const Months: FunctionComponent<Props> = (props) => {
         isSelected={m.getMonth() === currentDate.getMonth()}
         onClick={handleMonthChange}
         variant="flat"
-        color="font"
+        color="background"
         mB
       />
     ))

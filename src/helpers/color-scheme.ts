@@ -8,13 +8,13 @@ import {
   lightStyleColors,
 } from 'styles/colors';
 
-function expandColors(colors, lightColors, useDarkStyle: boolean) {
+function expandColors(colors, lightColors, useDarkStyle) {
   const { BACKGROUND } = lightColors;
 
   return Object.keys(colors).reduce((acc, color) => {
     const colorValue = colors[color];
     const colorFactor = useDarkStyle ? colorVariation : -colorVariation;
-    const balancedColor = balanceColorRatio(colorValue, BACKGROUND);
+    const balancedColor = balanceColorRatio(colorValue, BACKGROUND, 4.7);
 
     return {
       ...acc,

@@ -3,7 +3,7 @@ import Backdrop from 'components/base-components/Backdrop';
 import Calendar from 'components/base-components/Calendar';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon/Icons';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import Clock from 'components/base-components/Clock';
 import CurrentDate from './CurrentDate';
@@ -103,8 +103,14 @@ const CalendarModal: FunctionComponent<Props> = (props) => {
             <Expander />
             <CurrentDate isVisible={isDateTime} date={dates as Date} />
             <Footer>
-              <Button onClick={onClose} label="Cancel" mR variant="flat" />
-              <Button onClick={sendDateSelected} label="Select" />
+              <Button
+                onClick={onClose}
+                label="Cancel"
+                color="background"
+                variant="fill"
+                mR
+              />
+              <Button onClick={sendDateSelected} label="Select" variant="fill" />
             </Footer>
           </RenderIf>
         </StyledCalendarModal>

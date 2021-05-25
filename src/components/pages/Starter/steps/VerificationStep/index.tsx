@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState } from 'react';
 import { validateEntity } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
 import { NumberInput } from 'components/base-components/Inputs';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import { Field, Form } from 'components/base-components/Form';
 import { Content, Step } from '../../styled';
 import Illustration from '../Illustration';

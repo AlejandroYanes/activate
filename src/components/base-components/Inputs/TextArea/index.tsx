@@ -68,6 +68,7 @@ const TextArea: FunctionComponent<Props> = (props) => {
         onBlur={onBlur}
       />
       <RightNode
+        topSpaced={!!label}
         showClear={showClear}
         value={value}
         onChange={onChange}

@@ -11,7 +11,7 @@ import { Case, Switch } from 'components/base-components/Switch';
 import UsersList from 'components/experience/UsersList';
 import { users } from '../../modals/Profile/users';
 import { events } from '../Discover/events';
-import { UsersCard } from '../Profile/styled';
+import { UsersCard } from './styled';
 
 enum Tabs {
   EVENTS = 'Events',

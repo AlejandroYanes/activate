@@ -4,6 +4,7 @@ import ClearButton from '../base/ClearButton';
 import AbsoluteContent from '../base/AbsoluteContent';
 
 interface Props {
+  topSpaced?: boolean;
   showClear?: boolean;
   value?: string;
   onChange?: (event) => void;
@@ -11,22 +12,21 @@ interface Props {
 }
 
 const RightNode: FunctionComponent<Props> = (props) => {
-  const { showClear, value, onChange, maxLength } = props;
+  const { topSpaced, showClear, value, onChange, maxLength } = props;
 
   if (showClear) {
     return (
-      <AbsoluteContent floatRight>
-        <ClearButton
-          showClear={showClear && !!value}
-          onClick={onChange}
-        />
-      </AbsoluteContent>
+      <ClearButton
+        topSpaced={topSpaced}
+        showClear={showClear && !!value}
+        onClick={onChange}
+      />
     );
   }
 
   if (maxLength && value) {
     return (
-      <AbsoluteContent floatRight>
+      <AbsoluteContent topSpaced={topSpaced} floatRight>
         <Text size="small" color="secondary">{maxLength - value.length}</Text>
       </AbsoluteContent>
     );

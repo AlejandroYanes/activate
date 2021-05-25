@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import React, { FunctionComponent, ReactNode, useMemo } from 'react';
-import Button, { ButtonProps } from 'components/base-components/Button';
+import { Button, ButtonProps } from 'components/base-components/Button';
 import { Footer as StyledFooter } from './styled';
 
 interface Props {
@@ -13,7 +13,7 @@ const ActionsRenderer = ({ actions }) => {
     if (actions && Array.isArray(actions)) {
       return actions.map((action, index) => <Button key={index} {...action} />);
     }
-    
+
     return null;
   }, [actions]);
 

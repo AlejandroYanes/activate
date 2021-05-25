@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import IconButton from 'components/base-components/IconButton';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import { Icons } from 'components/base-components/SvgIcon';
 import { monthFormatter, monthYearFormatter, yearFormatter } from './utils';
@@ -58,7 +58,7 @@ const Header: FunctionComponent<Props> = (props) => {
         label={label}
         variant="flat"
         style={monthButtonStyles}
-        color="font"
+        color="background"
         mR
         mL
       />

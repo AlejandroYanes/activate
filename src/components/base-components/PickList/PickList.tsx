@@ -5,11 +5,12 @@ import ListContainer from './ListContainer';
 import GridContainer from './GridContainer';
 
 export interface PickListProps extends PositionProps {
-  value: string | string[];
-  onChange: (value) => void;
-  multiple?: boolean;
+  value?: string | string[];
+  onChange?: (value) => void;
   layout?: 'list' | 'grid';
   cols?: number;
+  readonly?: boolean;
+  multiple?: boolean;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
 }
@@ -20,10 +21,23 @@ const wrapperMap = {
 };
 
 const PickList: FunctionComponent<PickListProps> = (props) => {
-  const { value, onChange, multiple, size, color, layout, children } = props;
+  const {
+    value,
+    onChange,
+    multiple,
+    size,
+    color,
+    layout,
+    readonly,
+    children,
+  } = props;
   const Wrapper = wrapperMap[layout];
 
   const handleChange = useCallback((item) => {
+    if (value === undefined || value === null || !onChange) {
+      return;
+    }
+
     if (multiple) {
       const isSelected = (value as string[]).some((v) => v === item);
       const nextValue = isSelected
@@ -41,8 +55,9 @@ const PickList: FunctionComponent<PickListProps> = (props) => {
     <PickListProvider
       size={size}
       color={color}
-      multiple={multiple}
       value={value}
+      readonly={readonly}
+      multiple={multiple}
       onChange={handleChange}
     >
       <Wrapper {...props}>

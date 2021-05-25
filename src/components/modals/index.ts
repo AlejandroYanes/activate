@@ -7,6 +7,7 @@ import PublisherModal from './Publisher';
 import UserModal from './User';
 import FiltersModal from './Filters';
 import InviteUsersModal from './Invite';
+import EditProfileModal from './EditProfile';
 
 export enum Modals {
   TALKS = '#talks',
@@ -20,11 +21,13 @@ export enum Modals {
   USER = '#user',
   FILTERS = '#filters',
   INVITE = '#invite',
+  EDIT_PROFILE = '#edit-profile'
 }
 
 export const DesktopModals = {
   [Modals.INVITE]: InviteUsersModal,
   [Modals.PUBLISHER]: PublisherModal,
+  [Modals.EDIT_PROFILE]: EditProfileModal,
 };
 
 export const TabletModals = {

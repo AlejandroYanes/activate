@@ -22,7 +22,7 @@ const Modal: FunctionComponent<Props> = (props) => {
       <Backdrop onClick={onClose}>
         <StyledModal size={size} data-el="modal-container">
           <Header size={size} title={title} onClose={onClose} />
-          <Content data-el="modal-content">
+          <Content size={size} data-el="modal-content">
             {children}
           </Content>
           <Footer footer={footer} actions={actions} />

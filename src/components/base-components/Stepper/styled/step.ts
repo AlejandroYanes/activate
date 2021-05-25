@@ -9,6 +9,7 @@ const getContainerStyles = (props) => {
   const { isActive, theme: { colors } } = props;
   const borderColor = isActive ? colors.BRAND : 'transparent';
   const hoverColor = isActive ? colors.BRAND_HIGHLIGHT : colors.BRAND_SHADE;
+  const fontHoverColor = isActive ? colors.WHITE : colors.FONT;
   const focusColor = colors.BRAND_HIGHLIGHT;
 
   return css`
@@ -19,7 +20,7 @@ const getContainerStyles = (props) => {
     border-color: ${hoverColor};
 
     > span {
-      color: ${colors.FONT};
+      color: ${fontHoverColor};
       background-color: ${hoverColor};
     }
   }

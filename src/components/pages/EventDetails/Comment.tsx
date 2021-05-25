@@ -5,7 +5,7 @@ import { Paragraph, Text } from 'components/base-components/Typography';
 import IconButton from 'components/base-components/IconButton';
 import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { Comment as StyledComment, Details, Footer, Header } from './styled/comment';
 
@@ -65,7 +65,7 @@ const Comment: FunctionComponent<Props> = (props) => {
               onClick={toggleResponseSection}
               label="Show Response"
               variant="flat"
-              color="font"
+              color="background"
               sm
             />
           </RenderIf>
@@ -74,7 +74,7 @@ const Comment: FunctionComponent<Props> = (props) => {
               onClick={toggleResponseSection}
               label="Hide Response"
               variant="flat"
-              color="font"
+              color="background"
               sm
             />
           </RenderIf>

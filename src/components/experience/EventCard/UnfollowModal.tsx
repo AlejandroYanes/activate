@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { useAppColors } from 'components/providers/Theme';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { Text } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import Modal from 'components/base-components/Modal';
-import { Layout, useAppLayout } from '../../providers/Layout';
 
 interface Props {
   isVisible: boolean;

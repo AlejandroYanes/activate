@@ -84,7 +84,7 @@ const getToggleStyles = (props) => {
       }
     }
   }
-  
+
   return undefined;
 };
 
@@ -99,10 +99,10 @@ export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => 
   justify-content: center;
   cursor: pointer;
   transition: all 150ms linear;
-  ${getPositionStyles};
   ${getSize};
-  ${getVariantStyles}
-  ${getToggleStyles}
+  ${getToggleStyles};
+  ${getVariantStyles};
+  ${getPositionStyles};
 
   &:active {
     transform: scale(0.9);

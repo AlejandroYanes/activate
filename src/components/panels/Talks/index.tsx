@@ -114,7 +114,7 @@ const TalksPanel: FunctionComponent = () => {
       variant="fill"
       buttonColor="accent"
       color={colors.WHITE}
-      icon={Icons.ADD_USER}
+      icon={Icons.PENCIL}
       onClick={openContactList}
     />
   );

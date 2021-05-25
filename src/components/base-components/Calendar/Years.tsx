@@ -17,7 +17,7 @@ const Years: FunctionComponent<Props> = (props) => {
 
   const yearButtons = useMemo(() => {
     const yearRange = resolveYearRange(currentDate);
-    
+
     return yearRange.map((y) => (
       <Year
         key={y}
@@ -26,7 +26,7 @@ const Years: FunctionComponent<Props> = (props) => {
         isSelected={y === currentDate.getFullYear()}
         onClick={handleYearChange}
         variant="flat"
-        color="font"
+        color="background"
         mB
       />
     ));

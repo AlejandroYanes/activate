@@ -6,7 +6,6 @@ export const Theme = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  cursor: pointer;
 `;
 
 export const Palette = styled.div`

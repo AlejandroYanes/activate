@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useAppColors, useAppTheme } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
+import { useAuthData } from 'components/providers/Auth';
 import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
@@ -15,6 +16,7 @@ import {
 } from './styled';
 
 const VerticalMenu: FunctionComponent = () => {
+  const { userInfo } = useAuthData();
   const layout = useAppLayout();
   const Colors = useAppColors();
   const { pathname } = useLocation();
@@ -36,7 +38,7 @@ const VerticalMenu: FunctionComponent = () => {
           layout={layout}
           currentPath={pathname}
           path="/app/profile"
-          icon={<Avatar src="user3" size="x-small" />}
+          icon={<Avatar src={userInfo.avatar} size="small" />}
         />
         <MenuBlock
           layout={layout}

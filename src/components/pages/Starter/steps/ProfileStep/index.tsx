@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useRef } from 'react';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Title } from 'components/base-components/Typography';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import { Field, Form } from 'components/base-components/Form';
@@ -25,6 +26,7 @@ interface Props {
 
 const ProfileStep: FunctionComponent<Props> = (props) => {
   const { isLoading, onNext } = props;
+  const layout = useAppLayout();
   const filePickerRef = useRef(undefined);
   const {
     state: {
@@ -57,6 +59,14 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
               <Field name="userName" label="User Name" />
               <Field name="name" label="Name" mT />
               <Field name="lastName" label="Last Name" mT />
+              <RenderIf condition={layout !== Layout.MOBILE}>
+                <NextButton
+                  onClick={handleSubmit}
+                  isLoading={isLoading}
+                  label="Next"
+                  variant="fill"
+                />
+              </RenderIf>
             </InputBox>
             <AvatarsBox>
               <Field
@@ -74,11 +84,11 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
                 <PickItem value={AvatarOptions.WOMAN_2}>
                   <Avatar src={AvatarOptions.WOMAN_2} size="large" />
                 </PickItem>
-                <PickItem value={AvatarOptions.MAN_1}>
-                  <Avatar src={AvatarOptions.MAN_1} size="large" />
-                </PickItem>
                 <PickItem value={AvatarOptions.MAN_2}>
                   <Avatar src={AvatarOptions.MAN_2} size="large" />
+                </PickItem>
+                <PickItem value={AvatarOptions.MAN_1}>
+                  <Avatar src={AvatarOptions.MAN_1} size="large" />
                 </PickItem>
                 <PickItem value={AvatarOptions.ADD}>
                   <SvgIcon icon={Icons.CAMERA_ADD} size="x-large" />
@@ -98,12 +108,14 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
               <ErrorText text={errors.avatar} />
             </AvatarsBox>
           </ProfileBox>
-          <NextButton
-            onClick={handleSubmit}
-            isLoading={isLoading}
-            label="Next"
-            variant="fill"
-          />
+          <RenderIf condition={layout === Layout.MOBILE}>
+            <NextButton
+              onClick={handleSubmit}
+              isLoading={isLoading}
+              label="Next"
+              variant="fill"
+            />
+          </RenderIf>
         </Form>
       </Content>
       <Illustration step={2} />

@@ -9,7 +9,7 @@ import {
 } from 'date-fns';
 import { generateUID } from 'helpers';
 import { Icons } from 'components/base-components/SvgIcon';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import { Options as StyledOptions } from './styled/options';
 
 const today = new Date();
@@ -67,7 +67,7 @@ const Options: FunctionComponent<Props> = (props) => {
         onClick={() => onSelect(value)}
         label={label}
         leftIcon={icon}
-        color="font"
+        color="background"
         variant="flat"
         align="start"
         mB

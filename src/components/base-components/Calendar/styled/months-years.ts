@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 
 export const StyledList = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ const getBasicStyles = (props) => {
     color: ${colors.WHITE};
     `;
   }
-  
+
   return '';
 };
 
@@ -30,7 +30,7 @@ const getHoverStyles = (props) => {
     color: ${colors.WHITE};
     `;
   }
-  
+
   return '';
 };
 

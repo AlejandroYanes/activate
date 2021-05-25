@@ -8,15 +8,15 @@ const AppProviders: FunctionComponent = (props) => {
   const { children } = props;
 
   return (
-    <LayoutProvider>
-      <ThemeProvider>
-        <PanelSectionsProvider>
-          <AuthProvider>
+    <AuthProvider>
+      <LayoutProvider>
+        <ThemeProvider>
+          <PanelSectionsProvider>
             {children}
-          </AuthProvider>
-        </PanelSectionsProvider>
-      </ThemeProvider>
-    </LayoutProvider>
+          </PanelSectionsProvider>
+        </ThemeProvider>
+      </LayoutProvider>
+    </AuthProvider>
   );
 };
 

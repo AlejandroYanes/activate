@@ -17,7 +17,7 @@ const PrimaryHeader = ({ title, onClose }) => (
     direction="row"
     justify="space-between"
     align="center"
-    padding="0 0 20px 0"
+    padding="0 16px 20px 16px"
   >
     <RenderIf condition={typeof title === 'string'} fallback={title}>
       <Title margin="0" padding="0 0 0 12px" level={3} color="font">{title}</Title>
@@ -73,7 +73,7 @@ const Header: FunctionComponent<Props> = (props) => {
 
   if (title) {
     const HeaderComponent = sizeMap[size];
-    
+
     return (
       <HeaderComponent title={title} onClose={onClose} />
     );
