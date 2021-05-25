@@ -63,7 +63,7 @@ const Tab: FunctionComponent<Props> = (props) => {
         />
       );
     }
-    
+
     return icon;
   }, [icon, disableFocus, isHovered, isFocused, isSelected, colors, useDarkStyle]);
 

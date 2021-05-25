@@ -7,8 +7,9 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { UserInfo } from 'models/user';
-import { getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
+import { UserInfo, VerificationLevel } from 'models/user';
+import { clearStorage, getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
+import { AppTheme } from '../Theme';
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -18,29 +19,49 @@ interface AuthState {
 interface AuthContext {
   state: AuthState;
   actions: {
+    updateUserInfo: (user: UserInfo) => void;
     login: (user: UserInfo) => void;
     logout: () => void;
   },
 }
 // todo: revert
-const initialState: AuthState = {
-  isLoggedIn: false,
-  userInfo: undefined,
+const getInitialState = (): AuthState => {
+  return {
+    isLoggedIn: false,
+    userInfo: undefined,
+  };
+  // return {
+  //   isLoggedIn: true,
+  //   userInfo: {
+  //     avatar: 'user4',
+  //     userName: '@alejandro.yanes94',
+  //     name: 'Alejandro',
+  //     lastName: 'Yanes',
+  //     theme: AppTheme.SummerVibes,
+  //     useDarkStyle: true,
+  //     verificationLevel: VerificationLevel.INTERESTS_ADDED
+  //   } as UserInfo,
+  // };
 };
 
 const AuthContext = createContext<AuthContext>(undefined);
 
 const AuthProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [state, setState] = useState<AuthState>(initialState);
+  const [state, setState] = useState<AuthState>(getInitialState);
 
-  const login = useCallback((userInfo: UserInfo) => {
-    storeAuthToken(userInfo.accessToken);
+  const updateUserInfo = useCallback((userInfo: UserInfo) => {
     storeUserInfo(userInfo);
     setState({ isLoggedIn: true, userInfo });
   }, []);
 
+  const login = useCallback((userInfo: UserInfo) => {
+    storeAuthToken(userInfo.accessToken);
+    updateUserInfo(userInfo);
+  }, []);
+
   const logout = useCallback(() => {
+    clearStorage();
     setState({ isLoggedIn: false, userInfo: undefined });
   }, []);
 
@@ -54,10 +75,11 @@ const AuthProvider: FunctionComponent = (props) => {
   const contextValue = useMemo<AuthContext>(() => ({
     state,
     actions: {
+      updateUserInfo,
       login,
       logout,
     },
-  }), [state, login, logout]);
+  }), [state, updateUserInfo, login, logout]);
 
   return (
     <AuthContext.Provider value={contextValue}>

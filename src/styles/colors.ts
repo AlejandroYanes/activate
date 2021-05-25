@@ -1,4 +1,4 @@
-import { getShade } from 'helpers';
+import { getShade, changeColorLight } from 'helpers/colors';
 
 export interface ColorScheme {
   BRAND: string;
@@ -42,6 +42,7 @@ export interface ColorScheme {
   FONT_SHADE: string;
   BACKGROUND: string;
   BACKGROUND_LIGHT: string;
+  BACKGROUND_LIGHTER: string;
   BACKGROUND_SHADE: string;
 }
 
@@ -49,8 +50,9 @@ export const lightStyleColors = {
   FONT: '#151718',
   FONT_SECONDARY: '#57585f',
   FONT_SHADE: getShade('#151718'),
-  BACKGROUND: '#f5f6fa',
-  BACKGROUND_LIGHT: '#fff',
+  BACKGROUND: changeColorLight('#f5f6fa', -0.03),
+  BACKGROUND_LIGHT: '#f5f6fa',
+  BACKGROUND_LIGHTER: '#fff',
   BACKGROUND_SHADE: getShade('#f5f6fa'),
 };
 
@@ -58,8 +60,9 @@ export const darkStyleColors = {
   FONT: '#f5f6fa',
   FONT_SECONDARY: '#b1b1b4',
   FONT_SHADE: getShade('#ffffff'),
-  BACKGROUND: '#1F1F1F',
-  BACKGROUND_LIGHT: '#141414',
+  BACKGROUND: changeColorLight('#121212', 0.05),
+  BACKGROUND_LIGHT: changeColorLight('#121212', 0.025),
+  BACKGROUND_LIGHTER: '#121212',
   BACKGROUND_SHADE: getShade('#1F1F1F'),
 };
 
@@ -74,7 +77,7 @@ export const fixedColors = {
 
 export const basicColors = {
   INFO: '#0B4F99',
-  WARNING: '#AB830D',
-  ERROR: '#AE1E1E',
-  SUCCESS: '#107F63',
+  WARNING: '#ff9700',
+  ERROR: '#d20100',
+  SUCCESS: '#139272',
 };

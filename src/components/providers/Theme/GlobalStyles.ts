@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { scrollThumbWidth } from 'styles/variables';
 
 const getWebkitScrollBarThumbColor = (props) => {
   const { theme: { colors } } = props;
@@ -9,16 +10,10 @@ const getWebkitScrollBarThumbColor = (props) => {
 };
 
 const getFirefoxScrollBarColor = (props) => {
-  const { theme: { colors, useDarkStyle } } = props;
-
-  if (useDarkStyle) {
-    return css`
-      scrollbar-color: ${colors.ACCENT} ${colors.BACKGROUND_SHADE};
-    `;
-  }
+  const { theme: { colors } } = props;
 
   return css`
-    scrollbar-color: ${colors.ACCENT} ${colors.BACKGROUND_SHADE};
+    scrollbar-color: ${colors.ACCENT} ${colors.BACKGROUND};
   `;
 };
 
@@ -43,7 +38,6 @@ const commonStyles = css`
 
   a {
     text-decoration: none;
-    color: ${({theme}) => theme.colors.BRAND_FONT_HIGHLIGHT};
   }
 `;
 
@@ -52,21 +46,21 @@ export const PrimaryGlobalStyles = createGlobalStyle`
 
   body {
     &::-webkit-scrollbar-track {
-      background: ${({ theme }) => theme.colors.BACKGROUND};
+      background: transparent;
     }
   }
 
   *::-webkit-scrollbar {
-    width: 5px;
+    width: ${scrollThumbWidth};
   }
 
   *::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.BACKGROUND_SHADE};
+    background: transparent;
   }
 
   *::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    border: 1px solid ${({ theme }) => theme.colors.BACKGROUND_SHADE};
+    border: 1px solid ${({ theme }) => theme.colors.BACKGROUND};
     ${getWebkitScrollBarThumbColor};
   }
 

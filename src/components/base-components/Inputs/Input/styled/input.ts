@@ -21,7 +21,7 @@ export const getColorStyles = (props) => {
 
   return css`
       border: 1px solid transparent;
-      background-color: ${colors.BACKGROUND_LIGHT};
+      background-color: ${colors.BACKGROUND_LIGHTER};
       color: ${colors.FONT};
       transition: all 150ms linear;
 

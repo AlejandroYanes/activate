@@ -5,8 +5,8 @@ import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 
 interface Props {
   icon?: Icons | ReactNode;
-  variant?: 'base' | 'fill' | 'flat';
-  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'font';
+  variant?: 'text' | 'outline' | 'fill' | 'flat';
+  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
   isHovered: boolean;
   sm: boolean;
 }

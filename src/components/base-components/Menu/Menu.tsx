@@ -35,7 +35,7 @@ const Menu: FunctionComponent<Props> = (props) => {
   const triggerElement = useMemo(() => {
     if (typeof trigger === 'function') {
       const MenuTrigger = trigger;
-      
+
       return (
         <MenuTrigger isOpen={isOpen} toggleMenu={toggleMenu} {...otherProps} />
       );

@@ -1,3 +1,5 @@
+import { AppTheme } from 'components/providers/Theme';
+
 export interface AuthCredentials {
   email: string;
   password: string;
@@ -14,13 +16,14 @@ export interface ProfileDto {
   name: string;
   lastName: string;
   userName: string;
-  email: string;
+  email?: string;
   avatar: string;
-  verificationLevel: VerificationLevel;
+  theme?: AppTheme;
+  useDarkStyle?: boolean;
+  verificationLevel?: VerificationLevel;
 }
 
 export interface UserInfo extends ProfileDto {
   sub: string;
-  fullName: string;
   accessToken: string;
 }

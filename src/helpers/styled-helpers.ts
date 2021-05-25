@@ -48,6 +48,7 @@ export const getFontShadeColor = ({ theme }) => theme.colors.FONT_SHADE;
 
 export const getBgdColor = ({ theme }) => theme.colors.BACKGROUND;
 export const getBgdLightColor = ({ theme }) => theme.colors.BACKGROUND_LIGHT;
+export const getBgdLighterColor = ({ theme }) => theme.colors.BACKGROUND_LIGHTER;
 
 export const getSuccessColor = ({ theme }) => theme.colors.SUCCESS;
 export const getSuccessShadeColor = ({ theme }) => theme.colors.SUCCESS_SHADE;

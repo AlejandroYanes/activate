@@ -4,7 +4,6 @@ import React, {
   useCallback,
   useContext,
   useMemo,
-  useState,
 } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import { ColorScheme } from 'styles/colors';
@@ -14,11 +13,13 @@ import {
   NeonLightsTheme,
   GrapesTheme,
   SummerVibesTheme,
+  FruitsTheme,
 } from 'styles/themes';
 import { composeColorScheme } from 'helpers';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import { MobileGlobalStyles, PrimaryGlobalStyles } from './GlobalStyles';
+import { useAuthActions, useAuthData } from '../Auth';
 
 export enum AppTheme {
   Grapes = 'Grapes',
@@ -26,6 +27,7 @@ export enum AppTheme {
   SummerVibes = 'SummerVibes',
   LifeIsABeach = 'LifeIsABeach',
   DuskLights = 'DuskLights',
+  Fruits = 'Fruits',
 }
 
 interface ThemeContextValue {
@@ -43,6 +45,7 @@ const themesMap = {
   [AppTheme.SummerVibes]: SummerVibesTheme,
   [AppTheme.LifeIsABeach]: LifeIsABeachTheme,
   [AppTheme.DuskLights]: DuskLightsTheme,
+  [AppTheme.Fruits]: FruitsTheme,
 };
 
 const ThemeContext = createContext<ThemeContextValue>(undefined);
@@ -55,14 +58,22 @@ const globalStyles = {
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const [theme, setTheme] = useState<AppTheme>(AppTheme.NeonLights);
-  const [useDarkStyle, setUseDarkTheme] = useState(true);
   const layout = useAppLayout();
+  const { userInfo } = useAuthData();
+  const { updateUserInfo } = useAuthActions();
+  const theme = userInfo?.theme || AppTheme.Fruits;
+  const useDarkStyle = userInfo ? userInfo.useDarkStyle : true;
 
-  const toggleLightStyle = useCallback(
-    () => setUseDarkTheme((oldState) => !oldState),
-    [],
-  );
+  const setTheme = useCallback((theme: AppTheme) => {
+    updateUserInfo({ ...userInfo, theme });
+  }, [userInfo]);
+
+  const toggleLightStyle = useCallback(() => {
+    updateUserInfo({
+      ...userInfo,
+      useDarkStyle: !userInfo.useDarkStyle,
+    });
+  }, [userInfo]);
 
   const themeProps = useMemo(
     () => {

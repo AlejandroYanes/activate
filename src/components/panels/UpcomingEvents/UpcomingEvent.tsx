@@ -20,7 +20,7 @@ const UpcomingEvent: FunctionComponent<Props> = (props) => {
   const { title, date, address } = props;
 
   return (
-    <Link to="/event-details">
+    <Link to="/app/event-details">
       <Event data-el="upcoming-event">
         <Liner />
         <FlexBox direction="column" padding="8px 4px 8px 14px">

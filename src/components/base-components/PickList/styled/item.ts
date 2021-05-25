@@ -7,7 +7,6 @@ export const StyledItem = styled.li.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   padding: 0;
-  //margin: 0 12px;
   height: ${({ size }) => sizeMap[size]};
   width: ${({ size }) => sizeMap[size]};
 
@@ -17,19 +16,45 @@ export const StyledItem = styled.li.attrs(anyPropsAttrs)`
 `;
 
 const getColorStyles = (props) => {
-  const { theme: { colors }, color, dashed, isSelected } = props;
+  const {
+    theme: {
+      colors,
+    },
+    color,
+    dashed,
+    readonly,
+    isSelected,
+  } = props;
 
+  const colorInScheme = color.toUpperCase();
   const borderColor = isSelected
-    ? colors[color.toUpperCase()]
+    ? colors[colorInScheme]
     : colors.FONT_SHADE;
 
-  const bgColor = colors[`${color.toUpperCase()}_SHADE`];
-  const hoverColor = colors[`${color.toUpperCase()}_HIGHLIGHT`];
+  const bgColor = colors[`${colorInScheme}_SHADE`];
+  const hoverColor = colors[`${colorInScheme}_HIGHLIGHT`];
+
+  if (readonly) {
+    return css`
+      cursor: default;
+      border: 1px ${dashed ? 'dashed' : 'solid'} ${borderColor};
+
+      & > div[data-el="pick_item-mark"] {
+        background-color: ${colors[colorInScheme]};
+      }
+    `;
+  }
 
   return css`
+    cursor: pointer;
     border: 1px ${dashed ? 'dashed' : 'solid'} ${borderColor};
+
     & > div[data-el="pick_item-mark"] {
-      background-color: ${colors[color.toUpperCase()]};
+      background-color: ${colors[colorInScheme]};
+    }
+
+    &:active {
+      transform: scale(0.95);
     }
 
     &:hover {
@@ -56,17 +81,13 @@ export const Touchable = styled.button.attrs(anyPropsAttrs)`
   overflow: hidden;
   position: relative;
   background-color: transparent;
-  cursor: pointer;
+  font-family: Comfortaa, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   ${getColorStyles};
   transition: all 100ms linear;
-
-  &:active {
-    transform: scale(0.95);
-  }
 `;
 
 export const Mark = styled.div.attrs(anyPropsAttrs)`

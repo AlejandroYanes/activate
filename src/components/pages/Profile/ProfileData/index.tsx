@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
-import { useAuthActions } from 'components/providers/Auth';
+import { useAuthData } from 'components/providers/Auth';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import ProfileCard from 'components/experience/ProfileCard';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
-import IconButton from 'components/base-components/IconButton';
-import { ProfileTabs } from '.';
+import ProfileCard from 'components/experience/ProfileCard';
+import ProfileActions from './ProfileActions';
+import { ProfileTabs } from '../';
 
 interface Props {
   activeTab: string;
@@ -14,20 +14,27 @@ interface Props {
 
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { activeTab, setActiveTab } = props;
-  const { logout } = useAuthActions();
+  const {
+    userInfo: {
+      avatar,
+      userName,
+      name,
+      lastName,
+    },
+  } = useAuthData();
 
   return (
     <ProfileCard
-      avatar="user3"
-      name="Alejandro Yanes"
-      userName="@alejandro.yanes94"
+      avatar={avatar}
+      name={`${name} ${lastName}`}
+      userName={userName}
       leftStatLabel="Following"
       leftStatValue={120}
       rightStatLabel="Friends"
       rightStatValue={80}
     >
       <AbsoluteContent top={16} right={16}>
-        <IconButton onClick={logout} icon={Icons.LOGOUT} />
+        <ProfileActions />
       </AbsoluteContent>
       <Tabset
         activeTab={activeTab}

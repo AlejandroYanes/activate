@@ -77,7 +77,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
     setState({ isBooked: true, showUnfollowModal: false });
   }, []);
 
-  const link = layout !== Layout.MOBILE ? '/event-details' : '#event-details';
+  const link = layout !== Layout.MOBILE ? '/app/event-details' : '#event-details';
 
   return (
     <>

@@ -3,7 +3,7 @@ import { ManLooking, ManLookingDown } from 'components/base-components/Illustrat
 
 export const StyledManLooking = styled(ManLooking)`
   position: absolute;
-  top: 48px;
+  top: 64px;
   left: 54px;
 `;
 

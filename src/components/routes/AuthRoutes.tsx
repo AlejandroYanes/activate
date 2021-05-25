@@ -10,6 +10,7 @@ import SearchPage from 'components/pages/Search';
 import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
 import TalksPage from 'components/pages/Talks';
+import InterestsPage from 'components/pages/Interests';
 
 
 const AuthRoutes: FunctionComponent = () => {
@@ -38,6 +39,7 @@ const AuthRoutes: FunctionComponent = () => {
         <Route path="/app/publisher" component={PublisherPage} />
         <Route path="/app/user" component={UserPage} />
         <Route path="/app/talks" component={TalksPage} />
+        <Route path="/app/interests" component={InterestsPage} />
         <Redirect to="/app" />
       </Switch>
     </AuthLayout>

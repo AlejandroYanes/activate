@@ -82,6 +82,7 @@ import FlaskIcon from './Flask';
 import RestaurantIcon from './Restaurant';
 import PetIcon from './Pet';
 import FashionIcon from './Fashion';
+import PencilIcon from './Pencil';
 
 export enum Icons {
   HOME = 'home',
@@ -126,6 +127,7 @@ export enum Icons {
   FORM = 'form',
   COMMENTS = 'comments',
   CREATE_PENCIL = 'create_pencil',
+  PENCIL = 'pencil',
   EDIT_PENCIL = 'edit_pencil',
   CHECK_MARK = 'check_mark',
   SUN = 'sun',
@@ -212,6 +214,7 @@ export const icons = {
   [Icons.FORM]: (props) => <FormIcon {...props} />,
   [Icons.COMMENTS]: (props) => <CommentsIcon {...props} />,
   [Icons.CREATE_PENCIL]: (props) => <CreatePenIcon {...props} />,
+  [Icons.PENCIL]: (props) => <PencilIcon {...props} />,
   [Icons.EDIT_PENCIL]: (props) => <EditPenIcon {...props} />,
   [Icons.CHECK_MARK]: (props) => <CheckMarkIcon {...props} />,
   [Icons.SUN]: (props) => <SunIcon {...props} />,

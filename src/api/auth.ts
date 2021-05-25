@@ -17,6 +17,16 @@ const authApi = {
   updateProfile: (profileData: ProfileDto): Promise<AxiosResponse<UserInfo>> => {
     return patch(`${endpoint}/profile`, profileData, { authenticated: true });
   },
+  updateTheme: (
+    theme: string,
+    useDarkStyle: boolean,
+  ): Promise<AxiosResponse<UserInfo>> => {
+    return patch(
+      `${endpoint}/profile`,
+      { theme, useDarkStyle },
+      { authenticated: true },
+    );
+  },
   updateAvatar: (image: File): Promise<AxiosResponse<UserInfo>> => {
     const formData = new FormData();
     formData.append('image', image);

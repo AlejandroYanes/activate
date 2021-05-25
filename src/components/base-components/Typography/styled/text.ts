@@ -36,7 +36,6 @@ const getColor = (props) => {
 export const Text = styled.span.attrs(anyPropsAttrs)`
   white-space: normal;
   font-size: ${({ size }) => sizeMap[size]};
-  line-height: ${({ size }) => `calc(${sizeMap[size]} + 4px)`};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};
   ${getColor};

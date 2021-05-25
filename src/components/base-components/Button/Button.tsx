@@ -13,8 +13,8 @@ export interface ButtonProps extends PositionProps {
   rightIcon?: Icons | ReactNode;
   isLoading?: boolean;
   type?: 'button' | 'submit' | 'reset';
-  variant?: 'base' | 'fill' | 'flat';
-  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'font';
+  variant?: 'text' | 'flat' | 'outline' | 'fill';
+  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
   align?: 'start' | 'center' | 'end';
   sm?: boolean;
 }
@@ -79,7 +79,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
 
 Button.defaultProps = {
   type: 'button',
-  variant: 'base',
+  variant: 'flat',
   color: 'brand',
   align: 'center',
   className: undefined,

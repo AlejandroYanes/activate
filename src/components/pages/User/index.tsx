@@ -12,7 +12,7 @@ import { Case, Switch } from 'components/base-components/Switch';
 import { users } from '../../modals/Profile/users';
 import { events } from '../Discover/events';
 import { ProfileTabs } from '../Profile';
-import { UsersCard } from '../Profile/styled';
+import { UsersCard } from './styled';
 
 enum UserTabs {
   EVENTS = 'Events',

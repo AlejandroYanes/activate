@@ -6,7 +6,7 @@ import Modal from 'components/base-components/Modal';
 import { Input } from 'components/base-components/Inputs';
 import UsersList from 'components/experience/UsersList';
 import FlexBox from 'components/base-components/FlexBox';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import { events } from '../../pages/Discover/events';
 import { users } from '../Profile/users';

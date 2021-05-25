@@ -28,7 +28,13 @@ const Toggle: FunctionComponent<Props> = (props) => {
   return (
     <StyledToggle {...rest}>
       <HiddenInput type="checkbox" checked={value} readOnly />
-      <FauxContainer data-el="faux-container" checked={value} onClick={onChange}>
+      <FauxContainer
+        tabIndex={0}
+        role="checkbox"
+        data-el="faux-container"
+        checked={value}
+        onClick={onChange}
+      >
         <FauxNob layout transition={springAnimation} data-el="faux-nob">
           {nobNode}
         </FauxNob>

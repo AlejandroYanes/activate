@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import { Field, Form } from 'components/base-components/Form';
 import TextArea from 'components/base-components/Inputs/TextArea';
 import Modal from 'components/base-components/Modal';

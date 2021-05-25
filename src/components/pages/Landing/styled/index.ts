@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
 import { anyPropsAttrs } from 'helpers';
 import { Layout } from 'components/providers/Layout';
+import { ZLevels } from '../../../../styles/z-levels';
 
 const contentStyleMap = {
   [Layout.DESKTOP]: css`
@@ -62,8 +63,13 @@ export const RightBlock = styled.div`
 `;
 
 const illustrationStylesMap = {
-  [Layout.DESKTOP]: '',
-  [Layout.TABLET]: 'height: 200px',
+  [Layout.DESKTOP]: `
+    z-index: ${ZLevels.componentLevel2};
+  `,
+  [Layout.TABLET]: `
+    height: 200px;
+    align-items: flex-start;
+  `,
   [Layout.MOBILE]: '',
 };
 

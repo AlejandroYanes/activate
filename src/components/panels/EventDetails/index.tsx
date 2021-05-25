@@ -2,7 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import faker from 'faker';
 import { formatCurrency, formatDateTime } from 'helpers';
 import { Text } from 'components/base-components/Typography';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import Badge from 'components/base-components/Badge';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import FlexBox from 'components/base-components/FlexBox';

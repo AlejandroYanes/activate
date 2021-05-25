@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppLayout } from 'components/providers/Layout';
 import { Title } from 'components/base-components/Typography';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import EventCard from 'components/experience/EventCard';
 import Illustration from './Illustration';
 import { events } from '../Discover/events';

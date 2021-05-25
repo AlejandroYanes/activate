@@ -38,7 +38,7 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
   return (
     <StyledContainer {...rest}>
       <InputLabel text={label} required={required} />
-      <InputIcon icon={icon} />
+      <InputIcon icon={icon} topSpaced />
       <StyledInput
         type={showPassword ? 'text' : 'password'}
         padRight
@@ -50,7 +50,7 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
         onFocus={onFocus}
         onBlur={onBlur}
       />
-      <AbsoluteContent floatRight>
+      <AbsoluteContent topSpaced floatRight>
         <IconButton
           onClick={toggleShowPassword}
           icon={showPassword ? Icons.UNLOCK : Icons.LOCK}

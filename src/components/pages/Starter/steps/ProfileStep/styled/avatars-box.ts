@@ -6,11 +6,13 @@ const avatarsBoxStyles = {
     display: flex;
     flex-direction: column;
     padding-left: 48px;
+    flex: 1;
   `,
   [Layout.TABLET]: css`
     display: flex;
     flex-direction: column;
     padding-left: 48px;
+    //flex: 1;
   `,
   [Layout.MOBILE]: css`
     display: flex;

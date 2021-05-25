@@ -15,3 +15,7 @@ export function storeUserInfo(userInfo: UserInfo) {
 export function getUserInfo(): UserInfo {
   return JSON.parse(window.sessionStorage.getItem('userInfo'));
 }
+
+export function clearStorage() {
+  window.sessionStorage.clear()
+}

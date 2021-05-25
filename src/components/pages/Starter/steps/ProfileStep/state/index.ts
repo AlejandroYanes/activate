@@ -12,7 +12,7 @@ export * from './types';
 
 export default function useProfileStepState(fileInputRef, onNext) {
   const [state, dispatch] = useReducer(profileStepReducer, {
-    profile: {} as ProfileDto,
+    profile: { name: '', lastName: '', userName: '', avatar: '' } as ProfileDto,
     errors: {},
     image: undefined,
     imagePreview: undefined,

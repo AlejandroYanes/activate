@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
 import { Field } from 'components/base-components/Form';
-import Button from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 import Checkbox from 'components/base-components/Checkbox';
 import { Text } from 'components/base-components/Typography';
 import { SignAction } from '../state';

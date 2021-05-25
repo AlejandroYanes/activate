@@ -19,6 +19,7 @@ const PickItem: FunctionComponent<Props> = (props) => {
     size,
     color,
     multiple,
+    readonly,
   } = usePickListContext();
 
   const handleOnClick = useCallback(() => onChange(value), [onChange, value]);
@@ -32,8 +33,10 @@ const PickItem: FunctionComponent<Props> = (props) => {
   return (
     <StyledItem tabIndex={-1} size={size}>
       <Touchable
+        tabIndex={readonly ? -1 : 0}
         color={color}
         dashed={dashed}
+        readonly={readonly}
         isSelected={isSelected}
         onClick={handleOnClick}
         data-pick-item-value={value}

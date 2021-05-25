@@ -1,24 +1,29 @@
 export const GrapesTheme = {
-  BRAND: '#8F008F',
-  ACCENT: '#009554',
+  BRAND: '#a32c87',
+  ACCENT: '#018049',
 };
 
 export const NeonLightsTheme = {
-  BRAND: '#01798E',
+  BRAND: '#026397',
   ACCENT: '#E31373',
 };
 
 export const SummerVibesTheme = {
   BRAND: '#00765E',
-  ACCENT: '#D78E02',
+  ACCENT: '#ff8900',
 };
 
 export const LifeIsABeachTheme = {
-  BRAND: '#01757f',
-  ACCENT: '#d46f25',
+  BRAND: '#db6002',
+  ACCENT: '#02889a',
 };
 
 export const DuskLightsTheme = {
-  BRAND: '#943B5E',
+  BRAND: '#a32959',
   ACCENT: '#d27e44',
+};
+
+export const FruitsTheme = {
+  BRAND: '#3a5a81',
+  ACCENT: '#ff8900',
 };
