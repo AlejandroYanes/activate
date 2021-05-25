@@ -7,9 +7,8 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { UserInfo, VerificationLevel } from 'models/user';
+import { UserInfo } from 'models/user';
 import { clearStorage, getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
-import { AppTheme } from '../Theme';
 
 interface AuthState {
   isLoggedIn: boolean;
