@@ -24,6 +24,10 @@ export default function handleSubmit(
       });
     }
 
+    dispatch({
+      type: ProfileFormActions.START_API_CALL,
+    });
+
     const onProfileUpdated = (response) => {
       if (profile.avatar === AvatarOptions.PHOTO && image) {
         return authApi.updateAvatar(image);
@@ -47,6 +51,9 @@ export default function handleSubmit(
           payload: response.validationErrors,
         });
       } else {
+        dispatch({
+          type: ProfileFormActions.FINISH_API_CALL,
+        });
         showNotification({
           type: NotificationType.ERROR,
           message: 'There has is been an issue with your profile',
