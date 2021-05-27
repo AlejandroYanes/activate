@@ -1,17 +1,17 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAppTheme } from 'components/providers/Theme';
+import Modal from 'components/base-components/Modal';
+import FlexBox from 'components/base-components/FlexBox';
+import { Text } from 'components/base-components/Typography';
 import Toggle from 'components/base-components/Toggle';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import { Text } from 'components/base-components/Typography';
-import { LinkButton } from 'components/base-components/Button';
-import InterestsGrid from 'components/experience/InterestsGrid';
 import ThemesGrid from 'components/experience/ThemesGrid';
-import { StyledSettings } from './styled';
 import updateProfileTheme from './update-profile-theme';
-import { interests } from './interests';
 import { themes } from './themes';
 
-const Settings: FunctionComponent = () => {
+const AppColorsModal: FunctionComponent = () => {
+  const { goBack } = useHistory();
   const {
     colors,
     theme: activeTheme,
@@ -40,31 +40,31 @@ const Settings: FunctionComponent = () => {
   ), [colors]);
 
   return (
-    <StyledSettings>
-      <Text size="large" color="secondary" mB>Your Interests</Text>
-      <InterestsGrid interests={interests} readonly />
-      <LinkButton
-        to="/app/interests"
-        label="Manage"
-        margin="24px 0 0 auto"
-        color="brand"
-        variant="outline"
-      />
-      <Text size="large" color="secondary" mT mB>Colors</Text>
-      <ThemesGrid
-        themes={themes}
-        activeTheme={activeTheme}
-        onChange={handleThemeChange}
-      />
-      <Toggle
-        nobNode={useDarkStyle ? moonIcon : sunIcon}
-        label="Use Dark Style"
-        value={useDarkStyle}
-        onChange={handleLightStyleChange}
-        mT
-      />
-    </StyledSettings>
+    <Modal visible title="App Colors" onClose={goBack} size="mobile">
+      <FlexBox
+        data-el="settings-colors-modal-body"
+        direction="column"
+        align="stretch"
+        padding="24px 6px"
+      >
+        <ThemesGrid
+          mB
+          cols={2}
+          themes={themes}
+          activeTheme={activeTheme}
+          onChange={handleThemeChange}
+        />
+        <FlexBox align="center" justify="space-between" mT>
+          <Text>Use Dark Style</Text>
+          <Toggle
+            nobNode={useDarkStyle ? moonIcon : sunIcon}
+            value={useDarkStyle}
+            onChange={handleLightStyleChange}
+          />
+        </FlexBox>
+      </FlexBox>
+    </Modal>
   );
 };
 
-export default Settings;
+export default AppColorsModal;

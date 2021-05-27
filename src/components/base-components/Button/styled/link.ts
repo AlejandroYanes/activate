@@ -11,6 +11,7 @@ export const StyledLink = styled(Link)`
   box-sizing: border-box;
   border-radius: 100px;
   letter-spacing: 1px;
+  text-align: center;
   padding: 6px 12px;
   cursor: pointer;
   flex-shrink: 0;

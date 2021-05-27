@@ -27,7 +27,6 @@ const ProfileActions: FunctionComponent<PositionProps> = (props) => {
   return (
     <Menu trigger={menuTrigger} align="end" {...props}>
       <MenuItem label="Change Profile" onClick={openEditProfile} />
-      <MenuItem label="Change Email" onClick={openEditProfile} />
       <MenuItem label="Change Password" onClick={openEditProfile} />
       <MenuItem label="Logout" danger onClick={logout} />
     </Menu>

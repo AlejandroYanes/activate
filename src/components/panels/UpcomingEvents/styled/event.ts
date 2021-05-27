@@ -5,7 +5,7 @@ export const Liner = styled.div`
   top: 4px;
   left: 6px;
   bottom: 4px;
-  width: 2px;
+  width: 1px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.ACCENT};
   transition: all 150ms linear;

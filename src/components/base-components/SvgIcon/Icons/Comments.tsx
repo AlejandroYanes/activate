@@ -12,53 +12,12 @@ const CommentsIcon: FunctionComponent<IconProps> = (props) => {
       width={width}
       height={height}
       viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g>
-        <path
-          id="path956"
-          fill="none"
-          stroke={color}
-          strokeWidth={1.76933}
-          strokeMiterlimit={4}
-          strokeDasharray="none"
-          d="M 13.059353,17.311109 H 17.9324 c 0.403716,0 0.728729,-0.295669 0.728729,-0.662936 V 6.1567834 c 0,-0.3672665 -0.325013,-0.662936 -0.728729,-0.662936 H 2.6897192 v 0 c -0.403716,0 -0.7287291,0.2956695 -0.7287291,0.662936 V 16.648173 c 0,0.367267 0.3250131,0.662936 0.7287291,0.662936 h 1.7530206 1.1664364 0.3745232 v 0.424584 1.198274 2.800369 z"
-        />
-        <path
-          fill="none"
-          stroke={color}
-          strokeWidth={2.02599}
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          strokeMiterlimit={4}
-          strokeDasharray="none"
-          strokeOpacity={1}
-          d="M 4.5789312,9.7177163 H 16.471232"
-          id="path961"
-        />
-        <path
-          fill="none"
-          stroke={color}
-          strokeWidth={2.02599}
-          strokeLinecap="butt"
-          strokeLinejoin="miter"
-          strokeMiterlimit={4}
-          strokeDasharray="none"
-          strokeOpacity={1}
-          d="M 4.622892,13.397475 H 16.515193"
-          id="path965"
-        />
-        <path
-          id="path970"
-          fill="none"
-          stroke={color}
-          strokeWidth={1.76933}
-          strokeMiterlimit={4}
-          strokeDasharray="none"
-          d="m 21.825276,13.61494 h 0.148481 c 0.403717,0 0.728729,-0.295669 0.728729,-0.662936 V 2.4606152 c 0,-0.367267 -0.325012,-0.662936 -0.728729,-0.662936 H 6.7310769 v 0 c -0.403716,0 -0.72873,0.295669 -0.72873,0.662936 V 2.681333"
-        />
-      </g>
+      <path
+        fill={color}
+        d="M19,8H18V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17a1,1,0,0,0,.62.92A.84.84,0,0,0,3,18a1,1,0,0,0,.71-.29l2.81-2.82H8v1.44a3,3,0,0,0,3,3h6.92l2.37,2.38A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V11A3,3,0,0,0,19,8ZM8,11v1.89H6.11a1,1,0,0,0-.71.29L4,14.59V5A1,1,0,0,1,5,4H15a1,1,0,0,1,1,1V8H11A3,3,0,0,0,8,11Zm12,7.59-1-1a1,1,0,0,0-.71-.3H11a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z"
+      />
     </svg>
   );
 };

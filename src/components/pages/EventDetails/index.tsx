@@ -16,6 +16,7 @@ import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import EventImage from 'components/experience/EventImage';
+import { Modals } from 'components/modals';
 import Description from './Description';
 import Comments from './Comnments';
 import {
@@ -37,7 +38,7 @@ const event = {
 
 const EventDetailsPage: FunctionComponent = () => {
   const Colors = useAppColors();
-  const { goBack } = useHistory();
+  const { goBack, push } = useHistory();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
 
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
@@ -46,6 +47,10 @@ const EventDetailsPage: FunctionComponent = () => {
 
   const handleBookActionClick = useCallback(() => {
     setIsBooked((previousState) => !previousState);
+  }, []);
+
+  const inviteUsers = useCallback(() => {
+    push(Modals.INVITE);
   }, []);
 
   useEffect(() => {
@@ -83,7 +88,7 @@ const EventDetailsPage: FunctionComponent = () => {
             variant="flat"
             icon={Icons.FORWARD}
             color={Colors.INFO}
-            onClick={() => undefined}
+            onClick={inviteUsers}
             margin="0 0 0 auto"
           />
           <IconButton

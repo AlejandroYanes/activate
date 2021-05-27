@@ -5,7 +5,7 @@ import { Text } from 'components/base-components/Typography';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 import AvatarGroup from 'components/base-components/AvatarGroup';
-import { Event, Liner } from './styled/event';
+import { Event } from './styled/event';
 
 interface Props {
   id: string;
@@ -22,7 +22,7 @@ const UpcomingEvent: FunctionComponent<Props> = (props) => {
   return (
     <Link to="/app/event-details">
       <Event data-el="upcoming-event">
-        <Liner />
+        {/*<Liner />*/}
         <FlexBox direction="column" padding="8px 4px 8px 14px">
           <Text>{title}</Text>
           <FlexBox align="center" margin="4px 0">

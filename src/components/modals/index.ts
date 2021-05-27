@@ -8,6 +8,8 @@ import UserModal from './User';
 import FiltersModal from './Filters';
 import InviteUsersModal from './Invite';
 import EditProfileModal from './EditProfile';
+import AppColorsModal from './AppColors';
+import InterestsModal from './Interests';
 
 export enum Modals {
   TALKS = '#talks',
@@ -21,7 +23,9 @@ export enum Modals {
   USER = '#user',
   FILTERS = '#filters',
   INVITE = '#invite',
-  EDIT_PROFILE = '#edit-profile'
+  EDIT_PROFILE = '#edit-profile',
+  APP_COLORS = '#settings-colors',
+  INTERESTS = '#settings-interests',
 }
 
 export const DesktopModals = {
@@ -48,4 +52,7 @@ export const MobileModals = {
   [Modals.USER]: UserModal,
   [Modals.FILTERS]: FiltersModal,
   [Modals.INVITE]: InviteUsersModal,
+  [Modals.EDIT_PROFILE]: EditProfileModal,
+  [Modals.APP_COLORS]: AppColorsModal,
+  [Modals.INTERESTS]: InterestsModal,
 };

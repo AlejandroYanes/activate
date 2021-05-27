@@ -19,18 +19,3 @@ export const TabBar = styled.div`
   z-index: ${ZLevels.bottomTabBar};
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
-
-export const Container = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
-export const List = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-`;

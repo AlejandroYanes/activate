@@ -1,21 +1,23 @@
 import { UserInfo } from 'models/user';
 
+const storage = window.sessionStorage;
+
 export function storeAuthToken(token: string) {
-  window.sessionStorage.setItem('token', token);
+  storage.setItem('token', token);
 }
 
 export function getAuthToken() {
-  return window.sessionStorage.getItem('token');
+  return storage.getItem('token');
 }
 
 export function storeUserInfo(userInfo: UserInfo) {
-  window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo));
+  storage.setItem('userInfo', JSON.stringify(userInfo));
 }
 
 export function getUserInfo(): UserInfo {
-  return JSON.parse(window.sessionStorage.getItem('userInfo'));
+  return JSON.parse(storage.getItem('userInfo'));
 }
 
 export function clearStorage() {
-  window.sessionStorage.clear()
+  storage.clear()
 }

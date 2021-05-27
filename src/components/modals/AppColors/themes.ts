@@ -1,17 +1,14 @@
-import React, { FunctionComponent } from 'react';
 import {
   DuskLightsTheme,
+  FruitsTheme,
   GrapesTheme,
   LifeIsABeachTheme,
   NeonLightsTheme,
-  FruitsTheme,
   SummerVibesTheme,
 } from 'styles/themes';
 import { AppTheme } from 'components/providers/Theme';
-import { PickItem } from 'components/base-components/PickList';
-import { ColorSample, DetailBox, Palette, Theme, ThemeName } from './styled';
 
-const themes = [
+export const themes = [
   {
     name: 'Summer Vibes',
     value: AppTheme.SummerVibes,
@@ -43,21 +40,3 @@ const themes = [
     theme: FruitsTheme,
   },
 ];
-
-const Themes: FunctionComponent = (): any => {
-  return themes.map(({ value, theme, name }) => (
-    <PickItem key={value} value={value}>
-      <Theme>
-        <Palette>
-          <ColorSample color={theme.BRAND} />
-          <ColorSample color={theme.ACCENT} />
-        </Palette>
-        <DetailBox>
-          <ThemeName>{name}</ThemeName>
-        </DetailBox>
-      </Theme>
-    </PickItem>
-  ));
-};
-
-export default Themes;

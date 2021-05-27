@@ -1,11 +1,26 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import Modal from 'components/base-components/Modal';
-import Settings from 'components/pages/Profile/Settings';
 import FlexBox from 'components/base-components/FlexBox';
+import { Text } from 'components/base-components/Typography';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Modals } from '../index';
+import { SettingItem } from './styled';
 
 const SettingsModal: FunctionComponent = () => {
-  const { goBack } = useHistory();
+  const { goBack, push } = useHistory();
+
+  const openProfileModal = () => {
+    push(Modals.EDIT_PROFILE);
+  };
+
+  const openInterestsModal = () => {
+    push(Modals.INTERESTS);
+  };
+
+  const openColorsModal = () => {
+    push(Modals.APP_COLORS);
+  };
 
   return (
     <Modal visible title="Settings" onClose={goBack} size="mobile">
@@ -13,9 +28,24 @@ const SettingsModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px"
+        padding="24px 6px"
       >
-        <Settings asPanel />
+        <SettingItem onClick={openProfileModal}>
+          <Text size="large">Change your Profile</Text>
+          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+        </SettingItem>
+        <SettingItem>
+          <Text size="large">Change your Password</Text>
+          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+        </SettingItem>
+        <SettingItem onClick={openInterestsModal}>
+          <Text size="large">Manage your Interests</Text>
+          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+        </SettingItem>
+        <SettingItem onClick={openColorsModal}>
+          <Text size="large">Change the Colors</Text>
+          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+        </SettingItem>
       </FlexBox>
     </Modal>
   );

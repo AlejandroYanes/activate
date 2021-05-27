@@ -8,7 +8,7 @@ import { List, StyledTabset } from './styled';
 interface TabsetProps extends PositionProps {
   bordered?: boolean;
   activeTab: string;
-  onTabChange: (activeTab) => void;
+  onTabChange?: (activeTab) => void;
 }
 
 const Tabset: FunctionComponent<TabsetProps> = (props) => {

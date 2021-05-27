@@ -33,7 +33,7 @@ const UsersList: FunctionComponent<Props> = (props) => {
         onClick={onClick}
       />
     ))
-  ), [users, selectedUsers]);
+  ), [users, selectedUsers, onClick]);
 
   return (
     <Section data-el="user-list" scroll={scroll}>

@@ -34,6 +34,7 @@ const getInitialState = (): AuthState => {
   //   userInfo: {
   //     avatar: 'user4',
   //     userName: '@alejandro.yanes94',
+  //     email: 'alejandro.yanes94@gmail.com',
   //     name: 'Alejandro',
   //     lastName: 'Yanes',
   //     theme: AppTheme.SummerVibes,

@@ -13,7 +13,7 @@ const profileBoxStyles = {
   [Layout.MOBILE]: css`
     display: flex;
     flex-direction: column;
-    padding: 16px 0 0 0;
+    padding: 24px 6px;
   `,
 };
 
