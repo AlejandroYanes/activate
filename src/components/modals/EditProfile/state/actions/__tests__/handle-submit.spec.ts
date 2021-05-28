@@ -63,6 +63,7 @@ describe('Edit Profile modal - handle submit action', () => {
       name: 'user',
       lastName: 'last name',
       userName: 'user.name',
+      email: 'a@a.com',
       avatar: 'user1',
     };
 
@@ -90,7 +91,7 @@ describe('Edit Profile modal - handle submit action', () => {
     // @ts-ignore
     authApi.updateAvatar.mockResolvedValue({ data: { sub: 'user-id-with-avatar' } });
     const profile: ProfilePayload = {
-      email: 'email',
+      email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
       userName: 'user.name',
@@ -125,7 +126,7 @@ describe('Edit Profile modal - handle submit action', () => {
       errorType: ApiErrorType.ERROR,
     });
     const profile: ProfilePayload = {
-      email: 'email',
+      email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
       userName: 'user.name',
@@ -162,7 +163,7 @@ describe('Edit Profile modal - handle submit action', () => {
       },
     });
     const profile: ProfilePayload = {
-      email: 'email',
+      email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
       userName: 'user.name',
