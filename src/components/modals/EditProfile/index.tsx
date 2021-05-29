@@ -48,7 +48,7 @@ const EditProfileModal: FunctionComponent = () => {
       />
       <Button
         onClick={handleSubmit}
-        isLoading={savingProfile}
+        loading={savingProfile}
         label="Update"
         variant="fill"
       />

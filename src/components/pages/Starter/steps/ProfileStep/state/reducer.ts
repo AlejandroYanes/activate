@@ -5,6 +5,12 @@ export enum ProfileStepActions {
   SET_PROFILE = 'SET_PROFILE',
   LOAD_IMAGE = 'LOAD_IMAGE',
   SET_ERRORS = 'SET_ERRORS',
+  START_CALLING_API = 'START_CALLING_API',
+  FINISH_CALLING_API = 'FINISH_CALLING_API',
+}
+
+export interface ProfilePayload extends ProfileDto {
+  image?: File;
 }
 
 export interface ProfileStepState {
@@ -12,6 +18,7 @@ export interface ProfileStepState {
   image: File;
   imagePreview: string;
   errors: any;
+  callingAPI: boolean;
 }
 
 export default function profileStepReducer(
@@ -33,7 +40,11 @@ export default function profileStepReducer(
         },
       };
     case ProfileStepActions.SET_ERRORS:
-      return { ...state, errors: payload };
+      return { ...state, errors: payload, callingAPI: false };
+    case ProfileStepActions.START_CALLING_API:
+      return { ...state, callingAPI: true };
+    case ProfileStepActions.FINISH_CALLING_API:
+      return { ...state, callingAPI: false };
     default:
       return state;
   }

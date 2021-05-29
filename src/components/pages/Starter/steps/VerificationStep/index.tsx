@@ -1,5 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
-import { validateEntity } from 'helpers';
+import React, { FunctionComponent } from 'react';
 import { Text, Title } from 'components/base-components/Typography';
 import { NumberInput } from 'components/base-components/Inputs';
 import { Button } from 'components/base-components/Button';
@@ -7,27 +6,26 @@ import { Field, Form } from 'components/base-components/Form';
 import { Content, Step } from '../../styled';
 import Illustration from '../Illustration';
 import { CodeBox } from './styled';
-import { codeRules } from './rules';
+import useVerificationState, { codeRules } from './state';
 
 interface Props {
-  onVerify: (code: number) => void;
-  isLoading?: boolean;
+  onSuccess: () => void;
 }
 
 const VerificationStep: FunctionComponent<Props> = (props) => {
-  const { onVerify: verify, isLoading } = props;
-  const [form, setForm] = useState<any>({ code: '' });
-  const [errors, setErrors] = useState<any>({});
-
-  const verifyUserCode = () => {
-    const { hasErrors, errors } = validateEntity(form, codeRules);
-
-    if (hasErrors) {
-      setErrors(errors);
-    } else {
-      verify(form.code);
-    }
-  };
+  const { onSuccess: goNextStep } = props;
+  const {
+    state: {
+      formValue,
+      errors,
+      callingAPI,
+    },
+    actions: {
+      setFormValue,
+      setErrors,
+      verifyUser,
+    },
+  } = useVerificationState(goNextStep);
 
   return (
     <Step>
@@ -42,8 +40,8 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
         </Text>
         <CodeBox>
           <Form
-            onChange={setForm}
-            state={form}
+            onChange={setFormValue}
+            state={formValue}
             errors={errors}
             onError={setErrors}
             rules={codeRules}
@@ -55,8 +53,8 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
             />
           </Form>
           <Button
-            onClick={verifyUserCode}
-            isLoading={isLoading}
+            onClick={verifyUser}
+            loading={callingAPI}
             padding="0 16px"
             label="Verify"
             variant="fill"

@@ -36,12 +36,18 @@ export const getVariantStyles = (props) => {
 
   switch (variant) {
     case 'text': {
+      const colorInScheme = color.toUpperCase();
+      const fontColor = color === 'background'
+        ? colors.FONT
+        : colors[`${colorInScheme}_FONT`];
       const fontHoverColor = color === 'background'
-        ? colors.BRAND_FONT
-        : colors[`${color.toUpperCase()}_FONT_HIGHLIGHT`];
+        ? colors.BRAND_FONT_HIGHLIGHT
+        : colors[`${colorInScheme}_FONT_HIGHLIGHT`];
 
       return css`
-        color: ${colors.FONT};
+        padding: 0;
+        font-weight: bold;
+        color: ${fontColor};
         background-color: transparent;
         &:hover, &:focus {
           color: ${fontHoverColor};
@@ -144,8 +150,8 @@ export const Button = styled.button.attrs(anyPropsAttrs)`
   position: relative;
   transition: all linear 150ms;
   ${getSize};
-  ${getPositionStyles};
   ${getVariantStyles};
+  ${getPositionStyles};
 
   &:active {
     transform: scale(0.9);

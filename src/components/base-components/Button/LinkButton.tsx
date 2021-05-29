@@ -6,7 +6,7 @@ interface Props extends PositionProps {
   to: string;
   label?: string;
   variant?: 'text' | 'flat' | 'outline' | 'fill';
-  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'font';
+  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
   sm?: boolean;
 }
 
@@ -22,7 +22,7 @@ const LinkButton: FunctionComponent<Props> = (props) => {
 
 LinkButton.defaultProps = {
   variant: 'text',
-  color: 'font',
+  color: 'background',
 };
 
 export default LinkButton;

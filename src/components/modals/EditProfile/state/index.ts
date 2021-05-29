@@ -15,7 +15,7 @@ export * from './types';
 export default function useEditProfileState(fileInputRef) {
   const { goBack } = useHistory();
   const { userInfo } = useAuthData();
-  const { updateUserInfo } = useAuthActions();
+  const { login } = useAuthActions();
   const [state, dispatch] = useReducer(profileFormReducer, userInfo, initForm);
 
   const { profile, image } = state;
@@ -28,7 +28,7 @@ export default function useEditProfileState(fileInputRef) {
       handleAvatarChange: useCallback(handleAvatarChange(fileInputRef), []),
       handleImageChange: useCallback(handleImageChange(dispatch), []),
       handleSubmit: useCallback(
-        handleSubmit(dispatch, profile, image, updateUserInfo, goBack),
+        handleSubmit(dispatch, profile, image, login, goBack),
         [profile, image],
       ),
     },

@@ -20,12 +20,11 @@ import {
 import useProfileStepState, { AvatarOptions, profileRules } from './state';
 
 interface Props {
-  onNext: (profile) => void;
-  isLoading: boolean;
+  onSuccess: () => void;
 }
 
 const ProfileStep: FunctionComponent<Props> = (props) => {
-  const { isLoading, onNext } = props;
+  const { onSuccess: goNextStep } = props;
   const layout = useAppLayout();
   const filePickerRef = useRef(undefined);
   const {
@@ -33,6 +32,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
       profile,
       imagePreview,
       errors,
+      callingAPI,
     },
     action: {
       setProfile,
@@ -41,7 +41,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
       handleImageChange,
       handleSubmit,
     },
-  } = useProfileStepState(filePickerRef, onNext);
+  } = useProfileStepState(filePickerRef, goNextStep);
 
   return (
     <Step>
@@ -62,7 +62,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
               <RenderIf condition={layout !== Layout.MOBILE}>
                 <NextButton
                   onClick={handleSubmit}
-                  isLoading={isLoading}
+                  loading={callingAPI}
                   label="Next"
                   variant="fill"
                 />
@@ -111,7 +111,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
           <RenderIf condition={layout === Layout.MOBILE}>
             <NextButton
               onClick={handleSubmit}
-              isLoading={isLoading}
+              loading={callingAPI}
               label="Next"
               variant="fill"
             />

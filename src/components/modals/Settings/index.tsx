@@ -14,6 +14,10 @@ const SettingsModal: FunctionComponent = () => {
     push(Modals.EDIT_PROFILE);
   };
 
+  const openPasswordModal = () => {
+    push(Modals.CHANGE_PASSWORD);
+  };
+
   const openInterestsModal = () => {
     push(Modals.INTERESTS);
   };
@@ -34,7 +38,7 @@ const SettingsModal: FunctionComponent = () => {
           <Text size="large">Change your Profile</Text>
           <SvgIcon icon={Icons.CHEVRON_RIGHT} />
         </SettingItem>
-        <SettingItem>
+        <SettingItem onClick={openPasswordModal}>
           <Text size="large">Change your Password</Text>
           <SvgIcon icon={Icons.CHEVRON_RIGHT} />
         </SettingItem>

@@ -7,19 +7,13 @@ import Illustration from '../Illustration';
 import { FinishButton } from './styled';
 import { allInterests } from './interests';
 
-interface Props {
-  onNext: () => void;
-  isLoading?: boolean;
-}
-
 const colsMap = {
   [Layout.DESKTOP]: 4,
   [Layout.TABLET]: 4,
   [Layout.MOBILE]: 3,
 };
 
-const InterestsStep: FunctionComponent<Props> = (props) => {
-  const { isLoading, onNext } = props;
+const InterestsStep: FunctionComponent = () => {
   const layout = useAppLayout();
   const [interests, setInterests] = useState([]);
 
@@ -37,9 +31,8 @@ const InterestsStep: FunctionComponent<Props> = (props) => {
         />
         <FinishButton
           label="Finish"
-          onClick={onNext}
-          isLoading={isLoading}
           variant="fill"
+          onClick={() => undefined}
         />
       </Content>
       <Illustration step={3} />

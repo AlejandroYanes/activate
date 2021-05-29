@@ -23,7 +23,7 @@ interface AuthContext {
     logout: () => void;
   },
 }
-// todo: revert
+
 const getInitialState = (): AuthState => {
   return {
     isLoggedIn: false,

@@ -1,8 +1,9 @@
 import { commonRules, Rule, RuleType } from 'helpers/form-validations';
+import { passwordRegex } from 'helpers/regex-collection';
 
 const validPasswordRule: Rule = {
   type: RuleType.MatchRegExp,
-  value: /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.\[\]{}()?\-“!@#%&\/,><’:;|_~`])\S/,
+  value: passwordRegex,
   message: `
     The password must have an upper case and a lower case letter,
     a number and a special character.

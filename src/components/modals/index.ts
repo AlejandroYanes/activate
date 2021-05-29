@@ -10,6 +10,7 @@ import InviteUsersModal from './Invite';
 import EditProfileModal from './EditProfile';
 import AppColorsModal from './AppColors';
 import InterestsModal from './Interests';
+import ChangePasswordModal from './ChangePassword';
 
 export enum Modals {
   TALKS = '#talks',
@@ -26,12 +27,14 @@ export enum Modals {
   EDIT_PROFILE = '#edit-profile',
   APP_COLORS = '#settings-colors',
   INTERESTS = '#settings-interests',
+  CHANGE_PASSWORD = '#settings-password',
 }
 
 export const DesktopModals = {
   [Modals.INVITE]: InviteUsersModal,
   [Modals.PUBLISHER]: PublisherModal,
   [Modals.EDIT_PROFILE]: EditProfileModal,
+  [Modals.CHANGE_PASSWORD]: ChangePasswordModal,
 };
 
 export const TabletModals = {
@@ -41,18 +44,20 @@ export const TabletModals = {
 };
 
 export const MobileModals = {
+  ...TabletModals,
   [Modals.TALKS]: TalksModal,
   [Modals.TALKS_CONTACTS]: TalksModal,
   [Modals.TALKS_MESSAGES]: TalksModal,
-  [Modals.UPDATES]: UpdatesModal,
   [Modals.EVENT_DETAILS]: EventDetailsModal,
   [Modals.PROFILE]: ProfileModal,
   [Modals.SETTINGS]: SettingsModal,
-  [Modals.PUBLISHER]: PublisherModal,
   [Modals.USER]: UserModal,
-  [Modals.FILTERS]: FiltersModal,
-  [Modals.INVITE]: InviteUsersModal,
-  [Modals.EDIT_PROFILE]: EditProfileModal,
   [Modals.APP_COLORS]: AppColorsModal,
   [Modals.INTERESTS]: InterestsModal,
+  // [Modals.UPDATES]: UpdatesModal,
+  // [Modals.FILTERS]: FiltersModal,
+  // [Modals.PUBLISHER]: PublisherModal,
+  // [Modals.INVITE]: InviteUsersModal,
+  // [Modals.EDIT_PROFILE]: EditProfileModal,
+  // [Modals.CHANGE_PASSWORD]: ChangePasswordModal,
 };

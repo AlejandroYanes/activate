@@ -27,3 +27,8 @@ export interface UserInfo extends ProfileDto {
   sub: string;
   accessToken: string;
 }
+
+export interface PasswordDto {
+  current: string;
+  newPassword: string;
+}

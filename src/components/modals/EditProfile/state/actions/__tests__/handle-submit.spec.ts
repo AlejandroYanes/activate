@@ -4,11 +4,8 @@ import { ProfileDto, VerificationLevel } from 'models/user';
 import authApi from 'api/auth';
 import { NotificationType, showNotification } from 'notifications';
 import { validateEntity } from 'helpers';
-import { ProfilePayload } from 'components/pages/Starter/state';
 import handleSubmit from '../handle-submit';
-import { ProfileFormActions } from '../../reducer';
-import { profileRules } from '../../rules';
-import { AvatarOptions } from '../../types';
+import { ProfileFormActions, profileRules, AvatarOptions } from '../../';
 
 jest.mock('api/auth');
 jest.mock('notifications', () => ({
@@ -90,7 +87,7 @@ describe('Edit Profile modal - handle submit action', () => {
     authApi.updateProfile.mockResolvedValue({});
     // @ts-ignore
     authApi.updateAvatar.mockResolvedValue({ data: { sub: 'user-id-with-avatar' } });
-    const profile: ProfilePayload = {
+    const profile: ProfileDto = {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
@@ -125,7 +122,7 @@ describe('Edit Profile modal - handle submit action', () => {
     authApi.updateAvatar.mockRejectedValue({
       errorType: ApiErrorType.ERROR,
     });
-    const profile: ProfilePayload = {
+    const profile: ProfileDto = {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
@@ -162,7 +159,7 @@ describe('Edit Profile modal - handle submit action', () => {
         lastName: 'error msg',
       },
     });
-    const profile: ProfilePayload = {
+    const profile: ProfileDto = {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',

@@ -149,7 +149,7 @@ describe('Sign page - authenticate action', () => {
     expect(authApi.signUp).toHaveBeenCalled();
     expect(showNotification).toHaveBeenCalledWith({
       type: NotificationType.ERROR,
-      message: 'error message',
+      message: 'There is been an issue trying to log you in',
     });
     expect(setUserInfoMock).not.toHaveBeenCalled();
   });

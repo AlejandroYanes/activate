@@ -3,7 +3,7 @@ import RenderIf from 'components/base-components/RenderIf';
 import { SpinningDots } from 'components/base-components/Loaders';
 import { LoadingLayer, Text } from './styled';
 
-export default function Content({ label, rightIcon, leftIcon, isLoading, children }) {
+export default function Content({ label, rightIcon, leftIcon, loading, children }) {
   if (children) {
     return children;
   }
@@ -12,10 +12,10 @@ export default function Content({ label, rightIcon, leftIcon, isLoading, childre
     return (
       <>
         {leftIcon}
-        <Text show={!isLoading}>{label}</Text>
+        <Text show={!loading}>{label}</Text>
         {rightIcon}
-        <RenderIf condition={isLoading}>
-          <LoadingLayer show={isLoading}>
+        <RenderIf condition={loading}>
+          <LoadingLayer show={loading}>
             <SpinningDots size="x-small" color="white" />
           </LoadingLayer>
         </RenderIf>

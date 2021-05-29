@@ -3,7 +3,7 @@ import authApi from 'api/auth';
 import { ApiErrorType } from 'api/base';
 import { NotificationType, showNotification } from 'notifications';
 import verifyUser from '../verify-user';
-import { StarterActions } from '../../reducer';
+import { Actions } from '../../reducer';
 
 jest.mock('api/auth');
 jest.mock('notifications', () => ({
@@ -18,6 +18,7 @@ jest.mock('notifications', () => ({
 
 const dispatchMock = jest.fn();
 const setUserInfoMock = jest.fn();
+const goNextStepMock = jest.fn();
 
 describe('Starter page - verify user action', () => {
   beforeEach(() => {
@@ -25,6 +26,7 @@ describe('Starter page - verify user action', () => {
     authApi.verify.mockClear();
     dispatchMock.mockClear();
     setUserInfoMock.mockClear();
+    goNextStepMock.mockClear();
   });
 
   it('should call the API and dispatch the go_next_step action if succeeded', async () => {
@@ -32,14 +34,11 @@ describe('Starter page - verify user action', () => {
     authApi.verify.mockResolvedValue({
       data: { sub: 'user-id', token: 'token' },
     });
-    await verifyUser(dispatchMock, setUserInfoMock)(123456);
+    await verifyUser(dispatchMock, { code: 123456 }, setUserInfoMock, goNextStepMock)();
 
-    expect(dispatchMock).toHaveBeenCalledTimes(2);
+    expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenNthCalledWith(1, {
-      type: StarterActions.START_API_CALL,
-    });
-    expect(dispatchMock).toHaveBeenNthCalledWith(2, {
-      type: StarterActions.GO_NEXT_STEP,
+      type: Actions.START_CALLING_API,
     });
     expect(setUserInfoMock).toHaveBeenCalledWith({
       sub: 'user-id',
@@ -53,18 +52,21 @@ describe('Starter page - verify user action', () => {
       errorType: ApiErrorType.ERROR,
       errorMessage: 'error message',
     });
-    await verifyUser(dispatchMock, setUserInfoMock)(123456);
+    await verifyUser(dispatchMock, { code: 123456 }, setUserInfoMock, goNextStepMock)();
 
     expect(dispatchMock).toHaveBeenCalledTimes(2);
     expect(dispatchMock).toHaveBeenNthCalledWith(1, {
-      type: StarterActions.START_API_CALL,
+      type: Actions.START_CALLING_API,
     });
     expect(dispatchMock).toHaveBeenNthCalledWith(2, {
-      type: StarterActions.FINISH_API_CALL,
+      type: Actions.FINISH_CALLING_API,
     });
     expect(showNotification).toHaveBeenCalledWith({
       type: NotificationType.ERROR,
-      message: 'error message',
+      message: `
+            There is been an issue verifying your code,
+            please make sure it's the one we sent you
+          `,
     });
     expect(setUserInfoMock).not.toHaveBeenCalled();
   });
