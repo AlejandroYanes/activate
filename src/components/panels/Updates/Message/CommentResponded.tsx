@@ -1,23 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { Text } from 'components/base-components/Typography';
-import { EventLinkingUpdate } from '../types';
 import { MessageProps } from './index';
 
-const CommentResponded: FunctionComponent<MessageProps> = ({ content }) => {
-  const {
-    user: {
-      name: user,
-    },
-    event: {
-      name: event,
-    },
-  } = content as EventLinkingUpdate;
+const CommentResponded: FunctionComponent<MessageProps> = ({ user, event }) => {
+  const { name, lastName } = user;
+  const fullName = `${name} ${lastName}`;
 
   return (
     <Text>
-      <Text weight="bold">{user}</Text>
+      <Text weight="bold">{fullName}</Text>
       <Text> responded to your comment on </Text>
-      <Text weight="bold">{event}</Text>
+      <Text weight="bold">{event.name}</Text>
     </Text>
   );
 };

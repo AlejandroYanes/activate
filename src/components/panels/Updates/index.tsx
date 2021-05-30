@@ -4,7 +4,7 @@ import Update from './Update';
 import { updates } from './updates';
 
 function updateFactory() {
-  return updates.map(({ id, ...rest }) => <Update key={id} {...rest} />);
+  return updates.map((update) => <Update key={update.id} data={update as any} />);
 }
 
 const UpdatesPanel: FunctionComponent = () => {

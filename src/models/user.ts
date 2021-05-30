@@ -32,3 +32,11 @@ export interface PasswordDto {
   current: string;
   newPassword: string;
 }
+
+export interface UserModel {
+  id: string;
+  userName: string;
+  name: string;
+  lastName: string;
+  avatar: string;
+}

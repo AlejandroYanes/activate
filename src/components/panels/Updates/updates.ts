@@ -1,5 +1,5 @@
 import faker from 'faker';
-import { UpdateType } from './types';
+import { UpdateType } from 'models/update';
 import { events } from 'components/pages/Discover/events';
 
 const eventUpdates = [
@@ -14,7 +14,8 @@ function generateUpdate(type: UpdateType) {
     return {
       user: {
         avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+        name: faker.name.firstName(),
+        lastName: faker.name.lastName(),
       },
       event: {
         id: faker.random.uuid(),
@@ -27,18 +28,16 @@ function generateUpdate(type: UpdateType) {
   return {
     user: {
       avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      name: faker.name.firstName(),
+      lastName: faker.name.lastName(),
     },
   };
 }
 
-export const updates = new Array(7).fill('1').map((_v, index) => {
-
-  return {
-    id: faker.random.uuid(),
-    date: faker.date.recent(),
-    type: index,
-    content: generateUpdate(index),
-    read: faker.random.boolean(),
-  };
-});
+export const updates = new Array(7).fill('1').map((_v, index) => ({
+  type: index,
+  id: faker.random.uuid(),
+  date: faker.date.recent(),
+  read: faker.random.boolean(),
+  ...generateUpdate(index),
+}));

@@ -74,10 +74,6 @@ describe('Edit Profile modal - handle submit action', () => {
 
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(authApi.updateProfile).toHaveBeenCalledWith(profile);
-    expect(showNotification).toHaveBeenCalledWith({
-      type: NotificationType.SUCCESS,
-      message: 'Your profile has been updated.',
-    });
     expect(updateUserInfoMock).toHaveBeenCalledWith({ sub: 'user-id' });
     expect(closeModalMock).toHaveBeenCalled();
   });
@@ -107,10 +103,6 @@ describe('Edit Profile modal - handle submit action', () => {
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(authApi.updateProfile).toHaveBeenCalledWith(profile);
     expect(authApi.updateAvatar).toHaveBeenCalledWith(imageFile);
-    expect(showNotification).toHaveBeenCalledWith({
-      type: NotificationType.SUCCESS,
-      message: 'Your profile has been updated.',
-    });
     expect(updateUserInfoMock).toHaveBeenCalledWith({ sub: 'user-id-with-avatar' });
     expect(closeModalMock).toHaveBeenCalled();
   });

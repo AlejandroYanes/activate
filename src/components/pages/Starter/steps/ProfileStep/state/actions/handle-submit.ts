@@ -34,10 +34,6 @@ export default function handleSubmit(
     };
 
     const onSuccess = (response) => {
-      showNotification({
-        type: NotificationType.SUCCESS,
-        message: 'Your profile has been updated.',
-      });
       updateUserInfo(response.data);
       goNextStep();
     }

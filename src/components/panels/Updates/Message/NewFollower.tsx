@@ -1,18 +1,14 @@
 import React, { FunctionComponent } from 'react';
 import { Text } from 'components/base-components/Typography';
-import { EventLinkingUpdate } from '../types';
 import { MessageProps } from './index';
 
-const NewFollower: FunctionComponent<MessageProps> = ({ content }) => {
-  const {
-    user: {
-      name: user,
-    },
-  } = content as EventLinkingUpdate;
+const NewFollower: FunctionComponent<MessageProps> = ({ user }) => {
+  const { name, lastName } = user;
+  const fullName = `${name} ${lastName}`;
 
   return (
     <Text>
-      <Text weight="bold">{user}</Text>
+      <Text weight="bold">{fullName}</Text>
       <Text> started following you </Text>
     </Text>
   );

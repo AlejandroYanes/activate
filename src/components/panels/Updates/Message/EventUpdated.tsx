@@ -1,23 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { Text } from 'components/base-components/Typography';
-import { EventLinkingUpdate } from '../types';
 import { MessageProps } from './index';
 
-const EventUpdated: FunctionComponent<MessageProps> = ({ content }) => {
-  const {
-    user: {
-      name: user,
-    },
-    event: {
-      name: event,
-    },
-  } = content as EventLinkingUpdate;
+const EventUpdated: FunctionComponent<MessageProps> = ({ user, event }) => {
+  const { name, lastName } = user;
+  const fullName = `${name} ${lastName}`;
 
   return (
     <Text>
-      <Text weight="bold">{user}</Text>
+      <Text weight="bold">{fullName}</Text>
       <Text> updated </Text>
-      <Text weight="bold">{event}</Text>
+      <Text weight="bold">{event.name}</Text>
     </Text>
   );
 };
