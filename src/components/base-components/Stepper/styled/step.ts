@@ -6,13 +6,20 @@ const stepSize = 40;
 const borderSize = 2;
 
 const getContainerStyles = (props) => {
-  const { isActive, theme: { colors } } = props;
+  const { readOnly, isActive, theme: { colors } } = props;
+
+  if (readOnly) {
+    const borderColor = isActive ? colors.BRAND : 'transparent';
+    return  css`border-color: ${borderColor};`;
+  }
+
   const borderColor = isActive ? colors.BRAND : 'transparent';
   const hoverColor = isActive ? colors.BRAND_HIGHLIGHT : colors.BRAND_SHADE;
   const fontHoverColor = isActive ? colors.WHITE : colors.FONT;
   const focusColor = colors.BRAND_HIGHLIGHT;
 
   return css`
+    cursor: pointer;
     border-color: ${borderColor};
 
     &:hover {
@@ -48,7 +55,6 @@ export const Container = styled.button.attrs(anyPropsAttrs)`
   align-items: center;
   border: ${borderSize}px solid transparent;
   background: transparent;
-  cursor: pointer;
   ${getContainerStyles};
   transition: all 150ms linear;
 `;

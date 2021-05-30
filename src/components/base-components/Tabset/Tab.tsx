@@ -42,11 +42,17 @@ const Tab: FunctionComponent<Props> = (props) => {
   const isFocused = useFocusState(tabReference);
 
   const handleClick = useCallback(() => {
-    if (onClick) {
-      onClick(name);
-    } else {
-      onTabChange(name);
+    let action;
+
+    if (onTabChange) {
+      action = onTabChange;
     }
+
+    if (onClick) {
+      action = onClick
+    }
+
+    action(name);
   }, [onTabChange, name]);
 
   const isSelected = name === activeTab;

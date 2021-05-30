@@ -11,7 +11,7 @@ export interface ButtonProps extends PositionProps {
   onClick: (event) => void;
   leftIcon?: Icons | ReactNode;
   rightIcon?: Icons | ReactNode;
-  isLoading?: boolean;
+  loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'text' | 'flat' | 'outline' | 'fill';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
@@ -25,7 +25,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     onClick,
     leftIcon,
     rightIcon,
-    isLoading,
+    loading,
     children,
     variant,
     color,
@@ -67,7 +67,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     >
       <Content
         label={label}
-        isLoading={isLoading}
+        loading={loading}
         leftIcon={leftIconNode}
         rightIcon={rightIconNode}
       >
@@ -86,7 +86,7 @@ Button.defaultProps = {
   style: undefined,
   leftIcon: null,
   rightIcon: null,
-  isLoading: false,
+  loading: false,
 };
 
 export default Button;

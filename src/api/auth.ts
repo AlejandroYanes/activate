@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { AuthCredentials, ProfileDto, UserInfo } from 'models/user';
+import { AuthCredentials, PasswordDto, ProfileDto, UserInfo } from 'models/user';
 import { post, patch, ApiContentType } from './base';
 
 const endpoint = 'auth';
@@ -16,6 +16,9 @@ const authApi = {
   },
   updateProfile: (profileData: ProfileDto): Promise<AxiosResponse<UserInfo>> => {
     return patch(`${endpoint}/profile`, profileData, { authenticated: true });
+  },
+  updatePassword: (passwords: PasswordDto): Promise<AxiosResponse<UserInfo>> => {
+    return patch(`${endpoint}/password`, passwords, { authenticated: true });
   },
   updateTheme: (
     theme: string,

@@ -8,6 +8,7 @@ export default function initForm(userInfo: UserInfo): ProfileFormState {
   const {
     avatar,
     userName,
+    email,
     name,
     lastName,
   } = userInfo;
@@ -16,6 +17,7 @@ export default function initForm(userInfo: UserInfo): ProfileFormState {
   return {
     profile: {
       userName,
+      email,
       name,
       lastName,
       avatar: usesImage ? AvatarOptions.PHOTO : avatar

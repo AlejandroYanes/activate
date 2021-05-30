@@ -11,7 +11,7 @@ const getSelectedColors = (props) => {
 
   if (isSelected) {
     return `
-      color: ${colors.BRAND_FONT};
+      color: ${colors.BRAND_FONT_HIGHLIGHT};
       background-color: ${colors.BRAND_SHADE};
     `;
   }

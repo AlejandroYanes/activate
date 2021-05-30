@@ -1,6 +1,6 @@
 export const GrapesTheme = {
   BRAND: '#a32c87',
-  ACCENT: '#018049',
+  ACCENT: '#00765E',
 };
 
 export const NeonLightsTheme = {

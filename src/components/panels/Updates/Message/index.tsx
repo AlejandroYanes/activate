@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { EventLinkingUpdate, UpdateType, UserLinkingUpdate } from '../types';
+import { UserModel } from 'models/user';
+import { EventModel } from 'models/event';
+import { UpdateType } from 'models/update';
 import Invitation from './Invitation';
 import EventUpdated from './EventUpdated';
 import NewComment from './NewComment';
@@ -10,7 +12,8 @@ import FriendRequestAccepted from './FriendRequestAccepted';
 
 export interface MessageProps {
   type: UpdateType;
-  content: EventLinkingUpdate | UserLinkingUpdate;
+  user: UserModel;
+  event?: EventModel;
 }
 
 const messages = {

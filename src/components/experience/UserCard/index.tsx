@@ -1,21 +1,18 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
-import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
-import IconButton from 'components/base-components/IconButton';
 import FlexBox from 'components/base-components/FlexBox';
 import AvatarGroup from 'components/base-components/AvatarGroup';
+import { Button } from 'components/base-components/Button';
 import { Card } from './styled';
 
 const avatars = ['user1', 'user2', 'user3', 'user4', 'user4'];
 const Separator = () => <div style={{ flex: 1 }} />;
 
 const UserCard: FunctionComponent = () => {
-  const colors = useAppColors();
   const layout = useAppLayout();
 
   const { userName, name } = useMemo(() => ({
@@ -36,13 +33,12 @@ const UserCard: FunctionComponent = () => {
       </Link>
       <Separator />
       <AvatarGroup icons={avatars} margin="28px auto 0" />
-      <FlexBox align="center" margin="16px auto 0">
-        <IconButton
-          size="large"
-          buttonColor="accent"
+      <FlexBox align="center" margin="24px auto 0">
+        <Button
           onClick={() => undefined}
-          icon={Icons.ADD_USER}
-          color={colors.ACCENT}
+          label="Add Friend"
+          variant="fill"
+          color="brand"
         />
       </FlexBox>
     </Card>

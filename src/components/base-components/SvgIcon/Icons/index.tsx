@@ -83,6 +83,7 @@ import RestaurantIcon from './Restaurant';
 import PetIcon from './Pet';
 import FashionIcon from './Fashion';
 import PencilIcon from './Pencil';
+import NewsIcon from './News';
 
 export enum Icons {
   HOME = 'home',
@@ -169,6 +170,7 @@ export enum Icons {
   RESTAURANT = 'restaurant',
   PET = 'pet',
   FASHION = 'fashion',
+  NEWS = 'news',
 }
 
 export const icons = {
@@ -256,4 +258,5 @@ export const icons = {
   [Icons.RESTAURANT]: (props) => <RestaurantIcon {...props} />,
   [Icons.PET]: (props) => <PetIcon {...props} />,
   [Icons.FASHION]: (props) => <FashionIcon {...props} />,
+  [Icons.NEWS]: (props) => <NewsIcon {...props} />,
 };

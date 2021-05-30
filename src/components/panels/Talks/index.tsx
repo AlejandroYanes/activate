@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { EventChannelList, notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
@@ -23,8 +23,7 @@ enum TalkViews {
 const TalksPanel: FunctionComponent = () => {
   const colors = useAppColors();
   const layout = useAppLayout();
-  const { push } = useHistory();
-  const { pathname } = useLocation();
+  const { location: { pathname }, push } = useHistory();
 
   const [{ activeView, activeUser }, setState] = useState({
     activeView: TalkViews.TALK_LIST,

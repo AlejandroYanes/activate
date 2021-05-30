@@ -45,7 +45,7 @@ export default function authenticate(
       } else {
         showNotification({
           type: NotificationType.ERROR,
-          message: response.errorMessage,
+          message: 'There is been an issue trying to log you in',
         });
       }
     };

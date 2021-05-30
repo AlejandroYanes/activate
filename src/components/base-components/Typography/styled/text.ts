@@ -35,6 +35,7 @@ const getColor = (props) => {
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
   white-space: normal;
+  font-family: Comfortaa, sans-serif;
   font-size: ${({ size }) => sizeMap[size]};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};

@@ -70,8 +70,8 @@ const PickList: FunctionComponent<PickListProps> = (props) => {
 
 PickList.defaultProps = {
   size: 'medium',
-  color: 'accent',
-  layout: 'list',
+  color: 'brand',
+  layout: 'grid',
   cols: 3,
 };
 

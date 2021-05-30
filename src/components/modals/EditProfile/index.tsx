@@ -10,13 +10,7 @@ import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { ErrorText } from 'components/base-components/Inputs';
 import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
-import {
-  AvatarsBox,
-  HiddenInput,
-  ImagePreview,
-  InputBox,
-  ProfileBox,
-} from './styled';
+import { AvatarsBox, HiddenInput, ImagePreview, InputBox, ProfileBox } from './styled';
 import useEditProfileState, { AvatarOptions, profileRules } from './state';
 
 const EditProfileModal: FunctionComponent = () => {
@@ -39,12 +33,12 @@ const EditProfileModal: FunctionComponent = () => {
     },
   } = useEditProfileState(filePickerRef);
 
-  const modalSize = (
-    layout === Layout.MOBILE ? 'mobile' : 'medium'
+  const footerSpacing = (
+    layout === Layout.MOBILE ? '0 6px 24px' : '24px 16px 0'
   );
 
   const footer = (
-    <FlexBox justify="flex-end" padding="24px 16px 0">
+    <FlexBox justify="flex-end" padding={footerSpacing}>
       <Button
         onClick={goBack}
         label="Cancel"
@@ -54,11 +48,15 @@ const EditProfileModal: FunctionComponent = () => {
       />
       <Button
         onClick={handleSubmit}
-        isLoading={savingProfile}
+        loading={savingProfile}
         label="Update"
         variant="fill"
       />
     </FlexBox>
+  );
+
+  const modalSize = (
+    layout === Layout.MOBILE ? 'mobile' : 'medium'
   );
 
   return (
@@ -79,6 +77,7 @@ const EditProfileModal: FunctionComponent = () => {
         <ProfileBox>
           <InputBox>
             <Field name="userName" label="User Name" />
+            <Field name="email" label="Email" mT />
             <Field name="name" label="Name" mT />
             <Field name="lastName" label="Last Name" mT />
           </InputBox>

@@ -47,7 +47,7 @@ const ProfileModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px"
+        padding="24px 6px"
       >
         <FlexBox
           data-el="avatar-section"

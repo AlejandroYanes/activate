@@ -24,11 +24,14 @@ const ProfileActions: FunctionComponent<PositionProps> = (props) => {
     push(Modals.EDIT_PROFILE);
   };
 
+  const openChangePassword = () => {
+    push(Modals.CHANGE_PASSWORD);
+  };
+
   return (
     <Menu trigger={menuTrigger} align="end" {...props}>
       <MenuItem label="Change Profile" onClick={openEditProfile} />
-      <MenuItem label="Change Email" onClick={openEditProfile} />
-      <MenuItem label="Change Password" onClick={openEditProfile} />
+      <MenuItem label="Change Password" onClick={openChangePassword} />
       <MenuItem label="Logout" danger onClick={logout} />
     </Menu>
   );

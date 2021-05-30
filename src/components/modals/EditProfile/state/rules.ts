@@ -1,9 +1,10 @@
 import { commonRules } from 'helpers';
 
-const { required } = commonRules;
+const { required, email } = commonRules;
 
 export const profileRules = {
   userName: [required],
+  email: [required, email],
   name: [required],
   lastName: [required],
   avatar: [
