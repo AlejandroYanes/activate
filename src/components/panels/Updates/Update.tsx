@@ -15,22 +15,22 @@ interface Props {
 const today = new Date();
 
 const Update: FunctionComponent<Props> = (props) => {
-  const { data: { date, type, user, event, read } } = props;
+  const { data: { dateSent, type, creator, event, seen } } = props;
 
   return (
     <StyledNotification>
-      <Avatar src={user.avatar} size="small" />
-      <RenderIf condition={read}>
+      <Avatar src={creator.avatar} size="small" />
+      <RenderIf condition={!seen}>
         <UnReadDot />
       </RenderIf>
       <FlexBox direction="column" padding="0 0 0 6px">
-        <Message type={type} user={user} event={event} />
+        <Message type={type} user={creator} event={event} />
         <Text
           size="small"
           color="secondary"
           margin="6px 0 0 0"
         >
-          {getRelativeTime(today, date)}
+          {getRelativeTime(today, dateSent)}
         </Text>
       </FlexBox>
     </StyledNotification>

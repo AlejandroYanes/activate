@@ -8,7 +8,6 @@ import { Notifications } from './styled/list';
 
 const NotificationCenter: FunctionComponent = () => {
   const layout = useAppLayout();
-
   const [notifications, setNotifications] = useState<NotificationModel[]>([]);
 
   const handlePushedNotification = useCallback((notification) => {

@@ -20,7 +20,7 @@ const dispatchMock = jest.fn();
 const setUserInfoMock = jest.fn();
 const goNextStepMock = jest.fn();
 
-describe('Starter page - verify user action', () => {
+describe('Starter page - Verify step - verify user action', () => {
   beforeEach(() => {
     // @ts-ignore
     authApi.verify.mockClear();

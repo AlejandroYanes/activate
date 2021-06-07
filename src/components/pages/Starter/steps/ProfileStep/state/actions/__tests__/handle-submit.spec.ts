@@ -21,7 +21,7 @@ const dispatchMock = jest.fn();
 const updateUserInfoMock = jest.fn();
 const closeModalMock = jest.fn();
 
-describe('Edit Profile modal - handle submit action', () => {
+describe('Starter page - Profile step - handle submit action', () => {
   beforeEach(() => {
     dispatchMock.mockClear();
     updateUserInfoMock.mockClear();

@@ -7,8 +7,9 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { UserInfo } from 'models/user';
+import { UserInfo, VerificationLevel } from 'models/user';
 import { clearStorage, getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
+import { AppTheme } from '../Theme';
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -34,12 +35,12 @@ const getInitialState = (): AuthState => {
   //   userInfo: {
   //     avatar: 'user4',
   //     userName: '@alejandro.yanes94',
-  //     email: 'alejandro.yanes94@gmail.com',
+  //     email: 'ale@gmail.com',
   //     name: 'Alejandro',
   //     lastName: 'Yanes',
   //     theme: AppTheme.SummerVibes,
   //     useDarkStyle: true,
-  //     verificationLevel: VerificationLevel.INTERESTS_ADDED
+  //     verificationLevel: VerificationLevel.USER_INFO_ADDED,
   //   } as UserInfo,
   // };
 };

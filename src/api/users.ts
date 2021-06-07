@@ -6,10 +6,10 @@ const endpoint = 'users';
 
 const usersApi = {
   listMyFriends: (): Promise<AxiosResponse<UserModel[]>> => {
-    return get(`${endpoint}/friends`, { authenticated: true });
+    return get(`${endpoint}/friends`);
   },
   listFriendsFor: (userId: string): Promise<AxiosResponse<UserModel[]>> => {
-    return get(`${endpoint}/friends/${userId}`, { authenticated: true });
+    return get(`${endpoint}/friends/${userId}`);
   },
 };
 

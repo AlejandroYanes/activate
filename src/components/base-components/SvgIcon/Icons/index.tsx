@@ -84,6 +84,13 @@ import PetIcon from './Pet';
 import FashionIcon from './Fashion';
 import PencilIcon from './Pencil';
 import NewsIcon from './News';
+import DevicesIcon from './Devices';
+import VolleyballIcon from './Volleyball';
+import DumbbellIcon from './Dumbbell';
+import BaseballIcon from './Baseball';
+import FootballIcon from './Football';
+import EarIcon from './Ear';
+import BabyCarriageIcon from './BabyCarriage';
 
 export enum Icons {
   HOME = 'home',
@@ -171,6 +178,13 @@ export enum Icons {
   PET = 'pet',
   FASHION = 'fashion',
   NEWS = 'news',
+  DEVICES = 'devices',
+  VOLLEYBALL = 'volleyball',
+  BASEBALL = 'baseball',
+  FOOTBALL = 'football',
+  DUMBBELL = 'dumbbell',
+  EAR = 'ear',
+  BABY_CARRIAGE = 'baby_carriage',
 }
 
 export const icons = {
@@ -259,4 +273,11 @@ export const icons = {
   [Icons.PET]: (props) => <PetIcon {...props} />,
   [Icons.FASHION]: (props) => <FashionIcon {...props} />,
   [Icons.NEWS]: (props) => <NewsIcon {...props} />,
+  [Icons.DEVICES]: (props) => <DevicesIcon {...props} />,
+  [Icons.VOLLEYBALL]: (props) => <VolleyballIcon {...props} />,
+  [Icons.BASEBALL]: (props) => <BaseballIcon {...props} />,
+  [Icons.FOOTBALL]: (props) => <FootballIcon {...props} />,
+  [Icons.DUMBBELL]: (props) => <DumbbellIcon {...props} />,
+  [Icons.EAR]: (props) => <EarIcon {...props} />,
+  [Icons.BABY_CARRIAGE]: (props) => <BabyCarriageIcon {...props} />,
 };

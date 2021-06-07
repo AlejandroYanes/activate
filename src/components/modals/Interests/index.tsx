@@ -16,7 +16,7 @@ const InterestsModal: FunctionComponent = () => {
         align="stretch"
         padding="24px 6px"
       >
-        <InterestsGrid cols={3} interests={interests} />
+        {/*<InterestsGrid cols={3} interests={interests} />*/}
       </FlexBox>
     </Modal>
   );

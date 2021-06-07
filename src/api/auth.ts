@@ -6,29 +6,25 @@ const endpoint = 'auth';
 
 const authApi = {
   signIn: (credentials: AuthCredentials): Promise<AxiosResponse<UserInfo>> => {
-    return post(`${endpoint}/login`, credentials, { authenticated: false });
+    return post(`${endpoint}/login`, credentials);
   },
   signUp: (credentials: AuthCredentials): Promise<AxiosResponse<UserInfo>> => {
-    return post(`${endpoint}/signup`, credentials, { authenticated: false });
+    return post(`${endpoint}/signup`, credentials);
   },
   verify: (code: number): Promise<AxiosResponse<UserInfo>> => {
-    return patch(`${endpoint}/verify`, { code }, { authenticated: true });
+    return patch(`${endpoint}/verify`, { code });
   },
   updateProfile: (profileData: ProfileDto): Promise<AxiosResponse<UserInfo>> => {
-    return patch(`${endpoint}/profile`, profileData, { authenticated: true });
+    return patch(`${endpoint}/profile`, profileData);
   },
   updatePassword: (passwords: PasswordDto): Promise<AxiosResponse<UserInfo>> => {
-    return patch(`${endpoint}/password`, passwords, { authenticated: true });
+    return patch(`${endpoint}/password`, passwords);
   },
   updateTheme: (
     theme: string,
     useDarkStyle: boolean,
   ): Promise<AxiosResponse<UserInfo>> => {
-    return patch(
-      `${endpoint}/profile`,
-      { theme, useDarkStyle },
-      { authenticated: true },
-    );
+    return patch(`${endpoint}/profile`, { theme, useDarkStyle });
   },
   updateAvatar: (image: File): Promise<AxiosResponse<UserInfo>> => {
     const formData = new FormData();
@@ -37,10 +33,7 @@ const authApi = {
     return patch(
       `${endpoint}/avatar`,
       formData,
-      {
-        authenticated: true,
-        headers: { 'Content-Type': ApiContentType.MULTIPART },
-      },
+      { headers: { 'Content-Type': ApiContentType.MULTIPART } },
     );
   },
 };

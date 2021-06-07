@@ -5,10 +5,10 @@ import IconButton from 'components/base-components/IconButton';
 import { Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
 import InterestsGrid from 'components/experience/InterestsGrid';
+import Page from 'components/base-components/Page';
+import { Button } from 'components/base-components/Button';
 import { StyledCard } from './styled';
 import { interests as allInterests } from './interests';
-import Page from '../../base-components/Page';
-import { Button } from '../../base-components/Button';
 
 const emptyAction = () => undefined;
 
@@ -23,12 +23,12 @@ const InterestsPage: FunctionComponent = () => {
           <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} mR />
           <Title level={2}>Manage your interests</Title>
         </FlexBox>
-        <InterestsGrid
-          multiple
-          value={interests}
-          interests={allInterests}
-          onChange={setInterests}
-        />
+        {/*<InterestsGrid*/}
+        {/*  multiple*/}
+        {/*  value={interests}*/}
+        {/*  interests={allInterests}*/}
+        {/*  onChange={setInterests}*/}
+        {/*/>*/}
         <Button
           onClick={emptyAction}
           label="Update"

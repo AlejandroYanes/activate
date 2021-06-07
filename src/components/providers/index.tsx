@@ -3,6 +3,7 @@ import PanelSectionsProvider from './PanelSections';
 import ThemeProvider from './Theme';
 import LayoutProvider from './Layout';
 import AuthProvider from './Auth';
+import QueryProvider from './Query';
 
 const AppProviders: FunctionComponent = (props) => {
   const { children } = props;
@@ -12,7 +13,9 @@ const AppProviders: FunctionComponent = (props) => {
       <LayoutProvider>
         <ThemeProvider>
           <PanelSectionsProvider>
-            {children}
+            <QueryProvider>
+              {children}
+            </QueryProvider>
           </PanelSectionsProvider>
         </ThemeProvider>
       </LayoutProvider>

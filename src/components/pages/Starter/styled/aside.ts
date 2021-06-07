@@ -3,11 +3,12 @@ import { Layout } from 'components/providers/Layout';
 
 const asideStyles = {
   [Layout.DESKTOP]: css`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     padding-top: 32px;
+
+    & > div {
+      position: sticky;
+      top: 124px;
+    }
   `,
   [Layout.TABLET]: css`
     flex: 1;
@@ -15,7 +16,7 @@ const asideStyles = {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 24px;
+    padding-top: 48px;
   `,
   [Layout.MOBILE]: css`
     display: none;
