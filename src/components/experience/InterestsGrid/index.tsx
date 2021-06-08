@@ -4,8 +4,12 @@ import { PositionProps } from 'helpers';
 import { PickList } from 'components/base-components/PickList';
 import PlainGrid from './PlainGrid';
 import SectionedGrid from './SectionedGrid';
+import Loading from './Loading';
+import ErrorMessage from './ErrorMessage';
 
 interface Props extends PositionProps {
+  loading?: boolean;
+  errored?: boolean;
   value?: string | string[];
   onChange?: (value) => void;
   cols?: number;
@@ -16,8 +20,20 @@ interface Props extends PositionProps {
 }
 
 const InterestsGrid: FunctionComponent<Props> = (props): any => {
-  const { interests, plain, ...rest } = props;
+  const { loading, errored, interests, plain, ...rest } = props;
   const Items = plain ? PlainGrid : SectionedGrid;
+
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+
+  if (errored) {
+    return (
+      <ErrorMessage />
+    );
+  }
 
   return (
     <PickList

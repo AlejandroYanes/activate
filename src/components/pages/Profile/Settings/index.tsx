@@ -24,6 +24,7 @@ const Settings: FunctionComponent = () => {
   const sunIcon = useMemo(() => (
     <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
   ), [colors]);
+
   const moonIcon = useMemo(() => (
     <SvgIcon icon={Icons.MOON} color={colors.ACCENT_HIGHLIGHT} size="small" />
   ), [colors]);

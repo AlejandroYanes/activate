@@ -1,16 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { cardWidth } from 'styles/variables';
-import { anyPropsAttrs, getShade } from 'helpers';
-
-const getBackgroundColor = (props) => {
-  const { theme: { colors } } = props;
-  const color = getShade(colors.FONT, 0.65);
-
-  return css`
-    background-color: ${color};
-  `;
-};
+import { anyPropsAttrs, getBgdLighterColor } from 'helpers';
 
 export const Notification = styled(motion.li)`
   padding: 16px;
@@ -20,8 +11,7 @@ export const Notification = styled(motion.li)`
   align-items: flex-start;
   max-width: calc(${cardWidth} / 1.6);
   box-sizing: border-box;
-  ${getBackgroundColor};
-  backdrop-filter: blur(8px);
+  background-color: ${getBgdLighterColor};
 
   &:last-child {
     margin-top: 32px;

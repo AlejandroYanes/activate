@@ -1,19 +1,11 @@
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { SpinningDots } from 'components/base-components/Loaders';
 import FlexBox from 'components/base-components/FlexBox';
 
-const widthMap = {
-  [Layout.DESKTOP]: 420,
-  [Layout.TABLET]: 420,
-  [Layout.MOBILE]: '100%',
-};
-
-const LoadingScreen = () => {
-  const layout = useAppLayout();
+const Loading = () => {
 
   return (
     <FlexBox
-      width={widthMap[layout]}
+      width="100%"
       direction="column"
       justify="center"
       align="center"
@@ -24,4 +16,4 @@ const LoadingScreen = () => {
   );
 };
 
-export default LoadingScreen;
+export default Loading;

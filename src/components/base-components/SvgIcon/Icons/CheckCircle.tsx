@@ -2,7 +2,7 @@
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
-const InfoCircleIcon: FunctionComponent<IconProps> = (props) => {
+const CheckCircleIcon: FunctionComponent<IconProps> = (props) => {
   const { color, height, width, className, style } = props;
 
   return (
@@ -17,10 +17,10 @@ const InfoCircleIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         fill={color}
-        d="M12,2A10,10,0,1,0,22,12,10.01114,10.01114,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.00917,8.00917,0,0,1,12,20Zm0-8.5a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0v-3A1,1,0,0,0,12,11.5Zm0-4a1.25,1.25,0,1,0,1.25,1.25A1.25,1.25,0,0,0,12,7.5Z"
+        d="M14.72,8.79l-4.29,4.3L8.78,11.44a1,1,0,1,0-1.41,1.41l2.35,2.36a1,1,0,0,0,.71.29,1,1,0,0,0,.7-.29l5-5a1,1,0,0,0,0-1.42A1,1,0,0,0,14.72,8.79ZM12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
       />
     </svg>
   );
 };
 
-export default InfoCircleIcon;
+export default CheckCircleIcon;

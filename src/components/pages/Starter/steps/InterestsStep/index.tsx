@@ -7,17 +7,12 @@ import { Content, Step } from '../../styled';
 import Illustration from '../Illustration';
 import { FinishButton } from './styled';
 import useInterestsState from './state';
-import LoadingScreen from './LoadingScreen';
-import ErrorScreen from './ErrorScreen';
 
 const colsMap = {
   [Layout.DESKTOP]: 4,
   [Layout.TABLET]: 4,
   [Layout.MOBILE]: 3,
 };
-
-const loadingScreen = <LoadingScreen />;
-const errorScreen = <ErrorScreen />;
 
 const InterestsStep: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -39,23 +34,23 @@ const InterestsStep: FunctionComponent = () => {
     <Step>
       <Content>
         <Title level={2}>{`Tell us what you're looking for`}</Title>
-        <RenderIf condition={!isLoading} fallback={loadingScreen}>
-          <RenderIf condition={!apiError} fallback={errorScreen}>
-            <InterestsGrid
-              onChange={handleInterests}
-              interests={categories}
-              value={interests}
-              cols={colsMap[layout]}
-              padding="20px 0 0 0"
-              multiple
-            />
-            <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>
-            <FinishButton
-              label="Finish"
-              variant="fill"
-              onClick={saveInterests}
-            />
-          </RenderIf>
+        <InterestsGrid
+          multiple
+          loading={isLoading}
+          errored={!!apiError}
+          value={interests}
+          interests={categories}
+          onChange={handleInterests}
+          cols={colsMap[layout]}
+          padding="20px 0 0 0"
+        />
+        <RenderIf condition={!isLoading && !apiError}>
+          <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>
+          <FinishButton
+            label="Finish"
+            variant="fill"
+            onClick={saveInterests}
+          />
         </RenderIf>
       </Content>
       <Illustration step={3} />

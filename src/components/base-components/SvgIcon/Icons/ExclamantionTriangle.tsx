@@ -2,7 +2,7 @@
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
-const InfoCircleIcon: FunctionComponent<IconProps> = (props) => {
+const ExclamationTriangleIcon: FunctionComponent<IconProps> = (props) => {
   const { color, height, width, className, style } = props;
 
   return (
@@ -17,10 +17,10 @@ const InfoCircleIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         fill={color}
-        d="M12,2A10,10,0,1,0,22,12,10.01114,10.01114,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8.00917,8.00917,0,0,1,12,20Zm0-8.5a1,1,0,0,0-1,1v3a1,1,0,0,0,2,0v-3A1,1,0,0,0,12,11.5Zm0-4a1.25,1.25,0,1,0,1.25,1.25A1.25,1.25,0,0,0,12,7.5Z"
+        d="M12,16a1,1,0,1,0,1,1A1,1,0,0,0,12,16Zm10.67,1.47-8.05-14a3,3,0,0,0-5.24,0l-8,14A3,3,0,0,0,3.94,22H20.06a3,3,0,0,0,2.61-4.53Zm-1.73,2a1,1,0,0,1-.88.51H3.94a1,1,0,0,1-.88-.51,1,1,0,0,1,0-1l8-14a1,1,0,0,1,1.78,0l8.05,14A1,1,0,0,1,20.94,19.49ZM12,8a1,1,0,0,0-1,1v4a1,1,0,0,0,2,0V9A1,1,0,0,0,12,8Z"
       />
     </svg>
   );
 };
 
-export default InfoCircleIcon;
+export default ExclamationTriangleIcon;
