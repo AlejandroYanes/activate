@@ -15,7 +15,7 @@ const InterestsModal: FunctionComponent = () => {
       isLoading,
       allInterests,
       interests,
-      apiError,
+      apiFailed,
       error,
       callingAPI,
     },
@@ -34,14 +34,15 @@ const InterestsModal: FunctionComponent = () => {
         padding="24px 6px"
       >
         <InterestsGrid
+          multiple
           cols={3}
           loading={isLoading}
-          errored={!!apiError}
+          errored={apiFailed}
           value={interests}
           interests={allInterests}
           onChange={handleInterests}
         />
-        <RenderIf condition={!isLoading && !apiError}>
+        <RenderIf condition={!isLoading && !apiFailed}>
           <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>
           <Button
             loading={callingAPI}

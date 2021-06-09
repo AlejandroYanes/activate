@@ -35,7 +35,7 @@ describe('Interests page - saveInterests action', () => {
 
     await saveInterests(dispatch, interests)();
 
-    expect(dispatch).toBeCalledTimes(1);
+    expect(dispatch).toBeCalledTimes(2);
     expect(interestsApi.update).toHaveBeenCalledWith(interests);
     expect(showNotification).toHaveBeenCalledWith({
       type: NotificationType.SUCCESS,

@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { cardWidth } from 'styles/variables';
-import { anyPropsAttrs, getBgdLighterColor } from 'helpers';
+import { getBgdLighterColor } from 'helpers';
+import { Layout } from 'components/providers/Layout';
+
+const widthMap = {
+  [Layout.DESKTOP]: `width: calc(${cardWidth} / 1.6);`,
+  [Layout.TABLET]: `width: calc(${cardWidth} / 1.6);`,
+  [Layout.MOBILE]: 'width: 100%;',
+};
 
 export const Notification = styled(motion.li)`
   padding: 16px;
@@ -9,9 +16,9 @@ export const Notification = styled(motion.li)`
   border-radius: 16px;
   display: flex;
   align-items: flex-start;
-  max-width: calc(${cardWidth} / 1.6);
   box-sizing: border-box;
   background-color: ${getBgdLighterColor};
+  ${({ theme: { layout } }) => widthMap[layout]};
 
   &:last-child {
     margin-top: 32px;
@@ -24,15 +31,4 @@ export const Content = styled.div`
   flex-direction: column;
   padding: 0 16px;
   box-sizing: border-box;
-`;
-
-export const Icon = styled.div.attrs(anyPropsAttrs)`
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ color }) => color};
 `;

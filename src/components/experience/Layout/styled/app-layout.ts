@@ -33,5 +33,5 @@ const layoutMap = {
 
 export const StyledApp = styled.main.attrs(anyPropsAttrs)`
   width: 100%;
-  ${({ layout }) => layoutMap[layout]};
+  ${({ theme: { layout } }) => layoutMap[layout]};
 `;

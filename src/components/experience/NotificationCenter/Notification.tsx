@@ -43,7 +43,6 @@ function resolveTitle(title: string, type: NotificationType) {
 
 const Notification: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
-
   const { id, type, duration, title, message, onClose } = props;
 
   const handleOnClose = useCallback(() => {

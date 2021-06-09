@@ -17,12 +17,14 @@ jest.mock('notifications', () => ({
 }));
 
 const dispatch = jest.fn();
+const closeModal = jest.fn();
 
 const interests = ['cat-1', 'cat-3', 'cat-5'];
 
 describe('Interests modal - saveInterests action', () => {
   beforeEach(() => {
     dispatch.mockClear();
+    closeModal.mockClear();
     // @ts-ignore
     interestsApi.update.mockClear();
     // @ts-ignore
@@ -33,7 +35,7 @@ describe('Interests modal - saveInterests action', () => {
     // @ts-ignore
     interestsApi.update.mockResolvedValue({});
 
-    await saveInterests(dispatch, interests)();
+    await saveInterests(dispatch, interests, closeModal)();
 
     expect(dispatch).toBeCalledTimes(1);
     expect(interestsApi.update).toHaveBeenCalledWith(interests);
@@ -47,7 +49,7 @@ describe('Interests modal - saveInterests action', () => {
     // @ts-ignore
     interestsApi.update.mockRejectedValue({ errorType: 'error' });
 
-    await saveInterests(dispatch, interests)();
+    await saveInterests(dispatch, interests, closeModal)();
 
     expect(dispatch).toBeCalledTimes(2);
     expect(interestsApi.update).toHaveBeenCalledWith(interests);
@@ -61,7 +63,7 @@ describe('Interests modal - saveInterests action', () => {
     // @ts-ignore
     interestsApi.update.mockRejectedValue({ errorType: ApiErrorType.VALIDATION });
 
-    await saveInterests(dispatch, interests)();
+    await saveInterests(dispatch, interests, closeModal)();
 
     expect(dispatch).toBeCalledTimes(2);
     expect(dispatch).toHaveBeenNthCalledWith(2, {

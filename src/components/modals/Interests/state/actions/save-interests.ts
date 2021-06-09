@@ -6,6 +6,7 @@ import { Actions } from '../reducer';
 export default function saveInterests(
   dispatch,
   interests: string[],
+  closeModal,
 ) {
   return () => {
     if (interests.length === 0) {
@@ -18,6 +19,7 @@ export default function saveInterests(
     dispatch({ type: Actions.START_CALLING_API });
 
     const onSuccess = () => {
+      closeModal();
       showNotification({
         type: NotificationType.SUCCESS,
         message: 'Your interests have been updated, go discover what\'s new',

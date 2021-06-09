@@ -32,5 +32,5 @@ const layoutMap = {
 
 export const Body = styled.section.attrs(anyPropsAttrs)`
   box-sizing: border-box;
-  ${({ layout }) => layoutMap[layout]};
+  ${({ theme: { layout } }) => layoutMap[layout]};
 `;

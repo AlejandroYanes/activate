@@ -1,10 +1,19 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
+import ReactDOM from 'react-dom';
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
 import { EventChannelList, useEventCenterUpdate } from 'event-center';
 import { NotificationModel } from 'notifications';
-import { useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import Notification from './Notification';
 import { Notifications } from './styled/list';
+
+const wrapperMap = {
+  [Layout.DESKTOP]: ({ children }) => children,
+  [Layout.TABLET]: ({ children }) => children,
+  [Layout.MOBILE]: ({ children }) => (
+    ReactDOM.createPortal(children, document.body)
+  ),
+};
 
 const NotificationCenter: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -30,14 +39,18 @@ const NotificationCenter: FunctionComponent = () => {
     ))
   ), [notifications, handleRemoveNotification]);
 
+  const Wrapper = wrapperMap[layout];
+
   return (
-    <Notifications layout={layout}>
-      <AnimateSharedLayout>
-        <AnimatePresence>
-          {notificationCards}
-        </AnimatePresence>
-      </AnimateSharedLayout>
-    </Notifications>
+    <Wrapper>
+      <Notifications>
+        <AnimateSharedLayout>
+          <AnimatePresence>
+            {notificationCards}
+          </AnimatePresence>
+        </AnimateSharedLayout>
+      </Notifications>
+    </Wrapper>
   );
 };
 
