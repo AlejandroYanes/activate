@@ -6,7 +6,12 @@ import { Layout } from 'components/providers/Layout';
 const layoutMap = {
   [Layout.DESKTOP]: css`margin: 0 32px 0 0`,
   [Layout.TABLET]: css`margin: 0 32px 0 0`,
-  [Layout.MOBILE]: css`margin: 0 8px 0 8px`,
+  [Layout.MOBILE]: css`
+    margin: 0;
+    width: 100%;
+    padding: 0 8px;
+    box-sizing: border-box;
+  `,
 };
 
 export const Notifications = styled.ul.attrs(anyPropsAttrs)`
@@ -15,7 +20,7 @@ export const Notifications = styled.ul.attrs(anyPropsAttrs)`
   top: 0;
   right: 0;
   padding: 0;
-  ${({ layout }) => layoutMap[layout]};
+  ${({ theme: { layout } }) => layoutMap[layout]};
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;

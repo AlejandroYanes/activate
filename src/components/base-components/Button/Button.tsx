@@ -7,15 +7,16 @@ import Content from './Content';
 import { Button as StyledButton } from './styled';
 
 export interface ButtonProps extends PositionProps {
-  label?: string | number;
+  label?: string;
   onClick: (event) => void;
   leftIcon?: Icons | ReactNode;
   rightIcon?: Icons | ReactNode;
-  loading?: boolean;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'text' | 'flat' | 'outline' | 'fill';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
   align?: 'start' | 'center' | 'end';
+  loading?: boolean;
+  disabled?: boolean;
   sm?: boolean;
 }
 
@@ -26,6 +27,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     leftIcon,
     rightIcon,
     loading,
+    disabled,
     children,
     variant,
     color,
@@ -60,6 +62,7 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     <StyledButton
       ref={buttonRef}
       onClick={onClick}
+      disabled={disabled}
       variant={variant}
       color={color}
       sm={sm}
@@ -67,6 +70,8 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     >
       <Content
         label={label}
+        variant={variant}
+        color={color}
         loading={loading}
         leftIcon={leftIconNode}
         rightIcon={rightIconNode}

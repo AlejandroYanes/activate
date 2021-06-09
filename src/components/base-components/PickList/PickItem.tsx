@@ -8,16 +8,17 @@ import { Mark, StyledItem, Touchable } from './styled/item';
 interface Props {
   value: string;
   dashed?: boolean;
+  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
 }
 
 const PickItem: FunctionComponent<Props> = (props) => {
-  const { colors: Colors } = useAppTheme();
-  const { value, dashed, children } = props;
+  const { colors } = useAppTheme();
+  const { value, color, dashed, children } = props;
   const {
     value: selectedValue,
     onChange,
     size,
-    color,
+    color: parentColor,
     multiple,
     readonly,
   } = usePickListContext();
@@ -34,7 +35,7 @@ const PickItem: FunctionComponent<Props> = (props) => {
     <StyledItem tabIndex={-1} size={size}>
       <Touchable
         tabIndex={readonly ? -1 : 0}
-        color={color}
+        color={color || parentColor}
         dashed={dashed}
         readonly={readonly}
         isSelected={isSelected}
@@ -44,10 +45,10 @@ const PickItem: FunctionComponent<Props> = (props) => {
       >
         {children}
         <RenderIf condition={isSelected}>
-          <Mark color={color} data-el="pick_item-mark">
+          <Mark color={color || parentColor} data-el="pick_item-mark">
             <SvgIcon
               icon={Icons.CHECK_MARK}
-              color={Colors.WHITE}
+              color={colors.WHITE}
             />
           </Mark>
         </RenderIf>

@@ -43,7 +43,6 @@ function resolveTitle(title: string, type: NotificationType) {
 
 const Notification: FunctionComponent<Props> = (props) => {
   const colors = useAppColors();
-
   const { id, type, duration, title, message, onClose } = props;
 
   const handleOnClose = useCallback(() => {
@@ -67,16 +66,16 @@ const Notification: FunctionComponent<Props> = (props) => {
     >
       <Icon type={type} />
       <Content>
-        <Text color="background">{resolveTitle(title, type)}</Text>
+        <Text>{resolveTitle(title, type)}</Text>
         <RenderIf condition={typeof message === 'string'} fallback={message}>
-          <Text color="background">{message}</Text>
+          <Text>{message}</Text>
         </RenderIf>
       </Content>
       <IconButton
+        buttonColor="background"
+        color={colors.FONT}
         icon={Icons.CLOSE}
         onClick={handleOnClose}
-        color={colors.BACKGROUND}
-        buttonColor="background"
       />
     </StyledNotification>
   );

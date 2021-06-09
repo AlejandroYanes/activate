@@ -1,24 +1,24 @@
 import { ApiModel } from './types';
-import { del, get, post, put } from './actions';
+import { del, get, post, put } from './instance';
 
 export function getApi<T = any>(
   endpoint: string,
 ): ApiModel<T> {
   return {
     get(id) {
-      return get(`${endpoint}/${id}`, { authenticated: true });
+      return get(`${endpoint}/${id}`);
     },
     list(params?) {
-      return get(endpoint, { params, authenticated: true });
+      return get(endpoint, { params });
     },
     create(entity) {
-      return post(endpoint, entity, { authenticated: true });
+      return post(endpoint, entity);
     },
     update(entity) {
-      return put(`${endpoint}${entity.id}`, entity, { authenticated: true });
+      return put(`${endpoint}${entity.id}`, entity);
     },
     delete(param) {
-      return del(`${endpoint}${param}`, { authenticated: true });
+      return del(`${endpoint}${param}`);
     }
   };
 }

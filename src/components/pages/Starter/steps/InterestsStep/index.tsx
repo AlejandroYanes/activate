@@ -1,11 +1,12 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Title } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import InterestsGrid from 'components/experience/InterestsGrid';
+import RenderIf from 'components/base-components/RenderIf';
 import { Content, Step } from '../../styled';
 import Illustration from '../Illustration';
 import { FinishButton } from './styled';
-import { allInterests } from './interests';
+import useInterestsState from './state';
 
 const colsMap = {
   [Layout.DESKTOP]: 4,
@@ -15,25 +16,42 @@ const colsMap = {
 
 const InterestsStep: FunctionComponent = () => {
   const layout = useAppLayout();
-  const [interests, setInterests] = useState([]);
+  const {
+    state: {
+      isLoading,
+      categories,
+      interests,
+      error,
+      apiError,
+    },
+    actions: {
+      handleInterests,
+      saveInterests,
+    },
+  } = useInterestsState();
 
   return (
     <Step>
       <Content>
         <Title level={2}>{`Tell us what you're looking for`}</Title>
         <InterestsGrid
-          onChange={setInterests}
-          interests={allInterests}
+          multiple
+          loading={isLoading}
+          errored={!!apiError}
           value={interests}
+          interests={categories}
+          onChange={handleInterests}
           cols={colsMap[layout]}
           padding="20px 0 0 0"
-          multiple
         />
-        <FinishButton
-          label="Finish"
-          variant="fill"
-          onClick={() => undefined}
-        />
+        <RenderIf condition={!isLoading && !apiError}>
+          <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>
+          <FinishButton
+            label="Finish"
+            variant="fill"
+            onClick={saveInterests}
+          />
+        </RenderIf>
       </Content>
       <Illustration step={3} />
     </Step>

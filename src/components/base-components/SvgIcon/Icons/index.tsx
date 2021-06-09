@@ -14,9 +14,9 @@ import HeartFilledIcon from './HeartFilled';
 import ShareIcon from './Share';
 import ShareFilledIcon from './ShareFilled';
 import SearchIcon from './Search';
+import InfoCircleIcon from './InfoCircle';
 import SuccessIcon from './Success';
 import InfoIcon from './Info';
-import InfoCircleIcon from './InfoCircle';
 import WarningIcon from './Warning';
 import ErrorIcon from './Error';
 import GridIcon from './Grid';
@@ -84,6 +84,16 @@ import PetIcon from './Pet';
 import FashionIcon from './Fashion';
 import PencilIcon from './Pencil';
 import NewsIcon from './News';
+import DevicesIcon from './Devices';
+import VolleyballIcon from './Volleyball';
+import DumbbellIcon from './Dumbbell';
+import BaseballIcon from './Baseball';
+import FootballIcon from './Football';
+import EarIcon from './Ear';
+import BabyCarriageIcon from './BabyCarriage';
+import CheckCircleIcon from './CheckCircle';
+import ExclamationTriangleIcon from './ExclamantionTriangle';
+import ExclamationOctagonIcon from './ExclamantionOctagon';
 
 export enum Icons {
   HOME = 'home',
@@ -171,6 +181,16 @@ export enum Icons {
   PET = 'pet',
   FASHION = 'fashion',
   NEWS = 'news',
+  DEVICES = 'devices',
+  VOLLEYBALL = 'volleyball',
+  BASEBALL = 'baseball',
+  FOOTBALL = 'football',
+  DUMBBELL = 'dumbbell',
+  EAR = 'ear',
+  BABY_CARRIAGE = 'baby_carriage',
+  CHECK_CIRCLE = 'check-circle',
+  EXCLAMATION_TRIANGLE = 'exc-triangle',
+  EXCLAMATION_OCTAGON = 'exc-octagon',
 }
 
 export const icons = {
@@ -189,9 +209,9 @@ export const icons = {
   [Icons.SHARE]: (props) => <ShareIcon {...props} />,
   [Icons.SHARE_FILLED]: (props) => <ShareFilledIcon {...props} />,
   [Icons.SEARCH]: (props) => <SearchIcon {...props} />,
+  [Icons.INFO_CIRCLE]: (props) => <InfoCircleIcon {...props} />,
   [Icons.SUCCESS]: (props) => <SuccessIcon {...props} />,
   [Icons.INFO]: (props) => <InfoIcon {...props} />,
-  [Icons.INFO_CIRCLE]: (props) => <InfoCircleIcon {...props} />,
   [Icons.WARNING]: (props) => <WarningIcon {...props} />,
   [Icons.ERROR]: (props) => <ErrorIcon {...props} />,
   [Icons.GRID]: (props) => <GridIcon {...props} />,
@@ -259,4 +279,14 @@ export const icons = {
   [Icons.PET]: (props) => <PetIcon {...props} />,
   [Icons.FASHION]: (props) => <FashionIcon {...props} />,
   [Icons.NEWS]: (props) => <NewsIcon {...props} />,
+  [Icons.DEVICES]: (props) => <DevicesIcon {...props} />,
+  [Icons.VOLLEYBALL]: (props) => <VolleyballIcon {...props} />,
+  [Icons.BASEBALL]: (props) => <BaseballIcon {...props} />,
+  [Icons.FOOTBALL]: (props) => <FootballIcon {...props} />,
+  [Icons.DUMBBELL]: (props) => <DumbbellIcon {...props} />,
+  [Icons.EAR]: (props) => <EarIcon {...props} />,
+  [Icons.BABY_CARRIAGE]: (props) => <BabyCarriageIcon {...props} />,
+  [Icons.CHECK_CIRCLE]: (props) => <CheckCircleIcon {...props} />,
+  [Icons.EXCLAMATION_TRIANGLE]: (props) => <ExclamationTriangleIcon {...props} />,
+  [Icons.EXCLAMATION_OCTAGON]: (props) => <ExclamationOctagonIcon {...props} />,
 };

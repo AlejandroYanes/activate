@@ -1,20 +1,32 @@
-import { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import FlexBox from 'components/base-components/FlexBox';
 import IconButton from 'components/base-components/IconButton';
-import { Title } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
+import Page from 'components/base-components/Page';
+import { Button } from 'components/base-components/Button';
 import InterestsGrid from 'components/experience/InterestsGrid';
+import RenderIf from 'components/base-components/RenderIf';
 import { StyledCard } from './styled';
-import { interests as allInterests } from './interests';
-import Page from '../../base-components/Page';
-import { Button } from '../../base-components/Button';
-
-const emptyAction = () => undefined;
+import useInterestsState from './state';
 
 const InterestsPage: FunctionComponent = () => {
   const { goBack } = useHistory();
-  const [interests, setInterests] = useState([]);
+  const {
+    state: {
+      isLoading,
+      allInterests,
+      interests,
+      apiFailed,
+      error,
+      callingAPI,
+    },
+    actions: {
+      handleInterests,
+      saveInterests,
+    },
+  } = useInterestsState();
 
   return (
     <Page>
@@ -24,17 +36,24 @@ const InterestsPage: FunctionComponent = () => {
           <Title level={2}>Manage your interests</Title>
         </FlexBox>
         <InterestsGrid
-          multiple
+          loading={isLoading}
+          errored={apiFailed}
           value={interests}
           interests={allInterests}
-          onChange={setInterests}
+          onChange={handleInterests}
+          padding="20px 0 0 0"
+          multiple
         />
-        <Button
-          onClick={emptyAction}
-          label="Update"
-          variant="fill"
-          margin="24px 0 0 auto"
-        />
+        <RenderIf condition={!isLoading && !apiFailed}>
+          <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>
+          <Button
+            margin="24px 0 0 auto"
+            label="Update"
+            variant="fill"
+            loading={callingAPI}
+            onClick={saveInterests}
+          />
+        </RenderIf>
       </StyledCard>
     </Page>
   );

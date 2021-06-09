@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useAuthData } from 'components/providers/Auth';
 
-export default function useStarterState(): [number, () => void] {
+export default function useStarterState() {
   const { userInfo } = useAuthData();
   const [activeStep, setActiveStep] = useState<number>(userInfo.verificationLevel);
 
@@ -9,5 +9,5 @@ export default function useStarterState(): [number, () => void] {
     setActiveStep((step) => step + 1);
   }, []);
 
-  return [activeStep, goNextStep];
+  return { activeStep, goNextStep, setActiveStep };
 }

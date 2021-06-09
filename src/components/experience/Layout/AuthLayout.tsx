@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import NavBar from 'components/experience/NavBar';
 import SidePanel from 'components/experience/SidePanel';
@@ -11,12 +11,11 @@ import { Body } from './styled/body';
 
 const PrimaryBody: FunctionComponent = (props) => {
   const { children } = props;
-  const layout = useAppLayout();
 
   return (
-    <StyledApp layout={layout} data-el="app">
+    <StyledApp data-el="app">
       <NavBar />
-      <Body layout={layout} data-el="app-body">
+      <Body data-el="app-body">
         {children}
       </Body>
       <SidePanel />
@@ -28,12 +27,11 @@ const PrimaryBody: FunctionComponent = (props) => {
 
 const TabletBody: FunctionComponent = (props) => {
   const { children } = props;
-  const layout = useAppLayout();
 
   return (
-    <StyledApp layout={layout} data-el="app">
+    <StyledApp data-el="app">
       <NavBar />
-      <Body layout={layout} data-el="app-body">
+      <Body data-el="app-body">
         {children}
       </Body>
       <NotificationCenter />
@@ -44,16 +42,15 @@ const TabletBody: FunctionComponent = (props) => {
 
 const MobileBody: FunctionComponent = (props) => {
   const { children } = props;
-  const layout = useAppLayout();
 
   return (
-    <StyledApp layout={layout} data-el="app">
-      <BottomTabBar />
-      <Body layout={layout} data-el="app-body">
+    <StyledApp data-el="app">
+      <Body data-el="app-body">
         {children}
       </Body>
-      <NotificationCenter />
+      <BottomTabBar />
       <ModalStack />
+      <NotificationCenter />
     </StyledApp>
   );
 };

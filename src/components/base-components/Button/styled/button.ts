@@ -135,6 +135,7 @@ export const getVariantStyles = (props) => {
 };
 
 export const Button = styled.button.attrs(anyPropsAttrs)`
+  font-family: Comfortaa, sans-serif;
   border: none;
   outline: none;
   box-shadow: none;
@@ -144,7 +145,7 @@ export const Button = styled.button.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
   justify-content: ${getAlignment};
-  padding: 0 12px;
+  padding: 0 18px;
   cursor: pointer;
   flex-shrink: 0;
   position: relative;

@@ -1,33 +1,39 @@
 import React, { FunctionComponent } from 'react';
+import { CategoryModel } from 'models/category';
 import { PositionProps } from 'helpers';
-import { useAppColors } from 'components/providers/Theme';
-import { PickItem, PickList } from 'components/base-components/PickList';
-import { Text } from 'components/base-components/Typography';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { PickList } from 'components/base-components/PickList';
+import PlainGrid from './PlainGrid';
+import SectionedGrid from './SectionedGrid';
+import Loading from './Loading';
+import ErrorMessage from './ErrorMessage';
 
 interface Props extends PositionProps {
+  loading?: boolean;
+  errored?: boolean;
   value?: string | string[];
   onChange?: (value) => void;
   cols?: number;
   multiple?: boolean;
   readonly?: boolean;
-  interests: { name: string, icon: Icons }[];
+  plain?: boolean;
+  interests: CategoryModel[];
 }
 
 const InterestsGrid: FunctionComponent<Props> = (props): any => {
-  const { interests, ...rest } = props;
-  const colors = useAppColors();
+  const { loading, errored, interests, plain, ...rest } = props;
+  const Items = plain ? PlainGrid : SectionedGrid;
 
-  const items = interests.map(({ name, icon }) => (
-    <PickItem key={icon} value={icon}>
-      <SvgIcon
-        icon={icon}
-        color={colors.BRAND_FONT}
-        size="x-large"
-      />
-      <Text color="brand" padding="4px 0 0 0">{name}</Text>
-    </PickItem>
-  ));
+  if (loading) {
+    return (
+      <Loading />
+    );
+  }
+
+  if (errored) {
+    return (
+      <ErrorMessage />
+    );
+  }
 
   return (
     <PickList
@@ -36,7 +42,7 @@ const InterestsGrid: FunctionComponent<Props> = (props): any => {
       size="small"
       {...rest}
     >
-      {items}
+      <Items interests={interests} />
     </PickList>
   );
 };

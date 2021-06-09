@@ -12,7 +12,7 @@
     "test:ci": "react-scripts test --watchAll=false --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
     "eject": "react-scripts eject",
     "test:e2e": "cypress open",
-    "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}' --fix",
+    "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "analize": "source-map-explorer 'build/static/js/*.js'"
@@ -58,6 +58,7 @@
     "node-sass": "^4.13.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-query": "^3.16.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "4.0.3",
     "rxjs": "^6.6.3",

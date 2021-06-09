@@ -1,4 +1,5 @@
 import { UserModel } from './user';
+import { CommentModel } from './comment';
 
 export interface EventModel {
   id: string;
@@ -9,6 +10,7 @@ export interface EventModel {
   image: string;
   category: string;
   author: UserModel;
+  comments: CommentModel[];
   going?: boolean;
   owned?: boolean;
 }

@@ -13,7 +13,7 @@ const buttonStyles = {
     padding: 0 18px;
   `,
   [Layout.MOBILE]: css`
-    margin-top: 48px;
+    margin-top: 24px;
   `,
 };
 

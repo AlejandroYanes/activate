@@ -12,7 +12,7 @@ const eventUpdates = [
 function generateUpdate(type: UpdateType) {
   if (eventUpdates.some(t => t === type)) {
     return {
-      user: {
+      creator: {
         avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
         name: faker.name.firstName(),
         lastName: faker.name.lastName(),
@@ -26,7 +26,7 @@ function generateUpdate(type: UpdateType) {
   }
 
   return {
-    user: {
+    creator: {
       avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
       name: faker.name.firstName(),
       lastName: faker.name.lastName(),
@@ -37,7 +37,7 @@ function generateUpdate(type: UpdateType) {
 export const updates = new Array(7).fill('1').map((_v, index) => ({
   type: index,
   id: faker.random.uuid(),
-  date: faker.date.recent(),
-  read: faker.random.boolean(),
+  dateSent: faker.date.recent(),
+  seen: faker.random.boolean(),
   ...generateUpdate(index),
 }));

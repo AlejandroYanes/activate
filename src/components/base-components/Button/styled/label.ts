@@ -3,6 +3,7 @@ import { anyPropsAttrs } from 'helpers';
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
   font-family: Comfortaa, sans-serif;
+  font-weight: bold;
   margin: 0 8px;
   opacity: ${({ show }) => show ? 1 : 0};
   pointer-events: none;
