@@ -94,6 +94,11 @@ import BabyCarriageIcon from './BabyCarriage';
 import CheckCircleIcon from './CheckCircle';
 import ExclamationTriangleIcon from './ExclamantionTriangle';
 import ExclamationOctagonIcon from './ExclamantionOctagon';
+import CheckSquareIcon from './CheckSquare';
+import BrainIcon from './Brain';
+import CurlyBracketsIcon from './CurlyBrackets';
+import CircuitIcon from './Circuit';
+import FilmIcon from './Film';
 
 export enum Icons {
   HOME = 'home',
@@ -191,6 +196,11 @@ export enum Icons {
   CHECK_CIRCLE = 'check-circle',
   EXCLAMATION_TRIANGLE = 'exc-triangle',
   EXCLAMATION_OCTAGON = 'exc-octagon',
+  CHECK_SQUARE = 'check_square',
+  BRAIN = 'brain',
+  CURLY_BRACKETS = 'curly_brackets',
+  CIRCUIT = 'circuit',
+  FILM = 'film',
 }
 
 export const icons = {
@@ -289,4 +299,9 @@ export const icons = {
   [Icons.CHECK_CIRCLE]: (props) => <CheckCircleIcon {...props} />,
   [Icons.EXCLAMATION_TRIANGLE]: (props) => <ExclamationTriangleIcon {...props} />,
   [Icons.EXCLAMATION_OCTAGON]: (props) => <ExclamationOctagonIcon {...props} />,
+  [Icons.CHECK_SQUARE]: (props) => <CheckSquareIcon {...props} />,
+  [Icons.BRAIN]: (props) => <BrainIcon {...props} />,
+  [Icons.CURLY_BRACKETS]: (props) => <CurlyBracketsIcon {...props} />,
+  [Icons.CIRCUIT]: (props) => <CircuitIcon {...props} />,
+  [Icons.FILM]: (props) => <FilmIcon {...props} />,
 };
