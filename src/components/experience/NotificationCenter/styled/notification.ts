@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { cardWidth } from 'styles/variables';
-import { getBgdLighterColor } from 'helpers';
+import { getFontColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const widthMap = {
@@ -17,7 +17,7 @@ export const Notification = styled(motion.li)`
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
-  background-color: ${getBgdLighterColor};
+  background-color: ${getFontColor};
   ${({ theme: { layout } }) => widthMap[layout]};
 
   &:last-child {

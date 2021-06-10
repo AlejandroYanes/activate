@@ -66,12 +66,13 @@ const Notification: FunctionComponent<Props> = (props) => {
     >
       <Icon type={type} />
       <Content>
-        <Text>{resolveTitle(title, type)}</Text>
+        <Text color="background">{resolveTitle(title, type)}</Text>
         <RenderIf condition={typeof message === 'string'} fallback={message}>
-          <Text>{message}</Text>
+          <Text color="background">{message}</Text>
         </RenderIf>
       </Content>
       <IconButton
+        variant="flat"
         buttonColor="background"
         color={colors.FONT}
         icon={Icons.CLOSE}

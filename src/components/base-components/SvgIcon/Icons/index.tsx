@@ -204,6 +204,9 @@ export enum Icons {
 }
 
 export const icons = {
+  '': () => null,
+  null: () => null,
+  undefiled: () => null,
   [Icons.HOME]: (props) => <HomeIcon {...props} />,
   [Icons.CHEVRON_UP]: (props) => <ChevronUpIcon {...props} />,
   [Icons.CHEVRON_DOWN]: (props) => <ChevronDownIcon {...props} />,

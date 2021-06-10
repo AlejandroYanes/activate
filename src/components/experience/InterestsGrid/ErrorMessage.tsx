@@ -25,7 +25,7 @@ const ErrorMessage = () => {
         mT
         label="Reload"
         variant="fill"
-        color="accent"
+        color="warning"
         onClick={reloadPage}
       />
     </FlexBox>

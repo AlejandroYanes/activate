@@ -12,13 +12,12 @@ const UsersIcon: FunctionComponent<IconProps> = (props) => {
       width={width}
       height={height}
       viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="9" cy="7" r="4.5" stroke={color} strokeWidth="1.8" />
-      <path d="M15 11.5C17.4853 11.5 19.5 9.48528 19.5 7C19.5 4.51472 17.4853 2.5 15 2.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M9 14.5C5 14.5 2 16.5 2 19C2 20.5 5 22 9 22C13 22 16 20.5 16 19C16 16.5 13 14.5 9 14.5Z" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M17.5 14.8884C20.1 15.5875 22 17.158 22 19C22 20.1052 20.1 21.2103 17.5 21.7156" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        fill={color}
+        d="M12.3,12.22A4.92,4.92,0,0,0,14,8.5a5,5,0,0,0-10,0,4.92,4.92,0,0,0,1.7,3.72A8,8,0,0,0,1,19.5a1,1,0,0,0,2,0,6,6,0,0,1,12,0,1,1,0,0,0,2,0A8,8,0,0,0,12.3,12.22ZM9,11.5a3,3,0,1,1,3-3A3,3,0,0,1,9,11.5Zm9.74.32A5,5,0,0,0,15,3.5a1,1,0,0,0,0,2,3,3,0,0,1,3,3,3,3,0,0,1-1.5,2.59,1,1,0,0,0-.5.84,1,1,0,0,0,.45.86l.39.26.13.07a7,7,0,0,1,4,6.38,1,1,0,0,0,2,0A9,9,0,0,0,18.74,11.82Z"
+      />
     </svg>
   );
 };

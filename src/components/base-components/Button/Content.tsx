@@ -1,40 +1,38 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { FunctionComponent } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
 import { SpinningDots } from 'components/base-components/Loaders';
 import { LoadingLayer, Text } from './styled';
+import SvgIcon, { Icons } from '../SvgIcon';
 
 interface Props {
   label: string;
-  color?: string;
-  variant?: 'text' | 'flat' | 'outline' | 'fill';
-  rightIcon: ReactNode;
-  leftIcon: ReactNode;
+  color: string;
+  variant: 'text' | 'flat' | 'outline' | 'fill';
+  rightIcon: Icons;
+  leftIcon: Icons;
   loading: boolean;
+  sm: boolean;
 }
 
 const Content: FunctionComponent<Props> = (props) => {
   const {
-    loading,
+    sm,
     label,
-    variant,
     color,
-    rightIcon,
+    variant,
+    loading,
     leftIcon,
-    children,
+    rightIcon,
   } = props;
-
-  if (children) {
-    return children as any;
-  }
 
   if (label) {
     const spinnerColors = variant !== 'fill' ? color : 'white';
 
     return (
       <>
-        {leftIcon}
+        <SvgIcon icon={leftIcon} size={sm ? 'medium' : 'large'} />
         <Text show={!loading}>{label}</Text>
-        {rightIcon}
+        <SvgIcon icon={rightIcon} size={sm ? 'medium' : 'large'} />
         <RenderIf condition={loading}>
           <LoadingLayer show={loading}>
             <SpinningDots size="x-small" color={spinnerColors as any} />

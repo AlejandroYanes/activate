@@ -3,6 +3,8 @@ import { getShade, changeColorLight } from 'helpers/colors';
 export interface ColorScheme {
   BRAND: string;
   BRAND_HIGHLIGHT: string;
+  BRAND_BG: string;
+  BRAND_BG_HIGHLIGHT: string;
   BRAND_FONT: string;
   BRAND_FONT_HIGHLIGHT: string;
   BRAND_SHADE: string;
@@ -77,7 +79,7 @@ export const fixedColors = {
 
 export const basicColors = {
   INFO: '#0B4F99',
-  WARNING: '#ff9700',
-  ERROR: '#d20100',
+  WARNING: '#db7601',
+  ERROR: '#ff0200',
   SUCCESS: '#139272',
 };
