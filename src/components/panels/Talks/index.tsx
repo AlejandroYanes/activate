@@ -3,11 +3,10 @@ import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { EventChannelList, notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { useAppColors } from 'components/providers/Theme';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Text } from 'components/base-components/Typography';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import Messages from 'components/experience/Messages';
 import UsersList from 'components/experience/UsersList';
 import FlexBox from 'components/base-components/FlexBox';
@@ -21,7 +20,6 @@ enum TalkViews {
 }
 
 const TalksPanel: FunctionComponent = () => {
-  const colors = useAppColors();
   const layout = useAppLayout();
   const { location: { pathname }, push } = useHistory();
 
@@ -88,11 +86,10 @@ const TalksPanel: FunctionComponent = () => {
 
   const leftAction = (
     <IconButton
-      style={arrowBackStyles}
       onClick={closeTalk}
+      style={arrowBackStyles}
       icon={Icons.ARROW_LEFT}
-      color={colors.FONT}
-      buttonColor="font"
+      color="background"
       variant="flat"
     />
   );
@@ -101,8 +98,7 @@ const TalksPanel: FunctionComponent = () => {
     <IconButton
       onClick={maximizeTalk}
       icon={Icons.MAXIMIZE}
-      color={colors.FONT}
-      buttonColor="font"
+      color="background"
       variant="flat"
     />
   );
@@ -111,8 +107,7 @@ const TalksPanel: FunctionComponent = () => {
     <IconButton
       size="large"
       variant="fill"
-      buttonColor="accent"
-      color={colors.WHITE}
+      color="accent"
       icon={Icons.PENCIL}
       onClick={openContactList}
     />

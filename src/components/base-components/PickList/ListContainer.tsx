@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Wrapper, StyledListContainer, Edge } from './styled/list-container';
 import { StyledList } from './styled/list';
@@ -49,7 +49,7 @@ const ListContainer: FunctionComponent<PickListProps> = (props) => {
             onClick={handleLeftEdgeClick}
             icon={Icons.CHEVRON_LEFT}
             variant="flat"
-            buttonColor="font"
+            color="background"
           />
         </Edge>
       </RenderIf>
@@ -64,7 +64,7 @@ const ListContainer: FunctionComponent<PickListProps> = (props) => {
             onClick={handleRightEdgeClick}
             icon={Icons.CHEVRON_RIGHT}
             variant="flat"
-            buttonColor="font"
+            color="background"
           />
         </Edge>
       </RenderIf>

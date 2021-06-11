@@ -2,16 +2,12 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import faker from 'faker';
 import { useHistory } from 'react-router-dom';
 import eventImg from 'assets/images/virtual-tour.jpeg';
-import { useAppColors } from 'components/providers/Theme';
-import {
-  AuxPanelSection,
-  usePanelActions,
-} from 'components/providers/PanelSections';
+import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
@@ -19,9 +15,7 @@ import EventImage from 'components/experience/EventImage';
 import { Modals } from 'components/modals';
 import Description from './Description';
 import Comments from './Comnments';
-import {
-  StyledEventDetail,
-} from './styled/page';
+import { StyledEventDetail } from './styled/page';
 
 enum Tabs {
   DetailsSection = 'Details',
@@ -37,7 +31,6 @@ const event = {
 };
 
 const EventDetailsPage: FunctionComponent = () => {
-  const Colors = useAppColors();
   const { goBack, push } = useHistory();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
 
@@ -67,7 +60,7 @@ const EventDetailsPage: FunctionComponent = () => {
         <FlexBox align="flex-start" padding="0 0 16px 0">
           <IconButton
             variant="flat"
-            buttonColor="font"
+            color="background"
             onClick={goBack}
             icon={Icons.ARROW_LEFT}
           />
@@ -84,20 +77,17 @@ const EventDetailsPage: FunctionComponent = () => {
           </FlexBox>
           <IconButton
             size="large"
-            buttonColor="info"
+            color="info"
             variant="flat"
             icon={Icons.FORWARD}
-            color={Colors.INFO}
             onClick={inviteUsers}
             margin="0 0 0 auto"
           />
           <IconButton
             size="large"
             variant="flat"
-            buttonColor="accent"
+            color="accent"
             icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
-            color={Colors.ACCENT}
-            secondaryColor={isBooked ? Colors.ACCENT : 'transparent'}
             onClick={handleBookActionClick}
           />
         </FlexBox>

@@ -1,12 +1,7 @@
 import styled from 'styled-components';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
 import { ButtonProps } from '../Button';
-import {
-  getTextVariantStyles,
-  getFillVariantStyles,
-  getFlatVariantStyles,
-  getOutlineVariantStyles,
-} from './utils';
+import { getVariantStyles } from './utils';
 
 const getSize = (props: ButtonProps) => {
   const { sm, fullWidth } = props;
@@ -33,23 +28,6 @@ const getSize = (props: ButtonProps) => {
 const getAlignment = (props: ButtonProps) => {
   const { align } = props;
   return align === 'center' ? align : `flex-${align}`;
-};
-
-export const getVariantStyles = (props) => {
-  const { theme, ...buttonProps } = props;
-  const { variant, color } = buttonProps as ButtonProps;
-  const { colors } = theme;
-
-  switch (variant) {
-    case 'text':
-      return getTextVariantStyles(colors, color);
-    case 'outline':
-      return getOutlineVariantStyles(colors, color);
-    case 'flat':
-      return getFlatVariantStyles(colors, color);
-    case 'fill':
-      return getFillVariantStyles(colors, color);
-  }
 };
 
 export const Button = styled.button.attrs(anyPropsAttrs)`

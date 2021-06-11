@@ -2,10 +2,9 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import eventImg from 'assets/images/virtual-tour.jpeg';
-import { useAppColors } from 'components/providers/Theme';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import { Text, Title } from 'components/base-components/Typography';
@@ -30,7 +29,6 @@ enum Tabs {
 
 
 const EventDetailsModal: FunctionComponent = () => {
-  const colors = useAppColors();
   const { goBack } = useHistory();
 
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
@@ -63,20 +61,17 @@ const EventDetailsModal: FunctionComponent = () => {
           </FlexBox>
           <IconButton
             size="large"
-            buttonColor="info"
+            color="info"
             variant="flat"
             icon={Icons.FORWARD}
-            color={colors.INFO}
             onClick={() => undefined}
             margin="0 0 0 auto"
           />
           <IconButton
             size="large"
             variant="flat"
-            buttonColor="accent"
+            color="accent"
             icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
-            color={colors.ACCENT}
-            secondaryColor={isBooked ? colors.ACCENT : 'transparent'}
             onClick={handleBookActionClick}
           />
         </FlexBox>

@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
@@ -29,8 +28,6 @@ const UserView = (props) => (
 );
 
 const TabletBody: FunctionComponent = () => {
-  const colors = useAppColors();
-
   const [{ activeView, activeUser }, setState] = useState({
     activeView: TalkViews.TALK_LIST,
     activeUser: undefined,
@@ -78,8 +75,7 @@ const TabletBody: FunctionComponent = () => {
       style={arrowBackStyles}
       onClick={closeTalk}
       icon={Icons.ARROW_LEFT}
-      color={colors.FONT}
-      buttonColor="font"
+      color="background"
       variant="flat"
     />
   );
@@ -88,8 +84,7 @@ const TabletBody: FunctionComponent = () => {
     <IconButton
       onClick={() => undefined}
       icon={Icons.MORE_VERT}
-      color={colors.FONT}
-      buttonColor="font"
+      color="background"
       variant="flat"
     />
   );
@@ -98,8 +93,7 @@ const TabletBody: FunctionComponent = () => {
     <IconButton
       size="large"
       variant="fill"
-      buttonColor="accent"
-      color={colors.WHITE}
+      color="accent"
       icon={Icons.ADD_USER}
       onClick={openContactList}
     />

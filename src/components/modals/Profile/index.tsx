@@ -8,7 +8,7 @@ import { Icons } from 'components/base-components/SvgIcon';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import UsersList from 'components/experience/UsersList';
 import { users } from './users';
 

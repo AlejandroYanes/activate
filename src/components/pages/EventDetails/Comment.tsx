@@ -2,10 +2,9 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { formatDate } from 'helpers';
 import Avatar from 'components/base-components/Avatar';
 import { Paragraph, Text } from 'components/base-components/Typography';
-import IconButton from 'components/base-components/IconButton';
 import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import { Button } from 'components/base-components/Button';
+import { Button, IconButton } from 'components/base-components/Button';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { Comment as StyledComment, Details, Footer, Header } from './styled/comment';
 
@@ -22,7 +21,7 @@ const menuTrigger = ({ toggleMenu }) => (
   <IconButton
     onClick={toggleMenu}
     icon={Icons.MORE_VERT}
-    buttonColor="font"
+    color="background"
     variant="flat"
   />
 );

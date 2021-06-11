@@ -1,11 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import FlexBox from 'components/base-components/FlexBox';
-import IconButton from 'components/base-components/IconButton';
 import { Text, Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
-import { Button } from 'components/base-components/Button';
+import { Button, IconButton } from 'components/base-components/Button';
 import InterestsGrid from 'components/experience/InterestsGrid';
 import RenderIf from 'components/base-components/RenderIf';
 import { StyledCard } from './styled';

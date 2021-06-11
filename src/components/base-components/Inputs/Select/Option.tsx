@@ -22,7 +22,7 @@ const Option: FunctionComponent<Props> = (props) => {
 
   const iconColor = useMemo(() => {
     if (isHovered) {
-      return colors.WHITE;
+      return colors.BACKGROUND_LIGHTER;
     }
 
     return isSelected ? colors.BRAND_FONT : colors.FONT;

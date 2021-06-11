@@ -10,7 +10,7 @@ import { Icons } from 'components/base-components/SvgIcon';
 import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
 import UpdatesPanel from 'components/panels/Updates';
 import EventDetailsPanel from 'components/panels/EventDetails';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import FilterPanel from 'components/panels/Filters';
 import TalksPanel from 'components/panels/Talks';

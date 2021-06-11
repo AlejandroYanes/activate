@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react';
 import { mobileHeaderHeight } from 'styles/variables';
 import { Title } from 'components/base-components/Typography';
 import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from '../RenderIf';
 

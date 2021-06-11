@@ -15,7 +15,6 @@ import {
 
 function expandColors(colors, lightColors, useDarkStyle) {
   const { BACKGROUND, BACKGROUND_LIGHTER } = lightColors;
-  const { WHITE } = fixedColors;
 
   return Object.keys(colors).reduce((acc, color) => {
     const colorValue = colors[color];

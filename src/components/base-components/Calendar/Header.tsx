@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import IconButton from 'components/base-components/IconButton';
-import { Button } from 'components/base-components/Button';
+import { Button, IconButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import { Icons } from 'components/base-components/SvgIcon';
 import { monthFormatter, monthYearFormatter, yearFormatter } from './utils';
@@ -49,7 +48,7 @@ const Header: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={selectPrevious}
           icon={Icons.CHEVRON_LEFT}
-          buttonColor="font"
+          color="background"
           variant="flat"
         />
       </RenderIf>
@@ -66,7 +65,7 @@ const Header: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={selectNext}
           icon={Icons.CHEVRON_RIGHT}
-          buttonColor="font"
+          color="background"
           variant="flat"
         />
       </RenderIf>

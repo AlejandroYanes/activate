@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { getEventValue } from 'helpers';
-import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import AbsoluteContent from '../base/AbsoluteContent';
 import InputLabel from '../base/Label';
 import InputIcon from '../base/Icon';
@@ -23,8 +22,6 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
     error,
     ...rest
   } = props;
-
-  const colors = useAppColors();
   const [showPassword, setShowPassword] = useState(false);
 
   const handleOnChange = useCallback((event) => {
@@ -54,8 +51,7 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
         <IconButton
           onClick={toggleShowPassword}
           icon={showPassword ? Icons.UNLOCK : Icons.LOCK}
-          color={colors.FONT}
-          buttonColor="font"
+          color="background"
           size="small"
         />
       </AbsoluteContent>

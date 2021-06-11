@@ -1,5 +1,4 @@
 import { FunctionComponent } from 'react';
-import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
@@ -8,7 +7,7 @@ import { PasswordInput } from 'components/base-components/Inputs';
 import { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import { Content, OAuthBox, SignBox } from './styled';
@@ -18,7 +17,6 @@ const emptyAction = () => undefined;
 
 const SignPage: FunctionComponent = () => {
   const layout = useAppLayout();
-  const colors = useAppColors();
   const {
     state: {
       signAction,
@@ -77,24 +75,21 @@ const SignPage: FunctionComponent = () => {
             <IconButton
               onClick={emptyAction}
               icon={Icons.GOOGLE}
-              color={colors.WHITE}
-              buttonColor="accent"
+              color="accent"
               variant="fill"
               size="large"
             />
             <IconButton
               onClick={emptyAction}
               icon={Icons.FACEBOOK}
-              color={colors.WHITE}
-              buttonColor="accent"
+              color="accent"
               variant="fill"
               size="large"
             />
             <IconButton
               onClick={emptyAction}
               icon={Icons.INSTAGRAM}
-              color={colors.WHITE}
-              buttonColor="accent"
+              color="accent"
               variant="fill"
               size="large"
             />

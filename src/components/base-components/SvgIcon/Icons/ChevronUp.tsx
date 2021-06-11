@@ -12,10 +12,12 @@ const ChevronUpIcon: FunctionComponent<IconProps> = (props) => {
       width={width}
       height={height}
       viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M5 15L12 8L19 15" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path
+        fill={color}
+        d="M17,13.41,12.71,9.17a1,1,0,0,0-1.42,0L7.05,13.41a1,1,0,0,0,0,1.42,1,1,0,0,0,1.41,0L12,11.29l3.54,3.54a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29A1,1,0,0,0,17,13.41Z"
+      />
     </svg>
   );
 };

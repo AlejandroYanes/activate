@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useState } from 'react';
 import * as faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
 import EventCard from 'components/experience/EventCard';
 import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import ProfileCard from 'components/experience/ProfileCard';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -43,7 +42,6 @@ const Users = () => (
 );
 
 const PublisherPage: FunctionComponent = () => {
-  const Colors = useAppColors();
   const [activeTab, setActiveTab] = useState(Tabs.EVENTS);
   const { eventsCount, followersCount, ...rest } = publisher;
 
@@ -51,8 +49,7 @@ const PublisherPage: FunctionComponent = () => {
     <IconButton
       onClick={() => undefined}
       icon={Icons.STAR}
-      color={Colors.ACCENT}
-      buttonColor="accent"
+      color="accent"
       size="large"
       variant="flat"
     />

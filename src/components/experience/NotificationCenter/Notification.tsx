@@ -6,7 +6,7 @@ import {
 } from 'notifications';
 import { useAppColors } from 'components/providers/Theme';
 import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import Icon from './Icon';
@@ -73,8 +73,7 @@ const Notification: FunctionComponent<Props> = (props) => {
       </Content>
       <IconButton
         variant="flat"
-        buttonColor="background"
-        color={colors.FONT}
+        color="background"
         icon={Icons.CLOSE}
         onClick={handleOnClose}
       />

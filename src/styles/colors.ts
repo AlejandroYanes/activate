@@ -10,26 +10,36 @@ export interface ColorScheme {
   BRAND_SHADE: string;
   ACCENT: string;
   ACCENT_HIGHLIGHT: string;
+  ACCENT_BG: string;
+  ACCENT_BG_HIGHLIGHT: string;
   ACCENT_FONT: string;
   ACCENT_FONT_HIGHLIGHT: string;
   ACCENT_SHADE: string;
   INFO: string;
   INFO_HIGHLIGHT: string;
+  INFO_BG: string;
+  INFO_BG_HIGHLIGHT: string;
   INFO_FONT: string;
   INFO_FONT_HIGHLIGHT: string;
   INFO_SHADE: string;
   WARNING: string;
   WARNING_HIGHLIGHT: string;
+  WARNING_BG: string;
+  WARNING_BG_HIGHLIGHT: string;
   WARNING_FONT: string;
   WARNING_FONT_HIGHLIGHT: string;
   WARNING_SHADE: string;
   ERROR: string;
   ERROR_HIGHLIGHT: string;
+  ERROR_BG: string;
+  ERROR_BG_HIGHLIGHT: string;
   ERROR_FONT: string;
   ERROR_FONT_HIGHLIGHT: string;
   ERROR_SHADE: string;
   SUCCESS: string;
   SUCCESS_HIGHLIGHT: string;
+  SUCCESS_BG: string;
+  SUCCESS_BG_HIGHLIGHT: string;
   SUCCESS_FONT: string;
   SUCCESS_FONT_HIGHLIGHT: string;
   SUCCESS_SHADE: string;
@@ -78,8 +88,8 @@ export const fixedColors = {
 };
 
 export const basicColors = {
-  INFO: '#0B4F99',
+  INFO: '#1361b6',
   WARNING: '#db7601',
-  ERROR: '#ff0200',
+  ERROR: '#f60605',
   SUCCESS: '#139272',
 };

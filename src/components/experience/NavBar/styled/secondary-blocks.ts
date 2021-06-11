@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 
 export const ActionBlock = styled.li`
   height: 78px;

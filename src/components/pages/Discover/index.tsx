@@ -2,10 +2,9 @@ import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { useAppColors } from 'components/providers/Theme';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import EventCard from 'components/experience/EventCard';
 import Page from 'components/base-components/Page';
 import { events } from './events';
@@ -14,7 +13,6 @@ enum Tabs {
   FOR_YOU = 'FOR_YOU',
   SUGGESTIONS = 'SUGGESTIONS',
   TRENDING = 'TRENDING',
-  TODAY = 'TODAY',
 }
 
 function eventFactory() {
@@ -29,7 +27,6 @@ const titleByLayoutMap = {
 
 const DiscoverPage: FunctionComponent = () => {
   const layout = useAppLayout();
-  const colors = useAppColors();
   const { addSection, removeSection, setActiveSection } = usePanelActions();
   const { push } = useHistory();
 
@@ -59,7 +56,8 @@ const DiscoverPage: FunctionComponent = () => {
         <IconButton
           onClick={() => push('#filters')}
           icon={Icons.FILTER}
-          color={colors.BRAND_FONT}
+          color="brand"
+          variant="flat"
           {...sizeProps}
         />
       );

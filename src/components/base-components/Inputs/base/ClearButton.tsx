@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { useAppTheme } from 'components/providers/Theme';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Icons } from 'components/base-components/SvgIcon';
 import AbsoluteContent from './AbsoluteContent';
 
@@ -13,7 +12,6 @@ interface Props {
 }
 
 const ClearButton: FunctionComponent<Props> = (props) => {
-  const { colors: Colors } = useAppTheme();
   const { topSpaced, showClear, returnValue, onClick, style } = props;
 
   if (showClear) {
@@ -27,8 +25,7 @@ const ClearButton: FunctionComponent<Props> = (props) => {
         <IconButton
           onClick={clearInput}
           icon={Icons.CLOSE}
-          buttonColor="font"
-          color={Colors.FONT}
+          color="background"
           size="small"
         />
       </AbsoluteContent>
