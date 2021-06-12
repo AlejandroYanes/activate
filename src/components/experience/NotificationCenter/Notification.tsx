@@ -72,8 +72,8 @@ const Notification: FunctionComponent<Props> = (props) => {
         </RenderIf>
       </Content>
       <IconButton
+        color="font"
         variant="flat"
-        color="background"
         icon={Icons.CLOSE}
         onClick={handleOnClose}
       />

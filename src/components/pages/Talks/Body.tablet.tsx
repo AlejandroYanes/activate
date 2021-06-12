@@ -94,7 +94,7 @@ const TabletBody: FunctionComponent = () => {
       size="large"
       variant="fill"
       color="accent"
-      icon={Icons.ADD_USER}
+      icon={Icons.PENCIL}
       onClick={openContactList}
     />
   );

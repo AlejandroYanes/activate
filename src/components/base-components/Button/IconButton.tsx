@@ -2,11 +2,19 @@ import React, { CSSProperties, FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
 import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
 import { StyledIconButton } from './styled';
-import { useAppColors } from '../../providers/Theme';
 
 interface Props extends IconProps, PositionProps {
   variant?: 'text' | 'flat' | 'outline' | 'fill';
-  color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
+  color?: (
+    'brand' |
+    'accent' |
+    'success' |
+    'info' |
+    'warning' |
+    'error' |
+    'font' |
+    'background'
+  );
   size?: 'small' | 'medium' | 'large' | 'x-large';
   onClick: (event) => void;
   iconClassName?: string;
@@ -22,8 +30,6 @@ const IconButton: FunctionComponent<Props> = (props) => {
     size,
     ...rest
   } = props;
-  const colors = useAppColors();
-  const iconColor = colors[`${color.toUpperCase()}_FONT`];
 
   return (
     <StyledIconButton
@@ -33,7 +39,7 @@ const IconButton: FunctionComponent<Props> = (props) => {
       size={size}
       {...rest}
     >
-      <SvgIcon icon={icon} size={size} color={iconColor} />
+      <SvgIcon icon={icon} size={size} />
     </StyledIconButton>
   );
 };

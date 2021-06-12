@@ -1,14 +1,28 @@
 import { css } from 'styled-components';
 import { ColorScheme } from 'styles/colors';
+import { getColorVariation, Variations } from 'helpers';
+import getBtnFontColor from './get-btn-font-color';
 
-export default function getTextVariantStyles(colors: ColorScheme, color: string) {
-  const colorInScheme = color.toUpperCase();
-  const fontColor = color === 'background'
-    ? colors.FONT
-    : colors[`${colorInScheme}_FONT`];
-  const fontHoverColor = color === 'background'
-    ? colors.BRAND_FONT_HIGHLIGHT
-    : colors[`${colorInScheme}_FONT_HIGHLIGHT`];
+const getFontHoverColor = (colors: ColorScheme, color: string, useBaseColor: boolean) => {
+  if (color === 'background') {
+    return colors.BRAND_FONT_HIGHLIGHT;
+  }
+
+  if (color === 'font') {
+    return colors.BACKGROUND_LIGHTER;
+  }
+
+  const variant = useBaseColor ? Variations.BASE_HIGHLIGHT : Variations.FONT_HIGHLIGHT;
+  return  getColorVariation(colors, color, variant);
+}
+
+export default function getTextVariantStyles(
+  colors: ColorScheme,
+  color: string,
+  useBaseColor = false,
+) {
+  const fontColor = getBtnFontColor(colors, color, useBaseColor);
+  const fontHoverColor = getFontHoverColor(colors, color, useBaseColor);
 
   return css`
     padding: 0;

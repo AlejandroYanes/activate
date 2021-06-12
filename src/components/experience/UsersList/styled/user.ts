@@ -14,7 +14,7 @@ export const ActiveDot = styled.div`
   right: -2px;
   border-radius: 50%;
   box-sizing: content-box;
-  background-color: ${({ theme }) => theme.colors.SUCCESS};
+  background-color: ${({ theme }) => theme.colors.ACCENT};
   border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 

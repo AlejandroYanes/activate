@@ -1,3 +1,4 @@
+import { ColorScheme } from 'styles/colors';
 import { PositionProps } from './common-props';
 
 export function getPositionStyles(props) {
@@ -69,3 +70,23 @@ export const getGrayDarkColor = ({ theme }) => theme.colors.GRAY_DARK;
 export const getGrayLightColor = ({ theme }) => theme.colors.GRAY_LIGHT;
 
 export const anyPropsAttrs = (props: any) => props;
+
+export enum Variations {
+  BASE = '',
+  BASE_HIGHLIGHT = '_HIGHLIGHT',
+  BG = '_BG',
+  BG_HIGHLIGHT = '_BG_HIGHLIGHT',
+  FONT = '_FONT',
+  FONT_HIGHLIGHT = '_FONT_HIGHLIGHT',
+  SHADE = '_SHADE',
+}
+
+export function getColorVariation(
+  colors: ColorScheme,
+  color: string,
+  variation: Variations = Variations.BASE,
+) {
+  const colorInScheme = color.toUpperCase();
+  return colors[`${colorInScheme}${variation}`];
+}
+

@@ -15,7 +15,7 @@ const BookmarkButton: FunctionComponent<Props> = (props) => {
       size="large"
       variant="flat"
       color="accent"
-      icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
+      icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.BOOKMARK}
       onClick={onClick}
     />
   );

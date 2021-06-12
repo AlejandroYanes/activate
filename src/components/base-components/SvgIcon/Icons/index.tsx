@@ -11,8 +11,6 @@ import UserIcon from './User';
 import UsersIcon from './Users';
 import HeartIcon from './Heart';
 import HeartFilledIcon from './HeartFilled';
-import ShareIcon from './Share';
-import ShareFilledIcon from './ShareFilled';
 import SearchIcon from './Search';
 import InfoCircleIcon from './InfoCircle';
 import SuccessIcon from './Success';
@@ -30,7 +28,6 @@ import BookmarksIcon from './Bookmarks';
 import BookmarkAddIcon from './AddBookmark';
 import BookmarkFilledIcon from './BookmarkFilled';
 import FireIcon from './Fire';
-import PublicityIcon from './Publicity';
 import MegaphoneIcon from './Megaphone';
 import TicketIcon from './Ticket';
 import GlobeIcon from './Globe';
@@ -46,20 +43,16 @@ import CheckMarkIcon from './CheckMark';
 import SunIcon from './Sun';
 import MoonIcon from './Moon';
 import ArrowLeftIcon from './ArrowLeft';
-import RemoveBookmarkIcon from './RemoveBookmark';
 import LightBulbIcon from './LightBulb';
 import InboxIcon from './Inbox';
 import ResumeIcon from './Resume';
-import StarIcon from './Star';
 import BookmarkCheckedIcon from './BookmarkChecked';
-import AddUserIcon from './AddUser';
 import MessageIcon from './Message';
 import MenuDotsIcon from './MenuDots';
 import LayersIcon from './Layers';
 import GridElementsIcon from './GridElements';
 import MaximizeIcon from './Maximize';
 import TimeHistoryIcon from './TimeHistory';
-import StarFilledIcon from './StarFilled';
 import ListIcon from './List';
 import TagIcon from './Tag';
 import GoogleIcon from './Google';
@@ -99,6 +92,10 @@ import BrainIcon from './Brain';
 import CurlyBracketsIcon from './CurlyBrackets';
 import CircuitIcon from './Circuit';
 import FilmIcon from './Film';
+import SlidersVertIcon from './SlidersVert';
+import UserPlusIcon from './UserPlus';
+import StarIcon from './Star';
+import StarFilledIcon from './StarFilled';
 
 export enum Icons {
   HOME = 'home',
@@ -113,8 +110,6 @@ export enum Icons {
   USERS = 'users',
   HEART = 'heart',
   HEART_FILLED = 'heartFilled',
-  SHARE = 'share',
-  SHARE_FILLED = 'shareFilled',
   SEARCH = 'search',
   SUCCESS = 'success',
   INFO = 'info',
@@ -153,8 +148,6 @@ export enum Icons {
   LIGHT_BULB = 'light_bulb',
   INBOX = 'inbox',
   RESUME = 'resume',
-  STAR = 'star',
-  STAR_FILLED = 'star_filled',
   BOOKMARK_CHECKED = 'bookmark_checked',
   ADD_USER = 'add_user',
   MESSAGE = 'message',
@@ -201,6 +194,10 @@ export enum Icons {
   CURLY_BRACKETS = 'curly_brackets',
   CIRCUIT = 'circuit',
   FILM = 'film',
+  SLIDERS_VERT = 'sliders_vert',
+  USER_PLUS = 'user_plus',
+  STAR = 'start',
+  STAR_FILLED = 'star_filled',
 }
 
 export const icons = {
@@ -219,8 +216,6 @@ export const icons = {
   [Icons.USERS]: (props) => <UsersIcon {...props} />,
   [Icons.HEART]: (props) => <HeartIcon {...props} />,
   [Icons.HEART_FILLED]: (props) => <HeartFilledIcon {...props} />,
-  [Icons.SHARE]: (props) => <ShareIcon {...props} />,
-  [Icons.SHARE_FILLED]: (props) => <ShareFilledIcon {...props} />,
   [Icons.SEARCH]: (props) => <SearchIcon {...props} />,
   [Icons.INFO_CIRCLE]: (props) => <InfoCircleIcon {...props} />,
   [Icons.SUCCESS]: (props) => <SuccessIcon {...props} />,
@@ -238,7 +233,6 @@ export const icons = {
   [Icons.ADD_BOOKMARK]: (props) => <BookmarkAddIcon {...props} />,
   [Icons.BOOKMARK_FILLED]: (props) => <BookmarkFilledIcon {...props} />,
   [Icons.FIRE]: (props) => <FireIcon {...props} />,
-  [Icons.PUBLICITY]: (props) => <PublicityIcon {...props} />,
   [Icons.MEGAPHONE]: (props) => <MegaphoneIcon {...props} />,
   [Icons.TICKET]: (props) => <TicketIcon {...props} />,
   [Icons.GLOBE]: (props) => <GlobeIcon {...props} />,
@@ -255,14 +249,10 @@ export const icons = {
   [Icons.SUN]: (props) => <SunIcon {...props} />,
   [Icons.MOON]: (props) => <MoonIcon {...props} />,
   [Icons.ARROW_LEFT]: (props) => <ArrowLeftIcon {...props} />,
-  [Icons.REMOVE_BOOKMARK]: (props) => <RemoveBookmarkIcon {...props} />,
   [Icons.LIGHT_BULB]: (props) => <LightBulbIcon {...props} />,
   [Icons.INBOX]: (props) => <InboxIcon {...props} />,
   [Icons.RESUME]: (props) => <ResumeIcon {...props} />,
-  [Icons.STAR]: (props) => <StarIcon {...props} />,
-  [Icons.STAR_FILLED]: (props) => <StarFilledIcon {...props} />,
   [Icons.BOOKMARK_CHECKED]: (props) => <BookmarkCheckedIcon {...props} />,
-  [Icons.ADD_USER]: (props) => <AddUserIcon {...props} />,
   [Icons.MESSAGE]: (props) => <MessageIcon {...props} />,
   [Icons.MENU_DOTS]: (props) => <MenuDotsIcon {...props} />,
   [Icons.LAYERS]: (props) => <LayersIcon {...props} />,
@@ -307,4 +297,8 @@ export const icons = {
   [Icons.CURLY_BRACKETS]: (props) => <CurlyBracketsIcon {...props} />,
   [Icons.CIRCUIT]: (props) => <CircuitIcon {...props} />,
   [Icons.FILM]: (props) => <FilmIcon {...props} />,
+  [Icons.SLIDERS_VERT]: (props) => <SlidersVertIcon {...props} />,
+  [Icons.USER_PLUS]: (props) => <UserPlusIcon {...props} />,
+  [Icons.STAR]: (props) => <StarIcon {...props} />,
+  [Icons.STAR_FILLED]: (props) => <StarFilledIcon {...props} />,
 };

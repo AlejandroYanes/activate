@@ -1,23 +1,31 @@
 import { css } from 'styled-components';
 import { ColorScheme } from 'styles/colors';
+import getBtnFontColor from './get-btn-font-color';
+import { getColorVariation, Variations } from '../../../../../helpers';
+import getBtnFontHoverColor from './get-btn-font-hover-color';
 
-export default function getOutlineVariantStyles(colors: ColorScheme, color: string) {
-  const colorInScheme = color.toUpperCase();
-  const fontColor = color === 'background'
-    ? colors.FONT
-    : colors[`${colorInScheme}_FONT`];
 
-  const borderColor = color === 'background'
-    ? colors.FONT
-    : colors[`${colorInScheme}_FONT`];
+const getBgHoverColor = (colors: ColorScheme, color: string) => {
+  if (color === 'background') {
+    return colors.BACKGROUND;
+  }
 
-  const fontHoverColor = color === 'background'
-    ? colors.FONT
-    : colors[`${colorInScheme}_FONT_HIGHLIGHT`];
+  if (color === 'font') {
+    return colors.GRAY_SHADE;
+  }
 
-  const bgHoverColor = color === 'background'
-    ? colors.FONT_SHADE
-    : colors[`${colorInScheme}_SHADE`];
+  return  getColorVariation(colors, color, Variations.SHADE);
+};
+
+export default function getOutlineVariantStyles(
+  colors: ColorScheme,
+  color: string,
+  useBaseColor = false,
+) {
+  const fontColor = getBtnFontColor(colors, color, useBaseColor);
+  const borderColor = getBtnFontColor(colors, color, useBaseColor);
+  const fontHoverColor = getBtnFontHoverColor(colors, color, useBaseColor);
+  const bgHoverColor = getBgHoverColor(colors, color);
 
   return css`
     color: ${fontColor};

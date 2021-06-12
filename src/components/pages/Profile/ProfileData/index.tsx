@@ -55,7 +55,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         <Tab
           name={ProfileTabs.Setting}
           label={ProfileTabs.Setting}
-          icon={Icons.SETTINGS}
+          icon={Icons.SLIDERS_VERT}
         />
       </Tabset>
     </ProfileCard>

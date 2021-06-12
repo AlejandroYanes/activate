@@ -8,8 +8,11 @@ const usersApi = {
   listMyFriends: (): Promise<AxiosResponse<UserModel[]>> => {
     return get(`${endpoint}/friends`);
   },
-  listFriendsFor: (userId: string): Promise<AxiosResponse<UserModel[]>> => {
+  listFriendsOf: (userId: string): Promise<AxiosResponse<UserModel[]>> => {
     return get(`${endpoint}/friends/${userId}`);
+  },
+  listMyPublishers: (): Promise<AxiosResponse<UserModel[]>> => {
+    return get(`${endpoint}/publishers`);
   },
 };
 

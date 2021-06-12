@@ -3,6 +3,7 @@ import getOutlineVariantStyles from './get-outline-variant-styles';
 import getFlatVariantStyles from './get-flat-variant-styles';
 import getFillVariantStyles from './get-fill-variant-styles';
 import getVariantStyles from './get-variant-styles';
+import getIconVariantStyles from './get-icon-variant-styles'
 
 export {
   getVariantStyles,
@@ -10,4 +11,5 @@ export {
   getFillVariantStyles,
   getFlatVariantStyles,
   getTextVariantStyles,
+  getIconVariantStyles,
 };
