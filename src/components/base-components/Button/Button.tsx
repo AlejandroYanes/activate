@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
+import { Icons } from 'components/base-components/SvgIcon';
 import Content from './Content';
 import { Button as StyledButton } from './styled';
 
