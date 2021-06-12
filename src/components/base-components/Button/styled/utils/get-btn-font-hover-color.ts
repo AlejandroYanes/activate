@@ -1,5 +1,5 @@
-import { ColorScheme } from 'styles/colors';
-import { getColorVariation, Variations } from 'helpers';
+import { ColorScheme, Variations } from 'styles/colors';
+import { getColorVariation } from 'helpers';
 
 export default function getBtnFontHoverColor(
   colors: ColorScheme,
@@ -14,6 +14,6 @@ export default function getBtnFontHoverColor(
     return colors.BACKGROUND_LIGHTER;
   }
 
-  const variant = useBaseColor ? Variations.BASE_HIGHLIGHT : Variations.FONT_HIGHLIGHT;
+  const variant = useBaseColor ? Variations.HIGHLIGHT : Variations.FONT_HIGHLIGHT;
   return  getColorVariation(colors, color, variant);
 }

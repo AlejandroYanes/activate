@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 import EventCard from 'components/experience/EventCard';
 import Page from 'components/base-components/Page';
@@ -55,7 +54,7 @@ const DiscoverPage: FunctionComponent = () => {
       return (
         <IconButton
           onClick={() => push('#filters')}
-          icon={Icons.FILTER}
+          icon="FILTER"
           color="brand"
           variant="flat"
           {...sizeProps}
@@ -74,9 +73,9 @@ const DiscoverPage: FunctionComponent = () => {
         fullWidth={layout !== Layout.MOBILE}
         mB
       >
-        <Tab name={Tabs.FOR_YOU} label="For you" icon={Icons.INBOX} />
-        <Tab name={Tabs.SUGGESTIONS} label="Suggestions" icon={Icons.LIGHT_BULB} />
-        <Tab name={Tabs.TRENDING} label="Trending" icon={Icons.FIRE} />
+        <Tab name={Tabs.FOR_YOU} label="For you" icon="INBOX" />
+        <Tab name={Tabs.SUGGESTIONS} label="Suggestions" icon="LIGHT_BULB" />
+        <Tab name={Tabs.TRENDING} label="Trending" icon="FIRE" />
       </Tabset>
       {eventCards}
     </Page>

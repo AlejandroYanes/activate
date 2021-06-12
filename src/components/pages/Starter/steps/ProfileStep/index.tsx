@@ -4,7 +4,7 @@ import { Title } from 'components/base-components/Typography';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import { Field, Form } from 'components/base-components/Form';
 import Avatar from 'components/base-components/Avatar';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { ErrorText } from 'components/base-components/Inputs';
 import { Content, Step } from '../../styled';
@@ -91,7 +91,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
                   <Avatar src={AvatarOptions.MAN_1} size="large" />
                 </PickItem>
                 <PickItem value={AvatarOptions.ADD}>
-                  <SvgIcon icon={Icons.CAMERA_ADD} size="x-large" />
+                  <SvgIcon icon="CAMERA_ADD" size="x-large" />
                 </PickItem>
                 <RenderIf condition={!!imagePreview}>
                   <PickItem value={AvatarOptions.PHOTO}>

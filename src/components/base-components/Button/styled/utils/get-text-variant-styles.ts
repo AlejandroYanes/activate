@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
-import { ColorScheme } from 'styles/colors';
-import { getColorVariation, Variations } from 'helpers';
+import { ColorScheme, Variations } from 'styles/colors';
+import { getColorVariation } from 'helpers';
 import getBtnFontColor from './get-btn-font-color';
 
 const getFontHoverColor = (colors: ColorScheme, color: string, useBaseColor: boolean) => {
@@ -12,7 +12,7 @@ const getFontHoverColor = (colors: ColorScheme, color: string, useBaseColor: boo
     return colors.BACKGROUND_LIGHTER;
   }
 
-  const variant = useBaseColor ? Variations.BASE_HIGHLIGHT : Variations.FONT_HIGHLIGHT;
+  const variant = useBaseColor ? Variations.HIGHLIGHT : Variations.FONT_HIGHLIGHT;
   return  getColorVariation(colors, color, variant);
 }
 

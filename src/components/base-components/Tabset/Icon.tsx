@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { ColorScheme } from 'styles/colors';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { getIconColor } from './get-icon-color';
 
@@ -8,8 +7,6 @@ interface Props {
   disableFocus: boolean;
   isSelected: boolean;
   isHovered: boolean;
-  useDarkStyle: boolean;
-  colors: ColorScheme;
 }
 
 const Icon: FunctionComponent<Props> = (props) => {

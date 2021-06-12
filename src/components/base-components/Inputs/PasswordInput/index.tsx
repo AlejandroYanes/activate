@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { getEventValue } from 'helpers';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 import AbsoluteContent from '../base/AbsoluteContent';
 import InputLabel from '../base/Label';
@@ -50,7 +49,7 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
       <AbsoluteContent topSpaced floatRight>
         <IconButton
           onClick={toggleShowPassword}
-          icon={showPassword ? Icons.UNLOCK : Icons.LOCK}
+          icon={showPassword ? 'UNLOCK' : 'LOCK'}
           color="background"
           size="small"
         />

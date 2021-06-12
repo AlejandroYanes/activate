@@ -4,7 +4,6 @@ import { formatAmount } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
@@ -29,13 +28,13 @@ const ProfileModal: FunctionComponent = () => {
 
   const header = (
     <FlexBox align="center" grow width="100%">
-      <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} />
+      <IconButton onClick={goBack} icon="ARROW_LEFT" />
       <Title level={3} padding="0 0 0 6px" ellipsis>
         Alejandro Yanes De la Cruz
       </Title>
       <IconButton
         onClick={goToSettings}
-        icon={Icons.SETTINGS}
+        icon="SETTINGS"
         margin="0 0 0 auto"
       />
     </FlexBox>
@@ -87,12 +86,12 @@ const ProfileModal: FunctionComponent = () => {
           <Tab
             name={ProfileTabs.Following}
             label={ProfileTabs.Following}
-            icon={Icons.MEGAPHONE}
+            icon="MEGAPHONE"
           />
           <Tab
             name={ProfileTabs.Friends}
             label={ProfileTabs.Friends}
-            icon={Icons.USERS}
+            icon="USERS"
           />
         </Tabset>
         <Switch by={activeTab}>

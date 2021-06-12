@@ -6,7 +6,6 @@ import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSect
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
@@ -62,7 +61,7 @@ const EventDetailsPage: FunctionComponent = () => {
             variant="flat"
             color="background"
             onClick={goBack}
-            icon={Icons.ARROW_LEFT}
+            icon="ARROW_LEFT"
           />
           <Title level={2} padding="0 0 0 6px">{title}</Title>
         </FlexBox>
@@ -79,7 +78,7 @@ const EventDetailsPage: FunctionComponent = () => {
             size="large"
             color="info"
             variant="flat"
-            icon={Icons.FORWARD}
+            icon="FORWARD"
             onClick={inviteUsers}
             margin="0 0 0 auto"
           />
@@ -87,7 +86,7 @@ const EventDetailsPage: FunctionComponent = () => {
             size="large"
             variant="flat"
             color="accent"
-            icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
+            icon={isBooked ? 'BOOKMARK_FILLED' : 'ADD_BOOKMARK'}
             onClick={handleBookActionClick}
           />
         </FlexBox>
@@ -99,8 +98,8 @@ const EventDetailsPage: FunctionComponent = () => {
           mT
           mB
         >
-          <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
-          <Tab name={Tabs.CommentsSection} label="Comments" icon={Icons.COMMENTS} />
+          <Tab name={Tabs.DetailsSection} label="Details" icon="FORM" />
+          <Tab name={Tabs.CommentsSection} label="Comments" icon="COMMENTS" />
         </Tabset>
         <Switch by={activeTab}>
           <Case value={Tabs.DetailsSection} component={Description} />

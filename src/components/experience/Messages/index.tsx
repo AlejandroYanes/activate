@@ -4,7 +4,6 @@ import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
 import { IconButton } from 'components/base-components/Button';
-import { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 import Conversation from './Conversation';
 import {
@@ -69,7 +68,7 @@ const Messages: FunctionComponent<Props> = (props) => {
         />
         <IconButton
           onClick={() => undefined}
-          icon={Icons.SEND}
+          icon="SEND"
           color="accent"
           size="large"
         />

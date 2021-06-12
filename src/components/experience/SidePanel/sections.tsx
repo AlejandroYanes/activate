@@ -1,27 +1,26 @@
 import React from 'react';
 import { AuxPanelSection } from 'components/providers/PanelSections';
-import { Icons } from 'components/base-components/SvgIcon';
 import { Tab } from 'components/base-components/Tabset';
 
 const sections = [
   {
-    icon: Icons.FORM,
+    icon: 'FORM',
     value: AuxPanelSection.EVENT_DETAILS,
   },
   {
-    icon: Icons.FILTER,
+    icon: 'FILTER',
     value: AuxPanelSection.FILTER,
   },
   {
-    icon: Icons.BOOKMARKS,
+    icon: 'BOOKMARKS',
     value: AuxPanelSection.UPCOMING,
   },
   {
-    icon: Icons.MESSAGE,
+    icon: 'MESSAGE',
     value: AuxPanelSection.TALKS,
   },
   {
-    icon: Icons.TIME_HISTORY,
+    icon: 'TIME_HISTORY',
     value: AuxPanelSection.UPDATES,
   },
 ];

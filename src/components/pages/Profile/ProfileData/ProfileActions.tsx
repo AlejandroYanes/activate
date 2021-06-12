@@ -4,12 +4,11 @@ import { PositionProps } from 'helpers';
 import { Modals } from 'components/modals';
 import { useAuthActions } from 'components/providers/Auth';
 import { Menu, MenuItem } from 'components/base-components/Menu';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 
 const menuTrigger = ({ toggleMenu, ...rest }) => (
   <IconButton
-    icon={Icons.MORE_VERT}
+    icon="MORE_VERT"
     onClick={toggleMenu}
     color="background"
     {...rest}

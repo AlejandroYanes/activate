@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
-import { ColorScheme } from 'styles/colors';
+import { ColorScheme, Variations } from 'styles/colors';
+import { getColorVariation } from 'helpers';
 import getBtnFontColor from './get-btn-font-color';
-import { getColorVariation, Variations } from '../../../../../helpers';
 import getBtnFontHoverColor from './get-btn-font-hover-color';
 
 

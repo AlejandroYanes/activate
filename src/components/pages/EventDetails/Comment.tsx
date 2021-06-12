@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { formatDate } from 'helpers';
 import Avatar from 'components/base-components/Avatar';
 import { Paragraph, Text } from 'components/base-components/Typography';
-import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { Button, IconButton } from 'components/base-components/Button';
 import { Menu, MenuItem } from 'components/base-components/Menu';
@@ -20,7 +19,7 @@ const emptyAction = () => undefined;
 const menuTrigger = ({ toggleMenu }) => (
   <IconButton
     onClick={toggleMenu}
-    icon={Icons.MORE_VERT}
+    icon="MORE_VERT"
     color="background"
     variant="flat"
   />

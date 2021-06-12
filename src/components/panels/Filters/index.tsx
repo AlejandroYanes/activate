@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react';
 import faker from 'faker';
 import { Field, Form } from 'components/base-components/Form';
 import { Option, Options } from 'components/base-components/Options';
-import { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { DateTimePicker, Select } from 'components/base-components/Inputs';
 import { StyledSearch } from './styled';
@@ -44,15 +43,15 @@ const FiltersPanel: FunctionComponent = () => {
     <StyledSearch ref={panelRef}>
       <Form state={search} onChange={handleChange}>
         <Field name="location" component={Options} fullWidth mB>
-          <Option value={EventLocation.OnLine} label="Online" icon={Icons.GLOBE} />
-          <Option value={EventLocation.All} label="All" icon={Icons.LIST} />
-          <Option value={EventLocation.OnSite} label="Onsite" icon={Icons.MAP_PIN} />
+          <Option value={EventLocation.OnLine} label="Online" icon="GLOBE" />
+          <Option value={EventLocation.All} label="All" icon="LIST" />
+          <Option value={EventLocation.OnSite} label="Onsite" icon="MAP_PIN" />
         </Field>
         <RenderIf condition={search.location === EventLocation.OnSite}>
           <Field
             name="address"
             label="Address"
-            icon={Icons.MAP_PIN}
+            icon="MAP_PIN"
             showClear
             mB
           />
@@ -71,7 +70,7 @@ const FiltersPanel: FunctionComponent = () => {
           label="Publisher"
           component={Select}
           options={publishers}
-          icon={Icons.MEGAPHONE}
+          icon="MEGAPHONE"
           anchorTo={panelRef}
           showSearch
           showClear
@@ -82,7 +81,7 @@ const FiltersPanel: FunctionComponent = () => {
           label="Categories"
           component={Select}
           options={categories}
-          icon={Icons.TAG}
+          icon="TAG"
           anchorTo={panelRef}
           showClear
           multiple

@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import faker from 'faker';
 import { IconButton } from 'components/base-components/Button';
-import { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -74,7 +73,7 @@ const TabletBody: FunctionComponent = () => {
     <IconButton
       style={arrowBackStyles}
       onClick={closeTalk}
-      icon={Icons.ARROW_LEFT}
+      icon="ARROW_LEFT"
       color="background"
       variant="flat"
     />
@@ -83,7 +82,7 @@ const TabletBody: FunctionComponent = () => {
   const rightAction = (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.MORE_VERT}
+      icon="MORE_VERT"
       color="background"
       variant="flat"
     />
@@ -94,7 +93,7 @@ const TabletBody: FunctionComponent = () => {
       size="large"
       variant="fill"
       color="accent"
-      icon={Icons.PENCIL}
+      icon="PENCIL"
       onClick={openContactList}
     />
   );

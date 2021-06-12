@@ -10,7 +10,7 @@ interface Props extends IconProps {
 }
 
 const SvgIcon: FunctionComponent<Props> = (props) => {
-  const Colors = useAppColors();
+  const colors = useAppColors();
   const {
     icon,
     width,
@@ -20,8 +20,8 @@ const SvgIcon: FunctionComponent<Props> = (props) => {
     secondaryColor,
     ...iconProperties
   } = props;
-  const iconColor = color || Colors.FONT;
-  const iconSecondaryColor = secondaryColor || Colors.FONT;
+  const iconColor = colors[color];
+  const iconSecondaryColor = colors[secondaryColor];
   const iconHeight = height || svgIconStyles.size[size].height;
   const iconWidth = width || svgIconStyles.size[size].width;
   const IconComponent = icons[icon];
@@ -39,6 +39,8 @@ const SvgIcon: FunctionComponent<Props> = (props) => {
 
 SvgIcon.defaultProps = {
   size: 'medium',
+  color: 'FONT',
+  secondaryColor: 'FONT',
   height: undefined,
   width: undefined,
   className: undefined,

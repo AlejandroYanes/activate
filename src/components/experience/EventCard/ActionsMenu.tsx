@@ -2,7 +2,6 @@ import { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { PositionProps } from 'helpers';
 import { Menu, MenuItem } from 'components/base-components/Menu';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 
 interface Props extends PositionProps {
@@ -13,7 +12,7 @@ const emptyAction = () => undefined;
 
 const menuTrigger = ({ toggleMenu, ...rest }) => (
   <IconButton
-    icon={Icons.MORE_VERT}
+    icon="MORE_VERT"
     onClick={toggleMenu}
     color="background"
     size="large"

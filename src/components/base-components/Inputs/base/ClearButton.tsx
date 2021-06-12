@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { IconButton } from 'components/base-components/Button';
-import { Icons } from 'components/base-components/SvgIcon';
 import AbsoluteContent from './AbsoluteContent';
 
 interface Props {
@@ -24,7 +23,7 @@ const ClearButton: FunctionComponent<Props> = (props) => {
       <AbsoluteContent style={style} topSpaced={topSpaced} floatRight>
         <IconButton
           onClick={clearInput}
-          icon={Icons.CLOSE}
+          icon="CLOSE"
           color="background"
           size="small"
         />

@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import faker from 'faker';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 import Modal from 'components/base-components/Modal';
 import UsersList from 'components/experience/UsersList';
@@ -28,7 +27,7 @@ const TalksModal: FunctionComponent = () => {
     <IconButton
       style={arrowBackStyles}
       onClick={goBack}
-      icon={Icons.ARROW_LEFT}
+      icon="ARROW_LEFT"
       color="background"
       variant="flat"
     />
@@ -66,7 +65,7 @@ const TalksModal: FunctionComponent = () => {
       size="large"
       variant="fill"
       color="accent"
-      icon={Icons.PENCIL}
+      icon="PENCIL"
       onClick={openContactList}
     />
   );

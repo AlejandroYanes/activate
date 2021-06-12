@@ -4,7 +4,6 @@ import faker from 'faker';
 import { EventChannelList, notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
 import { Text } from 'components/base-components/Typography';
 import { IconButton } from 'components/base-components/Button';
 import Messages from 'components/experience/Messages';
@@ -88,7 +87,7 @@ const TalksPanel: FunctionComponent = () => {
     <IconButton
       onClick={closeTalk}
       style={arrowBackStyles}
-      icon={Icons.ARROW_LEFT}
+      icon="ARROW_LEFT"
       color="background"
       variant="flat"
     />
@@ -97,7 +96,7 @@ const TalksPanel: FunctionComponent = () => {
   const rightAction = (
     <IconButton
       onClick={maximizeTalk}
-      icon={Icons.MAXIMIZE}
+      icon="MAXIMIZE"
       color="background"
       variant="flat"
     />
@@ -108,7 +107,7 @@ const TalksPanel: FunctionComponent = () => {
       size="large"
       variant="fill"
       color="accent"
-      icon={Icons.PENCIL}
+      icon="PENCIL"
       onClick={openContactList}
     />
   );

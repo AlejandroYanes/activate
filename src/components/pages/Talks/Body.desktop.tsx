@@ -9,7 +9,6 @@ import { EventChannelList, useEventCenterUpdate } from 'event-center';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
-import { Icons } from 'components/base-components/SvgIcon';
 import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
 
@@ -34,7 +33,7 @@ const DesktopBody: FunctionComponent = () => {
   const actions = useMemo(() => (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.MORE_VERT}
+      icon="MORE_VERT"
       color="background"
       variant="flat"
     />

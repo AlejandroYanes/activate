@@ -5,7 +5,7 @@ import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import Toggle from 'components/base-components/Toggle';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import ThemesGrid from 'components/experience/ThemesGrid';
 import updateProfileTheme from './update-profile-theme';
 import { themes } from './themes';
@@ -33,10 +33,10 @@ const AppColorsModal: FunctionComponent = () => {
   }, [activeTheme, useDarkStyle]);
 
   const sunIcon = useMemo(() => (
-    <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
+    <SvgIcon icon="SUN" color="GRAY_DARK" size="small" />
   ), [colors]);
   const moonIcon = useMemo(() => (
-    <SvgIcon icon={Icons.MOON} color={colors.ACCENT_HIGHLIGHT} size="small" />
+    <SvgIcon icon="MOON" color="ACCENT_HIGHLIGHT" size="small" />
   ), [colors]);
 
   return (

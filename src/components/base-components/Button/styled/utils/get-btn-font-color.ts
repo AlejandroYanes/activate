@@ -1,5 +1,5 @@
-import { ColorScheme } from 'styles/colors';
-import { getColorVariation, Variations } from 'helpers';
+import { ColorScheme, Variations } from 'styles/colors';
+import { getColorVariation } from 'helpers';
 
 export default function getBtnFontColor(
   colors: ColorScheme,

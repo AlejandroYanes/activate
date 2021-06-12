@@ -1,10 +1,9 @@
-import { FunctionComponent, useMemo, useRef } from 'react';
+import { FunctionComponent, useRef } from 'react';
 import { useHoverState } from 'hooks/UI';
-import { useAppColors } from 'components/providers/Theme';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
+import { OptionIcon, StyledOption } from './styled/option';
 import { SelectOption } from './index';
-import { StyledOption, OptionIcon } from './styled/option';
 
 interface Props {
   isSelected: boolean;
@@ -14,19 +13,10 @@ interface Props {
 
 const Option: FunctionComponent<Props> = (props) => {
   const { isSelected, option, onClick } = props;
-  const colors = useAppColors();
   const optionRef = useRef(undefined);
   const isHovered = useHoverState(optionRef);
 
   const handleOnClick = () => onClick(option);
-
-  const iconColor = useMemo(() => {
-    if (isHovered) {
-      return colors.BACKGROUND_LIGHTER;
-    }
-
-    return isSelected ? colors.BRAND_FONT : colors.FONT;
-  }, [colors, isHovered, isSelected]);
 
   return (
     <StyledOption
@@ -38,8 +28,8 @@ const Option: FunctionComponent<Props> = (props) => {
       <RenderIf condition={isSelected}>
         <OptionIcon>
           <SvgIcon
-            icon={Icons.CHECK_MARK}
-            color={iconColor}
+            icon="CHECK_MARK"
+            color={isHovered ? 'BACKGROUND_LIGHTER' : 'BRAND_FONT'}
           />
         </OptionIcon>
       </RenderIf>

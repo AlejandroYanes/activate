@@ -19,37 +19,37 @@ const initialOptions = [
     key: generateUID(),
     label: 'Today',
     value: [today],
-    icon: Icons.CALENDAR_FILLED,
+    icon: 'CALENDAR_FILLED',
   },
   {
     key: generateUID(),
     label: 'Tomorrow',
     value: [addDays(today, 1)],
-    icon: Icons.CALENDAR_FILLED,
+    icon: 'CALENDAR_FILLED',
   },
   {
     key: generateUID(),
     label: 'This Week',
     value: [startOfWeek(today), endOfWeek(today)],
-    icon: Icons.CALENDAR_FILLED,
+    icon: 'CALENDAR_FILLED',
   },
   {
     key: generateUID(),
     label: 'Next Week',
     value: [startOfWeek(addDays(today, 7)), endOfWeek(addDays(today, 7))],
-    icon: Icons.CALENDAR_FILLED,
+    icon: 'CALENDAR_FILLED',
   },
   {
     key: generateUID(),
     label: 'This Month',
     value: [startOfMonth(today), endOfMonth(today)],
-    icon: Icons.CALENDAR_FILLED,
+    icon: 'CALENDAR_FILLED',
   },
   {
     key: generateUID(),
     label: 'Next Month',
     value: [startOfMonth(addMonths(today, 1)), endOfMonth(addMonths(today, 1))],
-    icon: Icons.CALENDAR_FILLED,
+    icon: 'CALENDAR_FILLED',
   },
 ];
 
@@ -66,7 +66,7 @@ const Options: FunctionComponent<Props> = (props) => {
         key={key}
         onClick={() => onSelect(value)}
         label={label}
-        leftIcon={icon}
+        leftIcon={icon as Icons}
         color="background"
         variant="flat"
         align="start"

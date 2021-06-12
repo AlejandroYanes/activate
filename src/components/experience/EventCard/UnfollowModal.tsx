@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { useAppColors } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import { Text } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
@@ -27,15 +26,14 @@ function resolveSize(layout: Layout) {
 
 const UnfollowModal: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const colors = useAppColors();
   const { isVisible, title, onAccept, onClose } = props;
 
   return (
     <Modal size={resolveSize(layout)} visible={isVisible} onClose={onClose}>
       <FlexBox direction="column" align="center">
         <SvgIcon
-          icon={Icons.REMOVE_BOOKMARK}
-          color={colors.ERROR}
+          icon="REMOVE_BOOKMARK"
+          color="ERROR"
           size="large"
           height={60}
           width={60}

@@ -5,7 +5,6 @@ import {
   NotificationType,
 } from 'notifications';
 import { useAppColors } from 'components/providers/Theme';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
@@ -74,7 +73,7 @@ const Notification: FunctionComponent<Props> = (props) => {
       <IconButton
         color="font"
         variant="flat"
-        icon={Icons.CLOSE}
+        icon="CLOSE"
         onClick={handleOnClose}
       />
     </StyledNotification>

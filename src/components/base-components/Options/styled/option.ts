@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { anyPropsAttrs } from 'helpers';
+import { Variations } from 'styles/colors';
+import { anyPropsAttrs, getColorVariation } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
 
 const sizeMap = {
@@ -11,7 +12,7 @@ const sizeMap = {
 
 const getBackgroundColor = (props) => {
   const { theme: { colors }, color } = props;
-  return colors[`${color.toUpperCase()}_SHADE`];
+  return getColorVariation(colors, color, Variations.SHADE);
 };
 
 export const Option = styled.li.attrs(anyPropsAttrs)`
@@ -22,9 +23,8 @@ export const Option = styled.li.attrs(anyPropsAttrs)`
   min-width: 48px;
   position: relative;
   cursor: pointer;
-  height: ${({ size }) => `${sizeMap[size]}px`};
-  color: ${({ theme }) => theme.colors.WHITE};
   background-color: transparent;
+  height: ${({ size }) => `${sizeMap[size]}px`};
   ${({ fullWidth }) => fullWidth ? 'flex: 1;' : ''}
 
   &:hover, &:focus {
@@ -53,21 +53,14 @@ export const Icon = styled(SvgIcon)`
 `;
 
 const getMarkColorStyles = (props) => {
-  const { theme: { useDarkStyle, colors }, color } = props;
-
-  if (useDarkStyle) {
-    return css`
-      background-color: ${colors[color.toUpperCase()]};
-      &:focus {
-        background-color: ${colors[`${color.toUpperCase()}_LIGHT`]};
-      }
-    `;
-  }
+  const { theme: { colors }, color } = props;
+  const bgColor = getColorVariation(colors, color, Variations.BG);
+  const bgHoverColor = getColorVariation(colors, color, Variations.BG_HIGHLIGHT);
 
   return css`
-    background-color: ${colors[color.toUpperCase()]};
-    &:focus {
-      background-color: ${colors[`${color.toUpperCase()}_DARK`]};
+    background-color: ${bgColor};
+    &:hover, &:focus {
+      background-color: ${bgHoverColor};
     }
   `;
 };

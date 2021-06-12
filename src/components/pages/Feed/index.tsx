@@ -7,7 +7,6 @@ import EventCard from 'components/experience/EventCard';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
 import { Option, Options } from 'components/base-components/Options';
-import { Icons } from 'components/base-components/SvgIcon';
 import { events } from '../Discover/events';
 
 const today = new Date();
@@ -50,12 +49,12 @@ const FeedPage: FunctionComponent = () => {
         <Options size="small" value={option} onChange={setOption}>
           <Option
             value={EventsDisplay.ByDate}
-            icon={Icons.CALENDAR_FILLED}
+            icon="CALENDAR_FILLED"
             label="By Date"
           />
           <Option
             value={EventsDisplay.All}
-            icon={Icons.LIST}
+            icon="LIST"
             label="All"
           />
         </Options>

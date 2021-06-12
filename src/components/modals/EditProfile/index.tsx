@@ -6,7 +6,7 @@ import { Field, Form } from 'components/base-components/Form';
 import RenderIf from 'components/base-components/RenderIf';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import Avatar from 'components/base-components/Avatar';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import { ErrorText } from 'components/base-components/Inputs';
 import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
@@ -98,7 +98,7 @@ const EditProfileModal: FunctionComponent = () => {
                 <Avatar src={AvatarOptions.WOMAN_2} size="large" />
               </PickItem>
               <PickItem value={AvatarOptions.ADD}>
-                <SvgIcon icon={Icons.CAMERA_ADD} size="x-large" />
+                <SvgIcon icon="CAMERA_ADD" size="x-large" />
               </PickItem>
               <PickItem value={AvatarOptions.MAN_2}>
                 <Avatar src={AvatarOptions.MAN_2} size="large" />

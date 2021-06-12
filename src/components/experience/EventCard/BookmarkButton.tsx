@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 
 interface Props {
@@ -15,7 +14,7 @@ const BookmarkButton: FunctionComponent<Props> = (props) => {
       size="large"
       variant="flat"
       color="accent"
-      icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.BOOKMARK}
+      icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
       onClick={onClick}
     />
   );

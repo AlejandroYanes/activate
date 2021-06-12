@@ -8,8 +8,7 @@ import React, {
 import { useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
-import { Icons } from 'components/base-components/SvgIcon';
-import { Wrapper, StyledListContainer, Edge } from './styled/list-container';
+import { Edge, StyledListContainer, Wrapper } from './styled/list-container';
 import { StyledList } from './styled/list';
 import { PickListProps } from './PickList';
 
@@ -47,7 +46,7 @@ const ListContainer: FunctionComponent<PickListProps> = (props) => {
         <Edge side="left" data-el="pick_list-left_edge">
           <IconButton
             onClick={handleLeftEdgeClick}
-            icon={Icons.CHEVRON_LEFT}
+            icon="CHEVRON_LEFT"
             variant="flat"
             color="background"
           />
@@ -62,7 +61,7 @@ const ListContainer: FunctionComponent<PickListProps> = (props) => {
         <Edge side="right" data-el="pick_list-right_edge">
           <IconButton
             onClick={handleRightEdgeClick}
-            icon={Icons.CHEVRON_RIGHT}
+            icon="CHEVRON_RIGHT"
             variant="flat"
             color="background"
           />

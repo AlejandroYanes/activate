@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import * as faker from 'faker';
 import EventCard from 'components/experience/EventCard';
-import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
 import { IconButton } from 'components/base-components/Button';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -48,7 +47,7 @@ const PublisherPage: FunctionComponent = () => {
   const action = (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.STAR}
+      icon="STAR"
       color="accent"
       size="large"
       variant="flat"
@@ -67,8 +66,8 @@ const PublisherPage: FunctionComponent = () => {
         {...rest}
       >
         <Tabset activeTab={activeTab} onTabChange={setActiveTab}>
-          <Tab name={Tabs.EVENTS} icon={Icons.CALENDAR_FILLED} label={Tabs.EVENTS} />
-          <Tab name={Tabs.FOLLOWERS} icon={Icons.USERS} label={Tabs.FOLLOWERS} />
+          <Tab name={Tabs.EVENTS} icon="CALENDAR_FILLED" label={Tabs.EVENTS} />
+          <Tab name={Tabs.FOLLOWERS} icon="USERS" label={Tabs.FOLLOWERS} />
         </Tabset>
       </ProfileCard>
       <Switch by={activeTab}>

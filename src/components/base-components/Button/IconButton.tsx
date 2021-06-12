@@ -1,9 +1,10 @@
-import React, { CSSProperties, FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import SvgIcon, { IconProps } from 'components/base-components/SvgIcon';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import { StyledIconButton } from './styled';
 
-interface Props extends IconProps, PositionProps {
+interface Props extends PositionProps {
+  icon: Icons;
   variant?: 'text' | 'flat' | 'outline' | 'fill';
   color?: (
     'brand' |
@@ -17,8 +18,6 @@ interface Props extends IconProps, PositionProps {
   );
   size?: 'small' | 'medium' | 'large' | 'x-large';
   onClick: (event) => void;
-  iconClassName?: string;
-  iconStyle?: CSSProperties;
   toggle?: boolean;
 }
 

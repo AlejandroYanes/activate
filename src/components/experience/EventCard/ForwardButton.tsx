@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Icons } from 'components/base-components/SvgIcon';
 import { IconButton } from 'components/base-components/Button';
 import { Modals } from 'components/modals';
 
@@ -16,7 +15,7 @@ const ForwardButton: FunctionComponent = () => {
       size="large"
       color="info"
       variant="flat"
-      icon={Icons.FORWARD}
+      icon="FORWARD"
       onClick={inviteUsers}
     />
   );

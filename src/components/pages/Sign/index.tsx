@@ -4,7 +4,6 @@ import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { PasswordInput } from 'components/base-components/Inputs';
-import { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
@@ -74,21 +73,21 @@ const SignPage: FunctionComponent = () => {
           <div>
             <IconButton
               onClick={emptyAction}
-              icon={Icons.GOOGLE}
+              icon="GOOGLE"
               color="accent"
               variant="fill"
               size="large"
             />
             <IconButton
               onClick={emptyAction}
-              icon={Icons.FACEBOOK}
+              icon="FACEBOOK"
               color="accent"
               variant="fill"
               size="large"
             />
             <IconButton
               onClick={emptyAction}
-              icon={Icons.INSTAGRAM}
+              icon="INSTAGRAM"
               color="accent"
               variant="fill"
               size="large"
