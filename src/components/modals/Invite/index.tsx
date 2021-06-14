@@ -8,6 +8,7 @@ import UsersList from 'components/experience/UsersList';
 import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
+import { users } from '../Profile/users';
 
 const InviteUsersModal: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -61,11 +62,11 @@ const InviteUsersModal: FunctionComponent = () => {
           mB
         />
       </FlexBox>
-      {/*<UsersList*/}
-      {/*  users={users}*/}
-      {/*  selectedUsers={selectedUsers}*/}
-      {/*  onClick={handleSelection}*/}
-      {/*/>*/}
+      <UsersList
+        users={users}
+        selectedUsers={selectedUsers}
+        onClick={handleSelection}
+      />
     </Modal>
   );
 };

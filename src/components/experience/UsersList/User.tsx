@@ -8,10 +8,10 @@ import Checkbox from 'components/base-components/Checkbox';
 import { ActiveDot, AvatarSection, Info, UserItem } from './styled';
 
 interface Props {
-  user: UserModel & UserTalkModel;
+  user: UserModel | UserTalkModel;
   showSelection?: boolean;
   isSelected?: boolean;
-  actions?: (props: { user: UserModel }) => any;
+  actions?: (props: { user }) => any;
   onClick: (event) => void;
 }
 
@@ -31,7 +31,7 @@ const User: FunctionComponent<Props> = (props) => {
     lastName,
     userName,
     lastMessage,
-  } = user;
+  } = user as (UserModel & UserTalkModel);
   const itemRef = useRef(undefined);
 
   const handleClick = useCallback((event) => {

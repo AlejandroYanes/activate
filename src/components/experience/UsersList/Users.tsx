@@ -4,9 +4,9 @@ import { UserTalkModel } from 'models/message';
 import User from './User';
 
 interface Props {
-  users: (UserModel & UserTalkModel)[];
+  users: (UserModel | UserTalkModel)[];
   onClick: (user) => void;
-  actions?: (props: { user: UserModel }) => any;
+  actions?: (props: { user }) => any;
   selectedUsers?: { id: string, [x: string]: any }[];
 }
 

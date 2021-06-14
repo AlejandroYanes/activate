@@ -59,11 +59,13 @@ const TabletBody: FunctionComponent = () => {
       .map(() => ({
         id: faker.random.uuid(),
         avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-        secondary: (
-          activeView === TalkViews.CONTACT_LIST
-            ? `@${faker.internet.userName()}`
-            : faker.lorem.words(10)
+        name: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        userName: faker.internet.userName(),
+        lastMessage: (
+          activeView === TalkViews.TALK_LIST
+            ? faker.lorem.words(20)
+            : undefined
         ),
         active: faker.random.boolean(),
       }))

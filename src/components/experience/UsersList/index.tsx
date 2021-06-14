@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { UserModel } from 'models/user';
+import { UserTalkModel } from 'models/message';
 import { mobileHeaderHeight } from 'styles/variables';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
@@ -13,9 +14,9 @@ interface Props {
   errored?: boolean;
   errorMessage?: string;
   header?: ReactNode;
-  users: UserModel[];
+  users: (UserModel | UserTalkModel)[];
   onClick: (user) => void;
-  userActions?: (props: { user: UserModel }) => any;
+  userActions?: (props: { user }) => any;
   action?: ReactNode;
   selectedUsers?: { id: string, [x: string]: any }[];
   showScroll?: boolean;
