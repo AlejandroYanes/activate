@@ -13,7 +13,7 @@ interface MenuBlockProps {
 }
 
 const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
-  const { colors, useDarkStyle } = useAppTheme();
+  const { useDarkStyle } = useAppTheme();
   const { icon, path, currentPath, layout } = props;
   const isSelected = path === currentPath;
 
@@ -25,7 +25,7 @@ const MenuBlock: FunctionComponent<MenuBlockProps> = (props) => {
           <RenderIf condition={typeof icon === 'string'} fallback={icon}>
             <SvgIcon
               icon={icon as Icons}
-              color={isSelected && !useDarkStyle ? colors.BRAND : colors.WHITE}
+              color={isSelected && !useDarkStyle ? 'BRAND' : 'WHITE'}
             />
           </RenderIf>
         </Label>

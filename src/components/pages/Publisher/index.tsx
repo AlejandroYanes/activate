@@ -1,10 +1,8 @@
 import React, { FunctionComponent, useState } from 'react';
 import * as faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
 import EventCard from 'components/experience/EventCard';
-import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import ProfileCard from 'components/experience/ProfileCard';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -43,16 +41,14 @@ const Users = () => (
 );
 
 const PublisherPage: FunctionComponent = () => {
-  const Colors = useAppColors();
   const [activeTab, setActiveTab] = useState(Tabs.EVENTS);
   const { eventsCount, followersCount, ...rest } = publisher;
 
   const action = (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.STAR}
-      color={Colors.ACCENT}
-      buttonColor="accent"
+      icon="STAR"
+      color="accent"
       size="large"
       variant="flat"
     />
@@ -70,8 +66,8 @@ const PublisherPage: FunctionComponent = () => {
         {...rest}
       >
         <Tabset activeTab={activeTab} onTabChange={setActiveTab}>
-          <Tab name={Tabs.EVENTS} icon={Icons.CALENDAR_FILLED} label={Tabs.EVENTS} />
-          <Tab name={Tabs.FOLLOWERS} icon={Icons.USERS} label={Tabs.FOLLOWERS} />
+          <Tab name={Tabs.EVENTS} icon="CALENDAR_FILLED" label={Tabs.EVENTS} />
+          <Tab name={Tabs.FOLLOWERS} icon="USERS" label={Tabs.FOLLOWERS} />
         </Tabset>
       </ProfileCard>
       <Switch by={activeTab}>

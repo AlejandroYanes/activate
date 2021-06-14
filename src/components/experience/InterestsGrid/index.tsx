@@ -2,10 +2,10 @@ import React, { FunctionComponent } from 'react';
 import { CategoryModel } from 'models/category';
 import { PositionProps } from 'helpers';
 import { PickList } from 'components/base-components/PickList';
+import LoadingScreen from 'components/experience/LoadingScreen';
+import { NoConnectionScreen } from 'components/experience/ErrorScreen';
 import PlainGrid from './PlainGrid';
 import SectionedGrid from './SectionedGrid';
-import Loading from './Loading';
-import ErrorMessage from './ErrorMessage';
 
 interface Props extends PositionProps {
   loading?: boolean;
@@ -21,19 +21,20 @@ interface Props extends PositionProps {
 
 const InterestsGrid: FunctionComponent<Props> = (props): any => {
   const { loading, errored, interests, plain, ...rest } = props;
-  const Items = plain ? PlainGrid : SectionedGrid;
 
   if (loading) {
     return (
-      <Loading />
+      <LoadingScreen />
     );
   }
 
   if (errored) {
     return (
-      <ErrorMessage />
+      <NoConnectionScreen message="We couldn't load the interests." />
     );
   }
+
+  const Items = plain ? PlainGrid : SectionedGrid;
 
   return (
     <PickList

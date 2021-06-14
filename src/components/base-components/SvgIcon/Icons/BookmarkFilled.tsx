@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
 const BookmarkFilledIcon: FunctionComponent<IconProps> = (props) => {
-  const { color, secondaryColor, height, width, className, style } = props;
+  const { color, height, width, className, style } = props;
 
   return (
     <svg
@@ -12,14 +12,11 @@ const BookmarkFilledIcon: FunctionComponent<IconProps> = (props) => {
       width={width}
       height={height}
       viewBox="0 0 24 24"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M5.5 5C5.5 3.89543 6.39543 3 7.5 3H16.5C17.6046 3 18.5 3.89543 18.5 5V20.4535C18.5 21.3623 17.3856 21.7999 16.7672 21.1339L12.7328 16.7892C12.3372 16.3631 11.6628 16.3631 11.2672 16.7892L7.23279 21.1339C6.61435 21.7999 5.5 21.3623 5.5 20.4535V5Z"
-        strokeWidth={1.5}
-        stroke={color}
-        fill={secondaryColor || color}
+        fill={color}
+        d="M16,2H8C6.3,2,5,3.3,5,5v16c0,0.2,0,0.3,0.1,0.5C5.4,22,6,22.1,6.5,21.9l5.5-3.2l5.5,3.2C17.7,22,17.8,22,18,22c0.6,0,1-0.4,1-1V5C19,3.3,17.7,2,16,2z"
       />
     </svg>
   );

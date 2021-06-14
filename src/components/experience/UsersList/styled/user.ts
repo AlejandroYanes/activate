@@ -14,7 +14,7 @@ export const ActiveDot = styled.div`
   right: -2px;
   border-radius: 50%;
   box-sizing: content-box;
-  background-color: ${({ theme }) => theme.colors.SUCCESS};
+  background-color: ${({ theme }) => theme.colors.ACCENT};
   border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 
@@ -25,7 +25,7 @@ export const Info = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   padding: 0 0 0 8px;
-  margin: 0;
+  margin: 0 auto 0 0;
   border: none;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -36,7 +36,7 @@ export const Info = styled.div`
   }
 `;
 
-export const Talk = styled.li`
+export const UserItem = styled.li`
   display: flex;
   align-items: center;
   padding: 6px 4px;
@@ -57,6 +57,6 @@ export const Talk = styled.li`
   }
 
   &:active {
-    transform: scale(0.98);
+    transform: scale(0.99);
   }
 `;

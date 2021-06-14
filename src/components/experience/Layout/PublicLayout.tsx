@@ -5,10 +5,10 @@ import { useAppLayout } from 'components/providers/Layout';
 import { useAppTheme } from 'components/providers/Theme';
 import { Title } from 'components/base-components/Typography';
 import Toggle from 'components/base-components/Toggle';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import { StyledApp, Header, Content } from './styled/public-layout';
+import SvgIcon from 'components/base-components/SvgIcon';
+import RenderIf from 'components/base-components/RenderIf';
 import NotificationCenter from '../NotificationCenter';
-import RenderIf from '../../base-components/RenderIf';
+import { Content, Header, StyledApp } from './styled/public-layout';
 
 const PublicLayout: FunctionComponent = (props) => {
   const { children } = props;
@@ -21,10 +21,14 @@ const PublicLayout: FunctionComponent = (props) => {
   } = useAppTheme();
 
   const sunIcon = useMemo(() => (
-    <SvgIcon icon={Icons.SUN} color={colors.GRAY_DARK} size="small" />
+    <SvgIcon icon="SUN" color="GRAY_DARK" size="small" />
   ), [colors]);
   const moonIcon = useMemo(() => (
-    <SvgIcon icon={Icons.MOON} color={colors.ACCENT_HIGHLIGHT} size="small" />
+    <SvgIcon
+      icon="MOON"
+      color="ACCENT_HIGHLIGHT"
+      size="small"
+    />
   ), [colors]);
 
   return (

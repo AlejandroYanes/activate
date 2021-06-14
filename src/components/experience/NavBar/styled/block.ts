@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs, getBrandColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 import SelectedBubble from '../SelectedBubble';
 
@@ -11,7 +11,7 @@ export const Block = styled.li`
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.BRAND};
+  background-color: ${getBrandColor};
   transition: all 150ms linear;
 `;
 

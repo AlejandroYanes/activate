@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useAppTheme } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import { usePickListContext } from './context';
 import { Mark, StyledItem, Touchable } from './styled/item';
 
@@ -12,7 +11,6 @@ interface Props {
 }
 
 const PickItem: FunctionComponent<Props> = (props) => {
-  const { colors } = useAppTheme();
   const { value, color, dashed, children } = props;
   const {
     value: selectedValue,
@@ -47,8 +45,8 @@ const PickItem: FunctionComponent<Props> = (props) => {
         <RenderIf condition={isSelected}>
           <Mark color={color || parentColor} data-el="pick_item-mark">
             <SvgIcon
-              icon={Icons.CHECK_MARK}
-              color={colors.WHITE}
+              icon="CHECK_MARK"
+              color="WHITE"
             />
           </Mark>
         </RenderIf>

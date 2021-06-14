@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { useAuthData } from 'components/providers/Auth';
-import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import ProfileCard from 'components/experience/ProfileCard';
@@ -45,17 +44,17 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         <Tab
           name={ProfileTabs.Following}
           label={ProfileTabs.Following}
-          icon={Icons.MEGAPHONE}
+          icon="MEGAPHONE"
         />
         <Tab
           name={ProfileTabs.Friends}
           label={ProfileTabs.Friends}
-          icon={Icons.USERS}
+          icon="USERS"
         />
         <Tab
           name={ProfileTabs.Setting}
           label={ProfileTabs.Setting}
-          icon={Icons.SETTINGS}
+          icon="SLIDERS_VERT"
         />
       </Tabset>
     </ProfileCard>

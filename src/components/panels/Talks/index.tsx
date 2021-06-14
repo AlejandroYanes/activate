@@ -3,11 +3,9 @@ import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { EventChannelList, notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { useAppColors } from 'components/providers/Theme';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
 import { Text } from 'components/base-components/Typography';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import Messages from 'components/experience/Messages';
 import UsersList from 'components/experience/UsersList';
 import FlexBox from 'components/base-components/FlexBox';
@@ -21,7 +19,6 @@ enum TalkViews {
 }
 
 const TalksPanel: FunctionComponent = () => {
-  const colors = useAppColors();
   const layout = useAppLayout();
   const { location: { pathname }, push } = useHistory();
 
@@ -76,11 +73,13 @@ const TalksPanel: FunctionComponent = () => {
       .map(() => ({
         id: faker.random.uuid(),
         avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-        secondary: (
-          activeView === TalkViews.CONTACT_LIST
-            ? `@${faker.internet.userName()}`
-            : faker.lorem.words(20)
+        name: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        userName: faker.internet.userName(),
+        lastMessage: (
+          activeView === TalkViews.TALK_LIST
+            ? faker.lorem.words(20)
+            : undefined
         ),
         active: faker.random.boolean(),
       }))
@@ -88,11 +87,10 @@ const TalksPanel: FunctionComponent = () => {
 
   const leftAction = (
     <IconButton
-      style={arrowBackStyles}
       onClick={closeTalk}
-      icon={Icons.ARROW_LEFT}
-      color={colors.FONT}
-      buttonColor="font"
+      style={arrowBackStyles}
+      icon="ARROW_LEFT"
+      color="background"
       variant="flat"
     />
   );
@@ -100,9 +98,8 @@ const TalksPanel: FunctionComponent = () => {
   const rightAction = (
     <IconButton
       onClick={maximizeTalk}
-      icon={Icons.MAXIMIZE}
-      color={colors.FONT}
-      buttonColor="font"
+      icon="MAXIMIZE"
+      color="background"
       variant="flat"
     />
   );
@@ -111,9 +108,8 @@ const TalksPanel: FunctionComponent = () => {
     <IconButton
       size="large"
       variant="fill"
-      buttonColor="accent"
-      color={colors.WHITE}
-      icon={Icons.PENCIL}
+      color="accent"
+      icon="PENCIL"
       onClick={openContactList}
     />
   );
@@ -133,7 +129,7 @@ const TalksPanel: FunctionComponent = () => {
         action={showContactsButton}
         onClick={openTalk}
         users={users}
-        scroll
+        showScroll
       />
       <Case
         value={TalkViews.CONTACT_LIST}
@@ -141,7 +137,7 @@ const TalksPanel: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={header}
-        scroll
+        showScroll
       />
       <Case
         value={TalkViews.MESSAGES}

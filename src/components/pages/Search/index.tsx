@@ -3,7 +3,6 @@ import { getEventValue } from 'helpers';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import Page from 'components/base-components/Page';
 import { Input } from 'components/base-components/Inputs';
-import { Icons } from 'components/base-components/SvgIcon';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import EventsResults from './EventsResults';
@@ -33,7 +32,7 @@ const SearchPage: FunctionComponent = () => {
 
   return (
     <Page title={titleByLayoutMap[layout]}>
-      <Input value={search} onChange={handleSearch} icon={Icons.SEARCH} showClear />
+      <Input value={search} onChange={handleSearch} icon="SEARCH" showClear />
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -41,9 +40,9 @@ const SearchPage: FunctionComponent = () => {
         mT
         mB
       >
-        <Tab name={Tabs.EVENTS} label="Events" icon={Icons.CALENDAR_FILLED} />
-        <Tab name={Tabs.PUBLISHERS} label="Publishers" icon={Icons.MEGAPHONE} />
-        <Tab name={Tabs.USERS} label="Users" icon={Icons.USERS} />
+        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR_FILLED" />
+        <Tab name={Tabs.PUBLISHERS} label="Publishers" icon="MEGAPHONE" />
+        <Tab name={Tabs.USERS} label="Users" icon="USERS" />
       </Tabset>
       <Switch by={activeTab}>
         <Case value={Tabs.EVENTS} component={EventsResults} />

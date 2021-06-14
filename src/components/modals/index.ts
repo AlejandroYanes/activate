@@ -54,10 +54,4 @@ export const MobileModals = {
   [Modals.USER]: UserModal,
   [Modals.APP_COLORS]: AppColorsModal,
   [Modals.INTERESTS]: InterestsModal,
-  // [Modals.UPDATES]: UpdatesModal,
-  // [Modals.FILTERS]: FiltersModal,
-  // [Modals.PUBLISHER]: PublisherModal,
-  // [Modals.INVITE]: InviteUsersModal,
-  // [Modals.EDIT_PROFILE]: EditProfileModal,
-  // [Modals.CHANGE_PASSWORD]: ChangePasswordModal,
 };

@@ -64,8 +64,6 @@ const Tab: FunctionComponent<Props> = (props) => {
           disableFocus={disableFocus}
           isHovered={isHovered || isFocused}
           isSelected={isSelected}
-          useDarkStyle={useDarkStyle}
-          colors={colors}
         />
       );
     }

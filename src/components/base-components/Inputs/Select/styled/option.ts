@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import {
   anyPropsAttrs,
-  getBrandColor,
+  getBgdLighterColor,
+  getBrandBgColor,
   getBrandHlColor,
-  getFontColor
+  getFontColor,
 } from 'helpers';
 
 const getSelectedColors = (props) => {
@@ -39,11 +40,11 @@ export const StyledOption = styled.li.attrs(anyPropsAttrs)`
 
   &:hover {
     cursor: pointer;
-    color: ${({ theme }) => theme.colors.WHITE};
-    background-color: ${getBrandColor};
+    color: ${getBgdLighterColor};
+    background-color: ${getBrandBgColor};
 
     svg#select-mark > path {
-      fill: ${({ theme }) => theme.colors.WHITE};
+      fill: ${getBgdLighterColor};
     }
   }
 

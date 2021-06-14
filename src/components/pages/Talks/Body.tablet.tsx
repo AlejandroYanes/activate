@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -29,8 +27,6 @@ const UserView = (props) => (
 );
 
 const TabletBody: FunctionComponent = () => {
-  const colors = useAppColors();
-
   const [{ activeView, activeUser }, setState] = useState({
     activeView: TalkViews.TALK_LIST,
     activeUser: undefined,
@@ -63,11 +59,13 @@ const TabletBody: FunctionComponent = () => {
       .map(() => ({
         id: faker.random.uuid(),
         avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-        secondary: (
-          activeView === TalkViews.CONTACT_LIST
-            ? `@${faker.internet.userName()}`
-            : faker.lorem.words(10)
+        name: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        userName: faker.internet.userName(),
+        lastMessage: (
+          activeView === TalkViews.TALK_LIST
+            ? faker.lorem.words(20)
+            : undefined
         ),
         active: faker.random.boolean(),
       }))
@@ -77,9 +75,8 @@ const TabletBody: FunctionComponent = () => {
     <IconButton
       style={arrowBackStyles}
       onClick={closeTalk}
-      icon={Icons.ARROW_LEFT}
-      color={colors.FONT}
-      buttonColor="font"
+      icon="ARROW_LEFT"
+      color="background"
       variant="flat"
     />
   );
@@ -87,9 +84,8 @@ const TabletBody: FunctionComponent = () => {
   const rightAction = (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.MORE_VERT}
-      color={colors.FONT}
-      buttonColor="font"
+      icon="MORE_VERT"
+      color="background"
       variant="flat"
     />
   );
@@ -98,9 +94,8 @@ const TabletBody: FunctionComponent = () => {
     <IconButton
       size="large"
       variant="fill"
-      buttonColor="accent"
-      color={colors.WHITE}
-      icon={Icons.ADD_USER}
+      color="accent"
+      icon="PENCIL"
       onClick={openContactList}
     />
   );
@@ -127,7 +122,7 @@ const TabletBody: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={talksHeader}
-        scroll
+        showScroll
       />
       <Case
         value={TalkViews.CONTACT_LIST}
@@ -135,7 +130,7 @@ const TabletBody: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={newTalkHeader}
-        scroll
+        showScroll
       />
       <Case
         value={TalkViews.MESSAGES}

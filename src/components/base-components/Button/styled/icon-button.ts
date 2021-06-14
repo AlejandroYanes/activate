@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
-import { getPositionStyles } from 'helpers';
-import { getVariantStyles } from 'components/base-components/Button/styled';
-import { IconButtonProps } from '..';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
+import { getIconVariantStyles } from './utils';
 
-const getSize = (props: IconButtonProps) => {
+const getSize = (props) => {
   const { size } = props;
 
   switch (size) {
@@ -88,7 +87,7 @@ const getToggleStyles = (props) => {
   return undefined;
 };
 
-export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => props)`
+export const StyledIconButton = styled.button.attrs(anyPropsAttrs)`
   border: none;
   outline: none;
   box-shadow: none;
@@ -101,7 +100,7 @@ export const StyledIconButton = styled.button.attrs((props: IconButtonProps) => 
   transition: all 150ms linear;
   ${getSize};
   ${getToggleStyles};
-  ${getVariantStyles};
+  ${getIconVariantStyles};
   ${getPositionStyles};
 
   &:active {

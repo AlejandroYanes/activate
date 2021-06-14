@@ -1,6 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
 import { ButtonProps } from '../Button';
+import { getVariantStyles } from './utils';
 
 const getSize = (props: ButtonProps) => {
   const { sm, fullWidth } = props;
@@ -27,111 +28,6 @@ const getSize = (props: ButtonProps) => {
 const getAlignment = (props: ButtonProps) => {
   const { align } = props;
   return align === 'center' ? align : `flex-${align}`;
-};
-
-export const getVariantStyles = (props) => {
-  const { theme, ...buttonProps } = props;
-  const { variant, color } = buttonProps as ButtonProps;
-  const { colors } = theme;
-
-  switch (variant) {
-    case 'text': {
-      const colorInScheme = color.toUpperCase();
-      const fontColor = color === 'background'
-        ? colors.FONT
-        : colors[`${colorInScheme}_FONT`];
-      const fontHoverColor = color === 'background'
-        ? colors.BRAND_FONT_HIGHLIGHT
-        : colors[`${colorInScheme}_FONT_HIGHLIGHT`];
-
-      return css`
-        padding: 0;
-        font-weight: bold;
-        color: ${fontColor};
-        background-color: transparent;
-        &:hover, &:focus {
-          color: ${fontHoverColor};
-        }
-      `;
-    }
-    case 'outline': {
-      const colorInScheme = color.toUpperCase();
-      const fontHoverColor = color === 'background'
-        ? colors.FONT
-        : colors[`${colorInScheme}_FONT_HIGHLIGHT`];
-
-      return css`
-        color: ${colors[`${colorInScheme}_FONT`]};
-        background-color: transparent;
-        border: 1px solid ${colors[colorInScheme]};
-
-        &:hover, &:focus {
-          color: ${fontHoverColor};
-          background-color: ${colors[`${colorInScheme}_SHADE`]};
-          border-color: ${fontHoverColor};
-        }
-      `;
-    }
-    case 'flat': {
-      const colorInScheme = color.toUpperCase();
-      const fontColor = (
-        color === 'background'
-          ? colors.FONT
-          : colors[`${colorInScheme}_FONT`]
-      );
-      const fontHoverColor = (
-        color === 'background'
-          ? colors.FONT
-          : colors[`${colorInScheme}_FONT_HIGHLIGHT`]
-      );
-      const backgroundHoverColor = (
-        color === 'background'
-          ? colors.BACKGROUND
-          : colors[`${colorInScheme}_SHADE`]
-      );
-
-      return css`
-        background-color: transparent;
-        color: ${fontColor};
-
-        &:hover, &:focus {
-          color: ${fontHoverColor};
-          background-color: ${backgroundHoverColor};
-        }
-      `;
-    }
-    case 'fill': {
-      const fontColor = (
-        color === 'background' ? colors.FONT : colors.WHITE
-      );
-      const backgroundColor = (
-        color === 'background'
-          ? colors.BACKGROUND
-          : colors[color.toUpperCase()]
-      );
-
-      const fontHoverColor = (
-        color === 'background'
-          ? colors.BRAND_FONT_HIGHLIGHT
-          : colors.WHITE
-      );
-      const backgroundHoverColor = (
-        color === 'background'
-          ? colors.BRAND_SHADE
-          : colors[`${color.toUpperCase()}_HIGHLIGHT`]
-      );
-
-      return css`
-        color: ${fontColor};
-        background-color: ${backgroundColor};
-
-        &:hover, &:focus {
-          color: ${fontHoverColor};
-          background-color: ${backgroundHoverColor};
-        }
-      `;
-    }
-  }
 };
 
 export const Button = styled.button.attrs(anyPropsAttrs)`

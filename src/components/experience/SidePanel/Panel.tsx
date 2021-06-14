@@ -6,16 +6,15 @@ import {
 import { useAppLayout } from 'components/providers/Layout';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Tabset } from 'components/base-components/Tabset';
-import { Icons } from 'components/base-components/SvgIcon';
 import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
 import UpdatesPanel from 'components/panels/Updates';
 import EventDetailsPanel from 'components/panels/EventDetails';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import FilterPanel from 'components/panels/Filters';
 import TalksPanel from 'components/panels/Talks';
 import { resolveAvailableTabs } from './sections';
-import { StyledSidePanel, StyledPanel, PanelBody, PanelHeader } from './styled';
+import { PanelBody, PanelHeader, StyledPanel, StyledSidePanel } from './styled';
 
 interface Props {
   showCloseIcon?: boolean;
@@ -43,7 +42,7 @@ const Panel: FunctionComponent<Props> = (props) => {
             {availableTabs}
           </Tabset>
           <RenderIf condition={showCloseIcon}>
-            <IconButton onClick={onClose} icon={Icons.CLOSE} mL />
+            <IconButton onClick={onClose} icon="CLOSE" mL />
           </RenderIf>
         </PanelHeader>
         <PanelBody data-el="aux-panel-body">

@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Spring, Variants } from 'framer-motion';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import { SpinningDots } from 'components/base-components/Loaders';
 import AbsoluteContent from '../base/AbsoluteContent';
 import ClearButton from '../base/ClearButton';
@@ -76,7 +76,7 @@ const RightNode: FunctionComponent<Props> = (props) => {
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
       >
-        <SvgIcon icon={Icons.CHEVRON_DOWN} width={18} />
+        <SvgIcon icon="CHEVRON_DOWN" width={18} />
       </IconBox>
     </AbsoluteContent>
   );

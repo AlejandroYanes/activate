@@ -1,20 +1,17 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useRef } from 'react';
+import { UserModel } from 'models/user';
+import { UserTalkModel } from 'models/message';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
 import Checkbox from 'components/base-components/Checkbox';
-import { ActiveDot, AvatarSection, Info, Talk as StyledTalk } from './styled/user';
+import { ActiveDot, AvatarSection, Info, UserItem } from './styled';
 
 interface Props {
-  user: {
-    id: string;
-    avatar: string;
-    active?: boolean;
-    name: string;
-    secondary?: string;
-  };
+  user: UserModel | UserTalkModel;
   showSelection?: boolean;
   isSelected?: boolean;
+  actions?: (props: { user }) => any;
   onClick: (event) => void;
 }
 
@@ -23,45 +20,53 @@ const User: FunctionComponent<Props> = (props) => {
     user,
     showSelection,
     isSelected,
+    actions: Actions,
     onClick,
   } = props;
 
   const {
     id,
     avatar,
-    active,
     name,
-    secondary,
-  } = user;
+    lastName,
+    userName,
+    lastMessage,
+  } = user as (UserModel & UserTalkModel);
+  const itemRef = useRef(undefined);
 
-  const handleClick = useCallback(() => onClick(user), [onClick]);
+  const handleClick = useCallback((event) => {
+    if (event.target === itemRef.current) {
+      onClick(user);
+    }
+  }, [onClick]);
 
   return (
-    <StyledTalk data-id={id} role="button" onClick={handleClick}>
+    <UserItem data-id={id} role="button" onClick={handleClick} ref={itemRef}>
       <RenderIf condition={showSelection}>
         <Checkbox value={isSelected} padding="0 6px 0 4px" />
       </RenderIf>
       <AvatarSection>
         <Avatar src={avatar} />
-        <RenderIf condition={active}>
+        <RenderIf condition={false}>
           <ActiveDot data-el="active-dot" />
         </RenderIf>
       </AvatarSection>
       <Info>
-        <Text align="left">{name}</Text>
-        <RenderIf condition={!!secondary}>
-          <Text
-            align="left"
-            size="small"
-            color="secondary"
-            padding="4px 0"
-            ellipsis
-          >
-            {secondary}
-          </Text>
-        </RenderIf>
+        <Text align="left">{`${name} ${lastName}`}</Text>
+        <Text
+          align="left"
+          size="small"
+          color="secondary"
+          padding="4px 0"
+          ellipsis
+        >
+          {lastMessage || `@${userName}`}
+        </Text>
       </Info>
-    </StyledTalk>
+      <RenderIf condition={!!Actions}>
+        <Actions user={user} />
+      </RenderIf>
+    </UserItem>
   );
 };
 

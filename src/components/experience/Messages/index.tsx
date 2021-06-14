@@ -1,20 +1,18 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
 import { getEventValue } from 'helpers';
-import { useAppColors } from 'components/providers/Theme';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import Conversation from './Conversation';
 import {
-  Messages as StyledMessages,
-  Footer,
   ActiveDot,
   AvatarSection,
   Content,
+  Footer,
   Header,
+  Messages as StyledMessages,
   TextBox,
 } from './styled/messages';
 
@@ -31,7 +29,6 @@ interface Props {
 }
 
 const Messages: FunctionComponent<Props> = (props) => {
-  const colors = useAppColors();
   const {
     user: { avatar, name, active },
     leftActions,
@@ -71,9 +68,8 @@ const Messages: FunctionComponent<Props> = (props) => {
         />
         <IconButton
           onClick={() => undefined}
-          icon={Icons.SEND}
-          color={colors.ACCENT}
-          buttonColor="accent"
+          icon="SEND"
+          color="accent"
           size="large"
         />
       </Footer>

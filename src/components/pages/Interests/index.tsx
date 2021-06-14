@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import FlexBox from 'components/base-components/FlexBox';
-import IconButton from 'components/base-components/IconButton';
 import { Text, Title } from 'components/base-components/Typography';
-import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
-import { Button } from 'components/base-components/Button';
+import { Button, IconButton } from 'components/base-components/Button';
 import InterestsGrid from 'components/experience/InterestsGrid';
 import RenderIf from 'components/base-components/RenderIf';
 import { StyledCard } from './styled';
@@ -32,7 +30,7 @@ const InterestsPage: FunctionComponent = () => {
     <Page>
       <StyledCard>
         <FlexBox align="center" mB>
-          <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} mR />
+          <IconButton onClick={goBack} icon="ARROW_LEFT" mR />
           <Title level={2}>Manage your interests</Title>
         </FlexBox>
         <InterestsGrid

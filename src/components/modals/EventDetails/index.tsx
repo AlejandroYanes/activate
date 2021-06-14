@@ -2,11 +2,9 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import eventImg from 'assets/images/virtual-tour.jpeg';
-import { useAppColors } from 'components/providers/Theme';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
 import Avatar from 'components/base-components/Avatar';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -30,7 +28,6 @@ enum Tabs {
 
 
 const EventDetailsModal: FunctionComponent = () => {
-  const colors = useAppColors();
   const { goBack } = useHistory();
 
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
@@ -43,7 +40,7 @@ const EventDetailsModal: FunctionComponent = () => {
 
   const header = (
     <FlexBox align="center" ellipsis>
-      <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} />
+      <IconButton onClick={goBack} icon="ARROW_LEFT" />
       <Title level={3} padding="0 6px 0 0" ellipsis>{title}</Title>
     </FlexBox>
   );
@@ -63,20 +60,17 @@ const EventDetailsModal: FunctionComponent = () => {
           </FlexBox>
           <IconButton
             size="large"
-            buttonColor="info"
+            color="info"
             variant="flat"
-            icon={Icons.FORWARD}
-            color={colors.INFO}
+            icon="FORWARD"
             onClick={() => undefined}
             margin="0 0 0 auto"
           />
           <IconButton
             size="large"
             variant="flat"
-            buttonColor="accent"
-            icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
-            color={colors.ACCENT}
-            secondaryColor={isBooked ? colors.ACCENT : 'transparent'}
+            color="accent"
+            icon={isBooked ? 'BOOKMARK_FILLED' : 'ADD_BOOKMARK'}
             onClick={handleBookActionClick}
           />
         </FlexBox>
@@ -86,8 +80,8 @@ const EventDetailsModal: FunctionComponent = () => {
           mT
           mB
         >
-          <Tab name={Tabs.DetailsSection} label="Details" icon={Icons.FORM} />
-          <Tab name={Tabs.CommentsSection} label="Comments" icon={Icons.COMMENTS} />
+          <Tab name={Tabs.DetailsSection} label="Details" icon="FORM" />
+          <Tab name={Tabs.CommentsSection} label="Comments" icon="COMMENTS" />
         </Tabset>
         <Switch by={activeTab}>
           <Case value={Tabs.DetailsSection} component={Description} />

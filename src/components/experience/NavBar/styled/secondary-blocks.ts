@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 
 export const ActionBlock = styled.li`
   height: 78px;
@@ -19,8 +19,8 @@ export const ActionButton = styled(IconButton)`
   border-color: ${({ theme }) => theme.colors.BRAND};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.BRAND_DARK};
-    border-color: ${({ theme }) => theme.colors.BRAND};
+    background-color: ${({ theme }) => theme.colors.BRAND_HIGHLIGHT};
+    border-color: ${({ theme }) => theme.colors.BRAND_HIGHLIGHT};
   }
 `;
 

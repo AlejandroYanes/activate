@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useAppColors, useAppTheme } from 'components/providers/Theme';
+import { useAppTheme } from 'components/providers/Theme';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { useAuthData } from 'components/providers/Auth';
-import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import MenuBlock from './MenuBlock';
@@ -18,7 +17,6 @@ import {
 const VerticalMenu: FunctionComponent = () => {
   const { userInfo } = useAuthData();
   const layout = useAppLayout();
-  const Colors = useAppColors();
   const { pathname } = useLocation();
   const { useDarkStyle, toggleLightStyle } = useAppTheme();
 
@@ -28,9 +26,8 @@ const VerticalMenu: FunctionComponent = () => {
         <ActionBlock>
           <ActionButton
             onClick={toggleLightStyle}
-            icon={useDarkStyle ? Icons.MOON : Icons.SUN}
-            color={Colors.WHITE}
-            buttonColor="brand"
+            icon={useDarkStyle ? 'MOON' : 'SUN'}
+            color="brand"
             variant="fill"
           />
         </ActionBlock>
@@ -44,32 +41,32 @@ const VerticalMenu: FunctionComponent = () => {
           layout={layout}
           currentPath={pathname}
           path="/app"
-          icon={Icons.BOOKMARKS}
+          icon="BOOKMARKS"
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
           path="/app/discover"
-          icon={Icons.COMPASS}
+          icon="COMPASS"
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
           path="/app/search"
-          icon={Icons.SEARCH}
+          icon="SEARCH"
         />
         <MenuBlock
           layout={layout}
           currentPath={pathname}
           path="/app/talks"
-          icon={Icons.MESSAGE}
+          icon="MESSAGE"
         />
         <RenderIf condition={layout !== Layout.DESKTOP}>
           <MenuBlock
             layout={layout}
             currentPath={pathname}
             path="#updates"
-            icon={Icons.TIME_HISTORY}
+            icon="TIME_HISTORY"
           />
         </RenderIf>
         <EmptyBlock />

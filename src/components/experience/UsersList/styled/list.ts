@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs, getBgdLightColor } from 'helpers';
 
 export const Section = styled.section.attrs(anyPropsAttrs)`
   position: relative;
@@ -18,8 +18,8 @@ export const List = styled.ul`
   overflow: hidden auto;
 `;
 
-export const Action = styled.div`
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+export const ActionNotch = styled.div`
+  background-color: ${getBgdLightColor};
   border-radius: 50%;
   position: absolute;
   display: flex;

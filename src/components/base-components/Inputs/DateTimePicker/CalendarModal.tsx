@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useState } from 'react';
 import Backdrop from 'components/base-components/Backdrop';
 import Calendar from 'components/base-components/Calendar';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
 import { Button } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import Clock from 'components/base-components/Clock';
@@ -82,8 +81,8 @@ const CalendarModal: FunctionComponent<Props> = (props) => {
         >
           <RenderIf condition={type === 'date-time'}>
             <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mB>
-              <Tab name={Tabs.CalendarTab} icon={Icons.CALENDAR_FILLED} />
-              <Tab name={Tabs.ClockTab} icon={Icons.CLOCK} />
+              <Tab name={Tabs.CalendarTab} icon="CALENDAR_FILLED" />
+              <Tab name={Tabs.ClockTab} icon="CLOCK" />
             </Tabset>
           </RenderIf>
           <RenderIf condition={activeTab === Tabs.CalendarTab}>

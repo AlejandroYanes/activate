@@ -5,8 +5,7 @@ import {
   NotificationType,
 } from 'notifications';
 import { useAppColors } from 'components/providers/Theme';
-import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import Icon from './Icon';
@@ -66,15 +65,15 @@ const Notification: FunctionComponent<Props> = (props) => {
     >
       <Icon type={type} />
       <Content>
-        <Text>{resolveTitle(title, type)}</Text>
+        <Text color="background">{resolveTitle(title, type)}</Text>
         <RenderIf condition={typeof message === 'string'} fallback={message}>
-          <Text>{message}</Text>
+          <Text color="background">{message}</Text>
         </RenderIf>
       </Content>
       <IconButton
-        buttonColor="background"
-        color={colors.FONT}
-        icon={Icons.CLOSE}
+        color="font"
+        variant="flat"
+        icon="CLOSE"
         onClick={handleOnClose}
       />
     </StyledNotification>

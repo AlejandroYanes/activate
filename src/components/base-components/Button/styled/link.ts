@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { getPositionStyles } from 'helpers';
-import { getVariantStyles } from './button';
+import { getVariantStyles } from './utils';
 
 export const StyledLink = styled(Link)`
   text-decoration: none;

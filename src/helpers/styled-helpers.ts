@@ -1,3 +1,4 @@
+import { ColorScheme, Variations } from 'styles/colors';
 import { PositionProps } from './common-props';
 
 export function getPositionStyles(props) {
@@ -35,6 +36,7 @@ export const getEllipsisStyles = (props) => {
 
 export const getBrandColor = ({ theme }) => theme.colors.BRAND;
 export const getBrandFontColor = ({ theme }) => theme.colors.BRAND_FONT;
+export const getBrandBgColor = ({ theme }) => theme.colors.BRAND_BG;
 export const getBrandShadeColor = ({ theme }) => theme.colors.BRAND_SHADE;
 export const getBrandHlColor = ({ theme }) => theme.colors.BRAND_HIGHLIGHT;
 
@@ -68,3 +70,13 @@ export const getGrayDarkColor = ({ theme }) => theme.colors.GRAY_DARK;
 export const getGrayLightColor = ({ theme }) => theme.colors.GRAY_LIGHT;
 
 export const anyPropsAttrs = (props: any) => props;
+
+export function getColorVariation(
+  colors: ColorScheme,
+  color: string,
+  variation: Variations = Variations.BASE,
+) {
+  const colorInScheme = color.toUpperCase();
+  return colors[`${colorInScheme}${variation}`];
+}
+

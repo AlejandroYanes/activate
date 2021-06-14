@@ -5,11 +5,10 @@ import { formatAmount } from 'helpers';
 import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import UsersList from 'components/experience/UsersList';
 import EventCard from 'components/experience/EventCard';
 import { events } from '../../pages/Discover/events';
@@ -53,13 +52,13 @@ const UserModal: FunctionComponent = () => {
 
   const header = (
     <FlexBox align="center" grow width="100%">
-      <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} />
+      <IconButton onClick={goBack} icon="ARROW_LEFT" />
       <Title level={3} padding="0 0 0 6px" ellipsis>
         {name}
       </Title>
       <IconButton
         onClick={() => undefined}
-        icon={Icons.ADD_USER}
+        icon="USER_PLUS"
         margin="0 0 0 auto"
       />
     </FlexBox>
@@ -112,17 +111,17 @@ const UserModal: FunctionComponent = () => {
           <Tab
             name={ProfileTabs.EVENTS}
             label={ProfileTabs.EVENTS}
-            icon={Icons.CALENDAR_FILLED}
+            icon="CALENDAR_FILLED"
           />
           <Tab
             name={ProfileTabs.FOLLOWING}
             label={ProfileTabs.FOLLOWING}
-            icon={Icons.MEGAPHONE}
+            icon="MEGAPHONE"
           />
           <Tab
             name={ProfileTabs.FRIENDS}
             label={ProfileTabs.FRIENDS}
-            icon={Icons.USERS}
+            icon="USERS"
           />
         </Tabset>
         <Switch by={activeTab}>

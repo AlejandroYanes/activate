@@ -1,11 +1,10 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { formatDate, formatDateTime, formatTime } from 'helpers';
-import { useAppTheme } from 'components/providers/Theme';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
 import AbsoluteContent from '../base/AbsoluteContent';
-import { StyledContent, Separator } from './styled/content';
+import { Separator, StyledContent } from './styled/content';
 import ClearButton from '../base/ClearButton';
 
 interface Props {
@@ -37,7 +36,6 @@ function getDateString(
 }
 
 const Content: FunctionComponent<Props> = (props) => {
-  const { colors } = useAppTheme();
   const {
     type,
     value,
@@ -80,9 +78,9 @@ const Content: FunctionComponent<Props> = (props) => {
     >
       <AbsoluteContent>
         <SvgIcon
+          color="FONT"
           size={iconSize}
-          color={colors.FONT}
-          icon={Icons.CALENDAR_FILLED}
+          icon="CALENDAR_FILLED"
         />
       </AbsoluteContent>
       <Text padding="0 16px 0 0">{startDate}</Text>

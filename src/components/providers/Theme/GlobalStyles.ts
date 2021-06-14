@@ -1,6 +1,34 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { scrollThumbWidth } from 'styles/variables';
 
+const mobileStyles = css`
+  body {
+    background-color: ${({ theme }: any) => theme.colors.BACKGROUND};
+    color: ${({ theme }: any) => theme.colors.FONT};
+  }
+
+  *::selection, input::selection, textarea::selection {
+    background-color: ${({ theme }) => theme.colors.BRAND_BG};
+    color: ${({ theme }) => theme.colors.BACKGROUND_LIGHTER};
+  }
+
+  div, section, article, aside, main, header, footer {
+    box-sizing: border-box;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    text-decoration: none;
+  }
+`;
+
+export const MobileGlobalStyles = createGlobalStyle`
+  ${mobileStyles};
+`;
+
 const getWebkitScrollBarThumbColor = (props) => {
   const { theme: { colors } } = props;
 
@@ -17,32 +45,8 @@ const getFirefoxScrollBarColor = (props) => {
   `;
 };
 
-const commonStyles = css`
-  body {
-    background-color: ${({ theme }: any) => theme.colors.BACKGROUND};
-    color: ${({ theme }: any) => theme.colors.FONT};
-  }
-
-  *::selection, input::selection, textarea::selection {
-    background-color: ${({ theme }) => theme.colors.BRAND_HIGHLIGHT};
-    color: ${({ theme }) => theme.colors.WHITE};
-  }
-
-  div, section, article, aside, main, header, footer {
-    box-sizing: border-box;
-  }
-
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  a {
-    text-decoration: none;
-  }
-`;
-
 export const PrimaryGlobalStyles = createGlobalStyle`
-  ${commonStyles};
+  ${mobileStyles};
 
   body {
     &::-webkit-scrollbar-track {
@@ -69,8 +73,4 @@ export const PrimaryGlobalStyles = createGlobalStyle`
     scrollbar-width: thin;
     ${getFirefoxScrollBarColor};
   }
-`;
-
-export const MobileGlobalStyles = createGlobalStyle`
-  ${commonStyles};
 `;

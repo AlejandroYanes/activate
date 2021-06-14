@@ -1,16 +1,14 @@
-import React, { FunctionComponent, ReactNode, useRef } from 'react';
+import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { useFocusState, useHoverState } from 'hooks/UI';
-import { Icons } from 'components/base-components/SvgIcon/Icons';
-import IconNode from './Icon';
+import { Icons } from 'components/base-components/SvgIcon';
 import Content from './Content';
 import { Button as StyledButton } from './styled';
 
 export interface ButtonProps extends PositionProps {
   label?: string;
   onClick: (event) => void;
-  leftIcon?: Icons | ReactNode;
-  rightIcon?: Icons | ReactNode;
+  leftIcon?: Icons;
+  rightIcon?: Icons;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'text' | 'flat' | 'outline' | 'fill';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error' | 'background';
@@ -28,39 +26,14 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     rightIcon,
     loading,
     disabled,
-    children,
     variant,
     color,
     sm,
     ...rest
   } = props;
-  const buttonRef = useRef(undefined);
-  const isHovered = useHoverState(buttonRef);
-  const isFocused = useFocusState(buttonRef);
-
-  const leftIconNode = (
-    <IconNode
-      isHovered={isHovered || isFocused}
-      variant={variant}
-      icon={leftIcon}
-      color={color}
-      sm={sm}
-    />
-  );
-
-  const rightIconNode = (
-    <IconNode
-      isHovered={isHovered || isFocused}
-      variant={variant}
-      icon={rightIcon}
-      color={color}
-      sm={sm}
-    />
-  );
 
   return (
     <StyledButton
-      ref={buttonRef}
       onClick={onClick}
       disabled={disabled}
       variant={variant}
@@ -69,15 +42,14 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
       {...rest}
     >
       <Content
+        sm={sm}
         label={label}
-        variant={variant}
         color={color}
+        variant={variant}
         loading={loading}
-        leftIcon={leftIconNode}
-        rightIcon={rightIconNode}
-      >
-        {children}
-      </Content>
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+      />
     </StyledButton>
   );
 };

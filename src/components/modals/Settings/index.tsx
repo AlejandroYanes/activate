@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon from 'components/base-components/SvgIcon';
 import { Modals } from '../index';
 import { SettingItem } from './styled';
 
@@ -36,19 +36,19 @@ const SettingsModal: FunctionComponent = () => {
       >
         <SettingItem onClick={openProfileModal}>
           <Text size="large">Change your Profile</Text>
-          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+          <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
         <SettingItem onClick={openPasswordModal}>
           <Text size="large">Change your Password</Text>
-          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+          <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
         <SettingItem onClick={openInterestsModal}>
           <Text size="large">Manage your Interests</Text>
-          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+          <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
         <SettingItem onClick={openColorsModal}>
           <Text size="large">Change the Colors</Text>
-          <SvgIcon icon={Icons.CHEVRON_RIGHT} />
+          <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
       </FlexBox>
     </Modal>

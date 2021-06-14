@@ -2,19 +2,18 @@ import React, { FunctionComponent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { formatAmount } from 'helpers';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
-import { Icons } from 'components/base-components/SvgIcon';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 import UsersList from 'components/experience/UsersList';
 import EventCard from 'components/experience/EventCard';
 import { events } from '../../pages/Discover/events';
 import { users } from '../Profile/users';
-import { Layout, useAppLayout } from '../../providers/Layout';
 
 enum ProfileTabs {
   FOLLOWERS = 'Followers',
@@ -54,13 +53,13 @@ const PublisherModal: FunctionComponent = () => {
 
   const header = (
     <FlexBox align="center" grow width="100%">
-      <IconButton onClick={goBack} icon={Icons.ARROW_LEFT} />
+      <IconButton onClick={goBack} icon="ARROW_LEFT" />
       <Title level={3} padding="0 0 0 6px" ellipsis>
         {name}
       </Title>
       <IconButton
         onClick={() => undefined}
-        icon={Icons.STAR}
+        icon="STAR"
         margin="0 0 0 auto"
       />
     </FlexBox>
@@ -115,12 +114,12 @@ const PublisherModal: FunctionComponent = () => {
           <Tab
             name={ProfileTabs.EVENTS}
             label={ProfileTabs.EVENTS}
-            icon={Icons.CALENDAR_FILLED}
+            icon="CALENDAR_FILLED"
           />
           <Tab
             name={ProfileTabs.FOLLOWERS}
             label={ProfileTabs.FOLLOWERS}
-            icon={Icons.MEGAPHONE}
+            icon="USERS"
           />
         </Tabset>
         <Switch by={activeTab}>

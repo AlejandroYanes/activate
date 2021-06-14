@@ -6,16 +6,13 @@ import React, {
   useState,
 } from 'react';
 import { EventChannelList, useEventCenterUpdate } from 'event-center';
-import { useAppColors } from 'components/providers/Theme';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import RenderIf from 'components/base-components/RenderIf';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
 import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
 
 const DesktopBody: FunctionComponent = () => {
-  const colors = useAppColors();
   const { setActiveSection } = usePanelActions();
 
   const [activeUser, setActiveUser] = useState(undefined);
@@ -36,9 +33,8 @@ const DesktopBody: FunctionComponent = () => {
   const actions = useMemo(() => (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.MORE_VERT}
-      color={colors.FONT}
-      buttonColor="font"
+      icon="MORE_VERT"
+      color="background"
       variant="flat"
     />
   ), []);

@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { useAppColors } from 'components/providers/Theme';
-import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
+import { IconButton } from 'components/base-components/Button';
 
 interface Props {
   isBooked: boolean;
@@ -9,17 +7,14 @@ interface Props {
 }
 
 const BookmarkButton: FunctionComponent<Props> = (props) => {
-  const colors = useAppColors();
   const { isBooked, onClick } = props;
 
   return (
     <IconButton
       size="large"
       variant="flat"
-      buttonColor="accent"
-      color={colors.ACCENT}
-      secondaryColor={isBooked ? colors.ACCENT : 'transparent'}
-      icon={isBooked ? Icons.BOOKMARK_FILLED : Icons.ADD_BOOKMARK}
+      color="accent"
+      icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
       onClick={onClick}
     />
   );

@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs, getFontColor } from 'helpers';
 
 const elementBorderRadius = '16px';
 
 const getActionStyles = (props) => {
   const { danger, theme: { colors } } = props;
-  const backgroundColor = danger ? colors.ERROR : colors.BRAND;
-  const highlightColor = danger ? colors.ERROR_HIGHLIGHT : colors.BRAND_HIGHLIGHT;
+  const backgroundColor = danger ? colors.ERROR_BG : colors.BRAND_BG;
+  const highlightColor = danger ? colors.ERROR_BG_HIGHLIGHT : colors.BRAND_BG_HIGHLIGHT;
 
   return `
       &:hover {
       cursor: pointer;
-      color: ${colors.WHITE};
+      color: ${colors.BACKGROUND_LIGHTER};
       background-color: ${backgroundColor};
     }
 
@@ -28,7 +28,7 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   align-items: center;
   height: 48px;
   padding: 0 8px;
-  color: ${({ theme }) => theme.colors.FONT};
+  color: ${getFontColor};
   font-size: 1rem;
   transition: all 150ms linear;
 
