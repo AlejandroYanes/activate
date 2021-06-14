@@ -1,11 +1,13 @@
 import { FunctionComponent } from 'react';
+import { Colors } from 'styles/colors';
 import { useAppColors } from 'components/providers/Theme';
 import { IconProps } from './icon-props';
-import { icons } from './Icons';
+import { Icons, icons } from './Icons';
 import { svgIconStyles } from './styles';
 
 interface Props extends IconProps {
   id?: string;
+  icon: Icons;
   size?: 'small' | 'medium' | 'large' | 'x-large' | 'page';
 }
 
@@ -28,8 +30,8 @@ const SvgIcon: FunctionComponent<Props> = (props) => {
 
   return (
     <IconComponent
-      color={iconColor}
-      secondaryColor={iconSecondaryColor}
+      color={iconColor as Colors}
+      secondaryColor={iconSecondaryColor as Colors}
       width={iconWidth}
       height={iconHeight}
       {...iconProperties}

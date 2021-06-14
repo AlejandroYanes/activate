@@ -19,7 +19,7 @@ const SectionedGrid: FunctionComponent<Props> = (props): any => {
       <PickItem value={id} color="accent">
         <Interest>
           <SvgIcon
-            icon={icon as Icons}
+            icon={icon.toUpperCase() as Icons}
             color="ACCENT_FONT"
             size="x-large"
           />

@@ -1,11 +1,9 @@
 import { CSSProperties } from 'react';
-import { ColorScheme } from 'styles/colors';
-import { Icons } from './Icons';
+import { Colors } from 'styles/colors';
 
 export interface IconProps {
-  icon: Icons;
-  color?: keyof ColorScheme;
-  secondaryColor?: keyof ColorScheme;
+  color?: Colors;
+  secondaryColor?: Colors;
   height?: number;
   width?: number;
   className?: string;

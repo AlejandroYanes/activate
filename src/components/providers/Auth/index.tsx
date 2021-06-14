@@ -26,23 +26,23 @@ interface AuthContext {
 }
 
 const getInitialState = (): AuthState => {
-  // return {
-  //   isLoggedIn: false,
-  //   userInfo: undefined,
-  // };
   return {
-    isLoggedIn: true,
-    userInfo: {
-      avatar: 'user4',
-      userName: '@alejandro.yanes94',
-      email: 'ale@gmail.com',
-      name: 'Alejandro',
-      lastName: 'Yanes',
-      theme: AppTheme.SummerVibes,
-      useDarkStyle: true,
-      verificationLevel: VerificationLevel.INTERESTS_ADDED,
-    } as UserInfo,
+    isLoggedIn: false,
+    userInfo: undefined,
   };
+  // return {
+  //   isLoggedIn: true,
+  //   userInfo: {
+  //     avatar: 'user4',
+  //     userName: '@alejandro.yanes94',
+  //     email: 'ale@gmail.com',
+  //     name: 'Alejandro',
+  //     lastName: 'Yanes',
+  //     theme: AppTheme.SummerVibes,
+  //     useDarkStyle: true,
+  //     verificationLevel: VerificationLevel.INTERESTS_ADDED,
+  //   } as UserInfo,
+  // };
 };
 
 const AuthContext = createContext<AuthContext>(undefined);

@@ -39,4 +39,5 @@ export interface UserModel {
   name: string;
   lastName: string;
   avatar: string;
+  active?: boolean;
 }

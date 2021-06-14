@@ -56,6 +56,8 @@ export type ColorScheme = (
   FixedColorScheme
 );
 
+export type Colors = keyof ColorScheme;
+
 export const lightStyleColors: LightColorScheme = {
   FONT: '#151718',
   FONT_SECONDARY: '#57585f',

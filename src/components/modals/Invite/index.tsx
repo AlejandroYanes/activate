@@ -8,8 +8,6 @@ import UsersList from 'components/experience/UsersList';
 import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
-import { events } from '../../pages/Discover/events';
-import { users } from '../Profile/users';
 
 const InviteUsersModal: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -55,7 +53,7 @@ const InviteUsersModal: FunctionComponent = () => {
       visible
     >
       <FlexBox direction="column" align="stretch" padding="0 16px">
-        <Text size="large" mB>{events[1].title}</Text>
+        <Text size="large" mB>Event</Text>
         <Input
           placeholder="Search"
           value={search}
@@ -63,11 +61,11 @@ const InviteUsersModal: FunctionComponent = () => {
           mB
         />
       </FlexBox>
-      <UsersList
-        users={users}
-        selectedUsers={selectedUsers}
-        onClick={handleSelection}
-      />
+      {/*<UsersList*/}
+      {/*  users={users}*/}
+      {/*  selectedUsers={selectedUsers}*/}
+      {/*  onClick={handleSelection}*/}
+      {/*/>*/}
     </Modal>
   );
 };

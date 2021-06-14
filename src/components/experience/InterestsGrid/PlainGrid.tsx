@@ -14,7 +14,7 @@ const PlainGrid: FunctionComponent<Props> = (props): any => {
   return interests.map(({ id, name, icon }) => (
     <PickItem key={id} value={id}>
       <SvgIcon
-        icon={icon as Icons}
+        icon={icon.toUpperCase() as Icons}
         color="BRAND_FONT"
         size="x-large"
       />

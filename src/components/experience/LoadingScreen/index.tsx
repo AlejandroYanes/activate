@@ -1,7 +1,7 @@
 import { SpinningDots } from 'components/base-components/Loaders';
 import FlexBox from 'components/base-components/FlexBox';
 
-const Loading = () => {
+const LoadingScreen = () => {
 
   return (
     <FlexBox
@@ -16,4 +16,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default LoadingScreen;

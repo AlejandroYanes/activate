@@ -1,14 +1,35 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import usersApi from 'api/users';
+import { UserModel } from 'models/user';
+import { QueryKey } from 'components/providers/Query';
 import UsersList from 'components/experience/UsersList';
-import { users } from '../../../modals/Profile/users';
+import FriendActions from './FriendActions';
 import { UsersCard } from './styled';
 
-const emptyAction = () => undefined;
-
 const Friends: FunctionComponent = () => {
+  const { push } = useHistory();
+  const {
+    isLoading,
+    data: response,
+    error,
+  } = useQuery(QueryKey.FETCH_MY_FRIENDS, usersApi.listMyFriends);
+
+  const handleClick = useCallback((friend: UserModel) => {
+    push(`/app/user/${friend.id}`);
+  }, []);
+
   return (
     <UsersCard>
-      <UsersList users={users} onClick={emptyAction} />
+      <UsersList
+        loading={isLoading}
+        errored={!!error}
+        errorMessage="We couldn't load your friends."
+        users={response?.data}
+        onClick={handleClick}
+        userActions={FriendActions}
+      />
     </UsersCard>
   );
 };
