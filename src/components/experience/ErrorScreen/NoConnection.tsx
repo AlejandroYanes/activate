@@ -20,9 +20,8 @@ const NoConnectionScreen: FunctionComponent<Props> = (props) => {
         size="x-large"
       />
       <Text padding="24px 0 12px" size="large">Oops, sorry about that.</Text>
-      <Text as="p" size="medium" align="center">
-        {message}
-        <br />
+      <Text size="medium" align="center" padding="4px 0">{message}</Text>
+      <Text size="medium" align="center">
         Please check your internet connection or reload the page.
       </Text>
       <Button

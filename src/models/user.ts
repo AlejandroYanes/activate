@@ -41,3 +41,8 @@ export interface UserModel {
   avatar: string;
   active?: boolean;
 }
+
+export interface PublisherDTO extends UserModel {
+  events: number;
+  followers: number;
+}

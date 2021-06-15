@@ -29,7 +29,7 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   height: 48px;
   padding: 0 8px;
   color: ${getFontColor};
-  font-size: 1rem;
+  font-size: 16px;
   transition: all 150ms linear;
 
   &:first-child {

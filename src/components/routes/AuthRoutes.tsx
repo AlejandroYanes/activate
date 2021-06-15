@@ -36,7 +36,7 @@ const AuthRoutes: FunctionComponent = () => {
         <Route path="/app/discover" component={DiscoverPage} />
         <Route path="/app/event-details" component={EventDetailsPage} />
         <Route path="/app/search" component={SearchPage} />
-        <Route path="/app/publisher" component={PublisherPage} />
+        <Route path="/app/publisher/:publisherId" component={PublisherPage} />
         <Route path="/app/user" component={UserPage} />
         <Route path="/app/talks" component={TalksPage} />
         <Route path="/app/interests" component={InterestsPage} />

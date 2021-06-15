@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
+import { getBgdLightColor, getPositionStyles } from 'helpers';
 
 export const Options = styled.ul`
   list-style: none;
@@ -7,5 +7,5 @@ export const Options = styled.ul`
   padding: 4px;
   ${getPositionStyles};
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getBgdLightColor};
 `;

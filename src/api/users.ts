@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { UserModel } from '../models/user';
+import { PublisherDTO, UserModel } from 'models/user';
 import { get } from './base';
 
 const endpoint = 'users';
@@ -13,6 +13,9 @@ const usersApi = {
   },
   listMyPublishers: (): Promise<AxiosResponse<UserModel[]>> => {
     return get(`${endpoint}/publishers`);
+  },
+  findPublisher: (id: string): Promise<AxiosResponse<PublisherDTO>> => {
+    return get(`${endpoint}/publisher/${id}`);
   },
 };
 

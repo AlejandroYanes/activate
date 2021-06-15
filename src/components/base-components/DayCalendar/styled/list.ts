@@ -18,5 +18,5 @@ export const Month = styled.li`
   font-size: 14px;
   line-height: 16px;
   height: 48px;
-  color: ${({ theme }) => theme.colors.GRAY};
+  color: ${({ theme }) => theme.colors.FONT_SECONDARY};
 `;

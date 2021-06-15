@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { anyPropsAttrs, getFontColor } from '../../../../helpers';
 
 export const StyledDays = styled.table`
   width: 100%;
@@ -21,7 +22,7 @@ export const StyledDay = styled.td`
     min-height: 42px;
 `;
 
-const getBasicStyles = (props) => {
+const getVariantStyles = (props) => {
   const { disabled, isSelected, isHighlighted, theme: { colors } } = props;
 
   if (disabled) {
@@ -29,50 +30,40 @@ const getBasicStyles = (props) => {
   }
 
   if (isSelected) {
-    return `
-      background-color: ${colors.BRAND};
-      color: ${colors.WHITE};
+    return css`
+      background-color: ${colors.BRAND_BG};
+      color: ${colors.BACKGROUND_LIGHTER};
       cursor: pointer;
+
+      &:hover {
+        background-color: ${colors.BRAND_BG_HIGHLIGHT};
+        color: ${colors.BACKGROUND_LIGHTER};
+      }
     `;
   }
 
   if (isHighlighted) {
-    return `
+    return css`
       background-color: ${colors.BRAND_SHADE};
       color: ${colors.BRAND_FONT};
       cursor: pointer;
+
+      &:hover {
+        color: ${colors.FONT};
+      }
     `;
   }
 
-  return `
+  return css`
     cursor: pointer;
+
+    &:hover {
+      background-color: ${colors.GRAY_SHADE}
+    }
   `;
 };
 
-const getHoverStyle = (props) => {
-  const { disabled, isSelected, isHighlighted, theme: { colors } } = props;
-
-  if (disabled) {
-    return undefined;
-  }
-
-  if (isSelected) {
-    return css`
-      background-color: ${colors.BRAND_HIGHLIGHT};
-      color: ${colors.WHITE};
-    `;
-  }
-
-  if (isHighlighted) {
-    return css`
-      color: ${colors.BRAND_FONT_HIGHLIGHT};
-    `;
-  }
-
-  return `background-color: ${colors.GRAY_SHADE}`;
-};
-
-export const StyledDayButton = styled.button.attrs((props: any) => props)`
+export const StyledDayButton = styled.button.attrs(anyPropsAttrs)`
   font-size: 16px;
   outline: none;
   background-color: transparent;
@@ -83,13 +74,9 @@ export const StyledDayButton = styled.button.attrs((props: any) => props)`
   width: 38px;
   min-width: 38px;
   box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.FONT};
   overflow: visible;
   text-transform: none;
   border: 1px solid transparent;
-  ${getBasicStyles};
-
-  &:hover {
-    ${getHoverStyle};
-  }
+  color: ${getFontColor};
+  ${getVariantStyles};
 `;

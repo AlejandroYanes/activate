@@ -46,7 +46,7 @@ const Option: FunctionComponent<Props> = (props) => {
           <Icon
             icon={icon}
             size={size}
-            color={isSelected ? 'BACKGROUND_LIGHTER' : 'FONT'}
+            color={isSelected ? 'BACKGROUND' : 'FONT'}
           />
         </RenderIf>
         <Text size={size} color={isSelected ? 'background' : 'font'}>{label}</Text>
