@@ -9,8 +9,8 @@ import { IconButton } from 'components/base-components/Button';
 const menuTrigger = ({ toggleMenu, ...rest }) => (
   <IconButton
     icon="MORE_VERT"
-    onClick={toggleMenu}
     color="background"
+    onClick={toggleMenu}
     {...rest}
   />
 );

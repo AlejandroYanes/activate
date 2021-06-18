@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react';
+import { useHistory } from 'react-router-dom';
 import Page from 'components/base-components/Page';
 import { IconButton } from 'components/base-components/Button';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -9,9 +10,8 @@ import LoadingScreen from 'components/experience/LoadingScreen';
 import { NoConnectionScreen } from 'components/experience/ErrorScreen';
 import Events from './Events';
 import Followers from './Followers';
+import Actions from './Actions';
 import usePublisherState, { Tabs } from './state';
-
-const emptyAction = () => undefined;
 
 const PublisherPage: FunctionComponent = () => {
   const {
@@ -25,6 +25,7 @@ const PublisherPage: FunctionComponent = () => {
       setActiveTab,
     },
   } = usePublisherState();
+  const { goBack } = useHistory();
 
   if (isLoading) {
     return (
@@ -42,28 +43,31 @@ const PublisherPage: FunctionComponent = () => {
     );
   }
 
-  const { events, followers, ...rest } = publisher;
+  const { avatar, name, lastName, userName, events, followers } = publisher;
 
   return (
     <Page>
       <ProfileCard
-        avatar="user4"
+        avatar={avatar}
+        name={`${name} ${lastName}`}
+        userName={userName}
         leftStatLabel="Events"
         leftStatValue={events}
         rightStatLabel="Followers"
         rightStatValue={followers}
-        {...rest}
       >
-        <AbsoluteContent top={16} right={16}>
+        <AbsoluteContent top={16} left={16}>
           <IconButton
-            icon="STAR"
-            size="large"
-            color="accent"
             variant="flat"
-            onClick={emptyAction}
+            icon="ARROW_LEFT"
+            color="background"
+            onClick={goBack}
           />
         </AbsoluteContent>
-        <Tabset activeTab={activeTab} onTabChange={setActiveTab}>
+        <AbsoluteContent top={16} right={16}>
+          <Actions user={publisher} />
+        </AbsoluteContent>
+        <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth>
           <Tab
             name={Tabs.EVENTS}
             label={Tabs.EVENTS}

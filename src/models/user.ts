@@ -42,7 +42,14 @@ export interface UserModel {
   active?: boolean;
 }
 
-export interface PublisherDTO extends UserModel {
+export interface PublisherModel extends UserModel {
   events: number;
   followers: number;
+  followedByMe: boolean;
+}
+
+export interface ConsumerModel extends UserModel {
+  following: number;
+  friends: number;
+  myFriend: boolean;
 }

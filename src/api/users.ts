@@ -1,21 +1,34 @@
 import { AxiosResponse } from 'axios';
-import { PublisherDTO, UserModel } from 'models/user';
+import { ConsumerModel, PublisherModel, UserModel } from 'models/user';
 import { get } from './base';
-
-const endpoint = 'users';
 
 const usersApi = {
   listMyFriends: (): Promise<AxiosResponse<UserModel[]>> => {
-    return get(`${endpoint}/friends`);
-  },
-  listFriendsOf: (userId: string): Promise<AxiosResponse<UserModel[]>> => {
-    return get(`${endpoint}/friends/${userId}`);
+    return get('users/friends');
   },
   listMyPublishers: (): Promise<AxiosResponse<UserModel[]>> => {
-    return get(`${endpoint}/publishers`);
+    return get('users/publishers');
   },
-  findPublisher: (id: string): Promise<AxiosResponse<PublisherDTO>> => {
-    return get(`${endpoint}/publisher/${id}`);
+  listMyFollowers: (): Promise<AxiosResponse<UserModel[]>> => {
+    return get('users/followers');
+  },
+  findPublisher: (id: string): Promise<AxiosResponse<PublisherModel>> => {
+    return get(`users/publisher/${id}`);
+  },
+  listFollowersOf: (publisher: string): Promise<AxiosResponse<ConsumerModel[]>> => {
+    return get(`users/${publisher}/followers`);
+  },
+  findConsumer: (id: string): Promise<AxiosResponse<ConsumerModel>> => {
+    return get(`users/consumer/${id}`);
+  },
+  listPublishersOf: (consumer: string): Promise<AxiosResponse<UserModel[]>> => {
+    return get(`users/${consumer}/publishers`);
+  },
+  listFriendsOf: (consumer: string): Promise<AxiosResponse<UserModel[]>> => {
+    return get(`users/${consumer}/friends`);
+  },
+  follow: (publisher: string): Promise<AxiosResponse> => {
+    return get(`users/follow/${publisher}`);
   },
 };
 

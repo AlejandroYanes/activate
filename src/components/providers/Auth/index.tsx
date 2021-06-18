@@ -33,7 +33,7 @@ const getInitialState = (): AuthState => {
   //   isLoggedIn: true,
   //   userInfo: {
   //     avatar: 'user4',
-  //     userName: '@alejandro.yanes94',
+  //     userName: 'alejandro.yanes94',
   //     email: 'ale@gmail.com',
   //     name: 'Alejandro',
   //     lastName: 'Yanes',
