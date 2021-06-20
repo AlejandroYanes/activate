@@ -27,7 +27,6 @@ const Actions: FunctionComponent<Props> = (props) => {
     return (
       <Button
         onClick={emptyAction}
-        leftIcon="STAR"
         label="Follow"
         variant="outline"
         color="brand"

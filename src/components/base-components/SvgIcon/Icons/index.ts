@@ -98,6 +98,7 @@ import StarFilledIcon from './StarFilled';
 import RemoveBookmarkIcon from './RemoveBookmark';
 import ListUlIcon from './ListUl';
 import BarsIcon from './Bars';
+import MoreHrzIcon from './MoreHrz';
 
 export const icons = {
   '': () => null,
@@ -203,6 +204,7 @@ export const icons = {
   STAR_FILLED: StarFilledIcon,
   LIST_UL: ListUlIcon,
   BARS: BarsIcon,
+  MORE_HRZ: MoreHrzIcon,
 };
 
 export type Icons = keyof (typeof icons);

@@ -4,7 +4,7 @@ import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import ProfileCard from 'components/experience/ProfileCard';
 import ProfileActions from './ProfileActions';
-import { ProfileTabs } from '../';
+import { Tabs } from '../';
 
 interface Props {
   activeTab: string;
@@ -42,18 +42,18 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         mT
       >
         <Tab
-          name={ProfileTabs.Following}
-          label={ProfileTabs.Following}
+          name={Tabs.Following}
+          label={Tabs.Following}
           icon="MEGAPHONE"
         />
         <Tab
-          name={ProfileTabs.Friends}
-          label={ProfileTabs.Friends}
+          name={Tabs.Friends}
+          label={Tabs.Friends}
           icon="USERS"
         />
         <Tab
-          name={ProfileTabs.Setting}
-          label={ProfileTabs.Setting}
+          name={Tabs.Setting}
+          label={Tabs.Setting}
           icon="SLIDERS_VERT"
         />
       </Tabset>

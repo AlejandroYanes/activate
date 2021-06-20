@@ -15,7 +15,7 @@ const Followers = () => {
     data: response,
     error,
   } = useQuery(
-    QueryKey.FETCH_FOLLOWERS_OF,
+    [QueryKey.FETCH_FOLLOWERS_OF, publisherId],
     () => usersApi.listFollowersOf(publisherId),
     { enabled: !!publisherId },
   );

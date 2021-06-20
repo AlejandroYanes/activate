@@ -15,16 +15,16 @@ const usersApi = {
   findPublisher: (id: string): Promise<AxiosResponse<PublisherModel>> => {
     return get(`users/publisher/${id}`);
   },
-  listFollowersOf: (publisher: string): Promise<AxiosResponse<ConsumerModel[]>> => {
-    return get(`users/${publisher}/followers`);
-  },
   findConsumer: (id: string): Promise<AxiosResponse<ConsumerModel>> => {
     return get(`users/consumer/${id}`);
   },
-  listPublishersOf: (consumer: string): Promise<AxiosResponse<UserModel[]>> => {
+  listPublishersOf: (consumer: string): Promise<AxiosResponse<PublisherModel[]>> => {
     return get(`users/${consumer}/publishers`);
   },
-  listFriendsOf: (consumer: string): Promise<AxiosResponse<UserModel[]>> => {
+  listFollowersOf: (publisher: string): Promise<AxiosResponse<ConsumerModel[]>> => {
+    return get(`users/${publisher}/followers`);
+  },
+  listFriendsOf: (consumer: string): Promise<AxiosResponse<ConsumerModel[]>> => {
     return get(`users/${consumer}/friends`);
   },
   follow: (publisher: string): Promise<AxiosResponse> => {
