@@ -46,7 +46,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         fullWidth
         mT
       >
-        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR_FILLED" />
+        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR" />
         <Tab name={Tabs.FOLLOWERS} label="Followers" icon="USERS" />
       </Tabset>
     </ProfileCard>

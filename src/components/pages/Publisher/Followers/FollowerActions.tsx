@@ -2,6 +2,8 @@ import { FunctionComponent } from 'react';
 import { ConsumerModel } from 'models/user';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { Button, IconButton } from 'components/base-components/Button';
+import { Text } from 'components/base-components/Typography';
+import FlexBox from 'components/base-components/FlexBox';
 
 interface Props {
   user: ConsumerModel;
@@ -20,7 +22,7 @@ const emptyAction = () => undefined;
 
 const FollowerActions: FunctionComponent<Props> = (props) => {
   const { user } = props;
-  const { name, myFriend } = user;
+  const { name, lastName, myFriend } = user;
 
   if (!myFriend) {
     return (
@@ -30,9 +32,12 @@ const FollowerActions: FunctionComponent<Props> = (props) => {
 
   return (
     <Menu trigger={menuTrigger}>
-      <MenuItem label={`Send a message to ${name}`} onClick={emptyAction} />
-      <MenuItem label={`Mute notifications form ${name}`} onClick={emptyAction} />
-      <MenuItem label={`Unfriend ${name}`} danger onClick={emptyAction} />
+      <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
+        <Text weight="bold" ellipsis>{`${name} ${lastName}`}</Text>
+      </FlexBox>
+      <MenuItem label="Send a message" onClick={emptyAction} />
+      <MenuItem label="Mute notifications" onClick={emptyAction} />
+      <MenuItem label="Unfriend" danger onClick={emptyAction} />
     </Menu>
   );
 };

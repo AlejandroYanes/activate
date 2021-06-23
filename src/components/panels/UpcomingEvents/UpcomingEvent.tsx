@@ -26,7 +26,7 @@ const UpcomingEvent: FunctionComponent<Props> = (props) => {
         <FlexBox direction="column" padding="8px 4px 8px 14px">
           <Text>{title}</Text>
           <FlexBox align="center" margin="4px 0">
-            <SvgIcon height={16} width={16} icon="CALENDAR_FILLED" />
+            <SvgIcon height={16} width={16} icon="CALENDAR" />
             <Text size="small" margin="0 0 0 6px">{formatDateTime(date)}</Text>
           </FlexBox>
           <FlexBox align="flex-start" margin="4px 0">

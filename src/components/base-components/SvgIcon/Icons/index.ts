@@ -17,7 +17,7 @@ import InfoIcon from './Info';
 import WarningIcon from './Warning';
 import ErrorIcon from './Error';
 import GridIcon from './Grid';
-import CalendarFilledIcon from './CalendarFilled';
+import CalendarIcon from './Calendar';
 import MapPinIcon from './MapPin';
 import ClockIcon from './Clock';
 import CompassIcon from './Compass';
@@ -99,6 +99,9 @@ import RemoveBookmarkIcon from './RemoveBookmark';
 import ListUlIcon from './ListUl';
 import BarsIcon from './Bars';
 import MoreHrzIcon from './MoreHrz';
+import BellSlashIcon from './BellSlash';
+import CalendarSlashIcon from './CalendarSlash';
+import UserRemoveIcon from './UserRemove';
 
 export const icons = {
   '': () => null,
@@ -123,7 +126,7 @@ export const icons = {
   WARNING: WarningIcon,
   ERROR: ErrorIcon,
   GRID: GridIcon,
-  CALENDAR_FILLED: CalendarFilledIcon,
+  CALENDAR: CalendarIcon,
   MAP_PIN: MapPinIcon,
   CLOCK: ClockIcon,
   COMPASS: CompassIcon,
@@ -205,6 +208,9 @@ export const icons = {
   LIST_UL: ListUlIcon,
   BARS: BarsIcon,
   MORE_HRZ: MoreHrzIcon,
+  BELL_SLASH: BellSlashIcon,
+  CALENDAR_SLASH: CalendarSlashIcon,
+  USER_REMOVE: UserRemoveIcon,
 };
 
 export type Icons = keyof (typeof icons);

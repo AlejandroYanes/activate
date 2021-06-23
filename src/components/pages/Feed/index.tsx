@@ -49,7 +49,7 @@ const FeedPage: FunctionComponent = () => {
         <Options size="small" value={option} onChange={setOption}>
           <Option
             value={EventsDisplay.ByDate}
-            icon="CALENDAR_FILLED"
+            icon="CALENDAR"
             label="By Date"
           />
           <Option

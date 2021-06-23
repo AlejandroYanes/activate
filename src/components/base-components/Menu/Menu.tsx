@@ -20,7 +20,6 @@ interface TriggerProps {
 
 interface Props {
   trigger: ReactNode | ((props: TriggerProps) => JSX.Element);
-  align?: 'start' | 'end';
   [x: string]: any;
 }
 

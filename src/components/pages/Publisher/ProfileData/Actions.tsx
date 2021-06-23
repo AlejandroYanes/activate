@@ -48,7 +48,7 @@ const Actions: FunctionComponent<Props> = (props) => {
       />
       <MenuItem
         label={`Stop seeing events from ${name}`}
-        // icon="CALENDAR_FILLED"
+        // icon="CALENDAR"
         onClick={emptyAction}
       />
       <MenuItem

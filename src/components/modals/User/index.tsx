@@ -111,7 +111,7 @@ const UserModal: FunctionComponent = () => {
           <Tab
             name={ProfileTabs.EVENTS}
             label={ProfileTabs.EVENTS}
-            icon="CALENDAR_FILLED"
+            icon="CALENDAR"
           />
           <Tab
             name={ProfileTabs.FOLLOWING}

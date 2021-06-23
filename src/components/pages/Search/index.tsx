@@ -40,7 +40,7 @@ const SearchPage: FunctionComponent = () => {
         mT
         mB
       >
-        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR_FILLED" />
+        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR" />
         <Tab name={Tabs.PUBLISHERS} label="Publishers" icon="MEGAPHONE" />
         <Tab name={Tabs.USERS} label="Users" icon="USERS" />
       </Tabset>
