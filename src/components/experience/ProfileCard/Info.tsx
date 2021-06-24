@@ -26,7 +26,9 @@ const Info: FunctionComponent<Props> = (props) => {
     <StyledInfo>
       <Attr>
         <Text>{leftStatLabel}</Text>
-        <Title level={2} color="accent">{formatAmount(leftStatValue)}</Title>
+        <Title level={2} color="accent">
+          {leftStatValue ? formatAmount(leftStatValue) : ''}
+        </Title>
       </Attr>
       <Attr>
         <Text>{`@${userName}`}</Text>
@@ -34,7 +36,9 @@ const Info: FunctionComponent<Props> = (props) => {
       </Attr>
       <Attr>
         <Text>{rightStatLabel}</Text>
-        <Title level={2} color="accent">{formatAmount(rightStatValue)}</Title>
+        <Title level={2} color="accent">
+          {rightStatValue ? formatAmount(rightStatValue) : ''}
+        </Title>
       </Attr>
     </StyledInfo>
   );

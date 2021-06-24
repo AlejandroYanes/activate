@@ -17,12 +17,12 @@ interface Props {
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { goBack } = useHistory();
   const { activeTab, setActiveTab, user } = props;
-  const { avatar, userName, name, lastName, events, followers } = user;
+  const { avatar, userName, name, events, followers } = user;
 
   return (
     <ProfileCard
       avatar={avatar}
-      name={`${name} ${lastName}`}
+      name={name}
       userName={userName}
       leftStatLabel="Events"
       leftStatValue={events}

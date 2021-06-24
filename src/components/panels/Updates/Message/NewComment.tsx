@@ -4,12 +4,11 @@ import { MessageProps } from './index';
 
 const NewComment: FunctionComponent<MessageProps> = ({ user, event }) => {
   const { name: eventName } = event;
-  const { name, lastName } = user;
-  const fullName = `${name} ${lastName}`;
+  const { name } = user;
 
   return (
     <Text>
-      <Text weight="bold">{fullName}</Text>
+      <Text weight="bold">{name}</Text>
       <Text> posted a comment on </Text>
       <Text weight="bold">{eventName}</Text>
     </Text>

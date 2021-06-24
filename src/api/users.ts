@@ -1,8 +1,11 @@
 import { AxiosResponse } from 'axios';
-import { ConsumerModel, PublisherModel, UserModel } from 'models/user';
+import { ConsumerModel, ProfileStats, PublisherModel, UserModel } from 'models/user';
 import { get } from './base';
 
 const usersApi = {
+  findMyStats: (): Promise<AxiosResponse<ProfileStats>> => {
+    return get('users/stats');
+  },
   listMyFriends: (): Promise<AxiosResponse<UserModel[]>> => {
     return get('users/friends');
   },

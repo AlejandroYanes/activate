@@ -1,4 +1,8 @@
 import React, { FunctionComponent } from 'react';
+import { useQuery } from 'react-query';
+import usersApi from 'api/users';
+import { ProfileStats } from 'models/user';
+import { QueryKey } from 'components/providers/Query';
 import { useAuthData } from 'components/providers/Auth';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
@@ -18,19 +22,24 @@ const ProfileData: FunctionComponent<Props> = (props) => {
       avatar,
       userName,
       name,
-      lastName,
     },
   } = useAuthData();
+
+  const { data: response } = useQuery(
+    QueryKey.FETCH_MY_PROFILE_STATS,
+    usersApi.findMyStats,
+  );
+  const stats: ProfileStats = response?.data;
 
   return (
     <ProfileCard
       avatar={avatar}
-      name={`${name} ${lastName}`}
+      name={name}
       userName={userName}
       leftStatLabel="Following"
-      leftStatValue={120}
+      leftStatValue={stats?.following}
       rightStatLabel="Friends"
-      rightStatValue={80}
+      rightStatValue={stats?.friends}
     >
       <AbsoluteContent top={16} right={16}>
         <ProfileActions />

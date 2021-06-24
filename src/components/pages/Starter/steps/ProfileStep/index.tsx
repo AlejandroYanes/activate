@@ -58,7 +58,6 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
             <InputBox>
               <Field name="userName" label="User Name" />
               <Field name="name" label="Name" mT />
-              <Field name="lastName" label="Last Name" mT />
               <RenderIf condition={layout !== Layout.MOBILE}>
                 <NextButton
                   onClick={handleSubmit}

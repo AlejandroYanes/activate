@@ -5,12 +5,11 @@ import { MessageProps } from './index';
 
 const Invitation: FunctionComponent<MessageProps> = ({ user, event }) => {
   const { going, name: eventName } = event;
-  const { name, lastName } = user;
-  const fullName = `${name} ${lastName}`;
+  const { name } = user;
 
   return (
     <Text>
-      <Text weight="bold">{fullName}</Text>
+      <Text weight="bold">{name}</Text>
       <RenderIf
         condition={going}
         fallback={<Text> is asking you to go to </Text>}

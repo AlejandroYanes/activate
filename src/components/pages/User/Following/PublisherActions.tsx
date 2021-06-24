@@ -21,8 +21,7 @@ const menuTrigger = ({ toggleMenu, ...rest }) => (
 const emptyAction = () => undefined;
 
 const PublisherActions: FunctionComponent<Props> = (props) => {
-  const { user } = props;
-  const { name, lastName, followedByMe } = user;
+  const { user: { name, followedByMe } } = props;
 
   if (!followedByMe) {
     return (
@@ -33,7 +32,7 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
   return (
     <Menu trigger={menuTrigger}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="bold" ellipsis>{`${name} ${lastName}`}</Text>
+        <Text weight="bold" ellipsis>{name}</Text>
       </FlexBox>
       <MenuItem label="Send a message" onClick={emptyAction} />
       <MenuItem label="Mute notifications" onClick={emptyAction} />

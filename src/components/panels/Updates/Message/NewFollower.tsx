@@ -3,12 +3,11 @@ import { Text } from 'components/base-components/Typography';
 import { MessageProps } from './index';
 
 const NewFollower: FunctionComponent<MessageProps> = ({ user }) => {
-  const { name, lastName } = user;
-  const fullName = `${name} ${lastName}`;
+  const { name } = user;
 
   return (
     <Text>
-      <Text weight="bold">{fullName}</Text>
+      <Text weight="bold">{name}</Text>
       <Text> started following you </Text>
     </Text>
   );

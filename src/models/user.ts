@@ -14,7 +14,6 @@ export enum VerificationLevel {
 
 export interface ProfileDto {
   name: string;
-  lastName: string;
   userName: string;
   email?: string;
   avatar: string;
@@ -37,7 +36,6 @@ export interface UserModel {
   id: string;
   userName: string;
   name: string;
-  lastName: string;
   avatar: string;
   active?: boolean;
 }
@@ -52,4 +50,9 @@ export interface ConsumerModel extends UserModel {
   following: number;
   friends: number;
   myFriend: boolean;
+}
+
+export interface ProfileStats {
+  friends: number;
+  following: number;
 }

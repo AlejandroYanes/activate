@@ -28,7 +28,6 @@ const User: FunctionComponent<Props> = (props) => {
     id,
     avatar,
     name,
-    lastName,
     userName,
     lastMessage,
   } = user as (UserModel & UserTalkModel);
@@ -52,7 +51,7 @@ const User: FunctionComponent<Props> = (props) => {
         </RenderIf>
       </AvatarSection>
       <Info>
-        <Text align="left">{`${name} ${lastName}`}</Text>
+        <Text align="left">{name}</Text>
         <Text
           align="left"
           size="small"
