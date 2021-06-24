@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getFontColor } from 'helpers';
 
 const elementBorderRadius = '16px';
@@ -8,11 +8,15 @@ const getActionStyles = (props) => {
   const backgroundColor = danger ? colors.ERROR_BG : colors.BRAND_BG;
   const highlightColor = danger ? colors.ERROR_BG_HIGHLIGHT : colors.BRAND_BG_HIGHLIGHT;
 
-  return `
+  return css`
       &:hover {
       cursor: pointer;
       color: ${colors.BACKGROUND_LIGHTER};
       background-color: ${backgroundColor};
+
+      svg > path {
+        fill: ${colors.BACKGROUND_LIGHTER};
+      }
     }
 
     &:active {
@@ -27,9 +31,9 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   justify-content: center;
   align-items: center;
   height: 48px;
-  padding: 0 8px;
+  padding: 0 10px;
   color: ${getFontColor};
-  font-size: 1rem;
+  font-size: 16px;
   transition: all 150ms linear;
 
   &:first-child {
@@ -55,6 +59,7 @@ export const MenuItemIcon = styled.div`
 export const MenuItemLabel = styled.div`
   display: flex;
   align-items: center;
+  padding-left: 4px;
 
   span {
     margin-bottom: 2px;

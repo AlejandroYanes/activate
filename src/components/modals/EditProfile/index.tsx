@@ -79,7 +79,6 @@ const EditProfileModal: FunctionComponent = () => {
             <Field name="userName" label="User Name" />
             <Field name="email" label="Email" mT />
             <Field name="name" label="Name" mT />
-            <Field name="lastName" label="Last Name" mT />
           </InputBox>
           <AvatarsBox>
             <Field

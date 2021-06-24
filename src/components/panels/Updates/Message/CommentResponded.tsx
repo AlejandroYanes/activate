@@ -3,12 +3,11 @@ import { Text } from 'components/base-components/Typography';
 import { MessageProps } from './index';
 
 const CommentResponded: FunctionComponent<MessageProps> = ({ user, event }) => {
-  const { name, lastName } = user;
-  const fullName = `${name} ${lastName}`;
+  const { name } = user;
 
   return (
     <Text>
-      <Text weight="bold">{fullName}</Text>
+      <Text weight="bold">{name}</Text>
       <Text> responded to your comment on </Text>
       <Text weight="bold">{event.name}</Text>
     </Text>

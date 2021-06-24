@@ -30,9 +30,9 @@ const Content: FunctionComponent<Props> = (props) => {
 
     return (
       <>
-        <SvgIcon icon={leftIcon} size={sm ? 'medium' : 'large'} />
+        <SvgIcon icon={leftIcon} size={sm ? 'small' : 'medium'} />
         <Text show={!loading}>{label}</Text>
-        <SvgIcon icon={rightIcon} size={sm ? 'medium' : 'large'} />
+        <SvgIcon icon={rightIcon} size={sm ? 'small' : 'medium'} />
         <RenderIf condition={loading}>
           <LoadingLayer show={loading}>
             <SpinningDots size="x-small" color={spinnerColors as any} />

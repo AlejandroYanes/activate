@@ -16,7 +16,7 @@ const Friends: FunctionComponent = () => {
     error,
   } = useQuery(QueryKey.FETCH_MY_FRIENDS, usersApi.listMyFriends);
 
-  const handleClick = useCallback((friend: UserModel) => {
+  const goToProfile = useCallback((friend: UserModel) => {
     push(`/app/user/${friend.id}`);
   }, []);
 
@@ -27,7 +27,7 @@ const Friends: FunctionComponent = () => {
         errored={!!error}
         errorMessage="We couldn't load your friends."
         users={response?.data}
-        onClick={handleClick}
+        onClick={goToProfile}
         userActions={FriendActions}
       />
     </UsersCard>

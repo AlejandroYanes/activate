@@ -5,7 +5,6 @@ const { required } = commonRules;
 export const profileRules = {
   userName: [required],
   name: [required],
-  lastName: [required],
   avatar: [
     {
       ...required,

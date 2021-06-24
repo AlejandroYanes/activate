@@ -81,7 +81,7 @@ const CalendarModal: FunctionComponent<Props> = (props) => {
         >
           <RenderIf condition={type === 'date-time'}>
             <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth mB>
-              <Tab name={Tabs.CalendarTab} icon="CALENDAR_FILLED" />
+              <Tab name={Tabs.CalendarTab} icon="CALENDAR" />
               <Tab name={Tabs.ClockTab} icon="CLOCK" />
             </Tabset>
           </RenderIf>

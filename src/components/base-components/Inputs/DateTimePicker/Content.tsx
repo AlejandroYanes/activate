@@ -80,7 +80,7 @@ const Content: FunctionComponent<Props> = (props) => {
         <SvgIcon
           color="FONT"
           size={iconSize}
-          icon="CALENDAR_FILLED"
+          icon="CALENDAR"
         />
       </AbsoluteContent>
       <Text padding="0 16px 0 0">{startDate}</Text>

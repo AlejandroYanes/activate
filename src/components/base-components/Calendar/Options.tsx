@@ -19,37 +19,37 @@ const initialOptions = [
     key: generateUID(),
     label: 'Today',
     value: [today],
-    icon: 'CALENDAR_FILLED',
+    icon: 'CALENDAR',
   },
   {
     key: generateUID(),
     label: 'Tomorrow',
     value: [addDays(today, 1)],
-    icon: 'CALENDAR_FILLED',
+    icon: 'CALENDAR',
   },
   {
     key: generateUID(),
     label: 'This Week',
     value: [startOfWeek(today), endOfWeek(today)],
-    icon: 'CALENDAR_FILLED',
+    icon: 'CALENDAR',
   },
   {
     key: generateUID(),
     label: 'Next Week',
     value: [startOfWeek(addDays(today, 7)), endOfWeek(addDays(today, 7))],
-    icon: 'CALENDAR_FILLED',
+    icon: 'CALENDAR',
   },
   {
     key: generateUID(),
     label: 'This Month',
     value: [startOfMonth(today), endOfMonth(today)],
-    icon: 'CALENDAR_FILLED',
+    icon: 'CALENDAR',
   },
   {
     key: generateUID(),
     label: 'Next Month',
     value: [startOfMonth(addMonths(today, 1)), endOfMonth(addMonths(today, 1))],
-    icon: 'CALENDAR_FILLED',
+    icon: 'CALENDAR',
   },
 ];
 

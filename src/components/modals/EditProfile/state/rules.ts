@@ -6,7 +6,6 @@ export const profileRules = {
   userName: [required],
   email: [required, email],
   name: [required],
-  lastName: [required],
   avatar: [
     {
       ...required,

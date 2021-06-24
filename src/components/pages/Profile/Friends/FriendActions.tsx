@@ -2,6 +2,8 @@ import { FunctionComponent } from 'react';
 import { UserModel } from 'models/user';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
+import { Text } from 'components/base-components/Typography';
+import FlexBox from 'components/base-components/FlexBox';
 
 interface Props {
   user: UserModel;
@@ -19,14 +21,16 @@ const menuTrigger = ({ toggleMenu, ...rest }) => (
 const emptyAction = () => undefined;
 
 const FriendActions: FunctionComponent<Props> = (props) => {
-  const { user } = props;
-  const { name } = user;
+  const { user: { name } } = props;
 
   return (
     <Menu trigger={menuTrigger}>
-      <MenuItem label={`Send a message to ${name}`} onClick={emptyAction} />
-      <MenuItem label={`Mute notifications form ${name}`} onClick={emptyAction} />
-      <MenuItem label={`Unfriend ${name}`} danger onClick={emptyAction} />
+      <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
+        <Text weight="bold" ellipsis>{name}</Text>
+      </FlexBox>
+      <MenuItem label="Send a message" onClick={emptyAction} />
+      <MenuItem label="Mute notifications" onClick={emptyAction} />
+      <MenuItem label="Unfriend" danger onClick={emptyAction} />
     </Menu>
   );
 };

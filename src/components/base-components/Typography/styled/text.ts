@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
 
 const sizeMap = {
@@ -33,13 +33,23 @@ const getColor = (props) => {
   return `color: ${fontColor}`;
 };
 
+const getItalicStyle = (props) => {
+  const { italic } = props;
+
+  if (italic) {
+    return css`font-style: italic`;
+  }
+
+  return '';
+};
+
 export const Text = styled.span.attrs(anyPropsAttrs)`
   white-space: normal;
   font-family: Comfortaa, sans-serif;
   font-size: ${({ size }) => sizeMap[size]};
-  line-height: ${({ size }) => `calc(${sizeMap[size]} + 4px)`};
   font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};
+  ${getItalicStyle};
   ${getColor};
   ${getEllipsisStyles};
   ${getPositionStyles};
