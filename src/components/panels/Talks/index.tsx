@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import faker from 'faker';
-import { EventChannelList, notifyEventChannel } from 'event-center';
+import { notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text } from 'components/base-components/Typography';
@@ -29,7 +29,7 @@ const TalksPanel: FunctionComponent = () => {
 
   const openTalk = useCallback((user) => {
     if (pathname.includes('talks')) {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
+      notifyEventChannel('USER_SELECTED_FOR_CHAT', user);
       setState({
         activeView: TalkViews.TALK_LIST,
         activeUser: undefined,
@@ -56,7 +56,7 @@ const TalksPanel: FunctionComponent = () => {
     });
     push('/talks');
     setTimeout(() => {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, activeUser);
+      notifyEventChannel('USER_SELECTED_FOR_CHAT', activeUser);
     }, 100);
   }, [activeUser]);
 

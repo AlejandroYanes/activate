@@ -104,9 +104,7 @@ import CalendarSlashIcon from './CalendarSlash';
 import UserRemoveIcon from './UserRemove';
 
 export const icons = {
-  '': () => null,
   null: () => null,
-  undefiled: () => null,
   HOME: HomeIcon,
   CHEVRON_UP: ChevronUpIcon,
   CHEVRON_DOWN: ChevronDownIcon,

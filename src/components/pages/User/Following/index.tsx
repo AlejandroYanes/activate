@@ -7,6 +7,7 @@ import { QueryKey } from 'components/providers/Query';
 import UsersList from 'components/experience/UsersList';
 import PublisherActions from './PublisherActions';
 import { UsersCard } from './styled';
+import { ConsumerProvider } from '../context';
 
 const Following: FunctionComponent = () => {
   const { push } = useHistory();
@@ -27,14 +28,16 @@ const Following: FunctionComponent = () => {
 
   return (
     <UsersCard>
-      <UsersList
-        loading={isLoading}
-        errored={!!error}
-        errorMessage="We couldn't load the publishers list."
-        users={response?.data}
-        onClick={handleClick}
-        userActions={PublisherActions}
-      />
+      <ConsumerProvider consumer={userId}>
+        <UsersList
+          loading={isLoading}
+          errored={!!error}
+          errorMessage="We couldn't load the publishers list."
+          users={response?.data}
+          onClick={handleClick}
+          userActions={PublisherActions}
+        />
+      </ConsumerProvider>
     </UsersCard>
   );
 };

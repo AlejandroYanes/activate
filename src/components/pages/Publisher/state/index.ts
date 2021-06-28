@@ -14,7 +14,7 @@ export default function usePublisherState() {
 
   const { publisherId } = useParams<any>();
   const { isLoading, data: response, error } = useQuery(
-    QueryKey.FETCH_PUBLISHER,
+    [QueryKey.FETCH_PUBLISHER, publisherId],
     () => usersApi.findPublisher(publisherId),
     { enabled: !!publisherId },
   );

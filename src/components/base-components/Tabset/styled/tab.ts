@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 import { Label } from './label';
 import { Mark } from './mark';
@@ -11,9 +11,13 @@ const getWidthStyles = (props) => {
 const getColorStyles = (props) => {
   const { selected, disableFocus, theme: { colors } } = props;
 
-  const basicStyles = `
+  const basicStyles = css`
     ${Label} {
       color: ${selected ? colors.BRAND_FONT : colors.FONT_SECONDARY};
+    }
+
+    svg > path {
+      fill: ${selected ? colors.BRAND_FONT : colors.FONT_SECONDARY};
     }
 
     ${Mark} {
@@ -29,7 +33,7 @@ const getColorStyles = (props) => {
     return basicStyles;
   }
 
-  return `
+  return css`
     ${basicStyles};
 
     &:hover, &:focus {
@@ -38,6 +42,10 @@ const getColorStyles = (props) => {
 
       ${Label} {
         color: ${colors.BRAND_FONT_HIGHLIGHT};
+      }
+
+      svg > path {
+        fill: ${colors.BRAND_FONT_HIGHLIGHT};
       }
 
       ${Mark} {
@@ -63,6 +71,10 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   ${getWidthStyles};
   ${getColorStyles};
   transition: all 150ms linear;
+
+  svg > path {
+    transition: all 150ms linear;
+  }
 
   &:last-child {
     margin-right: 0;

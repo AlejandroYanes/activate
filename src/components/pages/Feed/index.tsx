@@ -46,7 +46,7 @@ const FeedPage: FunctionComponent = () => {
   const actions = useMemo(() => {
     if (layout !== Layout.MOBILE) {
       return (
-        <Options size="small" value={option} onChange={setOption}>
+        <Options size="small" color="accent" value={option} onChange={setOption}>
           <Option
             value={EventsDisplay.ByDate}
             icon="CALENDAR"

@@ -42,7 +42,14 @@ const FiltersPanel: FunctionComponent = () => {
   return (
     <StyledSearch ref={panelRef}>
       <Form state={search} onChange={handleChange}>
-        <Field name="location" component={Options} fullWidth mB>
+        <Field
+          name="location"
+          component={Options}
+          color="accent"
+          fullWidth
+          highlight
+          mB
+        >
           <Option value={EventLocation.OnLine} label="Online" icon="GLOBE" />
           <Option value={EventLocation.All} label="All" icon="LIST" />
           <Option value={EventLocation.OnSite} label="Onsite" icon="MAP_PIN" />

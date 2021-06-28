@@ -5,7 +5,7 @@ import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import ProfileCard from 'components/experience/ProfileCard';
 import { IconButton } from 'components/base-components/Button';
-import Actions from './Actions';
+import ProfileActions from './ProfileActions';
 import { Tabs } from '../state';
 
 interface Props {
@@ -38,7 +38,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         />
       </AbsoluteContent>
       <AbsoluteContent top={16} right={16}>
-        <Actions user={user} />
+        <ProfileActions user={user} />
       </AbsoluteContent>
       <Tabset
         activeTab={activeTab}

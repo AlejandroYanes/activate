@@ -40,6 +40,7 @@ const SvgIcon: FunctionComponent<Props> = (props) => {
 };
 
 SvgIcon.defaultProps = {
+  icon: null,
   size: 'medium',
   color: 'FONT',
   secondaryColor: 'FONT',

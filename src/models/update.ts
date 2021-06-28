@@ -3,14 +3,14 @@ import { EventModel } from './event';
 import { CommentModel } from './comment';
 
 export enum UpdateType {
-  INVITATION,
-  EVENT_UPDATED,
-  NEW_COMMENT,
-  COMMENT_RESPONDED,
-  NEW_FOLLOWER,
-  FRIEND_REQUEST,
-  FRIEND_REQUEST_ACCEPTED,
-  NEW_EVENT_PARTICIPANT,
+  INVITATION = 0,
+  EVENT_UPDATED = 1,
+  NEW_COMMENT = 2,
+  COMMENT_RESPONDED = 3,
+  NEW_FOLLOWER = 4,
+  FRIEND_REQUEST = 5,
+  FRIEND_REQUEST_ACCEPTED = 6,
+  NEW_EVENT_PARTICIPANT = 7,
 }
 
 export interface UpdateModel {

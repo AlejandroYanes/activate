@@ -9,6 +9,7 @@ interface Props extends PositionProps {
   onChange: (value) => void;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
+  highlight?: boolean;
 }
 
 const Options: FunctionComponent<Props> = (props) => {

@@ -15,7 +15,7 @@ export default function useUserState() {
 
   const { userId } = useParams<any>();
   const { isLoading, data: response, error } = useQuery(
-    QueryKey.FETCH_CONSUMER,
+    [QueryKey.FETCH_CONSUMER, userId],
     () => usersApi.findConsumer(userId),
     { enabled: !!userId },
   );

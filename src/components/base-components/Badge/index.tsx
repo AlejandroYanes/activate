@@ -1,13 +1,12 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { IconProps, Icons } from 'components/base-components/SvgIcon';
+import { Icons } from 'components/base-components/SvgIcon';
 import { Icon, StyledBadge } from './styled';
 
 export interface BadgeProps extends PositionProps {
-  color: 'brand' | 'info' | 'success' | 'warning' | 'error' | 'light';
+  color: 'brand' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'light';
   label: string;
   icon?: Icons;
-  iconProps?: IconProps;
   sm?: boolean;
 }
 
@@ -16,29 +15,17 @@ const Badge: FunctionComponent<BadgeProps> = (props) => {
     label,
     color,
     icon,
-    iconProps,
     sm,
     ...rest
   } = props;
 
-  const iComponent = useMemo(() => {
-    if (icon) {
-      return (
-        <Icon
-          size={sm ? 'small' : 'medium'}
-          icon={icon}
-          color={color === 'light' ? 'FONT' : 'WHITE'}
-          {...iconProps}
-        />
-      );
-    }
-
-    return null;
-  }, [icon, iconProps, color, sm]);
-
   return (
     <StyledBadge color={color} sm={sm} {...rest}>
-      {iComponent}
+      <Icon
+        size={sm ? 'small' : 'medium'}
+        icon={icon}
+        color={color === 'light' ? 'FONT' : 'WHITE'}
+      />
       <label>{label}</label>
     </StyledBadge>
   );

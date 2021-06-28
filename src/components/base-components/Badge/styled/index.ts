@@ -8,21 +8,22 @@ function resolveFontColor({ color, theme }) {
     return theme.colors.FONT;
   }
 
-  return theme.colors.WHITE;
+  const colorInScheme = color.toUpperCase();
+  return theme.colors[`${colorInScheme}_FONT_HIGHLIGHT`];
 }
 
 function resolveBackgroundColor({ color, theme }) {
   switch (color) {
     case 'brand':
-      return theme.colors.BRAND_DARK;
+      return theme.colors.BRAND_SHADE;
     case 'info':
-      return theme.colors.INFO;
+      return theme.colors.INFO_SHADE;
     case 'success':
-      return theme.colors.SUCCESS_DARK;
+      return theme.colors.SUCCESS_SHADE;
     case 'warning':
-      return theme.colors.WARNING;
+      return theme.colors.WARNING_SHADE;
     case 'error':
-      return theme.colors.ERROR_DARK;
+      return theme.colors.ERROR_SHADE;
     case 'light':
       return theme.colors.GRAY_SHADE;
     default:
