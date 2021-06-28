@@ -102,6 +102,8 @@ import MoreHrzIcon from './MoreHrz';
 import BellSlashIcon from './BellSlash';
 import CalendarSlashIcon from './CalendarSlash';
 import UserRemoveIcon from './UserRemove';
+import LockAccessIcon from './LockAccess';
+import LockCircleIcon from './LockCircle';
 
 export const icons = {
   null: () => null,
@@ -209,6 +211,8 @@ export const icons = {
   BELL_SLASH: BellSlashIcon,
   CALENDAR_SLASH: CalendarSlashIcon,
   USER_REMOVE: UserRemoveIcon,
+  LOCK_ACCESS: LockAccessIcon,
+  LOCK_CIRCLE: LockCircleIcon,
 };
 
 export type Icons = keyof (typeof icons);

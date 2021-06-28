@@ -27,7 +27,7 @@ const Info: FunctionComponent<Props> = (props) => {
       <Attr>
         <Text>{leftStatLabel}</Text>
         <Title level={2} color="accent">
-          {leftStatValue ? formatAmount(leftStatValue) : ''}
+          {formatAmount(leftStatValue)}
         </Title>
       </Attr>
       <Attr>
@@ -37,7 +37,7 @@ const Info: FunctionComponent<Props> = (props) => {
       <Attr>
         <Text>{rightStatLabel}</Text>
         <Title level={2} color="accent">
-          {rightStatValue ? formatAmount(rightStatValue) : ''}
+          {formatAmount(rightStatValue)}
         </Title>
       </Attr>
     </StyledInfo>
