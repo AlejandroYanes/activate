@@ -2,13 +2,21 @@ import usersApi from 'api/users';
 import { NotificationType, showNotification } from 'notifications';
 import { QueryKey } from 'components/providers/Query';
 
-export enum Actions {
+enum Actions {
   FOLLOW,
   MUTE,
   UNMUTE,
   BLOCK,
   UNFOLLOW,
 }
+
+export const actions: Actions[] = [
+  Actions.FOLLOW,
+  Actions.MUTE,
+  Actions.UNMUTE,
+  Actions.BLOCK,
+  Actions.FOLLOW,
+];
 
 const actionsMap = {
   [Actions.FOLLOW]: usersApi.follow,

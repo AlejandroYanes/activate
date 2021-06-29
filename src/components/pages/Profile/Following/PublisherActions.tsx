@@ -6,18 +6,17 @@ import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
-import updateRelation, { Actions } from './update-relation';
+import updateRelation, { actions } from './update-relation';
 
 interface Props {
   user: PublisherModel;
 }
 
-const menuTrigger = ({ toggleMenu, ...rest }) => (
+const menuTrigger = ({ toggleMenu }) => (
   <IconButton
     icon="MORE_VERT"
-    onClick={toggleMenu}
     color="background"
-    {...rest}
+    onClick={toggleMenu}
   />
 );
 
@@ -26,12 +25,11 @@ const emptyAction = () => undefined;
 const PublisherActions: FunctionComponent<Props> = (props) => {
   const { user: { id, name, followerStatus } } = props;
   const queryClient = useQueryClient();
-  const { mute, unMute, block, unFollow } = useMemo(() => ({
-    mute: () => updateRelation(id, Actions.MUTE, queryClient),
-    unMute: () => updateRelation(id, Actions.UNMUTE, queryClient),
-    block: () => updateRelation(id, Actions.BLOCK, queryClient),
-    unFollow: () => updateRelation(id, Actions.UNFOLLOW, queryClient),
-  }), [id]);
+  const [mute, unmute, block, unfollow] = useMemo(() => (
+    actions.map(action => (
+      () => updateRelation(id, action, queryClient)
+    ))
+  ), [id]);
 
   const muted = followerStatus === FollowerStatus.MUTED;
 
@@ -45,10 +43,10 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
         <MenuItem label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={muted}>
-        <MenuItem label="Allow notifications" onClick={unMute} />
+        <MenuItem label="Allow notifications" onClick={unmute} />
       </RenderIf>
-      <MenuItem label="Stop seeing events" onClick={block} />
-      <MenuItem label="Unfollow" danger onClick={unFollow} />
+      <MenuItem label="Unfollow" danger onClick={unfollow} />
+      <MenuItem label="Block" danger onClick={block} />
     </Menu>
   );
 };

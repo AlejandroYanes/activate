@@ -2,11 +2,11 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { useQueryClient } from 'react-query';
 import { FollowerStatus, PublisherModel } from 'models/user';
 import { Menu, MenuItem } from 'components/base-components/Menu';
-import { Button, IconButton } from 'components/base-components/Button';
+import { IconButton } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
-import updateRelation, { Actions } from './update-relation';
+import updateRelation, { actions } from './update-relation';
 
 interface Props {
   user: PublisherModel;
@@ -27,45 +27,40 @@ const ProfileActions: FunctionComponent<Props> = (props) => {
   const { user: { id, name, followerStatus } } = props;
   const queryClient = useQueryClient();
 
-  const { follow, mute, unMute, block, unFollow } = useMemo(() => ({
-    follow: () => updateRelation(id, Actions.FOLLOW, queryClient),
-    mute: () => updateRelation(id, Actions.MUTE, queryClient),
-    unMute: () => updateRelation(id, Actions.UNMUTE, queryClient),
-    block: () => updateRelation(id, Actions.BLOCK, queryClient),
-    unFollow: () => updateRelation(id, Actions.UNFOLLOW, queryClient),
-  }), [id]);
+  const [ follow, mute, unmute, block, unfollow ] = useMemo(() => (
+    actions.map((action) => (
+      () => updateRelation(id, action, queryClient)
+    ))
+  ), [id]);
 
+  const unfollowed = followerStatus === FollowerStatus.UNRELATED;
   const followedByMe = (
     followerStatus === FollowerStatus.FOLLOWING ||
     followerStatus === FollowerStatus.MUTED
   );
   const muted = followerStatus === FollowerStatus.MUTED;
 
-  if (!followedByMe) {
-    return (
-      <Button
-        onClick={follow}
-        label="Follow"
-        variant="outline"
-        color="brand"
-      />
-    );
-  }
-
   return (
     <Menu trigger={MenuTrigger} align="start">
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
         <Text weight="bold" ellipsis>{name}</Text>
       </FlexBox>
-      <MenuItem label="Send a message" onClick={emptyAction} />
-      <RenderIf condition={!muted}>
+      <RenderIf condition={unfollowed}>
+        <MenuItem label="Follow" onClick={follow} />
+      </RenderIf>
+      <RenderIf condition={followedByMe}>
+        <MenuItem label="Send a message" onClick={emptyAction} />
+      </RenderIf>
+      <RenderIf condition={followedByMe && !muted}>
         <MenuItem label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={muted}>
-        <MenuItem label="Allow notifications" onClick={unMute} />
+        <MenuItem label="Allow notifications" onClick={unmute} />
       </RenderIf>
-      <MenuItem label="Unfollow" danger onClick={unFollow} />
-      <MenuItem label="Stop seeing events" danger onClick={block} />
+      <RenderIf condition={followedByMe}>
+        <MenuItem label="Unfollow" danger onClick={unfollow} />
+      </RenderIf>
+      <MenuItem label="Block" danger onClick={block} />
     </Menu>
   );
 };

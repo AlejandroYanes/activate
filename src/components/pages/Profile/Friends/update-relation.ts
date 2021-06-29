@@ -2,12 +2,19 @@ import usersApi from 'api/users';
 import { NotificationType, showNotification } from 'notifications';
 import { QueryKey } from 'components/providers/Query';
 
-export enum Actions {
+enum Actions {
   MUTE,
   UNMUTE,
   BLOCK,
   UNFRIEND,
 }
+
+export const actions: Actions[] = [
+  Actions.MUTE,
+  Actions.UNMUTE,
+  Actions.BLOCK,
+  Actions.UNFRIEND,
+];
 
 const actionsMap = {
   [Actions.MUTE]: usersApi.muteFriend,

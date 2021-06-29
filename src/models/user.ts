@@ -15,10 +15,10 @@ export enum VerificationLevel {
 export enum RelationshipStatus {
   UNRELATED = -1,
   PENDING = 0,
-  PENDING_YOU = 5,
+  PENDING_FOR_ME = 5,
   ACCEPTED = 1,
   BLOCKED = 2,
-  BLOCKED_YOU = 4,
+  BLOCKED_ME = 4,
   MUTED = 3,
 }
 

@@ -35,7 +35,6 @@ const FollowerActions: FunctionComponent<Props> = (props) => {
     mute,
     unmute,
     block,
-    unblock,
     unfriend,
   ] = useMemo(() => (
     actions.map(action => (
@@ -45,8 +44,8 @@ const FollowerActions: FunctionComponent<Props> = (props) => {
 
   const unrelated = relationStatus === RelationshipStatus.UNRELATED;
   const pending = relationStatus === RelationshipStatus.PENDING;
+  const pendingForMe = relationStatus === RelationshipStatus.PENDING_FOR_ME;
   const muted = relationStatus === RelationshipStatus.MUTED;
-  const blocked = relationStatus === RelationshipStatus.BLOCKED;
   const myFriend = (
     relationStatus === RelationshipStatus.ACCEPTED ||
     relationStatus === RelationshipStatus.MUTED
@@ -57,30 +56,32 @@ const FollowerActions: FunctionComponent<Props> = (props) => {
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
         <Text weight="bold" ellipsis>{name}</Text>
       </FlexBox>
+      <RenderIf condition={pending}>
+        <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
+          <Text ellipsis>
+            You sent a friend request.
+          </Text>
+        </FlexBox>
+      </RenderIf>
       <RenderIf condition={myFriend}>
         <MenuItem label="Send a message" onClick={emptyAction} />
       </RenderIf>
       <RenderIf condition={myFriend && !muted}>
         <MenuItem label="Mute notifications" onClick={mute} />
       </RenderIf>
-      <RenderIf condition={myFriend && muted}>
+      <RenderIf condition={muted}>
         <MenuItem label="Allow notifications" onClick={unmute} />
       </RenderIf>
       <RenderIf condition={unrelated}>
         <MenuItem label="Send friend request" onClick={addFriend} />
       </RenderIf>
-      <RenderIf condition={pending}>
+      <RenderIf condition={pendingForMe}>
         <MenuItem label="Accept friend request" onClick={acceptFriend} />
       </RenderIf>
       <RenderIf condition={myFriend}>
         <MenuItem label="Unfriend" danger onClick={unfriend} />
       </RenderIf>
-      <RenderIf condition={!blocked}>
-        <MenuItem label="Block" danger onClick={block} />
-      </RenderIf>
-      <RenderIf condition={blocked}>
-        <MenuItem label="Unblock" onClick={unblock} />
-      </RenderIf>
+      <MenuItem label="Block" danger onClick={block} />
     </Menu>
   );
 };

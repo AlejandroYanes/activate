@@ -2,7 +2,7 @@ import { FunctionComponent, useMemo } from 'react';
 import { useQueryClient } from 'react-query';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
 import { Menu, MenuItem } from 'components/base-components/Menu';
-import { Button, IconButton } from 'components/base-components/Button';
+import { IconButton } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
@@ -31,10 +31,9 @@ const ProfileActions: FunctionComponent<Props> = (props) => {
     addFriend,
     acceptFriend,
     mute,
-    unMute,
+    unmute,
     block,
-    unBlock,
-    unFriend,
+    unfriend,
   ] = useMemo(() => (
     actions.map(action => (
       () => updateRelation(id, action, queryClient)
@@ -43,40 +42,25 @@ const ProfileActions: FunctionComponent<Props> = (props) => {
 
   const unrelated = relationStatus === RelationshipStatus.UNRELATED;
   const pending = relationStatus === RelationshipStatus.PENDING;
+  const pendingForMe = relationStatus === RelationshipStatus.PENDING_FOR_ME;
   const muted = relationStatus === RelationshipStatus.MUTED;
-  const blocked = relationStatus === RelationshipStatus.BLOCKED;
   const myFriend = (
     relationStatus === RelationshipStatus.ACCEPTED ||
     relationStatus === RelationshipStatus.MUTED
   );
-
-  if (unrelated) {
-    return (
-      <Button
-        onClick={addFriend}
-        label="Add Friend"
-        variant="outline"
-        color="brand"
-      />
-    );
-  }
-
-  if (pending) {
-    return (
-      <Button
-        onClick={acceptFriend}
-        label="Accept Friend"
-        variant="outline"
-        color="brand"
-      />
-    );
-  }
 
   return (
     <Menu trigger={menuTrigger}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
         <Text weight="bold" ellipsis>{name}</Text>
       </FlexBox>
+      <RenderIf condition={pending}>
+        <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
+          <Text ellipsis>
+            You sent a friend request.
+          </Text>
+        </FlexBox>
+      </RenderIf>
       <RenderIf condition={myFriend}>
         <MenuItem label="Send a message" onClick={emptyAction} />
       </RenderIf>
@@ -84,17 +68,18 @@ const ProfileActions: FunctionComponent<Props> = (props) => {
         <MenuItem label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={myFriend && muted}>
-        <MenuItem label="Allow notifications" onClick={unMute} />
+        <MenuItem label="Allow notifications" onClick={unmute} />
+      </RenderIf>
+      <RenderIf condition={unrelated}>
+        <MenuItem label="Send friend request" onClick={addFriend} />
+      </RenderIf>
+      <RenderIf condition={pendingForMe}>
+        <MenuItem label="Accept friend request" onClick={acceptFriend} />
       </RenderIf>
       <RenderIf condition={myFriend}>
-        <MenuItem label="Unfriend" danger onClick={unFriend} />
+        <MenuItem label="Unfriend" danger onClick={unfriend} />
       </RenderIf>
-      <RenderIf condition={!blocked}>
-        <MenuItem label="Block" danger onClick={block} />
-      </RenderIf>
-      <RenderIf condition={blocked}>
-        <MenuItem label="Unblock" onClick={unBlock} />
-      </RenderIf>
+      <MenuItem label="Block" danger onClick={block} />
     </Menu>
   );
 };

@@ -7,7 +7,7 @@ import { Text } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
 import PendingAction from './PendingAction';
-import updateRelation, { Actions } from './update-relation';
+import updateRelation, { actions } from './update-relation';
 
 interface Props {
   user: ConsumerModel;
@@ -26,12 +26,11 @@ const emptyAction = () => undefined;
 const FriendActions: FunctionComponent<Props> = (props) => {
   const { user: { id, name, relationStatus } } = props;
   const queryClient = useQueryClient();
-  const { mute, unMute, block, unFriend } = useMemo(() => ({
-    mute: () => updateRelation(id, Actions.MUTE, queryClient),
-    unMute: () => updateRelation(id, Actions.UNMUTE, queryClient),
-    block: () => updateRelation(id, Actions.BLOCK, queryClient),
-    unFriend: () => updateRelation(id, Actions.UNFRIEND, queryClient),
-  }), [id]);
+  const [mute, unmute, block, unfriend] = useMemo(() => (
+    actions.map(action => (
+      () => updateRelation(id, action, queryClient)
+    ))
+  ), [id]);
 
   const pending = relationStatus === RelationshipStatus.PENDING;
   const muted = relationStatus === RelationshipStatus.MUTED;
@@ -52,10 +51,10 @@ const FriendActions: FunctionComponent<Props> = (props) => {
         <MenuItem label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={muted}>
-        <MenuItem label="Allow notifications" onClick={unMute} />
+        <MenuItem label="Allow notifications" onClick={unmute} />
       </RenderIf>
+      <MenuItem label="Unfriend" danger onClick={unfriend} />
       <MenuItem label="Block" danger onClick={block} />
-      <MenuItem label="Unfriend" danger onClick={unFriend} />
     </Menu>
   );
 };

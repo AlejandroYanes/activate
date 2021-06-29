@@ -8,7 +8,6 @@ enum Actions {
   MUTE,
   UNMUTE,
   BLOCK,
-  UNBLOCK,
   UNFRIEND,
 }
 
@@ -18,7 +17,6 @@ export const actions: Actions[] = [
   Actions.MUTE,
   Actions.UNMUTE,
   Actions.BLOCK,
-  Actions.UNBLOCK,
   Actions.UNFRIEND,
 ];
 
@@ -28,7 +26,6 @@ const actionsMap = {
   [Actions.MUTE]: usersApi.muteFriend,
   [Actions.UNMUTE]: usersApi.unMuteFriend,
   [Actions.BLOCK]: usersApi.blockFriend,
-  [Actions.UNBLOCK]: usersApi.unBlockFriend,
   [Actions.UNFRIEND]: usersApi.unFriend,
 };
 

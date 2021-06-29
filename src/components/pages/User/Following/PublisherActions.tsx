@@ -32,7 +32,6 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
     mute,
     unmute,
     block,
-    unblock,
     unfollow,
   ] = useMemo(() => (
     actions.map((action) => (
@@ -41,9 +40,11 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
   ), [id]);
 
   const unfollowed = followerStatus === FollowerStatus.UNRELATED;
-  const followedByMe = followerStatus === FollowerStatus.FOLLOWING;
+  const followedByMe = (
+    followerStatus === FollowerStatus.FOLLOWING ||
+    followerStatus === FollowerStatus.MUTED
+  );
   const muted = followerStatus === FollowerStatus.MUTED;
-  const blocked = followerStatus === FollowerStatus.BLOCKED;
 
   return (
     <Menu trigger={MenuTrigger}>
@@ -53,24 +54,19 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
       <RenderIf condition={unfollowed}>
         <MenuItem label="Follow" onClick={follow} />
       </RenderIf>
-      <RenderIf condition={!unfollowed && !blocked}>
+      <RenderIf condition={followedByMe}>
         <MenuItem label="Send a message" onClick={emptyAction} />
       </RenderIf>
-      <RenderIf condition={followedByMe}>
+      <RenderIf condition={followedByMe && !muted}>
         <MenuItem label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={muted}>
         <MenuItem label="Allow notifications" onClick={unmute} />
       </RenderIf>
-      <RenderIf condition={!unfollowed && !blocked}>
+      <RenderIf condition={followedByMe}>
         <MenuItem label="Unfollow" danger onClick={unfollow} />
       </RenderIf>
-      <RenderIf condition={!blocked}>
-        <MenuItem label="Block" danger onClick={block} />
-      </RenderIf>
-      <RenderIf condition={blocked}>
-        <MenuItem label="Unblock" onClick={unblock} />
-      </RenderIf>
+      <MenuItem label="Block" danger onClick={block} />
     </Menu>
   );
 };
