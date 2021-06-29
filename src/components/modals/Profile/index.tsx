@@ -1,37 +1,43 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import usersApi from 'api/users';
+import { ProfileStats } from 'models/user';
 import { formatAmount } from 'helpers';
+import { useAuthData } from 'components/providers/Auth';
+import { QueryKey } from 'components/providers/Query';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
+import { IconButton } from 'components/base-components/Button';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import { IconButton } from 'components/base-components/Button';
-import UsersList from 'components/experience/UsersList';
-import { users } from './users';
+import Following from './Following';
+import Friends from './Friends';
 
 enum ProfileTabs {
   Following = 'Following',
   Friends = 'Friends',
 }
 
-const emptyAction = () => undefined;
-
 const ProfileModal: FunctionComponent = () => {
   const { push, goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.Following);
+  const { userInfo } = useAuthData();
+  const { data: response } = useQuery(
+    QueryKey.FETCH_MY_PROFILE_STATS,
+    usersApi.findMyStats,
+  );
+  const stats: ProfileStats = response?.data;
 
   const goToSettings = useCallback(() => {
     push('#settings');
   }, []);
 
   const header = (
-    <FlexBox align="center" grow width="100%">
+    <FlexBox justify="space-between" align="center" grow width="100%">
       <IconButton onClick={goBack} icon="ARROW_LEFT" />
-      <Title level={3} padding="0 0 0 6px" ellipsis>
-        Alejandro Yanes De la Cruz
-      </Title>
       <IconButton
         onClick={goToSettings}
         icon="SETTINGS"
@@ -39,6 +45,8 @@ const ProfileModal: FunctionComponent = () => {
       />
     </FlexBox>
   );
+
+  const { avatar, name, userName } = userInfo;
 
   return (
     <Modal visible title={header} onClose={goBack} size="mobile">
@@ -53,15 +61,19 @@ const ProfileModal: FunctionComponent = () => {
           align="center"
           padding="0 8px"
         >
-          <Avatar size="xx-large" src="user2" />
+          <Avatar size="xx-large" src={avatar} />
           <FlexBox justify="space-around" grow>
             <FlexBox direction="column" align="center">
               <Text>Following</Text>
-              <Title level={2} color="accent">{formatAmount(55422)}</Title>
+              <Title level={2} color="accent">
+                {stats ? formatAmount(stats.following) : ''}
+              </Title>
             </FlexBox>
             <FlexBox direction="column" align="center">
               <Text>Friends</Text>
-              <Title level={2} color="accent">{formatAmount(23466)}</Title>
+              <Title level={2} color="accent">
+                {stats ? formatAmount(stats.friends) : ''}
+              </Title>
             </FlexBox>
           </FlexBox>
         </FlexBox>
@@ -69,11 +81,11 @@ const ProfileModal: FunctionComponent = () => {
           data-el="user-section"
           direction="column"
           align="flex-start"
-          padding="16px 8px"
+          padding="20px 8px"
         >
-          <Text>@alejandro.yanes94</Text>
+          <Text>{`@${userName}`}</Text>
           <Title level={2} color="brand">
-            Alejandro Yanes De la Cruz
+            {name}
           </Title>
         </FlexBox>
         <Tabset
@@ -97,15 +109,11 @@ const ProfileModal: FunctionComponent = () => {
         <Switch by={activeTab}>
           <Case
             value={ProfileTabs.Following}
-            component={UsersList}
-            users={users}
-            onClick={emptyAction}
+            component={Following}
           />
           <Case
             value={ProfileTabs.Friends}
-            component={UsersList}
-            users={users}
-            onClick={emptyAction}
+            component={Friends}
           />
         </Switch>
       </FlexBox>

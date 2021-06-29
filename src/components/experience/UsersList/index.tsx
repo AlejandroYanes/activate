@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { UserModel } from 'models/user';
 import { UserTalkModel } from 'models/message';
+import { PositionProps } from 'helpers';
 import { mobileHeaderHeight } from 'styles/variables';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
@@ -8,7 +9,6 @@ import LoadingScreen from 'components/experience/LoadingScreen';
 import { NoConnectionScreen } from 'components/experience/ErrorScreen';
 import Users from './Users';
 import { ActionNotch, List, Section } from './styled';
-import { PositionProps } from '../../../helpers';
 
 interface Props extends PositionProps {
   loading?: boolean;

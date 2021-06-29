@@ -1,68 +1,93 @@
-import React, { FunctionComponent, useState } from 'react';
+import { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import faker from 'faker';
+import { RelationshipStatus } from 'models/user';
 import { formatAmount } from 'helpers';
-import { Paragraph, Text, Title } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import { IconButton } from 'components/base-components/Button';
-import UsersList from 'components/experience/UsersList';
-import EventCard from 'components/experience/EventCard';
-import { events } from '../../pages/Discover/events';
-import { users } from '../Profile/users';
-
-enum ProfileTabs {
-  FOLLOWING = 'Following',
-  FRIENDS = 'Friends',
-  EVENTS = 'Events',
-}
-
-const user = {
-  name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-  userName: `@${faker.internet.userName()}`,
-  followingCount: faker.random.number(100),
-  friendCount: faker.random.number(200),
-  bio: faker.lorem.lines(4),
-};
-
-const EventsList = () => (
-  <>
-    <EventCard {...events[3]} />
-    <EventCard {...events[0]} />
-    <EventCard {...events[1]} />
-  </>
-);
-
-const emptyAction = () => undefined;
+import LoadingScreen from 'components/experience/LoadingScreen';
+import { NoConnectionScreen } from 'components/experience/ErrorScreen';
+import Events from './Events';
+import Friends from './Friends';
+import Following from './Following';
+import ProfileActions from './ProfileActions';
+import PrivateAccount from './PrivateAccount';
+import useUserState, { Tabs } from './state';
 
 const UserModal: FunctionComponent = () => {
   const { goBack } = useHistory();
-  const [activeTab, setActiveTab] = useState(ProfileTabs.EVENTS);
+  const {
+    state: {
+      isLoading,
+      user,
+      errored,
+      activeTab,
+    },
+    actions: {
+      setActiveTab,
+    },
+  } = useUserState();
+
+  if (isLoading) {
+    return (
+      <Modal visible onClose={goBack} size="mobile">
+        <FlexBox
+          data-el="profile-modal-body"
+          direction="column"
+          align="stretch"
+          padding="80px 6px 16px"
+        >
+          <LoadingScreen />
+        </FlexBox>
+      </Modal>
+    );
+  }
+
+  if (errored) {
+    return (
+      <Modal visible onClose={goBack} size="mobile">
+        <FlexBox
+          data-el="profile-modal-body"
+          direction="column"
+          align="stretch"
+          padding="80px 6px 16px"
+        >
+          <NoConnectionScreen message="We couldn't load this user's profile." />
+        </FlexBox>
+      </Modal>
+    );
+  }
 
   const {
+    avatar,
     name,
     userName,
-    followingCount,
-    friendCount,
-    bio,
+    following,
+    friends,
+    relationStatus,
   } = user;
 
+  const myFriend = (
+    relationStatus === RelationshipStatus.ACCEPTED ||
+    relationStatus === RelationshipStatus.MUTED
+  );
+
   const header = (
-    <FlexBox align="center" grow width="100%">
+    <FlexBox justify="space-between" align="center" grow width="100%">
       <IconButton onClick={goBack} icon="ARROW_LEFT" />
-      <Title level={3} padding="0 0 0 6px" ellipsis>
-        {name}
-      </Title>
-      <IconButton
-        onClick={() => undefined}
-        icon="USER_PLUS"
-        margin="0 0 0 auto"
-      />
+      <ProfileActions user={user} />
     </FlexBox>
   );
+
+  if (!myFriend) {
+    return (
+      <PrivateAccount user={user} header={header} goBack={goBack} />
+    );
+  }
 
   return (
     <Modal visible title={header} onClose={goBack} size="mobile">
@@ -77,15 +102,15 @@ const UserModal: FunctionComponent = () => {
           align="center"
           padding="8px"
         >
-          <Avatar size="xx-large" src="user2" />
+          <Avatar size="xx-large" src={avatar} />
           <FlexBox justify="space-around" grow>
             <FlexBox direction="column" align="center">
               <Text>Following</Text>
-              <Title level={2} color="accent">{formatAmount(followingCount)}</Title>
+              <Title level={2} color="accent">{formatAmount(following)}</Title>
             </FlexBox>
             <FlexBox direction="column" align="center">
               <Text>Friends</Text>
-              <Title level={2} color="accent">{formatAmount(friendCount)}</Title>
+              <Title level={2} color="accent">{formatAmount(friends)}</Title>
             </FlexBox>
           </FlexBox>
         </FlexBox>
@@ -95,51 +120,47 @@ const UserModal: FunctionComponent = () => {
           align="flex-start"
           padding="16px 8px"
         >
-          <Text>{userName}</Text>
+          <Text>{`@${userName}`}</Text>
           <Title level={2} color="brand">
             {name}
           </Title>
         </FlexBox>
-        <Paragraph>{bio}</Paragraph>
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
-          fullWidth
           mT
           mB
         >
           <Tab
-            name={ProfileTabs.EVENTS}
-            label={ProfileTabs.EVENTS}
+            name={Tabs.EVENTS}
+            label={Tabs.EVENTS}
             icon="CALENDAR"
           />
           <Tab
-            name={ProfileTabs.FOLLOWING}
-            label={ProfileTabs.FOLLOWING}
+            name={Tabs.FOLLOWING}
+            label={Tabs.FOLLOWING}
             icon="MEGAPHONE"
           />
           <Tab
-            name={ProfileTabs.FRIENDS}
-            label={ProfileTabs.FRIENDS}
+            name={Tabs.FRIENDS}
+            label={Tabs.FRIENDS}
             icon="USERS"
           />
         </Tabset>
         <Switch by={activeTab}>
           <Case
-            value={ProfileTabs.EVENTS}
-            component={EventsList}
+            value={Tabs.EVENTS}
+            component={Events}
           />
           <Case
-            value={ProfileTabs.FOLLOWING}
-            component={UsersList}
-            users={users}
-            onClick={emptyAction}
+            value={Tabs.FOLLOWING}
+            component={Following}
+            user={user.id}
           />
           <Case
-            value={ProfileTabs.FRIENDS}
-            component={UsersList}
-            users={users}
-            onClick={emptyAction}
+            value={Tabs.FRIENDS}
+            component={Friends}
+            user={user.id}
           />
         </Switch>
       </FlexBox>

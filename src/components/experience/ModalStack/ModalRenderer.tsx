@@ -2,9 +2,12 @@ import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { DesktopModals, MobileModals, TabletModals } from 'components/modals';
 import { Layout, useAppLayout } from 'components/providers/Layout';
+import FlexBox from 'components/base-components/FlexBox';
+import SvgIcon from 'components/base-components/SvgIcon';
+import { Title } from 'components/base-components/Typography';
 
 interface Props {
-  name: string;
+  hash: string;
 }
 
 const modalsMap = {
@@ -13,12 +16,21 @@ const modalsMap = {
   [Layout.MOBILE]: MobileModals,
 };
 
-const emptyComponent = () => null;
+const emptyComponent = () => (
+  <FlexBox direction="column" align="center" margin="80px 0 0 0">
+    <SvgIcon
+      icon="EXCLAMATION_TRIANGLE"
+      size="page"
+      color="WARNING_FONT_HIGHLIGHT"
+    />
+    <Title level={3}>Oops, there is nothing here.</Title>
+  </FlexBox>
+);
 
 const ModalRenderer: FunctionComponent<Props> = (props) => {
+  const { hash } = props;
   const layout = useAppLayout();
-  const { name } = props;
-  const Component = modalsMap[layout][name] || emptyComponent;
+  const Component = modalsMap[layout][hash] || emptyComponent;
 
   useEffect(() => {
     if (layout === Layout.MOBILE) {
@@ -32,7 +44,7 @@ const ModalRenderer: FunctionComponent<Props> = (props) => {
   }, []);
 
   return ReactDOM.createPortal((
-    <Component key={name} />
+    <Component key={hash} />
   ), document.body);
 }
 

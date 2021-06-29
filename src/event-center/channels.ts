@@ -1,7 +1,6 @@
 export enum EventChannelList {
   PUSHED_NOTIFICATION = 'PUSHED_NOTIFICATION',
   USER_SELECTED_FOR_CHAT = 'USER_SELECTED_FOR_CHAT',
-  FETCH_PUBLISHER_FOLLOWERS = 'FETCH_PUBLISHER_FOLLOWERS',
 }
 
 export type EventChannel = keyof (typeof EventChannelList);

@@ -15,12 +15,14 @@ interface Props {
   onClick: (event) => void;
 }
 
+const EmptyAction = () => null;
+
 const User: FunctionComponent<Props> = (props) => {
   const {
     user,
     showSelection,
     isSelected,
-    actions: Actions,
+    actions,
     onClick,
   } = props;
 
@@ -38,6 +40,8 @@ const User: FunctionComponent<Props> = (props) => {
       onClick(user);
     }
   }, [onClick]);
+
+  const Actions = actions || EmptyAction;
 
   return (
     <UserItem data-id={id} role="button" onClick={handleClick} ref={itemRef}>

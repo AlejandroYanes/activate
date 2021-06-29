@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { headerHeight } from 'styles/variables';
+import { useAuthData } from 'components/providers/Auth';
 import { Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import Avatar from 'components/base-components/Avatar';
@@ -9,6 +10,7 @@ import { HeaderProps } from './index';
 
 const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
   const { title, actions } = props;
+  const { userInfo: { avatar } } = useAuthData();
 
   return (
     <RenderIf condition={!!title}>
@@ -24,7 +26,7 @@ const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
         <FlexBox align="center">
           {actions}
           <Link to="#profile">
-            <Avatar src="user2" />
+            <Avatar src={avatar} />
           </Link>
         </FlexBox>
       </FlexBox>
