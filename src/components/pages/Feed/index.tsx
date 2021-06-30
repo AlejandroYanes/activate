@@ -1,13 +1,10 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { addDays } from 'date-fns';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import DayCalendar from 'components/base-components/DayCalendar';
 import Page from 'components/base-components/Page';
 import EventCard from 'components/experience/EventCard';
-import RenderIf from 'components/base-components/RenderIf';
-import FlexBox from 'components/base-components/FlexBox';
-import { Option, Options } from 'components/base-components/Options';
 import { events } from '../Discover/events';
+import WelcomeSign from './WelcomeSign';
 
 const today = new Date();
 const days = [
@@ -27,54 +24,18 @@ const days = [
   addDays(today, 160),
 ];
 
-enum EventsDisplay {
-  All = 'all',
-  ByDate = 'by-date',
-}
-
-const titleByLayoutMap = {
-  [Layout.DESKTOP]: 'Your upcoming events',
-  [Layout.TABLET]: 'Upcoming events',
-  [Layout.MOBILE]: 'Upcoming',
-};
-
 const FeedPage: FunctionComponent = () => {
-  const layout = useAppLayout();
   const [selectedDay, setSelectedDay] = useState(days[0]);
-  const [option, setOption] = useState(EventsDisplay.ByDate);
-
-  const actions = useMemo(() => {
-    if (layout !== Layout.MOBILE) {
-      return (
-        <Options size="small" color="accent" value={option} onChange={setOption}>
-          <Option
-            value={EventsDisplay.ByDate}
-            icon="CALENDAR"
-            label="By Date"
-          />
-          <Option
-            value={EventsDisplay.All}
-            icon="LIST"
-            label="All"
-          />
-        </Options>
-      );
-    }
-
-    return null;
-  }, [layout, option]);
 
   return (
-    <Page
-      title={titleByLayoutMap[layout]}
-      actions={actions}
-      data-el="feed-page"
-    >
-      <RenderIf condition={option === EventsDisplay.ByDate}>
-        <FlexBox align="center" padding="0 0 32px 0">
-          <DayCalendar days={days} value={selectedDay} onChange={setSelectedDay} />
-        </FlexBox>
-      </RenderIf>
+    <Page data-el="feed-page">
+      <WelcomeSign />
+      <DayCalendar
+        mB
+        days={days}
+        value={selectedDay}
+        onChange={setSelectedDay}
+      />
       <EventCard isAFollowedEvent {...events[0]} />
       <EventCard isAFollowedEvent {...events[1]} />
     </Page>

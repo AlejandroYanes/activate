@@ -11,7 +11,7 @@ const PrimaryHeader: FunctionComponent<HeaderProps>  = (props) => {
   return (
     <Header spaced={!!title || !!actions} data-el="page-header">
       <RenderIf condition={!!title}>
-        <Title level={1} color="brand">{title}</Title>
+        <Title level={1} color="brand" weight="bold">{title}</Title>
       </RenderIf>
       <RenderIf condition={!!actions}>
         <FlexBox align="center">

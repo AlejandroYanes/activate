@@ -26,7 +26,7 @@ export default function useUserState() {
       activeTab,
       isLoading,
       user: response?.data,
-      errored: !!error,
+      errored: !!error || !userId,
     },
     actions: {
       setActiveTab,

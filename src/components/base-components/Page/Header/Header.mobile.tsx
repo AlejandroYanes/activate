@@ -13,24 +13,23 @@ const MobileHeader: FunctionComponent<HeaderProps>  = (props) => {
   const { userInfo: { avatar } } = useAuthData();
 
   return (
-    <RenderIf condition={!!title}>
-      <FlexBox
-        as="header"
-        justify="space-between"
-        align="center"
-        padding="0 16px"
-        height={headerHeight}
-        data-el="page-header"
-      >
+    <FlexBox
+      as="header"
+      align="center"
+      padding="0 16px"
+      height={headerHeight}
+      data-el="page-header"
+    >
+      <RenderIf condition={!!title}>
         <Title level={1} color="brand">{title}</Title>
-        <FlexBox align="center">
-          {actions}
-          <Link to="#profile">
-            <Avatar src={avatar} />
-          </Link>
-        </FlexBox>
+      </RenderIf>
+      <FlexBox align="center" margin="0 0 0 auto">
+        {actions}
+        <Link to="#profile">
+          <Avatar src={avatar} />
+        </Link>
       </FlexBox>
-    </RenderIf>
+    </FlexBox>
   );
 };
 

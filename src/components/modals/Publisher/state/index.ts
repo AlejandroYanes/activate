@@ -25,7 +25,7 @@ export default function usePublisherState() {
       activeTab,
       isLoading,
       publisher: response?.data,
-      errored: !!error,
+      errored: !!error || !publisherId,
     },
     actions: {
       setActiveTab,
