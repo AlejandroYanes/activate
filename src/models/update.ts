@@ -16,10 +16,9 @@ export enum UpdateType {
 export interface UpdateModel {
   id: string;
   type: UpdateType;
-  dateSent: Date;
+  sentOn: Date;
   seen: boolean;
   creator: UserModel;
-  receiver: UserModel;
   event?: EventModel;
   comment?: CommentModel;
 }

@@ -101,13 +101,13 @@ const TabletBody: FunctionComponent = () => {
   );
 
   const talksHeader = (
-    <FlexBox align="center" height="100%" padding="0 0 0 16px">
+    <FlexBox align="center" height="100%">
       <Text>Select a talk</Text>
     </FlexBox>
   );
 
   const newTalkHeader = (
-    <FlexBox align="center" height="100%" padding="0 0 0 16px">
+    <FlexBox align="center" height="100%">
       {leftAction}
       <Text>Select a contact</Text>
     </FlexBox>
@@ -122,6 +122,7 @@ const TabletBody: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={talksHeader}
+        padding="0 0 0 16px"
         showScroll
       />
       <Case
@@ -130,6 +131,7 @@ const TabletBody: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={newTalkHeader}
+        padding="0 0 0 16px"
         showScroll
       />
       <Case

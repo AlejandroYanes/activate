@@ -54,7 +54,7 @@ const TalksPanel: FunctionComponent = () => {
       activeView: TalkViews.TALK_LIST,
       activeUser: undefined,
     });
-    push('/talks');
+    push('/app/talks');
     setTimeout(() => {
       notifyEventChannel('USER_SELECTED_FOR_CHAT', activeUser);
     }, 100);
@@ -115,7 +115,7 @@ const TalksPanel: FunctionComponent = () => {
   );
 
   const header = (
-    <FlexBox align="center" height="100%" padding="0 0 0 16px">
+    <FlexBox align="center" height="100%">
       {leftAction}
       <Text>Select a contact</Text>
     </FlexBox>
@@ -129,6 +129,7 @@ const TalksPanel: FunctionComponent = () => {
         action={showContactsButton}
         onClick={openTalk}
         users={users}
+        padding="0 0 0 16px"
         showScroll
       />
       <Case
@@ -137,6 +138,7 @@ const TalksPanel: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={header}
+        padding="0 0 0 16px"
         showScroll
       />
       <Case
