@@ -45,34 +45,34 @@ const usersApi = {
   muteFriend: (friend: string): Promise<AxiosResponse> => {
     return get(`users/friend/${friend}/mute`);
   },
-  unMuteFriend: (friend: string): Promise<AxiosResponse> => {
+  unmuteFriend: (friend: string): Promise<AxiosResponse> => {
     return get(`users/friend/${friend}/unmute`);
   },
   blockFriend: (friend: string): Promise<AxiosResponse> => {
     return get(`users/friend/${friend}/block`);
   },
-  unBlockFriend: (friend: string): Promise<AxiosResponse> => {
+  unblockFriend: (friend: string): Promise<AxiosResponse> => {
     return get(`users/friend/${friend}/unblock`);
   },
-  unFriend: (friend: string): Promise<AxiosResponse> => {
+  unfriend: (friend: string): Promise<AxiosResponse> => {
     return get(`users/friend/${friend}/remove`);
   },
   mutePublisher: (publisher: string): Promise<AxiosResponse> => {
     return get(`users/publisher/${publisher}/mute`);
   },
-  unMutePublisher: (publisher: string): Promise<AxiosResponse> => {
+  unmutePublisher: (publisher: string): Promise<AxiosResponse> => {
     return get(`users/publisher/${publisher}/unmute`);
   },
   blockPublisher: (publisher: string): Promise<AxiosResponse> => {
     return get(`users/publisher/${publisher}/block`);
   },
-  unBlockPublisher: (publisher: string): Promise<AxiosResponse> => {
+  unblockPublisher: (publisher: string): Promise<AxiosResponse> => {
     return get(`users/publisher/${publisher}/unblock`);
   },
   follow: (publisher: string): Promise<AxiosResponse> => {
     return get(`users/publisher/${publisher}/follow`);
   },
-  unFollow: (publisher: string): Promise<AxiosResponse> => {
+  unfollow: (publisher: string): Promise<AxiosResponse> => {
     return get(`users/publisher/${publisher}/remove`);
   },
 };

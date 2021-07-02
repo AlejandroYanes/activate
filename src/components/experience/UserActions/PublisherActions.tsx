@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import { FollowerStatus, PublisherModel } from 'models/user';
-import { usePublisherActions } from 'hooks/use-user-actions';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
+import { usePublisherActions } from './use-user-actions';
 
 interface Props {
   user: PublisherModel;
@@ -45,21 +45,21 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
         <Text weight="bold" ellipsis>{name}</Text>
       </FlexBox>
       <RenderIf condition={unfollowed}>
-        <MenuItem label="Follow" onClick={follow} />
+        <MenuItem id="follow-action" label="Follow" onClick={follow} />
       </RenderIf>
       <RenderIf condition={followedByMe}>
-        <MenuItem label="Send a message" onClick={emptyAction} />
+        <MenuItem id="send-msg-action" label="Send a message" onClick={emptyAction} />
       </RenderIf>
       <RenderIf condition={followedByMe && !muted}>
-        <MenuItem label="Mute notifications" onClick={mute} />
+        <MenuItem id="mute-action" label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={muted}>
-        <MenuItem label="Allow notifications" onClick={unmute} />
+        <MenuItem id="unmute-action" label="Allow notifications" onClick={unmute} />
       </RenderIf>
       <RenderIf condition={followedByMe}>
-        <MenuItem label="Unfollow" danger onClick={unfollow} />
+        <MenuItem id="unfollow-action" label="Unfollow" danger onClick={unfollow} />
       </RenderIf>
-      <MenuItem label="Block" danger onClick={block} />
+      <MenuItem id="block-action" label="Block" danger onClick={block} />
     </Menu>
   );
 };

@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
-import { useConsumerActions } from 'hooks/use-user-actions';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
+import { useConsumerActions } from './use-user-actions';
 
 interface Props {
   user: ConsumerModel;
@@ -35,7 +35,7 @@ const ConsumerActions: FunctionComponent<Props> = (props) => {
 
   const unrelated = relationStatus === RelationshipStatus.UNRELATED;
   const pending = relationStatus === RelationshipStatus.PENDING;
-  const pendingForMe = relationStatus === RelationshipStatus.PENDING;
+  const pendingForMe = relationStatus === RelationshipStatus.PENDING_FOR_ME;
   const muted = relationStatus === RelationshipStatus.MUTED;
   const myFriend = (
     relationStatus === RelationshipStatus.ACCEPTED ||
@@ -49,30 +49,38 @@ const ConsumerActions: FunctionComponent<Props> = (props) => {
       </FlexBox>
       <RenderIf condition={pending}>
         <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-          <Text ellipsis>
+          <Text ellipsis data-el="pending-req-msg">
             You sent a friend request.
           </Text>
         </FlexBox>
       </RenderIf>
       <RenderIf condition={myFriend}>
-        <MenuItem label="Send a message" onClick={emptyAction} />
+        <MenuItem id="send-msg-action" label="Send a message" onClick={emptyAction} />
       </RenderIf>
       <RenderIf condition={myFriend && !muted}>
-        <MenuItem label="Mute notifications" onClick={mute} />
+        <MenuItem id="mute-action" label="Mute notifications" onClick={mute} />
       </RenderIf>
       <RenderIf condition={myFriend && muted}>
-        <MenuItem label="Allow notifications" onClick={unmute} />
+        <MenuItem id="unmute-action" label="Allow notifications" onClick={unmute} />
       </RenderIf>
       <RenderIf condition={unrelated}>
-        <MenuItem label="Send friend request" onClick={addFriend} />
+        <MenuItem
+          id="send-req-action"
+          label="Send friend request"
+          onClick={addFriend}
+        />
       </RenderIf>
       <RenderIf condition={pendingForMe}>
-        <MenuItem label="Accept friend request" onClick={acceptFriend} />
+        <MenuItem
+          id="accept-req-action"
+          label="Accept friend request"
+          onClick={acceptFriend}
+        />
       </RenderIf>
       <RenderIf condition={myFriend}>
-        <MenuItem label="Unfriend" danger onClick={unfriend} />
+        <MenuItem id="unfriend-action" label="Unfriend" danger onClick={unfriend} />
       </RenderIf>
-      <MenuItem label="Block" danger onClick={block} />
+      <MenuItem id="block-action" label="Block" danger onClick={block} />
     </Menu>
   );
 };

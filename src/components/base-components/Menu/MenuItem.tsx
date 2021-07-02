@@ -9,6 +9,7 @@ import {
 import { useMenuContext } from './context';
 
 interface Props {
+  id?: string;
   label: string;
   icon?: JSX.Element | Icons;
   onClick: (event) => void;
@@ -18,7 +19,7 @@ interface Props {
 
 const MenuItem: FunctionComponent<Props> = (props) => {
   const { closeMenu } = useMenuContext();
-  const { label, icon, warning, danger, onClick } = props;
+  const { id, label, icon, warning, danger, onClick } = props;
 
   const handleClick = useCallback((event) => {
     onClick(event);
@@ -33,6 +34,8 @@ const MenuItem: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledMenuItem
+      data-el="menu-item"
+      data-id={id}
       role="button"
       warning={warning}
       danger={danger}

@@ -6,7 +6,7 @@ export enum UserType {
   PUBLISHER,
 }
 
-enum Actions {
+export enum Actions {
   FOLLOW,
   SEND_REQUEST,
   ACCEPT_REQUEST,
@@ -38,16 +38,16 @@ const actionsMap = {
     [Actions.SEND_REQUEST]: usersApi.sendFriendRequest,
     [Actions.ACCEPT_REQUEST]: usersApi.acceptFriendRequest,
     [Actions.MUTE]: usersApi.muteFriend,
-    [Actions.UNMUTE]: usersApi.unMuteFriend,
+    [Actions.UNMUTE]: usersApi.unmuteFriend,
     [Actions.BLOCK]: usersApi.blockFriend,
-    [Actions.REMOVE]: usersApi.unFriend,
+    [Actions.REMOVE]: usersApi.unfriend,
   },
   [UserType.PUBLISHER]: {
     [Actions.FOLLOW]: usersApi.follow,
     [Actions.MUTE]: usersApi.mutePublisher,
-    [Actions.UNMUTE]: usersApi.unMutePublisher,
+    [Actions.UNMUTE]: usersApi.unmutePublisher,
     [Actions.BLOCK]: usersApi.blockPublisher,
-    [Actions.REMOVE]: usersApi.unFollow,
+    [Actions.REMOVE]: usersApi.unfollow,
   },
 };
 
@@ -61,7 +61,7 @@ export default function updateRelation(
 ) {
   const apiAction = actionsMap[userType][action];
 
-  apiAction(user)
+  return apiAction(user)
     .then(() => {
       queryClient.invalidateQueries(queryKey);
     })
