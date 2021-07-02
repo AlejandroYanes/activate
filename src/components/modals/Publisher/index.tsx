@@ -1,6 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { formatAmount } from 'helpers';
+import { QueryKey } from 'components/providers/Query';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
@@ -11,10 +12,10 @@ import Avatar from 'components/base-components/Avatar';
 import { IconButton } from 'components/base-components/Button';
 import LoadingScreen from 'components/experience/LoadingScreen';
 import { NoConnectionScreen } from 'components/experience/ErrorScreen';
+import { PublisherActions } from 'components/experience/UserActions';
 import Events from './Events';
 import Followers from './Followers';
 import usePublisherState from './state';
-import ProfileActions from './ProfileActions';
 
 enum ProfileTabs {
   FOLLOWERS = 'Followers',
@@ -35,6 +36,10 @@ const PublisherModal: FunctionComponent = () => {
       setActiveTab,
     },
   } = usePublisherState();
+
+  const queryKey = useMemo(() => (
+    [QueryKey.FETCH_PUBLISHER, publisher?.id]
+  ), [publisher]);
 
   const modalSize = layout === Layout.MOBILE ? 'mobile' : 'drawer';
 
@@ -71,7 +76,7 @@ const PublisherModal: FunctionComponent = () => {
   const header = (
     <FlexBox justify="space-between" align="center" grow width="100%">
       <IconButton onClick={goBack} icon="ARROW_LEFT" />
-      <ProfileActions user={publisher} />
+      <PublisherActions user={publisher} queryKey={queryKey} />
     </FlexBox>
   );
 

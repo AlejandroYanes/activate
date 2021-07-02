@@ -3,11 +3,11 @@ import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { UserModel } from 'models/user';
+import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
 import { Option, Options } from 'components/base-components/Options';
 import UsersList from 'components/experience/UsersList';
 import FriendActions from './FriendActions';
-import { Modals } from '../../index';
 
 enum UserType {
   FRIENDS = 'FRIENDS',

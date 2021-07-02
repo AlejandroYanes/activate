@@ -1,13 +1,14 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
-import ProfileCard from 'components/experience/ProfileCard';
 import { IconButton } from 'components/base-components/Button';
-import ProfileActions from './ProfileActions';
+import RenderIf from 'components/base-components/RenderIf';
+import ProfileCard from 'components/experience/ProfileCard';
+import { ConsumerActions } from 'components/experience/UserActions';
 import { Tabs } from '../state';
-import RenderIf from '../../../base-components/RenderIf';
+import { QueryKey } from '../../../providers/Query';
 
 interface Props {
   user: ConsumerModel;
@@ -18,11 +19,13 @@ interface Props {
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { goBack } = useHistory();
   const { activeTab, setActiveTab, user } = props;
-  const { avatar, userName, name, friends, following, relationStatus } = user;
+  const { id, avatar, userName, name, friends, following, relationStatus } = user;
   const myFriend = (
     relationStatus === RelationshipStatus.ACCEPTED ||
     relationStatus === RelationshipStatus.MUTED
   );
+
+  const queryKey = useMemo(() => [QueryKey.FETCH_CONSUMER, id], [id]);
 
   return (
     <ProfileCard
@@ -43,7 +46,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         />
       </AbsoluteContent>
       <AbsoluteContent top={16} right={16}>
-        <ProfileActions user={user} />
+        <ConsumerActions user={user} queryKey={queryKey} />
       </AbsoluteContent>
       <RenderIf condition={myFriend}>
         <Tabset

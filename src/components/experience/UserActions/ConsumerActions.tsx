@@ -1,16 +1,15 @@
-import { FunctionComponent, useMemo } from 'react';
-import { useQueryClient } from 'react-query';
+import { FunctionComponent } from 'react';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
+import { useConsumerActions } from 'hooks/use-user-actions';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
-import { useConsumerId } from '../context';
-import updateRelation, { actions } from './update-relation';
 
 interface Props {
   user: ConsumerModel;
+  queryKey;
 }
 
 const MenuTrigger = ({ toggleMenu }) => (
@@ -23,11 +22,8 @@ const MenuTrigger = ({ toggleMenu }) => (
 
 const emptyAction = () => undefined;
 
-const FriendActions: FunctionComponent<Props> = (props) => {
-  const { user: { id, name, relationStatus } } = props;
-  const consumerId = useConsumerId();
-  const queryClient = useQueryClient();
-
+const ConsumerActions: FunctionComponent<Props> = (props) => {
+  const { queryKey, user: { id, name, relationStatus } } = props;
   const [
     addFriend,
     acceptFriend,
@@ -35,11 +31,7 @@ const FriendActions: FunctionComponent<Props> = (props) => {
     unmute,
     block,
     unfriend,
-  ] = useMemo(() => (
-    actions.map(action => (
-      () => updateRelation(id, consumerId, action, queryClient)
-    ))
-  ), [id]);
+  ] = useConsumerActions(queryKey, id);
 
   const unrelated = relationStatus === RelationshipStatus.UNRELATED;
   const pending = relationStatus === RelationshipStatus.PENDING;
@@ -85,4 +77,4 @@ const FriendActions: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default FriendActions;
+export default ConsumerActions;

@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RelationshipStatus } from 'models/user';
 import { formatAmount } from 'helpers';
@@ -14,9 +14,10 @@ import { NoConnectionScreen } from 'components/experience/ErrorScreen';
 import Events from './Events';
 import Friends from './Friends';
 import Following from './Following';
-import ProfileActions from './ProfileActions';
 import PrivateAccount from './PrivateAccount';
 import useUserState, { Tabs } from './state';
+import { QueryKey } from '../../providers/Query';
+import { ConsumerActions } from '../../experience/UserActions';
 
 const UserModal: FunctionComponent = () => {
   const { goBack } = useHistory();
@@ -31,6 +32,8 @@ const UserModal: FunctionComponent = () => {
       setActiveTab,
     },
   } = useUserState();
+
+  const queryKey = useMemo(() => [QueryKey.FETCH_CONSUMER, user?.id], [user]);
 
   if (isLoading) {
     return (
@@ -79,7 +82,7 @@ const UserModal: FunctionComponent = () => {
   const header = (
     <FlexBox justify="space-between" align="center" grow width="100%">
       <IconButton onClick={goBack} icon="ARROW_LEFT" />
-      <ProfileActions user={user} />
+      <ConsumerActions user={user} queryKey={queryKey} />
     </FlexBox>
   );
 

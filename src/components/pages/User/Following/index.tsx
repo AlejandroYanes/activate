@@ -1,23 +1,23 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { UserModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
 import UsersList from 'components/experience/UsersList';
-import PublisherActions from './PublisherActions';
+import { PublisherActions } from 'components/experience/UserActions';
 import { UsersCard } from './styled';
-import { ConsumerProvider } from '../context';
 
 const Following: FunctionComponent = () => {
   const { push } = useHistory();
   const { userId } = useParams<any>();
+  const queryKey = [QueryKey.FETCH_PUBLISHERS_OF, userId];
   const {
     isLoading,
     data: response,
     error,
   } = useQuery(
-    [QueryKey.FETCH_PUBLISHERS_OF, userId],
+    queryKey,
     () => usersApi.listPublishersOf(userId),
     { enabled: !!userId },
   );
@@ -26,18 +26,20 @@ const Following: FunctionComponent = () => {
     push(`/app/publisher/${publisher.id}`);
   }, []);
 
+  const Action = useMemo(() => (
+    (user) => <PublisherActions user={user} queryKey={queryKey} />
+  ), [userId]);
+
   return (
     <UsersCard>
-      <ConsumerProvider consumer={userId}>
-        <UsersList
-          loading={isLoading}
-          errored={!!error}
-          errorMessage="We couldn't load the publishers list."
-          users={response?.data}
-          onClick={handleClick}
-          userActions={PublisherActions}
-        />
-      </ConsumerProvider>
+      <UsersList
+        loading={isLoading}
+        errored={!!error}
+        errorMessage="We couldn't load the publishers list."
+        users={response?.data}
+        onClick={handleClick}
+        userActions={Action}
+      />
     </UsersCard>
   );
 };

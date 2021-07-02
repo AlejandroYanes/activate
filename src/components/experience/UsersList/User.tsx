@@ -66,9 +66,7 @@ const User: FunctionComponent<Props> = (props) => {
           {lastMessage || `@${userName}`}
         </Text>
       </Info>
-      <RenderIf condition={!!Actions}>
-        <Actions user={user} />
-      </RenderIf>
+      <Actions user={user} />
     </UserItem>
   );
 };
