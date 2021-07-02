@@ -1,8 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Page from 'components/base-components/Page';
 import { Case, Switch } from 'components/base-components/Switch';
-import LoadingScreen from 'components/experience/LoadingScreen';
-import { NoConnectionScreen } from 'components/experience/ErrorScreen';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import ProfileData from './ProfileData';
 import Events from './Events';
 import Followers from './Followers';

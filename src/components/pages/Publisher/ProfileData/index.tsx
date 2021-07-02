@@ -1,11 +1,12 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { PublisherModel } from 'models/user';
+import { QueryKey } from 'components/providers/Query';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import ProfileCard from 'components/experience/ProfileCard';
 import { IconButton } from 'components/base-components/Button';
-import Actions from './Actions';
+import { PublisherActions } from 'components/experience/UserActions';
 import { Tabs } from '../state';
 
 interface Props {
@@ -17,7 +18,8 @@ interface Props {
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { goBack } = useHistory();
   const { activeTab, setActiveTab, user } = props;
-  const { avatar, userName, name, events, followers } = user;
+  const { id, avatar, userName, name, events, followers } = user;
+  const queryKey = useMemo(() => [QueryKey.FETCH_PUBLISHER, id], [id]);
 
   return (
     <ProfileCard
@@ -38,7 +40,7 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         />
       </AbsoluteContent>
       <AbsoluteContent top={16} right={16}>
-        <Actions user={user} />
+        <PublisherActions user={user} queryKey={queryKey} />
       </AbsoluteContent>
       <Tabset
         activeTab={activeTab}

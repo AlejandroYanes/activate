@@ -1,23 +1,31 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ConsumerModel } from 'models/user';
+import { ConsumerModel, RelationshipStatus } from 'models/user';
+import { QueryKey } from 'components/providers/Query';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
-import ProfileCard from 'components/experience/ProfileCard';
 import { IconButton } from 'components/base-components/Button';
-import Actions from './Actions';
+import RenderIf from 'components/base-components/RenderIf';
+import ProfileCard from 'components/experience/ProfileCard';
+import { ConsumerActions } from 'components/experience/UserActions';
 import { Tabs } from '../state';
 
 interface Props {
   user: ConsumerModel;
-  activeTab: string;
-  setActiveTab: (tab) => void;
+  activeTab?: string;
+  setActiveTab?: (tab) => void;
 }
 
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { goBack } = useHistory();
   const { activeTab, setActiveTab, user } = props;
-  const { avatar, userName, name, friends, following } = user;
+  const { id, avatar, userName, name, friends, following, relationStatus } = user;
+  const myFriend = (
+    relationStatus === RelationshipStatus.ACCEPTED ||
+    relationStatus === RelationshipStatus.MUTED
+  );
+
+  const queryKey = useMemo(() => [QueryKey.FETCH_CONSUMER, id], [id]);
 
   return (
     <ProfileCard
@@ -38,18 +46,20 @@ const ProfileData: FunctionComponent<Props> = (props) => {
         />
       </AbsoluteContent>
       <AbsoluteContent top={16} right={16}>
-        <Actions user={user} />
+        <ConsumerActions user={user} queryKey={queryKey} />
       </AbsoluteContent>
-      <Tabset
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        fullWidth
-        mT
-      >
-        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR" />
-        <Tab name={Tabs.FOLLOWING} label="Following" icon="MEGAPHONE" />
-        <Tab name={Tabs.FRIENDS} label="Friends" icon="USERS" />
-      </Tabset>
+      <RenderIf condition={myFriend}>
+        <Tabset
+          activeTab={activeTab}
+          onTabChange={setActiveTab}
+          fullWidth
+          mT
+        >
+          <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR" />
+          <Tab name={Tabs.FOLLOWING} label="Following" icon="MEGAPHONE" />
+          <Tab name={Tabs.FRIENDS} label="Friends" icon="USERS" />
+        </Tabset>
+      </RenderIf>
     </ProfileCard>
   );
 };

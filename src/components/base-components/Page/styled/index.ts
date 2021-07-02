@@ -18,6 +18,8 @@ const layoutMap = {
   [Layout.MOBILE]: css`
     width: 100%;
     height: 100%;
+    overflow: hidden auto;
+    padding: 16px 6px 96px 6px;
   `,
 };
 
@@ -25,10 +27,4 @@ export const StyledPage = styled.section.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   ${({ layout }) => layoutMap[layout]};
-`;
-
-export const Content = styled.section`
-  flex: 1;
-  overflow: hidden auto;
-  padding: 16px 6px 96px 6px;
 `;

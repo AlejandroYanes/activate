@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import faker from 'faker';
-import { EventChannelList, notifyEventChannel } from 'event-center';
+import { notifyEventChannel } from 'event-center';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text } from 'components/base-components/Typography';
@@ -29,7 +29,7 @@ const TalksPanel: FunctionComponent = () => {
 
   const openTalk = useCallback((user) => {
     if (pathname.includes('talks')) {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, user);
+      notifyEventChannel('USER_SELECTED_FOR_CHAT', user);
       setState({
         activeView: TalkViews.TALK_LIST,
         activeUser: undefined,
@@ -54,9 +54,9 @@ const TalksPanel: FunctionComponent = () => {
       activeView: TalkViews.TALK_LIST,
       activeUser: undefined,
     });
-    push('/talks');
+    push('/app/talks');
     setTimeout(() => {
-      notifyEventChannel(EventChannelList.USER_SELECTED_FOR_CHAT, activeUser);
+      notifyEventChannel('USER_SELECTED_FOR_CHAT', activeUser);
     }, 100);
   }, [activeUser]);
 
@@ -115,7 +115,7 @@ const TalksPanel: FunctionComponent = () => {
   );
 
   const header = (
-    <FlexBox align="center" height="100%" padding="0 0 0 16px">
+    <FlexBox align="center" height="100%">
       {leftAction}
       <Text>Select a contact</Text>
     </FlexBox>
@@ -129,6 +129,7 @@ const TalksPanel: FunctionComponent = () => {
         action={showContactsButton}
         onClick={openTalk}
         users={users}
+        padding="0 0 0 16px"
         showScroll
       />
       <Case
@@ -137,6 +138,7 @@ const TalksPanel: FunctionComponent = () => {
         onClick={openTalk}
         users={users}
         header={header}
+        padding="0 0 0 16px"
         showScroll
       />
       <Case

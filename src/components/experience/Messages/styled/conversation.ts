@@ -10,7 +10,7 @@ const getBackgroundColor = (props) => {
   const { theme: { colors }, sent, inverseColors } = props;
 
   if (sent) {
-    return colors.BRAND;
+    return colors.BRAND_BG;
   }
 
   return inverseColors ? colors.BACKGROUND_LIGHT : colors.BACKGROUND;

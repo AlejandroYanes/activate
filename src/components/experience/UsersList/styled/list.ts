@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getBgdLightColor } from 'helpers';
+import { anyPropsAttrs, getBgdLightColor, getPositionStyles } from 'helpers';
 
 export const Section = styled.section.attrs(anyPropsAttrs)`
   position: relative;
   display: flex;
   flex-direction: column;
   ${({ scroll }) => scroll ? 'height: 100%' : ''};
+  ${getPositionStyles};
 `;
 
 export const List = styled.ul`
@@ -13,7 +14,8 @@ export const List = styled.ul`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0 4px 0 16px;
+  //padding: 0 4px 0 16px;
+  padding: 0;
   margin: 0;
   overflow: hidden auto;
 `;

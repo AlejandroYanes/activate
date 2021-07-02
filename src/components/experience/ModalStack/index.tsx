@@ -6,7 +6,7 @@ const ModalStack: FunctionComponent = () => {
   const { hash } = useLocation();
 
   if (hash) {
-    return <ModalRenderer name={hash} />
+    return <ModalRenderer hash={hash} />
   }
 
   return null;

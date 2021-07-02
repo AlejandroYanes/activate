@@ -45,16 +45,18 @@ const TalksModal: FunctionComponent = () => {
   }, [activeView]);
 
   const users = useMemo(() => (
-    new Array(faker.random.number({ min: 6, max: 16 }))
+    new Array(faker.random.number({ min: 20, max: 30 }))
       .fill(1)
       .map(() => ({
         id: faker.random.uuid(),
         avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-        name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-        secondary: (
-          activeView === Modals.TALKS_CONTACTS
-            ? `@${faker.internet.userName()}`
-            : faker.lorem.words(20)
+        name: faker.name.firstName(),
+        lastName: faker.name.lastName(),
+        userName: faker.internet.userName(),
+        lastMessage: (
+          activeView === Modals.TALKS
+            ? faker.lorem.words(20)
+            : undefined
         ),
         active: faker.random.boolean(),
       }))
@@ -79,6 +81,7 @@ const TalksModal: FunctionComponent = () => {
           onClick={openTalk}
           action={showContactsButton}
           users={users}
+          padding="0 0 0 16px"
           scroll
         />
         <Case
@@ -86,6 +89,7 @@ const TalksModal: FunctionComponent = () => {
           component={UsersList}
           onClick={openTalk}
           users={users}
+          padding="0 0 0 16px"
           scroll
         />
         <Case

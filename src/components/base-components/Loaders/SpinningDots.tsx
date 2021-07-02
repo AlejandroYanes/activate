@@ -6,6 +6,7 @@ import { Wrapper, Dot } from './styled/spinning-dots';
 interface Props extends PositionProps {
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'page';
   color?: 'brand' | 'accent' | 'font' | 'white';
+  delay?: number;
 }
 
 const SpinningDots: FunctionComponent<Props> = (props) => {
@@ -24,6 +25,7 @@ const SpinningDots: FunctionComponent<Props> = (props) => {
 
 SpinningDots.defaultProps = {
   size: 'medium',
+  delay: 0,
 };
 
 export default SpinningDots;

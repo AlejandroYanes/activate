@@ -17,25 +17,38 @@ const dotsSizeMap = {
   page: 'width: 48px; height: 48px',
 }
 
+const fadeIn = keyframes`
+  0%{
+    opacity: 0;
+  }
+  90%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+
 export const Wrapper = styled.div.attrs(anyPropsAttrs)`
   position: relative;
   box-sizing: content-box;
   ${getPositionStyles};
   ${({ size }) => sizeMap[size]};
+  animation: ${fadeIn} ${({ delay }) => delay}ms linear;
 
-  & div:first-child{
+  & div:first-child {
     animation-delay:-2s;
     ${({ size }) => dotsSizeMap[size]};
   }
-  & div:nth-child(2){
+  & div:nth-child(2) {
     animation-delay:-1.5s;
     ${({ size }) => dotsSizeMap[size]};
   }
-  & div:nth-child(3){
+  & div:nth-child(3) {
     animation-delay:-1s;
     ${({ size }) => dotsSizeMap[size]};
   }
-  & div:nth-child(4){
+  & div:nth-child(4) {
     animation-delay:-0.5s;
     ${({ size }) => dotsSizeMap[size]};
   }

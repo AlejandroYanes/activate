@@ -1,15 +1,15 @@
 import React, { FunctionComponent, ReactNode } from 'react';
 import { UserModel } from 'models/user';
 import { UserTalkModel } from 'models/message';
+import { PositionProps } from 'helpers';
 import { mobileHeaderHeight } from 'styles/variables';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
-import LoadingScreen from 'components/experience/LoadingScreen';
-import { NoConnectionScreen } from 'components/experience/ErrorScreen';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Users from './Users';
 import { ActionNotch, List, Section } from './styled';
 
-interface Props {
+interface Props extends PositionProps {
   loading?: boolean;
   errored?: boolean;
   errorMessage?: string;
@@ -34,6 +34,7 @@ const UsersList: FunctionComponent<Props> = (props) => {
     action,
     userActions,
     showScroll,
+    ...rest
   } = props;
 
   if (loading) {
@@ -49,7 +50,7 @@ const UsersList: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <Section data-el="user-list" scroll={showScroll}>
+    <Section data-el="user-list" scroll={showScroll} {...rest}>
       <RenderIf condition={!!header}>
         <FlexBox height={mobileHeaderHeight}>
           {header}

@@ -4,10 +4,26 @@ import { Variations } from 'styles/colors';
 import { anyPropsAttrs, getColorVariation } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
 
-const sizeMap = {
-  small: 20,
-  medium: 28,
-  large: 26,
+const getSizeStyles = (props) => {
+  const { size } = props;
+
+  switch (size) {
+    case 'small':
+      return css`
+        height: 24px;
+        padding: 4px 6px;
+      `;
+    case 'large':
+      return css`
+        height: 38px;
+        padding: 6px 14px;
+      `;
+    default:
+      return css`
+        height: 32px;
+        padding: 4px 14px;
+      `;
+  }
 };
 
 const getBackgroundColor = (props) => {
@@ -17,14 +33,15 @@ const getBackgroundColor = (props) => {
 
 export const Option = styled.li.attrs(anyPropsAttrs)`
   margin: 0 6px 0 0;
-  padding: 2px 6px;
   display: flex;
+  align-items: center;
   border-radius: 16px;
   min-width: 48px;
   position: relative;
   cursor: pointer;
   background-color: transparent;
-  height: ${({ size }) => `${sizeMap[size]}px`};
+  box-sizing: border-box;
+  ${getSizeStyles};
   ${({ fullWidth }) => fullWidth ? 'flex: 1;' : ''}
 
   &:hover, &:focus {

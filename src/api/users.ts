@@ -1,18 +1,21 @@
 import { AxiosResponse } from 'axios';
 import { ConsumerModel, ProfileStats, PublisherModel, UserModel } from 'models/user';
-import { get } from './base';
+import { get, PagedResponse } from './base';
 
 const usersApi = {
   findMyStats: (): Promise<AxiosResponse<ProfileStats>> => {
     return get('users/stats');
   },
-  listMyFriends: (): Promise<AxiosResponse<UserModel[]>> => {
+  listMyFriends: (): Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get('users/friends');
   },
-  listMyPublishers: (): Promise<AxiosResponse<UserModel[]>> => {
+  listMyPending: (): Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
+    return get('users/pending');
+  },
+  listMyPublishers: (): Promise<AxiosResponse<PagedResponse<UserModel>>> => {
     return get('users/publishers');
   },
-  listMyFollowers: (): Promise<AxiosResponse<UserModel[]>> => {
+  listMyFollowers: (): Promise<AxiosResponse<PagedResponse<UserModel>>> => {
     return get('users/followers');
   },
   findPublisher: (id: string): Promise<AxiosResponse<PublisherModel>> => {
@@ -21,17 +24,59 @@ const usersApi = {
   findConsumer: (id: string): Promise<AxiosResponse<ConsumerModel>> => {
     return get(`users/consumer/${id}`);
   },
-  listPublishersOf: (consumer: string): Promise<AxiosResponse<PublisherModel[]>> => {
+  listPublishersOf: (consumer: string)
+    : Promise<AxiosResponse<PagedResponse<PublisherModel>>> => {
     return get(`users/${consumer}/publishers`);
   },
-  listFollowersOf: (publisher: string): Promise<AxiosResponse<ConsumerModel[]>> => {
+  listFollowersOf: (publisher: string)
+    : Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get(`users/${publisher}/followers`);
   },
-  listFriendsOf: (consumer: string): Promise<AxiosResponse<ConsumerModel[]>> => {
+  listFriendsOf: (consumer: string)
+    : Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get(`users/${consumer}/friends`);
   },
+  sendFriendRequest: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/send`);
+  },
+  acceptFriendRequest: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/accept`);
+  },
+  declineFriendRequest: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/decline`);
+  },
+  muteFriend: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/mute`);
+  },
+  unmuteFriend: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/unmute`);
+  },
+  blockFriend: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/block`);
+  },
+  unblockFriend: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/unblock`);
+  },
+  unfriend: (friend: string): Promise<AxiosResponse> => {
+    return get(`users/friend/${friend}/remove`);
+  },
+  mutePublisher: (publisher: string): Promise<AxiosResponse> => {
+    return get(`users/publisher/${publisher}/mute`);
+  },
+  unmutePublisher: (publisher: string): Promise<AxiosResponse> => {
+    return get(`users/publisher/${publisher}/unmute`);
+  },
+  blockPublisher: (publisher: string): Promise<AxiosResponse> => {
+    return get(`users/publisher/${publisher}/block`);
+  },
+  unblockPublisher: (publisher: string): Promise<AxiosResponse> => {
+    return get(`users/publisher/${publisher}/unblock`);
+  },
   follow: (publisher: string): Promise<AxiosResponse> => {
-    return get(`users/follow/${publisher}`);
+    return get(`users/publisher/${publisher}/follow`);
+  },
+  unfollow: (publisher: string): Promise<AxiosResponse> => {
+    return get(`users/publisher/${publisher}/remove`);
   },
 };
 

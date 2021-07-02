@@ -4,14 +4,10 @@ import React, {
   useCallback,
   useContext,
   useMemo,
-  useRef,
 } from 'react';
-import { useFocusState, useHoverState } from 'hooks/UI';
-import { useAppTheme } from 'components/providers/Theme';
-import { Icons } from 'components/base-components/SvgIcon';
+import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import Icon from './Icon';
-import { Mark, StyledTab, Label } from './styled';
+import { Label, Mark, StyledTab } from './styled';
 import tabsetContext from './context';
 
 interface Props {
@@ -29,17 +25,12 @@ const springAnimation = {
 
 const Tab: FunctionComponent<Props> = (props) => {
   const { name, label, icon, onClick } = props;
-  const { colors, useDarkStyle } = useAppTheme();
   const {
     activeTab,
     onTabChange,
     fullWidth,
     disableFocus,
   } = useContext(tabsetContext);
-
-  const tabReference = useRef(undefined);
-  const isHovered = useHoverState(tabReference);
-  const isFocused = useFocusState(tabReference);
 
   const handleClick = useCallback(() => {
     let action;
@@ -59,24 +50,18 @@ const Tab: FunctionComponent<Props> = (props) => {
   const iconComponent = useMemo(() => {
     if (typeof icon === 'string') {
       return (
-        <Icon
-          icon={icon as Icons}
-          disableFocus={disableFocus}
-          isHovered={isHovered || isFocused}
-          isSelected={isSelected}
-        />
+        <SvgIcon icon={icon as Icons} />
       );
     }
 
     return icon;
-  }, [icon, disableFocus, isHovered, isFocused, isSelected, colors, useDarkStyle]);
+  }, [icon, disableFocus]);
 
   return (
     <StyledTab
       role="button"
       tabIndex={0}
       data-el="tab"
-      ref={tabReference}
       fullWidth={fullWidth}
       selected={isSelected}
       disableFocus={disableFocus}

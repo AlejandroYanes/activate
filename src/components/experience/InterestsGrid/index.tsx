@@ -2,8 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { CategoryModel } from 'models/category';
 import { PositionProps } from 'helpers';
 import { PickList } from 'components/base-components/PickList';
-import LoadingScreen from 'components/experience/LoadingScreen';
-import { NoConnectionScreen } from 'components/experience/ErrorScreen';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import PlainGrid from './PlainGrid';
 import SectionedGrid from './SectionedGrid';
 

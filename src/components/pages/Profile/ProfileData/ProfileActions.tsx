@@ -6,12 +6,11 @@ import { useAuthActions } from 'components/providers/Auth';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 
-const menuTrigger = ({ toggleMenu, ...rest }) => (
+const MenuTrigger = ({ toggleMenu }) => (
   <IconButton
     icon="MORE_VERT"
     color="background"
     onClick={toggleMenu}
-    {...rest}
   />
 );
 
@@ -28,7 +27,7 @@ const ProfileActions: FunctionComponent<PositionProps> = (props) => {
   };
 
   return (
-    <Menu trigger={menuTrigger} align="end" {...props}>
+    <Menu trigger={MenuTrigger} align="end" {...props}>
       <MenuItem label="Change Profile" onClick={openEditProfile} />
       <MenuItem label="Change Password" onClick={openChangePassword} />
       <MenuItem label="Logout" danger onClick={logout} />

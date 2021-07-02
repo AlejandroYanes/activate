@@ -1,37 +1,26 @@
 import { FunctionComponent } from 'react';
-import { UserModel } from 'models/user';
-import { Menu, MenuItem } from 'components/base-components/Menu';
-import { IconButton } from 'components/base-components/Button';
-import { Text } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
+import { ConsumerModel, RelationshipStatus } from 'models/user';
+import { ConsumerActions } from 'components/experience/UserActions';
+import { QueryKey } from 'components/providers/Query';
+import PendingAction from './PendingAction';
 
 interface Props {
-  user: UserModel;
+  user: ConsumerModel;
 }
 
-const menuTrigger = ({ toggleMenu, ...rest }) => (
-  <IconButton
-    icon="MORE_VERT"
-    onClick={toggleMenu}
-    color="background"
-    {...rest}
-  />
-);
-
-const emptyAction = () => undefined;
-
 const FriendActions: FunctionComponent<Props> = (props) => {
-  const { user: { name } } = props;
+  const { user } = props;
+  const { id, relationStatus } = user;
+  const pending = relationStatus === RelationshipStatus.PENDING;
+
+  if (pending) {
+    return (
+      <PendingAction id={id} />
+    );
+  }
 
   return (
-    <Menu trigger={menuTrigger}>
-      <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="bold" ellipsis>{name}</Text>
-      </FlexBox>
-      <MenuItem label="Send a message" onClick={emptyAction} />
-      <MenuItem label="Mute notifications" onClick={emptyAction} />
-      <MenuItem label="Unfriend" danger onClick={emptyAction} />
-    </Menu>
+    <ConsumerActions user={user} queryKey={QueryKey.FETCH_MY_FRIENDS} />
   );
 };
 

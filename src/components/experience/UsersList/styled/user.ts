@@ -40,7 +40,7 @@ export const UserItem = styled.li`
   display: flex;
   align-items: center;
   padding: 6px 4px;
-  margin: 0 0 6px;
+  margin: 0 8px 8px 0;
   border-radius: 8px;
   border: none;
   cursor: pointer;

@@ -20,7 +20,7 @@ const Conversation: FunctionComponent<Props> = (props) => {
   const bubbles = useMemo(
     () => texts.map(({ id, txt, sent }) => (
       <TextBubble key={id} sent={sent} inverseColors={inverseColors}>
-        <Text color={sent ? 'white' : 'font'}>{txt}</Text>
+        <Text color={sent ? 'background' : 'font'}>{txt}</Text>
       </TextBubble>
     )),
     [],

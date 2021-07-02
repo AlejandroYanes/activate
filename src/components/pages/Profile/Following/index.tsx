@@ -5,7 +5,7 @@ import usersApi from 'api/users';
 import { UserModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
 import UsersList from 'components/experience/UsersList';
-import PublisherActions from './PublisherActions';
+import { PublisherActions } from 'components/experience/UserActions';
 import { UsersCard } from './styled';
 
 const Following: FunctionComponent = () => {
@@ -20,15 +20,19 @@ const Following: FunctionComponent = () => {
     push(`/app/publisher/${publisher.id}`);
   }, []);
 
+  const action = useCallback((user) => (
+    <PublisherActions user={user} queryKey={QueryKey.FETCH_MY_PUBLISHERS} />
+  ), []);
+
   return (
     <UsersCard>
       <UsersList
         loading={isLoading}
         errored={!!error}
         errorMessage="We couldn't load the publishers you are currently following."
-        users={response?.data}
+        users={response?.data.results}
         onClick={handleClick}
-        userActions={PublisherActions}
+        userActions={action}
       />
     </UsersCard>
   );

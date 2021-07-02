@@ -28,7 +28,7 @@ const breakpoints: Breakpoint[] = [
 function getActiveLayout() {
   const matchedBreakpoints = breakpoints.map((bp) => ({
     ...bp,
-    matches: window.matchMedia(bp.query).matches,
+    matches: window.matchMedia ? window.matchMedia(bp.query).matches : false,
   }));
   const activeLayout = matchedBreakpoints.find((bp) => bp.matches);
 
@@ -49,11 +49,13 @@ const LayoutProvider: FunctionComponent = (props) => {
   }, [layout]);
 
   useEffect(() => {
-    breakpoints.forEach((bp) => (
-      window
-        .matchMedia(bp.query)
-        .addEventListener('change', handleQueryMatch)
-    ));
+    if (window.matchMedia) {
+      breakpoints.forEach((bp) => (
+        window
+          .matchMedia(bp.query)
+          .addEventListener('change', handleQueryMatch)
+      ));
+    }
   }, [handleQueryMatch]);
 
   return (
