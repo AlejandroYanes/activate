@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback, useMemo } from 'react';
+import { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
@@ -13,33 +13,33 @@ interface Props {
 }
 
 const Friends: FunctionComponent<Props> = (props) => {
-  const { user } = props;
+  const { user: userId } = props;
   const { push } = useHistory();
-  const queryKey = [QueryKey.FETCH_FRIENDS_OF, user];
+  const queryKey = [QueryKey.FETCH_FRIENDS_OF, userId];
   const {
     isLoading,
     data: response,
     error,
   } = useQuery(
     queryKey,
-    () => usersApi.listFriendsOf(user),
-    { enabled: !!user },
+    () => usersApi.listFriendsOf(userId),
+    { enabled: !!userId },
   );
 
   const goToProfile = useCallback((friend: UserModel) => {
     push(Modals.USER, { id: friend.id });
   }, []);
 
-  const action = useMemo(() => (
-    (friend) => <ConsumerActions user={friend} queryKey={queryKey} />
-  ), [user]);
+  const action = useCallback(({ user }) => (
+    <ConsumerActions user={user} queryKey={queryKey} />
+  ), [userId]);
 
   return (
     <UsersList
       loading={isLoading}
       errored={!!error}
       errorMessage="We couldn't load the friends list."
-      users={response?.data}
+      users={response?.data.results}
       onClick={goToProfile}
       userActions={action}
     />

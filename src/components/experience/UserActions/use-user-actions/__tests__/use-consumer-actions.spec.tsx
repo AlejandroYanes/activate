@@ -19,6 +19,8 @@ describe('User Actions - useConsumerActions', () => {
     // @ts-ignore
     usersApi.acceptFriendRequest.mockResolvedValue({});
     // @ts-ignore
+    usersApi.declineFriendRequest.mockResolvedValue({});
+    // @ts-ignore
     usersApi.muteFriend.mockResolvedValue({});
     // @ts-ignore
     usersApi.unmuteFriend.mockResolvedValue({});
@@ -35,6 +37,7 @@ describe('User Actions - useConsumerActions', () => {
     const [
       addFriend,
       acceptFriend,
+      declineFriend,
       mute,
       unmute,
       block,
@@ -46,6 +49,9 @@ describe('User Actions - useConsumerActions', () => {
 
     acceptFriend();
     expect(usersApi.acceptFriendRequest).toHaveBeenCalled();
+
+    declineFriend();
+    expect(usersApi.declineFriendRequest).toHaveBeenCalled();
 
     mute();
     expect(usersApi.muteFriend).toHaveBeenCalled();

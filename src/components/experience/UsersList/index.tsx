@@ -5,8 +5,7 @@ import { PositionProps } from 'helpers';
 import { mobileHeaderHeight } from 'styles/variables';
 import RenderIf from 'components/base-components/RenderIf';
 import FlexBox from 'components/base-components/FlexBox';
-import LoadingScreen from 'components/experience/LoadingScreen';
-import { NoConnectionScreen } from 'components/experience/ErrorScreen';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Users from './Users';
 import { ActionNotch, List, Section } from './styled';
 

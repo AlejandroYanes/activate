@@ -1,21 +1,21 @@
 import { AxiosResponse } from 'axios';
 import { ConsumerModel, ProfileStats, PublisherModel, UserModel } from 'models/user';
-import { get } from './base';
+import { get, PagedResponse } from './base';
 
 const usersApi = {
   findMyStats: (): Promise<AxiosResponse<ProfileStats>> => {
     return get('users/stats');
   },
-  listMyFriends: (): Promise<AxiosResponse<ConsumerModel[]>> => {
+  listMyFriends: (): Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get('users/friends');
   },
-  listMyPending: (): Promise<AxiosResponse<ConsumerModel[]>> => {
+  listMyPending: (): Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get('users/pending');
   },
-  listMyPublishers: (): Promise<AxiosResponse<UserModel[]>> => {
+  listMyPublishers: (): Promise<AxiosResponse<PagedResponse<UserModel>>> => {
     return get('users/publishers');
   },
-  listMyFollowers: (): Promise<AxiosResponse<UserModel[]>> => {
+  listMyFollowers: (): Promise<AxiosResponse<PagedResponse<UserModel>>> => {
     return get('users/followers');
   },
   findPublisher: (id: string): Promise<AxiosResponse<PublisherModel>> => {
@@ -24,13 +24,16 @@ const usersApi = {
   findConsumer: (id: string): Promise<AxiosResponse<ConsumerModel>> => {
     return get(`users/consumer/${id}`);
   },
-  listPublishersOf: (consumer: string): Promise<AxiosResponse<PublisherModel[]>> => {
+  listPublishersOf: (consumer: string)
+    : Promise<AxiosResponse<PagedResponse<PublisherModel>>> => {
     return get(`users/${consumer}/publishers`);
   },
-  listFollowersOf: (publisher: string): Promise<AxiosResponse<ConsumerModel[]>> => {
+  listFollowersOf: (publisher: string)
+    : Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get(`users/${publisher}/followers`);
   },
-  listFriendsOf: (consumer: string): Promise<AxiosResponse<ConsumerModel[]>> => {
+  listFriendsOf: (consumer: string)
+    : Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get(`users/${consumer}/friends`);
   },
   sendFriendRequest: (friend: string): Promise<AxiosResponse> => {

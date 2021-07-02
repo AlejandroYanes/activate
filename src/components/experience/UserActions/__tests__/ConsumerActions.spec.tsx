@@ -94,6 +94,7 @@ describe('User Actions - ConsumerActions', () => {
     expect(component.find('[data-id="unmute-action"]').exists()).toBe(false);
     expect(component.find('[data-id="send-req-action"]').exists()).toBe(false);
     expect(component.find('[data-id="accept-req-action"]').exists()).toBe(true);
+    expect(component.find('[data-id="decline-req-action"]').exists()).toBe(true);
     expect(component.find('[data-id="unfriend-action"]').exists()).toBe(false);
     expect(component.find('[data-id="block-action"]').exists()).toBe(true);
   });

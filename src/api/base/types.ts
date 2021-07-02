@@ -17,14 +17,15 @@ export interface ApiErrorResponse {
   validationErrors?: { [field: string]: string[] };
 }
 
-export interface ListResponseModel<T = any> {
+export interface PagedResponse<T> {
   results: T[];
+  page: number;
   count: number;
 }
 
 export interface ApiModel<T = any> {
   get?: (param: string | number) => Promise<AxiosResponse<T>>;
-  list?: (params?: QueryParams) => Promise<AxiosResponse<ListResponseModel<T>>>;
+  list?: (params?: QueryParams) => Promise<AxiosResponse<PagedResponse<T>>>;
   create?: (payload) => Promise<AxiosResponse>;
   update?: (payload) => Promise<AxiosResponse>;
   delete?: (param: string | number) => Promise<AxiosResponse>;

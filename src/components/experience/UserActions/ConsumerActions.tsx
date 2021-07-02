@@ -27,6 +27,7 @@ const ConsumerActions: FunctionComponent<Props> = (props) => {
   const [
     addFriend,
     acceptFriend,
+    declineFriend,
     mute,
     unmute,
     block,
@@ -75,6 +76,11 @@ const ConsumerActions: FunctionComponent<Props> = (props) => {
           id="accept-req-action"
           label="Accept friend request"
           onClick={acceptFriend}
+        />
+        <MenuItem
+          id="decline-req-action"
+          label="Remove friend request"
+          onClick={declineFriend}
         />
       </RenderIf>
       <RenderIf condition={myFriend}>

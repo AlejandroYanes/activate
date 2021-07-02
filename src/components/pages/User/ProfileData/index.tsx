@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
+import { QueryKey } from 'components/providers/Query';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import { IconButton } from 'components/base-components/Button';
@@ -8,7 +9,6 @@ import RenderIf from 'components/base-components/RenderIf';
 import ProfileCard from 'components/experience/ProfileCard';
 import { ConsumerActions } from 'components/experience/UserActions';
 import { Tabs } from '../state';
-import { QueryKey } from '../../../providers/Query';
 
 interface Props {
   user: ConsumerModel;

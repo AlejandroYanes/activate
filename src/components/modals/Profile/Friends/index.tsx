@@ -52,7 +52,7 @@ const Friends: FunctionComponent = () => {
         loading={isLoading}
         errored={!!error}
         errorMessage="We couldn't load your friends."
-        users={response?.data}
+        users={response?.data.results}
         onClick={goToProfile}
         userActions={FriendActions}
       />

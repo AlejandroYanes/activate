@@ -1,14 +1,14 @@
 import { AxiosResponse } from 'axios';
 import { CategoryModel } from 'models/category';
-import { get, ListResponseModel } from './base';
+import { get, PagedResponse } from './base';
 
 const endpoint = 'categories';
 
 const categoriesApi = {
-  list: (): Promise<AxiosResponse<ListResponseModel<CategoryModel>>> => {
+  list: (): Promise<AxiosResponse<PagedResponse<CategoryModel>>> => {
     return get(endpoint);
   },
-  getTree: (): Promise<AxiosResponse<ListResponseModel<CategoryModel>>> => {
+  getTree: (): Promise<AxiosResponse<PagedResponse<CategoryModel>>> => {
     return get(`${endpoint}/tree`);
   },
 };

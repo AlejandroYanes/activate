@@ -4,9 +4,8 @@ import updatesApi from 'api/udpates';
 import { UpdateModel } from 'models/update';
 import { QueryKey } from 'components/providers/Query';
 import FlexBox from 'components/base-components/FlexBox';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Update from './Update';
-import LoadingScreen from '../../experience/LoadingScreen';
-import { NoConnectionScreen } from '../../experience/ErrorScreen';
 
 function updateFactory(updates: UpdateModel[]) {
   return updates.map((update) => <Update key={update.id} data={update as any} />);
@@ -21,7 +20,7 @@ const UpdatesPanel: FunctionComponent = () => {
 
   const updateCards = useMemo(() => {
     if (response?.data) {
-      return updateFactory(response.data);
+      return updateFactory(response.data.results);
     }
     return null;
   }, [response]);

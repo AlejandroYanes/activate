@@ -10,6 +10,7 @@ export enum Actions {
   FOLLOW,
   SEND_REQUEST,
   ACCEPT_REQUEST,
+  REMOVE_REQUEST,
   MUTE,
   UNMUTE,
   BLOCK,
@@ -27,6 +28,7 @@ export const publisherActions: Actions[] = [
 export const consumerActions: Actions[] = [
   Actions.SEND_REQUEST,
   Actions.ACCEPT_REQUEST,
+  Actions.REMOVE_REQUEST,
   Actions.MUTE,
   Actions.UNMUTE,
   Actions.BLOCK,
@@ -37,6 +39,7 @@ const actionsMap = {
   [UserType.CONSUMER]: {
     [Actions.SEND_REQUEST]: usersApi.sendFriendRequest,
     [Actions.ACCEPT_REQUEST]: usersApi.acceptFriendRequest,
+    [Actions.REMOVE_REQUEST]: usersApi.declineFriendRequest,
     [Actions.MUTE]: usersApi.muteFriend,
     [Actions.UNMUTE]: usersApi.unmuteFriend,
     [Actions.BLOCK]: usersApi.blockFriend,

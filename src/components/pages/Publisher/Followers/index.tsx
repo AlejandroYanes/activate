@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
@@ -27,8 +27,8 @@ const Followers = () => {
     push(`/app/user/${friend.id}`);
   }, []);
 
-  const Action = useMemo(() => (
-    (user) => <ConsumerActions user={user} queryKey={queryKey} />
+  const action = useCallback(({ user }) => (
+    <ConsumerActions user={user} queryKey={queryKey} />
   ), [publisherId]);
 
   return (
@@ -37,9 +37,9 @@ const Followers = () => {
         loading={isLoading}
         errored={!!error}
         errorMessage="We couldn't load the publishers list."
-        users={response?.data}
+        users={response?.data.results}
         onClick={goToProfile}
-        userActions={Action}
+        userActions={action}
       />
     </UsersCard>
   );

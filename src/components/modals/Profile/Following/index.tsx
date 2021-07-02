@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
@@ -6,7 +6,7 @@ import { UserModel } from 'models/user';
 import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
 import UsersList from 'components/experience/UsersList';
-import { ConsumerActions } from '../../../experience/UserActions';
+import { ConsumerActions } from 'components/experience/UserActions';
 
 const Following: FunctionComponent = () => {
   const { push } = useHistory();
@@ -20,8 +20,8 @@ const Following: FunctionComponent = () => {
     push(Modals.PUBLISHER, { id: publisher.id });
   }, []);
 
-  const action = useMemo(() => (
-    (user) => <ConsumerActions user={user} queryKey={QueryKey.FETCH_MY_PUBLISHERS} />
+  const action = useCallback(({ user }) => (
+    <ConsumerActions user={user} queryKey={QueryKey.FETCH_MY_PUBLISHERS} />
   ), []);
 
   return (
@@ -29,7 +29,7 @@ const Following: FunctionComponent = () => {
       loading={isLoading}
       errored={!!error}
       errorMessage="We couldn't load the publishers you are currently following."
-      users={response?.data}
+      users={response?.data.results}
       onClick={handleClick}
       userActions={action}
     />
