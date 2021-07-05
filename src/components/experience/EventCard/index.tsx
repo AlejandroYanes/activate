@@ -20,12 +20,12 @@ export { EventSkeleton };
 interface Props {
   event: EventModel;
   hideAuthor?: boolean;
-  hideFooter?: boolean;
+  readonly?: boolean;
 }
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { event, hideAuthor, hideFooter } = props;
+  const { event, hideAuthor, readonly } = props;
   const {
     state: {
       isBooked,
@@ -59,6 +59,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
           address={address}
           author={author}
           hideAuthor={hideAuthor}
+          readonly={readonly}
         />
         <Content>
           <Link to={link}>
@@ -70,10 +71,10 @@ const EventCard: FunctionComponent<Props> = (props) => {
             </Paragraph>
           </RenderIf>
         </Content>
-        <RenderIf condition={!hideFooter}>
-          <Divider />
-          <Footer>
-            <Attendance event={event} />
+        <Divider />
+        <Footer>
+          <Attendance event={event} />
+          <RenderIf condition={!readonly}>
             <Actions>
               <BookmarkButton
                 isBooked={isBooked}
@@ -86,8 +87,8 @@ const EventCard: FunctionComponent<Props> = (props) => {
                 handleBookmark={handleBookmark}
               />
             </Actions>
-          </Footer>
-        </RenderIf>
+          </RenderIf>
+        </Footer>
       </Card>
       <UnfollowModal
         title={name}

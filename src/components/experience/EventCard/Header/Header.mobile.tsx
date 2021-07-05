@@ -12,7 +12,7 @@ import { DateBadge } from './styled/header.mobile';
 const titleStyles: any = { whiteSpace: 'normal' };
 
 const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
-  const { date, address, title, author, hideAuthor } = props;
+  const { date, address, title, author, hideAuthor, readonly } = props;
 
   return (
     <FlexBox>
@@ -37,9 +37,14 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
         </FlexBox>
       </FlexBox>
       <RenderIf condition={!hideAuthor}>
-        <Link to="#publisher">
-          <Avatar src={author.avatar} />
-        </Link>
+        <RenderIf
+          condition={!readonly}
+          fallback={<Avatar src={author.avatar} size="medium" />}
+        >
+          <Link to="#publisher">
+            <Avatar src={author.avatar} size="medium" />
+          </Link>
+        </RenderIf>
       </RenderIf>
     </FlexBox>
   );

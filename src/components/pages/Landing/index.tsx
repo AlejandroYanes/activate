@@ -44,9 +44,9 @@ const LandingPage: FunctionComponent = () => {
         </IllustrationBox>
       </LeftBlock>
       <RightBlock>
-        <EventCard event={events[3] as any} hideAuthor />
-        <EventCard event={events[0] as any} hideAuthor />
-        <EventCard event={events[1] as any} hideAuthor />
+        <EventCard event={events[3] as any} readonly />
+        <EventCard event={events[0] as any} readonly />
+        <EventCard event={events[1] as any} readonly />
       </RightBlock>
     </Content>
   );
