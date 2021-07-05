@@ -15,7 +15,7 @@ enum Tabs {
 }
 
 function eventFactory() {
-  return events.map((event) => <EventCard key={event.id} {...event} />);
+  return events.map((event) => <EventCard key={event.id} event={event as any} />);
 }
 
 const titleByLayoutMap = {

@@ -37,14 +37,14 @@ export const generateParams = (obj) => {
   return '';
 };
 
-export function generateQueryObject(filters, page, pageSize, take) {
+export function generateQueryObject(filters, page, limit, take) {
   const queryParams: any = {};
   if (page !== undefined && page !== null) {
     queryParams.page = page;
   }
 
-  if (pageSize !== undefined && pageSize !== null) {
-    queryParams.pageSize = pageSize;
+  if (limit !== undefined && limit !== null) {
+    queryParams.limit = limit;
   }
 
   if (take !== undefined && take !== null) {
@@ -86,13 +86,13 @@ export function generateQueryObject(filters, page, pageSize, take) {
 
 export interface QueryParams {
   page?: number;
-  pageSize?: number;
+  limit?: number;
   take?: number;
   filters?: { [x: string]: any };
 }
 
-export function generateQueryString({ filters, page, pageSize, take }: QueryParams) {
-  const params = generateQueryObject(filters, page, pageSize, take);
+export function generateQueryString({ filters, page, limit, take }: QueryParams) {
+  const params = generateQueryObject(filters, page, limit, take);
 
   return generateParams(params);
 }

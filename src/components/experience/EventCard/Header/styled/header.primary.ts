@@ -11,6 +11,8 @@ export const DateBadge = styled.div`
   align-items: center;
   padding: 10px;
   border-radius: 6px;
+  height: 60px;
+  width: 46px;
   background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 
   & span:nth-child(1) {
@@ -18,16 +20,5 @@ export const DateBadge = styled.div`
     letter-spacing: 0.2px;
     text-transform: uppercase;
     margin-bottom: 6px;
-  }
-`;
-
-export const Address = styled.div`
-  display: flex;
-  align-items: flex-start;
-  margin-top: 6px;
-
-  & span {
-    margin-left: 4px;
-    line-height: 20px;
   }
 `;

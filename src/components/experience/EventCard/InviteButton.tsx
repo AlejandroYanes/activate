@@ -1,13 +1,19 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { IconButton } from 'components/base-components/Button';
+import { EventModel } from 'models/event';
 import { Modals } from 'components/modals';
+import { IconButton } from 'components/base-components/Button';
 
-const ForwardButton: FunctionComponent = () => {
+interface Props {
+  event: EventModel;
+}
+
+const InviteButton: FunctionComponent<Props> = (props) => {
   const { push } = useHistory();
+  const { event: { id, name } } = props;
 
   const inviteUsers = useCallback(() => {
-    push(Modals.INVITE);
+    push(Modals.INVITE, { event: { id, name } });
   }, []);
 
   return (
@@ -21,4 +27,4 @@ const ForwardButton: FunctionComponent = () => {
   );
 };
 
-export default ForwardButton;
+export default InviteButton;

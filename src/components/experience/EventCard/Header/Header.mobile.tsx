@@ -17,8 +17,8 @@ const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
   return (
     <FlexBox>
       <DateBadge>
-        <span>{getMonthLabel(date).slice(0, 3)}</span>
-        <span>{date.getDate()}</span>
+        <span>{getMonthLabel(new Date(date)).slice(0, 3)}</span>
+        <span>{new Date(date).getDate()}</span>
       </DateBadge>
       <FlexBox
         grow

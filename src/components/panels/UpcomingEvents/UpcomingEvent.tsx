@@ -9,7 +9,7 @@ import { Event } from './styled/event';
 
 interface Props {
   id: string;
-  title: string;
+  name: string;
   address: string;
   date: Date;
 }
@@ -17,14 +17,14 @@ interface Props {
 const avatars = ['user1', 'user2', 'user4'];
 
 const UpcomingEvent: FunctionComponent<Props> = (props) => {
-  const { title, date, address } = props;
+  const { name, date, address } = props;
 
   return (
     <Link to="/app/event-details">
       <Event data-el="upcoming-event">
         {/*<Liner />*/}
         <FlexBox direction="column" padding="8px 4px 8px 14px">
-          <Text>{title}</Text>
+          <Text>{name}</Text>
           <FlexBox align="center" margin="4px 0">
             <SvgIcon height={16} width={16} icon="CALENDAR" />
             <Text size="small" margin="0 0 0 6px">{formatDateTime(date)}</Text>

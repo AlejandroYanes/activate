@@ -4,7 +4,7 @@ import { anyPropsAttrs, getBgdLighterColor, getPositionStyles } from 'helpers';
 const avatarSizes = {
   'x-small': { width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' },
   small: { width: '28px', height: '28px', minWidth: '28px', minHeight: '28px' },
-  medium: { width: '36px', height: '36px', minWidth: '36px', minHeight: '36px' },
+  medium: { width: '40px', height: '40px', minWidth: '40px', minHeight: '40px' },
   large: { width: '64px', height: '64px', minWidth: '64px', minHeight: '64px' },
   'x-large': { width: '86px', height: '86px', minWidth: '86px', minHeight: '86px' },
   'xx-large': { width: '102px', height: '102px', minWidth: '102px', minHeight: '102px' },

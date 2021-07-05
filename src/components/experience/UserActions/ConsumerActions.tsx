@@ -46,7 +46,7 @@ const ConsumerActions: FunctionComponent<Props> = (props) => {
   return (
     <Menu trigger={MenuTrigger}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="bold" ellipsis>{name}</Text>
+        <Text weight="bold" align="center" ellipsis>{name}</Text>
       </FlexBox>
       <RenderIf condition={pending}>
         <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
