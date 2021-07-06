@@ -17,6 +17,7 @@ const spring = {
 
 function matchDays(dateLeft: Date, dateRight: Date) {
   return (
+    !!dateLeft && !!dateRight &&
     dateLeft.getDate() === dateRight.getDate() &&
     dateLeft.getMonth() === dateRight.getMonth()
   );

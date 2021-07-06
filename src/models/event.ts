@@ -1,16 +1,19 @@
-import { UserModel } from './user';
-import { CommentModel } from './comment';
-
 export interface EventModel {
   id: string;
   name: string;
   date: Date;
+  image: string;
   address: string;
   description: string;
-  image: string;
-  category: string;
-  author: UserModel;
-  comments: CommentModel[];
-  going?: boolean;
-  owned?: boolean;
+  author: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
+  relativesFollowers: {
+    id: string;
+    avatar: string;
+  }[];
+  followersCount: number;
+  going: boolean;
 }

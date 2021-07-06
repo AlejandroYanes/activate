@@ -1,97 +1,69 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { formatAmount } from 'helpers';
-import { NotificationType, showNotification } from 'notifications';
+import { EventModel } from 'models/event';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
-import AvatarGroup from 'components/base-components/AvatarGroup';
 import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
 import Header from './Header';
-import ForwardButton from './ForwardButton';
+import InviteButton from './InviteButton';
 import ActionsMenu from './ActionsMenu';
 import BookmarkButton from './BookmarkButton';
 import UnfollowModal from './UnfollowModal';
+import Attendance from './Attendance';
 import { Actions, Card, Content, Divider, Footer } from './styled';
+import useEventState from './state';
+
+import EventSkeleton from './Skeleton';
+export { EventSkeleton };
 
 interface Props {
-  title: string;
-  address: string;
-  date: Date;
-  author: {
-    id: string;
-    avatar: string;
-    name: string;
-  };
-  image: string;
-  description?: string;
-  attendees?: number;
-  isAFollowedEvent?: boolean;
+  event: EventModel;
   hideAuthor?: boolean;
-  hideFooter?: boolean;
+  readonly?: boolean;
 }
-
-const avatars = ['user1', 'user2', 'user3', 'user4'];
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
+  const { event, hideAuthor, readonly } = props;
+  const {
+    state: {
+      isBooked,
+      showUnfollowModal,
+    },
+    actions: {
+      handleBookmark,
+      handleUnfollow,
+      closeModal,
+    },
+  } = useEventState(event);
+
   const {
     date,
-    title,
+    name,
     address,
     author,
     image,
     description,
-    attendees,
-    isAFollowedEvent,
-    hideAuthor,
-    hideFooter,
-  } = props;
-  const [{ isBooked, showUnfollowModal }, setState] = useState({
-    isBooked: isAFollowedEvent,
-    showUnfollowModal: false,
-  });
-
-  const handleBookmark = useCallback(() => {
-    if (isBooked) {
-      setState({
-        isBooked,
-        showUnfollowModal: true,
-      });
-    } else {
-      showNotification({
-        id: 'following-event',
-        type: NotificationType.SUCCESS,
-        title: 'Congrats',
-        message: `You are now following the event: ${title}`,
-      });
-      setState({ isBooked: true, showUnfollowModal: false });
-    }
-  }, [isBooked]);
-
-  const handleUnfollow = useCallback(() => {
-    setState({ isBooked: false, showUnfollowModal: false });
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setState({ isBooked: true, showUnfollowModal: false });
-  }, []);
+    going,
+  } = event;
 
   const link = layout !== Layout.MOBILE ? '/app/event-details' : '#event-details';
 
   return (
     <>
-      <Card isBooked={isBooked} layout={layout}>
+      <Card isBooked={isBooked}>
         <Header
           date={date}
-          title={title}
+          title={name}
           address={address}
           author={author}
           hideAuthor={hideAuthor}
+          readonly={readonly}
         />
         <Content>
           <Link to={link}>
-            <EventImage src={image} alt={title} />
+            <EventImage src={image} alt={name} />
           </Link>
           <RenderIf condition={!!description}>
             <Paragraph mT>
@@ -99,27 +71,27 @@ const EventCard: FunctionComponent<Props> = (props) => {
             </Paragraph>
           </RenderIf>
         </Content>
-        <RenderIf condition={!hideFooter}>
-          <Divider />
-          <Footer>
-            <AvatarGroup
-              icons={avatars}
-              label={formatAmount(attendees)}
-              size="small"
-            />
+        <Divider />
+        <Footer>
+          <Attendance event={event} />
+          <RenderIf condition={!readonly}>
             <Actions>
               <BookmarkButton
                 isBooked={isBooked}
                 onClick={handleBookmark}
               />
-              <ForwardButton />
-              <ActionsMenu author={author.name} />
+              <InviteButton event={event} />
+              <ActionsMenu
+                event={name}
+                going={going}
+                handleBookmark={handleBookmark}
+              />
             </Actions>
-          </Footer>
-        </RenderIf>
+          </RenderIf>
+        </Footer>
       </Card>
       <UnfollowModal
-        title={title}
+        title={name}
         isVisible={showUnfollowModal}
         onAccept={handleUnfollow}
         onClose={closeModal}
@@ -129,7 +101,6 @@ const EventCard: FunctionComponent<Props> = (props) => {
 };
 
 EventCard.defaultProps = {
-  isAFollowedEvent: false,
   hideAuthor: false,
 };
 

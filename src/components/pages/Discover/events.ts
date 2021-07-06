@@ -1,19 +1,22 @@
 import faker from 'faker';
 import virtualTourImg from 'assets/images/virtual-tour.jpeg';
 import pqMontanoImg from 'assets/images/pq_montano.jpg';
+import { EventModel } from 'models/event';
 import { images } from './images';
 
-const defaultEvent = {
+const defaultEvent: EventModel = {
   id: faker.random.uuid(),
   date: new Date(2020, 1, 19),
-  title: 'Free Music Workshop - February 2020',
+  name: 'Free Music Workshop - February 2020',
   address: 'St. Joseph\'s Hospice',
   author: {
     id: faker.random.uuid(),
     avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
     name: faker.company.companyName(),
   },
-  attendees: faker.random.number(),
+  followersCount: faker.random.number(),
+  relativesFollowers: [],
+  going: faker.random.boolean(),
   image: virtualTourImg,
   description: `
   Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -23,17 +26,19 @@ const defaultEvent = {
   `,
 };
 
-const defaultEvent2 = {
+const defaultEvent2: EventModel = {
   id: faker.random.uuid(),
   date: new Date(2020, 3, 7),
-  title: 'Presentacion del album: En la mesa del bar',
+  name: 'Presentacion del album: En la mesa del bar',
   address: 'Arcos de Belen, calle Acosta e/ Compostela y Picota',
   author: {
     id: faker.random.uuid(),
     avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
     name: faker.company.companyName(),
   },
-  attendees: faker.random.number(),
+  followersCount: faker.random.number(),
+  relativesFollowers: [],
+  going: faker.random.boolean(),
   image: pqMontanoImg,
   description: `
   Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -43,10 +48,10 @@ const defaultEvent2 = {
   `,
 };
 
-const fakeEvents = new Array(4).fill('1').map((_item, index) => ({
+const fakeEvents: EventModel[] = new Array(4).fill('1').map((_item, index) => ({
   id: faker.random.uuid(),
   date: faker.date.recent(7),
-  title: faker.lorem.words(7),
+  name: faker.lorem.words(7),
   address: `${faker.address.streetAddress()}, ${faker.address.city()}`,
   author: {
     id: faker.random.uuid(),
@@ -54,7 +59,9 @@ const fakeEvents = new Array(4).fill('1').map((_item, index) => ({
     name: faker.company.companyName(),
   },
   image: images[index],
-  attendees: faker.random.number(),
+  followersCount: faker.random.number(),
+  relativesFollowers: [],
+  going: faker.random.boolean(),
   description: undefined,
 }));
 

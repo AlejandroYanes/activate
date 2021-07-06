@@ -12,13 +12,13 @@ import { HeaderProps } from './index';
 const linkStyles = { width: '100%' };
 
 const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
-  const { date, title, address, author, hideAuthor } = props;
+  const { date, title, address, author, hideAuthor, readonly } = props;
 
   return (
     <FlexBox>
       <DateBadge>
-        <span>{getMonthLabel(date).slice(0, 3)}</span>
-        <span>{date.getDate()}</span>
+        <span>{getMonthLabel(new Date(date)).slice(0, 3)}</span>
+        <span>{new Date(date).getDate()}</span>
       </DateBadge>
       <FlexBox grow height="100%" direction="column" padding="0 20px 0 10px" ellipsis>
         <Link to="/event-details" style={linkStyles}>
@@ -30,9 +30,14 @@ const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
         </FlexBox>
       </FlexBox>
       <RenderIf condition={!hideAuthor}>
-        <Link to="#publisher">
-          <Avatar src={author.avatar} />
-        </Link>
+        <RenderIf
+          condition={!readonly}
+          fallback={<Avatar src={author.avatar} size="medium" />}
+        >
+          <Link to="#publisher">
+            <Avatar src={author.avatar} size="medium" />
+          </Link>
+        </RenderIf>
       </RenderIf>
     </FlexBox>
   );

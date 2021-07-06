@@ -11,8 +11,8 @@ interface Props {
 
 const footerSpacingMap = {
   [Layout.MOBILE]: '0 6px 24px',
-  [Layout.TABLET]: '24px 16px 0',
-  [Layout.DESKTOP]: '24px 16px 0',
+  [Layout.TABLET]: '16px 16px 6px',
+  [Layout.DESKTOP]: '16px 16px 6px',
 };
 
 const ActionsRenderer = ({ actions, footerSpacing }) => {

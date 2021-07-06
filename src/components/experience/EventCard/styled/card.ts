@@ -27,7 +27,7 @@ export const Card = styled.article.attrs((props: any) => props)`
   width: 100%;
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  ${({ layout }) => stylesMap[layout]};
+  ${({  theme: { layout } }) => stylesMap[layout]};
   border: 1px solid ${getBorderColor};
 
   &:last-child {

@@ -5,8 +5,9 @@ import { events } from '../Discover/events';
 const EventsResults: FunctionComponent = () => {
   return (
     <>
-      <EventCard {...events[0]} />
-      <EventCard {...events[3]} />
+      <EventCard event={events[3] as any} />
+      <EventCard event={events[0] as any} />
+      <EventCard event={events[1] as any} />
     </>
   );
 };

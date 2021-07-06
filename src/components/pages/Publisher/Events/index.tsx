@@ -4,9 +4,9 @@ import { events } from '../../Discover/events';
 
 const Events = () => (
   <>
-    <EventCard {...events[3]} />
-    <EventCard {...events[0]} />
-    <EventCard {...events[1]} />
+    <EventCard event={events[3] as any} />
+    <EventCard event={events[0] as any} />
+    <EventCard event={events[1] as any} />
   </>
 );
 

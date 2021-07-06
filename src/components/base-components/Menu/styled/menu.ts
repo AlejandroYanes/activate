@@ -23,8 +23,8 @@ export const MenuContainer = styled.div`
 `;
 
 const menuListStyleMap = {
-  [Layout.DESKTOP]: 'min-width: 400px;',
-  [Layout.TABLET]: 'min-width: 400px;',
+  [Layout.DESKTOP]: 'width: 400px;',
+  [Layout.TABLET]: 'width: 400px;',
   [Layout.MOBILE]: 'min-width: 90vw',
 };
 

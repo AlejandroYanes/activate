@@ -1,27 +1,29 @@
 import { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { PositionProps } from 'helpers';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
+import { Text } from 'components/base-components/Typography';
+import FlexBox from 'components/base-components/FlexBox';
 
-interface Props extends PositionProps {
-  author: string;
+interface Props {
+  event: string;
+  going: boolean;
+  handleBookmark: () => void;
 }
 
 const emptyAction = () => undefined;
 
-const menuTrigger = ({ toggleMenu, ...rest }) => (
+const MenuTrigger = ({ toggleMenu }) => (
   <IconButton
     icon="MORE_VERT"
-    onClick={toggleMenu}
     color="background"
     size="large"
-    {...rest}
+    onClick={toggleMenu}
   />
 );
 
 const ActionsMenu: FunctionComponent<Props> = (props) => {
-  const { author, ...positionProps } = props;
+  const { event, going, handleBookmark } = props;
   const { push } = useHistory();
 
   const openDetails = () => {
@@ -29,10 +31,23 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
   };
 
   return (
-    <Menu trigger={menuTrigger} align="end" {...positionProps}>
+    <Menu trigger={MenuTrigger}>
+      <FlexBox
+        direction="column"
+        justify="center"
+        align="center"
+        padding="0 20px"
+        height={48}
+      >
+        <Text weight="bold" align="center" ellipsis>{event}</Text>
+      </FlexBox>
       <MenuItem label="Open details" onClick={openDetails} />
       <MenuItem label="Copy Link" onClick={emptyAction} />
-      <MenuItem label={`Unfollow ${author}`} danger onClick={emptyAction} />
+      <MenuItem
+        label={going ? 'Unfollow' : 'Follow'}
+        danger={going}
+        onClick={handleBookmark}
+      />
       <MenuItem label="Report this event" danger onClick={emptyAction} />
     </Menu>
   );
