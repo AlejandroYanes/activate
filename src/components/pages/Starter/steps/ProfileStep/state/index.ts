@@ -14,7 +14,6 @@ export * from './types';
 const initialState = {
   profile: {
     name: '',
-    lastName: '',
     userName: '',
     avatar: '',
   } as ProfileDto,
