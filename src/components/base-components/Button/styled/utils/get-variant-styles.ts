@@ -7,17 +7,17 @@ import {
 
 export default function getVariantStyles(props) {
   const { theme, ...buttonProps } = props;
-  const { variant, color } = buttonProps;
+  const { variant, color, disabled } = buttonProps;
   const { colors } = theme;
 
   switch (variant) {
     case 'text':
-      return getTextVariantStyles(colors, color);
+      return getTextVariantStyles(colors, color, disabled);
     case 'outline':
-      return getOutlineVariantStyles(colors, color);
+      return getOutlineVariantStyles(colors, color, disabled);
     case 'flat':
-      return getFlatVariantStyles(colors, color);
+      return getFlatVariantStyles(colors, color, disabled);
     case 'fill':
-      return getFillVariantStyles(colors, color);
+      return getFillVariantStyles(colors, color, disabled);
   }
 }

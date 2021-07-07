@@ -19,6 +19,7 @@ interface Props extends PositionProps {
   size?: 'small' | 'medium' | 'large' | 'x-large';
   onClick: (event) => void;
   toggle?: boolean;
+  disabled?: boolean;
 }
 
 const IconButton: FunctionComponent<Props> = (props) => {

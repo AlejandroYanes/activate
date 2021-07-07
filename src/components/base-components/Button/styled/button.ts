@@ -27,7 +27,8 @@ const getSize = (props: ButtonProps) => {
 
 const getAlignment = (props: ButtonProps) => {
   const { align } = props;
-  return align === 'center' ? align : `flex-${align}`;
+  const alignment = align === 'center' ? align : `flex-${align}`;
+  return `justify-content: ${alignment}`;
 };
 
 export const Button = styled.button.attrs(anyPropsAttrs)`
@@ -40,13 +41,13 @@ export const Button = styled.button.attrs(anyPropsAttrs)`
   letter-spacing: 1px;
   display: flex;
   align-items: center;
-  justify-content: ${getAlignment};
   padding: 0 18px;
   cursor: pointer;
   flex-shrink: 0;
   position: relative;
   transition: all linear 150ms;
   ${getSize};
+  ${getAlignment};
   ${getVariantStyles};
   ${getPositionStyles};
 

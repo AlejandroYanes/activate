@@ -19,13 +19,9 @@ type BasicScheme = {
   ERROR: string;
 };
 
+type VariationLabels = Exclude<keyof (typeof Variations), 'BASE'>;
+
 type ExtendedScheme = {
-  [Property in keyof BasicScheme as `${Property}_HIGHLIGHT`]: string;
-};
-
-type VariationLabels = Exclude<keyof (typeof Variations), 'BASE' | 'HIGHLIGHT'>;
-
-type VariationExtendedScheme = {
   [Property in keyof BasicScheme as `${Property}_${VariationLabels}`]: string;
 }
 
@@ -51,7 +47,6 @@ type FixedColorScheme  = {
 export type ColorScheme = (
   BasicScheme &
   ExtendedScheme &
-  VariationExtendedScheme &
   LightColorScheme &
   FixedColorScheme
 );

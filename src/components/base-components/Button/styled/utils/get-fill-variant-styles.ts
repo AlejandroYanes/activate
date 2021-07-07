@@ -1,7 +1,26 @@
 import { css } from 'styled-components';
 import { ColorScheme } from 'styles/colors';
+import { getFontSecColor, getFontShadeColor } from 'helpers';
 
-export default function getFillVariantStyles(colors: ColorScheme, color: string) {
+export default function getFillVariantStyles(
+  colors: ColorScheme,
+  color: string,
+  disabled?: boolean,
+) {
+
+  if (disabled) {
+    return css`
+      pointer-events: none;
+      cursor: default;
+      color: ${getFontSecColor};
+      background-color: ${getFontShadeColor};
+
+      & > svg > path {
+        fill: ${getFontShadeColor};
+      }
+    `;
+  }
+
   const fontColor = (
     color === 'background' ? colors.FONT : colors.BACKGROUND_LIGHTER
   );
