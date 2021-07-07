@@ -26,7 +26,9 @@ const Content: FunctionComponent<Props> = (props) => {
   } = props;
 
   if (label) {
-    const spinnerColors = variant !== 'fill' ? color : 'white';
+    const spinnerColors = variant !== 'fill'
+      ? `${color.toUpperCase()}_FONT`
+      : 'BACKGROUND_LIGHTER';
 
     return (
       <>

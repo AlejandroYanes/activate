@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 import { ColorScheme, Variations } from 'styles/colors';
-import { getColorVariation } from 'helpers';
+import { getColorVariation, getFontShadeColor } from 'helpers';
 import getBtnFontColor from './get-btn-font-color';
 import getBtnFontHoverColor from './get-btn-font-hover-color';
 
@@ -20,8 +20,24 @@ const getBgHoverColor = (colors: ColorScheme, color: string) => {
 export default function getOutlineVariantStyles(
   colors: ColorScheme,
   color: string,
+  disabled: boolean,
   useBaseColor = false,
 ) {
+
+  if (disabled) {
+    return css`
+      pointer-events: none;
+      cursor: default;
+      color: ${getFontShadeColor};
+      background-color: transparent;
+      border: 1px solid ${getFontShadeColor};
+
+      & > svg > path {
+        fill: ${getFontShadeColor};
+      }
+    `;
+  }
+
   const fontColor = getBtnFontColor(colors, color, useBaseColor);
   const borderColor = getBtnFontColor(colors, color, useBaseColor);
   const fontHoverColor = getBtnFontHoverColor(colors, color, useBaseColor);
