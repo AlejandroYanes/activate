@@ -15,13 +15,14 @@ const termsLabel = (
       to="/terms"
       variant="text"
       color="accent"
-    >Terms of Service
+    >
+      Terms of Service
     </LinkButton>
   </Text>
 );
 
 const PrimaryActionBox: FunctionComponent<ActionBoxProps> = (props) => {
-  const { signAction, onClick } = props;
+  const { signAction, callingApi, onClick } = props;
 
   return (
     <FlexBox align="center" justify="space-between" padding="20px 0 0 20px">
@@ -38,6 +39,7 @@ const PrimaryActionBox: FunctionComponent<ActionBoxProps> = (props) => {
       <Button
         onClick={onClick}
         label={signAction}
+        loading={callingApi}
         variant="fill"
         margin="0 0 0 auto"
         padding="0 20px"
