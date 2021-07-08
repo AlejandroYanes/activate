@@ -7,6 +7,7 @@ import MobileActionBox from './ActionBox.mobile';
 
 export interface ActionBoxProps {
   signAction: SignAction;
+  callingApi: boolean;
   onClick: () => void;
 }
 

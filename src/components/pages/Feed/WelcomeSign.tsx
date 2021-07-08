@@ -7,10 +7,13 @@ import Avatar from 'components/base-components/Avatar';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 
 const PrimarySign = ({ name, avatar }) => (
-  <FlexBox justify="space-between" align="center" mT mB>
-    <FlexBox direction="column">
+  <FlexBox justify="space-between" align="flex-start" mT mB>
+    <FlexBox direction="column" padding="0 48px 0 0">
+      <Title level={1} color="brand" weight="bold" padding="0 0 8px 0">
+        👋 Hello,
+      </Title>
       <Title level={1} color="brand" weight="bold" padding="0 0 12px 0">
-        Hello, {name} 👋
+        {name}
       </Title>
       <Title level={2} color="brand" padding="0">
         Here are your upcoming events
@@ -22,14 +25,14 @@ const PrimarySign = ({ name, avatar }) => (
 
 const MobileSign = ({ name }) => (
   <FlexBox direction="column" mT mB>
-    <Title level={1} color="brand" weight="bold" padding="0 0 6px 0">
-      Hello
+    <Title level={1} color="brand" weight="bold" padding="0 0 8px 0">
+      👋 Hello,
     </Title>
     <Title level={1} color="brand" weight="bold" padding="0 0 12px 0">
-      {name} 👋
+      {name}
     </Title>
-    <Title level={2} color="brand" padding="0">
-      Here are your upcoming events
+    <Title level={2} color="secondary" padding="0">
+      Your upcoming events
     </Title>
   </FlexBox>
 );

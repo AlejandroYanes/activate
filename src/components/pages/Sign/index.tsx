@@ -20,6 +20,7 @@ const SignPage: FunctionComponent = () => {
     state: {
       signAction,
       credentials,
+      callingApi,
       errors,
     },
     actions: {
@@ -64,7 +65,11 @@ const SignPage: FunctionComponent = () => {
           <RenderIf condition={!!errors.signError}>
             <Text color="error" padding="8px 0 8px 20px">{errors.signError}</Text>
           </RenderIf>
-          <ActionBox signAction={signAction} onClick={authenticate} />
+          <ActionBox
+            signAction={signAction}
+            callingApi={callingApi}
+            onClick={authenticate}
+          />
         </Form>
         <OAuthBox layout={layout}>
           <Text color="secondary">
