@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { formatDate } from 'helpers';
+import { getRelativeTime } from 'helpers';
 import Avatar from 'components/base-components/Avatar';
 import { Paragraph, Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
@@ -19,8 +19,8 @@ const emptyAction = () => undefined;
 const menuTrigger = ({ toggleMenu }) => (
   <IconButton
     onClick={toggleMenu}
-    icon="MORE_VERT"
     color="background"
+    icon="MORE_VERT"
     variant="flat"
   />
 );
@@ -40,7 +40,7 @@ const Comment: FunctionComponent<Props> = (props) => {
         <Avatar src={img} size="medium" />
         <Details>
           <Text>{name}</Text>
-          <Text size="small">{formatDate(date)}</Text>
+          <Text size="small">{getRelativeTime(date)}</Text>
         </Details>
         <Menu trigger={menuTrigger} align="end">
           <MenuItem label="Go to the user's profile" onClick={emptyAction} />

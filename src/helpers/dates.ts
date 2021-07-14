@@ -37,14 +37,6 @@ export function formatDateTime(date: Date): string {
   return date ? dateTimeFormatter.format(date) : undefined;
 }
 
-const dayFormatter = new Intl.DateTimeFormat(undefined, {
-  weekday: 'long',
-});
-
-export function getDayOfTheWeek(date: Date): string {
-  return date ? dayFormatter.format(date) : undefined;
-}
-
 const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
   day: 'numeric',
   month: 'short',
@@ -58,25 +50,19 @@ const monthFormatter = new Intl.DateTimeFormat('default', {
   month: 'long',
 });
 
-export function getMonthLabel(date: Date): string {
+export function getMonthName(date: Date): string {
   return date ? monthFormatter.format(date) : undefined;
 }
 
-const yearFormatter = new Intl.DateTimeFormat('default', {
-  year: 'numeric',
-});
+export function getMonthLabel(date: Date) {
+  const today = new Date();
 
-export function getYear(date: Date): string {
-  return date ? yearFormatter.format(date) : undefined;
-}
+  if (date.getFullYear() === today.getFullYear()) {
+    return getMonthName(date).slice(0, 3);
+  }
 
-const monthYearFormatter = new Intl.DateTimeFormat('default', {
-  month: 'long',
-  year: 'numeric',
-});
-
-export function getMonthYear(date: Date): string {
-  return date ? monthYearFormatter.format(date) : undefined;
+  const year = date.getFullYear().toString(10).slice(-2);
+  return `${getMonthName(date).slice(0, 3)}/${year}`;
 }
 
 function resolveTimeUnit(date: Date, baseDate: Date) {
@@ -107,8 +93,8 @@ const relativeTimeFormatter = new Intl.RelativeTimeFormat('default', {
   numeric: "auto"
 });
 
-export function getRelativeTime(baseDate: Date, date:Date) {
-  const { unit, diff } = resolveTimeUnit(baseDate, date);
+export function getRelativeTime(date:Date, baseDate?: Date) {
+  const { unit, diff } = resolveTimeUnit(baseDate || new Date(), date);
 
   if (unit === 'equal') {
     return 'Right now';

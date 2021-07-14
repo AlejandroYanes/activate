@@ -3,8 +3,8 @@ import { scrollThumbWidth } from 'styles/variables';
 
 const mobileStyles = css`
   body {
-    background-color: ${({ theme }: any) => theme.colors.BACKGROUND};
-    color: ${({ theme }: any) => theme.colors.FONT};
+    background-color: ${({ theme }) => theme.colors.BACKGROUND};
+    color: ${({ theme }) => theme.colors.FONT};
   }
 
   *::selection, input::selection, textarea::selection {

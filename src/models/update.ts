@@ -11,6 +11,7 @@ export enum UpdateType {
   FRIEND_REQUEST = 5,
   FRIEND_REQUEST_ACCEPTED = 6,
   NEW_EVENT_PARTICIPANT = 7,
+  NEW_EVENT = 8,
 }
 
 export interface UpdateModel {

@@ -105,6 +105,7 @@ export const Mark = styled.div.attrs(anyPropsAttrs)`
 
   & > * {
     transform: rotate(-45deg);
-    margin-right: 10px;
+    margin-right: 14px;
+    margin-top: 28px;
   }
 `;

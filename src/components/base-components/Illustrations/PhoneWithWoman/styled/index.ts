@@ -3,9 +3,9 @@ import {
   getAccentColor,
   getBgdLightColor,
   getBrandColor,
-  getErrorColor,
+  getBrandHlColor,
   getInfoColor,
-  getPositionStyles
+  getPositionStyles,
 } from 'helpers';
 
 export const Wrapper = styled.div`
@@ -19,13 +19,17 @@ export const Wrapper = styled.div`
     stroke-width:4.78px;
   }
   .cls-2{stroke:${getInfoColor};}
-  .cls-3{fill:${getBrandColor};}
-  .cls-4{stroke:${getAccentColor};}
-  .cls-5{fill:${getErrorColor};}
+  // hair
+  .cls-3{fill:${getAccentColor};}
+  // body and phone lines
+  .cls-4{stroke:${getBrandColor};}
+  // woman body
+  .cls-5{fill:${getBrandHlColor};}
   .cls-6{
     fill:${getInfoColor};
     fill-rule:evenodd;
   }
   .cls-7{fill:#fff;}
-  .cls-8{fill:${getAccentColor};}
+  //eye
+  .cls-8{fill:${getBrandColor};}
 `;

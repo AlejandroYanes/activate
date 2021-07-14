@@ -9,6 +9,8 @@ import CommentResponded from './CommentResponded';
 import NewFollower from './NewFollower';
 import FriendRequest from './FriendRequest';
 import FriendRequestAccepted from './FriendRequestAccepted';
+import NewEvent from './NewEvent';
+import NewParticipant from './NewParticipant';
 
 export interface MessageProps {
   type: UpdateType;
@@ -24,6 +26,8 @@ const messages = {
   [UpdateType.NEW_FOLLOWER]: NewFollower,
   [UpdateType.FRIEND_REQUEST]: FriendRequest,
   [UpdateType.FRIEND_REQUEST_ACCEPTED]: FriendRequestAccepted,
+  [UpdateType.NEW_EVENT]: NewEvent,
+  [UpdateType.NEW_EVENT_PARTICIPANT]: NewParticipant,
 };
 
 const Message: FunctionComponent<MessageProps> = (props) => {

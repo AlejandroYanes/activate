@@ -12,8 +12,6 @@ interface Props {
   data: UpdateModel;
 }
 
-const today = new Date();
-
 const Update: FunctionComponent<Props> = (props) => {
   const { data: { sentOn, type, creator, event, seen } } = props;
 
@@ -30,7 +28,7 @@ const Update: FunctionComponent<Props> = (props) => {
           color="secondary"
           margin="6px 0 0 0"
         >
-          {getRelativeTime(today, new Date(sentOn))}
+          {getRelativeTime(new Date(sentOn))}
         </Text>
       </FlexBox>
     </StyledNotification>

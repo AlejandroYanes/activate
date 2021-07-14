@@ -2,8 +2,6 @@ import { Skeleton } from './styled';
 
 const EventSkeleton = () => (
   <Skeleton
-    width={680}
-    height={600}
     viewBox="0 0 680 600"
   >
     <rect

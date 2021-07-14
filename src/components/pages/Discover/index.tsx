@@ -1,83 +1,44 @@
-import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { IconButton } from 'components/base-components/Button';
-import EventCard from 'components/experience/EventCard';
+import React, { FunctionComponent, useMemo } from 'react';
+import { useQuery } from 'react-query';
+import eventsApi from 'api/events';
+import { QueryKey } from 'components/providers/Query';
 import Page from 'components/base-components/Page';
-import { events } from './events';
+import RenderIf from 'components/base-components/RenderIf';
+import EventCard from 'components/experience/EventCard';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import PageTitle from './PageTitle';
 
-enum Tabs {
-  FOR_YOU = 'FOR_YOU',
-  SUGGESTIONS = 'SUGGESTIONS',
-  TRENDING = 'TRENDING',
-}
-
-function eventFactory() {
-  return events.map((event) => <EventCard key={event.id} event={event as any} />);
-}
-
-const titleByLayoutMap = {
-  [Layout.DESKTOP]: 'Discover new events',
-  [Layout.TABLET]: 'Discover new events',
-  [Layout.MOBILE]: 'Discover',
-};
+const errorScreen = (
+  <NoConnectionScreen
+    message="We couldn't load new events for you."
+  />
+);
 
 const DiscoverPage: FunctionComponent = () => {
-  const layout = useAppLayout();
-  const { addSection, removeSection, setActiveSection } = usePanelActions();
-  const { push } = useHistory();
 
-  const [activeTab, setActiveTab] = useState(Tabs.FOR_YOU);
+  const {
+    isLoading,
+    data: response,
+    error,
+  } = useQuery(QueryKey.DISCOVER_EVENTS, () => eventsApi.discover());
 
-  useEffect(() => {
-    if (layout !== Layout.MOBILE) {
-      addSection(AuxPanelSection.FILTER);
-      setActiveSection(AuxPanelSection.FILTER);
-
-      return () => {
-        removeSection(AuxPanelSection.FILTER);
-      };
+  const eventCards = useMemo(() => {
+    if (response) {
+      return response.data.map((event) => (
+        <EventCard key={event.id} event={event} />
+      ));
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const eventCards = useMemo(eventFactory, []);
-
-  const rightAction = useMemo(() => {
-    if (layout !== Layout.DESKTOP) {
-      const sizeProps: any = layout === Layout.TABLET
-        ? { width: 22, height: 22, size: 'large' }
-        : {size: 'large', margin: '0 8px 0 0'};
-
-      return (
-        <IconButton
-          onClick={() => push('#filters')}
-          icon="FILTER"
-          color="brand"
-          variant="flat"
-          {...sizeProps}
-        />
-      );
-    }
-
     return null;
-  }, [layout]);
+  }, [response]);
 
   return (
-    <Page title={titleByLayoutMap[layout]} actions={rightAction}>
-      <Tabset
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        fullWidth={layout !== Layout.MOBILE}
-        mB
-      >
-        <Tab name={Tabs.FOR_YOU} label="For you" icon="INBOX" />
-        <Tab name={Tabs.SUGGESTIONS} label="Suggestions" icon="LIGHT_BULB" />
-        <Tab name={Tabs.TRENDING} label="Trending" icon="FIRE" />
-      </Tabset>
-      {eventCards}
+    <Page>
+      <PageTitle />
+      <RenderIf condition={!error} fallback={errorScreen}>
+        <RenderIf condition={!isLoading} fallback={<LoadingScreen />}>
+          {eventCards}
+        </RenderIf>
+      </RenderIf>
     </Page>
   );
 };
