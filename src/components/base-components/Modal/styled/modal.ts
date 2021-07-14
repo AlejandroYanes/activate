@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 const sizeMap = {
+  auto: 'auto',
   small: '40vw',
   medium: '60vw',
   large: '90vw',
@@ -16,6 +17,7 @@ const commonStyles = css`
 `;
 
 const styleMap = {
+  auto: commonStyles,
   small: commonStyles,
   medium: commonStyles,
   large: commonStyles,

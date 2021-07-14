@@ -13,7 +13,7 @@ const BookmarkButton: FunctionComponent<Props> = (props) => {
     <IconButton
       size="large"
       variant="flat"
-      color="accent"
+      color={isBooked ? 'accent' : 'background'}
       icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
       onClick={onClick}
     />

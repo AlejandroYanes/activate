@@ -13,11 +13,14 @@ const linkStyles = { width: '100%' };
 
 const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
   const { date, title, address, author, hideAuthor, readonly } = props;
+  const isForThisYear = new Date(date).getFullYear() === new Date().getFullYear();
 
   return (
     <FlexBox>
       <DateBadge>
-        <span>{getMonthLabel(new Date(date)).slice(0, 3)}</span>
+        <span data-short-date={isForThisYear}>
+          {getMonthLabel(new Date(date))}
+        </span>
         <span>{new Date(date).getDate()}</span>
       </DateBadge>
       <FlexBox grow height="100%" direction="column" padding="0 20px 0 10px" ellipsis>
@@ -26,7 +29,7 @@ const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
         </Link>
         <FlexBox align="flex-start" margin="10px 0 0 0" width="100%">
           <SvgIcon icon="MAP_PIN" color="FONT" />
-          <Text padding="2px 0 0 6px" ellipsis>{address}</Text>
+          <Text padding="4px 0 0 6px" ellipsis>{address}</Text>
         </FlexBox>
       </FlexBox>
       <RenderIf condition={!hideAuthor}>

@@ -46,7 +46,7 @@ const PickItem: FunctionComponent<Props> = (props) => {
           <Mark color={color || parentColor} data-el="pick_item-mark">
             <SvgIcon
               icon="CHECK_MARK"
-              color="WHITE"
+              color="BACKGROUND"
             />
           </Mark>
         </RenderIf>

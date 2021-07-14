@@ -6,7 +6,7 @@ import { images } from './images';
 
 const defaultEvent: EventModel = {
   id: faker.random.uuid(),
-  date: new Date(2020, 1, 19),
+  date: new Date(2021, 1, 19),
   name: 'Free Music Workshop - February 2020',
   address: 'St. Joseph\'s Hospice',
   author: {
@@ -28,7 +28,7 @@ const defaultEvent: EventModel = {
 
 const defaultEvent2: EventModel = {
   id: faker.random.uuid(),
-  date: new Date(2020, 3, 7),
+  date: new Date(2021, 3, 7),
   name: 'Presentacion del album: En la mesa del bar',
   address: 'Arcos de Belen, calle Acosta e/ Compostela y Picota',
   author: {

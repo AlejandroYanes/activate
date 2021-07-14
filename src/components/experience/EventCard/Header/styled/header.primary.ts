@@ -21,4 +21,9 @@ export const DateBadge = styled.div`
     text-transform: uppercase;
     margin-bottom: 6px;
   }
+
+  & span[data-short-date="false"] {
+    font-size: 10px;
+    margin-bottom: 8px;
+  }
 `;

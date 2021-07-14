@@ -18,4 +18,9 @@ export const DateBadge = styled.div`
   & span:nth-child(2) {
     font-size: 14px;
   }
+
+  & span[data-short-date="false"] {
+    font-size: 8px;
+    margin-bottom: 8px;
+  }
 `;

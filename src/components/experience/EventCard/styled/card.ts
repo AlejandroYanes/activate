@@ -45,6 +45,6 @@ export const Divider = styled.div`
   height: 1px;
   width: 100%;
   border-radius: 2px;
-  margin: 16px 0;
+  margin: 8px 0;
   background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
 `;

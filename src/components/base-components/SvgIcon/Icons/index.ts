@@ -104,6 +104,7 @@ import CalendarSlashIcon from './CalendarSlash';
 import UserRemoveIcon from './UserRemove';
 import LockAccessIcon from './LockAccess';
 import LockCircleIcon from './LockCircle';
+import BanIcon from './Ban';
 
 export const icons = {
   null: () => null,
@@ -213,6 +214,7 @@ export const icons = {
   USER_REMOVE: UserRemoveIcon,
   LOCK_ACCESS: LockAccessIcon,
   LOCK_CIRCLE: LockCircleIcon,
+  BAN: BanIcon,
 };
 
 export type Icons = keyof (typeof icons);

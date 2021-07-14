@@ -13,11 +13,14 @@ const titleStyles: any = { whiteSpace: 'normal' };
 
 const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
   const { date, address, title, author, hideAuthor, readonly } = props;
+  const isForThisYear = new Date(date).getFullYear() === new Date().getFullYear();
 
   return (
     <FlexBox>
       <DateBadge>
-        <span>{getMonthLabel(new Date(date)).slice(0, 3)}</span>
+        <span data-short-date={isForThisYear}>
+          {getMonthLabel(new Date(date))}
+        </span>
         <span>{new Date(date).getDate()}</span>
       </DateBadge>
       <FlexBox

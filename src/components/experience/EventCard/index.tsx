@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { EventModel } from 'models/event';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
-import { Paragraph } from 'components/base-components/Typography';
 import EventImage from 'components/experience/EventImage';
 import Header from './Header';
 import InviteButton from './InviteButton';
@@ -15,6 +14,8 @@ import { Actions, Card, Content, Divider, Footer } from './styled';
 import useEventState from './state';
 
 import EventSkeleton from './Skeleton';
+import { Paragraph } from '../../base-components/Typography';
+import { Button } from '../../base-components/Button';
 export { EventSkeleton };
 
 interface Props {
@@ -30,8 +31,10 @@ const EventCard: FunctionComponent<Props> = (props) => {
     state: {
       isBooked,
       showUnfollowModal,
+      showMore,
     },
     actions: {
+      toggleMoreContent,
       handleBookmark,
       handleUnfollow,
       closeModal,
@@ -66,9 +69,17 @@ const EventCard: FunctionComponent<Props> = (props) => {
             <EventImage src={image} alt={name} />
           </Link>
           <RenderIf condition={!!description}>
-            <Paragraph mT>
-              {description}
-            </Paragraph>
+            <Button
+              sm
+              onClick={toggleMoreContent}
+              label={showMore ? 'Show less' : 'Show more'}
+              margin="6px 0 6px auto"
+            />
+            <RenderIf condition={showMore}>
+              <Paragraph mT mB>
+                {description}
+              </Paragraph>
+            </RenderIf>
           </RenderIf>
         </Content>
         <Divider />

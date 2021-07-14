@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
-import { getMonthLabel } from 'helpers';
+import { getMonthName } from 'helpers';
 import { months } from './types';
 import { StyledList as StyledMonths, Item as Month } from './styled/months-years';
 
@@ -20,7 +20,7 @@ const Months: FunctionComponent<Props> = (props) => {
     months.map((m) => (
       <Month
         key={m.getTime()}
-        label={getMonthLabel(m)}
+        label={getMonthName(m)}
         data-month={m.getMonth()}
         isSelected={m.getMonth() === currentDate.getMonth()}
         onClick={handleMonthChange}

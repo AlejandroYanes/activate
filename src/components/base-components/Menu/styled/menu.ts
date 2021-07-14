@@ -25,7 +25,7 @@ export const MenuContainer = styled.div`
 const menuListStyleMap = {
   [Layout.DESKTOP]: 'width: 400px;',
   [Layout.TABLET]: 'width: 400px;',
-  [Layout.MOBILE]: 'min-width: 90vw',
+  [Layout.MOBILE]: 'width: 90vw',
 };
 
 export const MenuList = styled.ul.attrs(anyPropsAttrs)`

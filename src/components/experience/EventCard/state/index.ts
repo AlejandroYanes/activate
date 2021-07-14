@@ -9,14 +9,19 @@ export interface EventState {
 }
 
 export default function useEventState(event: EventModel) {
+  const [showMore, setShowMore] = useState(false);
   const [state, setState] = useState<EventState>({
     isBooked: event.going,
     showUnfollowModal: false,
   });
 
   return {
-    state,
+    state: {
+      ...state,
+      showMore,
+    },
     actions: {
+      toggleMoreContent: useCallback(() => setShowMore(old => !old), []),
       handleBookmark: useCallback(
         handleBookmark(event, state, setState), [state.isBooked],
       ),

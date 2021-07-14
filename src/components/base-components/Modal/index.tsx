@@ -11,7 +11,7 @@ interface Props {
   onClose: () => void;
   actions?: ButtonProps[];
   footer?: ReactNode;
-  size?: 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
+  size?: 'auto' | 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
 }
 
 const Modal: FunctionComponent<Props> = (props) => {

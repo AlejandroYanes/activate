@@ -19,7 +19,6 @@ const InviteButton: FunctionComponent<Props> = (props) => {
   return (
     <IconButton
       size="large"
-      color="info"
       variant="flat"
       icon="FORWARD"
       onClick={inviteUsers}

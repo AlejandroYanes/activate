@@ -4,7 +4,7 @@ import { get, PagedResponse } from './base';
 
 const eventsApi = {
   listMyUpcoming: (date: Date): AxiosPromise<PagedResponse<EventModel>> => {
-    return get('upcoming_events', {
+    return get('events/upcoming', {
       params: {
         filters: {
           date: date.toISOString(),
@@ -13,7 +13,16 @@ const eventsApi = {
     });
   },
   listMyUpcomingDates: (): AxiosPromise<PagedResponse<Date>> => {
-    return get('upcoming_events/dates');
+    return get('events/upcoming/dates');
+  },
+  discover: (date?: Date): AxiosPromise<EventModel[]> => {
+    return get('events/discover', {
+      params: {
+        filters: {
+          date: date?.toISOString(),
+        },
+      },
+    });
   },
   follow: (event: string): AxiosPromise => {
     return get(`event/${event}/follow`);

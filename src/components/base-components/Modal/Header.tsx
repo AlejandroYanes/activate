@@ -7,7 +7,7 @@ import RenderIf from '../RenderIf';
 
 interface Props {
   title?: string | ReactNode;
-  size?: 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
+  size?: 'auto' | 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
   onClose: () => void;
 }
 
@@ -60,6 +60,7 @@ const MobileHeader = ({ title, onClose }) => (
 );
 
 const sizeMap = {
+  auto: PrimaryHeader,
   small: PrimaryHeader,
   medium: PrimaryHeader,
   large: PrimaryHeader,

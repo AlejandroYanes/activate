@@ -8,6 +8,7 @@ interface Props extends PositionProps {
 }
 
 const EventImage: FunctionComponent<Props> = (props) => {
+  const { src, alt } = props;
   const imageRef = useRef(undefined);
   const [height, setHeight] = useState(undefined);
 
@@ -20,7 +21,12 @@ const EventImage: FunctionComponent<Props> = (props) => {
 
   return (
     <ImageContainer height={height}>
-      <Image ref={imageRef} onLoad={handleOnLoad} {...props} />
+      <Image
+        ref={imageRef}
+        onLoad={handleOnLoad}
+        src={src}
+        alt={alt}
+      />
     </ImageContainer>
   );
 };

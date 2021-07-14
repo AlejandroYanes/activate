@@ -7,7 +7,7 @@ import Avatar from 'components/base-components/Avatar';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 
 const PrimarySign = ({ name, avatar }) => (
-  <FlexBox justify="space-between" align="flex-start" mT mB>
+  <FlexBox justify="space-between" align="flex-start" mB>
     <FlexBox direction="column" padding="0 48px 0 0">
       <Title level={1} color="brand" weight="bold" padding="0 0 8px 0">
         👋 Hello,
@@ -24,7 +24,7 @@ const PrimarySign = ({ name, avatar }) => (
 );
 
 const MobileSign = ({ name }) => (
-  <FlexBox direction="column" mT mB>
+  <FlexBox direction="column" mB>
     <Title level={1} color="brand" weight="bold" padding="0 0 8px 0">
       👋 Hello,
     </Title>
