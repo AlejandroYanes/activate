@@ -6,15 +6,13 @@ import React, {
   useState,
 } from 'react';
 import { EventChannelList, useEventCenterUpdate } from 'event-center';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import { AuxPanelSection, setActivePanel } from 'components/panels';
 import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
 import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
 
 const DesktopBody: FunctionComponent = () => {
-  const { setActiveSection } = usePanelActions();
-
   const [activeUser, setActiveUser] = useState(undefined);
 
   const receiveActiveUser = useCallback((user) => {
@@ -27,7 +25,7 @@ const DesktopBody: FunctionComponent = () => {
   );
 
   useEffect(() => {
-    setActiveSection(AuxPanelSection.TALKS);
+    setActivePanel(AuxPanelSection.TALKS);
   }, []);
 
   const actions = useMemo(() => (

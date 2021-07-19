@@ -1,5 +1,5 @@
 import React from 'react';
-import { AuxPanelSection } from 'components/providers/PanelSections';
+import { AuxPanelSection } from 'components/panels';
 import { Tab } from 'components/base-components/Tabset';
 
 const sections = [

@@ -2,7 +2,13 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import faker from 'faker';
 import { useHistory } from 'react-router-dom';
 import eventImg from 'assets/images/virtual-tour.jpeg';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import {
+  AuxPanelSection,
+  removePanel,
+  setActivePanel,
+  showPanel,
+} from 'components/panels';
+import { Modals } from 'components/modals';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
@@ -11,7 +17,6 @@ import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import EventImage from 'components/experience/EventImage';
-import { Modals } from 'components/modals';
 import Description from './Description';
 import Comments from './Comnments';
 import { StyledEventDetail } from './styled/page';
@@ -31,7 +36,6 @@ const event = {
 
 const EventDetailsPage: FunctionComponent = () => {
   const { goBack, push } = useHistory();
-  const { addSection, removeSection, setActiveSection } = usePanelActions();
 
   const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
   const [isBooked, setIsBooked] = useState(false);
@@ -46,10 +50,10 @@ const EventDetailsPage: FunctionComponent = () => {
   }, []);
 
   useEffect(() => {
-    addSection(AuxPanelSection.EVENT_DETAILS);
-    setActiveSection(AuxPanelSection.EVENT_DETAILS);
+    showPanel(AuxPanelSection.EVENT_DETAILS);
+    setActivePanel(AuxPanelSection.EVENT_DETAILS);
 
-    return () => removeSection(AuxPanelSection.EVENT_DETAILS);
+    return () => removePanel(AuxPanelSection.EVENT_DETAILS);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

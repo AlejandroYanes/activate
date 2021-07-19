@@ -1,20 +1,17 @@
-import React, { FunctionComponent, useEffect, useMemo, useState } from 'react';
-import {
-  AuxPanelSection,
-  useActivePanelSections,
-} from 'components/providers/PanelSections';
-import { useAppLayout } from 'components/providers/Layout';
+import React, { FunctionComponent, useMemo } from 'react';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Tabset } from 'components/base-components/Tabset';
+import { IconButton } from 'components/base-components/Button';
+import RenderIf from 'components/base-components/RenderIf';
 import UpcomingEventsPanel from 'components/panels/UpcomingEvents';
 import UpdatesPanel from 'components/panels/Updates';
 import EventDetailsPanel from 'components/panels/EventDetails';
-import { IconButton } from 'components/base-components/Button';
-import RenderIf from 'components/base-components/RenderIf';
 import FilterPanel from 'components/panels/Filters';
 import TalksPanel from 'components/panels/Talks';
+import { AuxPanelSection } from 'components/panels';
 import { resolveAvailableTabs } from './sections';
 import { PanelBody, PanelHeader, StyledPanel, StyledSidePanel } from './styled';
+import useSidePanelState from './state';
 
 interface Props {
   showCloseIcon?: boolean;
@@ -22,23 +19,20 @@ interface Props {
 }
 
 const Panel: FunctionComponent<Props> = (props) => {
-  const layout = useAppLayout();
-  const { sections, activeSection } = useActivePanelSections();
-
   const { showCloseIcon, onClose } = props;
-
-  const [activeTab, setActiveTab] = useState(AuxPanelSection.UPDATES);
+  const { sections, activeSection, setActiveSection } = useSidePanelState();
   const availableTabs = useMemo(() => resolveAvailableTabs(sections), [sections]);
-
-  useEffect(() => {
-    setActiveTab(activeSection);
-  }, [activeSection]);
 
   return (
     <StyledSidePanel>
-      <StyledPanel layout={layout} data-el="aux-panel">
+      <StyledPanel data-el="aux-panel">
         <PanelHeader data-el="aux-panel-header">
-          <Tabset activeTab={activeTab} onTabChange={setActiveTab} fullWidth bordered>
+          <Tabset
+            activeTab={activeSection}
+            onTabChange={setActiveSection}
+            fullWidth
+            bordered
+          >
             {availableTabs}
           </Tabset>
           <RenderIf condition={showCloseIcon}>
@@ -46,7 +40,7 @@ const Panel: FunctionComponent<Props> = (props) => {
           </RenderIf>
         </PanelHeader>
         <PanelBody data-el="aux-panel-body">
-          <Switch by={activeTab}>
+          <Switch by={activeSection}>
             <Case value={AuxPanelSection.FILTER} component={FilterPanel} />
             <Case value={AuxPanelSection.UPCOMING} component={UpcomingEventsPanel} />
             <Case value={AuxPanelSection.EVENT_DETAILS} component={EventDetailsPanel} />

@@ -32,7 +32,7 @@ export const StyledPanel = styled.section.attrs(anyPropsAttrs)`
   box-sizing: border-box;
   overflow: hidden;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  ${({ layout }) => layoutMap[layout]};
+  ${({ theme: { layout } }) => layoutMap[layout]};
 `;
 
 export const PanelHeader = styled.header`

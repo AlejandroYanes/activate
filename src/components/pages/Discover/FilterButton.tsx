@@ -7,19 +7,19 @@ import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 
 enum Filters {
-  DEFAULT = 'Filters',
-  LOCATION = 'Near Me',
+  DEFAULT = 'Sort by',
+  FRIENDS = 'Friends',
   HOT = 'Trending',
   DATE = 'By Date',
   CUSTOM = 'Custom',
 }
 
 const iconMap: { [filter: string]: Icons } = {
-  [Filters.DEFAULT]: 'FILTER',
+  [Filters.DEFAULT]: 'SORT',
   [Filters.HOT]: 'FIRE',
   [Filters.DATE]: 'CALENDAR',
   [Filters.CUSTOM]: 'PENCIL',
-  [Filters.LOCATION]: 'MAP_PIN',
+  [Filters.FRIENDS]: 'USERS',
 };
 
 const FilterButton: FunctionComponent = () => {
@@ -46,7 +46,7 @@ const FilterButton: FunctionComponent = () => {
         label={filter}
         onClick={toggleModal}
       />
-      <Modal title="Filter by" visible={isVisible} onClose={toggleModal} size="auto">
+      <Modal title="Sort by" visible={isVisible} onClose={toggleModal} size="auto">
         <FlexBox direction="column" align="center" padding="0 8px">
           <PickList
             value={filter}
@@ -59,9 +59,9 @@ const FilterButton: FunctionComponent = () => {
               <SvgIcon icon={iconMap[Filters.HOT]} size="x-large" />
               <Text padding="6px 0">{Filters.HOT}</Text>
             </PickItem>
-            <PickItem value={Filters.LOCATION}>
-              <SvgIcon icon={iconMap[Filters.LOCATION]} size="x-large" />
-              <Text padding="6px 0">{Filters.LOCATION}</Text>
+            <PickItem value={Filters.FRIENDS}>
+              <SvgIcon icon={iconMap[Filters.FRIENDS]} size="x-large" />
+              <Text padding="6px 0">{Filters.FRIENDS}</Text>
             </PickItem>
             <PickItem value={Filters.DATE}>
               <SvgIcon icon={iconMap[Filters.DATE]} size="x-large" />
