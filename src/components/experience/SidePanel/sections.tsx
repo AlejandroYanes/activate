@@ -1,14 +1,15 @@
 import React from 'react';
 import { AuxPanelSection } from 'components/providers/PanelSections';
 import { Tab } from 'components/base-components/Tabset';
+import { Icons } from 'components/base-components/SvgIcon';
 
-const sections = [
+const sections: { icon: Icons, value: AuxPanelSection }[] = [
   {
     icon: 'FORM',
     value: AuxPanelSection.EVENT_DETAILS,
   },
   {
-    icon: 'FILTER',
+    icon: 'SLIDERS_VERT',
     value: AuxPanelSection.FILTER,
   },
   {

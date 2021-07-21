@@ -10,7 +10,6 @@ const PrimaryTitle = () => (
     <Title level={1} color="brand" padding="0" weight="bold">
       Discover new events
     </Title>
-    <FilterButton />
   </FlexBox>
 );
 

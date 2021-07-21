@@ -45,7 +45,7 @@ const getItalicStyle = (props) => {
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
   white-space: normal;
-  font-family: Comfortaa, sans-serif;
+  font-family: Nunito-Regular, sans-serif;
   box-sizing: border-box;
   font-size: ${({ size }) => sizeMap[size]};
   font-weight: ${({ weight }) => weight};

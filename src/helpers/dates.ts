@@ -90,7 +90,7 @@ function resolveTimeUnit(date: Date, baseDate: Date) {
 
 const relativeTimeFormatter = new Intl.RelativeTimeFormat('default', {
   style: 'long',
-  numeric: "auto"
+  numeric: 'auto',
 });
 
 export function getRelativeTime(date:Date, baseDate?: Date) {

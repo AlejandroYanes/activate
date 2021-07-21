@@ -20,7 +20,7 @@ const Following: FunctionComponent = () => {
     push(`/app/publisher/${publisher.id}`);
   }, []);
 
-  const action = useCallback((user) => (
+  const action = useCallback(({ user }) => (
     <PublisherActions user={user} queryKey={QueryKey.FETCH_MY_PUBLISHERS} />
   ), []);
 
