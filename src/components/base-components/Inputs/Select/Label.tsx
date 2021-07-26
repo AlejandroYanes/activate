@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { Text } from 'components/base-components/Typography';
-import { SelectOption } from './index';
+import { SelectOption } from './';
 
 interface Props {
   value: SelectOption | SelectOption[];

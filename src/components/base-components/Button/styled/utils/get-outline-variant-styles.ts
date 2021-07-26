@@ -21,7 +21,6 @@ export default function getOutlineVariantStyles(
   colors: ColorScheme,
   color: string,
   disabled: boolean,
-  useBaseColor = false,
 ) {
 
   if (disabled) {
@@ -38,9 +37,9 @@ export default function getOutlineVariantStyles(
     `;
   }
 
-  const fontColor = getBtnFontColor(colors, color, useBaseColor);
-  const borderColor = getBtnFontColor(colors, color, useBaseColor);
-  const fontHoverColor = getBtnFontHoverColor(colors, color, useBaseColor);
+  const fontColor = getBtnFontColor(colors, color);
+  const borderColor = getBtnFontColor(colors, color);
+  const fontHoverColor = getBtnFontHoverColor(colors, color);
   const bgHoverColor = getBgHoverColor(colors, color);
 
   return css`

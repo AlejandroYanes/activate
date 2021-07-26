@@ -2,7 +2,7 @@
 import React, { FunctionComponent } from 'react';
 import { IconProps } from '../icon-props';
 
-const FilterIcon: FunctionComponent<IconProps> = (props) => {
+const SortIcon: FunctionComponent<IconProps> = (props) => {
   const { color, height, width, className, style } = props;
 
   return (
@@ -17,10 +17,10 @@ const FilterIcon: FunctionComponent<IconProps> = (props) => {
     >
       <path
         fill={color}
-        d="M 3,6 A 1,1 0 0 0 2,7 1,1 0 0 0 3,8 h 18 a 1,1 0 0 0 0,-2 z m 3.7695312,5 a 0.95087421,1 0 0 0 -0.9492187,1 0.95087421,1 0 0 0 0.9492187,1 H 17.230469 a 0.9508743,1.0000001 0 0 0 0,-2 z m 2.3652344,5 a 0.95495984,1 0 0 0 -0.9550781,1 0.95495984,1 0 0 0 0.9550781,1 h 5.7304684 a 0.95495984,1 0 0 0 0,-2 z"
+        d="M16.29,14.29,12,18.59l-4.29-4.3a1,1,0,0,0-1.42,1.42l5,5a1,1,0,0,0,1.42,0l5-5a1,1,0,0,0-1.42-1.42ZM7.71,9.71,12,5.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42l-5-5a1,1,0,0,0-1.42,0l-5,5A1,1,0,0,0,7.71,9.71Z"
       />
     </svg>
   );
 };
 
-export default FilterIcon;
+export default SortIcon;

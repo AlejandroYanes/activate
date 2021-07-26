@@ -1,7 +1,8 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent, useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { QueryKey } from 'components/providers/Query';
+import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import Page from 'components/base-components/Page';
 import RenderIf from 'components/base-components/RenderIf';
 import EventCard from 'components/experience/EventCard';
@@ -15,7 +16,7 @@ const errorScreen = (
 );
 
 const DiscoverPage: FunctionComponent = () => {
-
+  const { addSection, removeSection, setActiveSection } = usePanelActions();
   const {
     isLoading,
     data: response,
@@ -30,6 +31,13 @@ const DiscoverPage: FunctionComponent = () => {
     }
     return null;
   }, [response]);
+
+  useEffect(() => {
+    addSection(AuxPanelSection.FILTER);
+    setActiveSection(AuxPanelSection.FILTER);
+
+    return () => removeSection(AuxPanelSection.FILTER);
+  }, []);
 
   return (
     <Page>

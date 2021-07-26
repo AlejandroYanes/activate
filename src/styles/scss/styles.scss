@@ -3,10 +3,15 @@
   src: local('Comfortaa'), url('../../assets/fonts/Comfortaa-VariableFont_wght.ttf');
 }
 
+@font-face {
+  font-family: 'Nunito-Regular';
+  src: local('Nunito-Regular'), url('../../assets/fonts/Nunito-Regular.ttf');
+}
+
 
 body {
   margin: 0;
-  font-family: Comfortaa, sans-serif;
+  font-family: Nunito-Regular, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;

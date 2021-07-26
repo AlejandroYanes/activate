@@ -3,7 +3,7 @@ import { ColorScheme, Variations } from 'styles/colors';
 import { getColorVariation, getFontShadeColor } from 'helpers';
 import getBtnFontColor from './get-btn-font-color';
 
-const getFontHoverColor = (colors: ColorScheme, color: string, useBaseColor: boolean) => {
+const getFontHoverColor = (colors: ColorScheme, color: string) => {
   if (color === 'background') {
     return colors.BRAND_FONT_HIGHLIGHT;
   }
@@ -12,15 +12,13 @@ const getFontHoverColor = (colors: ColorScheme, color: string, useBaseColor: boo
     return colors.BACKGROUND_LIGHTER;
   }
 
-  const variant = useBaseColor ? Variations.HIGHLIGHT : Variations.FONT_HIGHLIGHT;
-  return  getColorVariation(colors, color, variant);
+  return  getColorVariation(colors, color, Variations.FONT_HIGHLIGHT);
 }
 
 export default function getTextVariantStyles(
   colors: ColorScheme,
   color: string,
   disabled: boolean,
-  useBaseColor = false,
 ) {
 
   if (disabled) {
@@ -36,8 +34,8 @@ export default function getTextVariantStyles(
     `;
   }
 
-  const fontColor = getBtnFontColor(colors, color, useBaseColor);
-  const fontHoverColor = getFontHoverColor(colors, color, useBaseColor);
+  const fontColor = getBtnFontColor(colors, color);
+  const fontHoverColor = getFontHoverColor(colors, color);
 
   return css`
     padding: 0;

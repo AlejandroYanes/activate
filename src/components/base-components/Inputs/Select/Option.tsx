@@ -2,7 +2,7 @@ import { FunctionComponent, useRef } from 'react';
 import { useHoverState } from 'hooks/UI';
 import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
-import { OptionIcon, StyledOption } from './styled/option';
+import { OptionIcon, StyledOption } from './styled';
 import { SelectOption } from './index';
 
 interface Props {

@@ -5,7 +5,7 @@ import { Layout, useAppLayout } from 'components/providers/Layout';
 import { StyledBackdrop } from './styled';
 
 interface Props {
-  onClick: (e) => void;
+  onClick: (event) => void;
 }
 
 const Backdrop: FunctionComponent<Props> = (props) => {
@@ -20,13 +20,21 @@ const Backdrop: FunctionComponent<Props> = (props) => {
   };
 
   useEffect(() => {
-    document.body.style.overflowY = 'hidden';
+    const needToFixOverflow = document.body.style.overflowY === 'auto';
+
+    if (needToFixOverflow) {
+      document.body.style.overflowY = 'hidden';
+    }
+
     if (layout === Layout.DESKTOP) {
       document.body.style.padding = `0 ${scrollThumbWidth} 0 0`;
     }
 
     return () => {
-      document.body.style.overflowY = 'auto';
+      if (needToFixOverflow) {
+        document.body.style.overflowY = 'auto';
+      }
+
       if (layout === Layout.DESKTOP) {
         document.body.style.padding = '0px';
       }

@@ -4,31 +4,38 @@ import FlexBox from 'components/base-components/FlexBox';
 import { Title } from 'components/base-components/Typography';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import FilterButton from './FilterButton';
+import Sorter from './Sorter';
 
 const PrimaryTitle = () => (
   <FlexBox justify="space-between" align="center" margin="0 0 48px 0">
     <Title level={1} color="brand" padding="0" weight="bold">
       Discover new events
     </Title>
-    <FilterButton />
+    <Sorter />
   </FlexBox>
 );
 
 const TabletTitle = () => (
-  <FlexBox justify="space-between" align="center" margin="0 0 32px 0">
-    <Title level={1} color="brand" padding="0" weight="bold">
+  <FlexBox direction="column" justify="flex-start" align="stretch" margin="0 0 48px 0">
+    <Title level={1} color="brand" padding="0" weight="bold" margin="0 0 16px 0">
       Discover new events
     </Title>
-    <FilterButton />
+    <FlexBox justify="space-between" align="center" grow>
+      <FilterButton />
+      <Sorter />
+    </FlexBox>
   </FlexBox>
 );
 
 const MobileTitle = () => (
-  <FlexBox justify="space-between" padding="32px 16px 32px 0">
-    <Title level={1} color="brand" padding="0" weight="bold">
+  <FlexBox direction="column" justify="flex-start" align="stretch" margin="0 0 48px 0">
+    <Title level={1} color="brand" padding="0" weight="bold" mB>
       Discover new events
     </Title>
-    <FilterButton />
+    <FlexBox justify="space-between" align="center" grow>
+      <FilterButton />
+      <Sorter />
+    </FlexBox>
   </FlexBox>
 );
 

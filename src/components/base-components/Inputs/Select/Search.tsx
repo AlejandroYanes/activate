@@ -2,7 +2,7 @@ import { FunctionComponent, useRef } from 'react';
 import { useFocusState } from 'hooks/UI';
 import FlexBox from 'components/base-components/FlexBox';
 import SvgIcon from 'components/base-components/SvgIcon';
-import { StyledSearch } from './styled/search';
+import { StyledSearch } from './styled';
 
 interface Props {
   value: string;

@@ -4,7 +4,6 @@ import { getColorVariation } from 'helpers';
 export default function getBtnFontHoverColor(
   colors: ColorScheme,
   color: string,
-  useBaseColor: boolean,
 ) {
   if (color === 'background') {
     return colors.FONT;
@@ -14,6 +13,5 @@ export default function getBtnFontHoverColor(
     return colors.BACKGROUND_LIGHTER;
   }
 
-  const variant = useBaseColor ? Variations.HIGHLIGHT : Variations.FONT_HIGHLIGHT;
-  return  getColorVariation(colors, color, variant);
+  return  getColorVariation(colors, color, Variations.FONT_HIGHLIGHT);
 }

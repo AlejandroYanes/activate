@@ -4,26 +4,9 @@ import { Field, Form } from 'components/base-components/Form';
 import { Option, Options } from 'components/base-components/Options';
 import RenderIf from 'components/base-components/RenderIf';
 import { DateTimePicker, Select } from 'components/base-components/Inputs';
+import { Text } from 'components/base-components/Typography';
 import { StyledSearch } from './styled';
-
-enum EventLocation {
-  OnLine = 'OnLine',
-  All = 'All',
-  OnSite = 'OnSite',
-}
-
-const initialSearchState = {
-  location: EventLocation.All,
-  address: '',
-  publisher: null,
-  category: [],
-  date: [],
-};
-
-const publishers = Array(30).fill('1').map(() => ({
-  value: faker.random.uuid(),
-  label: faker.company.companyName(),
-}));
+import { EventLocation, Filters, initialFilters } from './types';
 
 const categories = [
   { value: faker.random.uuid(), label: 'Kids friendly' },
@@ -34,7 +17,7 @@ const categories = [
 ];
 
 const FiltersPanel: FunctionComponent = () => {
-  const [search, setSearch] = useState(initialSearchState);
+  const [search, setSearch] = useState<Filters>(initialFilters);
   const panelRef = useRef(undefined);
 
   const handleChange = useCallback((nextValue) => setSearch(nextValue), []);
@@ -42,17 +25,18 @@ const FiltersPanel: FunctionComponent = () => {
   return (
     <StyledSearch ref={panelRef}>
       <Form state={search} onChange={handleChange}>
+        <Text margin="0 0 6px 20px">Location</Text>
         <Field
           name="location"
           component={Options}
-          color="accent"
+          color="brand"
           fullWidth
           highlight
           mB
         >
-          <Option value={EventLocation.OnLine} label="Online" icon="GLOBE" />
-          <Option value={EventLocation.All} label="All" icon="LIST" />
-          <Option value={EventLocation.OnSite} label="Onsite" icon="MAP_PIN" />
+          <Option value={EventLocation.All} label="All" />
+          <Option value={EventLocation.OnLine} label="Online" />
+          <Option value={EventLocation.OnSite} label="Onsite" />
         </Field>
         <RenderIf condition={search.location === EventLocation.OnSite}>
           <Field
@@ -73,23 +57,12 @@ const FiltersPanel: FunctionComponent = () => {
           mB
         />
         <Field
-          name="publisher"
-          label="Publisher"
-          component={Select}
-          options={publishers}
-          icon="MEGAPHONE"
-          anchorTo={panelRef}
-          showSearch
-          showClear
-          mB
-        />
-        <Field
           name="category"
           label="Categories"
           component={Select}
           options={categories}
-          icon="TAG"
           anchorTo={panelRef}
+          icon="TAG"
           showClear
           multiple
           mB

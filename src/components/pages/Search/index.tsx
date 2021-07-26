@@ -8,18 +8,13 @@ import { Case, Switch } from 'components/base-components/Switch';
 import EventsResults from './EventsResults';
 import PublishersResults from './PublishersResults';
 import UsersResults from './UsersResults';
+import { Title } from '../../base-components/Typography';
 
 enum Tabs {
   EVENTS = 'EVENTS',
   PUBLISHERS = 'PUBLISHERS',
   USERS = 'USERS',
 }
-
-const titleByLayoutMap = {
-  [Layout.DESKTOP]: 'Search for anything',
-  [Layout.TABLET]: 'Search for anything',
-  [Layout.MOBILE]: 'Search',
-};
 
 const SearchPage: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -31,7 +26,10 @@ const SearchPage: FunctionComponent = () => {
   }, []);
 
   return (
-    <Page title={titleByLayoutMap[layout]}>
+    <Page>
+      <Title level={1} color="brand" weight="bold">
+        Search for anything
+      </Title>
       <Input value={search} onChange={handleSearch} icon="SEARCH" showClear />
       <Tabset
         activeTab={activeTab}
