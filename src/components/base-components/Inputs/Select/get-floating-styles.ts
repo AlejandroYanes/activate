@@ -17,7 +17,7 @@ const getSpaceToTop = (
 ) => {
   const { top } = trayRef.current.getBoundingClientRect();
 
-  if (anchorTo && anchorTo.current) {
+  if (anchorTo?.current) {
     const { top: anchorTop } = anchorTo.current.getBoundingClientRect();
     return top - anchorTop;
   }
@@ -26,7 +26,7 @@ const getSpaceToTop = (
 };
 
 const getContainerHeight = (anchorTo: MutableRefObject<any>) => (
-  anchorTo && anchorTo.current
+  anchorTo?.current
     ? anchorTo.current.getBoundingClientRect().height
     : window.innerHeight
 );
