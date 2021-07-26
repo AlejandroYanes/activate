@@ -26,5 +26,5 @@ const layoutMap = {
 export const StyledPage = styled.section.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
-  ${({ layout }) => layoutMap[layout]};
+  ${({ theme: { layout } }) => layoutMap[layout]};
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { elementHeight } from 'styles/variables';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
 import { ButtonProps } from '../Button';
 import { getVariantStyles } from './utils';
@@ -18,9 +19,9 @@ const getSize = (props: ButtonProps) => {
   }
 
   return `
-    height: 36px;
     width: ${width};
-    min-width: 36px;
+    min-width: ${elementHeight};
+    height: ${elementHeight};
     font-size: 16px;
   `;
 };

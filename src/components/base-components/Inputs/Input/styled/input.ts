@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { getPositionStyles, PositionProps } from 'helpers';
-import { inputBorderRadius } from 'styles/variables';
+import { elementHeight, inputBorderRadius } from 'styles/variables';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
   ${getPositionStyles};
@@ -50,8 +50,8 @@ export const StyledInput = styled.input.attrs((props: any) => props)`
   margin: 0;
   flex: 1;
   min-width: 0;
-  min-height: 36px;
-  height: 36px;
+  min-height: ${elementHeight};
+  height: ${elementHeight};
   box-sizing: border-box;
   border-radius: ${inputBorderRadius};
   transition: all 150ms linear;

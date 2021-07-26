@@ -23,6 +23,8 @@ const springAnimation = {
   damping: 20,
 };
 
+const emptyAction = () => undefined;
+
 const Tab: FunctionComponent<Props> = (props) => {
   const { name, label, icon, onClick } = props;
   const {
@@ -33,7 +35,7 @@ const Tab: FunctionComponent<Props> = (props) => {
   } = useContext(tabsetContext);
 
   const handleClick = useCallback(() => {
-    let action;
+    let action: any = emptyAction;
 
     if (onTabChange) {
       action = onTabChange;

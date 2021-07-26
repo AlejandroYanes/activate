@@ -55,6 +55,6 @@ export const StyledOption = styled.li.attrs(anyPropsAttrs)`
 
 export const OptionIcon = styled.div`
   position: absolute;
-  left: 8px;
+  left: 4px;
   height: 20px;
 `;

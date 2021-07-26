@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Modals } from 'components/modals';
-import { IconButton } from 'components/base-components/Button';
+import { Button } from 'components/base-components/Button';
 
 const FilterButton: FunctionComponent = () => {
   const { push } = useHistory();
@@ -11,9 +11,12 @@ const FilterButton: FunctionComponent = () => {
   }, []);
 
   return (
-    <IconButton
+    <Button
+      padding="0 14px"
       onClick={openFiltersModal}
-      icon="SLIDERS_VERT"
+      leftIcon="FILTER"
+      label="Filters (3)"
+      variant="fill"
       color="brand"
     />
   );

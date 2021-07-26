@@ -9,7 +9,7 @@ const sections: { icon: Icons, value: AuxPanelSection }[] = [
     value: AuxPanelSection.EVENT_DETAILS,
   },
   {
-    icon: 'SLIDERS_VERT',
+    icon: 'FILTER',
     value: AuxPanelSection.FILTER,
   },
   {

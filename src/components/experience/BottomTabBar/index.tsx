@@ -2,13 +2,13 @@ import React, { FunctionComponent, useCallback, useEffect, useState } from 'reac
 import { useHistory, useLocation } from 'react-router-dom';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { TabBar } from './styled';
+import ProfileMenu from './ProfileMenu';
 
 enum Menus {
   UPCOMING = '/app',
   DISCOVER = '/app/discover',
   SEARCH = '/app/search',
-  TALKS = '#talks',
-  UPDATES = '#updates',
+  PROFILE = 'profile',
 }
 
 const tabs = ['/app', '/app/upcoming', '/app/discover', '/app/search'];
@@ -36,8 +36,7 @@ const BottomTabBar: FunctionComponent = () => {
         <Tab name={Menus.UPCOMING} icon="BOOKMARKS" onClick={handleTabClick} />
         <Tab name={Menus.DISCOVER} icon="COMPASS" onClick={handleTabClick} />
         <Tab name={Menus.SEARCH} icon="SEARCH" onClick={handleTabClick} />
-        <Tab name={Menus.TALKS} icon="MESSAGE" onClick={handleTabClick} />
-        <Tab name={Menus.UPDATES} icon="TIME_HISTORY" onClick={handleTabClick} />
+        <Tab name={Menus.PROFILE} icon={<ProfileMenu />} />
       </Tabset>
     </TabBar>
   );

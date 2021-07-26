@@ -10,9 +10,9 @@ import RenderIf from 'components/base-components/RenderIf';
 import { SpinningDots } from 'components/base-components/Loaders';
 import Search from './Search';
 import Option from './Option';
-import { Edge, OptionsList, StyledOptionsTray } from './styled/tray';
+import { Edge, OptionsList, StyledOptionsTray } from './styled';
 import getFloatingStyles from './get-floating-styles';
-import { SelectOption } from './index';
+import { SelectOption } from './';
 
 interface Props {
   isOpen: boolean;
