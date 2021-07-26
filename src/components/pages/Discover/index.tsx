@@ -2,12 +2,12 @@ import React, { FunctionComponent, useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { QueryKey } from 'components/providers/Query';
+import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import Page from 'components/base-components/Page';
 import RenderIf from 'components/base-components/RenderIf';
 import EventCard from 'components/experience/EventCard';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import PageTitle from './PageTitle';
-import { AuxPanelSection, usePanelActions } from '../../providers/PanelSections';
 
 const errorScreen = (
   <NoConnectionScreen
