@@ -36,7 +36,6 @@ export const Card = styled.article.attrs((props: any) => props)`
 `;
 
 export const Content = styled.main`
-  padding-top: 16px;
   display: flex;
   flex-direction: column;
 `;

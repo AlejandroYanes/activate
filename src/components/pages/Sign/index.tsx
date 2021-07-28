@@ -37,7 +37,7 @@ const SignPage: FunctionComponent = () => {
       <SignBox layout={layout}>
         <FlexBox justify="space-between" mB>
           <RenderIf condition={layout !== Layout.MOBILE}>
-            <Title level={2}>{`${signAction} and enjoy`}</Title>
+            <Title color="brand" level={2}>{`${signAction} and enjoy`}</Title>
           </RenderIf>
           <Tabset
             activeTab={signAction}

@@ -8,7 +8,6 @@ import { PickItem, PickList } from 'components/base-components/PickList';
 import Avatar from 'components/base-components/Avatar';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { ErrorText } from 'components/base-components/Inputs';
-import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
 import { AvatarsBox, HiddenInput, ImagePreview, InputBox, ProfileBox } from './styled';
 import useEditProfileState, { AvatarOptions, profileRules } from './state';
@@ -33,12 +32,8 @@ const EditProfileModal: FunctionComponent = () => {
     },
   } = useEditProfileState(filePickerRef);
 
-  const footerSpacing = (
-    layout === Layout.MOBILE ? '0 6px 24px' : '24px 16px 0'
-  );
-
   const footer = (
-    <FlexBox justify="flex-end" padding={footerSpacing}>
+    <>
       <Button
         onClick={goBack}
         label="Cancel"
@@ -52,7 +47,7 @@ const EditProfileModal: FunctionComponent = () => {
         label="Update"
         variant="fill"
       />
-    </FlexBox>
+    </>
   );
 
   const modalSize = (

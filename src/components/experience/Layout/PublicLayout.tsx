@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthData } from 'components/providers/Auth';
-import { useAppLayout } from 'components/providers/Layout';
 import { useAppTheme } from 'components/providers/Theme';
 import { Title } from 'components/base-components/Typography';
 import Toggle from 'components/base-components/Toggle';
@@ -13,7 +12,6 @@ import { Content, Header, StyledApp } from './styled/public-layout';
 const PublicLayout: FunctionComponent = (props) => {
   const { children } = props;
   const { isLoggedIn } = useAuthData();
-  const layout = useAppLayout();
   const {
     colors,
     useDarkStyle,
@@ -32,8 +30,8 @@ const PublicLayout: FunctionComponent = (props) => {
   ), [colors]);
 
   return (
-    <StyledApp layout={layout} data-el="app">
-      <Header layout={layout} data-el="app-header">
+    <StyledApp data-el="app">
+      <Header data-el="app-header">
         <Link to="/">
           <Title level={2}>Activate</Title>
         </Link>
@@ -46,7 +44,7 @@ const PublicLayout: FunctionComponent = (props) => {
           />
         </RenderIf>
       </Header>
-      <Content layout={layout} data-el="app-body">
+      <Content data-el="app-body">
         {children}
       </Content>
       <NotificationCenter />

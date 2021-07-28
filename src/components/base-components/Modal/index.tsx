@@ -1,5 +1,4 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { ButtonProps } from 'components/base-components/Button';
 import Backdrop from 'components/base-components/Backdrop';
 import Header from './Header';
 import Footer from './Footer';
@@ -9,13 +8,12 @@ interface Props {
   visible: boolean;
   title?: string | ReactNode;
   onClose: () => void;
-  actions?: ButtonProps[];
   footer?: ReactNode;
   size?: 'auto' | 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
 }
 
 const Modal: FunctionComponent<Props> = (props) => {
-  const { visible, title, onClose, actions, footer, size, children } = props;
+  const { visible, title, onClose, footer, size, children } = props;
 
   if (visible) {
     return (
@@ -25,7 +23,7 @@ const Modal: FunctionComponent<Props> = (props) => {
           <Content size={size} data-el="modal-content">
             {children}
           </Content>
-          <Footer footer={footer} actions={actions} />
+          <Footer size={size} footer={footer} />
         </StyledModal>
       </Backdrop>
     );

@@ -1,47 +1,47 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { getMonthLabel } from 'helpers';
-import SvgIcon from 'components/base-components/SvgIcon';
+import { formatShortDate } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
-import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
-import { DateBadge } from './styled/header.primary';
+import { Button } from 'components/base-components/Button';
+import FlexBox from 'components/base-components/FlexBox';
+import SvgIcon from 'components/base-components/SvgIcon';
+import Badge from 'components/base-components/Badge';
 import { HeaderProps } from './index';
 
-const linkStyles = { width: '100%' };
+const linkStyles = { alignSelf: 'flex-start' };
 
 const PrimaryHeader: FunctionComponent<HeaderProps> = (props) => {
-  const { date, title, address, author, hideAuthor, readonly } = props;
-  const isForThisYear = new Date(date).getFullYear() === new Date().getFullYear();
+  const { date, title, address, hasDescription, showMore, toggleMoreContent } = props;
 
   return (
-    <FlexBox>
-      <DateBadge>
-        <span data-short-date={isForThisYear}>
-          {getMonthLabel(new Date(date))}
-        </span>
-        <span>{new Date(date).getDate()}</span>
-      </DateBadge>
-      <FlexBox grow height="100%" direction="column" padding="0 20px 0 10px" ellipsis>
-        <Link to="/event-details" style={linkStyles}>
-          <Title level={3} padding="0" ellipsis>{title}</Title>
-        </Link>
-        <FlexBox align="flex-start" margin="10px 0 0 0" width="100%">
-          <SvgIcon icon="MAP_PIN" color="FONT" />
-          <Text padding="4px 0 0 6px" ellipsis>{address}</Text>
-        </FlexBox>
-      </FlexBox>
-      <RenderIf condition={!hideAuthor}>
-        <RenderIf
-          condition={!readonly}
-          fallback={<Avatar src={author.avatar} size="medium" />}
-        >
-          <Link to="#publisher">
-            <Avatar src={author.avatar} size="medium" />
-          </Link>
+    <FlexBox direction="column" align="stretch" padding="8px 0" ellipsis>
+      <Link to="/event-details" style={linkStyles}>
+        <Title level={3} padding="0 0 8px 0" ellipsis>{title}</Title>
+      </Link>
+      <FlexBox align="center" ellipsis>
+        <Badge color="light">
+          <FlexBox>
+            <SvgIcon icon="CALENDAR" color="FONT" width={20} height={20} />
+            <Text padding="0 0 0 6px" ellipsis>{formatShortDate(new Date(date))}</Text>
+          </FlexBox>
+        </Badge>
+        <Badge color="light" margin="0 16px 0 8px" ellipsis>
+          <FlexBox ellipsis>
+            <SvgIcon icon="MAP_PIN" color="FONT" width={20} height={20} />
+            <Text padding="0 0 0 6px" ellipsis>{address}</Text>
+          </FlexBox>
+        </Badge>
+        <RenderIf condition={hasDescription}>
+          <Button
+            sm
+            onClick={toggleMoreContent}
+            label={showMore ? 'Show less' : 'Show more'}
+            variant="flat"
+            margin="0 0 0 auto"
+          />
         </RenderIf>
-      </RenderIf>
+      </FlexBox>
     </FlexBox>
   );
 };

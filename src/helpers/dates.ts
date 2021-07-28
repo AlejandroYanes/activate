@@ -40,10 +40,22 @@ export function formatDateTime(date: Date): string {
 const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
   day: 'numeric',
   month: 'short',
+  year: '2-digit',
+});
+
+const shorterDateFormatter = new Intl.DateTimeFormat(undefined, {
+  day: 'numeric',
+  month: 'short',
 });
 
 export function formatShortDate(date: Date): string {
-  return date ? shortDateFormatter.format(date) : undefined;
+  if (date) {
+    const isForThisYear = date.getFullYear() === new Date().getFullYear();
+    return isForThisYear
+      ? shorterDateFormatter.format(date)
+      : shortDateFormatter.format(date);
+  }
+  return undefined;
 }
 
 const monthFormatter = new Intl.DateTimeFormat('default', {
