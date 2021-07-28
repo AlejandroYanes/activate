@@ -7,12 +7,9 @@ export interface HeaderProps {
   title: string;
   address: string;
   date: Date;
-  author: {
-    id: string;
-    avatar: string;
-  };
-  hideAuthor?: boolean;
-  readonly?: boolean;
+  hasDescription: boolean;
+  showMore: boolean;
+  toggleMoreContent: () => void;
 }
 
 const componentLayout = {

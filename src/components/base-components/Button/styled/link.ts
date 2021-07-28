@@ -1,9 +1,26 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { elementHeight } from 'styles/variables';
 import { getPositionStyles } from 'helpers';
 import { getVariantStyles } from './utils';
 
+const getHeightStyles = (props) => {
+  const { variant } = props;
+
+  if (variant !== 'text') {
+    return `
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: ${elementHeight};
+    `;
+  }
+
+  return '';
+};
+
 export const StyledLink = styled(Link)`
+  font-family: Nunito-Regular, sans-serif;
   text-decoration: none;
   border: none;
   outline: none;
@@ -17,6 +34,7 @@ export const StyledLink = styled(Link)`
   flex-shrink: 0;
   position: relative;
   transition: all linear 150ms;
+  ${getHeightStyles};
   ${getVariantStyles};
   ${getPositionStyles};
 

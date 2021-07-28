@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getBgdColor } from 'helpers';
 import { headerHeight, mobileHeaderHeight } from 'styles/variables';
 import { ZLevels } from 'styles/z-levels';
+import { anyPropsAttrs, getBgdColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const layoutMap = {
@@ -37,21 +37,23 @@ const layoutMap = {
 export const StyledApp = styled.main.attrs(anyPropsAttrs)`
   width: 100%;
   height: 100%;
-  ${({ layout }) => layoutMap[layout]};
+  ${({ theme: { layout } }) => layoutMap[layout]};
 `;
 
 const headerStyleMap = {
-  [Layout.DESKTOP]: `
+  [Layout.DESKTOP]: css`
     height: ${headerHeight}px;
     min-height: ${headerHeight}px;
   `,
-  [Layout.TABLET]: `
+  [Layout.TABLET]: css`
     height: ${headerHeight}px;
     min-height: ${headerHeight}px;
+    background-color: ${getBgdColor};
   `,
-  [Layout.MOBILE]: `
+  [Layout.MOBILE]: css`
     height: ${mobileHeaderHeight}px;
     min-height: ${mobileHeaderHeight}px;
+    background-color: ${getBgdColor};
     padding: 0 8px;
   `,
 };
@@ -60,11 +62,10 @@ export const Header = styled.header.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${getBgdColor};
   position: sticky;
   top: 0;
   z-index: ${ZLevels.componentLevel2};
-  ${({ layout }) => headerStyleMap[layout]};
+  ${({ theme: { layout } }) => headerStyleMap[layout]};
 `;
 
 const contentStyleMap = {
@@ -83,5 +84,5 @@ const contentStyleMap = {
 export const Content = styled.section.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
-  ${({ layout }) => contentStyleMap[layout]}
+  ${({ theme: { layout } }) => contentStyleMap[layout]}
 `;

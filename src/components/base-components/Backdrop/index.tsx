@@ -20,9 +20,9 @@ const Backdrop: FunctionComponent<Props> = (props) => {
   };
 
   useEffect(() => {
-    const needToFixOverflow = document.body.style.overflowY === 'auto';
+    const needsToFixOverflow = document.body.style.overflowY !== 'hidden';
 
-    if (needToFixOverflow) {
+    if (needsToFixOverflow) {
       document.body.style.overflowY = 'hidden';
     }
 
@@ -31,7 +31,7 @@ const Backdrop: FunctionComponent<Props> = (props) => {
     }
 
     return () => {
-      if (needToFixOverflow) {
+      if (needsToFixOverflow) {
         document.body.style.overflowY = 'auto';
       }
 

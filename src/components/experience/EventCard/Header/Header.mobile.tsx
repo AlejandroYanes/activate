@@ -1,54 +1,38 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { getMonthLabel } from 'helpers';
+import { formatShortDate } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import SvgIcon from 'components/base-components/SvgIcon';
-import Avatar from 'components/base-components/Avatar';
-import RenderIf from 'components/base-components/RenderIf';
+import Badge from 'components/base-components/Badge';
 import { HeaderProps } from './index';
-import { DateBadge } from './styled/header.mobile';
 
-const titleStyles: any = { whiteSpace: 'normal' };
+const linkStyles = { width: '100%' };
 
 const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
-  const { date, address, title, author, hideAuthor, readonly } = props;
-  const isForThisYear = new Date(date).getFullYear() === new Date().getFullYear();
+  const { date, address, title } = props;
 
   return (
-    <FlexBox>
-      <DateBadge>
-        <span data-short-date={isForThisYear}>
-          {getMonthLabel(new Date(date))}
-        </span>
-        <span>{new Date(date).getDate()}</span>
-      </DateBadge>
-      <FlexBox
-        grow
-        ellipsis
-        height="100%"
-        direction="column"
-        align="stretch"
-        padding="0 14px 0 6px"
-      >
-        <Link to="#event-details">
-          <Title level={3} padding="0" style={titleStyles}>{title}</Title>
+    <FlexBox direction="column" align="stretch" padding="8px 0">
+      <FlexBox ellipsis>
+        <Link to="/event-details" style={linkStyles}>
+          <Title level={3} padding="0 0 8px 0">{title}</Title>
         </Link>
-        <FlexBox align="center" margin="4px 0 0 0" ellipsis>
-          <SvgIcon width={16} icon="MAP_PIN" color="FONT" />
-          <Text size="small" padding="0 0 0 6px" ellipsis>{address}</Text>
-        </FlexBox>
       </FlexBox>
-      <RenderIf condition={!hideAuthor}>
-        <RenderIf
-          condition={!readonly}
-          fallback={<Avatar src={author.avatar} size="medium" />}
-        >
-          <Link to="#publisher">
-            <Avatar src={author.avatar} size="medium" />
-          </Link>
-        </RenderIf>
-      </RenderIf>
+      <FlexBox margin="8px 0 0 0" ellipsis>
+        <Badge color="light">
+          <FlexBox ellipsis>
+            <SvgIcon icon="CALENDAR" color="FONT" width={20} height={20} />
+            <Text padding="0 0 0 6px" ellipsis>{formatShortDate(new Date(date))}</Text>
+          </FlexBox>
+        </Badge>
+        <Badge color="light" margin="0 8px" ellipsis>
+          <FlexBox ellipsis>
+            <SvgIcon icon="MAP_PIN" color="FONT" width={20} height={20} />
+            <Text padding="0 0 0 6px" ellipsis>{address}</Text>
+          </FlexBox>
+        </Badge>
+      </FlexBox>
     </FlexBox>
   );
 };

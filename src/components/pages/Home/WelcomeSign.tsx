@@ -9,13 +9,13 @@ import RenderByLayout from 'components/base-components/RenderByLayout';
 const PrimarySign = ({ name, avatar }) => (
   <FlexBox justify="space-between" align="flex-start" mB>
     <FlexBox direction="column" padding="0 48px 0 0">
-      <Title level={1} color="brand" weight="bold" padding="0 0 8px 0">
+      <Title level={1} color="brand" weight="bold">
         👋 Hello,
       </Title>
-      <Title level={1} color="brand" weight="bold" padding="0 0 12px 0">
+      <Title level={1} color="brand" weight="bold">
         {name}
       </Title>
-      <Title level={2} color="brand" padding="0">
+      <Title level={2} color="brand">
         Here are your upcoming events
       </Title>
     </FlexBox>
@@ -25,13 +25,13 @@ const PrimarySign = ({ name, avatar }) => (
 
 const MobileSign = ({ name }) => (
   <FlexBox direction="column" mB>
-    <Title level={1} color="brand" weight="bold" padding="0 0 8px 0">
+    <Title level={1} color="brand" weight="bold">
       👋 Hello,
     </Title>
-    <Title level={1} color="brand" weight="bold" padding="0 0 12px 0">
+    <Title level={1} color="brand" weight="bold">
       {name}
     </Title>
-    <Title level={2} color="secondary" padding="0">
+    <Title level={2} color="brand">
       Your upcoming events
     </Title>
   </FlexBox>

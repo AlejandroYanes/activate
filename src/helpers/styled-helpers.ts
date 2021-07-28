@@ -28,7 +28,7 @@ export const getEllipsisStyles = (props) => {
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      width: 100%;
+      max-width: 100%;
     `;
   }
 

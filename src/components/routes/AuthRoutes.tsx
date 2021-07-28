@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { useAuthData } from 'components/providers/Auth';
 import { AuthLayout } from 'components/experience/Layout';
-import FeedPage from 'components/pages/Feed';
+import HomePage from 'components/pages/Home';
 import ProfilePage from 'components/pages/Profile';
 import DiscoverPage from 'components/pages/Discover';
 import EventDetailsPage from 'components/pages/EventDetails';
@@ -31,7 +31,7 @@ const AuthRoutes: FunctionComponent = () => {
   return (
     <AuthLayout>
       <Switch>
-        <Route path="/app" component={FeedPage} exact />
+        <Route path="/app" component={HomePage} exact />
         <Route path="/app/profile" component={ProfilePage} />
         <Route path="/app/discover" component={DiscoverPage} />
         <Route path="/app/event-details" component={EventDetailsPage} />

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
+import { getEllipsisStyles, getPositionStyles } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { BadgeProps } from '..';
 
@@ -42,6 +42,7 @@ export const StyledBadge = styled.div.attrs((props: any) => props)`
   justify-content: center;
   align-items: center;
   ${getPositionStyles};
+  ${getEllipsisStyles};
   font-size: ${resolveSize};
   color: ${resolveFontColor};
   background-color: ${resolveBackgroundColor};
