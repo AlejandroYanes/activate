@@ -15,8 +15,8 @@ import InputLabel from '../base/Label';
 import InputIcon from '../base/Icon';
 import OptionsTray from './OptionsTray';
 import RightNode from './RightNode';
-import { Content, TrayContainer } from './styled';
 import Label from './Label';
+import { Content, TrayContainer } from './styled';
 
 export interface SelectOption {
   value: string;
