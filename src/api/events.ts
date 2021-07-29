@@ -25,7 +25,7 @@ const eventsApi = {
     });
   },
   follow: (event: string): AxiosPromise => {
-    return get(`event/${event}/follow`);
+    return get(`events/${event}/follow`);
   },
   unfollow: (event: string): AxiosPromise => {
     return get(`events/${event}/unfollow`);
