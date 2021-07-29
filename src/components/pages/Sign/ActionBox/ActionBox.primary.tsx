@@ -4,12 +4,11 @@ import RenderIf from 'components/base-components/RenderIf';
 import { Field } from 'components/base-components/Form';
 import { Button, LinkButton } from 'components/base-components/Button';
 import Checkbox from 'components/base-components/Checkbox';
-import { Text } from 'components/base-components/Typography';
 import { SignAction } from '../state';
 import { ActionBoxProps } from './';
 
 const termsLabel = (
-  <Text>
+  <>
     <span>I accept the </span>
     <LinkButton
       to="/terms"
@@ -18,7 +17,7 @@ const termsLabel = (
     >
       Terms of Service
     </LinkButton>
-  </Text>
+  </>
 );
 
 const PrimaryActionBox: FunctionComponent<ActionBoxProps> = (props) => {

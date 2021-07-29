@@ -4,18 +4,17 @@ import { EventModel } from 'models/event';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
 import EventImage from 'components/experience/EventImage';
+import { Paragraph } from 'components/base-components/Typography';
 import Header from './Header';
 import InviteButton from './InviteButton';
 import ActionsMenu from './ActionsMenu';
 import BookmarkButton from './BookmarkButton';
 import UnfollowModal from './UnfollowModal';
 import Attendance from './Attendance';
+import EventSkeleton from './Skeleton';
 import { Actions, Card, Content, Divider, Footer } from './styled';
 import useEventState from './state';
 
-import EventSkeleton from './Skeleton';
-import { Paragraph } from '../../base-components/Typography';
-import { Button } from '../../base-components/Button';
 export { EventSkeleton };
 
 interface Props {
@@ -26,7 +25,7 @@ interface Props {
 
 const EventCard: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { event, hideAuthor, readonly } = props;
+  const { event, readonly } = props;
   const {
     state: {
       isBooked,
@@ -45,7 +44,6 @@ const EventCard: FunctionComponent<Props> = (props) => {
     date,
     name,
     address,
-    author,
     image,
     description,
     going,
@@ -56,25 +54,19 @@ const EventCard: FunctionComponent<Props> = (props) => {
   return (
     <>
       <Card isBooked={isBooked}>
-        <Header
-          date={date}
-          title={name}
-          address={address}
-          author={author}
-          hideAuthor={hideAuthor}
-          readonly={readonly}
-        />
+        <Link to={link}>
+          <EventImage src={image} alt={name} />
+        </Link>
         <Content>
-          <Link to={link}>
-            <EventImage src={image} alt={name} />
-          </Link>
+          <Header
+            date={date}
+            title={name}
+            address={address}
+            hasDescription={!!description}
+            showMore={showMore}
+            toggleMoreContent={toggleMoreContent}
+          />
           <RenderIf condition={!!description}>
-            <Button
-              sm
-              onClick={toggleMoreContent}
-              label={showMore ? 'Show less' : 'Show more'}
-              margin="6px 0 6px auto"
-            />
             <RenderIf condition={showMore}>
               <Paragraph mT mB>
                 {description}

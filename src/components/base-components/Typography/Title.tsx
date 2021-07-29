@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { H1, H2, H3 } from './styled/title';
+import { Heading } from './styled/title';
 
 interface Props extends PositionProps {
   level?: 1 | 2 | 3;
@@ -10,17 +10,16 @@ interface Props extends PositionProps {
 }
 
 const componentMap = {
-  1: H1,
-  2: H2,
-  3: H3,
+  1: undefined,
+  2: 'h2',
+  3: 'h3',
 };
 
 const Title: FunctionComponent<Props> = (props) => {
   const { level, children, ...rest } = props;
-  const Component = componentMap[level];
 
   return (
-    <Component level={level} {...rest}>{children}</Component>
+    <Heading as={componentMap[level]} level={level} {...rest}>{children}</Heading>
   );
 };
 

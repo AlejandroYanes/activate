@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
 
 const sizeMap = {
-  1: '32px',
-  2: '26px',
+  1: '36px',
+  2: '28px',
   3: '20px',
 };
 
@@ -29,29 +29,15 @@ const getColor = (props) => {
   }
 
   const fontColor = colors[`${color.toUpperCase()}_FONT`];
-  
+
   return `color: ${fontColor}`;
 };
 
-const commonStyles = css`
+
+export const Heading = styled.h1.attrs(anyPropsAttrs)`
   white-space: normal;
   ${getTextStyles};
   ${getColor};
   ${getEllipsisStyles};
   ${getPositionStyles};
-`;
-
-export const H1 = styled.h1.attrs(anyPropsAttrs)`
-  padding: 12px 0;
-  ${commonStyles};
-`;
-
-export const H2 = styled.h2.attrs(anyPropsAttrs)`
-  padding: 10px 0;
-  ${commonStyles};
-`;
-
-export const H3 = styled.h3.attrs(anyPropsAttrs)`
-  padding: 8px 0;
-  ${commonStyles};
 `;

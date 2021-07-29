@@ -3,7 +3,7 @@ import Page from 'components/base-components/Page';
 import WelcomeSign from './WelcomeSign';
 import FeedContent from './FeedContent';
 
-const FeedPage: FunctionComponent = () => {
+const HomePage: FunctionComponent = () => {
   return (
     <Page data-el="feed-page">
       <WelcomeSign />
@@ -12,4 +12,4 @@ const FeedPage: FunctionComponent = () => {
   );
 };
 
-export default FeedPage;
+export default HomePage;
