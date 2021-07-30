@@ -6,7 +6,7 @@ interface Props extends PositionProps {
   level?: 1 | 2 | 3;
   color?: 'brand' | 'accent' | 'font' | 'secondary';
   align?: 'left' | 'center' | 'right';
-  weight?: 'thin' | 'normal' | 'bold';
+  weight?: 'light' | 'normal' | 'bold';
 }
 
 const componentMap = {
