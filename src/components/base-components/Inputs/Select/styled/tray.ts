@@ -4,7 +4,6 @@ import {
   anyPropsAttrs,
   getBgdColor,
   getFontShadeColor,
-  getGrayLightColor,
 } from 'helpers';
 
 const getFloatingStyles = (props) => {

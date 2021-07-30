@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import {
   getBgdColor,
   getFontShadeColor,
-  getGrayLightColor,
   getPositionStyles,
 } from 'helpers';
 

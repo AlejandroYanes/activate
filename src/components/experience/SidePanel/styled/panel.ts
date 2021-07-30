@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs, getBgdLightColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 import { headerHeight } from 'styles/variables';
 
@@ -31,7 +31,7 @@ export const StyledPanel = styled.section.attrs(anyPropsAttrs)`
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getBgdLightColor};
   ${({ layout }) => layoutMap[layout]};
 `;
 

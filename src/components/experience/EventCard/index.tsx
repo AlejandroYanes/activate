@@ -53,7 +53,7 @@ const EventCard: FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <Card isBooked={isBooked}>
+      <Card>
         <Link to={link}>
           <EventImage src={image} alt={name} />
         </Link>
