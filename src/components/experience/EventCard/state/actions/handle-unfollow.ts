@@ -1,9 +1,9 @@
 import { SetStateAction } from 'react';
-import { NotificationType, showNotification } from 'notifications';
-import eventsApi from 'api/events';
 import { EventModel } from 'models/event';
+import eventsApi from 'api/events';
+import { notifyEventChannel } from 'event-center';
+import { NotificationType, showNotification } from 'notifications';
 import { EventState } from '../';
-import { notifyEventChannel } from '../../../../../event-center';
 
 export default function handleUnfollow(
   event: EventModel,

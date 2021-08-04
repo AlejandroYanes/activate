@@ -17,7 +17,7 @@ export const getColorStyles = (props) => {
   const { theme: { colors }, error } = props;
 
   const hoverBorderColor = error ? colors.ERROR_SHADE : colors.BRAND_SHADE;
-  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND;
+  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND_HIGHLIGHT;
 
   return css`
       border: 1px solid ${colors.FONT_SHADE};
@@ -32,6 +32,7 @@ export const getColorStyles = (props) => {
 
       &:hover {
         background-color: ${hoverBorderColor};
+        border-color: ${focusBorderColor};
       }
 
       &:focus {

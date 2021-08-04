@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
+import { EventChannel, useEventCenterUpdates } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
 import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import Page from 'components/base-components/Page';
@@ -15,13 +16,18 @@ const errorScreen = (
   />
 );
 
+const calendarEventChannels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
+
 const DiscoverPage: FunctionComponent = () => {
   const { addSection, removeSection, setActiveSection } = usePanelActions();
   const {
     isLoading,
     data: response,
     error,
+    refetch,
   } = useQuery(QueryKey.DISCOVER_EVENTS, () => eventsApi.discover());
+
+  useEventCenterUpdates(calendarEventChannels, refetch);
 
   const eventCards = useMemo(() => {
     if (response) {

@@ -41,6 +41,7 @@ export const Option = styled.li.attrs(anyPropsAttrs)`
   cursor: pointer;
   background-color: transparent;
   box-sizing: border-box;
+  transition: all 150ms linear;
   ${getSizeStyles};
   ${({ fullWidth }) => fullWidth ? 'flex: 1;' : ''}
 

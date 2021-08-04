@@ -38,7 +38,6 @@ const Friends: FunctionComponent = () => {
   return (
     <UsersCard>
       <Options
-        highlight
         color="accent"
         margin="0 0 24px auto"
         value={userType}

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getBgdLightColor } from 'helpers';
+import { anyPropsAttrs, getBgdColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 export const MenuWrapper = styled.div`
@@ -33,6 +33,6 @@ export const MenuList = styled.ul.attrs(anyPropsAttrs)`
   margin: 0;
   padding: 0;
   border-radius: 16px;
-  background-color: ${getBgdLightColor};
+  background-color: ${getBgdColor};
   ${({ layout }) => menuListStyleMap[layout]};
 `;
