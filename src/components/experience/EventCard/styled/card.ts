@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { getBgdColor, getBgdLightColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const stylesMap = {
@@ -16,19 +17,15 @@ const stylesMap = {
   `,
 };
 
-const getBorderColor = ({ isBooked, theme }) => (
-  isBooked ? theme.colors.ACCENT : theme.colors.BACKGROUND
-);
-
 export const Card = styled.article.attrs((props: any) => props)`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: 100%;
   border-radius: 16px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getBgdLightColor};
+  border: 1px solid ${getBgdColor};
   ${({  theme: { layout } }) => stylesMap[layout]};
-  border: 1px solid ${getBorderColor};
 
   &:last-child {
     margin-bottom: 0;

@@ -34,11 +34,11 @@ function resolveLabel(
 
 const Attendance: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { event: { relativesFollowers, followersCount } } = props;
-  const avatars = relativesFollowers.map((follower) => follower.avatar);
+  const { event: { friends, followersCount } } = props;
+  const avatars = friends.map((friend) => friend.avatar);
 
   if (followersCount) {
-    const label = resolveLabel(relativesFollowers.length, followersCount, layout);
+    const label = resolveLabel(friends.length, followersCount, layout);
 
     return (
       <AvatarGroup

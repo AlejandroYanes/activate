@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs, getBgdColor } from 'helpers';
 
 const sizeMap = {
   auto: 'auto',
@@ -45,6 +45,6 @@ const styleMap = {
 export const StyledModal = styled.article.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getBgdColor};
   ${({ size }) => styleMap[size]};
 `;

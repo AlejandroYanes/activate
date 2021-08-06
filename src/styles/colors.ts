@@ -56,10 +56,10 @@ export type Colors = keyof ColorScheme;
 export const lightStyleColors: LightColorScheme = {
   FONT: '#151718',
   FONT_SECONDARY: '#57585f',
-  FONT_SHADE: getShade('#151718'),
-  BACKGROUND: changeColorLight('#f5f6fa', -0.03),
-  BACKGROUND_LIGHT: '#f5f6fa',
-  BACKGROUND_LIGHTER: '#fff',
+  FONT_SHADE: getShade('#151718', 0.2),
+  BACKGROUND: '#fff',
+  BACKGROUND_LIGHT: changeColorLight('#ffffff', -0.02),
+  BACKGROUND_LIGHTER: changeColorLight('#ffffff', -0.03),
   BACKGROUND_SHADE: getShade('#f5f6fa'),
 };
 

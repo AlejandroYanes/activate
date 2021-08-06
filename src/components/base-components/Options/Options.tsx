@@ -9,14 +9,13 @@ interface Props extends PositionProps {
   onChange: (value) => void;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
-  highlight?: boolean;
 }
 
 const Options: FunctionComponent<Props> = (props) => {
   const { value, onChange, color, size, fullWidth, children, ...rest } = props;
 
   return (
-    <StyledOptions {...rest}>
+    <StyledOptions color={color} {...rest}>
       <OptionsProvider
         value={value}
         onChange={onChange}

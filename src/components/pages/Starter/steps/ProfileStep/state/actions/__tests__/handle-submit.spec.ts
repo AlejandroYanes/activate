@@ -58,7 +58,6 @@ describe('Starter page - Profile step - handle submit action', () => {
     authApi.updateProfile.mockResolvedValue({ data: { sub: 'user-id' } });
     const profile: ProfileDto = {
       name: 'user',
-      lastName: 'last name',
       userName: 'user.name',
       email: 'a@a.com',
       avatar: 'user1',
@@ -86,7 +85,6 @@ describe('Starter page - Profile step - handle submit action', () => {
     const profile: ProfileDto = {
       email: 'a@a.com',
       name: 'user',
-      lastName: 'last name',
       userName: 'user.name',
       avatar: AvatarOptions.PHOTO,
     };
@@ -117,7 +115,6 @@ describe('Starter page - Profile step - handle submit action', () => {
     const profile: ProfileDto = {
       email: 'a@a.com',
       name: 'user',
-      lastName: 'last name',
       userName: 'user.name',
       avatar: AvatarOptions.PHOTO,
     };
@@ -154,7 +151,6 @@ describe('Starter page - Profile step - handle submit action', () => {
     const profile: ProfileDto = {
       email: 'a@a.com',
       name: 'user',
-      lastName: 'last name',
       userName: 'user.name',
       avatar: AvatarOptions.PHOTO,
     };

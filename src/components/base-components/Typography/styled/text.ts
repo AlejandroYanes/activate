@@ -43,12 +43,17 @@ const getItalicStyle = (props) => {
   return '';
 };
 
+const weightMap = {
+  'normal': css`font-family: Nunito-Light, sans-serif;`,
+  'light': css`font-family: Nunito-ExtraLight, sans-serif; font-weight: lighter;`,
+  'bold': css`font-family: Nunito-ExtraBold, sans-serif; font-weight: bold;`,
+};
+
 export const Text = styled.span.attrs(anyPropsAttrs)`
   white-space: normal;
-  font-family: Nunito-Regular, sans-serif;
   box-sizing: border-box;
+  ${({ weight }) => weightMap[weight]};
   font-size: ${({ size }) => sizeMap[size]};
-  font-weight: ${({ weight }) => weight};
   text-align: ${({ align }) => align};
   ${getItalicStyle};
   ${getColor};

@@ -1,20 +1,13 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
-
-const getBGColor = (props) => {
-  const { highlight, theme: { colors } } = props;
-
-  if (highlight) {
-    return colors.BACKGROUND_LIGHTER;
-  }
-  return colors.BACKGROUND_LIGHT;
-};
+import { getBgdColor, getFontShadeColor, getPositionStyles, } from 'helpers';
 
 export const Options = styled.ul`
   list-style: none;
   display: flex;
   padding: 4px;
-  ${getPositionStyles};
   border-radius: 20px;
-  background-color: ${getBGColor};
+  transition: all 150ms linear;
+  background-color: ${getBgdColor};
+  border: 1px solid ${getFontShadeColor};
+  ${getPositionStyles};
 `;

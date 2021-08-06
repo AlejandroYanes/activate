@@ -39,7 +39,6 @@ const Friends: FunctionComponent = () => {
     <>
       <Options
         margin="12px 0 24px 0"
-        highlight
         fullWidth
         color="accent"
         value={userType}

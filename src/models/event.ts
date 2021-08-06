@@ -10,7 +10,7 @@ export interface EventModel {
     name: string;
     avatar: string;
   };
-  relativesFollowers: {
+  friends: {
     id: string;
     avatar: string;
   }[];

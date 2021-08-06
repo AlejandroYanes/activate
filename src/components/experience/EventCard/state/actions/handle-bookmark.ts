@@ -1,7 +1,8 @@
 import { SetStateAction } from 'react';
-import { NotificationType, showNotification } from 'notifications';
-import eventsApi from 'api/events';
 import { EventModel } from 'models/event';
+import eventsApi from 'api/events';
+import { notifyEventChannel } from 'event-center';
+import { NotificationType, showNotification } from 'notifications';
 import { EventState } from '../';
 
 export default function handleBookmark(
@@ -22,10 +23,11 @@ export default function handleBookmark(
     const { id, name } = event;
 
     const onSuccess = () => {
+      notifyEventChannel('EVENT_FOLLOWED');
       showNotification({
         type: NotificationType.SUCCESS,
-        title: 'Congrats',
-        message: `You are now following the event: ${name}`,
+        title: 'You are following the event:',
+        message: name,
       });
       setState({ isBooked: true, showUnfollowModal: false });
     };

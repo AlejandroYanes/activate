@@ -33,7 +33,7 @@ const getAlignment = (props: ButtonProps) => {
 };
 
 export const Button = styled.button.attrs(anyPropsAttrs)`
-  font-family: Comfortaa, sans-serif;
+  font-family: Nunito-Regular, sans-serif;
   border: none;
   outline: none;
   box-shadow: none;

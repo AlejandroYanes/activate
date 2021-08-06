@@ -13,7 +13,7 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
 export const StyledTextArea = styled.textarea`
   border-radius: 10px;
   font-size: 16px;
-  font-family: Comfortaa, sans-serif;
+  font-family: Nunito-Regular, sans-serif;
   letter-spacing: 0.5px;
   outline: none;
   padding: 8px 40px 8px 20px;

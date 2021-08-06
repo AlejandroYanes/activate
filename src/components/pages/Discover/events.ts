@@ -15,7 +15,7 @@ const defaultEvent: EventModel = {
     name: faker.company.companyName(),
   },
   followersCount: faker.random.number(),
-  relativesFollowers: [],
+  friends: [],
   going: faker.random.boolean(),
   image: virtualTourImg,
   description: `
@@ -37,7 +37,7 @@ const defaultEvent2: EventModel = {
     name: faker.company.companyName(),
   },
   followersCount: faker.random.number(),
-  relativesFollowers: [],
+  friends: [],
   going: faker.random.boolean(),
   image: pqMontanoImg,
   description: `
@@ -60,7 +60,7 @@ const fakeEvents: EventModel[] = new Array(4).fill('1').map((_item, index) => ({
   },
   image: images[index],
   followersCount: faker.random.number(),
-  relativesFollowers: [],
+  friends: [],
   going: faker.random.boolean(),
   description: undefined,
 }));

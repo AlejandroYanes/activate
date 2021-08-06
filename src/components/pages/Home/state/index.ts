@@ -51,7 +51,7 @@ export default function useFeedState() {
     refetchDays();
   }, [datesResponse, eventsResponse, selectedDay]);
 
-  useEventCenterUpdate('EVENT_UNFOLLOWED', handleEventUnfollowed);
+  useEventCenterUpdate('EVENT_FOLLOWED', handleEventUnfollowed);
 
   useEffect(() => {
     if (datesResponse?.data.results.length > 0 && !selectedDay) {

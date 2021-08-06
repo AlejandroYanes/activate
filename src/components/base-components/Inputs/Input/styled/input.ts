@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { getPositionStyles, PositionProps } from 'helpers';
+import { getBgdColor, getPositionStyles, PositionProps } from 'helpers';
 import { elementHeight, inputBorderRadius } from 'styles/variables';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
@@ -17,11 +17,11 @@ export const getColorStyles = (props) => {
   const { theme: { colors }, error } = props;
 
   const hoverBorderColor = error ? colors.ERROR_SHADE : colors.BRAND_SHADE;
-  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND;
+  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND_HIGHLIGHT;
 
   return css`
-      border: 1px solid transparent;
-      background-color: ${colors.BACKGROUND_LIGHTER};
+      border: 1px solid ${colors.FONT_SHADE};
+      background-color: ${getBgdColor};
       color: ${colors.FONT};
       transition: all 150ms linear;
 
@@ -32,6 +32,7 @@ export const getColorStyles = (props) => {
 
       &:hover {
         background-color: ${hoverBorderColor};
+        border-color: ${focusBorderColor};
       }
 
       &:focus {
@@ -42,7 +43,7 @@ export const getColorStyles = (props) => {
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
   font-size: 16px;
-  font-family: Comfortaa, sans-serif;
+  font-family: Nunito-Regular, sans-serif;
   letter-spacing: 0.5px;
   outline: none;
   padding-top: 0;

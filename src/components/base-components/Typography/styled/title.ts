@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
 
 const sizeMap = {
@@ -7,13 +7,19 @@ const sizeMap = {
   3: '20px',
 };
 
+const weightMap = {
+  'normal': css`font-family: Nunito-Light, sans-serif;`,
+  'light': css`font-family: Nunito-ExtraLight, sans-serif; font-weight: lighter;`,
+  'bold': css`font-family: Nunito-ExtraBold, sans-serif; font-weight: bold;`,
+};
+
 const getTextStyles = (props) => {
   const { level, align, weight } = props;
 
-  return `
+  return css`
+    ${weightMap[weight]};
     font-size: ${sizeMap[level]};
     text-align: ${align};
-    font-weight: ${weight};
   `;
 };
 

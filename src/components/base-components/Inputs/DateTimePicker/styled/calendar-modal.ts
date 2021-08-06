@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getBgdColor } from 'helpers';
 
 const getHeight = (props) => {
   const { useRange, isDateTime } = props;
@@ -20,7 +21,7 @@ export const StyledCalendarModal = styled.div.attrs((props: any) => props)`
   max-width: 90vw;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getBgdColor};
   padding: 12px;
   border-radius: 10px;
   box-sizing: border-box;

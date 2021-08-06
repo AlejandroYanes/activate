@@ -41,13 +41,12 @@ const UnfollowModal: FunctionComponent<Props> = (props) => {
         <Text
           size="large"
           align="center"
-          weight="lighter"
           padding="16px 0 8px 0"
         >
           Unfollow this event:
         </Text>
         <Text size="large" align="center" padding="0 0 16px 0">{title}</Text>
-        <Text color="secondary" align="center" padding="16px 0 24px 0">
+        <Text color="secondary" align="center" padding="0 0 24px 0">
           You are about to stop following this event,
           you will not receive any updates or notifications related to it.
         </Text>
