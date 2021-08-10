@@ -46,7 +46,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
   return (
     <Step>
       <Content>
-        <Title level={2}>Tell us about you</Title>
+        <Title weight="light" level={1}>Tell us about you</Title>
         <Form
           onChange={setProfile}
           state={profile}

@@ -33,7 +33,7 @@ const PublicLayout: FunctionComponent = (props) => {
     <StyledApp data-el="app">
       <Header data-el="app-header">
         <Link to="/">
-          <Title level={2}>Activate</Title>
+          <Title weight="light" level={2}>Activate</Title>
         </Link>
         <RenderIf condition={isLoggedIn}>
           <Toggle

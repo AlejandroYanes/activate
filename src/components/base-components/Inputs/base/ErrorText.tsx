@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
-import { StyledErrorText } from './styled/error-text';
+import { ErrorWrapper, StyledErrorText } from './styled/error-text';
 
 interface Props {
   text: string;
@@ -14,14 +14,15 @@ const variants = {
 const ErrorText: FunctionComponent<Props> = (props) => {
   return (
     <RenderIf condition={!!props.text}>
-      <StyledErrorText
-        variants={variants}
-        initial="initial"
-        animate="visible"
-        exit="initial"
-      >
-        {props.text}
-      </StyledErrorText>
+      <ErrorWrapper>
+        <StyledErrorText
+          variants={variants}
+          initial="initial"
+          animate="visible"
+        >
+          {props.text}
+        </StyledErrorText>
+      </ErrorWrapper>
     </RenderIf>
   );
 };

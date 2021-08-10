@@ -30,7 +30,7 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
   return (
     <Step>
       <Content>
-        <Title level={2}>{`Let's verify you`}</Title>
+        <Title weight="light" level={1}>{`Let's verify you`}</Title>
         <Text as="p" padding="16px 0 0 0">
           We sent you a 6 digit code to your email,
           we use this code to verify you are a real person.

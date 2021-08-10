@@ -34,7 +34,7 @@ const InterestsStep: FunctionComponent = () => {
   return (
     <Step>
       <Content>
-        <Title level={1}>{`Tell us what you're looking for`}</Title>
+        <Title weight="light" level={1}>{`Tell us what you're looking for`}</Title>
         <InterestsGrid
           multiple
           showAllToggle

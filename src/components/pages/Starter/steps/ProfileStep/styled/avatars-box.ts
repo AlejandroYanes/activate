@@ -22,5 +22,6 @@ const avatarsBoxStyles = {
 };
 
 export const AvatarsBox = styled.div`
+  position: relative;
   ${({ theme }) => avatarsBoxStyles[theme.layout]};
 `;
