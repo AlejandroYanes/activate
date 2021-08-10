@@ -26,6 +26,7 @@ const InterestsStep: FunctionComponent = () => {
     },
     actions: {
       handleInterests,
+      selectTopCategory,
       saveInterests,
     },
   } = useInterestsState();
@@ -33,14 +34,16 @@ const InterestsStep: FunctionComponent = () => {
   return (
     <Step>
       <Content>
-        <Title level={2}>{`Tell us what you're looking for`}</Title>
+        <Title level={1}>{`Tell us what you're looking for`}</Title>
         <InterestsGrid
           multiple
-          loading={isLoading}
-          errored={!!apiError}
+          showAllToggle
           value={interests}
           interests={categories}
           onChange={handleInterests}
+          onToggleAll={selectTopCategory}
+          loading={isLoading}
+          errored={!!apiError}
           cols={colsMap[layout]}
           padding="20px 0 0 0"
         />

@@ -1,9 +1,19 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
-export const StyledToggle = styled.div`
+const getDirection = (props) => {
+  const { rtl } = props;
+
+  if (rtl) {
+    return 'flex-direction: row-reverse';
+  }
+  return 'flex-direction: row';
+};
+
+export const StyledToggle = styled.div.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
+  ${getDirection};
   ${getPositionStyles};
 `;
 

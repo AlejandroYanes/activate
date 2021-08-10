@@ -7,19 +7,29 @@ import PlainGrid from './PlainGrid';
 import SectionedGrid from './SectionedGrid';
 
 interface Props extends PositionProps {
-  loading?: boolean;
-  errored?: boolean;
+  interests: CategoryModel[];
   value?: string | string[];
   onChange?: (value) => void;
+  onToggleAll?: (category) => void;
   cols?: number;
   multiple?: boolean;
   readonly?: boolean;
   plain?: boolean;
-  interests: CategoryModel[];
+  showAllToggle?: boolean;
+  loading?: boolean;
+  errored?: boolean;
 }
 
 const InterestsGrid: FunctionComponent<Props> = (props): any => {
-  const { loading, errored, interests, plain, ...rest } = props;
+  const {
+    loading,
+    errored,
+    interests,
+    plain,
+    showAllToggle,
+    onToggleAll,
+    ...rest
+  } = props;
 
   if (loading) {
     return (
@@ -42,7 +52,11 @@ const InterestsGrid: FunctionComponent<Props> = (props): any => {
       size="small"
       {...rest}
     >
-      <Items interests={interests} />
+      <Items
+        showAllToggle={showAllToggle}
+        onToggleAll={onToggleAll}
+        interests={interests}
+      />
     </PickList>
   );
 };

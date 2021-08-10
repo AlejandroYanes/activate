@@ -10,10 +10,11 @@ import {
 import RenderIf from '../RenderIf';
 
 interface Props extends PositionProps {
-  nobNode?: ReactNode;
-  label?: string;
   value: boolean;
   onChange: (event) => void;
+  label?: string;
+  nobNode?: ReactNode;
+  rtl?: boolean;
 }
 
 const springAnimation = {
@@ -22,11 +23,14 @@ const springAnimation = {
   damping: 20,
 };
 
+const labelPadding = '0 0 0 8px';
+const labelPaddingRtl = '0 8px 0 0';
+
 const Toggle: FunctionComponent<Props> = (props) => {
-  const { nobNode, label, value, onChange, ...rest } = props;
+  const { value, onChange,nobNode, label, rtl, ...rest } = props;
 
   return (
-    <StyledToggle {...rest}>
+    <StyledToggle rtl={rtl} {...rest}>
       <HiddenInput type="checkbox" checked={value} readOnly />
       <FauxContainer
         tabIndex={0}
@@ -40,7 +44,7 @@ const Toggle: FunctionComponent<Props> = (props) => {
         </FauxNob>
       </FauxContainer>
       <RenderIf condition={!!label}>
-        <Text padding="0 0 0 8px">{label}</Text>
+        <Text padding={rtl ? labelPaddingRtl : labelPadding}>{label}</Text>
       </RenderIf>
     </StyledToggle>
   );

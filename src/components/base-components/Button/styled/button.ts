@@ -14,7 +14,6 @@ const getSize = (props: ButtonProps) => {
       width: ${width};
       min-width: 28px;
       font-size: 13px;
-      font-weight: bold;
     `;
   }
 
@@ -33,13 +32,11 @@ const getAlignment = (props: ButtonProps) => {
 };
 
 export const Button = styled.button.attrs(anyPropsAttrs)`
-  font-family: Nunito-Regular, sans-serif;
   border: none;
   outline: none;
   box-shadow: none;
   box-sizing: border-box;
   border-radius: 100px;
-  letter-spacing: 1px;
   display: flex;
   align-items: center;
   padding: 0 18px;

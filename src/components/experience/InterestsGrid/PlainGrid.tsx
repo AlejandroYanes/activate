@@ -18,7 +18,7 @@ const PlainGrid: FunctionComponent<Props> = (props): any => {
         color="BRAND_FONT"
         size="x-large"
       />
-      <Text color="brand" padding="4px 4px 0 4px" ellipsis>{name}</Text>
+      <Text color="brand" weight="bold" padding="4px 4px 0 4px" ellipsis>{name}</Text>
     </PickItem>
   ));
 };
