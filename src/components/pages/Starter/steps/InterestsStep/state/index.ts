@@ -11,7 +11,6 @@ import selectTopCategory from './actions/select-top-category';
 
 const initialState: State = {
   callingAPI: false,
-  error: undefined,
   interests: [],
 }
 

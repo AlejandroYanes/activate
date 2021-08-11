@@ -1,25 +1,21 @@
-import React, { Fragment, FunctionComponent } from 'react';
-import { CategoryModel } from 'models/category';
+import React, { FunctionComponent, Fragment } from 'react';
 import { Text } from 'components/base-components/Typography';
 import { Button } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
+import { PickList } from 'components/base-components/PickList';
 import PlainGrid from './PlainGrid';
 import { SectionTitle } from './styled';
+import { GridProps } from './index';
 
-interface Props {
-  interests: CategoryModel[];
-  showAllToggle?: boolean;
-  onToggleAll?: (category) => void;
-}
 
-const SectionedGrid: FunctionComponent<Props> = (props): any => {
-  const { interests, showAllToggle, onToggleAll } = props;
+const SectionedGrid: FunctionComponent<GridProps> = (props): any => {
+  const { interests, onToggleAll, ...rest } = props;
 
-  return interests.map(({ id, name, subcategories }) => (
+  const items = interests.map(({ id, name, subcategories }) => (
     <Fragment key={id}>
       <SectionTitle justify="space-between" width="100%">
         <Text  size="large">{name}</Text>
-        <RenderIf condition={showAllToggle}>
+        <RenderIf condition={!!onToggleAll}>
           <Button
             onClick={() => onToggleAll(id)}
             label="Select All"
@@ -30,9 +26,20 @@ const SectionedGrid: FunctionComponent<Props> = (props): any => {
           />
         </RenderIf>
       </SectionTitle>
-      <PlainGrid interests={subcategories} />
+      <PlainGrid interests={subcategories} asFragment />
     </Fragment>
   ));
+
+  return (
+    <PickList
+      layout="grid"
+      color="brand"
+      size="small"
+      {...rest}
+    >
+      {items}
+    </PickList>
+  );
 };
 
 export default SectionedGrid;

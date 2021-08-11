@@ -40,6 +40,7 @@ const InterestsPage: FunctionComponent = () => {
           interests={allInterests}
           onChange={handleInterests}
           padding="20px 0 0 0"
+          mode="sectioned"
           multiple
         />
         <RenderIf condition={!isLoading && !apiFailed}>

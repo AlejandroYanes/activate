@@ -4,11 +4,11 @@ import { Button } from 'components/base-components/Button';
 
 const buttonStyles = {
   [Layout.DESKTOP]: css`
-    margin: 24px 12px 0 auto;
-    padding: 0 18px;
+    margin: auto 12px 0 auto;
+    padding: 0 24px;
   `,
   [Layout.TABLET]: css`
-    margin: 24px 12px 0 auto;
+    margin: auto 12px 0 auto;
     width: 140px;
     padding: 0 18px;
   `,

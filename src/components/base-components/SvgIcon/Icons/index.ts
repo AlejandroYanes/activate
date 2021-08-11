@@ -106,6 +106,7 @@ import LockAccessIcon from './LockAccess';
 import LockCircleIcon from './LockCircle';
 import BanIcon from './Ban';
 import SortIcon from './Sort';
+import ArrowRightIcon from './ArrowRight';
 
 export const icons = {
   null: () => null,
@@ -217,6 +218,7 @@ export const icons = {
   LOCK_CIRCLE: LockCircleIcon,
   BAN: BanIcon,
   SORT: SortIcon,
+  ARROW_RIGHT: ArrowRightIcon,
 };
 
 export type Icons = keyof (typeof icons);

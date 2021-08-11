@@ -44,6 +44,8 @@ export const getBrandHlColor = ({ theme }) => theme.colors.BRAND_HIGHLIGHT;
 export const getAccentColor = ({ theme }) => theme.colors.ACCENT;
 export const getAccentHlColor = ({ theme }) => theme.colors.ACCENT_HIGHLIGHT;
 export const getAccentFontColor = ({ theme }) => theme.colors.ACCENT_FONT;
+export const getAccentShadeColor = ({ theme }) => theme.colors.ACCENT_SHADE;
+export const getAccentBgColor = ({ theme }) => theme.colors.ACCENT_BG;
 
 export const getFontColor = ({ theme }) => theme.colors.FONT;
 export const getFontSecColor = ({ theme }) => theme.colors.FONT_SECONDARY;
