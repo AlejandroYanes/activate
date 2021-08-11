@@ -1,34 +1,45 @@
-import React, { Fragment, FunctionComponent } from 'react';
-import { CategoryModel } from 'models/category';
-import { PickItem } from 'components/base-components/PickList';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import React, { FunctionComponent, Fragment } from 'react';
 import { Text } from 'components/base-components/Typography';
+import { Button } from 'components/base-components/Button';
+import RenderIf from 'components/base-components/RenderIf';
+import { PickList } from 'components/base-components/PickList';
 import PlainGrid from './PlainGrid';
-import { Interest, SectionTitle } from './styled';
+import { SectionTitle } from './styled';
+import { GridProps } from './index';
 
-interface Props {
-  interests: CategoryModel[];
-}
 
-const SectionedGrid: FunctionComponent<Props> = (props): any => {
-  const { interests } = props;
+const SectionedGrid: FunctionComponent<GridProps> = (props): any => {
+  const { interests, onToggleAll, ...rest } = props;
 
-  return interests.map(({ id, name, icon, subcategories }) => (
+  const items = interests.map(({ id, name, subcategories }) => (
     <Fragment key={id}>
-      <SectionTitle  size="large">{name}</SectionTitle>
-      <PickItem value={id} color="accent">
-        <Interest>
-          <SvgIcon
-            icon={icon.toUpperCase() as Icons}
-            color="ACCENT_FONT"
-            size="x-large"
+      <SectionTitle justify="space-between" width="100%">
+        <Text  size="large">{name}</Text>
+        <RenderIf condition={!!onToggleAll}>
+          <Button
+            onClick={() => onToggleAll(id)}
+            label="Select All"
+            variant="outline"
+            color="accent"
+            padding="0 8px"
+            sm
           />
-          <Text color="accent" padding="4px 0 0 0" ellipsis>{name}</Text>
-        </Interest>
-      </PickItem>
-      <PlainGrid interests={subcategories} />
+        </RenderIf>
+      </SectionTitle>
+      <PlainGrid interests={subcategories} asFragment />
     </Fragment>
   ));
+
+  return (
+    <PickList
+      layout="grid"
+      color="brand"
+      size="small"
+      {...rest}
+    >
+      {items}
+    </PickList>
+  );
 };
 
 export default SectionedGrid;

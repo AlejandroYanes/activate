@@ -20,8 +20,8 @@ const MyInterests = () => {
         interests={response?.data}
         loading={isLoading}
         errored={!!error}
+        mode="plain"
         readonly
-        plain
       />
       <RenderIf condition={!isLoading && !error}>
         <LinkButton

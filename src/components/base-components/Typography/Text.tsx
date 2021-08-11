@@ -5,7 +5,8 @@ import { Text as StyledText } from './styled/text';
 interface Props extends PositionProps {
   weight?: 'light' | 'normal' | 'bold';
   size?: 'small' | 'medium' | 'large';
-  color?: 'brand' | 'accent' | 'white' | 'font' | 'secondary' | 'background' | 'error';
+  // eslint-disable-next-line max-len
+  color?: 'brand' | 'accent' | 'warning' | 'error' | 'white' | 'font' | 'secondary' | 'background';
   align?: 'left' | 'center' | 'right';
   italic?: boolean;
   as?: string;

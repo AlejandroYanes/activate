@@ -22,6 +22,7 @@ const InterestsPage: FunctionComponent = () => {
     },
     actions: {
       handleInterests,
+      selectTopCategory,
       saveInterests,
     },
   } = useInterestsState();
@@ -31,7 +32,7 @@ const InterestsPage: FunctionComponent = () => {
       <StyledCard>
         <FlexBox align="center" mB>
           <IconButton onClick={goBack} icon="ARROW_LEFT" mR />
-          <Title level={2}>Manage your interests</Title>
+          <Title weight="light" level={2}>Manage your interests</Title>
         </FlexBox>
         <InterestsGrid
           loading={isLoading}
@@ -39,7 +40,9 @@ const InterestsPage: FunctionComponent = () => {
           value={interests}
           interests={allInterests}
           onChange={handleInterests}
+          onToggleAll={selectTopCategory}
           padding="20px 0 0 0"
+          mode="sectioned"
           multiple
         />
         <RenderIf condition={!isLoading && !apiFailed}>

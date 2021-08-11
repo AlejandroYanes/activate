@@ -2,15 +2,15 @@ import { useCallback, useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import categoriesApi from 'api/categories';
+import { useAtomicSet } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
-import handleInterests from './actions/handle-interests';
+import { useAuthActions } from 'components/providers/Auth';
 import saveInterests from './actions/save-interests';
-import interestsReducer, { State } from './reducer';
-import { useAuthActions } from '../../../../../providers/Auth';
+import interestsReducer, { Actions, State } from './reducer';
+import selectTopCategory from './actions/select-top-category';
 
 const initialState: State = {
   callingAPI: false,
-  error: undefined,
   interests: [],
 }
 
@@ -31,8 +31,9 @@ export default function useInterestsState() {
       apiError: error,
     },
     actions: {
-      handleInterests: useCallback(
-        handleInterests(dispatch, state.interests, response?.data.results),
+      handleInterests: useAtomicSet(dispatch, Actions.SET_INTERESTS),
+      selectTopCategory: useCallback(
+        selectTopCategory(dispatch, state.interests, response?.data.results),
         [state.interests, response],
       ),
       saveInterests: useCallback(

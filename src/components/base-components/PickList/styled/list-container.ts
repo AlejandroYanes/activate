@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   max-width: 100%;

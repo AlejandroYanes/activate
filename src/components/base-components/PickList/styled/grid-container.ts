@@ -14,6 +14,7 @@ const gapSizeMap = {
 };
 
 export const Wrapper = styled.ul.attrs(anyPropsAttrs)`
+  position: relative;
   display: grid;
   justify-content: normal;
   justify-items: center;

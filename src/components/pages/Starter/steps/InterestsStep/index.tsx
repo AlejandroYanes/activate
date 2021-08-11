@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Text, Title } from 'components/base-components/Typography';
+import { Title } from 'components/base-components/Typography';
 import InterestsGrid from 'components/experience/InterestsGrid';
 import RenderIf from 'components/base-components/RenderIf';
 import { Content, Step } from '../../styled';
@@ -21,11 +21,11 @@ const InterestsStep: FunctionComponent = () => {
       isLoading,
       categories,
       interests,
-      error,
       apiError,
     },
     actions: {
       handleInterests,
+      selectTopCategory,
       saveInterests,
     },
   } = useInterestsState();
@@ -33,19 +33,20 @@ const InterestsStep: FunctionComponent = () => {
   return (
     <Step>
       <Content>
-        <Title level={2}>{`Tell us what you're looking for`}</Title>
+        <Title weight="light" level={1}>{`Tell us what you're looking for`}</Title>
         <InterestsGrid
           multiple
-          loading={isLoading}
-          errored={!!apiError}
+          mode="paged"
+          padding="20px 0 0 0"
+          cols={colsMap[layout]}
           value={interests}
           interests={categories}
           onChange={handleInterests}
-          cols={colsMap[layout]}
-          padding="20px 0 0 0"
+          onToggleAll={selectTopCategory}
+          loading={isLoading}
+          errored={!!apiError}
         />
         <RenderIf condition={!isLoading && !apiError}>
-          <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>
           <FinishButton
             label="Finish"
             variant="fill"

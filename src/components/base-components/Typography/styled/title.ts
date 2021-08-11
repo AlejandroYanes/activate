@@ -8,7 +8,7 @@ const sizeMap = {
 };
 
 const weightMap = {
-  'normal': css`font-family: Nunito-Light, sans-serif;`,
+  'normal': css`font-family: Nunito-Regular, sans-serif;`,
   'light': css`font-family: Nunito-ExtraLight, sans-serif; font-weight: lighter;`,
   'bold': css`font-family: Nunito-ExtraBold, sans-serif; font-weight: bold;`,
 };

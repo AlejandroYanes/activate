@@ -38,7 +38,7 @@ const getInitialState = (): AuthState => {
   //     name: 'Alejandro Yanes',
   //     theme: AppTheme.SummerVibes,
   //     useDarkStyle: true,
-  //     verificationLevel: VerificationLevel.INTERESTS_ADDED,
+  //     verificationLevel: VerificationLevel.USER_INFO_ADDED,
   //   } as UserInfo,
   // };
 };
