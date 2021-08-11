@@ -16,7 +16,12 @@ const PrimaryTitle = () => (
 );
 
 const TabletTitle = () => (
-  <FlexBox direction="column" justify="flex-start" align="stretch" margin="0 0 48px 0">
+  <FlexBox
+    direction="column"
+    justify="flex-start"
+    align="stretch"
+    margin="0 0 48px 0"
+  >
     <Title level={1} color="brand" padding="0" weight="bold" margin="0 0 16px 0">
       Discover new events
     </Title>
@@ -28,7 +33,12 @@ const TabletTitle = () => (
 );
 
 const MobileTitle = () => (
-  <FlexBox direction="column" justify="flex-start" align="stretch" margin="0 0 48px 0">
+  <FlexBox
+    direction="column"
+    justify="flex-start"
+    align="stretch"
+    margin="0 0 48px 0"
+  >
     <Title level={1} color="brand" padding="0" weight="bold" mB>
       Discover new events
     </Title>

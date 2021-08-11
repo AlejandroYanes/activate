@@ -7,9 +7,8 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { UserInfo, VerificationLevel } from 'models/user';
+import { UserInfo } from 'models/user';
 import { clearStorage, getUserInfo, storeAuthToken, storeUserInfo } from 'helpers';
-import { AppTheme } from '../Theme';
 
 interface AuthState {
   isLoggedIn: boolean;
@@ -26,22 +25,22 @@ interface AuthContext {
 }
 
 const getInitialState = (): AuthState => {
-  // return {
-  //   isLoggedIn: false,
-  //   userInfo: undefined,
-  // };
   return {
-    isLoggedIn: true,
-    userInfo: {
-      avatar: 'user4',
-      userName: 'alejandro.yanes94',
-      email: 'ale@gmail.com',
-      name: 'Alejandro Yanes',
-      theme: AppTheme.SummerVibes,
-      useDarkStyle: true,
-      verificationLevel: VerificationLevel.USER_INFO_ADDED,
-    } as UserInfo,
+    isLoggedIn: false,
+    userInfo: undefined,
   };
+  // return {
+  //   isLoggedIn: true,
+  //   userInfo: {
+  //     avatar: 'user4',
+  //     userName: 'alejandro.yanes94',
+  //     email: 'ale@gmail.com',
+  //     name: 'Alejandro Yanes',
+  //     theme: AppTheme.SummerVibes,
+  //     useDarkStyle: true,
+  //     verificationLevel: VerificationLevel.USER_INFO_ADDED,
+  //   } as UserInfo,
+  // };
 };
 
 const AuthContext = createContext<AuthContext>(undefined);

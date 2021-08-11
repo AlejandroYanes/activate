@@ -4,4 +4,8 @@ import FlexBox from 'components/base-components/FlexBox';
 export const SectionTitle = styled(FlexBox)`
   grid-column: 1 / -1;
   justify-self: flex-start;
+
+  &:not(:first-child) {
+    margin-top: 24px;
+  }
 `;
