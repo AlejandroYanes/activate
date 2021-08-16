@@ -38,6 +38,7 @@ export default function profileStepReducer(
           ...state.profile,
           avatar: AvatarOptions.PHOTO,
         },
+        errors: { ...state.errors, avatar: undefined },
       };
     case ProfileStepActions.SET_ERRORS:
       return { ...state, errors: payload, callingAPI: false };
