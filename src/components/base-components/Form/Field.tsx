@@ -67,7 +67,6 @@ const Field: FunctionComponent<Props> = (props) => {
   const handleBlur = useCallback((event) => {
     if (onBlur) {
       onBlur(event, setField, state);
-      return;
     }
 
     if (isDirty) {
@@ -83,10 +82,7 @@ const Field: FunctionComponent<Props> = (props) => {
         isDirty: false,
       });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [stateValue, validateField]);
 
-  useEffect(() => {
     if (fieldError) {
       debounceCall(() => validateField(value));
     }
