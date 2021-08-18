@@ -26,17 +26,17 @@ const Info: FunctionComponent<Props> = (props) => {
     <StyledInfo>
       <Attr>
         <Text>{leftStatLabel}</Text>
-        <Title weight="light" level={2} color="accent">
+        <Title level={2} color="accent">
           {formatAmount(leftStatValue)}
         </Title>
       </Attr>
       <Attr>
         <Text>{`@${userName}`}</Text>
-        <Title weight="light" level={2} align="center" color="brand">{name}</Title>
+        <Title level={2} align="center" color="brand">{name}</Title>
       </Attr>
       <Attr>
         <Text>{rightStatLabel}</Text>
-        <Title weight="light" level={2} color="accent">
+        <Title level={2} color="accent">
           {formatAmount(rightStatValue)}
         </Title>
       </Attr>
