@@ -1,24 +1,9 @@
 import { mount } from 'enzyme';
-import { ThemeProvider } from 'styled-components';
-import { SummerVibesTheme } from 'styles/themes';
-import { composeColorScheme } from 'helpers';
+import TestWrapper from 'components/base-components/TestWrapper';
 import { Text } from 'components/base-components/Typography';
 import Stepper from '../index';
 
 const onChangeMock = jest.fn();
-
-const MockComponent = ({ activeStep, onChange }) => {
-  const colors = composeColorScheme(SummerVibesTheme, false);
-  return (
-    <ThemeProvider theme={{ colors }}>
-      <Stepper activeStep={activeStep} onChange={onChange}>
-        <Text>content 1</Text>
-        <Text>content 2</Text>
-        <Text>content 3</Text>
-      </Stepper>
-    </ThemeProvider>
-  );
-};
 
 describe('Stepper base component', () => {
   beforeEach(() => {
@@ -27,7 +12,11 @@ describe('Stepper base component', () => {
 
   it('should render the content of the active step', () => {
     const stepper = mount(
-      <MockComponent activeStep={1} onChange={onChangeMock} />
+      <TestWrapper component={Stepper} activeStep={1} onChange={onChangeMock}>
+        <Text>content 1</Text>
+        <Text>content 2</Text>
+        <Text>content 3</Text>
+      </TestWrapper>
     );
 
     const content = stepper.find('main[data-el="stepper-content"]').text();
@@ -36,7 +25,11 @@ describe('Stepper base component', () => {
 
   it('should render the content of the active step when the step changes', () => {
     const stepper = mount(
-      <MockComponent activeStep={1} onChange={onChangeMock} />
+      <TestWrapper component={Stepper} activeStep={1} onChange={onChangeMock}>
+        <Text>content 1</Text>
+        <Text>content 2</Text>
+        <Text>content 3</Text>
+      </TestWrapper>
     );
 
     const firstContent = stepper.find('main[data-el="stepper-content"]').text();

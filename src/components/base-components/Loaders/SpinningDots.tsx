@@ -15,7 +15,7 @@ const SpinningDots: FunctionComponent<Props> = (props) => {
   const { color, ...rest } = props;
 
   return (
-    <Wrapper {...rest}>
+    <Wrapper data-el="loader-spinning-dots" {...rest}>
       <Dot color={color ? Colors[color] : Colors.INFO} />
       <Dot color={color ? Colors[color] : Colors.SUCCESS} />
       <Dot color={color ? Colors[color] : Colors.WARNING} />

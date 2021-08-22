@@ -1,14 +1,8 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
-import AppProviders from 'components/providers';
+import TestWrapper from 'components/base-components/TestWrapper';
 import ConsumerActions from '../ConsumerActions';
-
-const Wrapper = ({ children }) => (
-  <AppProviders>
-    {children}
-  </AppProviders>
-);
 
 describe('User Actions - ConsumerActions', () => {
   it('should show the right actions when the user is not related to me', () => {
@@ -23,9 +17,11 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <ConsumerActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={ConsumerActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
@@ -52,9 +48,11 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <ConsumerActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={ConsumerActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
@@ -81,9 +79,11 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <ConsumerActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={ConsumerActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
@@ -111,9 +111,11 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <ConsumerActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={ConsumerActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
@@ -140,9 +142,11 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <ConsumerActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={ConsumerActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');

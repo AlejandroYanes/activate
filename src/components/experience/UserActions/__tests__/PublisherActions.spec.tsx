@@ -1,14 +1,8 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
 import { FollowerStatus, PublisherModel } from 'models/user';
-import AppProviders from 'components/providers';
+import TestWrapper from 'components/base-components/TestWrapper';
 import PublisherActions from '../PublisherActions';
-
-const Wrapper = ({ children }) => (
-  <AppProviders>
-    {children}
-  </AppProviders>
-);
 
 describe('User Actions - PublisherActions', () => {
   it('should show the right actions when I\'m not following the publisher', () => {
@@ -23,9 +17,11 @@ describe('User Actions - PublisherActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <PublisherActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={PublisherActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
@@ -50,9 +46,11 @@ describe('User Actions - PublisherActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <PublisherActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={PublisherActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
@@ -77,9 +75,11 @@ describe('User Actions - PublisherActions', () => {
     };
 
     const component = mount(
-      <Wrapper>
-        <PublisherActions user={user} queryKey="query-key" />
-      </Wrapper>
+      <TestWrapper
+        component={PublisherActions}
+        queryKey="query-key"
+        user={user}
+      />
     );
 
     component.find('button').simulate('click');
