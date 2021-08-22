@@ -12,7 +12,7 @@ export enum ApiErrorType {
 }
 
 export interface ApiErrorResponse {
-  errorType: ApiErrorType,
+  errorType: ApiErrorType;
   errorMessage?: string;
   validationErrors?: { [field: string]: string[] };
 }

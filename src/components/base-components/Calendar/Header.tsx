@@ -48,14 +48,14 @@ const Header: FunctionComponent<Props> = (props) => {
           onClick={selectPrevious}
           icon="CHEVRON_LEFT"
           color="background"
-          variant="flat"
+          variant="fill"
         />
       </RenderIf>
       <Button
         onClick={changeSelection}
-        label={label}
-        variant="flat"
         style={monthButtonStyles}
+        label={label}
+        variant="fill"
         color="background"
         mR
         mL
@@ -65,7 +65,7 @@ const Header: FunctionComponent<Props> = (props) => {
           onClick={selectNext}
           icon="CHEVRON_RIGHT"
           color="background"
-          variant="flat"
+          variant="fill"
         />
       </RenderIf>
     </StyledHeader>

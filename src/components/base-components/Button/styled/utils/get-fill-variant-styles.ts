@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
-import { ColorScheme } from 'styles/colors';
-import { getFontSecColor, getFontShadeColor } from 'helpers';
+import { ColorScheme, Variations } from 'styles/colors';
+import { getColorVariation, getFontSecColor, getFontShadeColor } from 'helpers';
 
 export default function getFillVariantStyles(
   colors: ColorScheme,
@@ -33,12 +33,12 @@ export default function getFillVariantStyles(
   const backgroundColor = (
     color === 'background'
       ? colors.BACKGROUND
-      : colors[`${color.toUpperCase()}_BG`]
+      : getColorVariation(colors, color, Variations.BG)
   );
   const backgroundHoverColor = (
     color === 'background'
       ? colors.BRAND_SHADE
-      : colors[`${color.toUpperCase()}_BG_HIGHLIGHT`]
+      : getColorVariation(colors, color, Variations.BG_HIGHLIGHT)
   );
 
   return css`

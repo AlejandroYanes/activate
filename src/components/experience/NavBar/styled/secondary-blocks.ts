@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getBrandColor, getBrandHlColor, getWhiteColor } from 'helpers';
 import { IconButton } from 'components/base-components/Button';
 
 export const ActionBlock = styled.li`
@@ -7,20 +8,20 @@ export const ActionBlock = styled.li`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: ${({ theme }) => theme.colors.WHITE};
-  background-color: ${({ theme }) => theme.colors.BRAND};
+  color: ${getWhiteColor};
+  background-color: ${getBrandColor};
   transition: all 150ms linear;
 `;
 
 export const ActionButton = styled(IconButton)`
   width: 42px;
   height: 42px;
-  background-color: ${({ theme }) => theme.colors.BRAND};
-  border-color: ${({ theme }) => theme.colors.BRAND};
+  background-color: ${getBrandColor};
+  border-color: ${getBrandColor};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.BRAND_HIGHLIGHT};
-    border-color: ${({ theme }) => theme.colors.BRAND_HIGHLIGHT};
+    background-color: ${getBrandHlColor};
+    border-color: ${getBrandHlColor};
   }
 `;
 
@@ -29,6 +30,6 @@ export const EmptyBlock = styled.li`
   flex: 1;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.BRAND};
+  background-color: ${getBrandColor};
   transition: all 150ms linear;
 `;

@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
+import {
+  anyPropsAttrs,
+  getEllipsisStyles,
+  getPositionStyles,
+  getThemeBlackColor,
+} from 'helpers';
 
 const sizeMap = {
   small: '12px',
@@ -11,6 +16,10 @@ const sizeMap = {
 
 const getColor = (props) => {
   const { theme: { colors }, color } = props;
+
+  if (color === 'black') {
+    return `color: ${getThemeBlackColor({ theme: props.theme })}`;
+  }
 
   if (color === 'secondary') {
     return `color: ${colors.FONT_SECONDARY}`;

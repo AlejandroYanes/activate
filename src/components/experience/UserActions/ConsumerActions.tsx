@@ -3,7 +3,7 @@ import { ConsumerModel, RelationshipStatus } from 'models/user';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
-import { Text } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import { useConsumerActions } from './use-user-actions';
 
@@ -46,7 +46,7 @@ const ConsumerActions: FunctionComponent<Props> = (props) => {
   return (
     <Menu trigger={MenuTrigger}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="bold" align="center" ellipsis>{name}</Text>
+        <Title level={3} weight="light" align="center" ellipsis>{name}</Title>
       </FlexBox>
       <RenderIf condition={pending}>
         <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>

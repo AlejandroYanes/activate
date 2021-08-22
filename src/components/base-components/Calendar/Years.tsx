@@ -25,7 +25,7 @@ const Years: FunctionComponent<Props> = (props) => {
         data-year={y}
         isSelected={y === currentDate.getFullYear()}
         onClick={handleYearChange}
-        variant="flat"
+        variant="fill"
         color="background"
         mB
       />

@@ -9,21 +9,21 @@ export const NeonLightsTheme = {
 };
 
 export const SummerVibesTheme = {
-  BRAND: '#018b6f',
-  ACCENT: '#fa6031',
+  BRAND: '#017b62',
+  ACCENT: '#e03301',
 };
 
 export const LifeIsABeachTheme = {
-  BRAND: '#e56259',
-  ACCENT: '#018da8',
+  BRAND: '#d2463b',
+  ACCENT: '#017f97',
 };
 
 export const DuskLightsTheme = {
   BRAND: '#a32959',
-  ACCENT: '#d27e44',
+  ACCENT: '#02866e',
 };
 
 export const FruitsTheme = {
   BRAND: '#3a5a81',
-  ACCENT: '#db7601',
+  ACCENT: '#db7201',
 };

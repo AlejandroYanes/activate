@@ -1,4 +1,4 @@
-import { getShade, changeColorLight } from 'helpers/colors';
+import { getShade, changeColorLight } from 'helpers/color-attrs';
 
 export enum Variations {
   BASE = '',
@@ -38,10 +38,10 @@ type LightColorScheme = {
 type FixedColorScheme  = {
   WHITE: string;
   WHITE_SHADE: string;
-  GRAY: string,
-  GRAY_LIGHT: string,
-  GRAY_DARK: string,
-  GRAY_SHADE: string,
+  GRAY: string;
+  GRAY_LIGHT: string;
+  GRAY_DARK: string;
+  GRAY_SHADE: string;
 }
 
 export type ColorScheme = (
@@ -57,7 +57,7 @@ export const lightStyleColors: LightColorScheme = {
   FONT: '#151718',
   FONT_SECONDARY: '#57585f',
   FONT_SHADE: getShade('#151718', 0.2),
-  BACKGROUND: '#fff',
+  BACKGROUND: '#ffffff',
   BACKGROUND_LIGHT: changeColorLight('#ffffff', -0.02),
   BACKGROUND_LIGHTER: changeColorLight('#ffffff', -0.03),
   BACKGROUND_SHADE: getShade('#f5f6fa'),
@@ -83,8 +83,8 @@ export const fixedColors: FixedColorScheme = {
 };
 
 export const basicColors = {
-  INFO: '#1361b6',
-  WARNING: '#db7601',
-  ERROR: '#f60605',
-  SUCCESS: '#139272',
+  INFO: '#1e6ff5',
+  SUCCESS: '#017f23',
+  WARNING: '#db5f01',
+  ERROR: '#e52111',
 };

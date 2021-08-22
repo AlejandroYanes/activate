@@ -1,5 +1,4 @@
-import { FunctionComponent, useRef } from 'react';
-import { useHoverState } from 'hooks/UI';
+import { FunctionComponent } from 'react';
 import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { OptionIcon, StyledOption } from './styled';
@@ -13,24 +12,18 @@ interface Props {
 
 const Option: FunctionComponent<Props> = (props) => {
   const { isSelected, option, onClick } = props;
-  const optionRef = useRef(undefined);
-  const isHovered = useHoverState(optionRef);
 
   const handleOnClick = () => onClick(option);
 
   return (
     <StyledOption
       role="button"
-      ref={optionRef}
       isSelected={isSelected}
       onClick={handleOnClick}
     >
       <RenderIf condition={isSelected}>
         <OptionIcon>
-          <SvgIcon
-            icon="CHECK_MARK"
-            color={isHovered ? 'BACKGROUND_LIGHTER' : 'BRAND_FONT'}
-          />
+          <SvgIcon id="select-mark" icon="CHECK_MARK" color="BRAND_FONT" />
         </OptionIcon>
       </RenderIf>
       <span data-el="option-content">{option.label}</span>

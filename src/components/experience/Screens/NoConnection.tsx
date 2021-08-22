@@ -12,6 +12,7 @@ const reloadPage = () => window.location.reload();
 
 const NoConnectionScreen: FunctionComponent<Props> = (props) => {
   const { message } = props;
+
   return (
     <FlexBox direction="column" align="center">
       <SvgIcon

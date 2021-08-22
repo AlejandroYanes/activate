@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getFontColor } from '../../../../helpers';
+import { anyPropsAttrs, getFontColor } from 'helpers';
 
 export const StyledDays = styled.table`
   width: 100%;
@@ -9,7 +9,6 @@ export const StyledDays = styled.table`
 `;
 
 export const StyledWeekDay = styled.th`
-  color: ${({ theme }) => theme.colors.GRAY};
   font-size: 16px;
   font-weight: lighter;
 `;
@@ -37,13 +36,13 @@ const getVariantStyles = (props) => {
 
       &:hover {
         background-color: ${colors.BRAND_BG_HIGHLIGHT};
-        color: ${colors.BACKGROUND_LIGHTER};
       }
     `;
   }
 
   if (isHighlighted) {
     return css`
+      font-family: Nunito-ExtraBold, sans-serif;
       background-color: ${colors.BRAND_SHADE};
       color: ${colors.BRAND_FONT};
       cursor: pointer;
@@ -64,7 +63,8 @@ const getVariantStyles = (props) => {
 };
 
 export const StyledDayButton = styled.button.attrs(anyPropsAttrs)`
-  font-size: 16px;
+  font-family: Nunito-ExtraBold, sans-serif;
+  font-size: 18px;
   outline: none;
   background-color: transparent;
   border-radius: 48px;

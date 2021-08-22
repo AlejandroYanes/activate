@@ -49,7 +49,13 @@ const Option: FunctionComponent<Props> = (props) => {
             color={isSelected ? 'BACKGROUND' : 'FONT'}
           />
         </RenderIf>
-        <Text size={size} color={isSelected ? 'background' : 'font'}>{label}</Text>
+        <Text
+          weight="bold"
+          size={size}
+          color={isSelected ? 'background' : 'font'}
+        >
+          {label}
+        </Text>
       </Label>
       <RenderIf condition={isSelected}>
         <Mark

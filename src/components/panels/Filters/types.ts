@@ -7,10 +7,10 @@ export enum EventLocation {
 }
 
 export interface Filters {
-  location: EventLocation,
-  address: string,
-  category: SelectOption[],
-  date: Date[],
+  location: EventLocation;
+  address: string;
+  category: SelectOption[];
+  date: Date[];
 }
 
 export const initialFilters: Filters = {

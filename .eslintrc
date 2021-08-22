@@ -77,6 +77,7 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/member-delimiter-style": "error",
     "eslint-comments/disable-enable-pair": ["error", {"allowWholeFile": true}],
     "indent": ["error", 2, { "SwitchCase": 1 }]
   },
