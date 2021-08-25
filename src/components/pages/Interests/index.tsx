@@ -22,7 +22,7 @@ const InterestsPage: FunctionComponent = () => {
     },
     actions: {
       handleInterests,
-      selectTopCategory,
+      toggleTopCategory,
       saveInterests,
     },
   } = useInterestsState();
@@ -40,7 +40,7 @@ const InterestsPage: FunctionComponent = () => {
           value={interests}
           interests={allInterests}
           onChange={handleInterests}
-          onToggleAll={selectTopCategory}
+          onToggleAll={toggleTopCategory}
           padding="20px 0 0 0"
           mode="sectioned"
           multiple

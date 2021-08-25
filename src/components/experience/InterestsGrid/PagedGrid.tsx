@@ -12,9 +12,12 @@ import PlainGrid from './PlainGrid';
 import { GridProps } from './index';
 
 const PagedGrid: FunctionComponent<GridProps> = (props): any => {
-  const { interests, onToggleAll, cols, ...rest } = props;
+  const { interests, value, onToggleAll, cols, ...rest } = props;
   const { page, goNext, goBack, setPage } = useSimplePagination(interests.length);
   const { id, name, subcategories } = interests[page];
+  const areAllSubsSelected = subcategories.every(
+    sub => (value as string[]).some(cat => cat === sub.id)
+  );
 
   return (
     <Wrapper>
@@ -29,14 +32,15 @@ const PagedGrid: FunctionComponent<GridProps> = (props): any => {
           color="brand"
           size="small"
           cols={cols}
+          value={value}
           {...rest}
         >
           <SectionTitle justify="space-between" width="100%">
             <Text  size="large">{name}</Text>
             <RenderIf condition={!!onToggleAll}>
               <Button
-                onClick={() => onToggleAll(id)}
-                label="Select All"
+                onClick={() => onToggleAll(id, areAllSubsSelected)}
+                label={areAllSubsSelected ? 'Clear All' : 'Select All'}
                 variant="outline"
                 color="accent"
                 padding="0 8px"

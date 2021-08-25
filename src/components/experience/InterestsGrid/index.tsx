@@ -10,13 +10,13 @@ export interface GridProps extends PositionProps {
   interests: CategoryModel[];
   value?: string | string[];
   onChange?: (value) => void;
-  onToggleAll?: (category) => void;
+  onToggleAll?: (category, areAllSubsSelected?: boolean) => void;
+  mode?: 'plain' | 'sectioned' | 'paged';
   cols?: number;
   multiple?: boolean;
   readonly?: boolean;
   loading?: boolean;
   errored?: boolean;
-  mode?: 'plain' | 'sectioned' | 'paged';
 }
 
 const gridMap = {
@@ -45,9 +45,9 @@ const InterestsGrid: FunctionComponent<GridProps> = (props): any => {
     );
   }
 
-  const Items = gridMap[mode];
+  const Grid = gridMap[mode];
 
-  return <Items {...rest} />;
+  return <Grid {...rest} />;
 };
 
 InterestsGrid.defaultProps = {
