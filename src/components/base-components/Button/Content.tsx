@@ -33,7 +33,7 @@ const Content: FunctionComponent<Props> = (props) => {
     return (
       <>
         <SvgIcon icon={leftIcon} height={sm ? 14 : 20} width={sm ? 14 : 20} />
-        <Text show={!loading}>{label}</Text>
+        <Text data-el="button-label" show={!loading}>{label}</Text>
         <SvgIcon icon={rightIcon} height={sm ? 14 : 20} width={sm ? 14 : 20} />
         <RenderIf condition={loading}>
           <LoadingLayer show={loading}>

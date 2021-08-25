@@ -32,9 +32,15 @@ const Button: FunctionComponent<ButtonProps> = (props) => {
     ...rest
   } = props;
 
+  const handleOnClick = (event) => {
+    if (!loading && !disabled) {
+      onClick(event);
+    }
+  };
+
   return (
     <StyledButton
-      onClick={onClick}
+      onClick={handleOnClick}
       disabled={disabled}
       variant={variant}
       color={color}
