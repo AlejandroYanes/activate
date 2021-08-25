@@ -6,8 +6,8 @@ import { useAtomicSet } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
 import { useAuthActions } from 'components/providers/Auth';
 import saveInterests from './actions/save-interests';
+import toggleTopCategory from './actions/toggle-top-category';
 import interestsReducer, { Actions, State } from './reducer';
-import selectTopCategory from './actions/select-top-category';
 
 const initialState: State = {
   callingAPI: false,
@@ -32,8 +32,8 @@ export default function useInterestsState() {
     },
     actions: {
       handleInterests: useAtomicSet(dispatch, Actions.SET_INTERESTS),
-      selectTopCategory: useCallback(
-        selectTopCategory(dispatch, state.interests, response?.data.results),
+      toggleTopCategory: useCallback(
+        toggleTopCategory(dispatch, state.interests, response?.data.results),
         [state.interests, response],
       ),
       saveInterests: useCallback(

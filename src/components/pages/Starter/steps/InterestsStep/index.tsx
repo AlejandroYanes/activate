@@ -25,7 +25,7 @@ const InterestsStep: FunctionComponent = () => {
     },
     actions: {
       handleInterests,
-      selectTopCategory,
+      toggleTopCategory,
       saveInterests,
     },
   } = useInterestsState();
@@ -39,12 +39,12 @@ const InterestsStep: FunctionComponent = () => {
           mode="paged"
           padding="20px 0 0 0"
           cols={colsMap[layout]}
+          loading={isLoading}
+          errored={!!apiError}
           value={interests}
           interests={categories}
           onChange={handleInterests}
-          onToggleAll={selectTopCategory}
-          loading={isLoading}
-          errored={!!apiError}
+          onToggleAll={toggleTopCategory}
         />
         <RenderIf condition={!isLoading && !apiError}>
           <FinishButton
