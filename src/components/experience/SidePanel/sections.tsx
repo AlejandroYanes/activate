@@ -3,7 +3,7 @@ import { AuxPanelSection } from 'components/providers/PanelSections';
 import { Tab } from 'components/base-components/Tabset';
 import { Icons } from 'components/base-components/SvgIcon';
 
-const sections: { icon: Icons, value: AuxPanelSection }[] = [
+const sections: { icon: Icons; value: AuxPanelSection }[] = [
   {
     icon: 'FORM',
     value: AuxPanelSection.EVENT_DETAILS,

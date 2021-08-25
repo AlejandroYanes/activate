@@ -41,6 +41,7 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   height: 48px;
   padding: 0 10px;
   color: ${getFontColor};
+  font-family: Nunito-ExtraBold, sans-serif;
   font-size: 16px;
   transition: all 150ms linear;
 

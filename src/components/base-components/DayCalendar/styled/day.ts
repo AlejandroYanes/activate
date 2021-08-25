@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { ZLevels } from 'styles/z-levels';
+import { getAccentBgColor, getBgdLightColor } from 'helpers';
 
 export const Day = styled.li`
   display: flex;
@@ -21,9 +22,9 @@ export const Day = styled.li`
   }
 `;
 
-const getNumberColor = ({ isSelected, theme }) => (
-  isSelected ? theme.colors.WHITE : theme.colors.FONT
-);
+const getNumberColor = ({ isSelected, theme: { colors } }) => {
+  return isSelected ? colors.BACKGROUND_LIGHTER : colors.FONT;
+};
 
 export const DayNumber = styled.span.attrs((props: any) => props)`
   position: absolute;
@@ -39,6 +40,6 @@ export const Mark = styled(motion.div)`
   width: 60px;
   border-radius: 20px;
   pointer-events: none;
-  border: 6px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  background-color: ${({ theme }) => theme.colors.ACCENT};
+  border: 6px solid ${getBgdLightColor};
+  background-color: ${getAccentBgColor};
 `;

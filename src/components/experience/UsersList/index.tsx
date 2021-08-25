@@ -18,7 +18,7 @@ interface Props extends PositionProps {
   onClick: (user) => void;
   userActions?: (props: { user }) => any;
   action?: ReactNode;
-  selectedUsers?: { id: string, [x: string]: any }[];
+  selectedUsers?: { id: string; [x: string]: any }[];
   showScroll?: boolean;
 }
 

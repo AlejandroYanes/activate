@@ -20,7 +20,7 @@ const getHeightStyles = (props) => {
 };
 
 export const StyledLink = styled(Link)`
-  font-family: Nunito-Regular, sans-serif;
+  font-family: Nunito-ExtraBold, sans-serif;
   text-decoration: none;
   border: none;
   outline: none;

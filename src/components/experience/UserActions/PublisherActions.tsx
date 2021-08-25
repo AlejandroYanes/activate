@@ -3,7 +3,7 @@ import { FollowerStatus, PublisherModel } from 'models/user';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
-import { Text } from 'components/base-components/Typography';
+import { Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import { usePublisherActions } from './use-user-actions';
 
@@ -42,7 +42,7 @@ const PublisherActions: FunctionComponent<Props> = (props) => {
   return (
     <Menu trigger={MenuTrigger}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="bold" align="center" ellipsis>{name}</Text>
+        <Title level={3} weight="light" align="center" ellipsis>{name}</Title>
       </FlexBox>
       <RenderIf condition={unfollowed}>
         <MenuItem id="follow-action" label="Follow" onClick={follow} />

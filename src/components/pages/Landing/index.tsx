@@ -18,11 +18,17 @@ const LandingPage: FunctionComponent = () => {
   return (
     <Content layout={layout}>
       <LeftBlock variants={blockVariants} initial="start" animate="enter">
-        <Title level={1} color="brand">
-          Find any <b>event</b>
+        <Title level={1} weight="light" color="brand">
+          Find any
+          <Title inline level={1} weight="bold" color="brand" margin="0 0 0 6px">
+            event
+          </Title>
         </Title>
-        <Title level={1} color="brand">
-          happening <b>anywhere</b>,
+        <Title level={1} weight="light" color="brand">
+          happening
+          <Title inline level={1} weight="bold" color="brand" margin="0 0 0 6px">
+            anywhere,
+          </Title>
         </Title>
         <Title level={1} color="brand">
           <b>anytime</b>.
@@ -33,7 +39,8 @@ const LandingPage: FunctionComponent = () => {
             label="Get Started"
             variant="fill"
             color="brand"
-            mT
+            padding="0 16px"
+            margin="16px 0 0 0"
           />
           <Illustration />
         </IllustrationBox>

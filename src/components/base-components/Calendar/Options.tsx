@@ -68,7 +68,7 @@ const Options: FunctionComponent<Props> = (props) => {
         label={label}
         leftIcon={icon as Icons}
         color="background"
-        variant="flat"
+        variant="fill"
         align="start"
         mB
       />

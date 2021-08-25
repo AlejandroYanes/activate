@@ -3,7 +3,7 @@ import {
   anyPropsAttrs,
   getBgdLighterColor,
   getBrandBgColor,
-  getBrandHlColor,
+  getBrandBgHlColor,
   getFontColor,
 } from 'helpers';
 
@@ -19,6 +19,7 @@ const getSelectedColors = (props) => {
 };
 
 export const StyledOption = styled.li.attrs(anyPropsAttrs)`
+  font-family: Nunito-ExtraBold, sans-serif;
   margin: 0;
   padding: 0 16px 0 32px;
   text-overflow: ellipsis;
@@ -43,13 +44,13 @@ export const StyledOption = styled.li.attrs(anyPropsAttrs)`
     color: ${getBgdLighterColor};
     background-color: ${getBrandBgColor};
 
-    svg#select-mark > path {
+    svg > path {
       fill: ${getBgdLighterColor};
     }
   }
 
   &:active {
-    background-color: ${getBrandHlColor};
+    background-color: ${getBrandBgHlColor};
   }
 `;
 

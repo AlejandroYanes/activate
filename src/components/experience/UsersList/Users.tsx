@@ -7,7 +7,7 @@ interface Props {
   users: (UserModel | UserTalkModel)[];
   onClick: (user) => void;
   actions?: (props: { user }) => any;
-  selectedUsers?: { id: string, [x: string]: any }[];
+  selectedUsers?: { id: string; [x: string]: any }[];
 }
 
 const Users: FunctionComponent<Props> = (props): any => {

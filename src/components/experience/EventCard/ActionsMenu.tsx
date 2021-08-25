@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Menu, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
-import { Text } from 'components/base-components/Typography';
+import { Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 
 interface Props {
@@ -39,7 +39,7 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
         padding="0 20px"
         height={48}
       >
-        <Text weight="bold" align="center" ellipsis>{event}</Text>
+        <Title level={3} weight="light" align="center" ellipsis>{event}</Title>
       </FlexBox>
       <MenuItem label="Open details" onClick={openDetails} />
       <MenuItem label="Copy Link" onClick={emptyAction} />

@@ -21,7 +21,7 @@ interface AuthContext {
     updateUserInfo: (user: UserInfo) => void;
     login: (user: UserInfo) => void;
     logout: () => void;
-  },
+  };
 }
 
 const getInitialState = (): AuthState => {

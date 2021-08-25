@@ -1,5 +1,4 @@
 export * from './are-props-equal';
-export * from './colors';
 export * from './color-scheme';
 export * from './color-attrs';
 export * from './common-props';
