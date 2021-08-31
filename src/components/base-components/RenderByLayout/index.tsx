@@ -1,18 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import { useAppLayout } from 'components/providers/Layout';
+import RenderByMap from '../RenderByMap';
 
 interface Props {
   options: { [s: string]: any };
-  fallback: any;
+  fallback?: any;
   [x: string]: any;
 }
 
 const RenderByLayout: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { options, fallback, ...rest } = props;
-  const Component = options[layout] || fallback;
+  const { options, ...rest } = props;
 
-  return <Component {...rest} />;
+  return <RenderByMap map={options} option={layout} {...rest} />;
 };
+
+RenderByLayout.defaultProps = {
+  fallback: () => null,
+}
 
 export default RenderByLayout;

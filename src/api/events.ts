@@ -3,6 +3,9 @@ import { EventModel } from 'models/event';
 import { get, PagedResponse } from './base';
 
 const eventsApi = {
+  listMyUpcomingDates: (): AxiosPromise<PagedResponse<Date>> => {
+    return get('events/upcoming/dates');
+  },
   listMyUpcoming: (date: Date): AxiosPromise<PagedResponse<EventModel>> => {
     return get('events/upcoming', {
       params: {
@@ -12,8 +15,11 @@ const eventsApi = {
       },
     });
   },
-  listMyUpcomingDates: (): AxiosPromise<PagedResponse<Date>> => {
-    return get('events/upcoming/dates');
+  listPublishedBy: (publisher: string): AxiosPromise<EventModel[]> => {
+    return get(`events/publishedBy/${publisher}`);
+  },
+  listAttendedBy: (consumer: string): AxiosPromise<EventModel[]> => {
+    return get(`events/attended-by/${consumer}`);
   },
   discover: (date?: Date): AxiosPromise<EventModel[]> => {
     return get('events/discover', {
@@ -23,6 +29,9 @@ const eventsApi = {
         },
       },
     });
+  },
+  search: (search: string): AxiosPromise<EventModel[]> => {
+    return get(`events/search/${search}`);
   },
   follow: (event: string): AxiosPromise => {
     return get(`events/${event}/follow`);

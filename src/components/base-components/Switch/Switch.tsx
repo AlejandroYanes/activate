@@ -10,7 +10,10 @@ interface SwitchProps {
 const Switch: FunctionComponent<SwitchProps> = (props) => {
   const { by, compareBy, comparisonFunction, children } = props;
 
-  const cases: CaseProps[] = React.Children.map(children, ((child: any) => child.props));
+  const cases: CaseProps[] = React.Children.map(
+    children,
+    ((child: any) => child.props),
+  );
 
   const validCase = cases.find((childCase) => {
     if (comparisonFunction) {
@@ -26,7 +29,7 @@ const Switch: FunctionComponent<SwitchProps> = (props) => {
 
   if (validCase) {
     const { component: CaseComponent, value: _caseValue, ...rest } = validCase;
-    
+
     return <CaseComponent {...rest} />;
   }
 

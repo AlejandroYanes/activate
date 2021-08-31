@@ -18,7 +18,7 @@ interface Props {
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { goBack } = useHistory();
   const { activeTab, setActiveTab, user } = props;
-  const { id, avatar, userName, name, events, followers } = user;
+  const { id, avatar, userName, name, count: { events, followers } } = user;
   const queryKey = useMemo(() => [QueryKey.FETCH_PUBLISHER, id], [id]);
 
   return (

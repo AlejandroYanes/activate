@@ -91,9 +91,9 @@ const Select: FunctionComponent<Props> = (props) => {
   }, [isOpen]);
 
   return (
-    <FlexBox direction="column" ref={menuRef} {...rest}>
+    <FlexBox direction="column" ref={menuRef} {...rest} data-el="select-wrapper">
       <InputLabel text={label} />
-      <Content paddLeft={!!icon} onClick={togglePopup}>
+      <Content paddLeft={!!icon} onClick={togglePopup} data-el="select-content">
         <InputIcon icon={icon} />
         <Label value={value} />
         <RightNode

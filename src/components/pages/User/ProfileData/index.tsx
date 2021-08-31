@@ -19,7 +19,17 @@ interface Props {
 const ProfileData: FunctionComponent<Props> = (props) => {
   const { goBack } = useHistory();
   const { activeTab, setActiveTab, user } = props;
-  const { id, avatar, userName, name, friends, following, relationStatus } = user;
+  const {
+    id,
+    avatar,
+    userName,
+    name,
+    count: {
+      following,
+      friends,
+    },
+    relationStatus,
+  } = user;
   const myFriend = (
     relationStatus === RelationshipStatus.ACCEPTED ||
     relationStatus === RelationshipStatus.MUTED

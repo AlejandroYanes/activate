@@ -20,14 +20,14 @@ export const themes = [
     theme: GrapesTheme,
   },
   {
-    name: 'Neon Lights',
-    value: AppTheme.NeonLights,
-    theme: NeonLightsTheme,
-  },
-  {
     name: 'Dusk Lights',
     value: AppTheme.DuskLights,
     theme: DuskLightsTheme,
+  },
+  {
+    name: 'Neon Lights',
+    value: AppTheme.NeonLights,
+    theme: NeonLightsTheme,
   },
   {
     name: 'Life is a Beach',

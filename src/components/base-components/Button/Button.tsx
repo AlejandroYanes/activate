@@ -5,6 +5,7 @@ import Content from './Content';
 import { Button as StyledButton } from './styled';
 
 export interface ButtonProps extends PositionProps {
+  id?: string;
   label?: string;
   onClick: (event) => void;
   leftIcon?: Icons;

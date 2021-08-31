@@ -8,6 +8,7 @@ import FriendsTalking from './FriendsTalking';
 import ManWithCheckList from './ManWithCheckList';
 import ManWriting from './ManWriting';
 import ManHoldingBubble from './ManHoldingBubble';
+import ManInSearch from './ManInSearch';
 
 export {
   NoFriends,
@@ -20,4 +21,5 @@ export {
   ManWithCheckList,
   ManWriting,
   ManHoldingBubble,
+  ManInSearch,
 };

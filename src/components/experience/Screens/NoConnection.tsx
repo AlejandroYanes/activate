@@ -1,8 +1,6 @@
 import { FunctionComponent } from 'react';
-import { Text } from 'components/base-components/Typography';
 import { Button } from 'components/base-components/Button';
-import SvgIcon from 'components/base-components/SvgIcon';
-import FlexBox from 'components/base-components/FlexBox';
+import ErrorScreen from './Error';
 
 interface Props {
   message: string;
@@ -12,19 +10,10 @@ const reloadPage = () => window.location.reload();
 
 const NoConnectionScreen: FunctionComponent<Props> = (props) => {
   const { message } = props;
+  const lines = [message, 'Please check your internet connection or reload the page.'];
 
   return (
-    <FlexBox direction="column" align="center">
-      <SvgIcon
-        icon="EXCLAMATION_TRIANGLE"
-        color="WARNING"
-        size="x-large"
-      />
-      <Text padding="24px 0 12px" size="large">Oops, sorry about that.</Text>
-      <Text size="medium" align="center" padding="4px 0">{message}</Text>
-      <Text size="medium" align="center">
-        Please check your internet connection or reload the page.
-      </Text>
+    <ErrorScreen lines={lines}>
       <Button
         mT
         label="Reload"
@@ -32,7 +21,7 @@ const NoConnectionScreen: FunctionComponent<Props> = (props) => {
         color="warning"
         onClick={reloadPage}
       />
-    </FlexBox>
+    </ErrorScreen>
   );
 };
 

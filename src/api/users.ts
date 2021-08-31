@@ -1,5 +1,5 @@
-import { AxiosResponse } from 'axios';
-import { ConsumerModel, ProfileStats, PublisherModel, UserModel } from 'models/user';
+import { AxiosPromise, AxiosResponse } from 'axios';
+import { ConsumerModel, ProfileStats, PublisherModel } from 'models/user';
 import { get, PagedResponse } from './base';
 
 const usersApi = {
@@ -12,10 +12,10 @@ const usersApi = {
   listMyPending: (): Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get('users/pending');
   },
-  listMyPublishers: (): Promise<AxiosResponse<PagedResponse<UserModel>>> => {
+  listMyPublishers: (): Promise<AxiosResponse<PagedResponse<PublisherModel>>> => {
     return get('users/publishers');
   },
-  listMyFollowers: (): Promise<AxiosResponse<PagedResponse<UserModel>>> => {
+  listMyFollowers: (): Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get('users/followers');
   },
   findPublisher: (id: string): Promise<AxiosResponse<PublisherModel>> => {
@@ -35,6 +35,12 @@ const usersApi = {
   listFriendsOf: (consumer: string)
     : Promise<AxiosResponse<PagedResponse<ConsumerModel>>> => {
     return get(`users/${consumer}/friends`);
+  },
+  searchPublishers: (search: string): AxiosPromise<PublisherModel[]> => {
+    return get(`users/search/publishers/${search}`);
+  },
+  searchConsumers: (search: string): AxiosPromise<ConsumerModel[]> => {
+    return get(`users/search/consumers/${search}`);
   },
   sendFriendRequest: (friend: string): Promise<AxiosResponse> => {
     return get(`users/friend/${friend}/send`);

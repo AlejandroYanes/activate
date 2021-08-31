@@ -1,38 +1,56 @@
-import styled from 'styled-components';
-import { getEllipsisStyles, getPositionStyles } from 'helpers';
+import styled, { css } from 'styled-components';
+import { Variations } from 'styles/colors';
+import { elementHeight } from 'styles/variables';
+import { getColorVariation, getEllipsisStyles, getPositionStyles } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
-import { BadgeProps } from '..';
 
-function resolveFontColor({ color, theme }) {
+function resolveFontColor(props) {
+  const { color, theme: { colors } } = props;
+
   if (color === 'light') {
-    return theme.colors.FONT;
+    return colors.FONT;
   }
 
-  const colorInScheme = color.toUpperCase();
-  return theme.colors[`${colorInScheme}_FONT_HIGHLIGHT`];
+  return getColorVariation(colors, color, Variations.FONT_HIGHLIGHT);
 }
 
-function resolveBackgroundColor({ color, theme }) {
-  switch (color) {
-    case 'brand':
-      return theme.colors.BRAND_SHADE;
-    case 'info':
-      return theme.colors.INFO_SHADE;
-    case 'success':
-      return theme.colors.SUCCESS_SHADE;
-    case 'warning':
-      return theme.colors.WARNING_SHADE;
-    case 'error':
-      return theme.colors.ERROR_SHADE;
-    case 'light':
-      return theme.colors.GRAY_SHADE;
-    default:
-      return theme.colors.BRAND;
+function resolveBackgroundColor(props) {
+  const { color, theme: { colors } } = props;
+
+  if (color === 'light') {
+    return colors.GRAY_SHADE;
   }
+
+  return getColorVariation(colors, color, Variations.SHADE);
 }
 
-function resolveSize({ sm }: BadgeProps) {
-  return sm ? '12px' : '16px';
+function resolveSize(props) {
+  const { sm } = props;
+  return sm ? '13px' : '16px';
+}
+
+function resolveButtonStyles(props) {
+  const { sm, asButton } = props;
+
+  if (asButton) {
+    return sm
+      ? css`
+        min-width: 28px;
+        height: 28px;
+        border-radius: 100px;
+        padding: 0 18px;
+        font-family: Nunito-ExtraBold, sans-serif;
+      `
+      : css`
+        min-width: ${elementHeight};
+        height: ${elementHeight};
+        border-radius: 100px;
+        padding: 0 18px;
+        font-family: Nunito-ExtraBold, sans-serif;
+      `;
+  }
+
+  return '';
 }
 
 export const StyledBadge = styled.div.attrs((props: any) => props)`
@@ -41,11 +59,12 @@ export const StyledBadge = styled.div.attrs((props: any) => props)`
   display: flex;
   justify-content: center;
   align-items: center;
-  ${getPositionStyles};
-  ${getEllipsisStyles};
   font-size: ${resolveSize};
   color: ${resolveFontColor};
   background-color: ${resolveBackgroundColor};
+  ${resolveButtonStyles};
+  ${getPositionStyles};
+  ${getEllipsisStyles};
 `;
 
 export const Icon = styled(SvgIcon)`

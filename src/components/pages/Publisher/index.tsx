@@ -38,7 +38,11 @@ const PublisherPage: FunctionComponent = () => {
 
   return (
     <Page>
-      <ProfileData user={publisher} activeTab={activeTab} setActiveTab={setActiveTab} />
+      <ProfileData
+        user={publisher}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       <Switch by={activeTab}>
         <Case value={Tabs.EVENTS} component={Events} />
         <Case value={Tabs.FOLLOWERS} component={Followers} />

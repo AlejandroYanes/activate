@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getAccentColor, getBgdLighterColor } from 'helpers';
 
 export const Liner = styled.div`
   position: absolute;
@@ -7,7 +8,7 @@ export const Liner = styled.div`
   bottom: 4px;
   width: 1px;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.colors.ACCENT};
+  background-color: ${getAccentColor};
   transition: all 150ms linear;
 `;
 
@@ -21,7 +22,7 @@ export const Event = styled.div`
   transition: all 250ms linear;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.BACKGROUND};
+    background-color: ${getBgdLighterColor};
 
     ${Liner} {
       top: 8px;

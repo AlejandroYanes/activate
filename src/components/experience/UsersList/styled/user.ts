@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getAccentColor, getBgdLightColor, getBgdLighterColor } from 'helpers';
 
 export const AvatarSection = styled.div`
   pointer-events: none;
@@ -14,8 +15,8 @@ export const ActiveDot = styled.div`
   right: -2px;
   border-radius: 50%;
   box-sizing: content-box;
-  background-color: ${({ theme }) => theme.colors.ACCENT};
-  border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getAccentColor};
+  border: 3px solid ${getBgdLightColor};
 `;
 
 export const Info = styled.div`
@@ -49,10 +50,10 @@ export const UserItem = styled.li`
 
   &:hover, &:focus {
     outline: none;
-    background-color: ${({ theme }) => theme.colors.BACKGROUND};
+    background-color: ${getBgdLighterColor};
 
     ${ActiveDot} {
-      border-color: ${({ theme }) => theme.colors.BACKGROUND};
+      border-color: ${getBgdLighterColor};
     }
   }
 

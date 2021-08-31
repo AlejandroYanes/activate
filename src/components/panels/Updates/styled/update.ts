@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getBgdLighterColor } from 'helpers';
 
 export const StyledNotification = styled.div`
   position: relative;
@@ -10,7 +11,7 @@ export const StyledNotification = styled.div`
   transition: all 250ms linear;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.BACKGROUND};
+    background-color: ${getBgdLighterColor};
   }
 `;
 

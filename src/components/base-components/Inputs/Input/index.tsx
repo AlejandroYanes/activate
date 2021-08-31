@@ -16,6 +16,7 @@ const Input: FunctionComponent<InputProps> = (props) => {
     onChange,
     onFocus,
     onBlur,
+    onKeyDown,
     showClear,
     required,
     error,
@@ -27,10 +28,11 @@ const Input: FunctionComponent<InputProps> = (props) => {
   }, [onChange]);
 
   return (
-    <StyledContainer {...rest}>
-      <InputLabel text={label} required={required} />
+    <StyledContainer {...rest} data-el="input-wrapper">
+      <InputLabel text={label} required={required} data-el="input-label" />
       <InputIcon icon={icon} topSpaced={!!label} />
       <StyledInput
+        data-el="input"
         value={value}
         error={!!error}
         padLeft={!!icon}
@@ -39,6 +41,7 @@ const Input: FunctionComponent<InputProps> = (props) => {
         onChange={handleOnChange}
         onFocus={onFocus}
         onBlur={onBlur}
+        onKeyDown={onKeyDown}
       />
       <ClearButton
         topSpaced={!!label}

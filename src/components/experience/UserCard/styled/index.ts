@@ -7,7 +7,6 @@ export const Card = styled.article.attrs(anyPropsAttrs)`
   align-items: center;
   border-radius: 16px;
   padding: 16px;
-  margin-bottom: 32px;
   width: 320px;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;

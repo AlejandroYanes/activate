@@ -83,8 +83,10 @@ const PublisherModal: FunctionComponent = () => {
     avatar,
     name,
     userName,
-    followers,
-    events,
+    count: {
+      followers,
+      events,
+    },
   } = publisher;
 
   return (
