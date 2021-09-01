@@ -26,7 +26,7 @@ export default function acceptFriendRequest(user: ConsumerModel, setSate) {
         isPending: false,
         isPendingForMe: true,
         isMyFriend: false,
-      })
+      });
       showNotification({
         type: NotificationType.ERROR,
         message: 'We couldn\'t complete the request, please try again later.',

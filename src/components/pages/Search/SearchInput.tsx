@@ -1,4 +1,4 @@
-import { FunctionComponent, useCallback, useMemo, useState } from 'react';
+import { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { generateQueryString, parseSearchQuery } from 'helpers';
 import { Input, Select, SelectOption } from 'components/base-components/Inputs';
@@ -16,30 +16,35 @@ const SearchInput: FunctionComponent = () => {
   const [term, setTerm] = useState(() => (
     parseSearchQuery<SearchParam>(search).term || ''
   ));
-
-  const option = useMemo(() => {
+  const [option, setOption] = useState(() => {
     const { type } = parseSearchQuery<SearchParam>(search);
     return options.find(op => op.value === type) || options[0];
-  }, [search]);
+  });
 
-  const handleOptionChange = useCallback((option: SelectOption) => {
-    const queryParam = generateQueryString({
-      filters: {
-        term,
-        type: option.value,
-      },
-    });
-    push(`/app/search?${queryParam}`);
+  const handleOptionChange = useCallback((nextOption: SelectOption) => {
+    if (term) {
+      const queryParam = generateQueryString({
+        filters: {
+          term: term,
+          type: nextOption.value,
+        },
+      });
+      push(`/app/search?${queryParam}`);
+    }
+
+    setOption(nextOption);
   }, [term]);
 
   const handleSearch = useCallback((searchTerm) => {
-    const queryParam = generateQueryString({
-      filters: {
-        term: searchTerm,
-        type: option.value,
-      },
-    });
-    push(`/app/search?${queryParam}`);
+    if (searchTerm) {
+      const queryParam = generateQueryString({
+        filters: {
+          term: searchTerm,
+          type: option.value,
+        },
+      });
+      push(`/app/search?${queryParam}`);
+    }
   }, [option]);
 
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
@@ -52,28 +57,22 @@ const SearchInput: FunctionComponent = () => {
   }, [term, handleSearch]);
 
   return (
-    <InputGroup margin="24px 0 32px 0">
+    <InputGroup>
       <Input
         id="term"
         icon="SEARCH"
-        placeholder="You can type names, addresses..."
+        // placeholder="You can type names, user names..."
         value={term}
         onChange={setTerm}
         onKeyDown={handleKeyDown}
       />
+      <div id="divider" />
       <Select
         id="option"
         value={option}
         options={options}
         onChange={handleOptionChange}
       />
-      {/*<Button*/}
-      {/*  onClick={handleSearch}*/}
-      {/*  id="search-button"*/}
-      {/*  label="Search"*/}
-      {/*  variant="fill"*/}
-      {/*  color="brand"*/}
-      {/*/>*/}
     </InputGroup>
   );
 };

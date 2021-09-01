@@ -1,28 +1,50 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getPositionStyles } from 'helpers';
+import {
+  anyPropsAttrs,
+  getFontShadeColor,
+} from 'helpers';
 
 export const InputGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;
-  align-items: flex-end;
-  ${getPositionStyles};
+  margin: 24px 0 32px 0;
+  border-radius: 50px;
+  border: 1px solid ${getFontShadeColor};
 
   & > div#term {
     flex: 1;
 
     input {
-      //border-right: none;
+      width: 100%;
+      border: none;
       border-bottom-right-radius: 0;
       border-top-right-radius: 0;
     }
   }
 
   & > div#option {
-
     div[data-el="select-content"] {
-      //border-left: none;
+      width: 124px;
+      border: none;
+      padding: 8px 28px 8px 12px;
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
+
+      div[data-el="absolute-content"] {
+        right: 6px;
+      }
     }
+
+    div[data-el="select-tray"] {
+      left: auto;
+    }
+  }
+
+  & > div#divider {
+    width: 1px;
+    min-width: 1px;
+    height: 80%;
+    margin: auto 0;
+    background-color: ${getFontShadeColor};
   }
 
   button#search-button {
