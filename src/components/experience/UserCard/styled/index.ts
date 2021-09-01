@@ -7,6 +7,6 @@ export const Card = styled.article.attrs(anyPropsAttrs)`
   align-items: center;
   border-radius: 16px;
   padding: 16px;
-  width: 320px;
+  position: relative;
   background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;

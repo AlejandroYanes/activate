@@ -2,6 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { parseSearchQuery } from 'helpers';
+import { EventChannel, useEventCenterUpdates } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
 import UserCard from 'components/experience/UserCard';
 import {
@@ -12,14 +13,21 @@ import {
 import { ResultPageProps } from './types';
 import { Grid } from './styled';
 
+const channels: EventChannel[] = [
+  'SENT_FRIEND_REQUEST',
+  'ACCEPTED_FRIEND_REQUEST',
+];
+
 const UsersResults: FunctionComponent<ResultPageProps> = (props) => {
   const { search } = props;
   const { term } = parseSearchQuery<{ term: string }>(search);
-  const { isLoading, data: response, error } = useQuery(
+  const { isLoading, data: response, error, refetch } = useQuery(
     [QueryKey.SEARCH_CONSUMERS, term],
     () => usersApi.searchConsumers(term),
     { enabled: !!term },
   );
+
+  useEventCenterUpdates(channels, refetch);
 
   const consumerCards = useMemo(() => {
     if (response) {

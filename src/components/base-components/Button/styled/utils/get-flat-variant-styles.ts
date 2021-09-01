@@ -17,7 +17,7 @@ const getFontHoverColor = (colors: ColorScheme, color: string) => {
 
 const getBgHoverColor = (colors: ColorScheme, color: string) => {
   if (color === 'background') {
-    return colors.BACKGROUND;
+    return colors.FONT_SHADE;
   }
 
   if (color === 'font') {

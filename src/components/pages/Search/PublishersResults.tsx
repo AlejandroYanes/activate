@@ -2,6 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { parseSearchQuery } from 'helpers';
+import { useEventCenterUpdate } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
 import PublisherCard from 'components/experience/PublisherCard';
 import {
@@ -15,11 +16,13 @@ import { Grid } from './styled';
 const PublishersResults: FunctionComponent<ResultPageProps> = (props) => {
   const { search } = props;
   const { term } = parseSearchQuery<{ term: string }>(search);
-  const { isLoading, data: response, error } = useQuery(
+  const { isLoading, data: response, error, refetch } = useQuery(
     [QueryKey.SEARCH_PUBLISHERS, term],
     () => usersApi.searchPublishers(term),
     { enabled: !!term },
   );
+
+  useEventCenterUpdate('PUBLISHER_FOLLOWED', refetch);
 
   const publisherCards = useMemo(() => {
     if (response) {

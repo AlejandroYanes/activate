@@ -1,31 +1,37 @@
-import { PublisherModel } from 'models/user';
+import { ConsumerModel } from 'models/user';
 import usersApi from 'api/users';
 import { notifyEventChannel } from 'event-center';
 import { NotificationType, showNotification } from 'notifications';
 
-export default function follow(publisher: PublisherModel, setFollowing) {
+export default function sendFriendRequest(user: ConsumerModel, setSate) {
   return () => {
-    const { id, name } = publisher;
-    setFollowing(true);
+    setSate({
+      isPending: true,
+      isPendingForMe: false,
+      isMyFriend: false,
+    });
 
     const onSuccess = () => {
       showNotification({
         type: NotificationType.SUCCESS,
-        title: 'You now follow',
-        message: name,
+        message: 'Friend request sent',
       });
-      notifyEventChannel('PUBLISHER_FOLLOWED');
+      notifyEventChannel('SENT_FRIEND_REQUEST');
     };
 
     const onError = () => {
-      setFollowing(false);
+      setSate({
+        isPending: false,
+        isPendingForMe: false,
+        isMyFriend: false,
+      });
       showNotification({
         type: NotificationType.ERROR,
         message: 'We couldn\'t complete the request, please try again later.',
       });
     };
 
-    return usersApi.follow(id)
+    return usersApi.sendFriendRequest(user.id)
       .then(onSuccess)
       .catch(onError);
   };
