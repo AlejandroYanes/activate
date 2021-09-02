@@ -1,6 +1,12 @@
-import { AxiosResponse } from 'axios';
-import { AuthCredentials, PasswordDto, ProfileDto, UserInfo } from 'models/user';
-import { post, patch, ApiContentType } from './base';
+import { AxiosPromise, AxiosResponse } from 'axios';
+import {
+  AuthCredentials,
+  PasswordDto,
+  ProfileDto,
+  SocialProvider,
+  UserInfo,
+} from 'models/user';
+import { post, patch, get, ApiContentType } from './base';
 
 const endpoint = 'auth';
 
@@ -36,6 +42,9 @@ const authApi = {
       { headers: { 'Content-Type': ApiContentType.MULTIPART } },
     );
   },
+  socialAuth: (provider: SocialProvider, search: string): AxiosPromise<UserInfo> => {
+    return get(`${endpoint}/social/${provider}/fallback${search}`)
+  }
 };
 
 export default authApi;

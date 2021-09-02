@@ -1,8 +1,11 @@
-import { useCallback, useReducer } from 'react';
+import { useCallback, useEffect, useReducer } from 'react';
+import { SocialProvider } from 'models/user';
 import { useAtomicSet } from 'helpers/state-management';
 import { useAuthActions } from 'components/providers/Auth';
-import signStateReducer, { SignState, SignAction, SignStateActions } from './reducer';
+import signStateReducer, { SignAction, SignState, SignStateActions } from './reducer';
 import authenticate from './actions/authenticate';
+import handleSocialSign from './actions/handle-social-sign-in';
+import handleLogIn from './actions/handle-log-in';
 
 export * from './reducer';
 export * from './rules';
@@ -18,6 +21,14 @@ export default function useSignPageState() {
   const { login } = useAuthActions();
   const [state, dispatch] = useReducer(signStateReducer, initialState);
 
+  const  handleLogInEventListener = useCallback(handleLogIn(login), [])
+
+  useEffect(() => {
+    window.addEventListener('message', handleLogInEventListener);
+
+    return () => window.removeEventListener('message', handleLogInEventListener);
+  }, [])
+
   return {
     state,
     actions: {
@@ -28,6 +39,7 @@ export default function useSignPageState() {
         authenticate(dispatch, login, state.credentials, state.signAction),
         [state.credentials, state.signAction],
       ),
+      signInWithGoogle: useCallback(handleSocialSign(SocialProvider.Google), []),
     },
   };
 }

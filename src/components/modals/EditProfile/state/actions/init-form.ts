@@ -10,6 +10,7 @@ export default function initForm(userInfo: UserInfo): ProfileFormState {
     userName,
     email,
     name,
+    lastName,
   } = userInfo;
   const usesImage = avatar.startsWith(REACT_APP_API_URL);
 
@@ -18,6 +19,7 @@ export default function initForm(userInfo: UserInfo): ProfileFormState {
       userName,
       email,
       name,
+      lastName,
       avatar: usesImage ? AvatarOptions.PHOTO : avatar
     },
     errors: {},

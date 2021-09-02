@@ -5,6 +5,11 @@ export interface AuthCredentials {
   password: string;
 }
 
+export interface SocialAuthCredentials {
+  provider: SocialProvider;
+  urlParams: string;
+}
+
 export enum VerificationLevel {
   UNVERIFIED = 0,
   CODE_VERIFIED = 1 ,
@@ -31,6 +36,7 @@ export enum FollowerStatus {
 
 export interface ProfileDto {
   name: string;
+  lastName?: string;
   userName: string;
   email?: string;
   avatar: string;
@@ -72,4 +78,10 @@ export interface ConsumerModel extends UserModel {
 export interface ProfileStats {
   friends: number;
   following: number;
+}
+
+export enum SocialProvider {
+  Google = 'google',
+  Facebook = 'facebook',
+  Instagram = 'instagram'
 }

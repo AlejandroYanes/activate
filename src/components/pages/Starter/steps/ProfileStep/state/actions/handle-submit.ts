@@ -1,6 +1,6 @@
 import authApi from 'api/auth';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
-import { ProfileDto, UserInfo } from 'models/user';
+import { ProfileDto, UserInfo, VerificationLevel } from 'models/user';
 import { validateEntity } from 'helpers';
 import { NotificationType, showNotification } from 'notifications';
 import { profileRules } from '../rules';
@@ -58,6 +58,7 @@ export default function handleSubmit(
     const payload = {
       ...rest,
       avatar: avatar === AvatarOptions.PHOTO ? profileImage : avatar,
+      verificationLevel: VerificationLevel.USER_INFO_ADDED,
     };
 
     return authApi.updateProfile(payload)

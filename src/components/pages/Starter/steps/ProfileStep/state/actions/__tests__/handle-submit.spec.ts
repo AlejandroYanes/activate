@@ -5,7 +5,7 @@ import authApi from 'api/auth';
 import { NotificationType, showNotification } from 'notifications';
 import { validateEntity } from 'helpers';
 import handleSubmit from '../handle-submit';
-import { ProfileStepActions, profileRules, AvatarOptions } from '../../';
+import { AvatarOptions, profileRules, ProfileStepActions } from '../../';
 
 jest.mock('api/auth');
 jest.mock('notifications', () => ({
@@ -61,6 +61,7 @@ describe('Starter page - Profile step - handle submit action', () => {
       userName: 'user.name',
       email: 'a@a.com',
       avatar: 'user1',
+      verificationLevel: VerificationLevel.USER_INFO_ADDED,
     };
 
     await handleSubmit(
@@ -87,6 +88,7 @@ describe('Starter page - Profile step - handle submit action', () => {
       name: 'user',
       userName: 'user.name',
       avatar: AvatarOptions.PHOTO,
+      verificationLevel: VerificationLevel.USER_INFO_ADDED,
     };
     const imageFile = new File([], 'test');
 
@@ -117,6 +119,7 @@ describe('Starter page - Profile step - handle submit action', () => {
       name: 'user',
       userName: 'user.name',
       avatar: AvatarOptions.PHOTO,
+      verificationLevel: VerificationLevel.USER_INFO_ADDED,
     };
     const imageFile = new File([], 'test');
 
@@ -153,6 +156,7 @@ describe('Starter page - Profile step - handle submit action', () => {
       name: 'user',
       userName: 'user.name',
       avatar: AvatarOptions.PHOTO,
+      verificationLevel: VerificationLevel.USER_INFO_ADDED,
     };
     const imageFile = new File([], 'test');
 

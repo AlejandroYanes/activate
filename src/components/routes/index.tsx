@@ -4,6 +4,7 @@ import LandingRoute from './LandingRoute';
 import SignRoute from './SignRoute';
 import StarterRoute from './StarterRoute';
 import AuthRoutes from './AuthRoutes';
+import SocialSignRoute from './SocialSignInRoute';
 
 const Routes: FunctionComponent = () => {
   return (
@@ -11,6 +12,7 @@ const Routes: FunctionComponent = () => {
       <Switch>
         <Route path="/" exact component={LandingRoute} />
         <Route path="/sign" component={SignRoute} />
+        <Route path="/social_sign/:provider" component={SocialSignRoute} />
         <Route path="/starter" component={StarterRoute} />
         <Route path="/app" component={AuthRoutes} />
         <Redirect to="/" />

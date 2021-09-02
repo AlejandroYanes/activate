@@ -43,6 +43,7 @@ export default function authenticate(
           payload: response.validationErrors,
         });
       } else {
+        dispatch({ type: SignStateActions.FINISH_CALLING_API });
         showNotification({
           type: NotificationType.ERROR,
           message: 'There is been an issue trying to log you in',

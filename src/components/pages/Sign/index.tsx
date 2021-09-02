@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
@@ -9,13 +9,14 @@ import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
-import { Content, OAuthBox, SignBox } from './styled';
 import useSignPageState, { SignAction, validationRules } from './state';
+import { Content, OAuthBox, SignBox } from './styled';
 
 const emptyAction = () => undefined;
 
 const SignPage: FunctionComponent = () => {
   const layout = useAppLayout();
+
   const {
     state: {
       signAction,
@@ -28,6 +29,7 @@ const SignPage: FunctionComponent = () => {
       setCredentials,
       setErrors,
       authenticate,
+      signInWithGoogle,
     },
   } = useSignPageState();
 
@@ -83,7 +85,7 @@ const SignPage: FunctionComponent = () => {
           </Text>
           <div>
             <IconButton
-              onClick={emptyAction}
+              onClick={signInWithGoogle}
               icon="GOOGLE"
               color="accent"
               variant="fill"

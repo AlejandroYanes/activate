@@ -142,7 +142,7 @@ describe('Sign page - authenticate action', () => {
       SignAction.SIGN_UP,
     )();
 
-    expect(dispatchMock).toHaveBeenCalledTimes(1);
+    expect(dispatchMock).toHaveBeenCalledTimes(2);
     expect(dispatchMock).toHaveBeenCalledWith({
       type: SignStateActions.START_CALLING_API,
     });
