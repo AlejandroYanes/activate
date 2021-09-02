@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getFontColor } from 'helpers';
+import { anyPropsAttrs } from 'helpers';
 
 const elementBorderRadius = '16px';
 
