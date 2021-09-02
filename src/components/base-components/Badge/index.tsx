@@ -9,6 +9,7 @@ export interface BadgeProps extends PositionProps {
   label?: string;
   icon?: Icons;
   sm?: boolean;
+  asButton?: boolean;
 }
 
 const Badge: FunctionComponent<BadgeProps> = (props) => {
@@ -35,6 +36,10 @@ const Badge: FunctionComponent<BadgeProps> = (props) => {
       </StyledBadge>
     </RenderIf>
   );
+};
+
+Badge.defaultProps = {
+  color: 'brand',
 };
 
 export default Badge;

@@ -59,7 +59,9 @@ export function generateQueryObject(filters, page, limit, take) {
         const isArray = Array.isArray(filter);
 
         if (isArray) {
-          queryParams[key] = filter.map((val) => !!val && !!val.value ? val.value : val);
+          queryParams[key] = filter.map(
+            (val) => !!val && !!val.value ? val.value : val
+          );
         } else if (isObject) {
           const keys = Object.keys(filter);
           const hasValueKey = keys.some((k) => k === 'value');

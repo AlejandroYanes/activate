@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
@@ -22,7 +22,7 @@ enum ProfileTabs {
 }
 
 const ProfileModal: FunctionComponent = () => {
-  const { push, goBack } = useHistory();
+  const { goBack } = useHistory();
   const [activeTab, setActiveTab] = useState(ProfileTabs.Following);
   const { userInfo } = useAuthData();
   const { data: response } = useQuery(
@@ -31,18 +31,9 @@ const ProfileModal: FunctionComponent = () => {
   );
   const stats: ProfileStats = response?.data;
 
-  const goToSettings = useCallback(() => {
-    push('#settings');
-  }, []);
-
   const header = (
     <FlexBox justify="space-between" align="center" grow width="100%">
       <IconButton onClick={goBack} icon="ARROW_LEFT" />
-      <IconButton
-        onClick={goToSettings}
-        icon="SETTINGS"
-        margin="0 0 0 auto"
-      />
     </FlexBox>
   );
 

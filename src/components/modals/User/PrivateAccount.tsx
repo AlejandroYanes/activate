@@ -19,8 +19,10 @@ const PrivateAccount: FunctionComponent<Props> = (props) => {
     avatar,
     name,
     userName,
-    following,
-    friends,
+    count: {
+      following,
+      friends,
+    },
   } = user;
 
   return (

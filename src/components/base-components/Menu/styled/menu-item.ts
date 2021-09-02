@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getFontColor } from 'helpers';
+import { anyPropsAttrs } from 'helpers';
 
 const elementBorderRadius = '16px';
 
 const getActionStyles = (props) => {
   const { warning, danger, theme: { colors } } = props;
+  const fontColor = danger ? colors.ERROR_FONT : colors.FONT;
   const backgroundColor = (
     (warning && colors.WARNING_BG) ||
     (danger && colors.ERROR_BG) ||
@@ -17,6 +18,7 @@ const getActionStyles = (props) => {
   );
 
   return css`
+    color: ${fontColor};
     &:hover {
       cursor: pointer;
       color: ${colors.BACKGROUND_LIGHTER};
@@ -40,7 +42,6 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   align-items: center;
   height: 48px;
   padding: 0 10px;
-  color: ${getFontColor};
   font-family: Nunito-ExtraBold, sans-serif;
   font-size: 16px;
   transition: all 150ms linear;

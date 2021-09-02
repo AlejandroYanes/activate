@@ -68,8 +68,10 @@ const UserModal: FunctionComponent = () => {
     avatar,
     name,
     userName,
-    following,
-    friends,
+    count: {
+      following,
+      friends,
+    },
     relationStatus,
   } = user;
 

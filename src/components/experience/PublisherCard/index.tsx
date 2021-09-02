@@ -1,45 +1,61 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import faker from 'faker';
+import { PublisherModel } from 'models/user';
 import { formatAmount } from 'helpers';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import Avatar from 'components/base-components/Avatar';
 import FlexBox from 'components/base-components/FlexBox';
-import { Button } from 'components/base-components/Button';
+import { Button, LinkButton } from 'components/base-components/Button';
+import RenderIf from 'components/base-components/RenderIf';
+import AbsoluteContent from 'components/base-components/AbsoluteContent';
+import SvgIcon from 'components/base-components/SvgIcon';
 import { Card } from './styled';
+import usePublisherState from './state';
 
-const avatars = ['user1', 'user2', 'user3', 'user4', 'user2'];
+interface Props {
+  user: PublisherModel;
+}
+
 const Separator = () => <div style={{ flex: 1 }} />;
 
-const PublisherCard: FunctionComponent = () => {
-  const layout = useAppLayout();
+const PublisherCard: FunctionComponent<Props> = (props) => {
+  const {
+    user: {
+      id,
+      avatar,
+      name,
+      userName,
+      count: {
+        events,
+        followers,
+      },
+      friends,
+    },
+  } = props;
 
   const {
-    avatar,
-    name,
-    userName,
-    events,
-    followers,
-  } = useMemo(() => ({
-    avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-    name: `${faker.company.companyName()}, ${faker.company.companySuffix()}`,
-    userName: `@${faker.internet.userName()}`,
-    events: faker.random.number(),
-    followers: faker.random.number(),
-    friendsFollowing: faker.random.number({ min: 0, max: 1 }),
-  }), []);
+    state: { following },
+    actions: { follow },
+  } = usePublisherState(props.user);
 
-  const link = `${layout === Layout.MOBILE ? '#' : '/'}publisher`;
+  const layout = useAppLayout();
+  const link = layout === Layout.MOBILE ? `#publisher/${id}` : `publisher/${id}`;
+  const avatars = friends.map(friend => friend.avatar);
 
   return (
     <Card>
+      <RenderIf condition={following}>
+        <AbsoluteContent top={16} right={16}>
+          <SvgIcon icon="STAR_FILLED" color="BRAND_FONT" />
+        </AbsoluteContent>
+      </RenderIf>
       <Avatar src={avatar} size="large" margin="0 auto 8px" />
       <Link to={link}>
         <FlexBox direction="column" align="center">
           <Title level={3} align="center">{name}</Title>
-          <Text align="center">{userName}</Text>
+          <Text align="center">@{userName}</Text>
         </FlexBox>
       </Link>
       <Separator />
@@ -55,26 +71,22 @@ const PublisherCard: FunctionComponent = () => {
       </FlexBox>
       <AvatarGroup icons={avatars} margin="28px auto 0" />
       <FlexBox align="center" margin="24px auto 0">
-        {/*<IconButton*/}
-        {/*  size="large"*/}
-        {/*  buttonColor="accent"*/}
-        {/*  onClick={() => undefined}*/}
-        {/*  icon={Icons.STAR}*/}
-        {/*  color={colors.ACCENT}*/}
-        {/*/>*/}
-        <Button
-          onClick={() => undefined}
-          label="Follow"
-          variant="fill"
-          color="brand"
-          mR
-        />
-        <Button
-          onClick={() => undefined}
-          label="Message"
-          variant="outline"
-          color="brand"
-        />
+        <RenderIf condition={!following}>
+          <Button
+            onClick={follow}
+            label="Follow"
+            variant="fill"
+            color="brand"
+          />
+        </RenderIf>
+        <RenderIf condition={following}>
+          <LinkButton
+            to={link}
+            label="View Profile"
+            variant="outline"
+            color="brand"
+          />
+        </RenderIf>
       </FlexBox>
     </Card>
   );

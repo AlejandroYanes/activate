@@ -8,7 +8,7 @@ import Sorter from './Sorter';
 
 const PrimaryTitle = () => (
   <FlexBox justify="space-between" align="center" margin="0 0 48px 0">
-    <Title level={1} color="brand" padding="0" weight="bold">
+    <Title level={1} color="brand" padding="0" weight="normal">
       Discover new events
     </Title>
     <Sorter />

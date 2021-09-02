@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import SvgIcon from 'components/base-components/SvgIcon';
-import { Text } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
 import Modal from 'components/base-components/Modal';
@@ -33,7 +33,7 @@ const UnfollowModal: FunctionComponent<Props> = (props) => {
       <FlexBox direction="column" align="center">
         <SvgIcon
           icon="REMOVE_BOOKMARK"
-          color="ERROR"
+          color="ERROR_FONT"
           size="large"
           height={60}
           width={60}
@@ -43,10 +43,10 @@ const UnfollowModal: FunctionComponent<Props> = (props) => {
           align="center"
           padding="16px 0 8px 0"
         >
-          Unfollow this event:
+          Stop following this event?
         </Text>
-        <Text size="large" align="center" padding="0 0 16px 0">{title}</Text>
-        <Text color="secondary" align="center" padding="0 0 24px 0">
+        <Title level={3} align="center" padding="0 0 16px 0">{title}</Title>
+        <Text align="center" padding="0 0 24px 0">
           You are about to stop following this event,
           you will not receive any updates or notifications related to it.
         </Text>

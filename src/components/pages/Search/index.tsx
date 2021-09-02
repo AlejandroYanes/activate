@@ -1,52 +1,40 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
-import { getEventValue } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import React, { FunctionComponent } from 'react';
+import { useHistory } from 'react-router-dom';
+import { parseSearchQuery } from 'helpers';
 import Page from 'components/base-components/Page';
-import { Input } from 'components/base-components/Inputs';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
+import { Title } from 'components/base-components/Typography';
+import RenderIf from 'components/base-components/RenderIf';
+import { ManInSearch } from 'components/base-components/Illustrations';
+import RenderByMap from 'components/base-components/RenderByMap';
+import SearchInput from './SearchInput';
 import EventsResults from './EventsResults';
 import PublishersResults from './PublishersResults';
 import UsersResults from './UsersResults';
-import { Title } from '../../base-components/Typography';
+import { SearchParam, SearchType } from './types';
 
-enum Tabs {
-  EVENTS = 'EVENTS',
-  PUBLISHERS = 'PUBLISHERS',
-  USERS = 'USERS',
-}
+const emptyState = (
+  <ManInSearch margin="-32px 0 0 0" />
+);
+
+const resultPageMap = {
+  [SearchType.EVENTS]: EventsResults,
+  [SearchType.PUBLISHERS]: PublishersResults,
+  [SearchType.USERS]: UsersResults,
+};
 
 const SearchPage: FunctionComponent = () => {
-  const layout = useAppLayout();
-  const [search, setSearch] = useState('');
-  const [activeTab, setActiveTab] = useState(Tabs.EVENTS);
-
-  const handleSearch = useCallback((event) => {
-    setSearch(getEventValue(event));
-  }, []);
+  const { location: { search } } = useHistory();
+  const { term, type } = parseSearchQuery<SearchParam>(search);
 
   return (
     <Page>
-      <Title level={1} color="brand" weight="bold">
+      <Title level={1} color="brand" weight="normal">
         Search for anything
       </Title>
-      <Input value={search} onChange={handleSearch} icon="SEARCH" showClear />
-      <Tabset
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        fullWidth={layout !== Layout.MOBILE}
-        mT
-        mB
-      >
-        <Tab name={Tabs.EVENTS} label="Events" icon="CALENDAR" />
-        <Tab name={Tabs.PUBLISHERS} label="Publishers" icon="MEGAPHONE" />
-        <Tab name={Tabs.USERS} label="Users" icon="USERS" />
-      </Tabset>
-      <Switch by={activeTab}>
-        <Case value={Tabs.EVENTS} component={EventsResults} />
-        <Case value={Tabs.PUBLISHERS} component={PublishersResults} />
-        <Case value={Tabs.USERS} component={UsersResults} />
-      </Switch>
+      <SearchInput />
+      <RenderIf condition={!!term} fallback={emptyState}>
+        <RenderByMap map={resultPageMap} option={type} search={search} />
+      </RenderIf>
     </Page>
   );
 };

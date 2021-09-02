@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { PositionProps } from 'helpers';
 import { Modals } from 'components/modals';
 import { useAuthActions } from 'components/providers/Auth';
-import { Menu, MenuItem } from 'components/base-components/Menu';
+import { Menu, MenuDivider, MenuItem } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 
 const MenuTrigger = ({ toggleMenu }) => (
@@ -30,6 +30,7 @@ const ProfileActions: FunctionComponent<PositionProps> = (props) => {
     <Menu trigger={MenuTrigger} align="end" {...props}>
       <MenuItem label="Change Profile" onClick={openEditProfile} />
       <MenuItem label="Change Password" onClick={openChangePassword} />
+      <MenuDivider />
       <MenuItem label="Logout" danger onClick={logout} />
     </Menu>
   );

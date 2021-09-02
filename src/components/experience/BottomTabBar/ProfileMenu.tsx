@@ -1,11 +1,11 @@
 import { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Modals } from 'components/modals';
-import { useAuthData } from 'components/providers/Auth';
+import { useAuthActions, useAuthData } from 'components/providers/Auth';
 import Avatar from 'components/base-components/Avatar';
-import { Menu, MenuItem } from 'components/base-components/Menu';
-import FlexBox from '../../base-components/FlexBox';
-import { Text } from '../../base-components/Typography';
+import { Menu, MenuDivider, MenuItem } from 'components/base-components/Menu';
+import FlexBox from 'components/base-components/FlexBox';
+import { Text } from 'components/base-components/Typography';
 
 const MenuTrigger = ({ toggleMenu, avatar }) => (
   <Avatar size="small" src={avatar} onClick={toggleMenu} />
@@ -14,6 +14,7 @@ const MenuTrigger = ({ toggleMenu, avatar }) => (
 const ProfileMenu: FunctionComponent = () => {
   const { push } = useHistory();
   const { userInfo: { avatar } } = useAuthData();
+  const { logout } = useAuthActions();
 
   const openProfile = useCallback(() => {
     push(Modals.PROFILE);
@@ -34,12 +35,14 @@ const ProfileMenu: FunctionComponent = () => {
   return (
     <Menu trigger={MenuTrigger} avatar={avatar}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="bold" align="center" ellipsis>Go to</Text>
+        <Text weight="light" align="center" ellipsis>Go to</Text>
       </FlexBox>
       <MenuItem label="Talks" onClick={openTalks} />
       <MenuItem label="Updates" onClick={openUpdates} />
       <MenuItem label="Profile" onClick={openProfile} />
       <MenuItem label="Settings" onClick={openSettings} />
+      <MenuDivider />
+      <MenuItem label="Log out" onClick={logout} danger />
     </Menu>
   );
 };

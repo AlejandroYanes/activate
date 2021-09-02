@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
 import { formatShortDate } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
@@ -7,17 +6,13 @@ import SvgIcon from 'components/base-components/SvgIcon';
 import Badge from 'components/base-components/Badge';
 import { HeaderProps } from './index';
 
-const linkStyles = { width: '100%' };
-
 const MobileHeader: FunctionComponent<HeaderProps> = (props) => {
   const { date, address, title } = props;
 
   return (
     <FlexBox direction="column" align="stretch" padding="8px 0">
       <FlexBox ellipsis>
-        <Link to="/event-details" style={linkStyles}>
-          <Title level={3} padding="0 0 8px 0">{title}</Title>
-        </Link>
+        <Title level={3} padding="0 0 8px 0">{title}</Title>
       </FlexBox>
       <FlexBox margin="8px 0 0 0" ellipsis>
         <Badge color="light">

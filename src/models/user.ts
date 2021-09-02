@@ -11,28 +11,29 @@ export interface SocialAuthCredentials {
 }
 
 export enum VerificationLevel {
-  UNVERIFIED = 0,
-  CODE_VERIFIED = 1 ,
+  UNVERIFIED = -1,
+  CODE_VERIFIED = 1,
   USER_INFO_ADDED = 2,
   INTERESTS_ADDED = 3,
 }
 
 export enum RelationshipStatus {
   UNRELATED = -1,
-  PENDING = 0,
-  PENDING_FOR_ME = 5,
-  ACCEPTED = 1,
-  BLOCKED = 2,
-  BLOCKED_ME = 4,
-  MUTED = 3,
+  PENDING = 1,
+  PENDING_FOR_ME = 2,
+  ACCEPTED = 3,
+  BLOCKED = 4,
+  BLOCKED_ME = 5,
+  MUTED = 6,
 }
 
 export enum FollowerStatus {
   UNRELATED = -1,
-  FOLLOWING = 0,
-  MUTED = 1,
-  BLOCKED = 2,
+  FOLLOWING = 1,
+  MUTED = 2,
+  BLOCKED = 3,
 }
+
 
 export interface ProfileDto {
   name: string;
@@ -64,14 +65,26 @@ export interface UserModel {
 }
 
 export interface PublisherModel extends UserModel {
-  events: number;
-  followers: number;
+  count?: {
+    events: number;
+    followers: number;
+  };
+  friends: {
+    id: string;
+    avatar: string;
+  }[];
   followerStatus: FollowerStatus;
 }
 
 export interface ConsumerModel extends UserModel {
-  following: number;
-  friends: number;
+  count?: {
+    following: number;
+    friends: number;
+  };
+  friends: {
+    id: string;
+    avatar: string;
+  }[];
   relationStatus: RelationshipStatus;
 }
 
