@@ -134,12 +134,10 @@ const PublisherModal: FunctionComponent = () => {
         >
           <Tab
             name={ProfileTabs.EVENTS}
-            label={ProfileTabs.EVENTS}
             icon="CALENDAR"
           />
           <Tab
             name={ProfileTabs.FOLLOWERS}
-            label={ProfileTabs.FOLLOWERS}
             icon="USERS"
           />
         </Tabset>

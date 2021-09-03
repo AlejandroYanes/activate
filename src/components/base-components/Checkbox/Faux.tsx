@@ -33,7 +33,7 @@ const Faux: FunctionComponent<Props> = (props) => {
       width="26"
       height="26"
       initial={false}
-      animate={isChecked ? "checked" : "unchecked"}
+      animate={isChecked ? 'checked' : 'unchecked'}
       whileHover="hover"
       whileTap="pressed"
       onClick={onClick}

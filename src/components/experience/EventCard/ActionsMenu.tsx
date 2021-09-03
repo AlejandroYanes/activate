@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
-import { useHistory } from 'react-router-dom';
-import { Menu, MenuItem } from 'components/base-components/Menu';
+import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import { Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
@@ -24,11 +23,6 @@ const MenuTrigger = ({ toggleMenu }) => (
 
 const ActionsMenu: FunctionComponent<Props> = (props) => {
   const { event, going, handleBookmark } = props;
-  const { push } = useHistory();
-
-  const openDetails = () => {
-    push('/app/event-details');
-  };
 
   return (
     <Menu trigger={MenuTrigger}>
@@ -41,7 +35,7 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
       >
         <Title level={3} weight="light" align="center" ellipsis>{event}</Title>
       </FlexBox>
-      <MenuItem label="Open details" onClick={openDetails} />
+      <MenuLink label="Open details" to="/app/event/details" />
       <MenuItem label="Copy Link" onClick={emptyAction} />
       <MenuItem
         label={going ? 'Unfollow' : 'Follow'}

@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { PublisherModel } from 'models/user';
 import { formatAmount } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 import Avatar from 'components/base-components/Avatar';
@@ -40,8 +39,7 @@ const PublisherCard: FunctionComponent<Props> = (props) => {
     actions: { follow },
   } = usePublisherState(props.user);
 
-  const layout = useAppLayout();
-  const link = layout === Layout.MOBILE ? `#publisher/${id}` : `publisher/${id}`;
+  const link = `/app/publisher/${id}`;
   const avatars = friends.map(friend => friend.avatar);
 
   return (

@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { ConsumerModel } from 'models/user';
 import { formatAmount } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Text, Title } from 'components/base-components/Typography';
 import Avatar from 'components/base-components/Avatar';
 import FlexBox from 'components/base-components/FlexBox';
@@ -45,8 +44,8 @@ const UserCard: FunctionComponent<Props> = (props) => {
       friends: friendsCount,
     },
   } = user;
-  const layout = useAppLayout();
-  const link = layout === Layout.MOBILE ? `#user/${id}` : `user/${id}`;
+
+  const link = `user/${id}`;
   const avatars = friends.map(f => f.avatar);
 
   return (

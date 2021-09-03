@@ -1,26 +1,38 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import faker from 'faker';
 import { Case, Switch } from 'components/base-components/Switch';
 import { IconButton } from 'components/base-components/Button';
 import Modal from 'components/base-components/Modal';
 import UsersList from 'components/experience/UsersList';
 import Messages from 'components/experience/Messages';
-import { Modals } from 'components/modals';
 
 const arrowBackStyles = { marginRight: '4px' };
 
+const viewMap = {
+  chats: '/app/talks',
+  contacts: '/app/talks/contacts',
+  messages: '/app/talks/messages',
+};
+
 const TalksModal: FunctionComponent = () => {
-  const { location, push, replace, goBack } = useHistory();
-  const { hash: activeView } = useLocation();
+  const {
+    location: {
+      state,
+      pathname,
+    },
+    push,
+    replace,
+    goBack,
+  } = useHistory();
 
   const openTalk = useCallback((user) => {
-    const routingMethod = activeView === Modals.TALKS_CONTACTS ? replace : push;
-    routingMethod(Modals.TALKS_MESSAGES, { user });
-  }, [activeView]);
+    const routingMethod = pathname === viewMap.contacts ? replace : push;
+    routingMethod(viewMap.messages, { user });
+  }, [pathname]);
 
   const openContactList = useCallback(() => {
-    push(Modals.TALKS_CONTACTS);
+    push(viewMap.contacts);
   }, []);
 
   const leftAction = (
@@ -34,15 +46,15 @@ const TalksModal: FunctionComponent = () => {
   );
 
   const title = useMemo(() => {
-    switch (activeView) {
-      case Modals.TALKS:
+    switch (pathname) {
+      case viewMap.chats:
         return 'Talks';
-      case Modals.TALKS_CONTACTS:
+      case viewMap.contacts:
         return 'Select a contact'
       default:
         return undefined;
     }
-  }, [activeView]);
+  }, [pathname]);
 
   const users = useMemo(() => (
     new Array(faker.random.number({ min: 20, max: 30 }))
@@ -54,13 +66,13 @@ const TalksModal: FunctionComponent = () => {
         lastName: faker.name.lastName(),
         userName: faker.internet.userName(),
         lastMessage: (
-          activeView === Modals.TALKS
+          pathname === viewMap.chats
             ? faker.lorem.words(20)
             : undefined
         ),
         active: faker.random.boolean(),
       }))
-  ), [activeView]);
+  ), [pathname]);
 
   const showContactsButton = (
     <IconButton
@@ -74,9 +86,9 @@ const TalksModal: FunctionComponent = () => {
 
   return (
     <Modal title={title} onClose={goBack} size="mobile" visible>
-      <Switch by={activeView}>
+      <Switch by={pathname}>
         <Case
-          value={Modals.TALKS}
+          value={viewMap.chats}
           component={UsersList}
           onClick={openTalk}
           action={showContactsButton}
@@ -85,7 +97,7 @@ const TalksModal: FunctionComponent = () => {
           scroll
         />
         <Case
-          value={Modals.TALKS_CONTACTS}
+          value={viewMap.contacts}
           component={UsersList}
           onClick={openTalk}
           users={users}
@@ -93,9 +105,9 @@ const TalksModal: FunctionComponent = () => {
           scroll
         />
         <Case
-          value={Modals.TALKS_MESSAGES}
+          value={viewMap.messages}
           component={Messages}
-          user={(location?.state as any)?.user}
+          user={(state as any)?.user}
           leftActions={leftAction}
           viewMode="mobile"
         />

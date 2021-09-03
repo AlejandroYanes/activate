@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { ConsumerModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
-import { Modals } from 'components/modals';
 import UsersList from 'components/experience/UsersList';
 import { ConsumerActions } from 'components/experience/UserActions';
 
@@ -27,7 +26,7 @@ const Followers: FunctionComponent<Props> = (props) => {
 
   const { push } = useHistory();
   const goToProfile = useCallback((friend: ConsumerModel) => {
-    push(Modals.USER, { id: friend.id });
+    push(`/app/user/${friend.id}`);
   }, []);
 
   const action = useCallback(({ user }) => (

@@ -1,15 +1,8 @@
-import TalksModal from './Talks';
 import UpdatesModal from './Updates';
-import EventDetailsModal from './EventDetails';
-import ProfileModal from './Profile';
-import SettingsModal from './Settings';
 import PublisherModal from './Publisher';
-import UserModal from './User';
 import FiltersModal from './Filters';
 import InviteUsersModal from './Invite';
 import EditProfileModal from './EditProfile';
-import AppColorsModal from './AppColors';
-import InterestsModal from './Interests';
 import ChangePasswordModal from './ChangePassword';
 
 export enum Modals {
@@ -41,17 +34,4 @@ export const TabletModals = {
   ...DesktopModals,
   [Modals.UPDATES]: UpdatesModal,
   [Modals.FILTERS]: FiltersModal,
-};
-
-export const MobileModals = {
-  ...TabletModals,
-  [Modals.TALKS]: TalksModal,
-  [Modals.TALKS_CONTACTS]: TalksModal,
-  [Modals.TALKS_MESSAGES]: TalksModal,
-  [Modals.EVENT_DETAILS]: EventDetailsModal,
-  [Modals.PROFILE]: ProfileModal,
-  [Modals.SETTINGS]: SettingsModal,
-  [Modals.USER]: UserModal,
-  [Modals.APP_COLORS]: AppColorsModal,
-  [Modals.INTERESTS]: InterestsModal,
 };

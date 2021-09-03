@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import { DesktopModals, MobileModals, TabletModals } from 'components/modals';
+import { DesktopModals, TabletModals } from 'components/modals';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import FlexBox from 'components/base-components/FlexBox';
 import SvgIcon from 'components/base-components/SvgIcon';
@@ -13,7 +13,6 @@ interface Props {
 const modalsMap = {
   [Layout.DESKTOP]: DesktopModals,
   [Layout.TABLET]: TabletModals,
-  [Layout.MOBILE]: MobileModals,
 };
 
 const emptyComponent = () => (

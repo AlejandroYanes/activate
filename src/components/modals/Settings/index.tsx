@@ -4,27 +4,10 @@ import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import { Text } from 'components/base-components/Typography';
 import SvgIcon from 'components/base-components/SvgIcon';
-import { Modals } from '../index';
 import { SettingItem } from './styled';
 
 const SettingsModal: FunctionComponent = () => {
-  const { goBack, push } = useHistory();
-
-  const openProfileModal = () => {
-    push(Modals.EDIT_PROFILE);
-  };
-
-  const openPasswordModal = () => {
-    push(Modals.CHANGE_PASSWORD);
-  };
-
-  const openInterestsModal = () => {
-    push(Modals.INTERESTS);
-  };
-
-  const openColorsModal = () => {
-    push(Modals.APP_COLORS);
-  };
+  const { goBack } = useHistory();
 
   return (
     <Modal visible title="Settings" onClose={goBack} size="mobile">
@@ -34,19 +17,19 @@ const SettingsModal: FunctionComponent = () => {
         align="stretch"
         padding="24px 6px"
       >
-        <SettingItem onClick={openProfileModal}>
+        <SettingItem to="/app/profile/edit">
           <Text size="large">Change your Profile</Text>
           <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
-        <SettingItem onClick={openPasswordModal}>
+        <SettingItem to="/app/profile/password">
           <Text size="large">Change your Password</Text>
           <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
-        <SettingItem onClick={openInterestsModal}>
+        <SettingItem to="/app/settings/interests">
           <Text size="large">Manage your Interests</Text>
           <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
-        <SettingItem onClick={openColorsModal}>
+        <SettingItem to="/app/settings/colors">
           <Text size="large">Change the Colors</Text>
           <SvgIcon icon="CHEVRON_RIGHT" />
         </SettingItem>
