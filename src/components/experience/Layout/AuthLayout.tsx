@@ -49,7 +49,6 @@ const MobileBody: FunctionComponent = (props) => {
         {children}
       </Body>
       <BottomTabBar />
-      <ModalStack />
       <NotificationCenter />
     </StyledApp>
   );

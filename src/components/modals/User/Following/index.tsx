@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { UserModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
-import { Modals } from 'components/modals';
 import UsersList from 'components/experience/UsersList';
 import { PublisherActions } from 'components/experience/UserActions';
 
@@ -27,7 +26,7 @@ const Following: FunctionComponent<Props> = (props) => {
   );
 
   const handleClick = useCallback((publisher: UserModel) => {
-    push(Modals.PUBLISHER, { id: publisher.id });
+    push(`/app/publisher/${publisher.id}`);
   }, []);
 
   const action = useCallback(({ user }) => (

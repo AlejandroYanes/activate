@@ -14,7 +14,7 @@ const InputIcon: FunctionComponent<Props> = (props) => {
   return (
     <RenderIf condition={!!icon}>
       <AbsoluteContent topSpaced={topSpaced}>
-        <SvgIcon icon={icon} color="FONT_SHADE" />
+        <SvgIcon icon={icon} color="FONT" />
       </AbsoluteContent>
     </RenderIf>
   );

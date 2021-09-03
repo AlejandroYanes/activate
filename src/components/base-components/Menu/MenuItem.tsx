@@ -1,18 +1,17 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { MenuItem as StyledMenuItem, MenuItemLabel, } from './styled/menu-item';
+import { MenuItem as StyledMenuItem } from './styled/menu-item';
 import { useMenuContext } from './context';
 
 interface Props {
   id?: string;
   label: string;
   onClick: (event) => void;
-  warning?: boolean;
   danger?: boolean;
 }
 
 const MenuItem: FunctionComponent<Props> = (props) => {
+  const { id, label, danger, onClick } = props;
   const { closeMenu } = useMenuContext();
-  const { id, label, warning, danger, onClick } = props;
 
   const handleClick = useCallback((event) => {
     onClick(event);
@@ -24,13 +23,10 @@ const MenuItem: FunctionComponent<Props> = (props) => {
       data-el="menu-item"
       data-id={id}
       role="button"
-      warning={warning}
       danger={danger}
       onClick={handleClick}
     >
-      <MenuItemLabel>
-        <span>{label}</span>
-      </MenuItemLabel>
+      <span data-el="menu-link-label">{label}</span>
     </StyledMenuItem>
   );
 };

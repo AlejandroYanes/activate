@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { EventModel } from 'models/event';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
 import EventImage from 'components/experience/EventImage';
 import { Paragraph } from 'components/base-components/Typography';
@@ -24,7 +23,6 @@ interface Props {
 }
 
 const EventCard: FunctionComponent<Props> = (props) => {
-  const layout = useAppLayout();
   const { event, readonly } = props;
   const {
     state: {
@@ -49,12 +47,10 @@ const EventCard: FunctionComponent<Props> = (props) => {
     going,
   } = event;
 
-  const link = layout !== Layout.MOBILE ? '/app/event-details' : '#event-details';
-
   return (
     <>
       <Card>
-        <Link to={link}>
+        <Link to="/app/event/details">
           <EventImage src={image} alt={name} />
         </Link>
         <Content>

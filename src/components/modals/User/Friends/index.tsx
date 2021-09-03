@@ -4,7 +4,6 @@ import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { UserModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
-import { Modals } from 'components/modals';
 import UsersList from 'components/experience/UsersList';
 import { ConsumerActions } from 'components/experience/UserActions';
 
@@ -27,7 +26,7 @@ const Friends: FunctionComponent<Props> = (props) => {
   );
 
   const goToProfile = useCallback((friend: UserModel) => {
-    push(Modals.USER, { id: friend.id });
+    push(`/app/user/${friend.id}`);
   }, []);
 
   const action = useCallback(({ user }) => (

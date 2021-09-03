@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import usersApi from 'api/users';
 import { UserModel } from 'models/user';
-import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
 import { Option, Options } from 'components/base-components/Options';
 import UsersList from 'components/experience/UsersList';
@@ -32,7 +31,7 @@ const Friends: FunctionComponent = () => {
   const { isLoading, data: response, error } = useQuery(key, action);
 
   const goToProfile = useCallback((friend: UserModel) => {
-    push(Modals.USER, { id: friend.id });
+    push(`/app/user/${friend.id}`);
   }, []);
 
   return (

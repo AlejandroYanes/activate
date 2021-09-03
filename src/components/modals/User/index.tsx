@@ -132,22 +132,20 @@ const UserModal: FunctionComponent = () => {
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
+          fullWidth
           mT
           mB
         >
           <Tab
             name={Tabs.EVENTS}
-            label={Tabs.EVENTS}
             icon="CALENDAR"
           />
           <Tab
             name={Tabs.FOLLOWING}
-            label={Tabs.FOLLOWING}
             icon="MEGAPHONE"
           />
           <Tab
             name={Tabs.FRIENDS}
-            label={Tabs.FRIENDS}
             icon="USERS"
           />
         </Tabset>

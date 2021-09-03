@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import { Link } from 'react-router-dom';
+import { anyPropsAttrs, getFontColor } from 'helpers';
 
 const elementBorderRadius = '16px';
 
@@ -18,10 +19,16 @@ const getActionStyles = (props) => {
   );
 
   return css`
-    color: ${fontColor};
+    span[data-el="menu-link-label"] {
+      color: ${fontColor};
+    }
+
     &:hover {
+      span[data-el="menu-link-label"] {
+        color: ${colors.BACKGROUND_LIGHTER};
+      }
+
       cursor: pointer;
-      color: ${colors.BACKGROUND_LIGHTER};
       background-color: ${backgroundColor};
 
       svg > path {
@@ -42,8 +49,6 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   align-items: center;
   height: 48px;
   padding: 0 10px;
-  font-family: Nunito-ExtraBold, sans-serif;
-  font-size: 16px;
   transition: all 150ms linear;
 
   &:first-child {
@@ -57,21 +62,27 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
     border-bottom-left-radius: ${elementBorderRadius};
   }
 
+  span[data-el="menu-link-label"] {
+    font-family: Nunito-ExtraBold, sans-serif;
+    font-size: 16px;
+    color: ${getFontColor};
+  }
+
   ${getActionStyles};
 `;
 
-export const MenuItemIcon = styled.div`
-  margin-right: 8px;
+export const MenuLink = styled(Link)`
+  box-sizing: border-box;
   display: flex;
+  justify-content: center;
   align-items: center;
-`;
+  height: 48px;
+  width: 100%;
+  text-decoration: none;
 
-export const MenuItemLabel = styled.div`
-  display: flex;
-  align-items: center;
-  padding-left: 4px;
-
-  span {
-    margin-bottom: 2px;
+  span[data-el="menu-link-label"] {
+    font-family: Nunito-ExtraBold, sans-serif;
+    font-size: 16px;
+    color: ${getFontColor};
   }
 `;

@@ -83,17 +83,15 @@ const ProfileModal: FunctionComponent = () => {
           activeTab={activeTab}
           onTabChange={setActiveTab}
           fullWidth
-          bordered
+          mT
           mB
         >
           <Tab
             name={ProfileTabs.Following}
-            label={ProfileTabs.Following}
             icon="MEGAPHONE"
           />
           <Tab
             name={ProfileTabs.Friends}
-            label={ProfileTabs.Friends}
             icon="USERS"
           />
         </Tabset>

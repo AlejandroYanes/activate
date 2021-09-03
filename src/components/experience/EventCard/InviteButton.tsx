@@ -1,8 +1,9 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { EventModel } from 'models/event';
-import { Modals } from 'components/modals';
 import { IconButton } from 'components/base-components/Button';
+import { Modals } from '../../modals';
+import { Layout, useAppLayout } from '../../providers/Layout';
 
 interface Props {
   event: EventModel;
@@ -11,10 +12,14 @@ interface Props {
 const InviteButton: FunctionComponent<Props> = (props) => {
   const { push } = useHistory();
   const { event: { id, name } } = props;
+  const layout = useAppLayout();
 
   const inviteUsers = useCallback(() => {
-    push(Modals.INVITE, { event: { id, name } });
-  }, []);
+    const route = layout === Layout.MOBILE
+      ? '/app/event/invite'
+      : Modals.INVITE;
+    push(route, { event: { id, name } });
+  }, [layout]);
 
   return (
     <IconButton
