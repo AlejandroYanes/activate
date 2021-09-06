@@ -36,7 +36,7 @@ const commonRoutes = [
 
 const routesWithPages = [
   <Route path="/app/profile" component={ProfilePage} />,
-  <Route path="/app/event/details" component={EventDetailsPage} />,
+  <Route path="/app/event/:eventId" component={EventDetailsPage} />,
   <Route path="/app/publisher/:publisherId" component={PublisherPage} />,
   <Route path="/app/user/:userId" component={UserPage} />,
   <Route path="/app/talks" component={TalksPage} />,
@@ -45,8 +45,8 @@ const routesWithPages = [
 
 const routesWithModals = [
   <Route path="/app/discover/filters" component={FiltersModal} />,
-  <Route path="/app/event/details" component={EventDetailsModal} />,
-  <Route path="/app/event/invite" component={InviteUsersModal} />,
+  <Route path="/app/event/:eventId/invite" component={InviteUsersModal} />,
+  <Route path="/app/event/:eventId" component={EventDetailsModal} />,
   <Route path="/app/publisher/:publisherId" component={PublisherModal} />,
   <Route path="/app/user/:userId" component={UserModal} />,
   <Route path="/app/talks/contacts" component={TalksModal} />,

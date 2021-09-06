@@ -1,24 +1,29 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
+import { CommentModel } from 'models/comment';
 import { Button } from 'components/base-components/Button';
 import { Field, Form } from 'components/base-components/Form';
 import TextArea from 'components/base-components/Inputs/TextArea';
 import Modal from 'components/base-components/Modal';
 import Comment from './Comment';
-import { comments } from './data';
 import { Footer } from './styled/comments';
+
+interface Props {
+  comments: CommentModel[];
+}
 
 const initialComment = {
   text: '',
 };
 
-const commentFactory = () => comments.map(
-  ({ id, ...rest }) => <Comment key={id} {...rest} />,
+const commentFactory = (comments) => comments.map(
+  (comment) => <Comment key={comment.id} comment={comment} />,
 );
 
-const Comments: FunctionComponent = () => {
+const Comments: FunctionComponent<Props> = (props) => {
+  const { comments } = props;
   const [showModal, setShowModal] = useState(false);
   const [comment, setComment] = useState(initialComment);
-  const commentsList = useMemo(commentFactory, []);
+  const commentsList = useMemo(() =>commentFactory(comments), []);
 
   const toggleModal = useCallback(() => setShowModal(!showModal), [showModal]);
 
@@ -26,11 +31,6 @@ const Comments: FunctionComponent = () => {
     <>
       {commentsList}
       <Footer>
-        <Button
-          label="See more"
-          variant="flat"
-          onClick={() => undefined}
-        />
         <Button
           variant="flat"
           label="Leave your own"

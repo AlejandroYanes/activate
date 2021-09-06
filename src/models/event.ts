@@ -1,19 +1,23 @@
+import { CommentModel } from './comment';
+
 export interface EventModel {
   id: string;
   name: string;
-  date: Date;
+  date: string;
   image: string;
   address: string;
-  description: string;
+  description?: string;
+  comments?: CommentModel[];
   author: {
     id: string;
     name: string;
+    userName?: string;
     avatar: string;
   };
-  friends: {
+  friends?: {
     id: string;
     avatar: string;
   }[];
-  followersCount: number;
+  followersCount?: number;
   going: boolean;
 }

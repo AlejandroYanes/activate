@@ -5,6 +5,7 @@ import { Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 
 interface Props {
+  id: string;
   event: string;
   going: boolean;
   handleBookmark: () => void;
@@ -22,7 +23,7 @@ const MenuTrigger = ({ toggleMenu }) => (
 );
 
 const ActionsMenu: FunctionComponent<Props> = (props) => {
-  const { event, going, handleBookmark } = props;
+  const { id, event, going, handleBookmark } = props;
 
   return (
     <Menu trigger={MenuTrigger}>
@@ -35,7 +36,7 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
       >
         <Title level={3} weight="light" align="center" ellipsis>{event}</Title>
       </FlexBox>
-      <MenuLink label="Open details" to="/app/event/details" />
+      <MenuLink label="Open details" to={`/app/event/${id}`} />
       <MenuItem label="Copy Link" onClick={emptyAction} />
       <MenuItem
         label={going ? 'Unfollow' : 'Follow'}

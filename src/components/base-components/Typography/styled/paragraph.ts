@@ -9,6 +9,6 @@ const sizeMap = {
 
 export const Paragraph = styled.p.attrs(anyPropsAttrs)`
   ${({ size }) => sizeMap[size]};
-  ${getPositionStyles};
   padding: 0 6px;
+  ${getPositionStyles};
 `;

@@ -33,8 +33,8 @@ const dateTimeFormatter = new Intl.DateTimeFormat('default', {
   minute: 'numeric',
 });
 
-export function formatDateTime(date: Date): string {
-  return date ? dateTimeFormatter.format(date) : undefined;
+export function formatDateTime(date: Date | string): string {
+  return date ? dateTimeFormatter.format(new Date(date)) : undefined;
 }
 
 const shortDateFormatter = new Intl.DateTimeFormat(undefined, {
@@ -77,7 +77,7 @@ export function getMonthLabel(date: Date) {
   return `${getMonthName(date).slice(0, 3)}/${year}`;
 }
 
-function resolveTimeUnit(date: Date, baseDate: Date) {
+function resolveTimeUnit(date: Date, targetDate: Date) {
   const units = [
     { unit: 'month', diffFunction: differenceInMonths },
     { unit: 'day', diffFunction: differenceInDays },
@@ -85,11 +85,11 @@ function resolveTimeUnit(date: Date, baseDate: Date) {
     { unit: 'minute', diffFunction: differenceInMinutes },
   ];
 
-  const unitOfTime = units.find((unit) => unit.diffFunction(baseDate, date) !== 0);
+  const unitOfTime = units.find((unit) => unit.diffFunction(date, targetDate) !== 0);
 
   if (!!unitOfTime) {
     const { diffFunction, unit } = unitOfTime;
-    const difference = diffFunction(baseDate, date);
+    const difference = diffFunction(date, targetDate);
 
     return {
       unit: Math.abs(difference) === 1 ? unit : `${unit}s`,
@@ -105,8 +105,11 @@ const relativeTimeFormatter = new Intl.RelativeTimeFormat('default', {
   numeric: 'auto',
 });
 
-export function getRelativeTime(date:Date, baseDate?: Date) {
-  const { unit, diff } = resolveTimeUnit(baseDate || new Date(), date);
+export function getRelativeTime(fromDate:Date | string, relativeTo?: Date | string) {
+  const { unit, diff } = resolveTimeUnit(
+    new Date(fromDate),
+    relativeTo ? new Date(relativeTo) : new Date(),
+  );
 
   if (unit === 'equal') {
     return 'Right now';

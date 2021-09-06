@@ -1,71 +1,56 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import faker from 'faker';
+import React, { FunctionComponent } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useQuery } from 'react-query';
+import eventsApi from 'api/events';
 import { formatCurrency, formatDateTime } from 'helpers';
+import { QueryKey } from 'components/providers/Query';
 import { Text } from 'components/base-components/Typography';
 import { Button } from 'components/base-components/Button';
-import Badge from 'components/base-components/Badge';
-import AvatarGroup from 'components/base-components/AvatarGroup';
 import FlexBox from 'components/base-components/FlexBox';
+import Attendance from 'components/experience/Attendance';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import { Panel, StyledLink } from './styled';
 
-const event = {
-  date: new Date(),
-  author: {
-    name: faker.company.companyName(),
-    image: 'user2',
-  },
-  address: `
-  Arcos de Belen, calle Acosta e/ Compostela y Picota, Habana Vieja
-  `,
-  price: faker.finance.amount(10, 1000),
-  tags: new Array(10).fill(1).map(() => faker.lorem.word()),
-};
-
-const avatars = ['user1', 'user2', 'user3'];
-
 const EventDetailsPanel: FunctionComponent = () => {
-  const { date, address, price, tags } = event;
+  const { pathname } = useLocation();
+  const eventId = pathname.split('/')[3];
+  const {
+    isLoading,
+    data: response,
+    error,
+  } = useQuery(
+    [QueryKey.FETCH_EVENT, eventId],
+    () => eventsApi.getDetails(eventId),
+    { enabled: !!eventId },
+  );
 
-  const tagElements = useMemo(() => (
-    tags.map((tag) => <Badge key={tag} label={tag} color="light" sm mR mB />)
-  ), [tags]);
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+
+  if (!!error || !response?.data) {
+    return (
+      <NoConnectionScreen
+        padding="16px"
+        message="We could not load the event's details"
+      />
+    );
+  }
+
+  const event = response?.data;
+  const { date, address } = event;
 
   return (
     <Panel>
       <FlexBox direction="column" mB>
-        <Text color="secondary" padding="0 0 4px 0">Date</Text>
+        <Text weight="light" padding="0 0 4px 0">Date</Text>
         <Text>{formatDateTime(date)}</Text>
       </FlexBox>
       <FlexBox direction="column" mB>
-        <Text color="secondary" padding="0 0 4px 0">Address</Text>
+        <Text weight="light" padding="0 0 4px 0">Address</Text>
         <Text>{address}</Text>
       </FlexBox>
-      <FlexBox direction="column" mB>
-        <Text color="secondary" padding="0 0 4px 0">Price</Text>
-        <FlexBox align="center" width="100%">
-          <Text margin="6px 0 0 0">
-            {`${formatCurrency(price)} - ${formatCurrency(price)}`}
-          </Text>
-          <Button
-            sm
-            color="brand"
-            variant="fill"
-            label="Buy a ticket"
-            onClick={() => undefined}
-            margin="0 0 0 auto"
-          />
-        </FlexBox>
-      </FlexBox>
-      <FlexBox direction="column" mB>
-        <Text color="secondary" padding="0 0 4px 0">Available at</Text>
-        <StyledLink href="https://faketicketweb.com">
-          https://faketicketweb.com
-        </StyledLink>
-      </FlexBox>
-      <AvatarGroup icons={avatars} label="+ 16k" size="small" mB />
-      <FlexBox wrap>
-        {tagElements}
-      </FlexBox>
+      <Attendance event={event} />
     </Panel>
   );
 };

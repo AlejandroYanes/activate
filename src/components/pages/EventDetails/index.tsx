@@ -1,8 +1,6 @@
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
-import faker from 'faker';
+import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import eventImg from 'assets/images/virtual-tour.jpeg';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import { capitalizeFirstLetter } from 'helpers';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
@@ -11,100 +9,114 @@ import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import EventImage from 'components/experience/EventImage';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import { Modals } from 'components/modals';
 import Description from './Description';
 import Comments from './Comnments';
+import UnfollowModal from './UnfollowModal';
 import { StyledEventDetail } from './styled/page';
-
-enum Tabs {
-  DetailsSection = 'Details',
-  CommentsSection = 'Comments',
-}
-
-const event = {
-  title: 'Free Music Workshop - February 2020',
-  author: {
-    userName: `@${faker.internet.userName()}`,
-    name: faker.company.companyName(),
-  },
-};
+import useEventState, { Tabs } from './state';
 
 const EventDetailsPage: FunctionComponent = () => {
   const { goBack, push } = useHistory();
-  const { addSection, removeSection, setActiveSection } = usePanelActions();
-
-  const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
-  const [isBooked, setIsBooked] = useState(false);
-  const { title, author } = event;
-
-  const handleBookActionClick = useCallback(() => {
-    setIsBooked((previousState) => !previousState);
-  }, []);
+  const {
+    state: {
+      isLoading,
+      failed,
+      event,
+      activeTab,
+      isBooked,
+      showUnfollowModal,
+    },
+    actions: {
+      setActiveTab,
+      handleBookmark,
+      handleUnfollow,
+      closeModal,
+    },
+  } = useEventState();
 
   const inviteUsers = useCallback(() => {
-    push(Modals.INVITE);
-  }, []);
+    const { id, name } = event;
+    push(Modals.INVITE, { event: { id, name } });
+  }, [event]);
 
-  useEffect(() => {
-    addSection(AuxPanelSection.EVENT_DETAILS);
-    setActiveSection(AuxPanelSection.EVENT_DETAILS);
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
 
-    return () => removeSection(AuxPanelSection.EVENT_DETAILS);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  if (failed) {
+    return (
+      <NoConnectionScreen message="We could not load the event's details" />
+    );
+  }
+
+  const { name, author, image, comments } = event;
 
   return (
     <Page>
       <StyledEventDetail>
-        <FlexBox align="flex-start" padding="0 0 16px 0">
+        <EventImage src={image} alt="virtual tour" />
+        <FlexBox align="flex-start" padding="16px 0">
           <IconButton
-            variant="flat"
-            color="background"
             onClick={goBack}
             icon="ARROW_LEFT"
+            color="background"
+            variant="flat"
+            margin="3px 0 0 0"
           />
-          <Title level={2} padding="0 0 0 6px">{title}</Title>
+          <Title level={2} weight="light" padding="0 0 0 6px">
+            {capitalizeFirstLetter(name)}
+          </Title>
         </FlexBox>
-        <EventImage src={eventImg} alt="virtual tour" />
         <FlexBox align="center" margin="8px 0">
           <FlexBox align="center">
-            <Avatar src="user3" />
+            <Avatar src={author.avatar} />
             <FlexBox direction="column" padding="0 0 0 6px">
-              <Text size="small" color="secondary">{author.userName}</Text>
+              <Text size="small" color="secondary">@{author.userName}</Text>
               <Text padding="4px 0 0 0">{author.name}</Text>
             </FlexBox>
           </FlexBox>
           <IconButton
             size="large"
-            color="info"
             variant="flat"
-            icon="FORWARD"
-            onClick={inviteUsers}
             margin="0 0 0 auto"
+            onClick={handleBookmark}
+            color={isBooked ? 'accent' : 'background'}
+            icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
           />
           <IconButton
-            size="large"
+            onClick={inviteUsers}
+            icon="FORWARD"
+            color="background"
             variant="flat"
-            color="accent"
-            icon={isBooked ? 'BOOKMARK_FILLED' : 'ADD_BOOKMARK'}
-            onClick={handleBookActionClick}
+            size="large"
           />
         </FlexBox>
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
           fullWidth
-          bordered
           mT
           mB
         >
-          <Tab name={Tabs.DetailsSection} label="Details" icon="FORM" />
-          <Tab name={Tabs.CommentsSection} label="Comments" icon="COMMENTS" />
+          <Tab name={Tabs.Details} label="Details" icon="FORM" />
+          <Tab name={Tabs.Comments} label="Comments" icon="COMMENTS" />
         </Tabset>
         <Switch by={activeTab}>
-          <Case value={Tabs.DetailsSection} component={Description} />
-          <Case value={Tabs.CommentsSection} component={Comments} />
+          <Case value={Tabs.Details} component={Description} event={event} />
+          <Case
+            value={Tabs.Comments}
+            component={Comments}
+            comments={comments}
+          />
         </Switch>
+        <UnfollowModal
+          title={name}
+          onClose={closeModal}
+          onAccept={handleUnfollow}
+          isVisible={showUnfollowModal}
+        />
       </StyledEventDetail>
     </Page>
   );

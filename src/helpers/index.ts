@@ -15,3 +15,4 @@ export * from './state-management';
 export * from './browser-storage';
 export * from './regex-collection';
 export * from './route';
+export * from './strings';

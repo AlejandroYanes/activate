@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
+import { CommentModel } from 'models/comment';
 import { getRelativeTime } from 'helpers';
 import Avatar from 'components/base-components/Avatar';
 import { Paragraph, Text } from 'components/base-components/Typography';
@@ -8,10 +9,7 @@ import { Menu, MenuItem } from 'components/base-components/Menu';
 import { Comment as StyledComment, Details, Footer, Header } from './styled/comment';
 
 interface Props {
-  author: { img: string; name: string };
-  date: Date;
-  content: string;
-  response: string;
+  comment: CommentModel;
 }
 
 const emptyAction = () => undefined;
@@ -26,7 +24,17 @@ const menuTrigger = ({ toggleMenu }) => (
 );
 
 const Comment: FunctionComponent<Props> = (props) => {
-  const { author: { img, name }, date, content, response } = props;
+  const {
+    comment: {
+      author: {
+        avatar,
+        name,
+      },
+      createdOn,
+      content,
+      response,
+    },
+  } = props;
   const [showResponse, setShowResponse] = useState(false);
 
   const toggleResponseSection = useCallback(
@@ -37,10 +45,10 @@ const Comment: FunctionComponent<Props> = (props) => {
   return (
     <StyledComment>
       <Header>
-        <Avatar src={img} size="medium" />
+        <Avatar src={avatar} size="medium" />
         <Details>
           <Text>{name}</Text>
-          <Text size="small">{getRelativeTime(date)}</Text>
+          <Text size="small">{getRelativeTime(createdOn)}</Text>
         </Details>
         <Menu trigger={menuTrigger} align="end">
           <MenuItem label="Go to the user's profile" onClick={emptyAction} />
@@ -62,8 +70,8 @@ const Comment: FunctionComponent<Props> = (props) => {
             <Button
               onClick={toggleResponseSection}
               label="Show Response"
-              variant="flat"
               color="background"
+              variant="flat"
               sm
             />
           </RenderIf>

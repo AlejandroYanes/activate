@@ -26,6 +26,7 @@ const Days: FunctionComponent<Props> = (props) => {
   return days.reduce(({ lastMonth, items }, day) => {
     const dayElement = (
       <Day
+        key={day.toISOString()}
         day={day}
         isSelected={matchDays(day, value)}
         onClick={handleDayClick}

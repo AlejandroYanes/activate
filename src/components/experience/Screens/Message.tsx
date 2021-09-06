@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'react';
 import { Colors } from 'styles/colors';
+import { PositionProps } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
 import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
 import FlexBox from 'components/base-components/FlexBox';
 
-interface Props {
+interface Props extends PositionProps {
   icon: Icons;
   color: Colors;
   title: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 const MessageScreen: FunctionComponent<Props> = (props) => {
-  const { icon, color, title, lines, children } = props;
+  const { icon, color, title, lines, children, ...rest } = props;
 
   const textLines = lines
     ? lines.map(line => (
@@ -21,7 +22,7 @@ const MessageScreen: FunctionComponent<Props> = (props) => {
     : null;
 
   return (
-    <FlexBox direction="column" align="center">
+    <FlexBox direction="column" align="center" {...rest}>
       <SvgIcon
         icon={icon}
         color={color}

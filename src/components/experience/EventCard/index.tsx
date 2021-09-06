@@ -2,14 +2,14 @@ import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 import { EventModel } from 'models/event';
 import RenderIf from 'components/base-components/RenderIf';
-import EventImage from 'components/experience/EventImage';
 import { Paragraph } from 'components/base-components/Typography';
+import EventImage from 'components/experience/EventImage';
+import Attendance from 'components/experience/Attendance';
 import Header from './Header';
 import InviteButton from './InviteButton';
 import ActionsMenu from './ActionsMenu';
 import BookmarkButton from './BookmarkButton';
 import UnfollowModal from './UnfollowModal';
-import Attendance from './Attendance';
 import EventSkeleton from './Skeleton';
 import { Actions, Card, Content, Divider, Footer } from './styled';
 import useEventState from './state';
@@ -39,18 +39,18 @@ const EventCard: FunctionComponent<Props> = (props) => {
   } = useEventState(event);
 
   const {
+    id,
     date,
     name,
     address,
     image,
     description,
-    going,
   } = event;
 
   return (
     <>
       <Card>
-        <Link to="/app/event/details">
+        <Link to={`/app/event/${id}`}>
           <EventImage src={image} alt={name} />
         </Link>
         <Content>
@@ -81,8 +81,9 @@ const EventCard: FunctionComponent<Props> = (props) => {
               />
               <InviteButton event={event} />
               <ActionsMenu
+                id={id}
                 event={name}
-                going={going}
+                going={isBooked}
                 handleBookmark={handleBookmark}
               />
             </Actions>

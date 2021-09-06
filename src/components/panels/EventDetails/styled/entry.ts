@@ -34,6 +34,6 @@ export const StyledLink = styled.a`
   transition: all 150ms linear;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.BRAND_FONT};
+    color: ${({ theme }) => theme.colors.BRAND_FONT_HIGHLIGHT};
   }
 `

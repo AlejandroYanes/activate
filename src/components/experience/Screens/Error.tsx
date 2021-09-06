@@ -1,12 +1,13 @@
 import { FunctionComponent } from 'react';
+import { PositionProps } from 'helpers';
 import MessageScreen from './Message';
 
-interface Props {
+interface Props extends PositionProps {
   lines?: string[];
 }
 
 const ErrorScreen: FunctionComponent<Props> = (props) => {
-  const { lines, children } = props;
+  const { lines, children, ...rest } = props;
 
   return (
     <MessageScreen
@@ -14,6 +15,7 @@ const ErrorScreen: FunctionComponent<Props> = (props) => {
       color="WARNING"
       title="Oops, sorry about that."
       lines={lines}
+      {...rest}
     >
       {children}
     </MessageScreen>

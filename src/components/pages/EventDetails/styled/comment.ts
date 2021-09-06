@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { getFontShadeColor } from 'helpers';
 
 export const Comment = styled.article`
   display: flex;
@@ -6,7 +7,7 @@ export const Comment = styled.article`
   border-radius: 16px;
   padding: 16px;
   margin-bottom: 24px;
-  border: 1px solid ${({ theme }) => theme.colors.BACKGROUND};
+  border: 1px solid ${getFontShadeColor};
 `;
 
 export const Header = styled.header`

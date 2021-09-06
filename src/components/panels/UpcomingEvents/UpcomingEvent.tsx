@@ -11,7 +11,7 @@ interface Props {
   id: string;
   name: string;
   address: string;
-  date: Date;
+  date: string;
 }
 
 const avatars = ['user1', 'user2', 'user4'];
@@ -27,7 +27,9 @@ const UpcomingEvent: FunctionComponent<Props> = (props) => {
           <Text>{name}</Text>
           <FlexBox align="center" margin="4px 0">
             <SvgIcon height={16} width={16} icon="CALENDAR" />
-            <Text size="small" margin="0 0 0 6px">{formatDateTime(date)}</Text>
+            <Text size="small" margin="0 0 0 6px">
+              {formatDateTime(new Date(date))}
+            </Text>
           </FlexBox>
           <FlexBox align="flex-start" margin="4px 0">
             <SvgIcon height={16} width={16} icon="MAP_PIN" />

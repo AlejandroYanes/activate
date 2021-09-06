@@ -3,6 +3,9 @@ import { EventModel } from 'models/event';
 import { get, PagedResponse } from './base';
 
 const eventsApi = {
+  getDetails: (eventId: string): AxiosPromise<EventModel> => {
+    return get(`events/${eventId}/details`);
+  },
   listMyUpcomingDates: (): AxiosPromise<PagedResponse<Date>> => {
     return get('events/upcoming/dates');
   },

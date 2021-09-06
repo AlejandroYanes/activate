@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import { formatAmount } from 'helpers';
+import { formatAmount, PositionProps } from 'helpers';
 import { EventModel } from 'models/event';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 
-interface Props {
+interface Props extends PositionProps {
   event: EventModel;
 }
 
@@ -34,7 +34,7 @@ function resolveLabel(
 
 const Attendance: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
-  const { event: { friends, followersCount } } = props;
+  const { event: { friends, followersCount }, ...rest } = props;
   const avatars = friends.map((friend) => friend.avatar);
 
   if (followersCount) {
@@ -42,6 +42,7 @@ const Attendance: FunctionComponent<Props> = (props) => {
 
     return (
       <AvatarGroup
+        {...rest}
         icons={avatars}
         label={label}
         size="small"
