@@ -3,6 +3,7 @@ import { useAppLayout } from 'components/providers/Layout';
 import { Title } from 'components/base-components/Typography';
 import { LinkButton } from 'components/base-components/Button';
 import EventCard from 'components/experience/EventCard';
+import FlexBox from 'components/base-components/FlexBox';
 import Illustration from './Illustration';
 import { events } from '../Discover/events';
 import { Content, IllustrationBox, LeftBlock, RightBlock } from './styled';
@@ -18,20 +19,24 @@ const LandingPage: FunctionComponent = () => {
   return (
     <Content layout={layout}>
       <LeftBlock variants={blockVariants} initial="start" animate="enter">
-        <Title level={1} weight="light" color="brand">
-          Find any
-          <Title inline level={1} weight="bold" color="brand" margin="0 0 0 6px">
+        <FlexBox>
+          <Title level={1} weight="light" color="brand">
+            Find any
+          </Title>
+          <Title level={1} weight="bold" color="brand" margin="0 0 0 6px">
             event
           </Title>
-        </Title>
-        <Title level={1} weight="light" color="brand">
-          happening
-          <Title inline level={1} weight="bold" color="brand" margin="0 0 0 6px">
+        </FlexBox>
+        <FlexBox>
+          <Title level={1} weight="light" color="brand">
+            happening
+          </Title>
+          <Title level={1} weight="bold" color="brand" margin="0 0 0 6px">
             anywhere,
           </Title>
-        </Title>
-        <Title level={1} color="brand">
-          <b>anytime</b>.
+        </FlexBox>
+        <Title level={1} weight="bold" color="brand">
+          anytime.
         </Title>
         <IllustrationBox layout={layout}>
           <LinkButton

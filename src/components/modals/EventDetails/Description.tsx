@@ -22,15 +22,13 @@ const Description: FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <FlexBox mT mB padding="0 16px">
-        <FlexBox direction="column" width={220}>
-          <Text color="secondary" padding="0 0 4px 0">Date</Text>
-          <Text>{formatDateTime(date)}</Text>
-        </FlexBox>
-        <FlexBox direction="column" grow>
-          <Text color="secondary" padding="0 0 4px 0">Address</Text>
-          <Text>{address}</Text>
-        </FlexBox>
+      <FlexBox direction="column" padding="0 16px" mB>
+        <Text color="secondary" padding="0 0 4px 0">Date</Text>
+        <Text>{formatDateTime(date)}</Text>
+      </FlexBox>
+      <FlexBox direction="column" padding="0 16px" mB>
+        <Text color="secondary" padding="0 0 4px 0">Address</Text>
+        <Text>{address}</Text>
       </FlexBox>
       <Attendance event={event} mB padding="0 16px" />
       {description}

@@ -8,7 +8,11 @@ const UpdatesModal: FunctionComponent = () => {
   const layout = useAppLayout();
   const { goBack } = useHistory();
 
-  const modalSize = layout !== Layout.MOBILE ? 'drawer' : 'mobile';
+  const modalSize = (
+    (layout === Layout.DESKTOP && 'small') ||
+    (layout === Layout.TABLET && 'medium') ||
+    'mobile'
+  );
 
   return (
     <Modal

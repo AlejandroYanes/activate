@@ -1,13 +1,16 @@
 import { FunctionComponent } from 'react';
+import { EventModel } from 'models/event';
+import { capitalizeFirstLetter } from 'helpers';
 import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import { Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
+import RenderIf from 'components/base-components/RenderIf';
 
 interface Props {
-  id: string;
-  event: string;
+  event: EventModel;
   going: boolean;
+  inDetails?: boolean;
   handleBookmark: () => void;
 }
 
@@ -22,8 +25,8 @@ const MenuTrigger = ({ toggleMenu }) => (
   />
 );
 
-const ActionsMenu: FunctionComponent<Props> = (props) => {
-  const { id, event, going, handleBookmark } = props;
+const EventMenu: FunctionComponent<Props> = (props) => {
+  const { event: { id, name }, going, handleBookmark, inDetails } = props;
 
   return (
     <Menu trigger={MenuTrigger}>
@@ -34,9 +37,13 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
         padding="0 20px"
         height={48}
       >
-        <Title level={3} weight="light" align="center" ellipsis>{event}</Title>
+        <Title level={3} weight="light" align="center" ellipsis>
+          {capitalizeFirstLetter(name)}
+        </Title>
       </FlexBox>
-      <MenuLink label="Open details" to={`/app/event/${id}`} />
+      <RenderIf condition={!inDetails}>
+        <MenuLink label="Open details" to={`/app/event/${id}`} />
+      </RenderIf>
       <MenuItem label="Copy Link" onClick={emptyAction} />
       <MenuItem
         label={going ? 'Unfollow' : 'Follow'}
@@ -48,4 +55,4 @@ const ActionsMenu: FunctionComponent<Props> = (props) => {
   );
 };
 
-export default ActionsMenu;
+export default EventMenu;

@@ -6,7 +6,7 @@ import MobileHeader from './Header.mobile';
 export interface HeaderProps {
   title: string;
   address: string;
-  date: Date;
+  date: string;
   hasDescription: boolean;
   showMore: boolean;
   toggleMoreContent: () => void;

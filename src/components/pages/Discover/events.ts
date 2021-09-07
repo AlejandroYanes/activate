@@ -6,7 +6,7 @@ import { images } from './images';
 
 const defaultEvent: EventModel = {
   id: faker.random.uuid(),
-  date: new Date(2021, 1, 19),
+  date: new Date(2021, 1, 19).toISOString(),
   name: 'Free Music Workshop - February 2020',
   address: 'St. Joseph\'s Hospice',
   author: {
@@ -28,7 +28,7 @@ const defaultEvent: EventModel = {
 
 const defaultEvent2: EventModel = {
   id: faker.random.uuid(),
-  date: new Date(2021, 3, 7),
+  date: new Date(2021, 3, 7).toISOString(),
   name: 'Presentacion del album: En la mesa del bar',
   address: 'Arcos de Belen, calle Acosta e/ Compostela y Picota',
   author: {
@@ -50,7 +50,7 @@ const defaultEvent2: EventModel = {
 
 const fakeEvents: EventModel[] = new Array(4).fill('1').map((_item, index) => ({
   id: faker.random.uuid(),
-  date: faker.date.recent(7),
+  date: faker.date.recent(7).toISOString(),
   name: faker.lorem.words(7),
   address: `${faker.address.streetAddress()}, ${faker.address.city()}`,
   author: {

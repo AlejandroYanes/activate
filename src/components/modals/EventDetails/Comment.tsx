@@ -2,12 +2,12 @@ import React, { FunctionComponent, useCallback, useState } from 'react';
 import { CommentModel } from 'models/comment';
 import { getRelativeTime } from 'helpers';
 import { useAuthData } from 'components/providers/Auth';
-import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import { Button, IconButton } from 'components/base-components/Button';
 import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
+import FlexBox from 'components/base-components/FlexBox';
 import { Comment as StyledComment, Details, Footer, Header } from './styled/comment';
 
 interface Props {

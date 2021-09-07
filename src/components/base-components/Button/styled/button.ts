@@ -14,6 +14,7 @@ const getSize = (props: ButtonProps) => {
       width: ${width};
       min-width: 28px;
       font-size: 13px;
+      padding: 0 8px;
     `;
   }
 

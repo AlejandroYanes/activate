@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { EventModel } from 'models/event';
+import { Modals } from 'components/modals';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { IconButton } from 'components/base-components/Button';
-import { Modals } from '../../modals';
-import { Layout, useAppLayout } from '../../providers/Layout';
 
 interface Props {
   event: EventModel;
