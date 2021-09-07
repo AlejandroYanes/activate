@@ -3,10 +3,10 @@ import { useAppLayout } from 'components/providers/Layout';
 import { Title } from 'components/base-components/Typography';
 import { LinkButton } from 'components/base-components/Button';
 import EventCard from 'components/experience/EventCard';
+import FlexBox from 'components/base-components/FlexBox';
 import Illustration from './Illustration';
 import { events } from '../Discover/events';
 import { Content, IllustrationBox, LeftBlock, RightBlock } from './styled';
-import FlexBox from '../../base-components/FlexBox';
 
 const blockVariants = {
   start: { transform: 'translateX(-20%)', opacity: 0 },
