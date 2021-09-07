@@ -16,6 +16,7 @@ import Comments from './Comnments';
 import UnfollowModal from './UnfollowModal';
 import { StyledEventDetail } from './styled/page';
 import useEventState, { Tabs } from './state';
+import EventMenu from '../../experience/EventMenu';
 
 const EventDetailsPage: FunctionComponent = () => {
   const { goBack, push } = useHistory();
@@ -91,6 +92,12 @@ const EventDetailsPage: FunctionComponent = () => {
             color="background"
             variant="flat"
             size="large"
+          />
+          <EventMenu
+            inDetails
+            event={event}
+            going={isBooked}
+            handleBookmark={handleBookmark}
           />
         </FlexBox>
         <Tabset

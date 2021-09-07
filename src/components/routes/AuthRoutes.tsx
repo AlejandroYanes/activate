@@ -45,7 +45,7 @@ const routesWithPages = [
 
 const routesWithModals = [
   <Route path="/app/discover/filters" component={FiltersModal} />,
-  <Route path="/app/event/:eventId/invite" component={InviteUsersModal} />,
+  <Route path="/app/event/invite" component={InviteUsersModal} />,
   <Route path="/app/event/:eventId" component={EventDetailsModal} />,
   <Route path="/app/publisher/:publisherId" component={PublisherModal} />,
   <Route path="/app/user/:userId" component={UserModal} />,

@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
-import { getEventValue } from 'helpers';
 import usersApi from 'api/users';
 import { QueryKey } from 'components/providers/Query';
 
@@ -22,9 +21,7 @@ export default function useInviteState() {
     isLoading,
     users: response?.data.results,
     errored: !!error,
-    handleSearch: useCallback((event) => {
-      setSearch(getEventValue(event));
-    }, []),
+    handleSearch: setSearch,
     handleSelection: useCallback((user) => {
       setSelectedUsers((oldSelection) => {
         const isSelected = oldSelection.some((u) => u.id === user.id);

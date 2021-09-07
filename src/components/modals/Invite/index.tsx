@@ -8,6 +8,7 @@ import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import useInviteState from './state';
+import { capitalizeFirstLetter } from '../../../helpers';
 
 const InviteUsersModal: FunctionComponent = () => {
   const { goBack } = useHistory();
@@ -23,7 +24,11 @@ const InviteUsersModal: FunctionComponent = () => {
   } = useInviteState();
   const layout = useAppLayout();
 
-  const modalSize = layout !== Layout.MOBILE ? 'drawer' : 'mobile';
+  const modalSize = (
+    (layout === Layout.DESKTOP && 'small') ||
+    (layout === Layout.TABLET && 'medium') ||
+    'mobile'
+  );
 
   const footer = (
     <>
@@ -46,7 +51,9 @@ const InviteUsersModal: FunctionComponent = () => {
       visible
     >
       <FlexBox direction="column" align="stretch" padding="0 16px">
-        <Text size="large" mB>{event.name}</Text>
+        <Text size="large" mB>
+          {capitalizeFirstLetter(event.name)}
+        </Text>
         <Input
           placeholder="Search"
           value={search}

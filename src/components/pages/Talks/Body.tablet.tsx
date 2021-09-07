@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useMemo, useState } from 'react'
 import faker from 'faker';
 import { IconButton } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
-import { Text } from 'components/base-components/Typography';
+import { Title } from 'components/base-components/Typography';
 import { Case, Switch } from 'components/base-components/Switch';
 import Messages from 'components/experience/Messages';
 import UsersList from 'components/experience/UsersList';
@@ -102,14 +102,14 @@ const TabletBody: FunctionComponent = () => {
 
   const talksHeader = (
     <FlexBox align="center" height="100%">
-      <Text>Select a talk</Text>
+      <Title level={3}>Select a talk</Title>
     </FlexBox>
   );
 
   const newTalkHeader = (
     <FlexBox align="center" height="100%">
       {leftAction}
-      <Text>Select a contact</Text>
+      <Title level={3}>Select a contact</Title>
     </FlexBox>
   );
 

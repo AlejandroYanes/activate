@@ -1,6 +1,5 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import faker from 'faker';
 import eventImg from 'assets/images/virtual-tour.jpeg';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
@@ -10,83 +9,119 @@ import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import EventImage from 'components/experience/EventImage';
-import Description from '../../pages/EventDetails/Description';
-import Comments from '../../pages/EventDetails/Comnments';
-
-const event = {
-  title: 'Free Music Workshop - February 2020',
-  author: {
-    userName: `@${faker.internet.userName()}`,
-    name: faker.company.companyName(),
-  },
-};
-
-enum Tabs {
-  DetailsSection = 'Details',
-  CommentsSection = 'Comments',
-}
-
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import Description from './Description';
+import Comments from './Comnments';
+import UnfollowModal from './UnfollowModal';
+import useEventDetailsState, { Tabs } from './state';
+import { capitalizeFirstLetter } from '../../../helpers';
+import EventMenu from '../../experience/EventMenu';
 
 const EventDetailsModal: FunctionComponent = () => {
-  const { goBack } = useHistory();
+  const { goBack, push } = useHistory();
+  const {
+    state: {
+      activeTab,
+      isLoading,
+      failed,
+      event,
+      isBooked,
+      showUnfollowModal,
+    },
+    actions: {
+      setActiveTab,
+      handleBookmark,
+      handleUnfollow,
+      closeModal,
+    },
+  } = useEventDetailsState();
 
-  const [activeTab, setActiveTab] = useState(Tabs.DetailsSection);
-  const [isBooked, setIsBooked] = useState(false);
-  const { title, author } = event;
+  const inviteUsers = useCallback(() => {
+    const { id, name } = event;
+    push(`/app/event/invite`, { event: { id, name } });
+  }, [event]);
 
-  const handleBookActionClick = useCallback(() => {
-    setIsBooked((previousState) => !previousState);
-  }, []);
+  if (isLoading) {
+    return (
+      <Modal onClose={goBack} size="mobile" visible>
+        <LoadingScreen />
+      </Modal>
+    );
+  }
 
-  const header = (
-    <FlexBox align="center" ellipsis>
-      <IconButton onClick={goBack} icon="ARROW_LEFT" />
-      <Title level={3} padding="0 6px 0 0" ellipsis>{title}</Title>
-    </FlexBox>
-  );
+  if (failed) {
+    return (
+      <Modal onClose={goBack} size="mobile" visible>
+        <NoConnectionScreen message="We could not load the event's details" />
+      </Modal>
+    );
+  }
+
+  const { name, author, comments } = event;
 
   return (
-    <Modal onClose={goBack} title={header} size="mobile" visible>
+    <Modal onClose={goBack} size="mobile" visible>
       <FlexBox direction="column" align="stretch" padding="0 6px 32px 6px">
-        <Title level={2} padding="8px 8px 16px">{title}</Title>
-        <EventImage src={eventImg} alt="virtual tour" />
-        <FlexBox align="center" margin="12px 0">
-          <FlexBox align="flex-start">
-            <Avatar src="user2" />
-            <FlexBox direction="column" padding="0 0 0 6px">
-              <Text size="small" color="secondary">{author.userName}</Text>
-              <Text padding="6px 0">{author.name}</Text>
-            </FlexBox>
-          </FlexBox>
+        <EventImage src={eventImg} alt="virtual tour" margin="6px 0 0 0" />
+        <FlexBox align="center" padding="16px 0">
+          <IconButton
+            onClick={goBack}
+            icon="ARROW_LEFT"
+            color="background"
+            variant="flat"
+          />
           <IconButton
             size="large"
-            color="info"
+            variant="flat"
+            margin="0 0 0 auto"
+            onClick={handleBookmark}
+            color={isBooked ? 'accent' : 'background'}
+            icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
+          />
+          <IconButton
+            size="large"
+            color="background"
             variant="flat"
             icon="FORWARD"
-            onClick={() => undefined}
-            margin="0 0 0 auto"
+            onClick={inviteUsers}
           />
-          <IconButton
-            size="large"
-            variant="flat"
-            color="accent"
-            icon={isBooked ? 'BOOKMARK_FILLED' : 'ADD_BOOKMARK'}
-            onClick={handleBookActionClick}
+          <EventMenu
+            inDetails
+            event={event}
+            going={isBooked}
+            handleBookmark={handleBookmark}
           />
+        </FlexBox>
+        <Title level={2} weight="light" padding="16px 0">
+          {capitalizeFirstLetter(name)}
+        </Title>
+        <FlexBox align="flex-start">
+          <Avatar src="user2" />
+          <FlexBox direction="column" padding="0 0 0 6px">
+            <Text size="small" color="secondary">{author.userName}</Text>
+            <Text padding="6px 0 0 0">{author.name}</Text>
+          </FlexBox>
         </FlexBox>
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
+          fullWidth
           mT
           mB
         >
-          <Tab name={Tabs.DetailsSection} label="Details" icon="FORM" />
-          <Tab name={Tabs.CommentsSection} label="Comments" icon="COMMENTS" />
+          <Tab name={Tabs.Details} label="Details" icon="FORM" />
+          <Tab name={Tabs.Comments} label="Comments" icon="COMMENTS" />
         </Tabset>
         <Switch by={activeTab}>
-          <Case value={Tabs.DetailsSection} component={Description} />
-          <Case value={Tabs.CommentsSection} component={Comments} />
+          <Case value={Tabs.Details} component={Description} event={event} />
+          <Case value={Tabs.Comments} component={Comments} comments={comments} />
         </Switch>
+        <UnfollowModal
+          title={name}
+          onClose={closeModal}
+          onAccept={handleUnfollow}
+          isVisible={showUnfollowModal}
+        />
       </FlexBox>
     </Modal>
   );
