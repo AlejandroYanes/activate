@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import eventImg from 'assets/images/virtual-tour.jpeg';
+import { capitalizeFirstLetter } from 'helpers';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import { IconButton } from 'components/base-components/Button';
@@ -10,12 +10,11 @@ import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import EventImage from 'components/experience/EventImage';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import EventMenu from 'components/experience/EventMenu';
 import Description from './Description';
 import Comments from './Comnments';
 import UnfollowModal from './UnfollowModal';
 import useEventDetailsState, { Tabs } from './state';
-import { capitalizeFirstLetter } from '../../../helpers';
-import EventMenu from '../../experience/EventMenu';
 
 const EventDetailsModal: FunctionComponent = () => {
   const { goBack, push } = useHistory();
@@ -57,12 +56,12 @@ const EventDetailsModal: FunctionComponent = () => {
     );
   }
 
-  const { name, author, comments } = event;
+  const { name, image, author, comments } = event;
 
   return (
     <Modal onClose={goBack} size="mobile" visible>
       <FlexBox direction="column" align="stretch" padding="0 6px 32px 6px">
-        <EventImage src={eventImg} alt="virtual tour" margin="6px 0 0 0" />
+        <EventImage src={image} alt="virtual tour" margin="6px 0 0 0" />
         <FlexBox align="center" padding="16px 0">
           <IconButton
             onClick={goBack}

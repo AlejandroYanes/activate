@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'helpers';
+import { Modals } from 'components/modals';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
@@ -10,13 +11,12 @@ import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import EventImage from 'components/experience/EventImage';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
-import { Modals } from 'components/modals';
+import EventMenu from 'components/experience/EventMenu';
 import Description from './Description';
 import Comments from './Comnments';
 import UnfollowModal from './UnfollowModal';
 import { StyledEventDetail } from './styled/page';
 import useEventState, { Tabs } from './state';
-import EventMenu from '../../experience/EventMenu';
 
 const EventDetailsPage: FunctionComponent = () => {
   const { goBack, push } = useHistory();

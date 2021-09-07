@@ -5,7 +5,7 @@ import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
 import { IconButton } from 'components/base-components/Button';
 import { Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
-import RenderIf from '../../base-components/RenderIf';
+import RenderIf from 'components/base-components/RenderIf';
 
 interface Props {
   event: EventModel;

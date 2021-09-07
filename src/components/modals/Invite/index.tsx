@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
+import { capitalizeFirstLetter } from 'helpers';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import Modal from 'components/base-components/Modal';
 import { Input } from 'components/base-components/Inputs';
@@ -8,7 +9,6 @@ import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import useInviteState from './state';
-import { capitalizeFirstLetter } from '../../../helpers';
 
 const InviteUsersModal: FunctionComponent = () => {
   const { goBack } = useHistory();
