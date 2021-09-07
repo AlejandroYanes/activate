@@ -2,14 +2,13 @@ import React, { FunctionComponent } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
-import { formatCurrency, formatDateTime } from 'helpers';
+import { formatDateTime } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
 import { Text } from 'components/base-components/Typography';
-import { Button } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import Attendance from 'components/experience/Attendance';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
-import { Panel, StyledLink } from './styled';
+import { Panel } from './styled';
 
 const EventDetailsPanel: FunctionComponent = () => {
   const { pathname } = useLocation();

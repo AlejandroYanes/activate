@@ -29,42 +29,53 @@ import UpdatesModal from 'components/modals/Updates';
 import ChangePasswordModal from 'components/modals/ChangePassword';
 import InviteUsersModal from 'components/modals/Invite';
 
-const commonRoutes = [
-  <Route path="/app/discover" component={DiscoverPage} />,
-  <Route path="/app/search" component={SearchPage} />,
+interface RouteDef {
+  path: string;
+  component: any;
+}
+
+const commonRoutes: RouteDef[] = [
+  { path: '/app/discover', component: DiscoverPage },
+  { path: '/app/search', component: SearchPage },
 ];
 
-const routesWithPages = [
-  <Route path="/app/profile" component={ProfilePage} />,
-  <Route path="/app/event/:eventId" component={EventDetailsPage} />,
-  <Route path="/app/publisher/:publisherId" component={PublisherPage} />,
-  <Route path="/app/user/:userId" component={UserPage} />,
-  <Route path="/app/talks" component={TalksPage} />,
-  <Route path="/app/interests" component={InterestsPage} />,
+const routesWithPages: RouteDef[] = [
+  { path: '/app/profile', component: ProfilePage },
+  { path: '/app/event/:eventId', component: EventDetailsPage },
+  { path: '/app/publisher/:publisherId', component: PublisherPage },
+  { path: '/app/user/:userId', component: UserPage },
+  { path: '/app/talks', component: TalksPage },
+  { path: '/app/interests', component: InterestsPage },
 ];
 
-const routesWithModals = [
-  <Route path="/app/discover/filters" component={FiltersModal} />,
-  <Route path="/app/event/invite" component={InviteUsersModal} />,
-  <Route path="/app/event/:eventId" component={EventDetailsModal} />,
-  <Route path="/app/publisher/:publisherId" component={PublisherModal} />,
-  <Route path="/app/user/:userId" component={UserModal} />,
-  <Route path="/app/talks/contacts" component={TalksModal} />,
-  <Route path="/app/talks/messages" component={TalksModal} />,
-  <Route path="/app/talks" component={TalksModal} />,
-  <Route path="/app/profile/password" component={ChangePasswordModal} />,
-  <Route path="/app/profile/edit" component={EditProfileModal} />,
-  <Route path="/app/profile" component={ProfileModal} />,
-  <Route path="/app/settings/interests" component={InterestsModal} />,
-  <Route path="/app/settings/colors" component={AppColorsModal} />,
-  <Route path="/app/settings" component={SettingsModal} />,
-  <Route path="/app/updates" component={UpdatesModal} />,
+const routesWithModals: RouteDef[] = [
+  { path: '/app/discover/filters', component: FiltersModal },
+  { path: '/app/event/invite', component: InviteUsersModal },
+  { path: '/app/event/:eventId', component: EventDetailsModal },
+  { path: '/app/publisher/:publisherId', component: PublisherModal },
+  { path: '/app/user/:userId', component: UserModal },
+  { path: '/app/talks/contacts', component: TalksModal },
+  { path: '/app/talks/messages', component: TalksModal },
+  { path: '/app/talks', component: TalksModal },
+  { path: '/app/profile/password', component: ChangePasswordModal },
+  { path: '/app/profile/edit', component: EditProfileModal },
+  { path: '/app/profile', component: ProfileModal },
+  { path: '/app/settings/interests', component: InterestsModal },
+  { path: '/app/settings/colors', component: AppColorsModal },
+  { path: '/app/settings', component: SettingsModal },
+  { path: '/app/updates', component: UpdatesModal },
 ];
+
+function mapRoutes(routes: RouteDef[]) {
+  return routes.map(({ path, component }) => (
+    <Route key={path} path={path} component={component} />
+  ));
+}
 
 const routesMap = {
-  [Layout.DESKTOP]: [...routesWithPages, ...commonRoutes],
-  [Layout.TABLET]: [...routesWithPages, ...commonRoutes],
-  [Layout.MOBILE]: [...routesWithModals, ...commonRoutes],
+  [Layout.DESKTOP]: mapRoutes([...routesWithPages, ...commonRoutes]),
+  [Layout.TABLET]: mapRoutes([...routesWithPages, ...commonRoutes]),
+  [Layout.MOBILE]: mapRoutes([...routesWithModals, ...commonRoutes]),
 };
 
 const AuthRoutes: FunctionComponent = () => {

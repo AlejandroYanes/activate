@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { QueryKey } from 'components/providers/Query';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import handleBookmark from './actions/handle-bookmark';
 import handleUnfollow from './actions/handle-unfollow';
 
@@ -19,7 +18,6 @@ export interface EventState {
 }
 
 export default function useEventState() {
-  const { addSection, removeSection, setActiveSection } = usePanelActions();
   const [state, setState] = useState<EventState>({
     isBooked: false,
     showUnfollowModal: false,
@@ -36,14 +34,6 @@ export default function useEventState() {
     () => eventsApi.getDetails(eventId),
     { enabled: !!eventId },
   );
-
-  // useEffect(() => {
-  //   addSection(AuxPanelSection.EVENT_DETAILS);
-  //   setActiveSection(AuxPanelSection.EVENT_DETAILS);
-  //
-  //   return () => removeSection(AuxPanelSection.EVENT_DETAILS);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   useEffect(() => {
     if (response?.data) {
