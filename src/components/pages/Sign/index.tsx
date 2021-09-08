@@ -30,6 +30,7 @@ const SignPage: FunctionComponent = () => {
       setErrors,
       authenticate,
       signInWithGoogle,
+      signInWithFacebook,
     },
   } = useSignPageState();
 
@@ -92,7 +93,7 @@ const SignPage: FunctionComponent = () => {
               size="large"
             />
             <IconButton
-              onClick={emptyAction}
+              onClick={signInWithFacebook}
               icon="FACEBOOK"
               color="accent"
               variant="fill"

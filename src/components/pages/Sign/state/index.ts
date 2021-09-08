@@ -40,6 +40,7 @@ export default function useSignPageState() {
         [state.credentials, state.signAction],
       ),
       signInWithGoogle: useCallback(handleSocialSign(SocialProvider.Google), []),
+      signInWithFacebook: useCallback(handleSocialSign(SocialProvider.Facebook), []),
     },
   };
 }
