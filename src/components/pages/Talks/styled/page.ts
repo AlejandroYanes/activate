@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import UsersList from 'components/experience/UsersList';
 
-export const Card = styled.section`
+export const Page = styled.section`
   border-radius: 16px;
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  height: calc(100vh - 64px);
+  height: calc(100vh - 66px);
 `;
+
+export const List = styled(UsersList)`
+  width: 360px;
+  min-width: 360px;
+  padding: 16px;
+`

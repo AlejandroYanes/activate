@@ -6,10 +6,12 @@ const contentStyleMap = {
   [Layout.DESKTOP]: css`
     display: flex;
     align-items: stretch;
+    padding: 0 48px;
   `,
   [Layout.TABLET]: css`
     display: flex;
-    flex-direction: column-reverse;
+    align-items: stretch;
+    padding: 0 48px;
   `,
   [Layout.MOBILE]: css`
     display: flex;
@@ -23,11 +25,12 @@ export const Content = styled.section.attrs(anyPropsAttrs)`
 
 const rightBlockStyleMap = {
   [Layout.DESKTOP]: css`
-    width: 50%;
+    //width: 50%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0 0 0 64px;
+    //padding: 0 0 0 56px;
   `,
   [Layout.TABLET]: css`
     width: 100%;

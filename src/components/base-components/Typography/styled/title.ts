@@ -2,15 +2,15 @@ import styled, { css } from 'styled-components';
 import { anyPropsAttrs, getPositionStyles, getEllipsisStyles } from 'helpers';
 
 const sizeMap = {
-  1: '36px',
+  1: '48px',
   2: '28px',
   3: '20px',
 };
 
 const weightMap = {
-  'normal': css`font-family: Nunito-Light, sans-serif;`,
-  'light': css`font-family: Nunito-ExtraLight, sans-serif; font-weight: lighter;`,
-  'bold': css`font-family: Nunito-Regular, sans-serif; font-weight: bold;`,
+  'normal': css`font-family: Raleway, sans-serif;`,
+  'light': css`font-family: Raleway, sans-serif; font-weight: lighter;`,
+  'bold': css`font-family: Raleway, sans-serif; font-weight: bold;`,
 };
 
 const getTextStyles = (props) => {
@@ -33,6 +33,10 @@ const getColor = (props) => {
 
   if (color === 'font') {
     return `color: ${colors.FONT}`;
+  }
+
+  if (color === 'background') {
+    return `color: ${colors.BACKGROUND_LIGHTER}`;
   }
 
   const fontColor = colors[`${color.toUpperCase()}_FONT`];

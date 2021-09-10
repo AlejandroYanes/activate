@@ -4,12 +4,9 @@ import eventsApi from 'api/events';
 import { parseSearchQuery } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
 import EventCard from 'components/experience/EventCard';
-import {
-  LoadingScreen,
-  MessageScreen,
-  NoConnectionScreen,
-} from 'components/experience/Screens';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import { ResultPageProps } from './types';
+import NoResults from './NoResults';
 
 const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
   const { search } = props;
@@ -41,12 +38,7 @@ const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
 
   if (response.data.length === 0) {
     return (
-      <MessageScreen
-        icon="INBOX"
-        color="INFO"
-        title="We found nothing"
-        lines={['Maybe you can try different words']}
-      />
+      <NoResults />
     );
   }
 

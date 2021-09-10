@@ -6,6 +6,7 @@ import ProfileData from './ProfileData';
 import Events from './Events';
 import Followers from './Followers';
 import usePublisherState, { Tabs } from './state';
+import FlexBox from '../../base-components/FlexBox';
 
 const PublisherPage: FunctionComponent = () => {
   const {
@@ -38,15 +39,17 @@ const PublisherPage: FunctionComponent = () => {
 
   return (
     <Page>
-      <ProfileData
-        user={publisher}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      />
-      <Switch by={activeTab}>
-        <Case value={Tabs.EVENTS} component={Events} />
-        <Case value={Tabs.FOLLOWERS} component={Followers} />
-      </Switch>
+      <FlexBox direction="column" align="stretch" width={680} margin="0 auto">
+        <ProfileData
+          user={publisher}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+        <Switch by={activeTab}>
+          <Case value={Tabs.EVENTS} component={Events} />
+          <Case value={Tabs.FOLLOWERS} component={Followers} />
+        </Switch>
+      </FlexBox>
     </Page>
   );
 };

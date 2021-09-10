@@ -1,38 +1,23 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { anyPropsAttrs, getBgdLightColor } from 'helpers';
-import { Layout } from 'components/providers/Layout';
 import { headerHeight } from 'styles/variables';
 
 export const StyledSidePanel = styled.aside`
   padding: 32px 32px 32px 0;
 `;
 
-const layoutMap = {
-  [Layout.DESKTOP]: css`
-    width: 380px;
-    border-radius: 16px;
-    height: calc(100vh - 64px);
-    padding: 0 0 24px;
-    position: sticky;
-    top: 32px;
-  `,
-  [Layout.TABLET]: css`
-    width: 380px;
-    border-radius: 16px;
-    height: calc(100vh - 64px);
-    padding: 0 0 24px;
-    position: sticky;
-    top: 32px;
-  `,
-};
-
 export const StyledPanel = styled.section.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
+  width: 380px;
+  border-radius: 16px;
+  height: calc(100vh - 64px);
+  padding: 0 0 24px;
+  position: sticky;
+  top: 32px;
   background-color: ${getBgdLightColor};
-  ${({ layout }) => layoutMap[layout]};
 `;
 
 export const PanelHeader = styled.header`

@@ -23,10 +23,15 @@
   src: local('Nunito-ExtraBold'), url('../../assets/fonts/Nunito-ExtraBold.ttf');
 }
 
+@font-face {
+  font-family: 'Raleway';
+  src: local('Raleway'), url('../../assets/fonts/Raleway-VariableFont_wght.ttf');
+}
+
 
 body {
   margin: 0;
-  font-family: Nunito-Regular, sans-serif;
+  font-family: Raleway, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;

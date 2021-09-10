@@ -10,8 +10,8 @@ interface Props {
   event: EventModel;
 }
 
-const description = new Array(10).fill(1).map((_, index) => (
-  <Paragraph padding="4px 16px" key={index}>
+const description = new Array(6).fill(1).map((_, index) => (
+  <Paragraph padding="8px 8px 16px" key={index}>
     {faker.lorem.lines(10)}
   </Paragraph>
 ));

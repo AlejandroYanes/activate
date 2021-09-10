@@ -62,8 +62,8 @@ const Tab: FunctionComponent<Props> = (props) => {
   return (
     <StyledTab
       role="button"
-      tabIndex={0}
       data-el="tab"
+      tabIndex={0}
       fullWidth={fullWidth}
       selected={isSelected}
       disableFocus={disableFocus}

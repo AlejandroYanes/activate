@@ -5,7 +5,7 @@ import { Layout } from 'components/providers/Layout';
 
 const wrapperStyleMap = {
   [Layout.DESKTOP]: css`
-    width: 50%;
+    width: 45%;
     position: relative;
   `,
   [Layout.TABLET]: css`

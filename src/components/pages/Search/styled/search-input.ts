@@ -6,7 +6,7 @@ import {
 
 export const InputGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;
-  margin: 24px 0 32px 0;
+  margin: 24px 0 32px;
   border-radius: 50px;
   border: 1px solid ${getFontShadeColor};
 
@@ -23,7 +23,8 @@ export const InputGroup = styled.div.attrs(anyPropsAttrs)`
 
   & > div#option {
     div[data-el="select-content"] {
-      width: 124px;
+      //width: 124px;
+      width: 140px;
       border: none;
       padding: 8px 28px 8px 12px;
       border-bottom-left-radius: 0;

@@ -28,7 +28,7 @@ const MessageScreen: FunctionComponent<Props> = (props) => {
         color={color}
         size="page"
       />
-      <Title level={3}>{title}</Title>
+      <Title level={3} margin="24px 0 8px">{title}</Title>
       {textLines}
       {children}
     </FlexBox>

@@ -9,6 +9,7 @@ import Following from './Following';
 import Friends from './Friends';
 import Events from './Events';
 import useUserState, { Tabs } from './state';
+import FlexBox from '../../base-components/FlexBox';
 
 const UserPage: FunctionComponent = () => {
   const {
@@ -54,12 +55,14 @@ const UserPage: FunctionComponent = () => {
 
   return (
     <Page>
-      <ProfileData user={user} activeTab={activeTab} setActiveTab={setActiveTab} />
-      <Switch by={activeTab}>
-        <Case value={Tabs.EVENTS} component={Events} />
-        <Case value={Tabs.FOLLOWING} component={Following} />
-        <Case value={Tabs.FRIENDS} component={Friends} />
-      </Switch>
+      <FlexBox direction="column" align="stretch" width={680} margin="0 auto">
+        <ProfileData user={user} activeTab={activeTab} setActiveTab={setActiveTab} />
+        <Switch by={activeTab}>
+          <Case value={Tabs.EVENTS} component={Events} />
+          <Case value={Tabs.FOLLOWING} component={Following} />
+          <Case value={Tabs.FRIENDS} component={Friends} />
+        </Switch>
+      </FlexBox>
     </Page>
   );
 };

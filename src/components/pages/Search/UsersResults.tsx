@@ -5,13 +5,10 @@ import { parseSearchQuery } from 'helpers';
 import { EventChannel, useEventCenterUpdates } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
 import UserCard from 'components/experience/UserCard';
-import {
-  LoadingScreen,
-  MessageScreen,
-  NoConnectionScreen,
-} from 'components/experience/Screens';
+import { LoadingScreen, NoConnectionScreen, } from 'components/experience/Screens';
 import { ResultPageProps } from './types';
 import { Grid } from './styled';
+import NoResults from './NoResults';
 
 const channels: EventChannel[] = [
   'SENT_FRIEND_REQUEST',
@@ -50,12 +47,7 @@ const UsersResults: FunctionComponent<ResultPageProps> = (props) => {
 
   if (response.data.length === 0) {
     return (
-      <MessageScreen
-        icon="INBOX"
-        color="INFO"
-        title="We found nothing"
-        lines={['Maybe you can try different words']}
-      />
+      <NoResults />
     );
   }
 

@@ -57,7 +57,7 @@ const getColorStyles = (props) => {
 
 export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   position: relative;
-  padding: 12px;
+  padding: 12px 20px;
   margin: 0;
   display: flex;
   align-items: center;

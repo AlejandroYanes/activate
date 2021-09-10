@@ -63,6 +63,7 @@ const SignPage: FunctionComponent = () => {
           errors={errors}
           onError={setErrors}
           rules={validationRules}
+          padding="0 24px"
         >
           <Field name="email" label="Email" mB />
           <Field

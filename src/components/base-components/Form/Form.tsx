@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { ValidationRules } from 'helpers';
+import { PositionProps, ValidationRules } from 'helpers';
 import { FormProvider } from './context';
 import { Form as StyledForm } from './styled';
 
-interface Props {
+interface Props extends PositionProps {
   id?: string;
   state: any;
   onChange: (value) => void;
@@ -26,6 +26,7 @@ const Form: FunctionComponent<Props> = (props) => {
     onError,
     rules,
     children,
+    ...rest
   } = props;
 
   const setField = useCallback((value) => {
@@ -41,7 +42,7 @@ const Form: FunctionComponent<Props> = (props) => {
   }, [errors, onError]);
 
   return (
-    <StyledForm id={id} onSubmit={disableOnSubmit}>
+    <StyledForm id={id} onSubmit={disableOnSubmit} {...rest}>
       <FormProvider
         state={state}
         setField={setField}

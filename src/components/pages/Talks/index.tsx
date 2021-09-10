@@ -1,9 +1,8 @@
 import React, { FunctionComponent, } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import Page from 'components/base-components/Page';
 import DesktopBody from './Body.desktop';
 import TabletBody from './Body.tablet';
-import { Card } from './styled/page';
+import { Page } from './styled';
 
 const bodyMap = {
   [Layout.DESKTOP]: DesktopBody,
@@ -16,9 +15,7 @@ const TalksPage: FunctionComponent = () => {
 
   return (
     <Page>
-      <Card>
-        <Body />
-      </Card>
+      <Body />
     </Page>
   );
 };

@@ -53,9 +53,9 @@ const getItalicStyle = (props) => {
 };
 
 const weightMap = {
-  'normal': css`font-family: Nunito-Regular, sans-serif;`,
-  'light': css`font-family: Nunito-ExtraLight, sans-serif; font-weight: lighter;`,
-  'bold': css`font-family: Nunito-ExtraBold, sans-serif; font-weight: bold;`,
+  'normal': css`font-family: Raleway, sans-serif;`,
+  'light': css`font-family: Raleway, sans-serif; font-weight: lighter;`,
+  'bold': css`font-family: Raleway, sans-serif; font-weight: bold;`,
 };
 
 export const Text = styled.span.attrs(anyPropsAttrs)`

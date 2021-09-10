@@ -57,7 +57,6 @@ export const getBgdLightColor = ({ theme }) => theme.colors.BACKGROUND_LIGHT;
 export const getBgdLighterColor = ({ theme }) => theme.colors.BACKGROUND_LIGHTER;
 
 export const getSuccessColor = ({ theme }) => theme.colors.SUCCESS;
-export const getSuccessShadeColor = ({ theme }) => theme.colors.SUCCESS_SHADE;
 
 export const getInfoColor = ({ theme }) => theme.colors.INFO;
 export const getInfoShadeColor = ({ theme }) => theme.colors.INFO_SHADE;
@@ -65,7 +64,6 @@ export const getInfoShadeColor = ({ theme }) => theme.colors.INFO_SHADE;
 export const getWarningColor = ({ theme }) => theme.colors.WARNING;
 export const getWarningShadeColor = ({ theme }) => theme.colors.WARNING_SHADE;
 
-export const getErrorColor = ({ theme }) => theme.colors.ERROR;
 export const getErrorFontColor = ({ theme }) => theme.colors.ERROR_FONT;
 export const getErrorShadeColor = ({ theme }) => theme.colors.ERROR_SHADE;
 

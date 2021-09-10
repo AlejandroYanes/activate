@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { VerificationLevel } from 'models/user';
 import { useAuthData } from 'components/providers/Auth';
-import { PublicLayout } from 'components/experience/Layout';
 import SignPage from 'components/pages/Sign';
 
 const SignRoute: FunctionComponent = () => {
@@ -20,9 +19,7 @@ const SignRoute: FunctionComponent = () => {
   }
 
   return (
-    <PublicLayout>
-      <SignPage />
-    </PublicLayout>
+    <SignPage />
   );
 };
 

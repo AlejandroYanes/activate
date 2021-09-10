@@ -5,13 +5,10 @@ import { parseSearchQuery } from 'helpers';
 import { useEventCenterUpdate } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
 import PublisherCard from 'components/experience/PublisherCard';
-import {
-  LoadingScreen,
-  MessageScreen,
-  NoConnectionScreen,
-} from 'components/experience/Screens';
+import { LoadingScreen, NoConnectionScreen, } from 'components/experience/Screens';
 import { ResultPageProps } from './types';
 import { Grid } from './styled';
+import NoResults from './NoResults';
 
 const PublishersResults: FunctionComponent<ResultPageProps> = (props) => {
   const { search } = props;
@@ -45,12 +42,7 @@ const PublishersResults: FunctionComponent<ResultPageProps> = (props) => {
 
   if (response.data.length === 0) {
     return (
-      <MessageScreen
-        icon="INBOX"
-        color="INFO"
-        title="We found nothing"
-        lines={['Maybe you can try different words']}
-      />
+      <NoResults />
     );
   }
 

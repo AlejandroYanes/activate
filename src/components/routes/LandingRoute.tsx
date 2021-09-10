@@ -3,7 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { VerificationLevel } from 'models/user';
 import { useAuthData } from 'components/providers/Auth';
 import LandingPage from 'components/pages/Landing';
-import { PublicLayout } from 'components/experience/Layout';
 
 const LandingRoute: FunctionComponent = () => {
   const { isLoggedIn, userInfo } = useAuthData();
@@ -20,9 +19,7 @@ const LandingRoute: FunctionComponent = () => {
   }
 
   return (
-    <PublicLayout>
-      <LandingPage />
-    </PublicLayout>
+    <LandingPage />
   );
 };
 

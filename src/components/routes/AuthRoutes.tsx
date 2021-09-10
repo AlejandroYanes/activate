@@ -3,9 +3,6 @@ import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { useAuthData } from 'components/providers/Auth';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { AuthLayout } from 'components/experience/Layout';
-
-import HomePage from 'components/pages/Home';
 import ProfilePage from 'components/pages/Profile';
 import DiscoverPage from 'components/pages/Discover';
 import EventDetailsPage from 'components/pages/EventDetails';
@@ -28,6 +25,9 @@ import FiltersModal from 'components/modals/Filters';
 import UpdatesModal from 'components/modals/Updates';
 import ChangePasswordModal from 'components/modals/ChangePassword';
 import InviteUsersModal from 'components/modals/Invite';
+import Slides from 'components/pages/Slides';
+import UpdatesPage from 'components/pages/Updates';
+import PostPage from '../pages/Post';
 
 interface RouteDef {
   path: string;
@@ -46,6 +46,8 @@ const routesWithPages: RouteDef[] = [
   { path: '/app/user/:userId', component: UserPage },
   { path: '/app/talks', component: TalksPage },
   { path: '/app/interests', component: InterestsPage },
+  { path: '/app/updates', component: UpdatesPage },
+  { path: '/app/post', component: PostPage },
 ];
 
 const routesWithModals: RouteDef[] = [
@@ -97,13 +99,11 @@ const AuthRoutes: FunctionComponent = () => {
   const routesStack = routesMap[layout];
 
   return (
-    <AuthLayout>
-      <Switch>
-        <Route path="/app" component={HomePage} exact />
-        {routesStack}
-        <Redirect to="/app" />
-      </Switch>
-    </AuthLayout>
+    <Switch>
+      <Route path="/app" component={Slides} exact />
+      {routesStack}
+      <Redirect to="/app" />
+    </Switch>
   );
 };
 

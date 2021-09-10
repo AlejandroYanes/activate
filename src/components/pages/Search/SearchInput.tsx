@@ -61,7 +61,6 @@ const SearchInput: FunctionComponent = () => {
       <Input
         id="term"
         icon="SEARCH"
-        // placeholder="You can type names, user names..."
         value={term}
         onChange={setTerm}
         onKeyDown={handleKeyDown}
