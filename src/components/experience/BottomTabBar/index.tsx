@@ -5,18 +5,18 @@ import { TabBar } from './styled';
 import ProfileMenu from './ProfileMenu';
 
 enum Menus {
-  UPCOMING = '/app',
-  DISCOVER = '/app/discover',
+  DISCOVER = '/app',
   SEARCH = '/app/search',
+  UPCOMING = '/app/upcoming',
   PROFILE = 'profile',
 }
 
-const tabs = ['/app', '/app/upcoming', '/app/discover', '/app/search'];
+const tabs = ['/app', '/app/upcoming', '/app/search'];
 
 const BottomTabBar: FunctionComponent = () => {
   const { push } = useHistory();
   const { pathname } = useLocation();
-  const [activeTab, setActiveTab] = useState<string>(Menus.UPCOMING);
+  const [activeTab, setActiveTab] = useState<string>(Menus.DISCOVER);
 
   const handleTabClick = useCallback((tab) => {
     push(`${tab}`);
@@ -33,9 +33,9 @@ const BottomTabBar: FunctionComponent = () => {
   return (
     <TabBar id="bottom-tab-bar">
       <Tabset activeTab={activeTab} fullWidth>
-        <Tab name={Menus.UPCOMING} icon="BOOKMARKS" onClick={handleTabClick} />
         <Tab name={Menus.DISCOVER} icon="COMPASS" onClick={handleTabClick} />
         <Tab name={Menus.SEARCH} icon="SEARCH" onClick={handleTabClick} />
+        <Tab name={Menus.UPCOMING} icon="BOOKMARKS" onClick={handleTabClick} />
         <Tab name={Menus.PROFILE} icon={<ProfileMenu />} />
       </Tabset>
     </TabBar>

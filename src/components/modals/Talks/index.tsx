@@ -67,7 +67,7 @@ const TalksModal: FunctionComponent = () => {
         userName: faker.internet.userName(),
         lastMessage: (
           pathname === viewMap.chats
-            ? faker.lorem.words(20)
+            ? faker.lorem.words(8)
             : undefined
         ),
         active: faker.random.boolean(),

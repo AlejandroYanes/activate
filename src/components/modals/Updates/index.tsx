@@ -16,7 +16,7 @@ const UpdatesModal: FunctionComponent = () => {
 
   return (
     <Modal
-      title="Notifications"
+      title="Updates"
       onClose={goBack}
       size={modalSize}
       visible
