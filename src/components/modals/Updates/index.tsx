@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import Modal from 'components/base-components/Modal';
-import UpdatesPanel from 'components/panels/Updates';
+import Updates from './Updates';
 
 const UpdatesModal: FunctionComponent = () => {
   const layout = useAppLayout();
@@ -16,12 +16,12 @@ const UpdatesModal: FunctionComponent = () => {
 
   return (
     <Modal
-      title="Updates"
+      title="Notifications"
       onClose={goBack}
       size={modalSize}
       visible
     >
-      <UpdatesPanel />
+      <Updates />
     </Modal>
   );
 };

@@ -9,11 +9,11 @@ const eventsApi = {
   listMyUpcomingDates: (): AxiosPromise<PagedResponse<Date>> => {
     return get('events/upcoming/dates');
   },
-  listMyUpcoming: (date: Date): AxiosPromise<PagedResponse<EventModel>> => {
+  listMyUpcoming: (date?: Date): AxiosPromise<PagedResponse<EventModel>> => {
     return get('events/upcoming', {
       params: {
         filters: {
-          date: date.toISOString(),
+          date: date ? date.toISOString() : undefined,
         },
       },
     });

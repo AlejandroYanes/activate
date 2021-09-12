@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { useAuthData } from 'components/providers/Auth';
@@ -11,6 +10,7 @@ import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
 import TalksPage from 'components/pages/Talks';
 import InterestsPage from 'components/pages/Interests';
+import UpcomingPage from 'components/pages/Upcoming';
 
 import PublisherModal from 'components/modals/Publisher';
 import ProfileModal from 'components/modals/Profile';
@@ -25,8 +25,6 @@ import FiltersModal from 'components/modals/Filters';
 import UpdatesModal from 'components/modals/Updates';
 import ChangePasswordModal from 'components/modals/ChangePassword';
 import InviteUsersModal from 'components/modals/Invite';
-import UpdatesPage from 'components/pages/Updates';
-import Slides from 'components/pages/Slides';
 
 interface RouteDef {
   path: string;
@@ -34,7 +32,7 @@ interface RouteDef {
 }
 
 const commonRoutes: RouteDef[] = [
-  { path: '/app/upcoming', component: Slides },
+  { path: '/app/upcoming', component: UpcomingPage },
   { path: '/app/search', component: SearchPage },
 ];
 
@@ -45,7 +43,6 @@ const routesWithPages: RouteDef[] = [
   { path: '/app/user/:userId', component: UserPage },
   { path: '/app/talks', component: TalksPage },
   { path: '/app/interests', component: InterestsPage },
-  { path: '/app/updates', component: UpdatesPage },
 ];
 
 const routesWithModals: RouteDef[] = [

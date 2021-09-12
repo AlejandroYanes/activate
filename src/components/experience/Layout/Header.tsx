@@ -5,26 +5,32 @@ import { Title } from 'components/base-components/Typography';
 import Avatar from 'components/base-components/Avatar';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Header as StyledHeader } from './styled';
+import FlexBox from '../../base-components/FlexBox';
+import { IconButton } from '../../base-components/Button';
+import { Modals } from '../../modals';
 
 enum Menus {
   HOME = '/app',
   SEARCH = '/app/search',
   TALKS = '/app/talks',
-  UPDATES = '/app/updates',
   BOOKED = '/app/upcoming'
 }
 
-const tabs = ['/app', '/app/search', '/app/upcoming', '/app/talks', '/app/updates'];
+const tabs = ['/app', '/app/search', '/app/upcoming', '/app/talks'];
 
 const Header: FunctionComponent = () => {
   const { isLoggedIn, userInfo } = useAuthData();
   const { push } = useHistory();
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const [activeTab, setActiveTab] = useState<string>(Menus.HOME);
 
   const handleTabClick = useCallback((tab) => {
     push(`${tab}`);
   }, []);
+
+  const showNotifications = useCallback(() => {
+    push(search ? `${search}${Modals.UPDATES}` : Modals.UPDATES);
+  }, [search]);
 
   useEffect(() => {
     if (!tabs.includes(pathname)) {
@@ -47,11 +53,19 @@ const Header: FunctionComponent = () => {
           <Tab name={Menus.SEARCH} icon="SEARCH" onClick={handleTabClick} />
           <Tab name={Menus.BOOKED} icon="BOOKMARKS" onClick={handleTabClick} />
           <Tab name={Menus.TALKS} icon="MESSAGE" onClick={handleTabClick} />
-          <Tab name={Menus.UPDATES} icon="BELL" onClick={handleTabClick} />
         </Tabset>
-        <Link to="/app/profile">
-          <Avatar src={avatar} />
-        </Link>
+        <FlexBox align="center">
+          <IconButton
+            onClick={showNotifications}
+            icon="BELL"
+            variant="flat"
+            color="background"
+            mR
+          />
+          <Link to="/app/profile">
+            <Avatar src={avatar} />
+          </Link>
+        </FlexBox>
       </StyledHeader>
     );
   }

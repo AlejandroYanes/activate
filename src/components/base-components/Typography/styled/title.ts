@@ -14,13 +14,14 @@ const weightMap = {
 };
 
 const getTextStyles = (props) => {
-  const { level, align, weight, size, inline } = props;
+  const { level, align, weight, size, lineHeight, inline } = props;
 
   return css`
-    ${weightMap[weight]};
     font-size: ${size ? `${size}px` : sizeMap[level]};
     text-align: ${align};
-    ${inline ? 'display: inline;' : ''}
+    ${weightMap[weight]};
+    ${lineHeight ? `line-height: ${lineHeight}px` : ''};
+    ${inline ? 'display: inline;' : ''};
   `;
 };
 

@@ -1,25 +1,17 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
+import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { parseSearchQuery } from 'helpers';
 import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
-import { Select, SelectOption } from 'components/base-components/Inputs';
 import { Button } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import EventsGrid from 'components/experience/EventsGrid';
+import EventSortBy from 'components/experience/EventSortBy';
 import { ResultPageProps } from './types';
 import NoResults from './NoResults';
-
-const options: SelectOption[] = [
-  { value: 'interests', label: 'Interests' },
-  { value: 'trending', label: 'Trending' },
-  { value: 'friends', label: 'Friends' },
-  { value: 'date', label: 'By Date' },
-  { value: 'location', label: 'Location' },
-];
 
 const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
   const { search } = props;
@@ -29,7 +21,6 @@ const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
     () => eventsApi.search(term),
     { enabled: !!term },
   );
-  const [sortBy, setSortBy] = useState(options[0]);
   const { push } = useHistory();
 
   const toggleFilters = useCallback(() => {
@@ -55,13 +46,7 @@ const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
   return (
     <>
       <FlexBox justify="space-between" margin="0 0 48px 0" align="flex-end">
-        <Select
-          inline
-          label="Sort By:"
-          value={sortBy}
-          options={options}
-          onChange={setSortBy}
-        />
+        <EventSortBy />
         <Button
           onClick={toggleFilters}
           leftIcon="FILTER"

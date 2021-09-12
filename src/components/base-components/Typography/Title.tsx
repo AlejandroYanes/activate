@@ -8,6 +8,7 @@ interface Props extends PositionProps {
   align?: 'left' | 'center' | 'right';
   weight?: 'light' | 'normal' | 'bold';
   size?: number;
+  lineHeight?: number;
   inline?: boolean;
 }
 

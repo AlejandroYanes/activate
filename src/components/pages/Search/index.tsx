@@ -25,7 +25,7 @@ const SearchPage: FunctionComponent = () => {
   return (
     <Page>
       <FlexBox direction="column" align="stretch" margin="0 auto">
-        <Title level={1} color="brand" size={64} weight="bold" padding="0 24px">
+        <Title level={1} color="brand" size={72} weight="bold" padding="0 24px">
           Search for anything
         </Title>
         <SearchInput />

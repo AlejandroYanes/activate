@@ -3,7 +3,6 @@ import { useQuery } from 'react-query';
 import updatesApi from 'api/udpates';
 import { UpdateModel } from 'models/update';
 import { QueryKey } from 'components/providers/Query';
-import FlexBox from 'components/base-components/FlexBox';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Update from './Update';
 
@@ -27,24 +26,20 @@ const UpdatesPanel: FunctionComponent = () => {
 
   if (isLoading) {
     return (
-      <FlexBox direction="column" align="stretch" height="100%" padding="0 16px">
-        <LoadingScreen />
-      </FlexBox>
+      <LoadingScreen />
     );
   }
 
   if (error) {
     return (
-      <FlexBox direction="column" align="stretch" height="100%" padding="0 16px">
-        <NoConnectionScreen message="We couldn't load your updates." />
-      </FlexBox>
+      <NoConnectionScreen message="We couldn't load your updates." />
     );
   }
 
   return (
-    <FlexBox direction="column" align="stretch" height="100%" padding="0 16px">
+    <>
       {updateCards}
-    </FlexBox>
+    </>
   );
 };
 

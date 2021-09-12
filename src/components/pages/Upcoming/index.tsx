@@ -1,28 +1,29 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useQuery } from 'react-query';
 import { useHistory } from 'react-router-dom';
+import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
-import { EventChannel, useEventCenterUpdates } from 'event-center';
+import { useEventCenterUpdate } from 'event-center';
 import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
-import Page from 'components/base-components/Page';
-import FlexBox from 'components/base-components/FlexBox';
 import { Button } from 'components/base-components/Button';
+import Page from 'components/base-components/Page';
 import { Title } from 'components/base-components/Typography';
-import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import FlexBox from 'components/base-components/FlexBox';
 import EventsGrid from 'components/experience/EventsGrid';
 import EventSortBy from 'components/experience/EventSortBy';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 
-const channels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
-
-const DiscoverPage: FunctionComponent = () => {
+const UpcomingPage: FunctionComponent = () => {
   const {
     isLoading,
     data: response,
     error,
-    refetch,
-  } = useQuery(QueryKey.DISCOVER_EVENTS, () => eventsApi.discover());
-  useEventCenterUpdates(channels, refetch);
+    refetch: refetchEvents,
+  } = useQuery(
+    QueryKey.FETCH_MY_UPCOMING_EVENTS,
+    () => eventsApi.listMyUpcoming(),
+  );
+  useEventCenterUpdate('EVENT_FOLLOWED', refetchEvents);
 
   const { push } = useHistory();
   const toggleFilters = useCallback(() => {
@@ -31,7 +32,7 @@ const DiscoverPage: FunctionComponent = () => {
 
   if (isLoading) {
     return (
-      <Page>
+      <Page data-el="feed-page">
         <LoadingScreen />
       </Page>
     );
@@ -39,10 +40,8 @@ const DiscoverPage: FunctionComponent = () => {
 
   if (!!error) {
     return (
-      <Page>
-        <NoConnectionScreen
-          message="We couldn't load new events for you."
-        />
+      <Page data-el="feed-page">
+        <NoConnectionScreen message="We could not load your events" />
       </Page>
     );
   }
@@ -54,17 +53,16 @@ const DiscoverPage: FunctionComponent = () => {
         weight="bold"
         level={1}
         size={80}
-        lineHeight={64}
+        lineHeight={68}
       >
-        Discover <br />
-        new <br />
+        Your <br />
         events
       </Title>
     </FlexBox>
   );
 
   return (
-    <Page>
+    <Page data-el="feed-page">
       <FlexBox justify="space-between" margin="0 0 48px 0" align="flex-end">
         <EventSortBy />
         <Button
@@ -75,13 +73,9 @@ const DiscoverPage: FunctionComponent = () => {
           variant="outline"
         />
       </FlexBox>
-      <EventsGrid
-        cols={3}
-        title={title}
-        events={response?.data}
-      />
+      <EventsGrid events={response.data.results} title={title} cols={3} />
     </Page>
   );
 };
 
-export default DiscoverPage;
+export default UpcomingPage;
