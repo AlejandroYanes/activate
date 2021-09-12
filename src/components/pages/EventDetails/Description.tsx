@@ -11,7 +11,7 @@ interface Props {
 }
 
 const description = new Array(6).fill(1).map((_, index) => (
-  <Paragraph padding="8px 8px 16px" key={index}>
+  <Paragraph padding="8px 8px 16px" size="large" key={index}>
     {faker.lorem.lines(10)}
   </Paragraph>
 ));
@@ -23,13 +23,13 @@ const Description: FunctionComponent<Props> = (props) => {
   return (
     <>
       <FlexBox mT mB padding="0 16px">
-        <FlexBox direction="column" width={220}>
-          <Text color="secondary" padding="0 0 4px 0">Date</Text>
-          <Text>{formatDateTime(date)}</Text>
+        <FlexBox direction="column" width={260}>
+          <Text weight="bold" padding="0 0 4px 0">Date</Text>
+          <Text size="large">{formatDateTime(date)}</Text>
         </FlexBox>
         <FlexBox direction="column" grow>
-          <Text color="secondary" padding="0 0 4px 0">Address</Text>
-          <Text>{address}</Text>
+          <Text weight="bold" padding="0 0 4px 0">Address</Text>
+          <Text size="large">{address}</Text>
         </FlexBox>
       </FlexBox>
       <Attendance event={event} mB padding="0 16px" />

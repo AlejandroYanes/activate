@@ -1,19 +1,25 @@
 import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
+import { EventModel } from 'models/event';
 import { Tile } from './styled';
 
 interface Props {
-  title: string;
-  source: string;
-  alt?: string;
+  event: EventModel;
 }
 
 const EventTile: FunctionComponent<Props> = (props) => {
-  const { source, alt } = props;
+  const {
+    event: {
+      id,
+      image,
+      name,
+    },
+  } = props;
 
   return (
-    <Tile data-el="event-tile">
-      <img src={source} alt={alt} />
-    </Tile>
+    <Link to={`/app/event/${id}`}>
+      <Tile src={image} alt={name} />
+    </Link>
   );
 };
 

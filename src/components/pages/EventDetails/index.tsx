@@ -1,22 +1,21 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { capitalizeFirstLetter } from 'helpers';
 import { Modals } from 'components/modals';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
 import { Text, Title } from 'components/base-components/Typography';
 import { IconButton } from 'components/base-components/Button';
 import Page from 'components/base-components/Page';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import EventImage from 'components/experience/EventImage';
+import { Case, Switch } from 'components/base-components/Switch';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
-import EventMenu from 'components/experience/EventMenu';
 import Description from './Description';
 import Comments from './Comnments';
 import UnfollowModal from './UnfollowModal';
-import { StyledEventDetail } from './styled/page';
+import { Image } from './styled';
 import useEventState, { Tabs } from './state';
+import { capitalizeFirstLetter } from '../../../helpers';
+import EventMenu from '../../experience/EventMenu';
 
 const EventDetailsPage: FunctionComponent = () => {
   const { goBack, push } = useHistory();
@@ -56,75 +55,78 @@ const EventDetailsPage: FunctionComponent = () => {
 
   return (
     <Page>
-      <StyledEventDetail>
-        <EventImage src={image} alt="virtual tour" />
-        <FlexBox align="flex-start" padding="16px 0">
-          <IconButton
-            onClick={goBack}
-            icon="ARROW_LEFT"
-            color="background"
-            variant="flat"
-            margin="3px 0 0 0"
-          />
-          <Title level={2} weight="light" padding="0 0 0 6px">
-            {capitalizeFirstLetter(name)}
-          </Title>
+      <FlexBox direction="row" width="100%">
+        <FlexBox width="40%">
+          <Image src={image} alt="event-2" />
         </FlexBox>
-        <FlexBox align="center" margin="8px 0">
-          <FlexBox align="center">
-            <Avatar src={author.avatar} />
-            <FlexBox direction="column" padding="0 0 0 6px">
-              <Text size="small" color="secondary">@{author.userName}</Text>
-              <Text padding="4px 0 0 0">{author.name}</Text>
-            </FlexBox>
-          </FlexBox>
-          <IconButton
-            size="large"
-            variant="flat"
-            margin="0 0 0 auto"
-            onClick={handleBookmark}
-            color={isBooked ? 'accent' : 'background'}
-            icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
-          />
-          <IconButton
-            onClick={inviteUsers}
-            icon="FORWARD"
-            color="background"
-            variant="flat"
-            size="large"
-          />
-          <EventMenu
-            inDetails
-            event={event}
-            going={isBooked}
-            handleBookmark={handleBookmark}
-          />
-        </FlexBox>
-        <Tabset
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          fullWidth
-          mT
-          mB
+        <FlexBox
+          direction="column"
+          align="stretch"
+          padding="0 32px"
+          grow
         >
-          <Tab name={Tabs.Details} label="Details" icon="FORM" />
-          <Tab name={Tabs.Comments} label="Comments" icon="COMMENTS" />
-        </Tabset>
-        <Switch by={activeTab}>
-          <Case value={Tabs.Details} component={Description} event={event} />
-          <Case
-            value={Tabs.Comments}
-            component={Comments}
-            comments={comments}
+          <FlexBox margin="0 0 48px 0">
+            <IconButton onClick={goBack} icon="ARROW_LEFT" margin="12px 0 0 0" />
+            <Title level={1} mL>
+              {capitalizeFirstLetter(name)}
+            </Title>
+          </FlexBox>
+          <FlexBox align="center" margin="8px 0">
+            <FlexBox align="center">
+              <Avatar src={author.avatar} />
+              <FlexBox direction="column" padding="0 0 0 6px">
+                <Text size="small" color="secondary">@{author.userName}</Text>
+                <Text padding="4px 0 0 0">{author.name}</Text>
+              </FlexBox>
+            </FlexBox>
+            <IconButton
+              size="large"
+              variant="flat"
+              margin="0 0 0 auto"
+              onClick={handleBookmark}
+              color={isBooked ? 'accent' : 'background'}
+              icon={isBooked ? 'BOOKMARK_FILLED' : 'BOOKMARK'}
+            />
+            <IconButton
+              onClick={inviteUsers}
+              icon="FORWARD"
+              color="background"
+              variant="flat"
+              size="large"
+            />
+            <EventMenu
+              inDetails
+              event={event}
+              going={isBooked}
+              handleBookmark={handleBookmark}
+            />
+          </FlexBox>
+          <Tabset
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+            fullWidth
+            mT
+            mB
+          >
+            <Tab name={Tabs.Details} label="Details" icon="FORM" />
+            <Tab name={Tabs.Comments} label="Comments" icon="COMMENTS" />
+          </Tabset>
+          <Switch by={activeTab}>
+            <Case value={Tabs.Details} component={Description} event={event} />
+            <Case
+              value={Tabs.Comments}
+              component={Comments}
+              comments={comments}
+            />
+          </Switch>
+          <UnfollowModal
+            title={name}
+            onClose={closeModal}
+            onAccept={handleUnfollow}
+            isVisible={showUnfollowModal}
           />
-        </Switch>
-        <UnfollowModal
-          title={name}
-          onClose={closeModal}
-          onAccept={handleUnfollow}
-          isVisible={showUnfollowModal}
-        />
-      </StyledEventDetail>
+        </FlexBox>
+      </FlexBox>
     </Page>
   );
 };

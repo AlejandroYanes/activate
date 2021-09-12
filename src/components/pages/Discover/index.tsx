@@ -1,25 +1,28 @@
-import React, { FunctionComponent, useEffect, useMemo } from 'react';
+import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useQuery } from 'react-query';
+import { useHistory } from 'react-router-dom';
 import eventsApi from 'api/events';
 import { EventChannel, useEventCenterUpdates } from 'event-center';
+import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import Page from 'components/base-components/Page';
-import RenderIf from 'components/base-components/RenderIf';
-import EventCard from 'components/experience/EventCard';
+import FlexBox from 'components/base-components/FlexBox';
+import { Select, SelectOption } from 'components/base-components/Inputs';
+import { Button } from 'components/base-components/Button';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
-import PageTitle from './PageTitle';
+import EventsGrid from 'components/experience/EventsGrid';
+import { Header } from './styled';
 
-const errorScreen = (
-  <NoConnectionScreen
-    message="We couldn't load new events for you."
-  />
-);
-
-const calendarEventChannels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
+const channels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
+const options: SelectOption[] = [
+  { value: 'interests', label: 'Interests' },
+  { value: 'trending', label: 'Trending' },
+  { value: 'friends', label: 'Friends' },
+  { value: 'date', label: 'By Date' },
+  { value: 'location', label: 'Location' },
+];
 
 const DiscoverPage: FunctionComponent = () => {
-  const { addSection, removeSection, setActiveSection } = usePanelActions();
   const {
     isLoading,
     data: response,
@@ -27,32 +30,64 @@ const DiscoverPage: FunctionComponent = () => {
     refetch,
   } = useQuery(QueryKey.DISCOVER_EVENTS, () => eventsApi.discover());
 
-  useEventCenterUpdates(calendarEventChannels, refetch);
+  const [sortBy, setSortBy] = useState(options[0]);
+  const { push } = useHistory();
 
-  const eventCards = useMemo(() => {
-    if (response) {
-      return response.data.map((event) => (
-        <EventCard key={event.id} event={event} />
-      ));
-    }
-    return null;
-  }, [response]);
-
-  useEffect(() => {
-    addSection(AuxPanelSection.FILTER);
-    setActiveSection(AuxPanelSection.FILTER);
-
-    return () => removeSection(AuxPanelSection.FILTER);
+  const toggleFilters = useCallback(() => {
+    push(Modals.FILTERS);
   }, []);
+
+  useEventCenterUpdates(channels, refetch);
+
+  if (isLoading) {
+    return (
+      <Page>
+        <LoadingScreen />
+      </Page>
+    );
+  }
+
+  if (!!error) {
+    return (
+      <Page>
+        <NoConnectionScreen
+          message="We couldn't load new events for you."
+        />
+      </Page>
+    );
+  }
+
+  const title = (
+    <FlexBox direction="column" align="flex-start" margin="0 0 32px 0">
+      <Header>Discover</Header>
+      <Header>new</Header>
+      <Header>events</Header>
+    </FlexBox>
+  );
 
   return (
     <Page>
-      <PageTitle />
-      <RenderIf condition={!error} fallback={errorScreen}>
-        <RenderIf condition={!isLoading} fallback={<LoadingScreen />}>
-          {eventCards}
-        </RenderIf>
-      </RenderIf>
+      <FlexBox justify="space-between" margin="0 0 48px 0" align="flex-end">
+        <Select
+          inline
+          label="Sort By:"
+          value={sortBy}
+          options={options}
+          onChange={setSortBy}
+        />
+        <Button
+          onClick={toggleFilters}
+          leftIcon="FILTER"
+          label="Filters"
+          color="background"
+          variant="outline"
+        />
+      </FlexBox>
+      <EventsGrid
+        cols={3}
+        title={title}
+        events={response?.data}
+      />
     </Page>
   );
 };

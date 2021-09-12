@@ -1,8 +1,11 @@
 import styled from 'styled-components';
+import { getFontShadeColor } from 'helpers';
 
 export const StyledSearch = styled.section`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  padding: 0 16px;
+  flex: 1;
+  padding: 0 0 0 16px;
+  margin: 0 0 0 16px;
+  border-left: 1px solid ${getFontShadeColor};
 `;

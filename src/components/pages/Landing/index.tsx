@@ -5,7 +5,7 @@ import { LinkButton } from 'components/base-components/Button';
 import EventCard from 'components/experience/EventCard';
 import FlexBox from 'components/base-components/FlexBox';
 import Illustration from './Illustration';
-import { events } from '../Discover/events';
+import { events } from './events';
 import { Content, IllustrationBox, LeftBlock, RightBlock } from './styled';
 
 const blockVariants = {

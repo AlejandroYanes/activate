@@ -1,15 +1,7 @@
 import styled from 'styled-components';
 
-export const Tile = styled.div`
-  position: relative;
+export const Tile = styled.img`
+  border-radius: 8px;
   width: 100%;
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
   margin-bottom: 32px;
-
-  img {
-    width: 100%;
-  }
 `;

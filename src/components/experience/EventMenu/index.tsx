@@ -45,6 +45,7 @@ const EventMenu: FunctionComponent<Props> = (props) => {
         <MenuLink label="Open details" to={`/app/event/${id}`} />
       </RenderIf>
       <MenuItem label="Copy Link" onClick={emptyAction} />
+      <MenuItem label="Share on social media" onClick={emptyAction} />
       <MenuItem
         label={going ? 'Unfollow' : 'Follow'}
         danger={going}

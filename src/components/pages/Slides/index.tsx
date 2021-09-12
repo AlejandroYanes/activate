@@ -11,9 +11,8 @@ import img8 from 'assets/images/69a7ccf39060bc28cfa5b0becf342fcd.jpg';
 import img9 from 'assets/images/b87b7e466d5e80add314c500ffda92ee.jpg';
 
 import FlexBox from 'components/base-components/FlexBox';
+import Page from 'components/base-components/Page';
 import { Grid, Header, Slide } from './styled';
-import Page from '../../base-components/Page';
-import EventTile from '../../experience/EventTile';
 
 const Slides: FunctionComponent = () => {
   return (
@@ -25,19 +24,19 @@ const Slides: FunctionComponent = () => {
             <Header>new</Header>
             <Header>events</Header>
           </FlexBox>
-          <EventTile title="Event 1" source={img1} alt="event-1" />
+          <Slide src={img1} alt="event-1" />
           <Slide src={img4} alt="event-2" />
           <Slide src={img7} alt="event-3" />
         </FlexBox>
         <FlexBox width="100%" direction="column" align="stretch">
           <Link to="/app/post">
-            <EventTile title="Music Festival 2020" source={img2} alt="event-2" />
+            <Slide src={img2} alt="event-2" />
           </Link>
           <Slide src={img5} alt="event-1" />
           <Slide src={img8} alt="event-3" />
         </FlexBox>
         <FlexBox width="100%" direction="column" align="stretch">
-          <EventTile title="Event 3" source={img3} alt="event-2" />
+          <Slide src={img3} alt="event-2" />
           <Slide src={img6} alt="event-3" />
           <Slide src={img9} alt="event-1" />
         </FlexBox>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { events } from '../../pages/Discover/events';
+import { events } from '../../pages/Landing/events';
 import UpcomingEvent from './UpcomingEvent';
 import { Wrapper } from './styled/content';
 

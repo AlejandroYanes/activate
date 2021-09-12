@@ -6,7 +6,7 @@ import {
 
 export const InputGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;
-  margin: 24px 0 32px;
+  margin: 24px 0 48px;
   border-radius: 50px;
   border: 1px solid ${getFontShadeColor};
 
@@ -48,7 +48,7 @@ export const InputGroup = styled.div.attrs(anyPropsAttrs)`
     background-color: ${getFontShadeColor};
   }
 
-  button#search-button {
+  button#filters {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
   }

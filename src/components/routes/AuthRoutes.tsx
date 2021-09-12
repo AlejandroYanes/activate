@@ -25,9 +25,8 @@ import FiltersModal from 'components/modals/Filters';
 import UpdatesModal from 'components/modals/Updates';
 import ChangePasswordModal from 'components/modals/ChangePassword';
 import InviteUsersModal from 'components/modals/Invite';
-import Slides from 'components/pages/Slides';
 import UpdatesPage from 'components/pages/Updates';
-import PostPage from '../pages/Post';
+import Slides from 'components/pages/Slides';
 
 interface RouteDef {
   path: string;
@@ -35,7 +34,7 @@ interface RouteDef {
 }
 
 const commonRoutes: RouteDef[] = [
-  { path: '/app/discover', component: DiscoverPage },
+  { path: '/app/upcoming', component: Slides },
   { path: '/app/search', component: SearchPage },
 ];
 
@@ -47,7 +46,6 @@ const routesWithPages: RouteDef[] = [
   { path: '/app/talks', component: TalksPage },
   { path: '/app/interests', component: InterestsPage },
   { path: '/app/updates', component: UpdatesPage },
-  { path: '/app/post', component: PostPage },
 ];
 
 const routesWithModals: RouteDef[] = [
@@ -100,7 +98,7 @@ const AuthRoutes: FunctionComponent = () => {
 
   return (
     <Switch>
-      <Route path="/app" component={Slides} exact />
+      <Route path="/app" component={DiscoverPage} exact />
       {routesStack}
       <Redirect to="/app" />
     </Switch>
