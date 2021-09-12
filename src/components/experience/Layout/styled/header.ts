@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Link } from 'react-router-dom';
 import { ZLevels } from 'styles/z-levels';
 import { headerHeight, mobileHeaderHeight } from 'styles/variables';
-import { anyPropsAttrs, getBgdColor, getBrandFontColor } from 'helpers';
+import { anyPropsAttrs, getBgdColor } from 'helpers';
 import { Layout } from 'components/providers/Layout';
 
 const headerStyleMap = {
@@ -32,14 +31,4 @@ export const Header = styled.header.attrs(anyPropsAttrs)`
   top: 0;
   z-index: ${ZLevels.componentLevel2};
   ${({ theme: { layout } }) => headerStyleMap[layout]};
-`;
-
-export const TopLink = styled(Link)`
-  padding: 0 16px;
-
-  &:hover {
-    svg path {
-      fill: ${getBrandFontColor};
-    }
-  }
 `;
