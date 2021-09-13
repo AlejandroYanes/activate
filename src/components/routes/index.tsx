@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-import AppLayout from 'components/experience/Layout';
+import AppLayout from 'components/Layout';
 import LandingRoute from './LandingRoute';
 import SignRoute from './SignRoute';
 import StarterRoute from './StarterRoute';

@@ -3,9 +3,9 @@ import { Layout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import NotificationCenter from 'components/experience/NotificationCenter';
 import ModalStack from 'components/experience/ModalStack';
-import BottomTabBar from 'components/experience/BottomTabBar';
 import Header from './Header';
-import { Body, StyledApp } from './styled';
+import BottomTabBar from './BottomTabs';
+import { Body, App as StyledApp } from './styled';
 
 const PrimaryBody: FunctionComponent = (props) => {
   const { children } = props;
@@ -41,8 +41,8 @@ const bodyMap = {
 };
 
 
-const AppLayout: FunctionComponent = (props) => (
+const PrivateLayout: FunctionComponent = (props) => (
   <RenderByLayout options={bodyMap} fallback={PrimaryBody} {...props} />
 );
 
-export default AppLayout;
+export default PrivateLayout;

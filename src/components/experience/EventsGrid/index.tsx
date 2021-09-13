@@ -1,14 +1,20 @@
 import { FunctionComponent, useMemo } from 'react';
 import { EventModel } from 'models/event';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import FlexBox from 'components/base-components/FlexBox';
 import EventTile from 'components/experience/EventTile';
 import { Grid } from './styled';
 
 interface Props {
   events: EventModel[];
-  cols: number;
   title?: JSX.Element;
 }
+
+const colsMap = {
+  [Layout.DESKTOP]: 3,
+  [Layout.TABLET]: 2,
+  [Layout.MOBILE]: 1,
+};
 
 function getNextColumn(total: number, current: number) {
   if (current < total - 1) {
@@ -32,7 +38,9 @@ function generateBatches(
 }
 
 const EventsGrid: FunctionComponent<Props> = (props) => {
-  const { events, cols, title } = props;
+  const { events, title } = props;
+  const layout = useAppLayout();
+  const cols = colsMap[layout];
 
   const batches = useMemo(() => generateBatches(events, cols), [events, cols]);
 
@@ -51,7 +59,7 @@ const EventsGrid: FunctionComponent<Props> = (props) => {
   ));
 
   return (
-    <Grid>
+    <Grid cols={cols}>
       {columns}
     </Grid>
   );

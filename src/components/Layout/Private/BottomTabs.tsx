@@ -1,8 +1,8 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import { TabBar } from './styled';
 import ProfileMenu from './ProfileMenu';
+import { TabBar } from './styled';
 
 enum Menus {
   DISCOVER = '/app',

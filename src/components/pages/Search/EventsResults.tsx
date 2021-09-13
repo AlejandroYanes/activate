@@ -5,6 +5,7 @@ import eventsApi from 'api/events';
 import { parseSearchQuery } from 'helpers';
 import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Button } from 'components/base-components/Button';
 import FlexBox from 'components/base-components/FlexBox';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
@@ -22,10 +23,14 @@ const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
     { enabled: !!term },
   );
   const { push } = useHistory();
+  const layout = useAppLayout();
 
   const toggleFilters = useCallback(() => {
-    push(`${search}${Modals.FILTERS}`);
-  }, []);
+    const route = layout === Layout.MOBILE
+      ? '/app/filters'
+      : `${search}${Modals.FILTERS}`;
+    push(route);
+  }, [layout]);
 
   if (isLoading) {
     return <LoadingScreen />;
@@ -46,7 +51,7 @@ const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
   return (
     <>
       <FlexBox justify="space-between" margin="0 0 48px 0" align="flex-end">
-        <EventSortBy />
+        <EventSortBy hideLabel={layout === Layout.MOBILE} />
         <Button
           onClick={toggleFilters}
           leftIcon="FILTER"
@@ -55,7 +60,7 @@ const EventsResults: FunctionComponent<ResultPageProps> = (props): any => {
           variant="outline"
         />
       </FlexBox>
-      <EventsGrid events={response.data} cols={3} />
+      <EventsGrid events={response.data} />
     </>
   );
 };

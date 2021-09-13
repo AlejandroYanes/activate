@@ -1,8 +1,14 @@
 import styled from 'styled-components';
+import { anyPropsAttrs } from 'helpers';
 
-export const Grid = styled.section`
+const getColumnsTemplate = (props) => {
+  const { cols } = props;
+  return `grid-template-columns: repeat(${cols}, 1fr);`
+};
+
+export const Grid = styled.section.attrs(anyPropsAttrs)`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  ${getColumnsTemplate};
   justify-content: center;
   justify-items: center;
   gap: 32px;

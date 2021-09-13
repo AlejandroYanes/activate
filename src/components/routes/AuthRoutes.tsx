@@ -46,7 +46,7 @@ const routesWithPages: RouteDef[] = [
 ];
 
 const routesWithModals: RouteDef[] = [
-  { path: '/app/discover/filters', component: FiltersModal },
+  { path: '/app/filters', component: FiltersModal },
   { path: '/app/event/invite', component: InviteUsersModal },
   { path: '/app/event/:eventId', component: EventDetailsModal },
   { path: '/app/publisher/:publisherId', component: PublisherModal },
