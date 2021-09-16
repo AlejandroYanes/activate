@@ -1,2 +1,2 @@
-export * from './search-input';
 export * from './grid';
+export * from './search-input';

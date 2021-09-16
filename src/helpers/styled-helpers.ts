@@ -37,6 +37,7 @@ export const getEllipsisStyles = (props) => {
 
 export const getBrandColor = ({ theme }) => theme.colors.BRAND;
 export const getBrandFontColor = ({ theme }) => theme.colors.BRAND_FONT;
+export const getBrandFontHlColor = ({ theme }) => theme.colors.BRAND_FONT_HIGHLIGHT;
 export const getBrandBgColor = ({ theme }) => theme.colors.BRAND_BG;
 export const getBrandBgHlColor = ({ theme }) => theme.colors.BRAND_BG_HIGHLIGHT;
 export const getBrandShadeColor = ({ theme }) => theme.colors.BRAND_SHADE;
@@ -57,7 +58,6 @@ export const getBgdLightColor = ({ theme }) => theme.colors.BACKGROUND_LIGHT;
 export const getBgdLighterColor = ({ theme }) => theme.colors.BACKGROUND_LIGHTER;
 
 export const getSuccessColor = ({ theme }) => theme.colors.SUCCESS;
-export const getSuccessShadeColor = ({ theme }) => theme.colors.SUCCESS_SHADE;
 
 export const getInfoColor = ({ theme }) => theme.colors.INFO;
 export const getInfoShadeColor = ({ theme }) => theme.colors.INFO_SHADE;
@@ -65,7 +65,6 @@ export const getInfoShadeColor = ({ theme }) => theme.colors.INFO_SHADE;
 export const getWarningColor = ({ theme }) => theme.colors.WARNING;
 export const getWarningShadeColor = ({ theme }) => theme.colors.WARNING_SHADE;
 
-export const getErrorColor = ({ theme }) => theme.colors.ERROR;
 export const getErrorFontColor = ({ theme }) => theme.colors.ERROR_FONT;
 export const getErrorShadeColor = ({ theme }) => theme.colors.ERROR_SHADE;
 

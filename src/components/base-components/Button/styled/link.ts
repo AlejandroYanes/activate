@@ -20,7 +20,7 @@ const getHeightStyles = (props) => {
 };
 
 export const StyledLink = styled(Link)`
-  font-family: Nunito-ExtraBold, sans-serif;
+  font-family: Roboto-Bold, sans-serif;
   text-decoration: none;
   border: none;
   outline: none;
@@ -29,7 +29,6 @@ export const StyledLink = styled(Link)`
   border-radius: 100px;
   letter-spacing: 1px;
   text-align: center;
-  padding: 6px 12px;
   cursor: pointer;
   flex-shrink: 0;
   position: relative;

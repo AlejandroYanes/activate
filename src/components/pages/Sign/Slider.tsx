@@ -30,7 +30,7 @@ const Slider1 = ({ height }) => (
     exit="exit"
   >
     <ManLookingLaptop height={height} />
-    <Title level={3} margin="4px 0 0 0">
+    <Title level={2} margin="8px 0">
       All the information you need.
     </Title>
     <Text>
@@ -47,9 +47,9 @@ const Slider2 = ({ height }) => (
     exit="exit"
   >
     <PhoneWithWoman height={height} />
-    <Title level={3} margin="4px 0 0 0">In your phone.</Title>
+    <Title level={2} margin="8px 0">In your hands.</Title>
     <Text>
-      All you need is a phone or a device be online.
+      All you need is a phone or a device to be online.
     </Text>
   </Slide>
 );
@@ -62,7 +62,7 @@ const Slider3 =({ height }) => (
     exit="exit"
   >
     <FriendsTalking height={height} />
-    <Title level={3} margin="4px 0 0 0">With friends.</Title>
+    <Title level={2} margin="8px 0">With friends.</Title>
     <Text>
       Everything is funnier with friends, experience new things together.
     </Text>

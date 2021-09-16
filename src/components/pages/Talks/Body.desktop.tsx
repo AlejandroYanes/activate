@@ -1,34 +1,20 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
-import { EventChannelList, useEventCenterUpdate } from 'event-center';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
+import React, { FunctionComponent, useMemo, useState, } from 'react';
+import { useQuery } from 'react-query';
+import usersApi from 'api/users';
+import { QueryKey } from 'components/providers/Query';
 import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
+import FlexBox from 'components/base-components/FlexBox';
 import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
+import { List as UsersList } from './styled';
 
 const DesktopBody: FunctionComponent = () => {
-  const { setActiveSection } = usePanelActions();
-
-  const [activeUser, setActiveUser] = useState(undefined);
-
-  const receiveActiveUser = useCallback((user) => {
-    setActiveUser(user);
-  }, []);
-
-  useEventCenterUpdate(
-    EventChannelList.USER_SELECTED_FOR_CHAT,
-    receiveActiveUser,
+  const { isLoading, data: response, error } = useQuery(
+    QueryKey.FETCH_MY_FRIENDS,
+    usersApi.listMyFriends,
   );
-
-  useEffect(() => {
-    setActiveSection(AuxPanelSection.TALKS);
-  }, []);
+  const [activeUser, setActiveUser] = useState(undefined);
 
   const actions = useMemo(() => (
     <IconButton
@@ -40,9 +26,17 @@ const DesktopBody: FunctionComponent = () => {
   ), []);
 
   return (
-    <RenderIf condition={!!activeUser} fallback={<SplashScreen />}>
-      <Messages user={activeUser} rightActions={actions} viewMode="page" />
-    </RenderIf>
+    <FlexBox align="stretch" height="100%">
+      <UsersList
+        loading={isLoading}
+        errored={!!error}
+        users={response?.data.results}
+        onClick={setActiveUser}
+      />
+      <RenderIf condition={!!activeUser} fallback={<SplashScreen />}>
+        <Messages user={activeUser} rightActions={actions} viewMode="page" />
+      </RenderIf>
+    </FlexBox>
   );
 };
 

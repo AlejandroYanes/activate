@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { getColorStyles } from '../../Input/styled/input';
 import { inputBorderRadius } from 'styles/variables';
+import { getGrayColor } from 'helpers';
+import { getColorStyles } from '../../Input/styled/input';
 
 const getRightPadding = (props) => `${props.padRight ? 48 : 16}px`;
 
@@ -23,7 +24,7 @@ export const StyledContent = styled.div.attrs((props: any) => props)`
 
 export const Separator = styled.div`
   width: 1px;
-  background-color: ${({ theme }) => theme.colors.GRAY};
+  background-color: ${getGrayColor};
   height: 20px;
 `;
 

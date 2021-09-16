@@ -5,13 +5,13 @@ import { Layout } from 'components/providers/Layout';
 
 const wrapperStyleMap = {
   [Layout.DESKTOP]: css`
-    width: 50%;
+    width: 45%;
     position: relative;
   `,
   [Layout.TABLET]: css`
     position: relative;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 80px;
   `,
   [Layout.MOBILE]: css`
     display: none;

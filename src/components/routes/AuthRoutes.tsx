@@ -1,11 +1,7 @@
-/* eslint-disable react/jsx-key */
 import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { useAuthData } from 'components/providers/Auth';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { AuthLayout } from 'components/experience/Layout';
-
-import HomePage from 'components/pages/Home';
 import ProfilePage from 'components/pages/Profile';
 import DiscoverPage from 'components/pages/Discover';
 import EventDetailsPage from 'components/pages/EventDetails';
@@ -14,6 +10,7 @@ import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
 import TalksPage from 'components/pages/Talks';
 import InterestsPage from 'components/pages/Interests';
+import UpcomingPage from 'components/pages/Upcoming';
 
 import PublisherModal from 'components/modals/Publisher';
 import ProfileModal from 'components/modals/Profile';
@@ -35,7 +32,7 @@ interface RouteDef {
 }
 
 const commonRoutes: RouteDef[] = [
-  { path: '/app/discover', component: DiscoverPage },
+  { path: '/app/upcoming', component: UpcomingPage },
   { path: '/app/search', component: SearchPage },
 ];
 
@@ -49,7 +46,7 @@ const routesWithPages: RouteDef[] = [
 ];
 
 const routesWithModals: RouteDef[] = [
-  { path: '/app/discover/filters', component: FiltersModal },
+  { path: '/app/filters', component: FiltersModal },
   { path: '/app/event/invite', component: InviteUsersModal },
   { path: '/app/event/:eventId', component: EventDetailsModal },
   { path: '/app/publisher/:publisherId', component: PublisherModal },
@@ -97,13 +94,11 @@ const AuthRoutes: FunctionComponent = () => {
   const routesStack = routesMap[layout];
 
   return (
-    <AuthLayout>
-      <Switch>
-        <Route path="/app" component={HomePage} exact />
-        {routesStack}
-        <Redirect to="/app" />
-      </Switch>
-    </AuthLayout>
+    <Switch>
+      <Route path="/app" component={DiscoverPage} exact />
+      {routesStack}
+      <Redirect to="/app" />
+    </Switch>
   );
 };
 

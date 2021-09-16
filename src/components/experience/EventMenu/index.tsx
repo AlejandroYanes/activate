@@ -37,7 +37,7 @@ const EventMenu: FunctionComponent<Props> = (props) => {
         padding="0 20px"
         height={48}
       >
-        <Title level={3} weight="light" align="center" ellipsis>
+        <Title level={3} align="center" ellipsis>
           {capitalizeFirstLetter(name)}
         </Title>
       </FlexBox>
@@ -45,6 +45,7 @@ const EventMenu: FunctionComponent<Props> = (props) => {
         <MenuLink label="Open details" to={`/app/event/${id}`} />
       </RenderIf>
       <MenuItem label="Copy Link" onClick={emptyAction} />
+      <MenuItem label="Share on social media" onClick={emptyAction} />
       <MenuItem
         label={going ? 'Unfollow' : 'Follow'}
         danger={going}

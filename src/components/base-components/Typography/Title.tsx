@@ -4,9 +4,11 @@ import { Heading } from './styled/title';
 
 interface Props extends PositionProps {
   level?: 1 | 2 | 3;
-  color?: 'brand' | 'accent' | 'font' | 'secondary';
+  color?: 'brand' | 'accent' | 'font' | 'background' | 'secondary';
   align?: 'left' | 'center' | 'right';
   weight?: 'light' | 'normal' | 'bold';
+  size?: number;
+  lineHeight?: number;
   inline?: boolean;
 }
 

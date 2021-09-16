@@ -3,7 +3,7 @@ import { Layout } from 'components/providers/Layout';
 
 const columnsMap = {
   [Layout.DESKTOP]: css`
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   `,
   [Layout.TABLET]: css`
     grid-template-columns: repeat(2, 1fr);

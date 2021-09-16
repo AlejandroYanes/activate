@@ -63,7 +63,7 @@ export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   }
 
   span[data-el="menu-link-label"] {
-    font-family: Nunito-ExtraBold, sans-serif;
+    font-family: Roboto-Bold, sans-serif;
     font-size: 16px;
     color: ${getFontColor};
   }

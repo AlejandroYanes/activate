@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { getPositionStyles, PositionProps } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
-export const StyledDateTimePicker = styled.div.attrs((props: PositionProps) => props)`
+export const StyledDateTimePicker = styled.div.attrs(anyPropsAttrs)`
   ${getPositionStyles};
   display: flex;
   flex-direction: column;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
-  font-family: Nunito-ExtraBold, sans-serif;
+  font-family: Roboto-Bold, sans-serif;
   letter-spacing: 0.2px;
   padding: 0 8px;
   opacity: ${({ show }) => show ? 1 : 0};

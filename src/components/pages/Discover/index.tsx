@@ -1,58 +1,51 @@
-import React, { FunctionComponent, useEffect, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { EventChannel, useEventCenterUpdates } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
 import Page from 'components/base-components/Page';
-import RenderIf from 'components/base-components/RenderIf';
-import EventCard from 'components/experience/EventCard';
+import EventsGrid from 'components/experience/EventsGrid';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import PageTitle from './PageTitle';
+import Changers from './Changers';
 
-const errorScreen = (
-  <NoConnectionScreen
-    message="We couldn't load new events for you."
-  />
-);
-
-const calendarEventChannels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
+const channels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
+const title = <PageTitle />;
 
 const DiscoverPage: FunctionComponent = () => {
-  const { addSection, removeSection, setActiveSection } = usePanelActions();
   const {
     isLoading,
     data: response,
     error,
     refetch,
   } = useQuery(QueryKey.DISCOVER_EVENTS, () => eventsApi.discover());
+  useEventCenterUpdates(channels, refetch);
 
-  useEventCenterUpdates(calendarEventChannels, refetch);
+  if (isLoading) {
+    return (
+      <Page>
+        <LoadingScreen />
+      </Page>
+    );
+  }
 
-  const eventCards = useMemo(() => {
-    if (response) {
-      return response.data.map((event) => (
-        <EventCard key={event.id} event={event} />
-      ));
-    }
-    return null;
-  }, [response]);
-
-  useEffect(() => {
-    addSection(AuxPanelSection.FILTER);
-    setActiveSection(AuxPanelSection.FILTER);
-
-    return () => removeSection(AuxPanelSection.FILTER);
-  }, []);
+  if (!!error) {
+    return (
+      <Page>
+        <NoConnectionScreen
+          message="We couldn't load new events for you."
+        />
+      </Page>
+    );
+  }
 
   return (
     <Page>
-      <PageTitle />
-      <RenderIf condition={!error} fallback={errorScreen}>
-        <RenderIf condition={!isLoading} fallback={<LoadingScreen />}>
-          {eventCards}
-        </RenderIf>
-      </RenderIf>
+      <Changers />
+      <EventsGrid
+        title={title}
+        events={response?.data}
+      />
     </Page>
   );
 };

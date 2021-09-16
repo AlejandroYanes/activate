@@ -64,7 +64,7 @@ const TabletBody: FunctionComponent = () => {
         userName: faker.internet.userName(),
         lastMessage: (
           activeView === TalkViews.TALK_LIST
-            ? faker.lorem.words(20)
+            ? faker.lorem.words(8)
             : undefined
         ),
         active: faker.random.boolean(),

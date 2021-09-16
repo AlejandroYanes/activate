@@ -8,7 +8,7 @@ import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
 import { Button, IconButton } from 'components/base-components/Button';
 import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
-import { Comment as StyledComment, Details, Footer, Header } from './styled/comment';
+import { Comment as StyledComment, Details, Footer, Header } from './styled';
 
 interface Props {
   comment: CommentModel;

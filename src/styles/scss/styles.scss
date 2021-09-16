@@ -1,32 +1,36 @@
 @font-face {
-  font-family: 'Nunito-Regular';
-  src: local('Nunito-Regular'), url('../../assets/fonts/Nunito-Regular.ttf');
+  font-family: 'Bitter-Regular';
+  src: local('Bitter-Regular'), url('../../assets/fonts/Bitter-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito-Light';
-  src: local('Nunito-Light'), url('../../assets/fonts/Nunito-Light.ttf');
+  font-family: 'Bitter-ExtraBold';
+  src: local('Bitter-ExtraBold'), url('../../assets/fonts/Bitter-ExtraBold.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito-ExtraLight';
-  src: local('Nunito-ExtraLight'), url('../../assets/fonts/Nunito-ExtraLight.ttf');
+  font-family: 'Bitter-ExtraLight';
+  src: local('Bitter-ExtraLight'), url('../../assets/fonts/Bitter-ExtraLight.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito-Bold';
-  src: local('Nunito-Bold'), url('../../assets/fonts/Nunito-Bold.ttf');
+  font-family: 'Roboto-Regular';
+  src: local('Roboto-Regular'), url('../../assets/fonts/Roboto-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Nunito-ExtraBold';
-  src: local('Nunito-ExtraBold'), url('../../assets/fonts/Nunito-ExtraBold.ttf');
+  font-family: 'Roboto-Bold';
+  src: local('Roboto-Bold'), url('../../assets/fonts/Roboto-Bold.ttf');
 }
 
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: local('Roboto-Thin'), url('../../assets/fonts/Roboto-Thin.ttf');
+}
 
 body {
   margin: 0;
-  font-family: Nunito-Regular, sans-serif;
+  font-family: Roboto-Regular, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;

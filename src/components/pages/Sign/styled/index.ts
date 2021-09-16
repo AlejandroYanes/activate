@@ -23,20 +23,22 @@ export const Content = styled.section.attrs(anyPropsAttrs)`
 
 const rightBlockStyleMap = {
   [Layout.DESKTOP]: css`
-    width: 50%;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    padding: 0 0 0 64px;
+    width: 450px;
+    margin: 0 auto;
   `,
   [Layout.TABLET]: css`
-    width: 100%;
-    max-width: 524px;
+    display: flex;
+    flex-direction: column;
+    width: 450px;
     margin: 0 auto;
   `,
   [Layout.MOBILE]: css`
     width: 100%;
     padding: 0 12px;
+    display: flex;
+    flex-direction: column;
   `,
 };
 
@@ -48,7 +50,7 @@ export const OAuthBox = styled.div.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 50px 0 0 0;
+  margin: 32px 0 0 0;
 
   & > span {
     padding: 0 0 20px 0;

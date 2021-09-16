@@ -10,6 +10,7 @@ import {
 import { getEventValue } from 'helpers';
 import { useHoverState } from 'hooks/UI';
 import FlexBox from 'components/base-components/FlexBox';
+import RenderIf from 'components/base-components/RenderIf';
 import { InputProps } from '../types';
 import InputLabel from '../base/Label';
 import InputIcon from '../base/Icon';
@@ -30,6 +31,7 @@ interface Props extends InputProps {
   multiple?: boolean;
   isLoading?: boolean;
   showSearch?: boolean;
+  inline?: boolean;
   anchorTo?: MutableRefObject<any>;
 }
 
@@ -44,6 +46,7 @@ const Select: FunctionComponent<Props> = (props) => {
     isLoading,
     showClear,
     showSearch,
+    inline,
     anchorTo,
     ...rest
   } = props;
@@ -92,10 +95,12 @@ const Select: FunctionComponent<Props> = (props) => {
 
   return (
     <FlexBox direction="column" ref={menuRef} {...rest} data-el="select-wrapper">
-      <InputLabel text={label} />
+      <RenderIf condition={!inline}>
+        <InputLabel text={label} />
+      </RenderIf>
       <Content paddLeft={!!icon} onClick={togglePopup} data-el="select-content">
         <InputIcon icon={icon} />
-        <Label value={value} />
+        <Label label={inline && label} value={value} />
         <RightNode
           isOpen={isOpen}
           isLoading={isLoading}

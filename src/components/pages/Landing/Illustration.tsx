@@ -1,11 +1,10 @@
 import { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { ManLookingDown } from 'components/base-components/Illustrations';
-import { StyledManLooking, StyledManLookingDown } from './styled/illustrations';
+import { ManLooking, ManLookingDown } from 'components/base-components/Illustrations';
 
 const illustrationMap = {
-  [Layout.DESKTOP]: StyledManLooking,
-  [Layout.TABLET]: StyledManLookingDown,
+  [Layout.DESKTOP]: ManLooking,
+  [Layout.TABLET]: ManLookingDown,
   [Layout.MOBILE]: ManLookingDown,
 };
 
@@ -20,7 +19,7 @@ const Illustration: FunctionComponent = () => {
   const Component = illustrationMap[layout];
   const height = sizeMap[layout];
 
-  return <Component height={height} />;
+  return <Component height={height} margin="0 0 32px 0" />;
 };
 
 export default Illustration;
