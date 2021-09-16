@@ -20,30 +20,30 @@ export const getColorStyles = (props) => {
   const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND_HIGHLIGHT;
 
   return css`
-      border: 1px solid ${colors.FONT_SHADE};
-      background-color: ${getBgdColor};
-      color: ${colors.FONT};
-      transition: all 150ms linear;
+    border: 1px solid ${colors.FONT_SHADE};
+    background-color: ${getBgdColor};
+    color: ${colors.FONT};
+    transition: all 150ms linear;
 
-      &::selection {
-        background-color: ${colors.BRAND};
-        color: ${colors.WHITE};
-      }
+    &::selection {
+      background-color: ${colors.BRAND};
+      color: ${colors.WHITE};
+    }
 
-      &:hover {
-        background-color: ${hoverBorderColor};
-        border-color: ${focusBorderColor};
-      }
+    &:hover {
+      background-color: ${hoverBorderColor};
+      border-color: ${focusBorderColor};
+    }
 
-      &:focus {
-        border-color: ${focusBorderColor};
-      }
+    &:focus {
+      border-color: ${focusBorderColor};
+    }
   `;
 };
 
 export const StyledInput = styled.input.attrs((props: any) => props)`
   font-size: 16px;
-  font-family: Nunito-Regular, sans-serif;
+  font-family: Roboto-Regular, sans-serif;
   letter-spacing: 0.5px;
   outline: none;
   padding-top: 0;

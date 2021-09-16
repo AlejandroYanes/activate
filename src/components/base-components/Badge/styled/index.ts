@@ -39,14 +39,14 @@ function resolveButtonStyles(props) {
         height: 28px;
         border-radius: 100px;
         padding: 0 18px;
-        font-family: Nunito-ExtraBold, sans-serif;
+        font-family: Roboto-Bold, sans-serif;
       `
       : css`
         min-width: ${elementHeight};
         height: ${elementHeight};
         border-radius: 100px;
         padding: 0 18px;
-        font-family: Nunito-ExtraBold, sans-serif;
+        font-family: Roboto-Bold, sans-serif;
       `;
   }
 

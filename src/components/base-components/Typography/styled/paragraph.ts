@@ -10,6 +10,6 @@ const sizeMap = {
 export const Paragraph = styled.p.attrs(anyPropsAttrs)`
   ${({ size }) => sizeMap[size]};
   padding: 0 6px;
-  font-family: Raleway, sans-serif;
+  font-family: Roboto-Regular, sans-serif;
   ${getPositionStyles};
 `;

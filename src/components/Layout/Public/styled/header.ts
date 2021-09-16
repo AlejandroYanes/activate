@@ -17,7 +17,6 @@ const headerStyleMap = {
   [Layout.MOBILE]: css`
     height: ${mobileHeaderHeight}px;
     min-height: ${mobileHeaderHeight}px;
-    background-color: ${getBgdColor};
     padding: 0 8px;
   `,
 };
@@ -28,6 +27,7 @@ export const Header = styled.header.attrs(anyPropsAttrs)`
   justify-content: flex-start;
   position: sticky;
   top: 0;
+  background-color: ${getBgdColor};
   z-index: ${ZLevels.componentLevel2};
   ${({ theme: { layout } }) => headerStyleMap[layout]};
 `;

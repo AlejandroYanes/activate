@@ -6,6 +6,9 @@ const eventsApi = {
   getDetails: (eventId: string): AxiosPromise<EventModel> => {
     return get(`events/${eventId}/details`);
   },
+  listTopEvents: () : AxiosPromise<EventModel[]> => {
+    return get('events/top');
+  },
   listMyUpcomingDates: (): AxiosPromise<PagedResponse<Date>> => {
     return get('events/upcoming/dates');
   },

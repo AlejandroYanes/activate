@@ -20,7 +20,7 @@ const Label: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <Text ellipsis weight="bold">{text}</Text>
+    <Text ellipsis>{text}</Text>
   );
 };
 

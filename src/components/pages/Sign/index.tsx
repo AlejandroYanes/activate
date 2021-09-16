@@ -6,7 +6,7 @@ import { Tab, Tabset } from 'components/base-components/Tabset';
 import { PasswordInput } from 'components/base-components/Inputs';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
-import { IconButton } from 'components/base-components/Button';
+import { IconButton, LinkButton } from 'components/base-components/Button';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import useSignPageState, { SignAction, validationRules } from './state';
@@ -38,12 +38,13 @@ const SignPage: FunctionComponent = () => {
     <Content layout={layout}>
       <Slider />
       <SignBox layout={layout}>
-        <FlexBox justify="space-between" mB>
+        <FlexBox direction="column" align="stretch" mB>
           <RenderIf condition={layout !== Layout.MOBILE}>
             <Title
               level={1}
               color="brand"
-              weight="light"
+              align="center"
+              mB
             >
               {`${signAction} and enjoy`}
             </Title>
@@ -51,7 +52,7 @@ const SignPage: FunctionComponent = () => {
           <Tabset
             activeTab={signAction}
             onTabChange={setSignAction}
-            fullWidth={layout === Layout.MOBILE}
+            fullWidth
           >
             <Tab name={SignAction.SIGN_IN} label={SignAction.SIGN_IN} />
             <Tab name={SignAction.SIGN_UP} label={SignAction.SIGN_UP} />
@@ -63,7 +64,6 @@ const SignPage: FunctionComponent = () => {
           errors={errors}
           onError={setErrors}
           rules={validationRules}
-          padding="0 24px"
         >
           <Field name="email" label="Email" mB />
           <Field
@@ -73,7 +73,9 @@ const SignPage: FunctionComponent = () => {
             mB
           />
           <RenderIf condition={!!errors.signError}>
-            <Text color="error" padding="8px 0 8px 20px">{errors.signError}</Text>
+            <Text color="error" padding="8px 0 8px 20px">
+              {errors.signError}
+            </Text>
           </RenderIf>
           <ActionBox
             signAction={signAction}
@@ -109,6 +111,11 @@ const SignPage: FunctionComponent = () => {
             />
           </div>
         </OAuthBox>
+        <LinkButton
+          to="/app/sign"
+          label="Forgot password?"
+          margin="24px auto 0"
+        />
       </SignBox>
     </Content>
   );

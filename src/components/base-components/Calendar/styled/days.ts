@@ -42,7 +42,7 @@ const getVariantStyles = (props) => {
 
   if (isHighlighted) {
     return css`
-      font-family: Nunito-ExtraBold, sans-serif;
+      font-family: Roboto-Bold, sans-serif;
       background-color: ${colors.BRAND_SHADE};
       color: ${colors.BRAND_FONT};
       cursor: pointer;
@@ -63,7 +63,7 @@ const getVariantStyles = (props) => {
 };
 
 export const StyledDayButton = styled.button.attrs(anyPropsAttrs)`
-  font-family: Nunito-ExtraBold, sans-serif;
+  font-family: Roboto-Bold, sans-serif;
   font-size: 18px;
   outline: none;
   background-color: transparent;

@@ -5,8 +5,14 @@ import { ButtonProps } from '../Button';
 import { getVariantStyles } from './utils';
 
 const getSize = (props: ButtonProps) => {
-  const { sm, fullWidth } = props;
+  const { variant, sm, fullWidth } = props;
   const width = fullWidth ? '100%' : undefined;
+
+  if (variant === 'text') {
+    return `
+      font-size: 16px;
+    `;
+  }
 
   if (sm) {
     return `

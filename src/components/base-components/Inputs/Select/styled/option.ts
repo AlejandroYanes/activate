@@ -19,7 +19,6 @@ const getSelectedColors = (props) => {
 };
 
 export const StyledOption = styled.li.attrs(anyPropsAttrs)`
-  font-family: Nunito-ExtraBold, sans-serif;
   margin: 0;
   padding: 0 16px 0 32px;
   text-overflow: ellipsis;
@@ -37,6 +36,7 @@ export const StyledOption = styled.li.attrs(anyPropsAttrs)`
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-family: Roboto-Bold, sans-serif;
   }
 
   &:hover {

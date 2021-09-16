@@ -6,7 +6,7 @@ export const StyledNotification = styled.div`
   display: flex;
   flex-direction: row;
   border-radius: 6px;
-  padding: 8px;
+  padding: 16px;
   margin-bottom: 10px;
   transition: all 250ms linear;
 
@@ -19,8 +19,8 @@ export const UnReadDot = styled.div`
   width: 6px;
   height: 6px;
   position: absolute;
-  top: 48px;
-  left: 22px;
+  top: 50px;
+  left: 30px;
   border-radius: 50%;
   transform: translateX(-50%);
   background-color: ${({ theme }) => theme.colors.ACCENT};

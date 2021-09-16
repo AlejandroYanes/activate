@@ -4,10 +4,10 @@ import { Layout } from 'components/providers/Layout';
 
 const bodyStyleMap = {
   [Layout.DESKTOP]: `
-  margin-top: 20px;
+  margin-top: 0px;
   `,
   [Layout.TABLET]: `
-  margin-top: 20px;
+  margin-top: 0px;
   `,
   [Layout.MOBILE]: css`
     padding: 32px 8px;

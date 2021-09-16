@@ -37,7 +37,7 @@ const EventMenu: FunctionComponent<Props> = (props) => {
         padding="0 20px"
         height={48}
       >
-        <Title level={3} weight="light" align="center" ellipsis>
+        <Title level={3} align="center" ellipsis>
           {capitalizeFirstLetter(name)}
         </Title>
       </FlexBox>

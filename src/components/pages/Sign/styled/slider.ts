@@ -11,7 +11,7 @@ const wrapperStyleMap = {
   [Layout.TABLET]: css`
     position: relative;
     width: 100%;
-    margin-top: 70px;
+    margin-top: 80px;
   `,
   [Layout.MOBILE]: css`
     display: none;

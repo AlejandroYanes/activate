@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
 import { EventModel } from 'models/event';
-import { Tile } from './styled';
+import { Tile, Image } from './styled';
 
 interface Props {
   event: EventModel;
@@ -17,9 +16,9 @@ const EventTile: FunctionComponent<Props> = (props) => {
   } = props;
 
   return (
-    <Link to={`/app/event/${id}`}>
-      <Tile src={image} alt={name} />
-    </Link>
+    <Tile to={`/app/event/${id}`}>
+      <Image src={image} alt={name} />
+    </Tile>
   );
 };
 

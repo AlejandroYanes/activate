@@ -8,9 +8,9 @@ const sizeMap = {
 };
 
 const weightMap = {
-  'normal': css`font-family: Raleway, sans-serif;`,
-  'light': css`font-family: Raleway, sans-serif; font-weight: lighter;`,
-  'bold': css`font-family: Raleway, sans-serif; font-weight: bold;`,
+  'normal': css`font-family: Bitter-Regular, sans-serif; font-weight: normal;`,
+  'light': css`font-family: Bitter-ExtraLight, sans-serif; font-weight: lighter`,
+  'bold': css`font-family: Bitter-ExtraBold, sans-serif; font-weight: bolder;`,
 };
 
 const getTextStyles = (props) => {
