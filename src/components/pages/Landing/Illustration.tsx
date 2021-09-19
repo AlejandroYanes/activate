@@ -4,7 +4,7 @@ import { ManLooking, ManLookingDown } from 'components/base-components/Illustrat
 
 const illustrationMap = {
   [Layout.DESKTOP]: ManLooking,
-  [Layout.TABLET]: ManLookingDown,
+  [Layout.TABLET]: ManLooking,
   [Layout.MOBILE]: ManLookingDown,
 };
 
