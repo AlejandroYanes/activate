@@ -1,12 +1,14 @@
-import { FunctionComponent, useMemo } from 'react';
+import { FunctionComponent, ReactNode } from 'react';
 import { EventModel } from 'models/event';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import FlexBox from 'components/base-components/FlexBox';
 import EventTile from 'components/experience/EventTile';
 import { Grid } from './styled';
 
+type Item = EventModel | ReactNode;
+
 interface Props {
-  events: EventModel[];
+  events: Item[];
   title?: JSX.Element;
 }
 
@@ -23,10 +25,14 @@ function getNextColumn(total: number, current: number) {
   return 0;
 }
 
+function isEvent(item: Event | ReactNode): item is EventModel {
+  return !!(item as EventModel).id && !!(item as EventModel).image;
+}
+
 function generateBatches(
-  events: EventModel[],
+  events: Item[],
   cols: number,
-): EventModel[][] {
+): Item[][] {
   const batches = new Array(cols).fill(1).map(() => []);
   let colToInsert = 0;
 
@@ -34,7 +40,7 @@ function generateBatches(
     results[colToInsert].push(event);
     colToInsert = getNextColumn(cols, colToInsert);
     return results;
-  }, batches);
+  }, batches as any);
 }
 
 const EventsGrid: FunctionComponent<Props> = (props) => {
@@ -42,17 +48,19 @@ const EventsGrid: FunctionComponent<Props> = (props) => {
   const layout = useAppLayout();
   const cols = colsMap[layout];
 
-  const batches = useMemo(() => generateBatches(events, cols), [events, cols]);
+  const batches = generateBatches(events, cols);
 
-  const tiles = batches.map(batch => batch.map(event => (
-    <EventTile key={event.id} event={event} />
-  )));
+  const tiles = batches.map(batch => batch.map((item) => {
+    return isEvent(item)
+      ? <EventTile key={item.id} event={item} />
+      : item
+  }));
 
   if (title) {
     tiles[0].unshift(title);
   }
 
-  const columns = tiles.map((batch, index) => (
+  const children = tiles.map((batch, index) => (
     <FlexBox key={index} width="100%" direction="column" align="stretch">
       {batch}
     </FlexBox>
@@ -60,7 +68,7 @@ const EventsGrid: FunctionComponent<Props> = (props) => {
 
   return (
     <Grid cols={cols}>
-      {columns}
+      {children}
     </Grid>
   );
 };

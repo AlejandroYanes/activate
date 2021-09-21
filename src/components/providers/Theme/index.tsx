@@ -61,7 +61,7 @@ const ThemeProvider: FunctionComponent = (props) => {
   const layout = useAppLayout();
   const { userInfo } = useAuthData();
   const { updateUserInfo } = useAuthActions();
-  const theme = userInfo?.theme || AppTheme.SummerVibes;
+  const theme = userInfo?.theme || AppTheme.LifeIsABeach;
   const useDarkStyle = userInfo ? userInfo.useDarkStyle : false;
 
   const setTheme = useCallback((theme: AppTheme) => {
