@@ -44,16 +44,18 @@ const Header: FunctionComponent = () => {
 
   return (
     <StyledHeader data-el="app-header">
-      <Link to="/">
-        <Title weight="light" level={2}>Activate</Title>
-      </Link>
+      <FlexBox width={120}>
+        <Link to="/">
+          <Title weight="light" level={2}>Activate</Title>
+        </Link>
+      </FlexBox>
       <Tabset activeTab={activeTab} onTabChange={setActiveTab}>
         <Tab name={Menus.HOME} icon="COMPASS" onClick={handleTabClick} />
         <Tab name={Menus.SEARCH} icon="SEARCH" onClick={handleTabClick} />
         <Tab name={Menus.BOOKED} icon="BOOKMARKS" onClick={handleTabClick} />
         <Tab name={Menus.TALKS} icon="MESSAGE" onClick={handleTabClick} />
       </Tabset>
-      <FlexBox align="center">
+      <FlexBox align="center" justify="flex-end" width={120}>
         <IconButton
           onClick={showNotifications}
           icon="BELL"

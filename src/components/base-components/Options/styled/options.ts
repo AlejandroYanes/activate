@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { getBgdColor, getFontShadeColor, getPositionStyles, } from 'helpers';
+import {
+  getBgdColor,
+  getGrayColor,
+  getPositionStyles,
+} from 'helpers';
 
 export const Options = styled.ul`
   list-style: none;
@@ -8,6 +12,6 @@ export const Options = styled.ul`
   border-radius: 20px;
   transition: all 150ms linear;
   background-color: ${getBgdColor};
-  border: 1px solid ${getFontShadeColor};
+  border: 1px solid ${getGrayColor};
   ${getPositionStyles};
 `;

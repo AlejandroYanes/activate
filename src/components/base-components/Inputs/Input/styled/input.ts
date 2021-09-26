@@ -17,10 +17,10 @@ export const getColorStyles = (props) => {
   const { theme: { colors }, error } = props;
 
   const hoverBorderColor = error ? colors.ERROR_SHADE : colors.BRAND_SHADE;
-  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND_HIGHLIGHT;
+  const focusBorderColor = error ? colors.ERROR_HIGHLIGHT : colors.BRAND_FONT_HIGHLIGHT;
 
   return css`
-    border: 1px solid ${colors.FONT_SHADE};
+    border: 1px solid ${colors.GRAY};
     background-color: ${getBgdColor};
     color: ${colors.FONT};
     transition: all 150ms linear;

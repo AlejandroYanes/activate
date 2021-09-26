@@ -20,23 +20,24 @@ const Backdrop: FunctionComponent<Props> = (props) => {
   };
 
   useEffect(() => {
-    const needsToFixOverflow = document.body.style.overflowY !== 'hidden';
+    const backdropFlag = document.body.getAttribute('data-backdrop');
+    const isPrimaryBackdrop = !backdropFlag;
 
-    if (needsToFixOverflow) {
+    if (isPrimaryBackdrop) {
+      document.body.setAttribute('data-backdrop', 'on');
       document.body.style.overflowY = 'hidden';
-    }
-
-    if (layout === Layout.DESKTOP) {
-      document.body.style.padding = `0 ${scrollThumbWidth} 0 0`;
-    }
-
-    return () => {
-      if (needsToFixOverflow) {
-        document.body.style.overflowY = 'auto';
-      }
 
       if (layout === Layout.DESKTOP) {
-        document.body.style.padding = '0px';
+        document.body.style.padding = `0 ${scrollThumbWidth} 0 0`;
+      }
+
+      return () => {
+        document.body.removeAttribute('data-backdrop');
+        document.body.style.overflowY = 'auto';
+
+        if (layout === Layout.DESKTOP) {
+          document.body.style.padding = '0px';
+        }
       }
     }
   }, []);
