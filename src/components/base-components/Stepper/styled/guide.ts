@@ -20,7 +20,7 @@ const guideStyles = {
 
 const getGuideStyles = (props) => {
   const { isActive, theme: { colors } } = props;
-  const bgColor = isActive ? colors.BRAND : colors.FONT_SHADE;
+  const bgColor = isActive ? colors.BRAND : colors.BACKGROUND_LIGHTER;
 
   return css`
       background-color: ${bgColor};

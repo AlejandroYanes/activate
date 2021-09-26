@@ -17,7 +17,7 @@ interface Props {
   user: PublisherModel;
 }
 
-const Separator = () => <div style={{ flex: 1 }} />;
+const noFriends = <FlexBox height={34} mT />;
 
 const PublisherCard: FunctionComponent<Props> = (props) => {
   const {
@@ -52,23 +52,26 @@ const PublisherCard: FunctionComponent<Props> = (props) => {
       <Avatar src={avatar} size="large" margin="0 auto 8px" />
       <Link to={link}>
         <FlexBox direction="column" align="center">
-          <Title level={3} align="center">{name}</Title>
+          <Title level={3} weight="bold" align="center" padding="8px 0" ellipsis>
+            {name}
+          </Title>
           <Text align="center">@{userName}</Text>
         </FlexBox>
       </Link>
-      <Separator />
-      <FlexBox align="center" margin="28px auto 0">
+      <FlexBox align="center" mT>
         <FlexBox direction="column" align="center" padding="0 16px">
-          <Text color="secondary">Events</Text>
-          <Title level={3}>{formatAmount(events)}</Title>
+          <Text>Events</Text>
+          <Title level={3} weight="bold">{formatAmount(events)}</Title>
         </FlexBox>
         <FlexBox direction="column" align="center" padding="0 16px">
-          <Text color="secondary">Followers</Text>
-          <Title level={3}>{formatAmount(followers)}</Title>
+          <Text>Followers</Text>
+          <Title level={3} weight="bold">{formatAmount(followers)}</Title>
         </FlexBox>
       </FlexBox>
-      <AvatarGroup icons={avatars} margin="28px auto 0" />
-      <FlexBox align="center" margin="24px auto 0">
+      <RenderIf condition={avatars.length > 0} fallback={noFriends}>
+        <AvatarGroup icons={avatars} mT />
+      </RenderIf>
+      <FlexBox align="center" mT>
         <RenderIf condition={!following}>
           <Button
             onClick={follow}

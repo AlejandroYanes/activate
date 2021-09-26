@@ -28,7 +28,7 @@ export function balanceColorRatio(
   let balancedColor = color;
   let ratio = getContrastRatio(balancedColor, background);
 
-  while(ratio < targetRatio) {
+  while (ratio < targetRatio) {
     balancedColor = changeColorLight(balancedColor, colorChangeFactor);
     ratio = getContrastRatio(balancedColor, background);
   }
@@ -45,7 +45,7 @@ export function balanceBgColorRatio(
   let balancedColor = background;
   let ratio = getContrastRatio(color, balancedColor);
 
-  while(ratio < targetRatio) {
+  while (ratio < targetRatio) {
     balancedColor = changeColorLight(balancedColor, colorChangeFactor);
     ratio = getContrastRatio(color, balancedColor);
   }

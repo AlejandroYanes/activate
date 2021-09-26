@@ -13,6 +13,7 @@ const getHeightStyles = (props) => {
       justify-content: center;
       align-items: center;
       height: ${elementHeight};
+      padding: 0 18px;
     `;
   }
 

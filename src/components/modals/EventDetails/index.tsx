@@ -60,7 +60,7 @@ const EventDetailsModal: FunctionComponent = () => {
 
   return (
     <Modal onClose={goBack} size="mobile" visible>
-      <FlexBox direction="column" align="stretch" padding="0 6px 32px 6px">
+      <FlexBox direction="column" align="stretch" padding="0 16px 32px">
         <EventImage src={image} alt="virtual tour" margin="6px 0 0 0" />
         <FlexBox align="center" padding="16px 0">
           <IconButton
@@ -91,7 +91,7 @@ const EventDetailsModal: FunctionComponent = () => {
             handleBookmark={handleBookmark}
           />
         </FlexBox>
-        <Title level={2} weight="light" padding="16px 0">
+        <Title level={1} size={32} padding="16px 0 24px">
           {capitalizeFirstLetter(name)}
         </Title>
         <FlexBox align="flex-start">

@@ -13,7 +13,7 @@ const layoutMap = {
   `,
   [Layout.MOBILE]: css`
     width: 100%;
-    padding: 16px 6px 96px 6px;
+    padding: 16px 16px 96px;
   `,
 };
 

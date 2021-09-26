@@ -3,7 +3,7 @@ import { Layout, useAppLayout } from 'components/providers/Layout';
 import { Title } from 'components/base-components/Typography';
 import InterestsGrid from 'components/experience/InterestsGrid';
 import RenderIf from 'components/base-components/RenderIf';
-import { Content, Step } from '../../styled';
+import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
 import { FinishButton } from './styled';
 import useInterestsState from './state';
@@ -33,7 +33,7 @@ const InterestsStep: FunctionComponent = () => {
   return (
     <Step>
       <Content>
-        <Title weight="light" level={1}>{`Tell us what you're looking for`}</Title>
+        <StepTitle>{`Tell us what you're looking for`}</StepTitle>
         <InterestsGrid
           multiple
           mode="paged"

@@ -2,7 +2,8 @@ import React, { FunctionComponent, useCallback } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { usePickListContext } from './context';
-import { Mark, StyledItem, Touchable } from './styled/item';
+import { StyledItem, Touchable } from './styled/item';
+import AbsoluteContent from '../AbsoluteContent';
 
 interface Props {
   value: string;
@@ -11,12 +12,13 @@ interface Props {
 }
 
 const PickItem: FunctionComponent<Props> = (props) => {
-  const { value, color, dashed, children } = props;
+  const { value, color: itemColor, dashed, children } = props;
   const {
     value: selectedValue,
     onChange,
     size,
     color: parentColor,
+    flatMarker,
     multiple,
     readonly,
   } = usePickListContext();
@@ -28,12 +30,14 @@ const PickItem: FunctionComponent<Props> = (props) => {
       ? (selectedValue as string[]).some(v => v === value)
       : selectedValue === value
   );
+  const color = itemColor || parentColor;
+  const markerColor: any = flatMarker ? 'WHITE' : color.toUpperCase();
 
   return (
     <StyledItem tabIndex={-1} size={size}>
       <Touchable
         tabIndex={readonly ? -1 : 0}
-        color={color || parentColor}
+        color={color}
         dashed={dashed}
         readonly={readonly}
         isSelected={isSelected}
@@ -43,12 +47,12 @@ const PickItem: FunctionComponent<Props> = (props) => {
       >
         {children}
         <RenderIf condition={isSelected}>
-          <Mark color={color || parentColor} data-el="pick_item-mark">
+          <AbsoluteContent top={4} right={4}>
             <SvgIcon
-              icon="CHECK_MARK"
-              color="WHITE"
+              color={markerColor}
+              icon="CHECK_CIRCLE_FILL"
             />
-          </Mark>
+          </AbsoluteContent>
         </RenderIf>
       </Touchable>
     </StyledItem>

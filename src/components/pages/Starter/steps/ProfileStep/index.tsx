@@ -8,7 +8,7 @@ import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { ErrorText } from 'components/base-components/Inputs';
 import { LoadingScreen } from 'components/experience/Screens';
-import { Content, Step } from '../../styled';
+import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
 import {
   AvatarsBox,
@@ -50,7 +50,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
     <Step>
       <Content>
         <RenderIf condition={!loadingData} fallback={<LoadingScreen />}>
-          <Title weight="light" level={1}>Tell us about you</Title>
+          <StepTitle>Tell us about you</StepTitle>
           <Form
             onChange={setProfile}
             state={profile}

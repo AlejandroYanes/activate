@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { VerificationLevel } from 'models/user';
-import SocialSignInPage from 'components/pages/SocialSignIn';
+import { PublicLayout } from 'components/Layout';
 import { useAuthData } from 'components/providers/Auth';
+import SocialSignInPage from 'components/pages/SocialSignIn';
 
 const SignInRoute: FunctionComponent = () => {
   const { isLoggedIn, userInfo } = useAuthData();
@@ -19,7 +20,9 @@ const SignInRoute: FunctionComponent = () => {
   }
 
   return (
-    <SocialSignInPage />
+    <PublicLayout>
+      <SocialSignInPage />
+    </PublicLayout>
   );
 };
 

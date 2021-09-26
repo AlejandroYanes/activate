@@ -10,5 +10,4 @@ export const Body = styled.section.attrs(anyPropsAttrs)`
   overflow: hidden auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;

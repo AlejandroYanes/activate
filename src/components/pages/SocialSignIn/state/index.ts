@@ -18,7 +18,7 @@ export default function useSocialSignInPageState() {
   const [state, dispatch] = useReducer(socialSignInStateReducer, initialState);
 
   useEffect(() => {
-    if(!search) {
+    if (!search) {
       window.location.href = `${REACT_APP_API_URL}auth/social/${provider}`
     } else {
       authenticate(dispatch)({provider, urlParams: search})

@@ -3,7 +3,7 @@ import { useAuthActions, useAuthData } from 'components/providers/Auth';
 import Avatar from 'components/base-components/Avatar';
 import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
 import FlexBox from 'components/base-components/FlexBox';
-import { Text } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 
 const MenuTrigger = ({ toggleMenu, avatar }) => (
   <Avatar size="small" src={avatar} onClick={toggleMenu} />
@@ -16,7 +16,7 @@ const ProfileMenu: FunctionComponent = () => {
   return (
     <Menu trigger={MenuTrigger} avatar={avatar}>
       <FlexBox padding="0 16px" height={48} justify="center" align="center" ellipsis>
-        <Text weight="light" align="center" ellipsis>Go to</Text>
+        <Title level={3} align="center" ellipsis>Go to</Title>
       </FlexBox>
       <MenuLink label="Talks" to="/app/talks" />
       <MenuLink label="Updates" to="/app/updates" />

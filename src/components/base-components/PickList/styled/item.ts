@@ -38,20 +38,12 @@ const getColorStyles = (props) => {
     return css`
       cursor: default;
       border: 1px ${dashed ? 'dashed' : 'solid'} ${borderColor};
-
-      & > div[data-el="pick_item-mark"] {
-        background-color: ${colors[colorInScheme]};
-      }
     `;
   }
 
   return css`
     cursor: pointer;
     border: 1px ${dashed ? 'dashed' : 'solid'} ${borderColor};
-
-    & > div[data-el="pick_item-mark"] {
-      background-color: ${colors[colorInScheme]};
-    }
 
     &:active {
       transform: scale(0.95);
@@ -65,10 +57,6 @@ const getColorStyles = (props) => {
     &:focus {
       outline: none;
       border-color: ${hoverColor};
-
-      & > div[data-el="pick_item-mark"] {
-        background-color: ${hoverColor};
-      }
     }
   `;
 };
@@ -81,31 +69,11 @@ export const Touchable = styled.button.attrs(anyPropsAttrs)`
   overflow: hidden;
   position: relative;
   background-color: transparent;
-  font-family: Comfortaa, sans-serif;
+  font-family: Bitter-Regular, sans-serif;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   ${getColorStyles};
   transition: all 100ms linear;
-`;
-
-export const Mark = styled.div.attrs(anyPropsAttrs)`
-  position: absolute;
-  width: 88px;
-  height: 48px;
-  right: -44px;
-  top: -16px;
-  transform: rotate(45deg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  transition: all 150ms linear;
-
-  & > * {
-    transform: rotate(-45deg);
-    margin-right: 14px;
-    margin-top: 28px;
-  }
 `;
