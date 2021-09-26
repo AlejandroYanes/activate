@@ -3,7 +3,7 @@ import { useAuthActions, useAuthData } from 'components/providers/Auth';
 import Avatar from 'components/base-components/Avatar';
 import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
 import FlexBox from 'components/base-components/FlexBox';
-import { Text, Title } from 'components/base-components/Typography';
+import { Title } from 'components/base-components/Typography';
 
 const MenuTrigger = ({ toggleMenu, avatar }) => (
   <Avatar size="small" src={avatar} onClick={toggleMenu} />

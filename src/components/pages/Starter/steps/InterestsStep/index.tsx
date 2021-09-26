@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Title } from 'components/base-components/Typography';
 import InterestsGrid from 'components/experience/InterestsGrid';
 import RenderIf from 'components/base-components/RenderIf';
 import { Content, Step, StepTitle } from '../../styled';
