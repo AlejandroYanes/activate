@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { QueryKey } from 'components/providers/Query';
-import EventCard from 'components/experience/EventCard';
+import EventsGrid from 'components/experience/EventsGrid';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 
 const Events = (): any => {
@@ -12,15 +12,6 @@ const Events = (): any => {
     [QueryKey.FETCH_EVENTS_PUBLISHED_BY, publisherId],
     () => eventsApi.listPublishedBy(publisherId),
   );
-
-  const eventCards = useMemo(() => {
-    if (response) {
-      return response.data.map((event) => (
-        <EventCard key={event.id} event={event} />
-      ));
-    }
-    return null;
-  }, [response]);
 
   if (isLoading) {
     return <LoadingScreen />
@@ -34,7 +25,9 @@ const Events = (): any => {
     );
   }
 
-  return eventCards;
+  return (
+    <EventsGrid events={response.data} />
+  );
 }
 
 export default Events;

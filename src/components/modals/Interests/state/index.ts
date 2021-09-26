@@ -4,9 +4,10 @@ import { useQuery } from 'react-query';
 import categoriesApi from 'api/categories';
 import interestsApi from 'api/interests';
 import { QueryKey } from 'components/providers/Query';
-import handleInterests from './actions/handle-interests';
 import saveInterests from './actions/save-interests';
 import interestsReducer, { State, Actions } from './reducer';
+import { useAtomicSet } from '../../../../helpers';
+import toggleTopCategory from './actions/toggle-top-category';
 
 const initialState: State = {
   callingAPI: false,
@@ -50,8 +51,9 @@ export default function useInterestsState() {
       apiFailed: !!categoriesError || !!myInterestsError,
     },
     actions: {
-      handleInterests: useCallback(
-        handleInterests(dispatch, state.interests, categories?.data.results),
+      handleInterests: useAtomicSet(dispatch, Actions.SET_INTERESTS),
+      toggleTopCategory: useCallback(
+        toggleTopCategory(dispatch, state.interests, categories?.data.results),
         [state.interests, categories],
       ),
       saveInterests: useCallback(

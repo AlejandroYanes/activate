@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Modals } from 'components/modals';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Text, Title } from 'components/base-components/Typography';
@@ -72,13 +72,15 @@ const EventDetailsPage: FunctionComponent = () => {
             </Title>
           </FlexBox>
           <FlexBox align="center" margin="8px 0">
-            <FlexBox align="center">
-              <Avatar src={author.avatar} />
-              <FlexBox direction="column" padding="0 0 0 6px">
-                <Text size="small" color="secondary">@{author.userName}</Text>
-                <Text padding="4px 0 0 0">{author.name}</Text>
+            <Link to={`/app/publisher/${author.id}`}>
+              <FlexBox align="center">
+                <Avatar src={author.avatar} />
+                <FlexBox direction="column" padding="0 0 0 6px">
+                  <Text size="small" color="secondary">@{author.userName}</Text>
+                  <Text padding="4px 0 0 0">{author.name}</Text>
+                </FlexBox>
               </FlexBox>
-            </FlexBox>
+            </Link>
             <IconButton
               size="large"
               variant="flat"

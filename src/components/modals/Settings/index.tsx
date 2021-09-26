@@ -15,7 +15,7 @@ const SettingsModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="24px 6px"
+        padding="24px 16px"
       >
         <SettingItem to="/app/profile/edit">
           <Text size="large">Change your Profile</Text>

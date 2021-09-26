@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import Page from 'components/base-components/Page';
+import FlexBox from 'components/base-components/FlexBox';
 import { Case, Switch } from 'components/base-components/Switch';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import ProfileData from './ProfileData';
 import Events from './Events';
 import Followers from './Followers';
 import usePublisherState, { Tabs } from './state';
-import FlexBox from '../../base-components/FlexBox';
 
 const PublisherPage: FunctionComponent = () => {
   const {
@@ -45,11 +45,11 @@ const PublisherPage: FunctionComponent = () => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
         />
-        <Switch by={activeTab}>
-          <Case value={Tabs.EVENTS} component={Events} />
-          <Case value={Tabs.FOLLOWERS} component={Followers} />
-        </Switch>
       </FlexBox>
+      <Switch by={activeTab}>
+        <Case value={Tabs.EVENTS} component={Events} />
+        <Case value={Tabs.FOLLOWERS} component={Followers} />
+      </Switch>
     </Page>
   );
 };

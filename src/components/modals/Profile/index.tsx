@@ -45,12 +45,12 @@ const ProfileModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="24px 6px"
+        padding="0 16px"
       >
         <FlexBox
           data-el="avatar-section"
           align="center"
-          padding="0 8px"
+          padding="8px"
         >
           <Avatar size="xx-large" src={avatar} />
           <FlexBox justify="space-around" grow>

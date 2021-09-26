@@ -15,7 +15,7 @@ const modalSizeMap = {
 };
 
 const modalPaddingMap = {
-  [Layout.MOBILE]: '24px 6px',
+  [Layout.MOBILE]: '24px 16px',
   [Layout.TABLET]: '0',
   [Layout.DESKTOP]: '0',
 };
@@ -82,7 +82,6 @@ const ChangePasswordModal: FunctionComponent = () => {
             name="current"
             label="Current Password"
             component={PasswordInput}
-            mT
           />
           <Field
             name="newPassword"

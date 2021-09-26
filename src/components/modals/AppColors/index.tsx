@@ -45,7 +45,7 @@ const AppColorsModal: FunctionComponent = () => {
         data-el="settings-colors-modal-body"
         direction="column"
         align="stretch"
-        padding="24px 6px"
+        padding="0 16px"
       >
         <ThemesGrid
           mB
