@@ -41,9 +41,9 @@ const InterestsPage: FunctionComponent = () => {
           interests={allInterests}
           onChange={handleInterests}
           onToggleAll={toggleTopCategory}
-          padding="20px 0 0 0"
           mode="sectioned"
           multiple
+          mT
         />
         <RenderIf condition={!isLoading && !apiFailed}>
           <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>

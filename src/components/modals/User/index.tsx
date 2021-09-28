@@ -2,6 +2,7 @@ import { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { RelationshipStatus } from 'models/user';
 import { formatAmount } from 'helpers';
+import { QueryKey } from 'components/providers/Query';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';
@@ -9,14 +10,13 @@ import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
 import { IconButton } from 'components/base-components/Button';
+import { ConsumerActions } from 'components/experience/UserActions';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Events from './Events';
 import Friends from './Friends';
 import Following from './Following';
 import PrivateAccount from './PrivateAccount';
 import useUserState, { Tabs } from './state';
-import { QueryKey } from '../../providers/Query';
-import { ConsumerActions } from '../../experience/UserActions';
 
 const UserModal: FunctionComponent = () => {
   const { goBack } = useHistory();
@@ -41,7 +41,7 @@ const UserModal: FunctionComponent = () => {
           data-el="profile-modal-body"
           direction="column"
           align="stretch"
-          padding="80px 6px 16px"
+          padding="80 16px 16px"
         >
           <LoadingScreen />
         </FlexBox>
@@ -56,7 +56,7 @@ const UserModal: FunctionComponent = () => {
           data-el="profile-modal-body"
           direction="column"
           align="stretch"
-          padding="80px 6px 16px"
+          padding="80px 16px 16px"
         >
           <NoConnectionScreen message="We couldn't load this user's profile." />
         </FlexBox>
@@ -99,7 +99,7 @@ const UserModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px 16px"
+        padding="0 16px 16px"
       >
         <FlexBox
           data-el="avatar-section"

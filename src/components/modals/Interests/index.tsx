@@ -21,6 +21,7 @@ const InterestsModal: FunctionComponent = () => {
     },
     actions: {
       handleInterests,
+      toggleTopCategory,
       saveInterests,
     },
   } = useInterestsState();
@@ -31,16 +32,18 @@ const InterestsModal: FunctionComponent = () => {
         data-el="settings-interests-modal-body"
         direction="column"
         align="stretch"
-        padding="24px 6px"
+        padding="24px 16px"
       >
         <InterestsGrid
           multiple
           cols={3}
+          mode="sectioned"
           loading={isLoading}
           errored={apiFailed}
           value={interests}
           interests={allInterests}
           onChange={handleInterests}
+          onToggleAll={toggleTopCategory}
         />
         <RenderIf condition={!isLoading && !apiFailed}>
           <Text color="error" padding="24px 12px 0 0" align="center">{error}</Text>

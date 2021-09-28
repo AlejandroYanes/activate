@@ -49,7 +49,7 @@ const PublisherModal: FunctionComponent = () => {
           data-el="profile-modal-body"
           direction="column"
           align="stretch"
-          padding="80px 6px 16px"
+          padding="80px 16px 16px"
         >
           <LoadingScreen />
         </FlexBox>
@@ -64,7 +64,7 @@ const PublisherModal: FunctionComponent = () => {
           data-el="profile-modal-body"
           direction="column"
           align="stretch"
-          padding="80px 6px 16px"
+          padding="80px 16px 16px"
         >
           <NoConnectionScreen message="We couldn't load this publisher's profile." />
         </FlexBox>
@@ -95,7 +95,7 @@ const PublisherModal: FunctionComponent = () => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px 16px"
+        padding="0 16px 16px"
       >
         <FlexBox
           data-el="avatar-section"

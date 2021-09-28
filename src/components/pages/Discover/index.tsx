@@ -10,7 +10,7 @@ import PageTitle from './PageTitle';
 import Changers from './Changers';
 
 const channels: EventChannel[] = ['EVENT_FOLLOWED', 'EVENT_UNFOLLOWED'];
-const title = <PageTitle />;
+const title = <PageTitle key="discovery-page-title" />;
 
 const DiscoverPage: FunctionComponent = () => {
   const {

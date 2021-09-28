@@ -1,11 +1,11 @@
 import { FunctionComponent, ReactNode } from 'react';
 import { ConsumerModel } from 'models/user';
 import { formatAmount } from 'helpers';
-import FlexBox from 'components/base-components/FlexBox';
-import SvgIcon from 'components/base-components/SvgIcon';
 import { Text, Title } from 'components/base-components/Typography';
+import FlexBox from 'components/base-components/FlexBox';
 import Modal from 'components/base-components/Modal';
 import Avatar from 'components/base-components/Avatar';
+import Emoji from 'components/base-components/Emoji';
 
 interface Props {
   user: ConsumerModel;
@@ -31,7 +31,7 @@ const PrivateAccount: FunctionComponent<Props> = (props) => {
         data-el="profile-modal-body"
         direction="column"
         align="stretch"
-        padding="0 6px 16px"
+        padding="0 16px 16px"
       >
         <FlexBox
           data-el="avatar-section"
@@ -62,8 +62,8 @@ const PrivateAccount: FunctionComponent<Props> = (props) => {
           </Title>
         </FlexBox>
         <FlexBox padding="32px 0 0 0" direction="column" align="center">
-          <SvgIcon icon="LOCK" size="page" />
-          <Title level={3}>
+          <Emoji size="page">🔒</Emoji>
+          <Title level={2} mT>
             This account is private.
           </Title>
           <Text padding="0 12px" align="center">
