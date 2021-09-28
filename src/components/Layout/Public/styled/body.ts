@@ -10,7 +10,7 @@ const bodyStyleMap = {
   margin-top: 0px;
   `,
   [Layout.MOBILE]: css`
-    padding: 32px 8px;
+    padding: 32px 16px;
     overflow: hidden auto;
   `,
 };

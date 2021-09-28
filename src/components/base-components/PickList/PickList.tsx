@@ -13,6 +13,7 @@ export interface PickListProps extends PositionProps {
   multiple?: boolean;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
+  flatMarker?: boolean;
 }
 
 const wrapperMap = {
@@ -28,6 +29,7 @@ const PickList: FunctionComponent<PickListProps> = (props) => {
     size,
     color,
     layout,
+    flatMarker,
     readonly,
     children,
   } = props;
@@ -59,6 +61,7 @@ const PickList: FunctionComponent<PickListProps> = (props) => {
       readonly={readonly}
       multiple={multiple}
       onChange={handleChange}
+      flatMarker={flatMarker}
     >
       <Wrapper {...props}>
         {children}

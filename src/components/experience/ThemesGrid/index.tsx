@@ -34,6 +34,7 @@ const ThemesGrid: FunctionComponent<Props> = (props) => {
       cols={cols}
       layout="grid"
       color="brand"
+      flatMarker
       value={activeTheme}
       onChange={onChange}
       {...rest}

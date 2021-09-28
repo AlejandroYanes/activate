@@ -4,11 +4,13 @@ import { Title } from 'components/base-components/Typography';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import Illustration from './Illustration';
 
+const fontSize = 64;
+
 const PrimaryRender = () => (
   <>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       align="right"
       color="brand"
       weight="light"
@@ -17,7 +19,7 @@ const PrimaryRender = () => (
     </Title>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       align="right"
       color="brand"
       weight="light"
@@ -33,7 +35,7 @@ const MobileRender = () => (
   <>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       color="brand"
       weight="light"
     >
@@ -41,7 +43,7 @@ const MobileRender = () => (
     </Title>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       align="right"
       color="brand"
       weight="bold"
@@ -50,7 +52,7 @@ const MobileRender = () => (
     </Title>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       color="brand"
       weight="light"
     >
@@ -58,7 +60,7 @@ const MobileRender = () => (
     </Title>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       align="right"
       color="brand"
       weight="bold"

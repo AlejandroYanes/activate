@@ -9,7 +9,7 @@ import InterestsStep from './steps/InterestsStep';
 import useStarterState from './state';
 
 const StarterPage: FunctionComponent = () => {
-  const { activeStep, goNextStep } = useStarterState();
+  const { activeStep, goNextStep, setActiveStep } = useStarterState();
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const StarterPage: FunctionComponent = () => {
   }, []);
 
   return (
-    <Stepper activeStep={activeStep}>
+    <Stepper activeStep={activeStep} onChange={setActiveStep}>
       <VerificationStep onSuccess={goNextStep} />
       <ProfileStep onSuccess={goNextStep} />
       <InterestsStep />

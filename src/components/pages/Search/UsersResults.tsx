@@ -51,7 +51,6 @@ const UsersResults: FunctionComponent<ResultPageProps> = (props) => {
     );
   }
 
-
   return (
     <Grid>
       {consumerCards}

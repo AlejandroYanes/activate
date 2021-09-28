@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useRef } from 'react';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Title } from 'components/base-components/Typography';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import { Field, Form } from 'components/base-components/Form';
 import Avatar from 'components/base-components/Avatar';
@@ -8,7 +7,7 @@ import SvgIcon from 'components/base-components/SvgIcon';
 import RenderIf from 'components/base-components/RenderIf';
 import { ErrorText } from 'components/base-components/Inputs';
 import { LoadingScreen } from 'components/experience/Screens';
-import { Content, Step } from '../../styled';
+import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
 import {
   AvatarsBox,
@@ -50,7 +49,7 @@ const ProfileStep: FunctionComponent<Props> = (props) => {
     <Step>
       <Content>
         <RenderIf condition={!loadingData} fallback={<LoadingScreen />}>
-          <Title weight="light" level={1}>Tell us about you</Title>
+          <StepTitle>Tell us about you</StepTitle>
           <Form
             onChange={setProfile}
             state={profile}

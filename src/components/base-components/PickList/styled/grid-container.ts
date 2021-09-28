@@ -10,7 +10,7 @@ const getColumns = (props) => {
 const gapSizeMap = {
   [Layout.DESKTOP]: '24px',
   [Layout.TABLET]: '24px',
-  [Layout.MOBILE]: '12px',
+  [Layout.MOBILE]: '16px 8px',
 };
 
 export const Wrapper = styled.ul.attrs(anyPropsAttrs)`

@@ -6,17 +6,19 @@ import { LinkButton } from 'components/base-components/Button';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import Illustration from './Illustration';
 
+const fontSize = 64;
+
 const PrimaryRender = () => (
   <>
-    <Title level={1} size={64} color="brand" weight="bold">
+    <Title level={1} size={fontSize} color="brand" weight="bold">
       event,
     </Title>
-    <Title level={1} size={64} color="brand" weight="bold">
+    <Title level={1} size={fontSize} color="brand" weight="bold">
       anywhere,
     </Title>
     <Title
       level={1}
-      size={64}
+      size={fontSize}
       color="brand"
       weight="bold"
       margin="0 0 32px 0"

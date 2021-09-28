@@ -4,7 +4,7 @@ import { borderSize, stepSize } from './constants';
 
 const getStepStyles = (props) => {
   const { isActive, theme: { colors } } = props;
-  const bgColor = isActive ? colors.BRAND : colors.FONT_SHADE;
+  const bgColor = isActive ? colors.BRAND : colors.BACKGROUND_LIGHTER;
   const fontColor = isActive ? colors.BACKGROUND_LIGHTER : colors.FONT;
   const size = isActive ? stepSize - 10 - borderSize : stepSize - borderSize;
 

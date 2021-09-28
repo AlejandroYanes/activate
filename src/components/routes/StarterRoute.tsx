@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Redirect } from 'react-router-dom';
 import { VerificationLevel } from 'models/user';
+import { PublicLayout } from 'components/Layout';
 import { useAuthData } from 'components/providers/Auth';
 import StarterPage from 'components/pages/Starter';
 
@@ -24,7 +25,9 @@ const StarterRoute: FunctionComponent = () => {
   }
 
   return (
-    <StarterPage />
+    <PublicLayout>
+      <StarterPage />
+    </PublicLayout>
   );
 };
 

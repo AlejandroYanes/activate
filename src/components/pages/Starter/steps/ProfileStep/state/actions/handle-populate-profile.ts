@@ -3,7 +3,7 @@ import { NotificationType, showNotification } from 'notifications';
 import { ProfileStepActions } from '../reducer';
 
 async function loadSocialProviderProfileImage(dispatch, avatar, sub) {
-  try{
+  try {
     const res = await fetch(avatar, { method: 'GET' });
     const blob = await res.blob();
     const fileExtension = blob.type.split('/')[1]
@@ -37,7 +37,7 @@ export async function handlePopulateProfile(dispatch) {
     payload: {name, lastName, userName, avatar}
   });
 
-  if(avatar) {
+  if (avatar) {
     await loadSocialProviderProfileImage(dispatch, avatar, sub)
   } else {
     dispatch({ type: ProfileStepActions.FINISH_LOADING_DATA });

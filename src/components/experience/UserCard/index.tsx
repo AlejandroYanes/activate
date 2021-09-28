@@ -17,7 +17,7 @@ interface Props {
   user: ConsumerModel;
 }
 
-const Separator = () => <div style={{ flex: 1 }} />;
+const noFriends = <FlexBox height={34} mT />;
 
 const UserCard: FunctionComponent<Props> = (props) => {
   const { user } = props;
@@ -55,26 +55,32 @@ const UserCard: FunctionComponent<Props> = (props) => {
           <SvgIcon icon="STAR_FILLED" color="BRAND_FONT" />
         </AbsoluteContent>
       </RenderIf>
-      <Avatar src={avatar} size="large" margin="0 auto 8px" />
+      <Avatar src={avatar} size="large" />
       <Link to={link}>
         <FlexBox direction="column" align="center">
-          <Title level={3} align="center">{name}</Title>
+          <Title level={3} weight="bold" align="center" padding="8px 0" ellipsis>
+            {name}
+          </Title>
           <Text align="center">@{userName}</Text>
         </FlexBox>
       </Link>
-      <Separator />
-      <FlexBox align="center" margin="28px auto 0">
+      <FlexBox align="center" mT>
         <FlexBox direction="column" align="center" padding="0 16px">
-          <Text color="secondary">Following</Text>
-          <Title level={3}>{formatAmount(following)}</Title>
+          <Text>Following</Text>
+          <Title level={3} weight="bold">{formatAmount(following * 100)}</Title>
         </FlexBox>
         <FlexBox direction="column" align="center" padding="0 16px">
-          <Text color="secondary">Friends</Text>
-          <Title level={3}>{formatAmount(friendsCount)}</Title>
+          <Text>Friends</Text>
+          <Title level={3} weight="bold">{formatAmount(friendsCount * 100)}</Title>
         </FlexBox>
       </FlexBox>
-      <AvatarGroup icons={avatars} margin="28px auto 0" />
-      <FlexBox align="center" margin="24px auto 0">
+      <RenderIf
+        condition={avatars.length > 0}
+        fallback={noFriends}
+      >
+        <AvatarGroup icons={avatars} mT />
+      </RenderIf>
+      <FlexBox align="center" mT>
         <RenderIf condition={isMyFriend}>
           <LinkButton
             to={link}

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
+import { PrivateLayout } from 'components/Layout';
 import { useAuthData } from 'components/providers/Auth';
 import { Layout, useAppLayout } from 'components/providers/Layout';
 import ProfilePage from 'components/pages/Profile';
@@ -94,11 +95,13 @@ const AuthRoutes: FunctionComponent = () => {
   const routesStack = routesMap[layout];
 
   return (
-    <Switch>
-      <Route path="/app" component={DiscoverPage} exact />
-      {routesStack}
-      <Redirect to="/app" />
-    </Switch>
+    <PrivateLayout>
+      <Switch>
+        <Route path="/app" component={DiscoverPage} exact />
+        {routesStack}
+        <Redirect to="/app" />
+      </Switch>
+    </PrivateLayout>
   );
 };
 
