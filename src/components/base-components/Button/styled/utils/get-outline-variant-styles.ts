@@ -4,14 +4,25 @@ import { getColorVariation, getFontShadeColor } from 'helpers';
 import getBtnFontColor from './get-btn-font-color';
 import getBtnFontHoverColor from './get-btn-font-hover-color';
 
+const getBorderColor = (colors: ColorScheme, color: string) => {
+  if (color === 'background') {
+    return colors.GRAY;
+  }
+
+  return  getColorVariation(colors, color, Variations.FONT);
+};
+
+const getBorderHoverColor = (colors: ColorScheme, color: string) => {
+  if (color === 'background') {
+    return colors.BRAND_FONT_HIGHLIGHT;
+  }
+
+  return  getColorVariation(colors, color, Variations.FONT_HIGHLIGHT);
+};
 
 const getBgHoverColor = (colors: ColorScheme, color: string) => {
   if (color === 'background') {
-    return colors.BACKGROUND;
-  }
-
-  if (color === 'font') {
-    return colors.GRAY_SHADE;
+    return colors.BRAND_SHADE;
   }
 
   return  getColorVariation(colors, color, Variations.SHADE);
@@ -38,7 +49,8 @@ export default function getOutlineVariantStyles(
   }
 
   const fontColor = getBtnFontColor(colors, color);
-  const borderColor = getBtnFontColor(colors, color);
+  const borderColor = getBorderColor(colors, color);
+  const borderHoverColor = getBorderHoverColor(colors, color);
   const fontHoverColor = getBtnFontHoverColor(colors, color);
   const bgHoverColor = getBgHoverColor(colors, color);
 
@@ -53,7 +65,7 @@ export default function getOutlineVariantStyles(
 
     &:hover, &:focus {
       color: ${fontHoverColor};
-      border-color: ${fontHoverColor};
+      border-color: ${borderHoverColor};
       background-color: ${bgHoverColor};
 
       & > svg > path {

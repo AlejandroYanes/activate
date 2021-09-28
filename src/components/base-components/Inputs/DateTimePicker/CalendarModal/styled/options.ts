@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
 export const Options = styled.div`
-  width: 25%;
-  min-width: 20%;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
 `;

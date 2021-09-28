@@ -1,5 +1,12 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { addHours, getHours, getMinutes, setHours, setMinutes, subHours } from 'date-fns';
+import {
+  addHours,
+  getHours,
+  getMinutes,
+  setHours,
+  setMinutes,
+  subHours,
+} from 'date-fns';
 import getMarkerPositions from './get-marker-positions';
 import Marker from './Marker';
 import HourButton from './HourButton';
@@ -45,7 +52,7 @@ const Clock: FunctionComponent<Props> = (props) => {
   useEffect(() => {
     const { width } = outerRingRef.current.getBoundingClientRect();
     const positions = getMarkerPositions(width);
-    const markers = document.querySelectorAll('button[data-el="marker"]');
+    const markers = outerRingRef.current.querySelectorAll('button[data-el="marker"]');
     markers.forEach((element, key) => {
       const { top, left } = positions[key];
       const style = `top: ${top}px; left: ${left}px;`;

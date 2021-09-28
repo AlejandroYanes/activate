@@ -75,9 +75,9 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
         />
       </StyledDateTimePicker>
       <CalendarModal
-        isOpen={showBackdrop}
         type={type}
         value={value}
+        isOpen={showBackdrop}
         showOptions={showOptions}
         onChange={handleDateSelected}
         onClose={closeDatePickerModal}

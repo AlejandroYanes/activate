@@ -10,7 +10,7 @@ import {
 import { generateUID } from 'helpers';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Button } from 'components/base-components/Button';
-import { Options as StyledOptions } from './styled/options';
+import { Options as StyledOptions } from './styled';
 
 const today = new Date();
 
@@ -54,7 +54,6 @@ const initialOptions = [
 ];
 
 interface Props {
-  value: Date | Date[];
   onSelect: (date) => void;
 }
 
