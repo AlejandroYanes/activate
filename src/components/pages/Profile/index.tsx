@@ -1,11 +1,10 @@
 import React, { FunctionComponent, useState } from 'react';
 import Page from 'components/base-components/Page';
+import FlexBox from 'components/base-components/FlexBox';
 import { Case, Switch } from 'components/base-components/Switch';
 import ProfileData from './ProfileData';
 import Following from './Following';
-import Settings from './Settings';
 import Friends from './Friends';
-import FlexBox from '../../base-components/FlexBox';
 
 export enum Tabs {
   Following = 'Following',
@@ -23,7 +22,6 @@ const ProfilePage: FunctionComponent = () => {
         <Switch by={activeTab}>
           <Case value={Tabs.Following} component={Following} />
           <Case value={Tabs.Friends} component={Friends} />
-          <Case value={Tabs.Setting} component={Settings} />
         </Switch>
       </FlexBox>
     </Page>

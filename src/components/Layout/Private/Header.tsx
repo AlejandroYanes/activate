@@ -1,12 +1,11 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { Modals } from 'components/modals';
-import { useAuthData } from 'components/providers/Auth';
-import Avatar from 'components/base-components/Avatar';
 import FlexBox from 'components/base-components/FlexBox';
 import { Title } from 'components/base-components/Typography';
 import { IconButton } from 'components/base-components/Button';
 import { Tab, Tabset } from 'components/base-components/Tabset';
+import ProfileMenu from './ProfileMenu';
 import { Header as StyledHeader } from './styled';
 
 enum Menus {
@@ -19,7 +18,6 @@ enum Menus {
 const tabs = ['/app', '/app/search', '/app/upcoming', '/app/talks'];
 
 const Header: FunctionComponent = () => {
-  const { userInfo } = useAuthData();
   const { push } = useHistory();
   const { pathname, search } = useLocation();
   const [activeTab, setActiveTab] = useState<string>(Menus.HOME);
@@ -39,8 +37,6 @@ const Header: FunctionComponent = () => {
       setActiveTab(pathname);
     }
   }, [pathname]);
-
-  const { avatar } = userInfo;
 
   return (
     <StyledHeader data-el="app-header">
@@ -63,9 +59,7 @@ const Header: FunctionComponent = () => {
           color="background"
           mR
         />
-        <Link to="/app/profile">
-          <Avatar src={avatar} />
-        </Link>
+        <ProfileMenu />
       </FlexBox>
     </StyledHeader>
   );

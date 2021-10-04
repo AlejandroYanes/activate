@@ -10,7 +10,6 @@ import SearchPage from 'components/pages/Search';
 import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
 import TalksPage from 'components/pages/Talks';
-import InterestsPage from 'components/pages/Interests';
 import UpcomingPage from 'components/pages/Upcoming';
 
 import PublisherModal from 'components/modals/Publisher';
@@ -26,6 +25,7 @@ import FiltersModal from 'components/modals/Filters';
 import UpdatesModal from 'components/modals/Updates';
 import ChangePasswordModal from 'components/modals/ChangePassword';
 import InviteUsersModal from 'components/modals/Invite';
+import SettingsPage from '../pages/Settings';
 
 interface RouteDef {
   path: string;
@@ -39,11 +39,11 @@ const commonRoutes: RouteDef[] = [
 
 const routesWithPages: RouteDef[] = [
   { path: '/app/profile', component: ProfilePage },
+  { path: '/app/settings', component: SettingsPage },
   { path: '/app/event/:eventId', component: EventDetailsPage },
   { path: '/app/publisher/:publisherId', component: PublisherPage },
   { path: '/app/user/:userId', component: UserPage },
   { path: '/app/talks', component: TalksPage },
-  { path: '/app/interests', component: InterestsPage },
 ];
 
 const routesWithModals: RouteDef[] = [

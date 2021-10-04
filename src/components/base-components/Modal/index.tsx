@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import Backdrop from 'components/base-components/Backdrop';
 import Header from './Header';
 import Footer from './Footer';
@@ -10,15 +10,16 @@ interface Props {
   onClose: () => void;
   footer?: ReactNode;
   size?: 'auto' | 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
+  children?: ReactNode;
 }
 
-const Modal: FunctionComponent<Props> = (props) => {
+const Modal = forwardRef<HTMLElement, Props>((props, ref) => {
   const { visible, title, onClose, footer, size, children } = props;
 
   if (visible) {
     return (
       <Backdrop onClick={onClose}>
-        <StyledModal size={size} data-el="modal-container">
+        <StyledModal ref={ref} size={size} data-el="modal-container">
           <Header size={size} title={title} onClose={onClose} />
           <Content size={size} data-el="modal-content">
             {children}
@@ -30,7 +31,7 @@ const Modal: FunctionComponent<Props> = (props) => {
   }
 
   return null;
-};
+});
 
 Modal.defaultProps = {
   size: 'small',

@@ -63,8 +63,8 @@ export const StyledTab = styled.li.attrs(anyPropsAttrs)`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   box-sizing: border-box;
   min-width: 44px;
   height: 44px;

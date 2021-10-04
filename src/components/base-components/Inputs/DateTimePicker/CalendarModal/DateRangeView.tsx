@@ -19,7 +19,7 @@ const PrimaryRender: FunctionComponent<ViewProps> = (props) => {
     <>
       <FlexBox align="stretch">
         <RenderIf condition={showOptions}>
-          <Options onSelect={onChange} />
+          <Options onSelect={setDates} />
         </RenderIf>
         <Calendar useRange value={dates} onChange={setDates} />
       </FlexBox>

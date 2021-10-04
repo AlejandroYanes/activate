@@ -1,5 +1,5 @@
 import React, { FunctionComponent, Fragment } from 'react';
-import { Text } from 'components/base-components/Typography';
+import { Title } from 'components/base-components/Typography';
 import { Button } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
 import { PickList } from 'components/base-components/PickList';
@@ -19,7 +19,7 @@ const SectionedGrid: FunctionComponent<GridProps> = (props): any => {
     return (
       <Fragment key={id}>
         <SectionTitle justify="space-between" width="100%">
-          <Text  size="large">{name}</Text>
+          <Title level={3}>{name}</Title>
           <RenderIf condition={!!onToggleAll}>
             <Button
               onClick={() => onToggleAll(id, areAllSubsSelected)}
