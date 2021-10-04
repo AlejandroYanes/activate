@@ -5,9 +5,7 @@ import { ProfileStats } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
 import { useAuthData } from 'components/providers/Auth';
 import { Tab, Tabset } from 'components/base-components/Tabset';
-import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import ProfileCard from 'components/experience/ProfileCard';
-import ProfileActions from './ProfileActions';
 import { Tabs } from '../';
 
 interface Props {
@@ -41,9 +39,6 @@ const ProfileData: FunctionComponent<Props> = (props) => {
       rightStatLabel="Friends"
       rightStatValue={stats?.friends}
     >
-      <AbsoluteContent top={16} right={16}>
-        <ProfileActions />
-      </AbsoluteContent>
       <Tabset
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -59,11 +54,6 @@ const ProfileData: FunctionComponent<Props> = (props) => {
           name={Tabs.Friends}
           label={Tabs.Friends}
           icon="USERS"
-        />
-        <Tab
-          name={Tabs.Setting}
-          label={Tabs.Setting}
-          icon="SLIDERS_VERT"
         />
       </Tabset>
     </ProfileCard>

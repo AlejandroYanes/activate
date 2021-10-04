@@ -54,7 +54,7 @@ const FiltersModal: FunctionComponent = () => {
       size={modalSize}
       visible
     >
-      <Form state={filters} onChange={handleChange}>
+      <Form ref={panelRef} state={filters} onChange={handleChange}>
         <Text margin="0 0 6px 20px">Location</Text>
         <Field
           name="location"

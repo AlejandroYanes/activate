@@ -67,11 +67,11 @@ const UserCard: FunctionComponent<Props> = (props) => {
       <FlexBox align="center" mT>
         <FlexBox direction="column" align="center" padding="0 16px">
           <Text>Following</Text>
-          <Title level={3} weight="bold">{formatAmount(following * 100)}</Title>
+          <Title level={3} weight="bold">{formatAmount(following)}</Title>
         </FlexBox>
         <FlexBox direction="column" align="center" padding="0 16px">
           <Text>Friends</Text>
-          <Title level={3} weight="bold">{formatAmount(friendsCount * 100)}</Title>
+          <Title level={3} weight="bold">{formatAmount(friendsCount)}</Title>
         </FlexBox>
       </FlexBox>
       <RenderIf
