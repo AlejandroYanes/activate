@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getBgdLighterColor } from 'helpers';
+import { anyPropsAttrs, getFontShadeColor } from 'helpers';
 
 export const Card = styled.article.attrs(anyPropsAttrs)`
   display: flex;
@@ -9,5 +9,5 @@ export const Card = styled.article.attrs(anyPropsAttrs)`
   padding: 16px;
   position: relative;
   min-width: 320px;
-  background-color: ${getBgdLighterColor};
+  border: 1px solid ${getFontShadeColor};
 `;

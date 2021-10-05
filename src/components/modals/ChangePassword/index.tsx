@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
 import { Field, Form } from 'components/base-components/Form';
@@ -8,21 +7,8 @@ import { PasswordInput } from 'components/base-components/Inputs';
 import { Button } from 'components/base-components/Button';
 import useChangePasswordState, { passwordRules } from './state';
 
-const modalSizeMap = {
-  [Layout.MOBILE]: 'mobile',
-  [Layout.TABLET]: 'medium',
-  [Layout.DESKTOP]: 'small',
-};
-
-const modalPaddingMap = {
-  [Layout.MOBILE]: '24px 16px',
-  [Layout.TABLET]: '0',
-  [Layout.DESKTOP]: '0',
-};
-
 const ChangePasswordModal: FunctionComponent = () => {
   const { goBack } = useHistory();
-  const layout = useAppLayout();
   const {
     state: {
       formValue,
@@ -35,8 +21,6 @@ const ChangePasswordModal: FunctionComponent = () => {
       changePassword,
     },
   } = useChangePasswordState();
-
-  const modalSize: any = modalSizeMap[layout];
 
   const footer = (
     <>
@@ -61,15 +45,15 @@ const ChangePasswordModal: FunctionComponent = () => {
     <Modal
       visible
       onClose={goBack}
-      size={modalSize}
       footer={footer}
+      size="mobile"
       title="Change your password"
     >
       <FlexBox
         data-el="password-modal-body"
+        padding="24px 16px"
         direction="column"
         align="stretch"
-        padding={modalPaddingMap[layout]}
       >
         <Form
           state={formValue}
@@ -87,13 +71,11 @@ const ChangePasswordModal: FunctionComponent = () => {
             name="newPassword"
             label="New Password"
             component={PasswordInput}
-            mT
           />
           <Field
             name="confirm"
             label="Repeat New Password"
             component={PasswordInput}
-            mT
           />
         </Form>
       </FlexBox>

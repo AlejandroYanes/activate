@@ -41,8 +41,8 @@ const EditProfileSection: FunctionComponent = () => {
           rules={profileRules}
         >
           <Field name="userName" label="User Name" />
-          <Field name="email" label="Email" mT />
-          <Field name="name" label="Name" mT />
+          <Field name="email" label="Email" />
+          <Field name="name" label="Name" />
           <Field
             name="avatar"
             component={PickList}

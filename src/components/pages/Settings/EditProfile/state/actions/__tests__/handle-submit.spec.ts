@@ -19,13 +19,11 @@ jest.mock('notifications', () => ({
 }));
 const dispatchMock = jest.fn();
 const updateUserInfoMock = jest.fn();
-const closeModalMock = jest.fn();
 
-describe('Edit Profile modal - handle submit action', () => {
+describe('Edit Profile Section - handle submit action', () => {
   beforeEach(() => {
     dispatchMock.mockClear();
     updateUserInfoMock.mockClear();
-    closeModalMock.mockClear();
     // @ts-ignore
     authApi.updateProfile.mockClear();
     // @ts-ignore
@@ -43,7 +41,6 @@ describe('Edit Profile modal - handle submit action', () => {
       profile,
       undefined,
       updateUserInfoMock,
-      closeModalMock,
     )();
 
     expect(dispatchMock).toHaveBeenCalledTimes(1);
@@ -59,7 +56,7 @@ describe('Edit Profile modal - handle submit action', () => {
     const profile: ProfileDto = {
       name: 'user',
       lastName: 'last name',
-      userName: 'user.name',
+      userName: 'userName',
       email: 'a@a.com',
       avatar: 'user1',
     };
@@ -69,7 +66,6 @@ describe('Edit Profile modal - handle submit action', () => {
       profile,
       undefined,
       updateUserInfoMock,
-      closeModalMock,
     )();
 
     expect(dispatchMock).toHaveBeenCalledTimes(1);
@@ -79,7 +75,6 @@ describe('Edit Profile modal - handle submit action', () => {
       message: 'Your profile has been updated.',
     });
     expect(updateUserInfoMock).toHaveBeenCalledWith({ sub: 'user-id' });
-    expect(closeModalMock).toHaveBeenCalled();
   });
 
   it('should call the updateProfile and updateAvatar API actions and update the user info', async () => {
@@ -91,7 +86,7 @@ describe('Edit Profile modal - handle submit action', () => {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
-      userName: 'user.name',
+      userName: 'userName',
       avatar: AvatarOptions.PHOTO,
     };
     const imageFile = new File([], 'test');
@@ -101,7 +96,6 @@ describe('Edit Profile modal - handle submit action', () => {
       profile,
       imageFile,
       updateUserInfoMock,
-      closeModalMock,
     )();
 
     expect(dispatchMock).toHaveBeenCalledTimes(1);
@@ -112,7 +106,6 @@ describe('Edit Profile modal - handle submit action', () => {
       message: 'Your profile has been updated.',
     });
     expect(updateUserInfoMock).toHaveBeenCalledWith({ sub: 'user-id-with-avatar' });
-    expect(closeModalMock).toHaveBeenCalled();
   });
 
   it('should call the updateProfile and updateAvatar API actions and show a notification of error', async () => {
@@ -126,7 +119,7 @@ describe('Edit Profile modal - handle submit action', () => {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
-      userName: 'user.name',
+      userName: 'userName',
       avatar: AvatarOptions.PHOTO,
     };
     const imageFile = new File([], 'test');
@@ -136,7 +129,6 @@ describe('Edit Profile modal - handle submit action', () => {
       profile,
       imageFile,
       updateUserInfoMock,
-      closeModalMock,
     )();
 
     expect(dispatchMock).toHaveBeenCalledTimes(2);
@@ -147,7 +139,6 @@ describe('Edit Profile modal - handle submit action', () => {
       message: 'There has is been an issue with your profile',
     });
     expect(updateUserInfoMock).not.toHaveBeenCalled();
-    expect(closeModalMock).not.toHaveBeenCalled();
   });
 
   it('should call the updateProfile API action and dispatch an action to set validation errors', async () => {
@@ -163,7 +154,7 @@ describe('Edit Profile modal - handle submit action', () => {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
-      userName: 'user.name',
+      userName: 'userName',
       avatar: AvatarOptions.PHOTO,
     };
     const imageFile = new File([], 'test');
@@ -173,7 +164,6 @@ describe('Edit Profile modal - handle submit action', () => {
       profile,
       imageFile,
       updateUserInfoMock,
-      closeModalMock,
     )();
 
     expect(dispatchMock).toHaveBeenCalledTimes(2);
@@ -188,6 +178,5 @@ describe('Edit Profile modal - handle submit action', () => {
     expect(authApi.updateAvatar).not.toHaveBeenCalled();
     expect(showNotification).not.toHaveBeenCalled();
     expect(updateUserInfoMock).not.toHaveBeenCalled();
-    expect(closeModalMock).not.toHaveBeenCalled();
   });
 });

@@ -23,7 +23,7 @@ const Friends: FunctionComponent = () => {
   );
 
   const goToProfile = useCallback((friend: UserModel) => {
-    push(`/app/user/${friend.id}`);
+    push(`/app/user/${friend.userName}`);
   }, []);
 
   const action = useCallback(({ user }) => (

@@ -1,7 +1,7 @@
-import { commonRules, Rule, RuleType } from 'helpers/form-validations';
+import { commonRules, ValidationRule, RuleType } from 'helpers/form-validations';
 import { passwordRegex } from 'helpers/regex-collection';
 
-const validPasswordRule: Rule = {
+const validPasswordRule: ValidationRule = {
   type: RuleType.MatchRegExp,
   value: passwordRegex,
   message: `

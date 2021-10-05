@@ -65,12 +65,11 @@ const SignPage: FunctionComponent = () => {
           onError={setErrors}
           rules={validationRules}
         >
-          <Field name="email" label="Email" mB />
+          <Field name="email" label="Email" />
           <Field
             name="password"
             label="Password"
             component={PasswordInput}
-            mB
           />
           <RenderIf condition={!!errors.signError}>
             <Text color="error" padding="8px 0 8px 20px">

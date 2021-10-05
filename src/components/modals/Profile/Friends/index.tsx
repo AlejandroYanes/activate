@@ -31,7 +31,7 @@ const Friends: FunctionComponent = () => {
   const { isLoading, data: response, error } = useQuery(key, action);
 
   const goToProfile = useCallback((friend: UserModel) => {
-    push(`/app/user/${friend.id}`);
+    push(`/app/user/${friend.userName}`);
   }, []);
 
   return (

@@ -40,13 +40,11 @@ const ChangePasswordSection: FunctionComponent = () => {
             name="newPassword"
             label="New Password"
             component={PasswordInput}
-            mT
           />
           <Field
             name="confirm"
             label="Repeat New Password"
             component={PasswordInput}
-            mT
           />
         </Form>
         <FlexBox justify="flex-end" mT>

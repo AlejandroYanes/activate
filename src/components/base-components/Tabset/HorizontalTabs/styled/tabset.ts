@@ -3,7 +3,7 @@ import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const getBorderStyles = ({ bordered, theme }) => (
   bordered
-    ? `border-bottom: 2px solid ${theme.colors.GRAY_SHADE};`
+    ? `border-bottom: 2px solid ${theme.colors.FONT_SHADE};`
     : ''
 );
 

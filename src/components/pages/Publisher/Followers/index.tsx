@@ -24,7 +24,7 @@ const Followers = () => {
   );
 
   const goToProfile = useCallback((friend: ConsumerModel) => {
-    push(`/app/user/${friend.id}`);
+    push(`/app/user/${friend.userName}`);
   }, []);
 
   const action = useCallback(({ user }) => (

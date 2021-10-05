@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import Modal from 'components/base-components/Modal';
 import { Field, Form } from 'components/base-components/Form';
 import RenderIf from 'components/base-components/RenderIf';
@@ -14,7 +13,6 @@ import useEditProfileState, { AvatarOptions, profileRules } from './state';
 
 const EditProfileModal: FunctionComponent = () => {
   const { goBack } = useHistory();
-  const layout = useAppLayout();
   const filePickerRef = useRef(undefined);
   const {
     state: {
@@ -50,16 +48,12 @@ const EditProfileModal: FunctionComponent = () => {
     </>
   );
 
-  const modalSize = (
-    layout === Layout.MOBILE ? 'mobile' : 'medium'
-  );
-
   return (
     <Modal
       visible
-      size={modalSize}
       onClose={goBack}
       footer={footer}
+      size="mobile"
       title="Edit Profile"
     >
       <Form
@@ -72,8 +66,8 @@ const EditProfileModal: FunctionComponent = () => {
         <ProfileBox>
           <InputBox>
             <Field name="userName" label="User Name" />
-            <Field name="email" label="Email" mT />
-            <Field name="name" label="Name" mT />
+            <Field name="email" label="Email" />
+            <Field name="name" label="Name" />
           </InputBox>
           <AvatarsBox>
             <Field
