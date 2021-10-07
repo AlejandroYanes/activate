@@ -56,7 +56,7 @@ describe('Edit Profile Section - handle submit action', () => {
     const profile: ProfileDto = {
       name: 'user',
       lastName: 'last name',
-      userName: 'userName',
+      userName: 'username',
       email: 'a@a.com',
       avatar: 'user1',
     };
@@ -86,7 +86,7 @@ describe('Edit Profile Section - handle submit action', () => {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
-      userName: 'userName',
+      userName: 'username',
       avatar: AvatarOptions.PHOTO,
     };
     const imageFile = new File([], 'test');
@@ -119,7 +119,7 @@ describe('Edit Profile Section - handle submit action', () => {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
-      userName: 'userName',
+      userName: 'username',
       avatar: AvatarOptions.PHOTO,
     };
     const imageFile = new File([], 'test');
@@ -154,7 +154,7 @@ describe('Edit Profile Section - handle submit action', () => {
       email: 'a@a.com',
       name: 'user',
       lastName: 'last name',
-      userName: 'userName',
+      userName: 'username',
       avatar: AvatarOptions.PHOTO,
     };
     const imageFile = new File([], 'test');
