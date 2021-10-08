@@ -76,6 +76,7 @@ const EditProfileModal: FunctionComponent = () => {
             <Text>To be a good username it:</Text>
             <ul>
               <li>must use all lower case letters</li>
+              <li>must be from 2 to 16 characters long</li>
               <li>can use numbers, just not the first character</li>
               <li>
                 can not use punctuation signs
