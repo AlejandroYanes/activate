@@ -1,4 +1,5 @@
 import { isValidEmail, isValidWebSite } from './input-validations';
+import { passwordRegex } from './regex-collection';
 
 export enum RuleType {
   Required = 'Required',
@@ -35,6 +36,11 @@ export const commonRules = {
   website: {
     type: RuleType.WebSite,
     message: 'This is not a valid url',
+  },
+  password: {
+    type: RuleType.MatchRegExp,
+    value: passwordRegex,
+    message: 'The password does not meet the requirements'
   },
 };
 

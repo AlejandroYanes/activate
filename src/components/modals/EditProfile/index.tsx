@@ -8,8 +8,15 @@ import Avatar from 'components/base-components/Avatar';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { ErrorText } from 'components/base-components/Inputs';
 import { Button } from 'components/base-components/Button';
-import { AvatarsBox, HiddenInput, ImagePreview, InputBox, ProfileBox } from './styled';
+import {
+  AvatarsBox,
+  HiddenInput,
+  ImagePreview,
+  InputBox,
+  ProfileBox,
+} from './styled';
 import useEditProfileState, { AvatarOptions, profileRules } from './state';
+import { Text } from '../../base-components/Typography';
 
 const EditProfileModal: FunctionComponent = () => {
   const { goBack } = useHistory();
@@ -65,8 +72,21 @@ const EditProfileModal: FunctionComponent = () => {
       >
         <ProfileBox>
           <InputBox>
-            <Field name="userName" label="User Name" />
-            <Field name="email" label="Email" />
+            <Field name="userName" label="User Name" margin="0 0 24px 0 !important" />
+            <Text>To be a good username it:</Text>
+            <ul>
+              <li>must use all lower case letters</li>
+              <li>can use numbers, just not the first character</li>
+              <li>
+                can not use punctuation signs
+                (<strong> . : , ; </strong>)
+              </li>
+              <li>
+                can not use special characters
+                (<strong>{' ! @ # $ % ^ & * < > _ '}</strong>)
+              </li>
+            </ul>
+            <Field name="email" label="Email" mT />
             <Field name="name" label="Name" />
           </InputBox>
           <AvatarsBox>

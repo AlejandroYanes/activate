@@ -1,8 +1,8 @@
-import { FunctionComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import FlexBox from 'components/base-components/FlexBox';
 import { Field, Form } from 'components/base-components/Form';
 import { PasswordInput } from 'components/base-components/Inputs';
-import { Title } from 'components/base-components/Typography';
+import { Text, Title } from 'components/base-components/Typography';
 import { Button } from 'components/base-components/Button';
 import useChangePasswordState, { passwordRules } from './state';
 
@@ -31,6 +31,13 @@ const ChangePasswordSection: FunctionComponent = () => {
           onError={setErrors}
           rules={passwordRules}
         >
+          <Text>To be a good password it:</Text>
+          <ul>
+            <li>must be from 8 to 16 characters long</li>
+            <li>must use at least one lower and upper case letter</li>
+            <li>must use at least one number</li>
+            <li>can use special characters, though its not mandatory</li>
+          </ul>
           <Field
             name="current"
             label="Current Password"
