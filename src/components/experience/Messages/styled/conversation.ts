@@ -7,18 +7,13 @@ export const Conversation = styled.main`
 `;
 
 const getBackgroundColor = (props) => {
-  const { theme: { colors }, sent, inverseColors } = props;
-
-  if (sent) {
-    return colors.BRAND_BG;
-  }
-
-  return inverseColors ? colors.BACKGROUND_LIGHT : colors.BACKGROUND;
+  const { theme: { colors }, sent } = props;
+  return sent ? colors.BRAND_BG : colors.BACKGROUND_LIGHTER;
 };
 
 export const TextBubble = styled.div.attrs(anyPropsAttrs)`
   border-radius: 8px;
-  padding: 6px 10px;
+  padding: 8px 12px;
   min-height: 40px;
   min-width: 120px;
   max-width: 70%;
