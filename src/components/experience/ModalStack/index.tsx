@@ -1,12 +1,24 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
+import ErrorBoundary from 'components/base-components/ErrorBoundry';
 import ModalRenderer from './ModalRenderer';
+import LoadingModal from './LoadingModal';
+import EmptyModal from './EmptyModal';
+
+const loading = <LoadingModal />;
+const error = <EmptyModal />;
 
 const ModalStack: FunctionComponent = () => {
   const { hash } = useLocation();
 
   if (hash) {
-    return <ModalRenderer hash={hash} />
+    return (
+      <ErrorBoundary errorMessage={error}>
+        <Suspense fallback={loading}>
+          <ModalRenderer hash={hash} />
+        </Suspense>
+      </ErrorBoundary>
+    )
   }
 
   return null;
