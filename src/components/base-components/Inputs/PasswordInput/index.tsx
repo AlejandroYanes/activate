@@ -32,7 +32,7 @@ const PasswordInput: FunctionComponent<InputProps> = (props) => {
   }, []);
 
   return (
-    <StyledContainer {...rest}>
+    <StyledContainer {...rest} data-el="input-wrapper">
       <InputLabel text={label} required={required} />
       <InputIcon icon={icon} topSpaced />
       <StyledInput

@@ -34,7 +34,6 @@ const UserCard: FunctionComponent<Props> = (props) => {
   } = useUserState(user);
 
   const {
-    id,
     name,
     userName,
     avatar,
@@ -45,7 +44,7 @@ const UserCard: FunctionComponent<Props> = (props) => {
     },
   } = user;
 
-  const link = `user/${id}`;
+  const link = `user/${userName}`;
   const avatars = friends.map(f => f.avatar);
 
   return (

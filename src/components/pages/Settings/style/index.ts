@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { getBgdLightColor } from 'helpers';
+import { getFontShadeColor } from 'helpers';
 
 export const Panel = styled.div`
-  background: ${getBgdLightColor};
+  border: 1px solid ${getFontShadeColor};
   border-radius: 16px;
   padding: 24px;
   width: min(94%, 860px);

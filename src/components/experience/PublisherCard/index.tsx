@@ -22,7 +22,6 @@ const noFriends = <FlexBox height={34} mT />;
 const PublisherCard: FunctionComponent<Props> = (props) => {
   const {
     user: {
-      id,
       avatar,
       name,
       userName,
@@ -39,7 +38,7 @@ const PublisherCard: FunctionComponent<Props> = (props) => {
     actions: { follow },
   } = usePublisherState(props.user);
 
-  const link = `/app/publisher/${id}`;
+  const link = `/app/publisher/${userName}`;
   const avatars = friends.map(friend => friend.avatar);
 
   return (

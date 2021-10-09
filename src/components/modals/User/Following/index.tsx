@@ -26,7 +26,7 @@ const Following: FunctionComponent<Props> = (props) => {
   );
 
   const handleClick = useCallback((publisher: UserModel) => {
-    push(`/app/publisher/${publisher.id}`);
+    push(`/app/publisher/${publisher.userName}`);
   }, []);
 
   const action = useCallback(({ user }) => (

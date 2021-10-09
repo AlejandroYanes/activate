@@ -11,6 +11,7 @@ import PublisherPage from 'components/pages/Publisher';
 import UserPage from 'components/pages/User';
 import TalksPage from 'components/pages/Talks';
 import UpcomingPage from 'components/pages/Upcoming';
+import SettingsPage from 'components/pages/Settings';
 
 import PublisherModal from 'components/modals/Publisher';
 import ProfileModal from 'components/modals/Profile';
@@ -25,7 +26,6 @@ import FiltersModal from 'components/modals/Filters';
 import UpdatesModal from 'components/modals/Updates';
 import ChangePasswordModal from 'components/modals/ChangePassword';
 import InviteUsersModal from 'components/modals/Invite';
-import SettingsPage from '../pages/Settings';
 
 interface RouteDef {
   path: string;

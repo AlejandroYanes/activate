@@ -26,7 +26,7 @@ const Followers: FunctionComponent<Props> = (props) => {
 
   const { push } = useHistory();
   const goToProfile = useCallback((friend: ConsumerModel) => {
-    push(`/app/user/${friend.id}`);
+    push(`/app/user/${friend.userName}`);
   }, []);
 
   const action = useCallback(({ user }) => (

@@ -3,8 +3,12 @@ import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const getBorderStyles = ({ bordered, theme }) => (
   bordered
-    ? `border-right: 2px solid ${theme.colors.GRAY_SHADE};`
+    ? `border-right: 2px solid ${theme.colors.FONT_SHADE};`
     : ''
+);
+
+const getWidthStyles = ({ fullWidth }) => (
+  fullWidth ? 'width: 100%;' : ''
 );
 
 export const StyledTabset = styled.ul.attrs(anyPropsAttrs)`
@@ -13,6 +17,7 @@ export const StyledTabset = styled.ul.attrs(anyPropsAttrs)`
   margin: 0;
   display: flex;
   flex-direction: column;
+  ${getWidthStyles};
   ${getBorderStyles};
   ${getPositionStyles};
 `;
