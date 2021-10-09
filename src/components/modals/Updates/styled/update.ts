@@ -1,13 +1,19 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { getBgdLighterColor } from 'helpers';
 
-export const StyledNotification = styled.div`
+export const Update = styled.li`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Content = styled(Link)`
   position: relative;
   display: flex;
   flex-direction: row;
   border-radius: 6px;
   padding: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   transition: all 250ms linear;
 
   &:hover {

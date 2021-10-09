@@ -5,6 +5,7 @@ import { UpdateModel } from 'models/update';
 import { QueryKey } from 'components/providers/Query';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Update from './Update';
+import { List } from './styled';
 
 function updateFactory(updates: UpdateModel[]) {
   return updates.map((update) => <Update key={update.id} data={update as any} />);
@@ -37,9 +38,9 @@ const UpdatesPanel: FunctionComponent = () => {
   }
 
   return (
-    <>
+    <List>
       {updateCards}
-    </>
+    </List>
   );
 };
 
