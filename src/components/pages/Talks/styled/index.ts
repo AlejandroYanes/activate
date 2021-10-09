@@ -1,2 +1,2 @@
-export * from './page';
+export * from './panel';
 export * from './splash-screen';
