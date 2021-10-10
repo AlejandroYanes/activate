@@ -1,31 +1,37 @@
 @font-face {
   font-family: 'Bitter-Regular';
-  src: local('Bitter-Regular'), url('../../assets/fonts/Bitter-Regular.ttf');
+  font-display: swap;
+  src: local('Bitter-Regular'), url('../../assets/fonts/Bitter-Regular.woff');
 }
 
 @font-face {
   font-family: 'Bitter-ExtraBold';
-  src: local('Bitter-ExtraBold'), url('../../assets/fonts/Bitter-ExtraBold.ttf');
+  font-display: swap;
+  src: local('Bitter-ExtraBold'), url('../../assets/fonts/Bitter-ExtraBold.woff');
 }
 
 @font-face {
   font-family: 'Bitter-ExtraLight';
-  src: local('Bitter-ExtraLight'), url('../../assets/fonts/Bitter-ExtraLight.ttf');
+  font-display: swap;
+  src: local('Bitter-ExtraLight'), url('../../assets/fonts/Bitter-ExtraLight.woff');
 }
 
 @font-face {
   font-family: 'Roboto-Regular';
-  src: local('Roboto-Regular'), url('../../assets/fonts/Roboto-Regular.ttf');
+  font-display: swap;
+  src: local('Roboto-Regular'), url('../../assets/fonts/Roboto-Regular.woff');
 }
 
 @font-face {
   font-family: 'Roboto-Bold';
-  src: local('Roboto-Bold'), url('../../assets/fonts/Roboto-Bold.ttf');
+  font-display: swap;
+  src: local('Roboto-Bold'), url('../../assets/fonts/Roboto-Bold.woff');
 }
 
 @font-face {
   font-family: 'Roboto-Thin';
-  src: local('Roboto-Thin'), url('../../assets/fonts/Roboto-Thin.ttf');
+  font-display: swap;
+  src: local('Roboto-Thin'), url('../../assets/fonts/Roboto-Thin.woff');
 }
 
 body {

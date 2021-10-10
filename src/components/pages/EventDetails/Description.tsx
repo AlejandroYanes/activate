@@ -1,18 +1,18 @@
 import React, { FunctionComponent } from 'react';
-import faker from 'faker';
 import { EventModel } from 'models/event';
 import { formatDateTime } from 'helpers';
 import { Paragraph, Text } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';
 import Attendance from 'components/experience/Attendance';
+import { paragraphs } from './description';
 
 interface Props {
   event: EventModel;
 }
 
-const description = new Array(6).fill(1).map((_, index) => (
+const description = paragraphs.map((text, index) => (
   <Paragraph padding="8px 8px 16px" size="large" key={index}>
-    {faker.lorem.lines(10)}
+    {text}
   </Paragraph>
 ));
 
