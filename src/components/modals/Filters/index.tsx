@@ -62,7 +62,6 @@ const FiltersModal: FunctionComponent = () => {
           color="brand"
           fullWidth
           highlight
-          mB
         >
           <Option value={EventLocation.All} label="All" />
           <Option value={EventLocation.OnLine} label="Online" />
@@ -74,7 +73,6 @@ const FiltersModal: FunctionComponent = () => {
             label="Address"
             icon="MAP_PIN"
             showClear
-            mB
           />
         </RenderIf>
         <Field
@@ -84,7 +82,6 @@ const FiltersModal: FunctionComponent = () => {
           type="date-range"
           showOptions
           showClear
-          mB
         />
         <Field
           name="category"
@@ -95,7 +92,6 @@ const FiltersModal: FunctionComponent = () => {
           icon="TAG"
           showClear
           multiple
-          mB
         />
       </Form>
     </Modal>

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'helpers';
 import Modal from 'components/base-components/Modal';
 import FlexBox from 'components/base-components/FlexBox';
@@ -94,13 +94,15 @@ const EventDetailsModal: FunctionComponent = () => {
         <Title level={1} size={32} padding="16px 0 24px">
           {capitalizeFirstLetter(name)}
         </Title>
-        <FlexBox align="flex-start">
-          <Avatar src="user2" />
-          <FlexBox direction="column" padding="0 0 0 6px">
-            <Text size="small" color="secondary">{author.userName}</Text>
-            <Text padding="6px 0 0 0">{author.name}</Text>
+        <Link to={`/app/publisher/${author.userName}`}>
+          <FlexBox align="center">
+            <Avatar src={author.avatar} />
+            <FlexBox direction="column" padding="0 0 0 6px">
+              <Text size="small" color="secondary">@{author.userName}</Text>
+              <Text padding="4px 0 0 0">{author.name}</Text>
+            </FlexBox>
           </FlexBox>
-        </FlexBox>
+        </Link>
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}

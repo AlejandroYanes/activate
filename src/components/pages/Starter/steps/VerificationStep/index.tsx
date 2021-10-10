@@ -47,6 +47,7 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
               component={NumberInput}
               name="code"
               label="Your code"
+              margin="0 !important"
             />
           </Form>
           <Button

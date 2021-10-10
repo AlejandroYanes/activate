@@ -1,6 +1,6 @@
 import { commonRules } from 'helpers';
 
-const { required } = commonRules;
+const { required, password } = commonRules;
 
 function validateConfirmPassword(value, entity) {
   if (entity.newPassword !== value) {
@@ -9,7 +9,7 @@ function validateConfirmPassword(value, entity) {
 }
 
 export const passwordRules = {
-  current: [required],
-  newPassword: [required],
+  current: [required, password],
+  newPassword: [required, password],
   confirm: [required, validateConfirmPassword],
 };

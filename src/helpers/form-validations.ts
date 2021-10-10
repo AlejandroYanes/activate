@@ -1,4 +1,5 @@
 import { isValidEmail, isValidWebSite } from './input-validations';
+import { passwordRegex } from './regex-collection';
 
 export enum RuleType {
   Required = 'Required',
@@ -11,7 +12,7 @@ export enum RuleType {
   MatchRegExp = 'MatchRegExp',
 }
 
-export interface Rule {
+export interface ValidationRule {
   type: RuleType;
   value?: number | RegExp;
   message: string;
@@ -20,7 +21,7 @@ export interface Rule {
 export type FunctionRule<T = any> = (value, entity: T) => string;
 
 export interface ValidationRules {
-  [x: string]: (Rule | FunctionRule) [];
+  [x: string]: (ValidationRule | FunctionRule) [];
 }
 
 export const commonRules = {
@@ -35,6 +36,11 @@ export const commonRules = {
   website: {
     type: RuleType.WebSite,
     message: 'This is not a valid url',
+  },
+  password: {
+    type: RuleType.MatchRegExp,
+    value: passwordRegex,
+    message: 'The password does not meet the requirements'
   },
 };
 
@@ -66,8 +72,9 @@ function checkMaxValue(value, matchValue, message) {
     : undefined;
 }
 
-export function checkCommonRules(rule: Rule, value) {
+export function checkCommonRules(rule: ValidationRule, value) {
   const { type, message, value: matchValue } = rule;
+
   switch (type) {
     case RuleType.Required:
       return !hasValue(value) ? message : undefined;
@@ -84,14 +91,17 @@ export function checkCommonRules(rule: Rule, value) {
     case RuleType.WebSite:
       return hasValue(value) && !isValidWebSite(value) ? message : undefined;
     case RuleType.MatchRegExp:
-      return hasValue(value) && !(matchValue as RegExp).test(value) ? message : undefined;
+      const isMatch = (matchValue as RegExp).test(value);
+      return hasValue(value) && !isMatch
+        ? message
+        : undefined;
     default:
       return undefined;
   }
 }
 
 export function checkValidationRules(
-  rules: (Rule | FunctionRule)[],
+  rules: (ValidationRule | FunctionRule)[],
   value,
   entity,
 ): string {
@@ -99,10 +109,11 @@ export function checkValidationRules(
 
   for (let i = 0; i < rules.length && !error; i += 1) {
     const rule = rules[i];
+
     if (typeof rule === 'function') {
       error = rule(value, entity);
     } else {
-      error = checkCommonRules(rule as Rule, value);
+      error = checkCommonRules(rule as ValidationRule, value);
     }
   }
 

@@ -6,7 +6,7 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { checkValidationRules, FunctionRule, Rule } from 'helpers';
+import { checkValidationRules, FunctionRule, ValidationRule } from 'helpers';
 import { useDebounce } from 'hooks/UI';
 import { Input } from 'components/base-components/Inputs';
 import FormContext from './context';
@@ -19,7 +19,7 @@ interface Props {
   skipDebounce?: boolean;
   onChange?: (event, setField, state) => void;
   onBlur?: (event, setField, state) => void;
-  rules?: (Rule | FunctionRule)[];
+  rules?: (ValidationRule | FunctionRule)[];
   required?: boolean;
   [x: string]: any;
 }

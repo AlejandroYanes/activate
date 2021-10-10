@@ -12,7 +12,6 @@ export default function handleSubmit(
   profile: ProfileDto,
   image: File,
   updateUserInfo: (userInfo: UserInfo) => void,
-  closeModal: () => void,
 ) {
   return () => {
     const { hasErrors, errors } = validateEntity(profile, profileRules);
@@ -41,7 +40,6 @@ export default function handleSubmit(
         message: 'Your profile has been updated.',
       });
       updateUserInfo(response.data);
-      closeModal();
     }
 
     const onError = (response: ApiErrorResponse) => {

@@ -20,12 +20,13 @@ const SettingsPage: FunctionComponent = () => {
 
   return (
     <Panel>
-      <FlexBox direction="column" align="stretch" width="25%">
+      <FlexBox direction="row" align="stretch" width="25%">
         <Tabset
           activeTab={activeTab}
           onTabChange={setActiveTab}
           direction="vertical"
           bordered
+          fullWidth
         >
           <Tab name={Menus.PROFILE} label="Edit Profile" />
           <Tab name={Menus.PASSWORD} label="Change Password" />

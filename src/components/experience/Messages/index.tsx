@@ -25,7 +25,6 @@ interface Props {
   leftActions?: ReactNode;
   rightActions?: ReactNode;
   viewMode?: 'page' | 'panel' | 'mobile';
-  inverseColors?: boolean;
 }
 
 const Messages: FunctionComponent<Props> = (props) => {
@@ -34,7 +33,6 @@ const Messages: FunctionComponent<Props> = (props) => {
     leftActions,
     rightActions,
     viewMode,
-    inverseColors,
   } = props;
   const [message, setMessage] = useState('');
 
@@ -55,7 +53,7 @@ const Messages: FunctionComponent<Props> = (props) => {
         {rightActions}
       </Header>
       <Content>
-        <Conversation inverseColors={inverseColors} />
+        <Conversation />
       </Content>
       <Footer viewMode={viewMode}>
         <TextBox

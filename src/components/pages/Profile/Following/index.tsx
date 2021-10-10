@@ -17,7 +17,7 @@ const Following: FunctionComponent = () => {
   } = useQuery(QueryKey.FETCH_MY_PUBLISHERS, usersApi.listMyPublishers);
 
   const handleClick = useCallback((publisher: UserModel) => {
-    push(`/app/publisher/${publisher.id}`);
+    push(`/app/publisher/${publisher.userName}`);
   }, []);
 
   const action = useCallback(({ user }) => (

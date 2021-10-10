@@ -72,7 +72,7 @@ const EventDetailsPage: FunctionComponent = () => {
             </Title>
           </FlexBox>
           <FlexBox align="center" margin="8px 0">
-            <Link to={`/app/publisher/${author.id}`}>
+            <Link to={`/app/publisher/${author.userName}`}>
               <FlexBox align="center">
                 <Avatar src={author.avatar} />
                 <FlexBox direction="column" padding="0 0 0 6px">
