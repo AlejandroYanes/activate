@@ -1,6 +1,8 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import faker from 'faker';
+import { useQuery } from 'react-query';
+import usersApi from 'api/users';
+import { QueryKey } from 'components/providers/Query';
 import { Case, Switch } from 'components/base-components/Switch';
 import { IconButton } from 'components/base-components/Button';
 import Modal from 'components/base-components/Modal';
@@ -25,6 +27,11 @@ const TalksModal: FunctionComponent = () => {
     replace,
     goBack,
   } = useHistory();
+
+  const { isLoading, data: response, error } = useQuery(
+    QueryKey.FETCH_MY_FRIENDS,
+    usersApi.listMyFriends,
+  );
 
   const openTalk = useCallback((user) => {
     const routingMethod = pathname === viewMap.contacts ? replace : push;
@@ -56,24 +63,6 @@ const TalksModal: FunctionComponent = () => {
     }
   }, [pathname]);
 
-  const users = useMemo(() => (
-    new Array(faker.random.number({ min: 20, max: 30 }))
-      .fill(1)
-      .map(() => ({
-        id: faker.random.uuid(),
-        avatar: `user${faker.random.number({ min: 1, max: 4 })}`,
-        name: faker.name.firstName(),
-        lastName: faker.name.lastName(),
-        userName: faker.internet.userName(),
-        lastMessage: (
-          pathname === viewMap.chats
-            ? faker.lorem.words(8)
-            : undefined
-        ),
-        active: faker.random.boolean(),
-      }))
-  ), [pathname]);
-
   const showContactsButton = (
     <IconButton
       size="large"
@@ -92,7 +81,9 @@ const TalksModal: FunctionComponent = () => {
           component={UsersList}
           onClick={openTalk}
           action={showContactsButton}
-          users={users}
+          loading={isLoading}
+          errored={!!error}
+          users={response?.data.results}
           padding="0 0 0 16px"
           scroll
         />
@@ -100,7 +91,9 @@ const TalksModal: FunctionComponent = () => {
           value={viewMap.contacts}
           component={UsersList}
           onClick={openTalk}
-          users={users}
+          loading={isLoading}
+          errored={!!error}
+          users={response?.data.results}
           padding="0 0 0 16px"
           scroll
         />
