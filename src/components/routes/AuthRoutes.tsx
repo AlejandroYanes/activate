@@ -1,31 +1,34 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, Suspense } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { PrivateLayout } from 'components/Layout';
 import { useAuthData } from 'components/providers/Auth';
 import { Layout, useAppLayout } from 'components/providers/Layout';
-import ProfilePage from 'components/pages/Profile';
-import DiscoverPage from 'components/pages/Discover';
-import EventDetailsPage from 'components/pages/EventDetails';
-import SearchPage from 'components/pages/Search';
-import PublisherPage from 'components/pages/Publisher';
-import UserPage from 'components/pages/User';
-import TalksPage from 'components/pages/Talks';
-import UpcomingPage from 'components/pages/Upcoming';
-import SettingsPage from 'components/pages/Settings';
 
-import PublisherModal from 'components/modals/Publisher';
-import ProfileModal from 'components/modals/Profile';
-import EventDetailsModal from 'components/modals/EventDetails';
-import UserModal from 'components/modals/User';
-import TalksModal from 'components/modals/Talks';
-import InterestsModal from 'components/modals/Interests';
-import SettingsModal from 'components/modals/Settings';
-import EditProfileModal from 'components/modals/EditProfile';
-import AppColorsModal from 'components/modals/AppColors';
-import FiltersModal from 'components/modals/Filters';
-import UpdatesModal from 'components/modals/Updates';
-import ChangePasswordModal from 'components/modals/ChangePassword';
-import InviteUsersModal from 'components/modals/Invite';
+const ProfilePage = React.lazy(() => import('components/pages/Profile'));
+const DiscoverPage = React.lazy(() => import('components/pages/Discover'));
+const EventDetailsPage = React.lazy(() => import('components/pages/EventDetails'));
+const SearchPage = React.lazy(() => import('components/pages/Search'));
+const PublisherPage = React.lazy(() => import('components/pages/Publisher'));
+const UserPage = React.lazy(() => import('components/pages/User'));
+const TalksPage = React.lazy(() => import('components/pages/Talks'));
+const UpcomingPage = React.lazy(() => import('components/pages/Upcoming'));
+const SettingsPage = React.lazy(() => import('components/pages/Settings'));
+
+const PublisherModal = React.lazy(() => import('components/modals/Publisher'));
+const ProfileModal = React.lazy(() => import('components/modals/Profile'));
+const EventDetailsModal = React.lazy(() => import('components/modals/EventDetails'));
+const UserModal = React.lazy(() => import('components/modals/User'));
+const TalksModal = React.lazy(() => import('components/modals/Talks'));
+const InterestsModal = React.lazy(() => import('components/modals/Interests'));
+const SettingsModal = React.lazy(() => import('components/modals/Settings'));
+const EditProfileModal = React.lazy(() => import('components/modals/EditProfile'));
+const AppColorsModal = React.lazy(() => import('components/modals/AppColors'));
+const FiltersModal = React.lazy(() => import('components/modals/Filters'));
+const UpdatesModal = React.lazy(() => import('components/modals/Updates'));
+const InviteUsersModal = React.lazy(() => import('components/modals/Invite'));
+const ChangePasswordModal = React.lazy(
+  () => import('components/modals/ChangePassword')
+);
 
 interface RouteDef {
   path: string;
@@ -76,6 +79,8 @@ const routesMap = {
   [Layout.MOBILE]: mapRoutes([...routesWithModals, ...commonRoutes]),
 };
 
+const loading = <div>Loading...</div>
+
 const AuthRoutes: FunctionComponent = () => {
   const { pathname } = useLocation();
   const { isLoggedIn } = useAuthData();
@@ -96,11 +101,13 @@ const AuthRoutes: FunctionComponent = () => {
 
   return (
     <PrivateLayout>
-      <Switch>
-        <Route path="/app" component={DiscoverPage} exact />
-        {routesStack}
-        <Redirect to="/app" />
-      </Switch>
+      <Suspense fallback={loading}>
+        <Switch>
+          <Route path="/app" component={DiscoverPage} exact />
+          {routesStack}
+          <Redirect to="/app" />
+        </Switch>
+      </Suspense>
     </PrivateLayout>
   );
 };
