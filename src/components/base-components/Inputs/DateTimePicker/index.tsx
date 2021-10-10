@@ -60,7 +60,7 @@ const DateTimePicker: FunctionComponent<Props> = (props) => {
 
   return (
     <>
-      <StyledDateTimePicker id={id} {...rest}>
+      <StyledDateTimePicker id={id} {...rest} data-el="date-picker-wrapper">
         <InputLabel text={label} />
         <Content
           type={type}

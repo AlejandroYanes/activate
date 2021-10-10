@@ -15,7 +15,7 @@ const Options: FunctionComponent<Props> = (props) => {
   const { value, onChange, color, size, fullWidth, children, ...rest } = props;
 
   return (
-    <StyledOptions color={color} {...rest}>
+    <StyledOptions color={color} {...rest} data-el="options-wrapper">
       <OptionsProvider
         value={value}
         onChange={onChange}
