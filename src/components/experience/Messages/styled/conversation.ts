@@ -6,9 +6,14 @@ export const Conversation = styled.main`
   flex-direction: column;
 `;
 
+const getBackgroundColor = (props) => {
+  const { theme: { colors }, sent } = props;
+  return sent ? colors.BRAND_BG : colors.BACKGROUND_LIGHTER;
+};
+
 export const TextBubble = styled.div.attrs(anyPropsAttrs)`
-  border-radius: 16px;
-  padding: 6px 10px;
+  border-radius: 8px;
+  padding: 8px 12px;
   min-height: 40px;
   min-width: 120px;
   max-width: 70%;
@@ -16,5 +21,5 @@ export const TextBubble = styled.div.attrs(anyPropsAttrs)`
   align-items: center;
   position: relative;
   margin: ${({ sent }) => `0 ${!sent ? 'auto' : 0} 20px ${sent ? 'auto' : 0}`};
-  background-color: ${({ theme: { colors }, sent }) => sent ? colors.BRAND : colors.BACKGROUND};
+  background-color: ${getBackgroundColor};
 `;

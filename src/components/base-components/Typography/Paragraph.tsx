@@ -4,7 +4,6 @@ import { Paragraph as StyledParagraph } from './styled/paragraph';
 
 interface Props extends PositionProps {
   size?: 'small' | 'medium' | 'large';
-  secondary?: boolean;
 }
 
 const Paragraph: FunctionComponent<Props> = (props) => {

@@ -7,72 +7,56 @@ export const StyledItem = styled.li.attrs(anyPropsAttrs)`
   display: flex;
   flex-direction: column;
   padding: 0;
-  margin: 0 12px;
   height: ${({ size }) => sizeMap[size]};
   width: ${({ size }) => sizeMap[size]};
-`;
 
-const getMarkColor = (props) => {
-  const { theme: { useDarkStyle, colors }, color } = props;
-  return css`background-color: ${useDarkStyle ? colors.FONT : colors[color.toUpperCase()]}`;
-};
-
-export const Mark = styled.div.attrs(anyPropsAttrs)`
-  position: absolute;
-  width: 88px;
-  height: 48px;
-  right: -44px;
-  top: -16px;
-  transform: rotate(45deg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  transition: all 150ms linear;
-  ${getMarkColor};
-
-  & > * {
-    transform: rotate(-45deg);
-    margin-right: 10px;
+  &:focus {
+    outline: none;
   }
 `;
 
 const getColorStyles = (props) => {
-  const { theme: { useDarkStyle, colors }, color, isSelected } = props;
+  const {
+    theme: {
+      colors,
+    },
+    color,
+    dashed,
+    readonly,
+    isSelected,
+  } = props;
 
-  if (useDarkStyle) {
-    const borderColor = isSelected
-      ? colors.FONT
-      : colors.GRAY_DARK;
+  const colorInScheme = color.toUpperCase();
+  const borderColor = isSelected
+    ? colors[colorInScheme]
+    : colors.FONT_SHADE;
 
-    const hoverColor = colors.FONT;
+  const bgColor = colors[`${colorInScheme}_SHADE`];
+  const hoverColor = colors[`${colorInScheme}_HIGHLIGHT`];
 
+  if (readonly) {
     return css`
-      border: 2px solid ${borderColor};
-      &:hover, &:focus {
-        outline: none;
-        border-color: ${hoverColor};
-        ${Mark} {
-          background-color: ${hoverColor};
-        }
-      }
+      cursor: default;
+      border: 1px ${dashed ? 'dashed' : 'solid'} ${borderColor};
     `;
   }
 
-  const borderColor = isSelected
-    ? colors[color.toUpperCase()]
-    : colors.GRAY_LIGHT;
-
-  const hoverColor = colors[`${color.toUpperCase()}_LIGHT`];
-
   return css`
-    border: 2px solid ${borderColor};
-    &:hover, &:focus {
+    cursor: pointer;
+    border: 1px ${dashed ? 'dashed' : 'solid'} ${borderColor};
+
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:hover {
+      border-color: ${hoverColor};
+      background-color: ${bgColor};
+    }
+
+    &:focus {
       outline: none;
       border-color: ${hoverColor};
-      ${Mark} {
-        background-color: ${hoverColor};
-      }
     }
   `;
 };
@@ -85,10 +69,11 @@ export const Touchable = styled.button.attrs(anyPropsAttrs)`
   overflow: hidden;
   position: relative;
   background-color: transparent;
+  font-family: Bitter-Regular, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   ${getColorStyles};
   transition: all 100ms linear;
-
-  &:active {
-    transform: scale(0.95);
-  }
 `;

@@ -1,10 +1,13 @@
 import React, { createContext, FunctionComponent, useContext, useMemo } from 'react';
 
 interface PickListContext {
-  value: string;
+  value: string | string[];
   onChange: (value) => void;
+  multiple?: boolean;
+  readonly?: boolean;
   size?: 'small' | 'medium' | 'large';
   color?: 'brand' | 'accent' | 'success' | 'info' | 'warning' | 'error';
+  flatMarker?: boolean;
 }
 
 const pickListContext = createContext<PickListContext>(undefined);

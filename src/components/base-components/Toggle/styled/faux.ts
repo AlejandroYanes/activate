@@ -1,90 +1,39 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
+import { anyPropsAttrs } from 'helpers';
 
-const animationSpeed = 150;
-
-export const FauxContainer = styled.div`
-  display: flex;
-  height: 24px;
-  min-width: 44px;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-right: 8px;
-`;
-
-export const FauxSlide = styled.div`
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  border-radius: 18px;
-  overflow: hidden;
-`;
-
-const getOffColors = (props) => {
-  const { theme: { useDarkStyle, colors } } = props;
-
-  if (useDarkStyle) {
-    return `
-      background-color: ${colors.GRAY_DARK};
-
-      &:hover, &:focus {
-        background-color: ${colors.GRAY};
-      }
-    `;
-  }
+const getStyles = (props) => {
+  const { checked, theme: { colors } } = props;
+  const baseColor = checked ? colors.ACCENT : colors.GRAY;
+  const focusColor = checked ? colors.ACCENT_HIGHLIGHT : colors.GRAY_DARK;
 
   return `
-      background-color: ${colors.GRAY};
+    justify-content: ${checked ? 'flex-end' : 'flex-start'};
+    background-color: ${baseColor};
 
-      &:hover, &:focus {
-        background-color: ${colors.GRAY_DARK};
-      }
-    `;
+    &:hover {
+      background-color: ${focusColor};
+    }
+    &:focus {
+      outline: none;
+      background-color: ${focusColor};
+    }
+  `;
 };
 
-export const FauxOffSide = styled.div.attrs((props: any) => props)`
-  width: 44px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${({ position }) => `${position}%`};
-  transition: all linear ${animationSpeed}ms;
-  ${getOffColors};
+export const FauxContainer = styled.div.attrs(anyPropsAttrs)`
+  display: flex;
+  align-items: center;
+  height: 26px;
+  min-width: 48px;
+  border-radius: 18px;
+  overflow: hidden;
+  padding: 2px;
+  cursor: pointer;
+  ${getStyles};
 `;
 
-const getOnColors = (props) => {
-  const { theme: { useDarkStyle, colors } } = props;
-
-  if (useDarkStyle) {
-    return `
-      background-color: ${colors.ACCENT_DARK};
-
-      &:hover, &:focus {
-        background-color: ${colors.ACCENT};
-      }
-    `;
-  }
-
-  return `
-      background-color: ${colors.ACCENT};
-
-      &:hover, &:focus {
-        background-color: ${colors.ACCENT_DARK};
-      }
-    `;
-};
-
-export const FauxOnSide = styled.div.attrs((props: any) => props)`
-  width: 44px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: ${({ position }) => `${position}%`};
-  transition: all linear ${animationSpeed}ms;
-  ${getOnColors};
-`;
-
-export const FauxNob = styled.div.attrs((props: any) => props)`
+export const FauxNob = styled(motion.div)`
   pointer-events: none;
   display: flex;
   flex-direction: column;
@@ -93,10 +42,5 @@ export const FauxNob = styled.div.attrs((props: any) => props)`
   width: 20px;
   height: 20px;
   border-radius: 50px;
-  position: absolute;
-  margin-top: -10px;
-  top: 50%;
-  left: ${({ position }) => position};
   background-color: ${({ theme }) => theme.colors.WHITE};
-  transition: all linear ${animationSpeed}ms;
 `;

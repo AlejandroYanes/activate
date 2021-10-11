@@ -1,73 +1,68 @@
-import React, { FunctionComponent, useState } from 'react';
-import * as faker from 'faker';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { useAppColors } from 'components/providers/Theme';
-import { PresentationCard } from 'components/experience/EventCard';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Icons } from 'components/base-components/SvgIcon';
+import React, { FunctionComponent } from 'react';
+import { RelationshipStatus } from 'models/user';
 import Page from 'components/base-components/Page';
-import IconButton from 'components/base-components/IconButton';
-import ProfileCard from 'components/experience/ProfileCard';
-import { events } from '../Discover/events';
-
-const user = {
-  name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-  userName: `@${faker.internet.userName()}`,
-  followingCount: faker.random.number(100),
-  friendCount: faker.random.number(200),
-  bio: faker.lorem.lines(4),
-};
-
-enum UserTabs {
-  EVENTS = 'Events',
-  FOLLOWING = 'Following',
-  FRIENDS = 'Friends',
-}
+import FlexBox from 'components/base-components/FlexBox';
+import { Case, Switch } from 'components/base-components/Switch';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import PrivateAccount from './PrivateAccount';
+import ProfileData from './ProfileData';
+import Following from './Following';
+import Friends from './Friends';
+import Events from './Events';
+import useUserState, { Tabs } from './state';
 
 const UserPage: FunctionComponent = () => {
-  const Colors = useAppColors();
-  const layout = useAppLayout();
+  const {
+    state: {
+      activeTab,
+      isLoading,
+      errored,
+      user,
+    },
+    actions: {
+      setActiveTab,
+    },
+  } = useUserState();
 
-  const [activeTab, setActiveTab] = useState(UserTabs.EVENTS);
-  const { friendCount, followingCount, ...rest } = user;
+  if (isLoading) {
+    return (
+      <Page>
+        <LoadingScreen />
+      </Page>
+    );
+  }
 
-  const action = (
-    <IconButton
-      onClick={() => undefined}
-      icon={Icons.ADD_USER}
-      color={Colors.ACCENT}
-      buttonColor="accent"
-      size="large"
-      variant="flat"
-    />
+  if (errored) {
+    return (
+      <Page>
+        <NoConnectionScreen message="We couldn't load this user's profile." />
+      </Page>
+    );
+  }
+
+  const { relationStatus } = user;
+  const myFriend = (
+    relationStatus === RelationshipStatus.ACCEPTED ||
+    relationStatus === RelationshipStatus.MUTED
   );
+
+  if (!myFriend) {
+    return (
+      <PrivateAccount user={user} />
+    );
+  }
+
 
   return (
     <Page>
-      <ProfileCard
-        image="user8"
-        leftStatLabel="Following"
-        leftStatValue={followingCount}
-        rightStatLabel="Friends"
-        rightStatValue={friendCount}
-        action={action}
-        {...rest}
-      >
-        <Tabset
-          activeTab={activeTab}
-          onTabChange={setActiveTab}
-          compact={layout === Layout.SMALL}
-          fullWidth
-          mT
-        >
-          <Tab name={UserTabs.EVENTS} label="Events" icon={Icons.CALENDAR_FILLED} />
-          <Tab name={UserTabs.FOLLOWING} label="Following" icon={Icons.MEGAPHONE} />
-          <Tab name={UserTabs.FRIENDS} label="Friends" icon={Icons.USERS} />
-        </Tabset>
-      </ProfileCard>
-      <PresentationCard {...events[0]} />
-      <PresentationCard {...events[2]} />
-      <PresentationCard {...events[4]} />
+      <FlexBox direction="column" align="stretch" width={680} margin="0 auto">
+        <ProfileData user={user} activeTab={activeTab} setActiveTab={setActiveTab} />
+      </FlexBox>
+      <Switch by={activeTab}>
+        <Case value={Tabs.EVENTS} component={Events} />
+        <Case value={Tabs.FOLLOWING} component={Following} />
+        <Case value={Tabs.FRIENDS} component={Friends} />
+      </Switch>
     </Page>
   );
 };

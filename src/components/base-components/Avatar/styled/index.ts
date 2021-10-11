@@ -1,30 +1,58 @@
-import styled from 'styled-components';
-import { getMargins } from 'helpers';
-import { AvatarProps } from '..';
+import styled, { css } from 'styled-components';
+import { anyPropsAttrs, getBgdLighterColor, getPositionStyles } from 'helpers';
 
-const avatarStyles = {
-  size: {
-    'xx-small': { width: '20px', height: '20px' },
-    'x-small': { width: '28px', height: '28px' },
-    small: { width: '36px', height: '36px' },
-    medium: { width: '52px', height: '52px' },
-    large: { width: '64px', height: '64px' },
-    'x-large': { width: '86px', height: '86px' },
-  },
+const avatarSizes = {
+  'x-small': { width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' },
+  small: { width: '28px', height: '28px', minWidth: '28px', minHeight: '28px' },
+  medium: { width: '40px', height: '40px', minWidth: '40px', minHeight: '40px' },
+  large: { width: '64px', height: '64px', minWidth: '64px', minHeight: '64px' },
+  'x-large': { width: '86px', height: '86px', minWidth: '86px', minHeight: '86px' },
+  'xx-large': { width: '102px', height: '102px', minWidth: '102px', minHeight: '102px' },
 };
 
-const getSizeStyles = (props: AvatarProps) => avatarStyles.size[props.size];
+const getSizeStyles = ({ size }) => avatarSizes[size];
 
-export const StyledAvatar = styled.span.attrs((props: any) => props)`
-  ${getSizeStyles};
-  ${getMargins};
-  border-radius: 50%;
+const getClickableStyles = (props) => {
+  const { clickable, theme: { colors } } = props;
 
-  &:focus {
-    outline: none;
+  if (clickable) {
+    return css`
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 150ms linear;
+
+      &:active {
+        transform: scale(0.9);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: ${colors.ACCENT};
+      }
+    `;
   }
-`;
 
-export const Img = styled.img.attrs((props: any) => props)`
-  ${getSizeStyles}
+  return css`
+      &:focus {
+        outline: none;
+      }
+  `;
+};
+
+export const StyledAvatar = styled.div.attrs(anyPropsAttrs)`
+  border-radius: 50%;
+  box-sizing: content-box;
+  overflow: hidden;
+  background-color: ${getBgdLighterColor};
+  ${getSizeStyles};
+  ${getClickableStyles};
+  ${getPositionStyles};
+
+  & > svg {
+    ${getSizeStyles};
+  }
+
+  & > img {
+    ${getSizeStyles};
+  }
 `;

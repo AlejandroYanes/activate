@@ -1,34 +1,30 @@
 import React, { FunctionComponent } from 'react';
-import { useAppTheme } from 'components/providers/Theme';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
 import AbsoluteContent from './AbsoluteContent';
 
 interface Props {
-  isFocused?: boolean;
   showClear?: boolean;
+  topSpaced?: boolean;
+  returnValue?: any;
   onClick: (event) => void;
   style?: any;
 }
 
 const ClearButton: FunctionComponent<Props> = (props) => {
-  const { colors: Colors, useDarkStyle } = useAppTheme();
-  const { showClear, isFocused, onClick, style } = props;
+  const { topSpaced, showClear, returnValue, onClick, style } = props;
 
   if (showClear) {
-    const clearInput = () => {
-      onClick({ target: { value: '' } });
+    const clearInput = (event) => {
+      event.stopPropagation();
+      onClick(returnValue);
     };
 
-    const focusedColor = useDarkStyle ? Colors.BRAND : Colors.BRAND_DARK;
-
     return (
-      <AbsoluteContent style={style} floatRight>
+      <AbsoluteContent style={style} topSpaced={topSpaced} floatRight>
         <IconButton
           onClick={clearInput}
-          icon={Icons.CLOSE}
-          buttonColor={isFocused ? 'brand' : 'font'}
-          color={isFocused ? focusedColor : Colors.FONT}
+          icon="CLOSE"
+          color="background"
           size="small"
         />
       </AbsoluteContent>
@@ -36,6 +32,10 @@ const ClearButton: FunctionComponent<Props> = (props) => {
   }
 
   return null;
+};
+
+ClearButton.defaultProps = {
+  returnValue: '',
 };
 
 export default ClearButton;

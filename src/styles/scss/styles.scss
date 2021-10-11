@@ -1,54 +1,48 @@
-@import './colors.scss';
-
 @font-face {
-  font-family: 'Comfortaa';
-  src: local('Comfortaa'), url('../../assets/fonts/Comfortaa-VariableFont_wght.ttf');
+  font-family: 'Bitter-Regular';
+  font-display: swap;
+  src: local('Bitter-Regular'), url('../../assets/fonts/Bitter-Regular.woff');
 }
 
 @font-face {
-  font-family: 'Rosarina';
-  src: local('Rosarina'), url('../../assets/fonts/rosarina.ttf');
+  font-family: 'Bitter-ExtraBold';
+  font-display: swap;
+  src: local('Bitter-ExtraBold'), url('../../assets/fonts/Bitter-ExtraBold.woff');
 }
 
 @font-face {
-  font-family: 'Podriq';
-  src: local('Podriq'), url('../../assets/fonts/Podriq.otf');
+  font-family: 'Bitter-ExtraLight';
+  font-display: swap;
+  src: local('Bitter-ExtraLight'), url('../../assets/fonts/Bitter-ExtraLight.woff');
 }
 
 @font-face {
-  font-family: 'Podriq Thick';
-  src: local('Podriq Thick'), url('../../assets/fonts/Podriq-Thick.otf');
+  font-family: 'Roboto-Regular';
+  font-display: swap;
+  src: local('Roboto-Regular'), url('../../assets/fonts/Roboto-Regular.woff');
 }
 
 @font-face {
-  font-family: 'Podriq Thin';
-  src: local('Podriq Thin'), url('../../assets/fonts/Podriq-Thin.otf');
+  font-family: 'Roboto-Bold';
+  font-display: swap;
+  src: local('Roboto-Bold'), url('../../assets/fonts/Roboto-Bold.woff');
 }
 
 @font-face {
-  font-family: 'MPlus Rounded Normal';
-  src: local('MPlus Rounded Normal'), url('../../assets/fonts/MPLUSRounded1c-Regular.ttf');
-}
-
-@font-face {
-  font-family: 'MPlus Rounded Light';
-  src: local('MPlus Rounded Light'), url('../../assets/fonts/MPLUSRounded1c-Light.ttf');
-}
-
-@font-face {
-  font-family: 'MPlus Rounded Thin';
-  src: local('MPlus Rounded Thin'), url('../../assets/fonts/MPLUSRounded1c-Thin.ttf');
+  font-family: 'Roboto-Thin';
+  font-display: swap;
+  src: local('Roboto-Thin'), url('../../assets/fonts/Roboto-Thin.woff');
 }
 
 body {
   margin: 0;
-  font-family: 'MPlus Rounded Normal', sans-serif;
+  font-family: Roboto-Regular, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
   background-color: #f5f6fa;
-}
 
-a {
-  text-decoration: none;
+  #root {
+    height: 100%;
+  }
 }

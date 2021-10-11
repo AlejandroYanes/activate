@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import Avatar from 'components/base-components/Avatar';
-import { anyPropsAttrs, getMargins } from '../../../../helpers';
+import { anyPropsAttrs, getPositionStyles } from '../../../../helpers';
 
 export const Card = styled.div`
   position: relative;
@@ -16,7 +16,6 @@ export const StyledAvatar = styled(Avatar)`
   top: -43px;
   left: 50%;
   margin: 0 auto 0 -43px;
-  border-radius: 50%;
   border: 10px solid ${({ theme }) => theme.colors.BACKGROUND};
 `;
 
@@ -38,7 +37,7 @@ export const Info = styled.div.attrs(anyPropsAttrs)`
   display: flex;
   align-items: flex-start;
   ${getAlignStyles};
-  ${getMargins};
+  ${getPositionStyles};
 `;
 
 export const Attr = styled.div`

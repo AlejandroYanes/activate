@@ -1,27 +1,13 @@
-import React, { FunctionComponent, useMemo, useState } from 'react';
-import { PositionProps } from 'helpers';
-import { useAppTheme } from 'components/providers/Theme';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import RenderIf from 'components/base-components/RenderIf';
+import React, { FunctionComponent, useCallback } from 'react';
+import { getEventValue } from 'helpers';
 import InputLabel from '../base/Label';
 import ClearButton from '../base/ClearButton';
-import AbsoluteContent from '../base/AbsoluteContent';
+import InputIcon from '../base/Icon';
+import ErrorText from '../base/ErrorText';
+import { InputProps } from '../types';
 import { StyledContainer, StyledInput } from './styled/input';
 
-interface Props extends PositionProps {
-  id?: string;
-  placeholder?: string;
-  label?: string;
-  icon?: Icons;
-  value: string;
-  onChange: (event) => void;
-  onFocus?: (event) => void;
-  onBlur?: (event) => void;
-  showClear?: boolean;
-}
-
-const Input: FunctionComponent<Props> = (props) => {
-  const { colors: Colors } = useAppTheme();
+const Input: FunctionComponent<InputProps> = (props) => {
   const {
     label,
     placeholder,
@@ -30,53 +16,39 @@ const Input: FunctionComponent<Props> = (props) => {
     onChange,
     onFocus,
     onBlur,
+    onKeyDown,
     showClear,
+    required,
+    error,
     ...rest
   } = props;
-  const [isFocused, setIsFocused] = useState(false);
 
-  const handleFocus = (event) => {
-    setIsFocused(true);
-    if (onFocus) {
-      onFocus(event);
-    }
-  };
-
-  const handleBlur = (event) => {
-    setIsFocused(false);
-    if (onBlur) {
-      onBlur(event);
-    }
-  };
-
-  const iconElement = useMemo(() => {
-    return (
-      <SvgIcon icon={icon} color={isFocused ? Colors.BRAND : Colors.FONT} />
-    );
-  }, [icon, isFocused, Colors])
+  const handleOnChange = useCallback((event) => {
+    onChange(getEventValue(event));
+  }, [onChange]);
 
   return (
-    <StyledContainer {...rest}>
-      <InputLabel text={label} isFocused={isFocused} />
-      <RenderIf condition={!!icon}>
-        <AbsoluteContent>
-          {iconElement}
-        </AbsoluteContent>
-      </RenderIf>
+    <StyledContainer {...rest} data-el="input-wrapper">
+      <InputLabel text={label} required={required} data-el="input-label" />
+      <InputIcon icon={icon} topSpaced={!!label} />
       <StyledInput
+        data-el="input"
+        value={value}
+        error={!!error}
         padLeft={!!icon}
         padRight={showClear}
         placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onChange={handleOnChange}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        onKeyDown={onKeyDown}
       />
       <ClearButton
-        isFocused={isFocused}
+        topSpaced={!!label}
         showClear={showClear && !!value}
         onClick={onChange}
       />
+      <ErrorText text={error} />
     </StyledContainer>
   );
 };

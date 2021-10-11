@@ -1,58 +1,45 @@
-import React, { FunctionComponent, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { IconProps, Icons } from 'components/base-components/SvgIcon';
-import { StyledBadge, Icon } from './styled';
-import { useAppColors } from '../../providers/Theme';
-import { ColorScheme } from '../../../styles/colors';
+import { Icons } from 'components/base-components/SvgIcon';
+import RenderIf from 'components/base-components/RenderIf';
+import { Icon, StyledBadge } from './styled';
 
 export interface BadgeProps extends PositionProps {
-  color: 'brand' | 'info' | 'success' | 'warning' | 'error' | 'light';
-  label: string;
+  color: 'brand' | 'accent' | 'info' | 'success' | 'warning' | 'error' | 'light';
+  label?: string;
   icon?: Icons;
-  iconProps?: IconProps;
   sm?: boolean;
-}
-
-function resolveIconColor(color: string, Colors: ColorScheme) {
-  if (color === 'light') {
-    return Colors.FONT;
-  }
-
-  return Colors.WHITE;
+  asButton?: boolean;
 }
 
 const Badge: FunctionComponent<BadgeProps> = (props) => {
-  const Colors = useAppColors();
   const {
     label,
     color,
     icon,
-    iconProps,
     sm,
+    children,
     ...rest
   } = props;
 
-  const iComponent = useMemo(() => {
-    if (icon) {
-      return (
-        <Icon
-          size={sm ? 'small' : 'medium'}
-          icon={icon}
-          color={resolveIconColor(color, Colors)}
-          {...iconProps}
-        />
-      );
-    }
-
-    return null;
-  }, [icon, iconProps, color, Colors, sm]);
-
   return (
-    <StyledBadge color={color} sm={sm} {...rest}>
-      {iComponent}
-      <label>{label}</label>
-    </StyledBadge>
+    <RenderIf condition={!!children || !!label}>
+      <StyledBadge color={color} sm={sm} {...rest}>
+        <RenderIf condition={!children} fallback={children}>
+          <Icon
+            size={sm ? 'small' : 'medium'}
+            icon={icon}
+            color={color === 'light' ? 'FONT' : 'WHITE'}
+          />
+          <label>{label}</label>
+        </RenderIf>
+      </StyledBadge>
+    </RenderIf>
   );
+};
+
+Badge.defaultProps = {
+  color: 'brand',
 };
 
 export default Badge;

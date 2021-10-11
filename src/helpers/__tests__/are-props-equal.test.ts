@@ -1,6 +1,7 @@
 import { arePropsEqual } from '../are-props-equal';
 
 describe('arePropsEqual function', () => {
+  // eslint-disable-next-line max-len
   it('should return a function that compares to object based on the props passes in the list', () => {
     const prevProps = {
       prop1: 'props1',

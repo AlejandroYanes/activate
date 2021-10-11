@@ -1,29 +1,50 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
+import { scrollThumbWidth } from 'styles/variables';
+import { Layout, useAppLayout } from 'components/providers/Layout';
 import { StyledBackdrop } from './styled';
 
 interface Props {
-  onClick: (e) => void;
+  onClick: (event) => void;
 }
 
-const clickTrap = (event) => {
-  event.stopPropagation();
-  event.preventDefault();
-};
-
 const Backdrop: FunctionComponent<Props> = (props) => {
+  const layout = useAppLayout();
   const { onClick, children } = props;
+  const backdropRef = useRef(undefined);
+
+  const handleClick = (event) => {
+    if (event.target === backdropRef.current) {
+      onClick(event);
+    }
+  };
 
   useEffect(() => {
-    document.body.style.overflowY = 'hidden';
-    return () => {
-      document.body.style.overflowY = 'auto';
+    const backdropFlag = document.body.getAttribute('data-backdrop');
+    const isPrimaryBackdrop = !backdropFlag;
+
+    if (isPrimaryBackdrop) {
+      document.body.setAttribute('data-backdrop', 'on');
+      document.body.style.overflowY = 'hidden';
+
+      if (layout === Layout.DESKTOP) {
+        document.body.style.padding = `0 ${scrollThumbWidth} 0 0`;
+      }
+
+      return () => {
+        document.body.removeAttribute('data-backdrop');
+        document.body.style.overflowY = 'auto';
+
+        if (layout === Layout.DESKTOP) {
+          document.body.style.padding = '0px';
+        }
+      }
     }
   }, []);
 
   return ReactDOM.createPortal((
-    <StyledBackdrop onClick={onClick} data-el="backdrop">
-      <div onClick={clickTrap} data-el="backdrop-container">
+    <StyledBackdrop ref={backdropRef} onClick={handleClick} data-el="backdrop">
+      <div data-el="backdrop-container">
         {children}
       </div>
     </StyledBackdrop>

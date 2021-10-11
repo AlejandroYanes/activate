@@ -6,9 +6,8 @@ import React, {
   useEffect,
   useState,
 } from 'react';
-import { getEventValue } from 'helpers';
-import { useDebounce } from 'hooks/UI/use-debounce';
-import { checkValidationRules, FunctionRule, Rule } from 'helpers/form-validations';
+import { checkValidationRules, FunctionRule, ValidationRule } from 'helpers';
+import { useDebounce } from 'hooks/UI';
 import { Input } from 'components/base-components/Inputs';
 import FormContext from './context';
 
@@ -20,7 +19,7 @@ interface Props {
   skipDebounce?: boolean;
   onChange?: (event, setField, state) => void;
   onBlur?: (event, setField, state) => void;
-  rules?: (Rule | FunctionRule)[];
+  rules?: (ValidationRule | FunctionRule)[];
   required?: boolean;
   [x: string]: any;
 }
@@ -40,23 +39,27 @@ const Field: FunctionComponent<Props> = (props) => {
   const WrappedComponent = component || Input;
   const inputId = id || name;
 
-  const handleChange = useCallback((event) => {
-    if (event && event.persist) {
-      event.persist();
-    }
-    const nextValue = getEventValue(event);
-    const callback = onChange
-      ? () => onChange(event, setField, state)
-      : () => setField({ [name]: nextValue });
+  const validateField = useCallback((toValidate) => {
+    if (fieldRules) {
+      const error = checkValidationRules(fieldRules, toValidate, state);
 
-    setInputState({
-      value: nextValue,
-      isDirty: true,
-    });
-    if (skipDebounce) {
-      callback();
+      if (error || (fieldError && fieldError !== error)) {
+        setErrors({ [name]: error });
+      }
+    }
+  }, [fieldRules, errors, setErrors]);
+
+  const handleChange = useCallback((nextValue) => {
+    if (onChange) {
+      const callback =  () => onChange(nextValue, setField, state);
+      skipDebounce ? callback() : debounceCall(callback);
     } else {
-      debounceCall(callback);
+      setInputState({
+        value: nextValue,
+        isDirty: true,
+      });
+      const callback = () => setField({ [name]: nextValue });
+      skipDebounce ? callback() : debounceCall(callback);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, setField, onChange]);
@@ -64,18 +67,13 @@ const Field: FunctionComponent<Props> = (props) => {
   const handleBlur = useCallback((event) => {
     if (onBlur) {
       onBlur(event, setField, state);
-      return;
     }
 
-    if (fieldRules && isDirty) {
-      const error = checkValidationRules(fieldRules, value, state);
-
-      if (error || fieldError) {
-        setErrors({ [name]: error });
-      }
+    if (isDirty) {
+      validateField(value);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, state, setField, onBlur, errors, setErrors, isDirty, fieldRules]);
+  }, [value, state, setField, onBlur, isDirty, validateField]);
 
   useEffect(() => {
     if (stateValue !== value) {
@@ -83,6 +81,10 @@ const Field: FunctionComponent<Props> = (props) => {
         value: stateValue,
         isDirty: false,
       });
+    }
+
+    if (fieldError) {
+      debounceCall(() => validateField(value));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stateValue]);
@@ -92,9 +94,9 @@ const Field: FunctionComponent<Props> = (props) => {
       id={inputId}
       name={name}
       value={value || ''}
+      error={fieldError}
       onChange={handleChange}
       onBlur={handleBlur}
-      error={errors ? errors[name] : undefined}
       {...rest}
     />
   );

@@ -5,21 +5,24 @@ import { Wrapper, Circle } from './styled/concentric';
 
 interface Props extends PositionProps {
   size: 'small' | 'medium' | 'large' | 'page';
+  color?: string;
 }
 
 const Concentric: FunctionComponent<Props> = (props) => {
+  const { color, ...rest } = props;
   const Colors = useAppColors();
+
   return (
     <Wrapper
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 340 340"
       strokeLinecap="round"
-      {...props}
+      {...rest}
     >
-      <Circle cx="170" cy="170" r="160" stroke={Colors.BRAND_LIGHT} />
-      <Circle cx="170" cy="170" r="135" stroke={Colors.ACCENT_LIGHT} />
-      <Circle cx="170" cy="170" r="110" stroke={Colors.SUCCESS_LIGHT} />
-      <Circle cx="170" cy="170" r="85" stroke={Colors.ERROR_LIGHT} />
+      <Circle cx="170" cy="170" r="160" stroke={color || Colors.BRAND} />
+      <Circle cx="170" cy="170" r="135" stroke={color || Colors.ACCENT} />
+      <Circle cx="170" cy="170" r="110" stroke={color || Colors.SUCCESS} />
+      <Circle cx="170" cy="170" r="85" stroke={color || Colors.ERROR} />
     </Wrapper>
   );
 };

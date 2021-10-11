@@ -15,8 +15,8 @@ export const StyledBackdrop = styled.section`
   justify-content: center;
   align-items: center;
   z-index: ${ZLevels.backdrop};
-   background-color: ${({ theme }) => getShade(theme.colors.GRAY_DARK, 0.4)};
-  backdrop-filter: blur(8px);
+  background-color: ${({ theme }) => getShade(theme.colors.GRAY_DARK, 0.4)};
+  backdrop-filter: blur(2px);
 `;
 
 export const Container = styled.div``;

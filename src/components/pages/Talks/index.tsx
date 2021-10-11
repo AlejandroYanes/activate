@@ -1,48 +1,36 @@
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
-import { EventChannelList, useEventCenterUpdate } from 'components/event-center';
-import { AuxPanelSection, usePanelActions } from 'components/providers/PanelSections';
-import { useAppColors } from 'components/providers/Theme';
-import { Icons } from 'components/base-components/SvgIcon';
-import IconButton from 'components/base-components/IconButton';
-import Page from 'components/base-components/Page';
+import React, { FunctionComponent, useMemo, useState, } from 'react';
 import RenderIf from 'components/base-components/RenderIf';
+import { IconButton } from 'components/base-components/Button';
 import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
-import { Card, } from './styled/page';
+import { Container, Panel } from './styled';
+import Users from './Users';
 
 const TalksPage: FunctionComponent = () => {
-  const colors = useAppColors();
-  const { setActiveSection } = usePanelActions();
   const [activeUser, setActiveUser] = useState(undefined);
 
-  const receiveActiveUser = useCallback((user) => {
-    setActiveUser(user);
-  }, []);
-
-  useEventCenterUpdate(EventChannelList.USER_SELECTED_FOR_CHAT, receiveActiveUser);
-
-  useEffect(() => {
-    setActiveSection(AuxPanelSection.TALKS);
-  }, []);
-
-  const actions = (
+  const chatMenu = useMemo(() => (
     <IconButton
       onClick={() => undefined}
-      icon={Icons.MORE_VERT}
-      color={colors.FONT}
-      buttonColor="font"
+      icon="MORE_VERT"
+      color="background"
       variant="flat"
     />
-  );
+  ), []);
 
   return (
-    <Page>
-      <Card>
+    <Container data-el="message-container">
+      <Panel data-el="message-panel">
+        <Users onUserClick={setActiveUser} />
         <RenderIf condition={!!activeUser} fallback={<SplashScreen />}>
-          <Messages user={activeUser} rightActions={actions} />
+          <Messages
+            viewMode="page"
+            user={activeUser}
+            rightActions={chatMenu}
+          />
         </RenderIf>
-      </Card>
-    </Page>
+      </Panel>
+    </Container>
   );
 };
 

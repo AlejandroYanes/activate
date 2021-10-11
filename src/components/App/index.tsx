@@ -1,14 +1,18 @@
-import React, { FunctionComponent } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { FunctionComponent, useEffect } from 'react';
 import AppProviders from 'components/providers';
-import AppBody from './AppBody';
+import Routes from 'components/routes';
 
-const App: FunctionComponent = () => (
-  <BrowserRouter>
+const App: FunctionComponent = () => {
+  useEffect(() => {
+    const preloader = document.querySelector('[data-el="preloader"]');
+    (preloader as HTMLElement).style.display = 'none';
+  }, []);
+
+  return (
     <AppProviders>
-      <AppBody />
+      <Routes />
     </AppProviders>
-  </BrowserRouter>
-);
+  );
+};
 
 export default App;

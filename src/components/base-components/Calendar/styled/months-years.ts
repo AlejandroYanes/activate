@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import Button from 'components/base-components/Button';
+import styled, { css } from 'styled-components';
+import { Button } from 'components/base-components/Button';
+import { getBgdLighterColor } from 'helpers';
 
 export const StyledList = styled.div`
   display: flex;
@@ -9,34 +10,24 @@ export const StyledList = styled.div`
 `;
 
 const getBasicStyles = (props) => {
-  const { isSelected, theme: { useDarkStyle, colors } } = props;
+  const { isSelected, theme: { colors } } = props;
 
   if (isSelected) {
-    return `
-    background-color: ${useDarkStyle ? colors.BRAND_DARK : colors.BRAND};
-    color: ${colors.WHITE};
+    return css`
+      background-color: ${colors.BRAND_BG};
+      color: ${getBgdLighterColor};
+
+      &:hover {
+        background-color: ${colors.BRAND_BG_HIGHLIGHT};
+        color: ${getBgdLighterColor};
+      }
     `;
   }
-  return '';
-};
 
-const getHoverStyles = (props) => {
-  const { isSelected, theme: { useDarkStyle, colors } } = props;
-
-  if (isSelected) {
-    return `
-    background-color: ${useDarkStyle ? colors.BRAND : colors.BRAND_DARK};
-    color: ${colors.WHITE};
-    `;
-  }
   return '';
 };
 
 export const Item = styled(Button).attrs((props: any) => props)`
   width: 30%;
   ${getBasicStyles};
-
-  &:hover {
-    ${getHoverStyles};
-  }
 `;

@@ -1,55 +1,117 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
+import { ConsumerModel } from 'models/user';
+import { formatAmount } from 'helpers';
 import { Text, Title } from 'components/base-components/Typography';
-import { Icons } from 'components/base-components/SvgIcon';
 import Avatar from 'components/base-components/Avatar';
-import IconButton from 'components/base-components/IconButton';
+import FlexBox from 'components/base-components/FlexBox';
+import AvatarGroup from 'components/base-components/AvatarGroup';
+import { Button, LinkButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
-import { Card, Info } from './styled';
+import AbsoluteContent from 'components/base-components/AbsoluteContent';
+import SvgIcon from 'components/base-components/SvgIcon';
+import { Card } from './styled';
+import useUserState from './state';
 
-const UserCard: FunctionComponent = () => {
-  const Colors = useAppColors();
-  const layout = useAppLayout();
-  const { push } = useHistory();
+interface Props {
+  user: ConsumerModel;
+}
 
-  const { userName, name } = useMemo(() => ({
-    userName: `@${faker.internet.userName()}`,
-    name: `${faker.name.firstName()} ${faker.name.lastName()}`,
-  }), []);
+const noFriends = <FlexBox height={34} mT />;
 
-  const isSmallLayout = layout === Layout.SMALL;
+const UserCard: FunctionComponent<Props> = (props) => {
+  const { user } = props;
+  const {
+    state: {
+      isPending,
+      isPendingForMe,
+      isMyFriend,
+    },
+    actions: {
+      sendFriendRequest,
+      acceptFriendRequest,
+    },
+  } = useUserState(user);
+
+  const {
+    name,
+    userName,
+    avatar,
+    friends,
+    count: {
+      following,
+      friends: friendsCount,
+    },
+  } = user;
+
+  const link = `user/${userName}`;
+  const avatars = friends.map(f => f.avatar);
 
   return (
     <Card>
-      <Avatar icon="user2" size="medium" />
-      <Info>
-       <Link to="user">
-         <Text size="small">{userName}</Text>
-         <Title level={3} color="brand">{name}</Title>
-       </Link>
-      </Info>
-      <RenderIf condition={!isSmallLayout}>
-        <IconButton
-          onClick={() => push('/user')}
-          icon={Icons.RESUME}
-          color={Colors.INFO}
-          buttonColor="info"
-          variant="flat"
-          size="large"
-          mR
-        />
+      <RenderIf condition={isMyFriend}>
+        <AbsoluteContent top={16} right={16}>
+          <SvgIcon icon="STAR_FILLED" color="BRAND_FONT" />
+        </AbsoluteContent>
       </RenderIf>
-      <IconButton
-        onClick={() => undefined}
-        icon={Icons.ADD_USER}
-        color={Colors.ACCENT}
-        buttonColor="accent"
-        variant="flat"
-        size="large"
-      />
+      <Avatar src={avatar} size="large" />
+      <Link to={link}>
+        <FlexBox direction="column" align="center">
+          <Title level={3} weight="bold" align="center" padding="8px 0" ellipsis>
+            {name}
+          </Title>
+          <Text align="center">@{userName}</Text>
+        </FlexBox>
+      </Link>
+      <FlexBox align="center" mT>
+        <FlexBox direction="column" align="center" padding="0 16px">
+          <Text>Following</Text>
+          <Title level={3} weight="bold">{formatAmount(following)}</Title>
+        </FlexBox>
+        <FlexBox direction="column" align="center" padding="0 16px">
+          <Text>Friends</Text>
+          <Title level={3} weight="bold">{formatAmount(friendsCount)}</Title>
+        </FlexBox>
+      </FlexBox>
+      <RenderIf
+        condition={avatars.length > 0}
+        fallback={noFriends}
+      >
+        <AvatarGroup icons={avatars} mT />
+      </RenderIf>
+      <FlexBox align="center" mT>
+        <RenderIf condition={isMyFriend}>
+          <LinkButton
+            to={link}
+            label="View Profile"
+            variant="outline"
+            color="brand"
+          />
+        </RenderIf>
+        <RenderIf condition={isPendingForMe}>
+          <Button
+            onClick={acceptFriendRequest}
+            label="Accept Friend"
+            variant="fill"
+            color="brand"
+          />
+        </RenderIf>
+        <RenderIf condition={isPending}>
+          <FlexBox height={40} align="center" justify="center">
+            <Text size="large">
+              You sent a friend request.
+            </Text>
+          </FlexBox>
+        </RenderIf>
+        <RenderIf condition={!isMyFriend && !isPending && !isPendingForMe}>
+          <Button
+            onClick={sendFriendRequest}
+            label="Add Friend"
+            variant="fill"
+            color="brand"
+          />
+        </RenderIf>
+      </FlexBox>
     </Card>
   );
 };

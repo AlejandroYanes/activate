@@ -1,6 +1,6 @@
 import SvgIcon from './SvgIcon';
-
+import { Icons } from './Icons';
 export * from './icon-props';
-export * from './Icons';
+export type { Icons };
 
 export default SvgIcon;

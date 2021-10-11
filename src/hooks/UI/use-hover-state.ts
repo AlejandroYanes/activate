@@ -46,7 +46,10 @@ function merge<T>(base: T, target: T) {
 
 export function useHoverState(ref, options?: HoverOptions) {
   const [isHovered, setIsHovered] = useState(false);
-  const mergedOptions = useMemo<HoverOptions>(() => merge(defaultOptions, options), [options]);
+  const mergedOptions = useMemo<HoverOptions>(
+    () => merge(defaultOptions, options),
+    [options],
+  );
 
   const activateHover = useCallback((event) => {
     const { clientX, clientY, target } = event;
@@ -57,8 +60,14 @@ export function useHoverState(ref, options?: HoverOptions) {
       bottom: bottomOffset,
       right: rightOffset,
     } = mergedOptions.offset;
-    const xIsInsideRage = left + leftOffset <= clientX && right - rightOffset >= clientX;
-    const yIsInsideRage = top + topOffset <= clientY && bottom - bottomOffset >= clientY;
+    const xIsInsideRage = (
+      left + leftOffset <= clientX &&
+      right - rightOffset >= clientX
+    );
+    const yIsInsideRage = (
+      top + topOffset <= clientY &&
+      bottom - bottomOffset >= clientY
+    );
 
     if (xIsInsideRage && yIsInsideRage) {
       setIsHovered(true);
@@ -79,6 +88,7 @@ export function useHoverState(ref, options?: HoverOptions) {
         component.removeEventListener('mouseleave', deactivateHover);
       };
     }
+    
     return undefined;
   }, [ref, activateHover, deactivateHover]);
 

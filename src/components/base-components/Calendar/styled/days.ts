@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { anyPropsAttrs, getFontColor } from 'helpers';
 
 export const StyledDays = styled.table`
   width: 100%;
@@ -8,7 +9,6 @@ export const StyledDays = styled.table`
 `;
 
 export const StyledWeekDay = styled.th`
-  color: ${({ theme }) => theme.colors.GRAY};
   font-size: 16px;
   font-weight: lighter;
 `;
@@ -21,57 +21,50 @@ export const StyledDay = styled.td`
     min-height: 42px;
 `;
 
-const getBasicStyles = (props) => {
-  const { disabled, isSelected, isHighlighted, theme: { useDarkStyle, colors } } = props;
+const getVariantStyles = (props) => {
+  const { disabled, isSelected, isHighlighted, theme: { colors } } = props;
 
   if (disabled) {
     return 'pointer-event: none';
   }
 
   if (isSelected) {
-    return `
-      background-color: ${colors.BRAND};
-      color: ${colors.WHITE};
+    return css`
+      background-color: ${colors.BRAND_BG};
+      color: ${colors.BACKGROUND_LIGHTER};
       cursor: pointer;
+
+      &:hover {
+        background-color: ${colors.BRAND_BG_HIGHLIGHT};
+      }
     `;
   }
 
   if (isHighlighted) {
-    return `
+    return css`
+      font-family: Roboto-Bold, sans-serif;
       background-color: ${colors.BRAND_SHADE};
-      color: ${useDarkStyle ? colors.BRAND : colors.BRAND_DARK};
+      color: ${colors.BRAND_FONT};
       cursor: pointer;
+
+      &:hover {
+        color: ${colors.FONT};
+      }
     `;
   }
 
-  return `
+  return css`
     cursor: pointer;
+
+    &:hover {
+      background-color: ${colors.GRAY_SHADE}
+    }
   `;
 };
 
-const getHoverStyle = (props) => {
-  const { disabled, isSelected, isHighlighted, theme } = props;
-
-  if (disabled) {
-    return undefined;
-  }
-
-  if (isSelected) {
-    return `
-      background-color: ${theme.colors.BRAND_DARK};
-      color: ${theme.colors.WHITE};
-    `;
-  }
-
-  if (isHighlighted) {
-    return undefined;
-  }
-
-  return `background-color: ${theme.colors.GRAY_SHADE}`;
-};
-
-export const StyledDayButton = styled.button.attrs((props: any) => props)`
-  font-size: 16px;
+export const StyledDayButton = styled.button.attrs(anyPropsAttrs)`
+  font-family: Roboto-Bold, sans-serif;
+  font-size: 18px;
   outline: none;
   background-color: transparent;
   border-radius: 48px;
@@ -81,13 +74,9 @@ export const StyledDayButton = styled.button.attrs((props: any) => props)`
   width: 38px;
   min-width: 38px;
   box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.FONT};
   overflow: visible;
   text-transform: none;
   border: 1px solid transparent;
-  ${getBasicStyles};
-
-  &:hover {
-    ${getHoverStyle};
-  }
+  color: ${getFontColor};
+  ${getVariantStyles};
 `;

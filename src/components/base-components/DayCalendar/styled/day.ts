@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import Colors from 'styles/colors';
 import { ZLevels } from 'styles/z-levels';
+import { getAccentBgColor, getBgdLightColor } from 'helpers';
 
 export const Day = styled.li`
   display: flex;
@@ -18,28 +18,28 @@ export const Day = styled.li`
 
   &:hover, &:focus {
     outline: none;
-    background-color: ${Colors.GRAY_SHADE};
+    background-color: ${({ theme }) => theme.colors.GRAY_SHADE};
   }
 `;
 
-const getNumberColor = ({ isSelected, theme }) => (
-  isSelected ? theme.colors.WHITE : theme.colors.FONT
-);
+const getNumberColor = ({ isSelected, theme: { colors } }) => {
+  return isSelected ? colors.BACKGROUND_LIGHTER : colors.FONT;
+};
 
 export const DayNumber = styled.span.attrs((props: any) => props)`
   position: absolute;
   margin: auto;
-  z-index: ${ZLevels.dayComponent};
+  z-index: ${ZLevels.componentLevel2};
   color: ${getNumberColor};
 `;
 
 export const Mark = styled(motion.div)`
   position: absolute;
-  z-index: ${ZLevels.dayComponentMark};
-  height: 74px;
-  width: 48px;
+  z-index: ${ZLevels.componentLevel1};
+  height: 86px;
+  width: 60px;
   border-radius: 20px;
   pointer-events: none;
-  border: 6px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-  background-color: ${({ theme }) => theme.colors.ACCENT};
+  border: 6px solid ${getBgdLightColor};
+  background-color: ${getAccentBgColor};
 `;

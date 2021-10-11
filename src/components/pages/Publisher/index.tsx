@@ -1,50 +1,55 @@
 import React, { FunctionComponent } from 'react';
-import * as faker from 'faker';
-import { useAppColors } from 'components/providers/Theme';
-import { PresentationCard } from 'components/experience/EventCard';
-import { Icons } from 'components/base-components/SvgIcon';
 import Page from 'components/base-components/Page';
-import IconButton from 'components/base-components/IconButton';
-import ProfileCard from 'components/experience/ProfileCard';
-import { events } from '../Discover/events';
-
-const publisher = {
-  name: faker.company.companyName(),
-  userName: `@${faker.internet.userName()}`,
-  eventsCount: faker.random.number(200),
-  followersCount: faker.random.number(2000),
-  bio: faker.lorem.lines(4),
-};
+import FlexBox from 'components/base-components/FlexBox';
+import { Case, Switch } from 'components/base-components/Switch';
+import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import ProfileData from './ProfileData';
+import Events from './Events';
+import Followers from './Followers';
+import usePublisherState, { Tabs } from './state';
 
 const PublisherPage: FunctionComponent = () => {
-  const Colors = useAppColors();
-  const { eventsCount, followersCount, ...rest } = publisher;
+  const {
+    state: {
+      activeTab,
+      isLoading,
+      errored,
+      publisher,
+    },
+    actions: {
+      setActiveTab,
+    },
+  } = usePublisherState();
 
-  const action = (
-    <IconButton
-      onClick={() => undefined}
-      icon={Icons.STAR}
-      color={Colors.ACCENT}
-      buttonColor="accent"
-      size="large"
-      variant="flat"
-    />
-  );
+  if (isLoading) {
+    return (
+      <Page>
+        <LoadingScreen />
+      </Page>
+    );
+  }
+
+  if (errored) {
+    return (
+      <Page>
+        <NoConnectionScreen message="We couldn't load this publisher's profile." />
+      </Page>
+    );
+  }
 
   return (
     <Page>
-      <ProfileCard
-        image="user6"
-        leftStatLabel="Events"
-        leftStatValue={eventsCount}
-        rightStatLabel="Followers"
-        rightStatValue={followersCount}
-        action={action}
-        {...rest}
-      />
-      <PresentationCard {...events[3]} />
-      <PresentationCard {...events[0]} />
-      <PresentationCard {...events[1]} />
+      <FlexBox direction="column" align="stretch" width={680} margin="0 auto">
+        <ProfileData
+          user={publisher}
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+        />
+      </FlexBox>
+      <Switch by={activeTab}>
+        <Case value={Tabs.EVENTS} component={Events} />
+        <Case value={Tabs.FOLLOWERS} component={Followers} />
+      </Switch>
     </Page>
   );
 };

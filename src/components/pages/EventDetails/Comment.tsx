@@ -1,19 +1,17 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
-import { formatDate } from 'helpers';
+import { CommentModel } from 'models/comment';
+import { getRelativeTime } from 'helpers';
+import { useAuthData } from 'components/providers/Auth';
+import FlexBox from 'components/base-components/FlexBox';
 import Avatar from 'components/base-components/Avatar';
-import { Paragraph, Text } from 'components/base-components/Typography';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { Paragraph, Text, Title } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';
-import Button from 'components/base-components/Button';
-import { Menu, MenuItem } from 'components/base-components/Menu';
-import { Comment as StyledComment, Details, Footer, Header } from './styled/comment';
+import { Button, IconButton } from 'components/base-components/Button';
+import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
+import { Comment as StyledComment, Details, Footer, Header } from './styled';
 
 interface Props {
-  author: { img: string; name: string };
-  date: Date;
-  content: string;
-  response: string;
+  comment: CommentModel;
 }
 
 const emptyAction = () => undefined;
@@ -21,14 +19,26 @@ const emptyAction = () => undefined;
 const menuTrigger = ({ toggleMenu }) => (
   <IconButton
     onClick={toggleMenu}
-    icon={Icons.MORE_VERT}
-    buttonColor="font"
+    color="background"
+    icon="MORE_VERT"
     variant="flat"
   />
 );
 
 const Comment: FunctionComponent<Props> = (props) => {
-  const { author: { img, name }, date, content, response } = props;
+  const {
+    comment: {
+      author: {
+        id,
+        name,
+        avatar,
+      },
+      createdOn,
+      content,
+      response,
+    },
+  } = props;
+  const { userInfo: { sub } } = useAuthData();
   const [showResponse, setShowResponse] = useState(false);
 
   const toggleResponseSection = useCallback(
@@ -36,17 +46,28 @@ const Comment: FunctionComponent<Props> = (props) => {
     [showResponse],
   );
 
+  const isMyComment = sub === id;
+
   return (
     <StyledComment>
       <Header>
-        <Avatar icon={img} size="medium" />
+        <Avatar src={avatar} size="medium" />
         <Details>
-          <Text>{name}</Text>
-          <Text size="small">{formatDate(date)}</Text>
+          <Text>{isMyComment ? 'Me' : name}</Text>
+          <Text size="small">{getRelativeTime(createdOn)}</Text>
         </Details>
-        <Menu trigger={menuTrigger} align="end">
-          <MenuItem label="Go to the user's profile" onClick={emptyAction} />
-          <MenuItem label="Report comment" onClick={emptyAction} />
+        <Menu trigger={menuTrigger}>
+          <FlexBox height={40} justify="center" align="center">
+            <Title level={3} weight="light">{isMyComment ? 'Me' : name}</Title>
+          </FlexBox>
+          <RenderIf condition={!isMyComment}>
+            <MenuLink label="Go to profile" to={`/app/user/${id}`} />
+            <MenuItem danger label="Report comment" onClick={emptyAction} />
+          </RenderIf>
+          <RenderIf condition={isMyComment}>
+            <MenuItem label="Edit" onClick={emptyAction} />
+            <MenuItem danger label="Delete" onClick={emptyAction} />
+          </RenderIf>
         </Menu>
       </Header>
       <Paragraph mB>
@@ -64,8 +85,8 @@ const Comment: FunctionComponent<Props> = (props) => {
             <Button
               onClick={toggleResponseSection}
               label="Show Response"
+              color="background"
               variant="flat"
-              color="font"
               sm
             />
           </RenderIf>
@@ -74,7 +95,7 @@ const Comment: FunctionComponent<Props> = (props) => {
               onClick={toggleResponseSection}
               label="Hide Response"
               variant="flat"
-              color="font"
+              color="background"
               sm
             />
           </RenderIf>

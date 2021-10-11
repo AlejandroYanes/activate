@@ -1,54 +1,70 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { scrollThumbWidth } from 'styles/variables';
+
+const mobileStyles = css`
+  body {
+    background-color: ${({ theme }) => theme.colors.BACKGROUND};
+    color: ${({ theme }) => theme.colors.FONT};
+  }
+
+  *::selection, input::selection, textarea::selection {
+    background-color: ${({ theme }) => theme.colors.BRAND_BG};
+    color: ${({ theme }) => theme.colors.BACKGROUND_LIGHTER};
+  }
+
+  div, section, article, aside, main, header, footer {
+    box-sizing: border-box;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a {
+    text-decoration: none;
+  }
+`;
+
+export const MobileGlobalStyles = createGlobalStyle`
+  ${mobileStyles};
+`;
 
 const getWebkitScrollBarThumbColor = (props) => {
-  const { theme: { colors, useDarkStyle } } = props;
-  const color = useDarkStyle ? colors.ACCENT : colors.ACCENT_LIGHT;
+  const { theme: { colors } } = props;
 
   return css`
-    background-color: ${color};
+    background-color: ${colors.ACCENT};
   `;
 };
 
 const getFirefoxScrollBarColor = (props) => {
-  const { theme: { colors, useDarkStyle } } = props;
-
-  if (useDarkStyle) {
-    return css`
-      scrollbar-color: ${colors.ACCENT} ${colors.BACKGROUND_SHADE};
-    `;
-  }
+  const { theme: { colors } } = props;
 
   return css`
-    scrollbar-color: ${colors.ACCENT_LIGHT} ${colors.BACKGROUND_SHADE};
+    scrollbar-color: ${colors.ACCENT} ${colors.BACKGROUND};
   `;
 };
 
-export const GlobalStyles = createGlobalStyle`
-  body {
-    background-color: ${({ theme }: any) => theme.colors.BACKGROUND};
-    color: ${({ theme }: any) => theme.colors.FONT};
+export const PrimaryGlobalStyles = createGlobalStyle`
+  ${mobileStyles};
 
+  body {
     &::-webkit-scrollbar-track {
-      background: ${({ theme }) => theme.colors.BACKGROUND};
+      background: transparent;
     }
   }
 
-  *::selection, input::selection, textarea::selection {
-    background-color: ${({ theme }) => theme.colors.BRAND_DARK};
-    color: ${({ theme }) => theme.colors.WHITE};
-  }
-
   *::-webkit-scrollbar {
-    width: 6px;
+    width: ${scrollThumbWidth};
   }
 
   *::-webkit-scrollbar-track {
-    background: ${({ theme }) => theme.colors.BACKGROUND_SHADE};
+    background: transparent;
   }
 
   *::-webkit-scrollbar-thumb {
     border-radius: 20px;
-    border: 1px solid ${({ theme }) => theme.colors.BACKGROUND_SHADE};
+    border: 1px solid ${({ theme }) => theme.colors.BACKGROUND};
     ${getWebkitScrollBarThumbColor};
   }
 

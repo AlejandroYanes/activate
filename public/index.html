@@ -24,10 +24,44 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Activate | Event Promotion</title>
+    <style>
+      [data-el="preloader"] {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999999;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+      }
+
+      @keyframes logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      [data-el="preloader"] img {
+        margin: auto;
+        animation: logo-spin infinite 10s linear;
+      }
+    </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="preloader" data-el="preloader">
+      <img src="%PUBLIC_URL%/react-logo.svg" alt="app logo" />
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

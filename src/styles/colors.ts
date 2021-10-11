@@ -1,95 +1,90 @@
-import { getShade } from 'helpers';
-import { StartingTheme } from './themes';
+import { getShade, changeColorLight } from 'helpers/color-attrs';
 
-export interface ColorScheme {
+export enum Variations {
+  BASE = '',
+  HIGHLIGHT = '_HIGHLIGHT',
+  BG = '_BG',
+  BG_HIGHLIGHT = '_BG_HIGHLIGHT',
+  FONT = '_FONT',
+  FONT_HIGHLIGHT = '_FONT_HIGHLIGHT',
+  SHADE = '_SHADE',
+}
+
+type BasicScheme = {
   BRAND: string;
-  BRAND_LIGHT: string;
-  BRAND_DARK: string;
   ACCENT: string;
-  ACCENT_LIGHT: string;
-  ACCENT_DARK: string;
-  BRAND_SHADE: string;
-  ACCENT_SHADE: string;
+  SUCCESS: string;
+  INFO: string;
+  WARNING: string;
+  ERROR: string;
+};
+
+type VariationLabels = Exclude<keyof (typeof Variations), 'BASE'>;
+
+type ExtendedScheme = {
+  [Property in keyof BasicScheme as `${Property}_${VariationLabels}`]: string;
+}
+
+type LightColorScheme = {
+  FONT: string;
+  FONT_SECONDARY: string;
+  FONT_SHADE: string;
+  BACKGROUND: string;
+  BACKGROUND_LIGHT: string;
+  BACKGROUND_LIGHTER: string;
+  BACKGROUND_SHADE: string;
+};
+
+type FixedColorScheme  = {
   WHITE: string;
   WHITE_SHADE: string;
   GRAY: string;
   GRAY_LIGHT: string;
   GRAY_DARK: string;
   GRAY_SHADE: string;
-  FONT: string;
-  FONT_LIGHT: string;
-  FONT_DARK: string;
-  FONT_SHADE: string;
-  BACKGROUND: string;
-  BACKGROUND_LIGHT: string;
-  BACKGROUND_SHADE: string;
-  INFO: string;
-  INFO_DARK: string;
-  INFO_LIGHT: string;
-  INFO_SHADE: string;
-  WARNING: string;
-  WARNING_DARK: string;
-  WARNING_LIGHT: string;
-  WARNING_SHADE: string;
-  ERROR: string;
-  ERROR_DARK: string;
-  ERROR_LIGHT: string;
-  ERROR_SHADE: string;
-  SUCCESS: string;
-  SUCCESS_DARK: string;
-  SUCCESS_LIGHT: string;
-  SUCCESS_SHADE: string;
 }
 
-export const lightStyleColors = {
+export type ColorScheme = (
+  BasicScheme &
+  ExtendedScheme &
+  LightColorScheme &
+  FixedColorScheme
+);
+
+export type Colors = keyof ColorScheme;
+
+export const lightStyleColors: LightColorScheme = {
   FONT: '#151718',
-  FONT_LIGHT: '#2F3437',
-  FONT_DARK: '#090A0B',
-  FONT_SHADE: getShade('#151718'),
-  BACKGROUND: '#f5f6fa',
-  BACKGROUND_LIGHT: '#fff',
+  FONT_SECONDARY: '#57585f',
+  FONT_SHADE: getShade('#151718', 0.2),
+  BACKGROUND: '#ffffff',
+  BACKGROUND_LIGHT: changeColorLight('#ffffff', -0.02),
+  BACKGROUND_LIGHTER: changeColorLight('#ffffff', -0.03),
   BACKGROUND_SHADE: getShade('#f5f6fa'),
 };
 
-export const darkStyleColors = {
+export const darkStyleColors: LightColorScheme = {
   FONT: '#f5f6fa',
-  FONT_LIGHT: '#fff',
-  FONT_DARK: '#AFAFAF',
+  FONT_SECONDARY: '#b1b1b4',
   FONT_SHADE: getShade('#ffffff'),
-  BACKGROUND: '#0D1116',
-  BACKGROUND_LIGHT: '#090C11',
-  BACKGROUND_SHADE: getShade('#0D1116'),
+  BACKGROUND: changeColorLight('#121212', 0.05),
+  BACKGROUND_LIGHT: changeColorLight('#121212', 0.025),
+  BACKGROUND_LIGHTER: '#121212',
+  BACKGROUND_SHADE: getShade('#1F1F1F'),
 };
 
-export const basicColors = {
-  WHITE: '#fff',
+export const fixedColors: FixedColorScheme = {
+  WHITE: '#ffffff',
   WHITE_SHADE: getShade('#ffffff', 0.05),
   GRAY: '#6b6d76',
   GRAY_LIGHT: '#AFAFAF',
   GRAY_DARK: '#4a4b52',
   GRAY_SHADE: getShade('#6b6d76'),
-  INFO: '#0B4F99',
-  INFO_LIGHT: '#0F6DD2',
-  INFO_DARK: '#05284C',
-  INFO_SHADE: getShade('#0B4F99'),
-  WARNING: '#AB830D',
-  WARNING_LIGHT: '#DCA911',
-  WARNING_DARK: '#5F4907',
-  WARNING_SHADE: getShade('#AB830D'),
-  ERROR: '#AE1E1E',
-  ERROR_LIGHT: '#DC2E2F',
-  ERROR_DARK: '#7A1515',
-  ERROR_SHADE: getShade('#AE1E1E'),
-  SUCCESS: '#107F63',
-  SUCCESS_LIGHT: '#16B68E',
-  SUCCESS_DARK: '#07362B',
-  SUCCESS_SHADE: getShade('#107F63'),
 };
 
-const Colors: ColorScheme = {
-  ...StartingTheme,
-  ...basicColors,
-  ...lightStyleColors,
+export const basicColors = {
+  INFO: '#1e6ff5',
+  SUCCESS: '#017f23',
+  WARNING: '#db5f01',
+  ERROR: '#e52111',
 };
-
-export default Colors;

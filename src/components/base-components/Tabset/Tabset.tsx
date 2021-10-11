@@ -1,38 +1,49 @@
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent } from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { PositionProps } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import { TabSetProvider } from './context';
-import { StyledTabset } from './styled';
+import HrzTabset from './HorizontalTabs';
+import VertTabset from './VerticalTabs';
 
-export interface TabsetProps extends PositionProps {
-  compact?: boolean;
+interface TabsetProps extends PositionProps {
   activeTab: string;
-  onTabChange: (activeTab) => void;
+  onTabChange?: (activeTab) => void;
+  bordered?: boolean;
+  direction?: 'horizontal' | 'vertical';
 }
 
-const Tabset: FunctionComponent<TabsetProps> = (props) => {
-  const layout = useAppLayout();
-  const { children, mT, mR, mB, mL, ...rest } = props;
-  const [animateEntrance, setAnimateEntrance] = useState(false);
+const directionMap = {
+  'horizontal': HrzTabset,
+  'vertical': VertTabset,
+};
 
-  useEffect(() => {
-    setTimeout(() => setAnimateEntrance(true), 100);
-  }, []);
+const Tabset: FunctionComponent<TabsetProps> = (props) => {
+  const {
+    activeTab,
+    onTabChange,
+    direction,
+    fullWidth,
+    children,
+    ...rest
+  } = props;
+  const Container = directionMap[direction];
+  const tabs = React.Children.map(children, (child: any) => child.props);
 
   return (
     <AnimateSharedLayout type="crossfade">
-      <StyledTabset mB={mB} mT={mT} mR={mR} mL={mL}>
-        <TabSetProvider
-          {...rest}
-          animateEntrance={animateEntrance}
-          disableFocus={layout !== Layout.FULL}
-        >
-          {children}
-        </TabSetProvider>
-      </StyledTabset>
+      <TabSetProvider
+        activeTab={activeTab}
+        onTabChange={onTabChange}
+        fullWidth={fullWidth}
+      >
+        <Container fullWidth={fullWidth} tabs={tabs} {...rest} />
+      </TabSetProvider>
     </AnimateSharedLayout>
   );
+};
+
+Tabset.defaultProps = {
+  direction: 'horizontal',
 };
 
 export default Tabset;

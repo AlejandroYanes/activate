@@ -1,74 +1,76 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { getEventValue } from 'helpers/events';
-import { useAppColors } from 'components/providers/Theme';
+import { getEventValue } from 'helpers';
 import Avatar from 'components/base-components/Avatar';
 import RenderIf from 'components/base-components/RenderIf';
 import { Text } from 'components/base-components/Typography';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
+import FlexBox from 'components/base-components/FlexBox';
 import Conversation from './Conversation';
 import {
-  Messages as StyledMessages,
-  Actions,
   ActiveDot,
   AvatarSection,
   Content,
+  Footer,
   Header,
-  Info,
+  Messages as StyledMessages,
   TextBox,
 } from './styled/messages';
 
 interface Props {
   user: {
-    image: string;
+    avatar: string;
     name: string;
     active: boolean;
   };
   leftActions?: ReactNode;
   rightActions?: ReactNode;
-  smallView?: boolean;
+  viewMode?: 'page' | 'panel' | 'mobile';
 }
 
 const Messages: FunctionComponent<Props> = (props) => {
-  const colors = useAppColors();
-  const { user: { image, name, active }, leftActions, rightActions, smallView } = props;
+  const {
+    user: { avatar, name, active },
+    leftActions,
+    rightActions,
+    viewMode,
+  } = props;
   const [message, setMessage] = useState('');
 
   return (
-    <StyledMessages>
-      <Header small={smallView}>
+    <StyledMessages viewMode={viewMode}>
+      <Header viewMode={viewMode}>
         {leftActions}
         <AvatarSection>
-          <Avatar icon={image} />
+          <Avatar src={avatar} />
           <RenderIf condition={active}>
             <ActiveDot />
           </RenderIf>
         </AvatarSection>
-        <Info>
+        <FlexBox direction="column" padding="0 8px" grow>
           <Text>{name}</Text>
-          <Text size="small" color="gray">active 10min ago</Text>
-        </Info>
+          <Text size="small" color="secondary" margin="4px 0 0">active 10min ago</Text>
+        </FlexBox>
         {rightActions}
       </Header>
       <Content>
         <Conversation />
       </Content>
-      <Actions small={smallView}>
+      <Footer viewMode={viewMode}>
         <TextBox
           autosize
           rows={1}
-          maxLength={smallView ? 250 : 500}
+          maxLength={250}
           value={message}
           onChange={(event) => setMessage(getEventValue(event))}
+          placeholder="Type your message here"
         />
         <IconButton
           onClick={() => undefined}
-          icon={Icons.SEND}
-          color={colors.ACCENT}
-          buttonColor="accent"
+          icon="SEND"
+          color="accent"
           size="large"
         />
-      </Actions>
+      </Footer>
     </StyledMessages>
   );
 };

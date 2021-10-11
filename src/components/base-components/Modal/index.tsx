@@ -1,43 +1,37 @@
-import React, { FunctionComponent, ReactNode } from 'react';
-import { ButtonProps } from 'components/base-components/Button';
+import React, { forwardRef, ReactNode } from 'react';
 import Backdrop from 'components/base-components/Backdrop';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
-import Title from './Title';
+import Header from './Header';
 import Footer from './Footer';
-import { StyledModal, Header, Content } from './styled';
+import { Content, StyledModal } from './styled';
 
 interface Props {
   visible: boolean;
-  header: string | ReactNode;
+  title?: string | ReactNode;
   onClose: () => void;
-  actions?: ButtonProps[];
   footer?: ReactNode;
-  size?: 'small' | 'medium' | 'large';
+  size?: 'auto' | 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
+  children?: ReactNode;
 }
 
-const Modal: FunctionComponent<Props> = (props) => {
-  const { visible, header, onClose, actions, footer, size, children } = props;
+const Modal = forwardRef<HTMLElement, Props>((props, ref) => {
+  const { visible, title, onClose, footer, size, children } = props;
 
   if (visible) {
     return (
       <Backdrop onClick={onClose}>
-        <StyledModal size={size} data-el="modal-container">
-          <Header>
-            <Title content={header} />
-            <IconButton onClick={onClose} icon={Icons.CLOSE} variant="flat" />
-          </Header>
-          <Content>
+        <StyledModal ref={ref} size={size} data-el="modal-container">
+          <Header size={size} title={title} onClose={onClose} />
+          <Content size={size} data-el="modal-content">
             {children}
           </Content>
-          <Footer footer={footer} actions={actions} />
+          <Footer size={size} footer={footer} />
         </StyledModal>
       </Backdrop>
     );
   }
 
   return null;
-};
+});
 
 Modal.defaultProps = {
   size: 'small',

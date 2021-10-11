@@ -1,15 +1,20 @@
-import React, { FunctionComponent, useCallback } from 'react';
-import { ValidationRules } from 'helpers/form-validations';
+import React, {
+  forwardRef,
+  ReactNode,
+  useCallback
+} from 'react';
+import { PositionProps, ValidationRules } from 'helpers';
 import { FormProvider } from './context';
 import { Form as StyledForm } from './styled';
 
-interface Props {
+interface Props extends PositionProps {
   id?: string;
   state: any;
   onChange: (value) => void;
   errors?: { [x: string]: string };
   onError?: (errors) => void;
   rules?: ValidationRules;
+  children?: ReactNode;
 }
 
 const disableOnSubmit = (event) => {
@@ -17,7 +22,7 @@ const disableOnSubmit = (event) => {
   event.preventDefault();
 };
 
-const Form: FunctionComponent<Props> = (props) => {
+const Form = forwardRef<HTMLFormElement, Props>((props, ref) => {
   const {
     id,
     state,
@@ -26,6 +31,7 @@ const Form: FunctionComponent<Props> = (props) => {
     onError,
     rules,
     children,
+    ...rest
   } = props;
 
   const setField = useCallback((value) => {
@@ -41,7 +47,7 @@ const Form: FunctionComponent<Props> = (props) => {
   }, [errors, onError]);
 
   return (
-    <StyledForm id={id} onSubmit={disableOnSubmit}>
+    <StyledForm id={id} ref={ref} onSubmit={disableOnSubmit} {...rest}>
       <FormProvider
         state={state}
         setField={setField}
@@ -53,10 +59,6 @@ const Form: FunctionComponent<Props> = (props) => {
       </FormProvider>
     </StyledForm>
   );
-};
-
-Form.defaultProps = {
-  id: undefined,
-};
+});
 
 export default Form;

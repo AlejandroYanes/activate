@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { getMargins, PositionProps } from 'helpers';
+import { getPositionStyles, PositionProps } from 'helpers';
 import { getColorStyles } from 'components/base-components/Inputs/Input/styled/input';
 
 export const StyledContainer = styled.div.attrs((props: PositionProps) => props)`
-  ${getMargins};
+  ${getPositionStyles};
   display: flex;
   flex-direction: column;
   background-color: transparent;
@@ -13,7 +13,7 @@ export const StyledContainer = styled.div.attrs((props: PositionProps) => props)
 export const StyledTextArea = styled.textarea`
   border-radius: 10px;
   font-size: 16px;
-  font-family: "MPlus Rounded Normal", sans-serif;
+  font-family: Roboto-Regular, sans-serif;
   letter-spacing: 0.5px;
   outline: none;
   padding: 8px 40px 8px 20px;

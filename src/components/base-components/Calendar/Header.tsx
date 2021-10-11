@@ -1,8 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import IconButton from 'components/base-components/IconButton';
-import Button from 'components/base-components/Button';
+import { Button, IconButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
-import { Icons } from 'components/base-components/SvgIcon';
 import { monthFormatter, monthYearFormatter, yearFormatter } from './utils';
 import { DateElement } from './types';
 import { StyledHeader } from './styled/header';
@@ -28,12 +26,10 @@ const Header: FunctionComponent<Props> = (props) => {
   } = props;
 
   const label = useMemo(() => {
-    if (selecting === DateElement.Day && currentDate.getFullYear() === today.getFullYear()) {
-      return monthFormatter.format(currentDate);
-    }
-
     if (selecting === DateElement.Day) {
-      return monthYearFormatter.format(currentDate);
+      return currentDate.getFullYear() === today.getFullYear()
+        ? monthFormatter.format(currentDate)
+        : monthYearFormatter.format(currentDate);
     }
 
     if (selecting === DateElement.Month || selecting === DateElement.Year) {
@@ -50,25 +46,26 @@ const Header: FunctionComponent<Props> = (props) => {
       <RenderIf condition={selectingDay}>
         <IconButton
           onClick={selectPrevious}
-          icon={Icons.CHEVRON_LEFT}
-          buttonColor="brand"
-          variant="flat"
+          icon="CHEVRON_LEFT"
+          color="background"
+          variant="fill"
         />
       </RenderIf>
       <Button
         onClick={changeSelection}
-        label={label}
-        variant="flat"
         style={monthButtonStyles}
+        label={label}
+        variant="fill"
+        color="background"
         mR
         mL
       />
       <RenderIf condition={selectingDay}>
         <IconButton
           onClick={selectNext}
-          icon={Icons.CHEVRON_RIGHT}
-          buttonColor="brand"
-          variant="flat"
+          icon="CHEVRON_RIGHT"
+          color="background"
+          variant="fill"
         />
       </RenderIf>
     </StyledHeader>

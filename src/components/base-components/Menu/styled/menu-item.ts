@@ -1,17 +1,55 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
+import { anyPropsAttrs, getFontColor } from 'helpers';
 
-const elementBorderRadius = '6px';
-const elementHeight = '40px';
+const elementBorderRadius = '16px';
 
-export const MenuItem = styled.li`
+const getActionStyles = (props) => {
+  const { warning, danger, theme: { colors } } = props;
+  const fontColor = danger ? colors.ERROR_FONT : colors.FONT;
+  const backgroundColor = (
+    (warning && colors.WARNING_BG) ||
+    (danger && colors.ERROR_BG) ||
+    colors.BRAND_BG
+  );
+  const highlightColor = (
+    (warning && colors.WARNING_BG_HIGHLIGHT) ||
+    (danger && colors.ERROR_BG_HIGHLIGHT) ||
+    colors.BRAND_BG_HIGHLIGHT
+  );
+
+  return css`
+    span[data-el="menu-link-label"] {
+      color: ${fontColor};
+    }
+
+    &:hover {
+      span[data-el="menu-link-label"] {
+        color: ${colors.BACKGROUND_LIGHTER};
+      }
+
+      cursor: pointer;
+      background-color: ${backgroundColor};
+
+      svg > path {
+        fill: ${colors.BACKGROUND_LIGHTER};
+      }
+    }
+
+    &:active {
+      background-color: ${highlightColor};
+    }
+  `;
+};
+
+export const MenuItem = styled.li.attrs(anyPropsAttrs)`
   box-sizing: border-box;
   display: flex;
+  justify-content: center;
   align-items: center;
-  height: ${elementHeight};
-  padding: 0 8px;
-  color: ${({ theme }) => theme.colors.FONT};
-  font-size: 1rem;
-  transition: font-size ease-in-out 120ms;
+  height: 48px;
+  padding: 0 10px;
+  transition: all 150ms linear;
 
   &:first-child {
     border-top-right-radius: ${elementBorderRadius};
@@ -24,28 +62,27 @@ export const MenuItem = styled.li`
     border-bottom-left-radius: ${elementBorderRadius};
   }
 
-  &:hover {
-    cursor: pointer;
-    color: ${({ theme }) => theme.colors.WHITE};
-    background-color: ${({ theme }) => theme.colors.BRAND};
+  span[data-el="menu-link-label"] {
+    font-family: Roboto-Bold, sans-serif;
+    font-size: 16px;
+    color: ${getFontColor};
   }
 
-  &:active {
-    font-size: 0.95rem;
-  }
+  ${getActionStyles};
 `;
 
-export const MenuItemIcon = styled.div`
-  margin-right: 8px;
+export const MenuLink = styled(Link)`
+  box-sizing: border-box;
   display: flex;
+  justify-content: center;
   align-items: center;
-`;
+  height: 48px;
+  width: 100%;
+  text-decoration: none;
 
-export const MenuItemLabel = styled.div`
-  display: flex;
-  align-items: center;
-
-  span {
-    margin-bottom: 2px;
+  span[data-el="menu-link-label"] {
+    font-family: Nunito-ExtraBold, sans-serif;
+    font-size: 16px;
+    color: ${getFontColor};
   }
 `;

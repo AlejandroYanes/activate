@@ -1,30 +1,48 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { anyPropsAttrs } from 'helpers';
+import { Variations } from 'styles/colors';
+import { anyPropsAttrs, getColorVariation } from 'helpers';
 import SvgIcon from 'components/base-components/SvgIcon';
 
-const sizeMap = {
-  small: 20,
-  medium: 28,
-  large: 26,
+const getSizeStyles = (props) => {
+  const { size } = props;
+
+  switch (size) {
+    case 'small':
+      return css`
+        height: 24px;
+        padding: 4px 6px;
+      `;
+    case 'large':
+      return css`
+        height: 38px;
+        padding: 6px 14px;
+      `;
+    default:
+      return css`
+        height: 32px;
+        padding: 4px 14px;
+      `;
+  }
 };
 
 const getBackgroundColor = (props) => {
   const { theme: { colors }, color } = props;
-  return colors[`${color.toUpperCase()}_SHADE`];
+  return getColorVariation(colors, color, Variations.SHADE);
 };
 
 export const Option = styled.li.attrs(anyPropsAttrs)`
   margin: 0 6px 0 0;
-  padding: 2px 6px;
   display: flex;
+  align-items: center;
   border-radius: 16px;
   min-width: 48px;
   position: relative;
   cursor: pointer;
-  height: ${({ size }) => `${sizeMap[size]}px`};
-  color: ${({ theme }) => theme.colors.WHITE};
   background-color: transparent;
+  box-sizing: border-box;
+  transition: all 150ms linear;
+  ${getSizeStyles};
   ${({ fullWidth }) => fullWidth ? 'flex: 1;' : ''}
 
   &:hover, &:focus {
@@ -53,21 +71,14 @@ export const Icon = styled(SvgIcon)`
 `;
 
 const getMarkColorStyles = (props) => {
-  const { theme: { useDarkStyle, colors }, color } = props;
+  const { theme: { colors }, color } = props;
+  const bgColor = getColorVariation(colors, color, Variations.BG);
+  const bgHoverColor = getColorVariation(colors, color, Variations.BG_HIGHLIGHT);
 
-  if (useDarkStyle) {
-    return `
-      background-color: ${colors[color.toUpperCase()]};
-      &:focus {
-        background-color: ${colors[`${color.toUpperCase()}_LIGHT`]};
-      }
-    `;
-  }
-
-  return `
-    background-color: ${colors[color.toUpperCase()]};
-    &:focus {
-      background-color: ${colors[`${color.toUpperCase()}_DARK`]};
+  return css`
+    background-color: ${bgColor};
+    &:hover, &:focus {
+      background-color: ${bgHoverColor};
     }
   `;
 };

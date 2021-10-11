@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { anyPropsAttrs, getMargins } from 'helpers';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
 const sizeMap = {
   'x-small': 'width: 16px; height: 16px',
@@ -9,22 +9,48 @@ const sizeMap = {
   page: 'width: 100px; height: 100px',
 };
 
+const dotsSizeMap = {
+  'x-small': 'width: 6px; height: 6px',
+  small: 'width: 8px; height: 8px',
+  medium: 'width: 16px; height: 16px',
+  large: 'width: 24px; height: 24px',
+  page: 'width: 48px; height: 48px',
+}
+
+const fadeIn = keyframes`
+  0%{
+    opacity: 0;
+  }
+  90%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+`;
+
 export const Wrapper = styled.div.attrs(anyPropsAttrs)`
   position: relative;
-  ${getMargins};
+  box-sizing: content-box;
+  ${getPositionStyles};
   ${({ size }) => sizeMap[size]};
+  animation: ${fadeIn} ${({ delay }) => delay}ms linear;
 
-  & div:first-child{
+  & div:first-child {
     animation-delay:-2s;
+    ${({ size }) => dotsSizeMap[size]};
   }
-  & div:nth-child(2){
+  & div:nth-child(2) {
     animation-delay:-1.5s;
+    ${({ size }) => dotsSizeMap[size]};
   }
-  & div:nth-child(3){
+  & div:nth-child(3) {
     animation-delay:-1s;
+    ${({ size }) => dotsSizeMap[size]};
   }
-  & div:nth-child(4){
+  & div:nth-child(4) {
     animation-delay:-0.5s;
+    ${({ size }) => dotsSizeMap[size]};
   }
 `;
 

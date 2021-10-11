@@ -1,16 +1,24 @@
 import React, { FunctionComponent } from 'react';
+import RenderIf from 'components/base-components/RenderIf';
 import { StyledLabel } from './styled/label';
 
 interface Props {
-  isFocused?: boolean;
   text: string;
+  required?: boolean;
 }
 
 const InputLabel: FunctionComponent<Props> = (props) => {
-  const { text, isFocused } = props;
+  const { text, required } = props;
 
   if (text) {
-    return <StyledLabel focused={isFocused}>{text}</StyledLabel>;
+    return (
+      <StyledLabel>
+        {text}
+        <RenderIf condition={required}>
+          <sup>*</sup>
+        </RenderIf>
+      </StyledLabel>
+    );
   }
 
   return null;

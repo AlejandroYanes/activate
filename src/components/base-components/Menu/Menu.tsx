@@ -1,14 +1,15 @@
-import React, {
+import {
   FunctionComponent,
   ReactNode,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
+import { useAppLayout } from 'components/providers/Layout';
 import RenderIf from 'components/base-components/RenderIf';
-import { MenuWrapper, TriggerContainer, MenuContainer, MenuList } from './styled/menu';
+import Backdrop from 'components/base-components/Backdrop';
+import { MenuWrapper, TriggerContainer, MenuList } from './styled/menu';
 import { MenuProvider } from './context';
 
 interface TriggerProps {
@@ -19,12 +20,12 @@ interface TriggerProps {
 
 interface Props {
   trigger: ReactNode | ((props: TriggerProps) => JSX.Element);
-  align?: 'start' | 'end';
   [x: string]: any;
 }
 
 const Menu: FunctionComponent<Props> = (props) => {
-  const { trigger, align, children, ...otherProps } = props;
+  const { trigger, children, ...otherProps } = props;
+  const layout = useAppLayout();
   const [isOpen, setIsOpen] = useState(false);
   const menuReference = useRef(undefined);
 
@@ -33,6 +34,7 @@ const Menu: FunctionComponent<Props> = (props) => {
   const triggerElement = useMemo(() => {
     if (typeof trigger === 'function') {
       const MenuTrigger = trigger;
+
       return (
         <MenuTrigger isOpen={isOpen} toggleMenu={toggleMenu} {...otherProps} />
       );
@@ -44,32 +46,18 @@ const Menu: FunctionComponent<Props> = (props) => {
       </TriggerContainer>
     );
   }, [trigger, toggleMenu]);
-  const menuListStyles = useMemo(() => ({ [align === 'end' ? 'right' : 'left']: 0 }), [align]);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuReference.current && !menuReference.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
 
   return (
     <MenuWrapper ref={menuReference} data-el="menu-wrapper">
       {triggerElement}
       <RenderIf condition={isOpen}>
-        <MenuContainer>
+        <Backdrop onClick={toggleMenu}>
           <MenuProvider closeMenu={toggleMenu}>
-            <MenuList style={menuListStyles} data-el="menu-list">
+            <MenuList layout={layout} data-el="menu-list">
               {children}
             </MenuList>
           </MenuProvider>
-        </MenuContainer>
+        </Backdrop>
       </RenderIf>
     </MenuWrapper>
   );

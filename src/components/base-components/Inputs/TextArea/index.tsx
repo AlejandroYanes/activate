@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react';
 import autosizeTextArea from 'autosize';
 import { getEventValue, PositionProps } from 'helpers';
 import InputLabel from '../base/Label';
@@ -33,32 +33,17 @@ const TextArea: FunctionComponent<Props> = (props) => {
     maxLength,
     ...rest
   } = props;
-  const [isFocused, setIsFocused] = useState(false);
   const textAreaRef = useRef(undefined);
-
-  const handleFocus = useCallback((event) => {
-    setIsFocused(true);
-    if (onFocus) {
-      onFocus(event);
-    }
-  }, [onFocus]);
-
-  const handleBlur = useCallback((event) => {
-    setIsFocused(false);
-    if (onBlur) {
-      onBlur(event);
-    }
-  }, [onBlur]);
 
   const handleChange = useCallback((event) => {
     const txt = getEventValue(event);
 
     if (maxLength) {
       if (txt.length <= maxLength) {
-        onChange(event);
+        onChange(txt);
       }
     } else {
-      onChange(event);
+      onChange(txt);
     }
   }, [maxLength]);
 
@@ -72,20 +57,20 @@ const TextArea: FunctionComponent<Props> = (props) => {
 
   return (
     <StyledContainer {...rest}>
-      <InputLabel text={label} isFocused={isFocused} />
+      <InputLabel text={label} />
       <StyledTextArea
         ref={textAreaRef}
         rows={rows}
         placeholder={placeholder}
         value={value}
         onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
       <RightNode
+        topSpaced={!!label}
         showClear={showClear}
         value={value}
-        isFocused={isFocused}
         onChange={onChange}
         maxLength={maxLength}
       />

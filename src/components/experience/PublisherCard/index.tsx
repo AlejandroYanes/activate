@@ -1,84 +1,93 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import faker from 'faker';
+import React, { FunctionComponent } from 'react';
+import { Link } from 'react-router-dom';
+import { PublisherModel } from 'models/user';
 import { formatAmount } from 'helpers';
-import { useAppColors } from 'components/providers/Theme';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Paragraph, Text, Title } from 'components/base-components/Typography';
-import { Icons } from 'components/base-components/SvgIcon';
-import Avatar from 'components/base-components/Avatar';
+import { Text, Title } from 'components/base-components/Typography';
 import AvatarGroup from 'components/base-components/AvatarGroup';
-import IconButton from 'components/base-components/IconButton';
+import Avatar from 'components/base-components/Avatar';
+import FlexBox from 'components/base-components/FlexBox';
+import { Button, LinkButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';
-import { Actions, Card, Footer, Header, Info, Stat, Stats, User } from './styled';
+import AbsoluteContent from 'components/base-components/AbsoluteContent';
+import SvgIcon from 'components/base-components/SvgIcon';
+import { Card } from './styled';
+import usePublisherState from './state';
 
-const avatars = ['user1', 'user2', 'user6'];
+interface Props {
+  user: PublisherModel;
+}
 
-const PublisherCard: FunctionComponent = () => {
-  const Colors = useAppColors();
-  const layout = useAppLayout();
-  const { push } = useHistory();
+const noFriends = <FlexBox height={34} mT />;
 
-  const { name, userName, bio, events, followers } = useMemo(() => ({
-    name: `${faker.company.companyName()}, ${faker.company.companySuffix()}`,
-    userName: `@${faker.internet.userName()}`,
-    bio: faker.lorem.lines(4),
-    events: faker.random.number(),
-    followers: faker.random.number(),
-  }), []);
+const PublisherCard: FunctionComponent<Props> = (props) => {
+  const {
+    user: {
+      avatar,
+      name,
+      userName,
+      count: {
+        events,
+        followers,
+      },
+      friends,
+    },
+  } = props;
 
-  const isSmallLayout = layout === Layout.SMALL;
+  const {
+    state: { following },
+    actions: { follow },
+  } = usePublisherState(props.user);
+
+  const link = `/app/publisher/${userName}`;
+  const avatars = friends.map(friend => friend.avatar);
 
   return (
     <Card>
-      <Header asColumn={isSmallLayout}>
-        <User>
-          <Avatar icon="user2" size="medium" />
-          <Link to="/publisher">
-            <Info>
-              <Text size="small">{userName}</Text>
-              <Title level={3} color="brand">{name}</Title>
-            </Info>
-          </Link>
-        </User>
-        <Stats spaced={isSmallLayout}>
-          <Stat padded={!isSmallLayout}>
-            <Text size="small">Events</Text>
-            <Title level={3} color="accent">{formatAmount(events)}</Title>
-          </Stat>
-          <Stat padded={!isSmallLayout}>
-            <Text size="small">Followers</Text>
-            <Title level={3} color="accent">{formatAmount(followers)}</Title>
-          </Stat>
-        </Stats>
-      </Header>
-      <Paragraph mB>
-        {bio}
-      </Paragraph>
-      <Footer>
-        <AvatarGroup icons={avatars} size="x-small" />
-        <Actions>
-          <RenderIf condition={!isSmallLayout}>
-            <IconButton
-              onClick={() => push('/publisher')}
-              icon={Icons.RESUME}
-              color={Colors.INFO}
-              buttonColor="info"
-              variant="flat"
-              size="large"
-              mR
-            />
-          </RenderIf>
-          <IconButton
-            onClick={() => undefined}
-            icon={Icons.STAR}
-            color={Colors.ACCENT}
-            buttonColor="accent"
-            variant="flat"
-            size="large"
+      <RenderIf condition={following}>
+        <AbsoluteContent top={16} right={16}>
+          <SvgIcon icon="STAR_FILLED" color="BRAND_FONT" />
+        </AbsoluteContent>
+      </RenderIf>
+      <Avatar src={avatar} size="large" margin="0 auto 8px" />
+      <Link to={link}>
+        <FlexBox direction="column" align="center">
+          <Title level={3} weight="bold" align="center" padding="8px 0" ellipsis>
+            {name}
+          </Title>
+          <Text align="center">@{userName}</Text>
+        </FlexBox>
+      </Link>
+      <FlexBox align="center" mT>
+        <FlexBox direction="column" align="center" padding="0 16px">
+          <Text>Events</Text>
+          <Title level={3} weight="bold">{formatAmount(events)}</Title>
+        </FlexBox>
+        <FlexBox direction="column" align="center" padding="0 16px">
+          <Text>Followers</Text>
+          <Title level={3} weight="bold">{formatAmount(followers)}</Title>
+        </FlexBox>
+      </FlexBox>
+      <RenderIf condition={avatars.length > 0} fallback={noFriends}>
+        <AvatarGroup icons={avatars} mT />
+      </RenderIf>
+      <FlexBox align="center" mT>
+        <RenderIf condition={!following}>
+          <Button
+            onClick={follow}
+            label="Follow"
+            variant="fill"
+            color="brand"
           />
-        </Actions>
-      </Footer>
+        </RenderIf>
+        <RenderIf condition={following}>
+          <LinkButton
+            to={link}
+            label="View Profile"
+            variant="outline"
+            color="brand"
+          />
+        </RenderIf>
+      </FlexBox>
     </Card>
   );
 };

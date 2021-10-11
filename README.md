@@ -1,10 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Code Style Guide
 
-![CI](https://github.com/AlejandroYanes/activate/workflows/CI/badge.svg)
-![CD](https://github.com/AlejandroYanes/activate/workflows/CD/badge.svg)
-[![CodeFactor](https://www.codefactor.io/repository/github/alejandroyanes/activate/badge)](https://www.codefactor.io/repository/github/alejandroyanes/activate)
+### Import order
+1. libraries (react, axios, ...)
+2. models
+3. apis
+4. helpers
+5. event-center / notifications
+6. base-components
+7. experience components
+8. local files (relative to the page / component being coded)
+9. style files
 
 ## Go check it out
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 You can check our early build [here](https://alejandroyanes.github.io/activate/)
 
 ## Available Scripts

@@ -1,29 +1,32 @@
 import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
+import { Colors } from 'styles/colors';
 import { useAppColors } from 'components/providers/Theme';
 import { Wrapper, Dot } from './styled/spinning-dots';
 
 interface Props extends PositionProps {
-  flat?: boolean;
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'page';
+  color?: Colors;
+  delay?: number;
 }
 
 const SpinningDots: FunctionComponent<Props> = (props) => {
   const Colors = useAppColors();
-  const { flat, ...rest } = props;
+  const { color, ...rest } = props;
 
   return (
-    <Wrapper {...rest}>
-      <Dot color={flat ? Colors.WHITE : Colors.BRAND_LIGHT} />
-      <Dot color={flat ? Colors.WHITE : Colors.ACCENT_LIGHT} />
-      <Dot color={flat ? Colors.WHITE : Colors.INFO_LIGHT} />
-      <Dot color={flat ? Colors.WHITE : Colors.ERROR_LIGHT} />
+    <Wrapper data-el="loader-spinning-dots" {...rest}>
+      <Dot color={color ? Colors[color] : Colors.INFO} />
+      <Dot color={color ? Colors[color] : Colors.SUCCESS} />
+      <Dot color={color ? Colors[color] : Colors.WARNING} />
+      <Dot color={color ? Colors[color] : Colors.ERROR} />
     </Wrapper>
   );
 };
 
 SpinningDots.defaultProps = {
   size: 'medium',
+  delay: 0,
 };
 
 export default SpinningDots;

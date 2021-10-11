@@ -2,9 +2,11 @@ import styled from 'styled-components';
 import { anyPropsAttrs } from 'helpers';
 
 export const Text = styled.span.attrs(anyPropsAttrs)`
-  font-family: "MPlus Rounded Normal", sans-serif;
-  margin: 0 8px;
+  font-family: Roboto-Bold, sans-serif;
+  letter-spacing: 0.2px;
+  padding: 0 8px;
   opacity: ${({ show }) => show ? 1 : 0};
+  pointer-events: none;
   transition: all 150ms linear;
 `;
 

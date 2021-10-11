@@ -1,16 +1,16 @@
 import styled from 'styled-components';
+import { anyPropsAttrs, getPositionStyles } from 'helpers';
 
-export const StyledAvatarGroup = styled.div`
+export const StyledAvatarGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;
   align-items: center;
+  ${getPositionStyles};
 
-  & > span:not(:first-child) {
-    margin-left: -14px;
-    border: 3px solid ${({ theme }) => theme.colors.BACKGROUND};
+  & > div[data-el="avatar"] {
+    border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   }
-`;
 
-export const Text = styled.label`
-  margin-left: 6px;
-  color: ${({ theme }) => theme.colors.FONT};
+  & > div[data-el="avatar"]:not(:first-child) {
+    margin-left: -12px;
+  }
 `;

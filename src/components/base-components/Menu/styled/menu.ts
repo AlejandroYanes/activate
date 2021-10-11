@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { elementBorderRadius } from 'styles/variables';
+import { anyPropsAttrs, getBgdColor } from 'helpers';
+import { Layout } from 'components/providers/Layout';
 
 export const MenuWrapper = styled.div`
   display: flex;
@@ -21,15 +22,17 @@ export const MenuContainer = styled.div`
   position: relative;
 `;
 
-export const MenuList = styled.ul`
-  z-index: 1;
+const menuListStyleMap = {
+  [Layout.DESKTOP]: 'width: 400px;',
+  [Layout.TABLET]: 'width: 400px;',
+  [Layout.MOBILE]: 'width: 90vw',
+};
+
+export const MenuList = styled.ul.attrs(anyPropsAttrs)`
   list-style: none;
   margin: 0;
   padding: 0;
-  position: absolute;
-  top: 12px;
-  min-width: 200px;
-  border-radius: ${elementBorderRadius};
-  background-color: ${({ theme }) => theme.colors.BACKGROUND};
-  border: 1px solid ${({ theme }) => theme.colors.BRAND_SHADE};
+  border-radius: 16px;
+  background-color: ${getBgdColor};
+  ${({ layout }) => menuListStyleMap[layout]};
 `;

@@ -1,18 +1,13 @@
 import styled from 'styled-components';
+import { anyPropsAttrs, getFontShadeColor } from 'helpers';
 
-export const Card = styled.article`
+export const Card = styled.article.attrs(anyPropsAttrs)`
   display: flex;
+  flex-direction: column;
   align-items: center;
   border-radius: 16px;
   padding: 16px;
-  margin-bottom: 16px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
-`;
-
-export const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 16px;
-  flex: 1;
+  position: relative;
+  min-width: 320px;
+  border: 1px solid ${getFontShadeColor};
 `;

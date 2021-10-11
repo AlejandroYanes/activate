@@ -1,50 +1,36 @@
-import React, { FunctionComponent, useCallback, useState } from 'react';
-import { getEventValue } from 'helpers';
+import React, { FunctionComponent } from 'react';
+import { useHistory } from 'react-router-dom';
+import { parseSearchQuery } from 'helpers';
 import Page from 'components/base-components/Page';
-import { Input } from 'components/base-components/Inputs';
-import { Icons } from 'components/base-components/SvgIcon';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
+import RenderIf from 'components/base-components/RenderIf';
+import RenderByMap from 'components/base-components/RenderByMap';
+import FlexBox from 'components/base-components/FlexBox';
+import PageTitle from './PageTitle';
+import SearchInput from './SearchInput';
 import EventsResults from './EventsResults';
 import PublishersResults from './PublishersResults';
 import UsersResults from './UsersResults';
-import { Layout, useAppLayout } from '../../providers/Layout';
+import { SearchParam, SearchType } from './types';
 
-enum Tabs {
-  EVENTS = 'EVENTS',
-  PUBLISHERS = 'PUBLISHERS',
-  USERS = 'USERS',
-}
+const resultPageMap = {
+  [SearchType.EVENTS]: EventsResults,
+  [SearchType.PUBLISHERS]: PublishersResults,
+  [SearchType.USERS]: UsersResults,
+};
 
 const SearchPage: FunctionComponent = () => {
-  const layout = useAppLayout();
-  const [search, setSearch] = useState('');
-  const [activeTab, setActiveTab] = useState(Tabs.EVENTS);
-
-  const handleSearch = useCallback((event) => {
-    setSearch(getEventValue(event));
-  }, []);
+  const { location: { search } } = useHistory();
+  const { term, type } = parseSearchQuery<SearchParam>(search);
 
   return (
-    <Page title="Search for anything">
-      <Input value={search} onChange={handleSearch} icon={Icons.SEARCH} showClear />
-      <Tabset
-        activeTab={activeTab}
-        onTabChange={setActiveTab}
-        compact={layout === Layout.SMALL}
-        fullWidth
-        mT
-        mB
-      >
-        <Tab name={Tabs.EVENTS} label="Events" icon={Icons.CALENDAR_FILLED} />
-        <Tab name={Tabs.PUBLISHERS} label="Publishers" icon={Icons.MEGAPHONE} />
-        <Tab name={Tabs.USERS} label="Users" icon={Icons.USERS} />
-      </Tabset>
-      <Switch by={activeTab}>
-        <Case value={Tabs.EVENTS} component={EventsResults} />
-        <Case value={Tabs.PUBLISHERS} component={PublishersResults} />
-        <Case value={Tabs.USERS} component={UsersResults} />
-      </Switch>
+    <Page>
+      <FlexBox direction="column" align="stretch" margin="0 auto">
+        <PageTitle />
+        <SearchInput />
+      </FlexBox>
+      <RenderIf condition={!!term}>
+        <RenderByMap map={resultPageMap} option={type} search={search} />
+      </RenderIf>
     </Page>
   );
 };

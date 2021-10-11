@@ -1,32 +1,41 @@
-/* eslint-disable react/no-array-index-key */
-import React, { FunctionComponent, ReactNode, useMemo } from 'react';
-import Button, { ButtonProps } from 'components/base-components/Button';
-import { Footer as StyledFooter } from './styled';
+import React, { FunctionComponent, ReactNode } from 'react';
+import { headerHeight } from 'styles/variables';
+import FlexBox from 'components/base-components/FlexBox';
 
 interface Props {
-  actions?: ButtonProps[];
   footer?: ReactNode;
+  size?: 'auto' | 'small' | 'medium' | 'large' | 'drawer' | 'mobile';
 }
 
-const Footer: FunctionComponent<Props> = (props): any => {
-  const { footer, actions } = props;
+const commonPadding = '24px 16px 0';
 
-  const actionElements = useMemo(() => {
-    if (actions && Array.isArray(actions)) {
-      return actions.map((action, index) => <Button key={index} {...action} />);
-    }
-    return null;
-  }, [actions]);
+const footerSpacingMap = {
+  drawer: '0 6px',
+  mobile: '0 6px',
+  auto: commonPadding,
+  small: commonPadding,
+  medium: commonPadding,
+  large: commonPadding,
+};
+
+const Footer: FunctionComponent<Props> = (props): any => {
+  const { footer, size } = props;
+  const footerSpacing = footerSpacingMap[size];
 
   if (footer) {
-    return footer;
+    return (
+      <FlexBox
+        align="center"
+        justify="flex-end"
+        height={headerHeight}
+        padding={footerSpacing}
+      >
+        {footer}
+      </FlexBox>
+    );
   }
 
-  return (
-    <StyledFooter>
-      {actionElements}
-    </StyledFooter>
-  );
+  return null;
 };
 
 export default Footer;

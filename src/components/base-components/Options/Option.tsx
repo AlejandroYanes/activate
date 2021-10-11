@@ -1,10 +1,9 @@
 import React, { FunctionComponent, useCallback } from 'react';
-import { useAppColors } from 'components/providers/Theme';
 import RenderIf from 'components/base-components/RenderIf';
 import { Icons } from 'components/base-components/SvgIcon';
 import { Text } from 'components/base-components/Typography';
 import { useOptionsContext } from './context';
-import { Option as StyledOption, Label, Icon, Mark } from './styled';
+import { Icon, Label, Mark, Option as StyledOption } from './styled';
 
 interface Props {
   value: string;
@@ -19,9 +18,14 @@ const spring = {
 };
 
 const Option: FunctionComponent<Props> = (props) => {
-  const Colors = useAppColors();
   const { value, label, icon } = props;
-  const { color, size, fullWidth, value: selectedValue, onChange } = useOptionsContext();
+  const {
+    color,
+    size,
+    fullWidth,
+    value: selectedValue,
+    onChange,
+  } = useOptionsContext();
   const isSelected = value === selectedValue;
 
   const handleOnClick = useCallback(() => {
@@ -32,16 +36,26 @@ const Option: FunctionComponent<Props> = (props) => {
     <StyledOption
       role="button"
       tabIndex={0}
-      onClick={handleOnClick}
       size={size}
       color={color}
       fullWidth={fullWidth}
+      onClick={handleOnClick}
     >
       <Label>
         <RenderIf condition={!!icon}>
-          <Icon icon={icon} size={size} color={isSelected ? Colors.WHITE : Colors.FONT} />
+          <Icon
+            icon={icon}
+            size={size}
+            color={isSelected ? 'BACKGROUND' : 'FONT'}
+          />
         </RenderIf>
-        <Text size={size} color={isSelected ? 'white' : 'font'}>{label}</Text>
+        <Text
+          weight="bold"
+          size={size}
+          color={isSelected ? 'background' : 'font'}
+        >
+          {label}
+        </Text>
       </Label>
       <RenderIf condition={isSelected}>
         <Mark

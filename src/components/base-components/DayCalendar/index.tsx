@@ -1,9 +1,14 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { AnimateSharedLayout } from 'framer-motion';
 import { PositionProps } from 'helpers';
 import RenderIf from 'components/base-components/RenderIf';
-import IconButton from 'components/base-components/IconButton';
-import { Icons } from 'components/base-components/SvgIcon';
+import { IconButton } from 'components/base-components/Button';
 import Days from './Days';
 import { Edge, List, ListContainer, Wrapper } from './styled';
 
@@ -39,7 +44,7 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
     if (listWidth > containerWidth) {
       setShowArrows(true);
     }
-  }, []);
+  }, [days]);
 
   return (
     <Wrapper {...rest} data-el="day_calendar-wrapper">
@@ -47,9 +52,9 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
         <RenderIf condition={showArrows}>
           <IconButton
             onClick={handleLeftEdgeClick}
-            icon={Icons.CHEVRON_LEFT}
+            icon="CHEVRON_LEFT"
+            color="background"
             variant="flat"
-            buttonColor="font"
           />
         </RenderIf>
       </Edge>
@@ -64,9 +69,9 @@ const DayCalendar: FunctionComponent<Props> = (props) => {
         <RenderIf condition={showArrows}>
           <IconButton
             onClick={handleRightEdgeClick}
-            icon={Icons.CHEVRON_RIGHT}
+            icon="CHEVRON_RIGHT"
+            color="background"
             variant="flat"
-            buttonColor="font"
           />
         </RenderIf>
       </Edge>
