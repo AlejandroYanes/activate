@@ -66,7 +66,7 @@ const AuthProvider: FunctionComponent = (props) => {
 
   useEffect(() => {
     const storedUserInfo = getUserInfo();
-    if (storedUserInfo) {
+    if (storedUserInfo?.accessToken) {
       setState({ isLoggedIn: true, userInfo: storedUserInfo });
     }
   }, []);

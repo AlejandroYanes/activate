@@ -56,6 +56,12 @@ export interface PasswordDto {
   newPassword: string;
 }
 
+export interface ResetPasswordDto {
+  email: string;
+  verificationCode: number;
+  newPassword: string;
+}
+
 export interface UserModel {
   id: string;
   userName: string;

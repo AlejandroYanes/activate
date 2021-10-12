@@ -23,6 +23,7 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
       setFormValue,
       setErrors,
       verifyUser,
+      sendVerifyCode,
     },
   } = useVerificationState(goNextStep);
 
@@ -35,6 +36,15 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
           we use this code to verify you are a real person.
           Please check your email and type the code here.
         </Message>
+        <Message>Did not receive an email?</Message>
+        <Button
+          onClick={sendVerifyCode}
+          label="Resend Code"
+          mB
+          style={{ width: 'fit-content' }}
+          rightIcon="ARROW_RIGHT"
+          variant="outline"
+        />
         <CodeBox>
           <Form
             onChange={setFormValue}

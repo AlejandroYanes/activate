@@ -1,7 +1,7 @@
 import { UserInfo } from 'models/user';
 import { NotificationType, showNotification } from 'notifications';
 
-export default function handleLogIn(login: (user: UserInfo) => void) {
+export default function handleSocialLogIn(login: (user: UserInfo) => void) {
   return (event: MessageEvent) => {
     const { data } = event;
     if (data?.source === 'activate_social_sign.success') {

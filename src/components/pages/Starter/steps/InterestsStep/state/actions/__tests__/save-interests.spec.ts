@@ -22,7 +22,7 @@ const push = jest.fn();
 
 const interests = ['cat-1', 'cat-3', 'cat-5'];
 
-describe('Starter page - Interests step - saveInterests action', () => {
+describe('Starter page - Interests step - resetPassword action', () => {
   beforeEach(() => {
     dispatch.mockClear();
     updateUserInfo.mockClear();
