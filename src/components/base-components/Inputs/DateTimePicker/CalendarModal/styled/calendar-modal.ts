@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { getBgdColor } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 
 const typeMap = {
   'date': {

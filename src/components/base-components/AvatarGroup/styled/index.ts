@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getPositionStyles } from 'helpers';
+import { anyPropsAttrs, getBgdColor, getPositionStyles } from 'helpers';
 
 export const StyledAvatarGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;
@@ -7,7 +7,7 @@ export const StyledAvatarGroup = styled.div.attrs(anyPropsAttrs)`
   ${getPositionStyles};
 
   & > div[data-el="avatar"] {
-    border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+    border: 3px solid ${getBgdColor};
   }
 
   & > div[data-el="avatar"]:not(:first-child) {

@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import FlexBox from 'components/base-components/FlexBox';
 import { Title } from 'components/base-components/Typography';
 import { LinkButton } from 'components/base-components/Button';

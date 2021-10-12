@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useRef } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import { PickItem, PickList } from 'components/base-components/PickList';
 import { Field, Form } from 'components/base-components/Form';
 import Avatar from 'components/base-components/Avatar';

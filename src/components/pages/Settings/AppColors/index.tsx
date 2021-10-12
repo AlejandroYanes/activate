@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import { Title } from '../../../base-components/Typography';
-import ThemesGrid from '../../../experience/ThemesGrid';
-import Toggle from '../../../base-components/Toggle';
-import SvgIcon from '../../../base-components/SvgIcon';
+import { Title } from 'components/base-components/Typography';
+import ThemesGrid from 'components/experience/ThemesGrid';
+import Toggle from 'components/base-components/Toggle';
+import SvgIcon from 'components/base-components/SvgIcon';
 import useSettingsState from './state';
 import { themes } from './themes';
 

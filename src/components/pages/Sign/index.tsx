@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import { Field, Form } from 'components/base-components/Form';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';

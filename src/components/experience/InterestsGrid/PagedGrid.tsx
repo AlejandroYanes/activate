@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useSimplePagination } from 'hooks/UI';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import { Title } from 'components/base-components/Typography';
 import { Button, IconButton } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';

@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { ZLevels } from 'styles/z-levels';
 import { headerHeight, mobileHeaderHeight } from 'styles/variables';
 import { anyPropsAttrs, getBgdColor } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 
 const headerStyleMap = {
   [Layout.DESKTOP]: css`

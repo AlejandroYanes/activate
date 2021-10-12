@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { anyPropsAttrs, getPositionStyles } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 
 const getColumns = (props) => {
   const { cols } = props;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { scrollThumbWidth } from 'styles/variables';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from '../Configuration';
 import { StyledBackdrop } from './styled';
 
 interface Props {

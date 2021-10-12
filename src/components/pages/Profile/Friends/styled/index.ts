@@ -5,5 +5,4 @@ export const UsersCard = styled.div`
   flex-direction: column;
   border-radius: 16px;
   padding: 24px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;

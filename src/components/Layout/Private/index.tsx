@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 import NotificationCenter from 'components/experience/NotificationCenter';
 import ModalStack from 'components/experience/ModalStack';

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { PositionProps } from 'helpers';
-import { useAppColors } from 'components/providers/Theme';
+import { useAppColors } from 'components/base-components/Configuration';
 import { Wrapper, Circle } from './styled/concentric';
 
 interface Props extends PositionProps {

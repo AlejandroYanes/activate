@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import { useAuthActions, useAuthData } from 'components/providers/Auth';
 import Avatar from 'components/base-components/Avatar';
 import FlexBox from 'components/base-components/FlexBox';

@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useAuthActions, useAuthData } from 'components/providers/Auth';
 import updateProfileTheme from './actions/update-profile-theme';
 
-export default function useSettingsState() {
+export default function useAppColorsState() {
   const { updateUserInfo } = useAuthActions();
   const { userInfo } = useAuthData();
   const { useDarkStyle, theme: activeTheme } = userInfo;

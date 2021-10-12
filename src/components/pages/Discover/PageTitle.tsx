@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import FlexBox from 'components/base-components/FlexBox';
 import { Title } from 'components/base-components/Typography';
 import { Button } from 'components/base-components/Button';

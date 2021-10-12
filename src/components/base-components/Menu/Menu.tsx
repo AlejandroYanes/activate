@@ -6,7 +6,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { useAppLayout } from 'components/providers/Layout';
+import { useAppLayout } from 'components/base-components/Configuration';
 import RenderIf from 'components/base-components/RenderIf';
 import Backdrop from 'components/base-components/Backdrop';
 import { MenuWrapper, TriggerContainer, MenuList } from './styled/menu';

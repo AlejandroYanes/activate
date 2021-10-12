@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import FlexBox from 'components/base-components/FlexBox';
 import RenderIf from 'components/base-components/RenderIf';
 import Calendar from 'components/base-components/Calendar';

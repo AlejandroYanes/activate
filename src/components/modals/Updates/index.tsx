@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import Modal from 'components/base-components/Modal';
 import Updates from './Updates';
 

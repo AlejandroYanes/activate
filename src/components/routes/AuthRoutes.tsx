@@ -2,7 +2,7 @@ import React, { FunctionComponent, Suspense } from 'react';
 import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import { PrivateLayout } from 'components/Layout';
 import { useAuthData } from 'components/providers/Auth';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 
 const ProfilePage = React.lazy(() => import('components/pages/Profile'));
 const DiscoverPage = React.lazy(() => import('components/pages/Discover'));

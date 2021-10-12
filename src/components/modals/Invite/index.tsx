@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
 import { capitalizeFirstLetter } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import Modal from 'components/base-components/Modal';
 import { Input } from 'components/base-components/Inputs';
 import UsersList from 'components/experience/UsersList';

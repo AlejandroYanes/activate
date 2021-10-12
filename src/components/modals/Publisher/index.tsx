@@ -2,7 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { formatAmount } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import { Text, Title } from 'components/base-components/Typography';
 import { Tab, Tabset } from 'components/base-components/Tabset';
 import { Case, Switch } from 'components/base-components/Switch';

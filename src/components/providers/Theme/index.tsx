@@ -1,25 +1,17 @@
-import React, {
-  createContext,
-  FunctionComponent,
-  useCallback,
-  useContext,
-  useMemo,
-} from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { ColorScheme } from 'styles/colors';
+import React, { FunctionComponent, useMemo } from 'react';
+import { basicColors, Palette } from 'styles/colors';
 import {
   DuskLightsTheme,
+  FruitsTheme,
+  GrapesTheme,
   LifeIsABeachTheme,
   NeonLightsTheme,
-  GrapesTheme,
   SummerVibesTheme,
-  FruitsTheme,
 } from 'styles/themes';
-import { composeColorScheme } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import RenderByLayout from 'components/base-components/RenderByLayout';
+import Configuration, { Layout } from 'components/base-components/Configuration';
+import { useAuthData } from 'components/providers/Auth';
 import { MobileGlobalStyles, PrimaryGlobalStyles } from './GlobalStyles';
-import { useAuthActions, useAuthData } from '../Auth';
 
 export enum AppTheme {
   Grapes = 'Grapes',
@@ -28,15 +20,6 @@ export enum AppTheme {
   LifeIsABeach = 'LifeIsABeach',
   DuskLights = 'DuskLights',
   Fruits = 'Fruits',
-}
-
-interface ThemeContextValue {
-  theme: AppTheme;
-  setTheme: (theme: AppTheme) => void;
-  useDarkStyle: boolean;
-  toggleLightStyle: () => void;
-  colors: ColorScheme;
-  layout: Layout;
 }
 
 const themesMap = {
@@ -48,8 +31,6 @@ const themesMap = {
   [AppTheme.Fruits]: FruitsTheme,
 };
 
-const ThemeContext = createContext<ThemeContextValue>(undefined);
-
 const globalStyles = {
   [Layout.DESKTOP]: PrimaryGlobalStyles,
   [Layout.TABLET]: PrimaryGlobalStyles,
@@ -58,55 +39,32 @@ const globalStyles = {
 
 const ThemeProvider: FunctionComponent = (props) => {
   const { children } = props;
-  const layout = useAppLayout();
   const { userInfo } = useAuthData();
-  const { updateUserInfo } = useAuthActions();
   const theme = userInfo?.theme || AppTheme.LifeIsABeach;
   const useDarkStyle = userInfo ? userInfo.useDarkStyle : false;
 
-  const setTheme = useCallback((theme: AppTheme) => {
-    updateUserInfo({ ...userInfo, theme });
-  }, [userInfo]);
-
-  const toggleLightStyle = useCallback(() => {
-    updateUserInfo({
-      ...userInfo,
-      useDarkStyle: !userInfo.useDarkStyle,
-    });
-  }, [userInfo]);
-
-  const themeProps = useMemo(
+  const palette = useMemo(
     () => {
       const themeColors = themesMap[theme];
-
-      return {
-        layout,
-        useDarkStyle,
-        colors: composeColorScheme(themeColors, useDarkStyle),
+      const composition: Palette = {
+        ...themeColors,
+        ...basicColors,
+        BACKGROUND: useDarkStyle ? '#1c1c1c' : '#ffffff',
       };
+      return composition;
     },
-    [theme, useDarkStyle, layout],
-  );
-
-  const themeContextValue = useMemo<ThemeContextValue>(
-    () => ({ theme, setTheme, toggleLightStyle, ...themeProps }),
-    [theme, themeProps, toggleLightStyle],
+    [theme, useDarkStyle],
   );
 
   return (
-    <ThemeContext.Provider value={themeContextValue}>
-      <StyledThemeProvider theme={themeProps}>
-        <RenderByLayout
-          options={globalStyles}
-          fallback={PrimaryGlobalStyles}
-        />
-        {children}
-      </StyledThemeProvider>
-    </ThemeContext.Provider>
+    <Configuration palette={palette}>
+      <RenderByLayout
+        options={globalStyles}
+        fallback={PrimaryGlobalStyles}
+      />
+      {children}
+    </Configuration>
   );
 };
-
-export const useAppTheme = () => useContext(ThemeContext);
-export const useAppColors = () => useContext(ThemeContext).colors;
 
 export default ThemeProvider;

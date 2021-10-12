@@ -1,23 +1,5 @@
-import React, {
-  FunctionComponent,
-  createContext,
-  useState,
-  useContext,
-  useEffect,
-  useCallback,
-} from 'react';
-
-export enum Layout {
-  DESKTOP = 'DESKTOP',
-  TABLET = 'TABLET',
-  MOBILE = 'MOBILE',
-}
-
-interface Breakpoint {
-  layout: Layout;
-  query: string;
-  matches: boolean;
-}
+import { useCallback, useEffect, useState } from 'react';
+import { Breakpoint, Layout } from './types';
 
 const breakpoints: Breakpoint[] = [
   { layout: Layout.MOBILE, query: '(max-width: 767px)', matches: false },
@@ -35,10 +17,7 @@ function getActiveLayout() {
   return activeLayout?.layout || Layout.DESKTOP;
 }
 
-const LayoutContext = createContext<Layout>(undefined);
-
-const LayoutProvider: FunctionComponent = (props) => {
-  const { children } = props;
+export default function useLayout() {
   const [layout, setLayout] = useState<Layout>(getActiveLayout);
 
   const handleQueryMatch = useCallback(() => {
@@ -58,13 +37,5 @@ const LayoutProvider: FunctionComponent = (props) => {
     }
   }, [handleQueryMatch]);
 
-  return (
-    <LayoutContext.Provider value={layout}>
-      {children}
-    </LayoutContext.Provider>
-  );
-};
-
-export const useAppLayout = () => useContext(LayoutContext);
-
-export default LayoutProvider;
+  return layout;
+}

@@ -4,14 +4,15 @@ import {
   getContrastRatio,
   getShade,
 } from 'helpers';
-import { colorVariation } from 'styles/variables';
 import {
-  basicColors,
+  BackgroundScheme,
   ColorScheme,
+  Palette,
   darkStyleColors,
   fixedColors,
-  lightStyleColors
+  lightStyleColors,
 } from '../styles/colors';
+import { colorVariation } from '../styles/variables';
 
 function getColorFactor(color: string) {
   return getBrightness(color) > 128
@@ -53,18 +54,16 @@ export function balanceBgColorRatio(
   return balancedColor;
 }
 
-function expandColors(colors, lightColors, useDarkStyle) {
-  const { BACKGROUND, BACKGROUND_LIGHTER } = lightColors;
+function expandColors(colors: Palette, useDarkStyle) {
+  const { BACKGROUND, ...rest } = colors;
 
-  return Object.keys(colors).reduce((acc, color) => {
+  return Object.keys(rest).reduce((acc, color) => {
     const colorValue = colors[color];
     const colorFactor = useDarkStyle ? colorVariation : -colorVariation;
-    const balancedColor = useDarkStyle
-      ? balanceColorRatio(colorValue, BACKGROUND)
-      : balanceColorRatio(colorValue, BACKGROUND_LIGHTER);
+    const balancedColor = balanceColorRatio(colorValue, BACKGROUND);
     const balancedBgColor = useDarkStyle
-      ? balanceBgColorRatio(BACKGROUND_LIGHTER, colorValue, 5.5)
-      : colorValue
+      ? balanceBgColorRatio(BACKGROUND, colorValue, 5.5)
+      : colorValue;
 
     return {
       ...acc,
@@ -79,18 +78,22 @@ function expandColors(colors, lightColors, useDarkStyle) {
   }, {} as ColorScheme);
 }
 
-export function composeColorScheme(theme, useDarkStyle): ColorScheme {
-  const lightColors = useDarkStyle ? darkStyleColors : lightStyleColors;
-
-  const expandedColors = expandColors(
-    { ...theme, ...basicColors },
-    lightColors,
-    useDarkStyle,
-  );
+export function composeColorScheme(palette: Palette): ColorScheme {
+  const { BACKGROUND } = palette;
+  const isDarkStyle = getBrightness(BACKGROUND) < 128;
+  const lightColors = isDarkStyle ? darkStyleColors : lightStyleColors;
+  const expandedColors = expandColors(palette, isDarkStyle);
+  const backgroundColors: BackgroundScheme = {
+    BACKGROUND,
+    BACKGROUND_LIGHT: changeColorLight(BACKGROUND, -0.02),
+    BACKGROUND_LIGHTER: changeColorLight(BACKGROUND, -0.03),
+    BACKGROUND_SHADE: getShade(BACKGROUND),
+  }
 
   return {
     ...expandedColors,
     ...fixedColors,
-    ...lightColors
+    ...lightColors,
+    ...backgroundColors,
   };
 }

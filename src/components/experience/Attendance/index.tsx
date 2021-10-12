@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { formatAmount, PositionProps } from 'helpers';
 import { EventModel } from 'models/event';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import AvatarGroup from 'components/base-components/AvatarGroup';
 
 interface Props extends PositionProps {

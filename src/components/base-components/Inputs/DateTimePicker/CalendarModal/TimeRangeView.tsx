@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import Clock from 'components/base-components/Clock';
 import FlexBox from 'components/base-components/FlexBox';
 import { Tab, Tabset } from 'components/base-components/Tabset';

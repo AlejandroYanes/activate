@@ -4,7 +4,7 @@ import {
   NotificationModel,
   NotificationType,
 } from 'notifications';
-import { useAppColors } from 'components/providers/Theme';
+import { useAppColors } from 'components/base-components/Configuration';
 import { IconButton } from 'components/base-components/Button';
 import { Text } from 'components/base-components/Typography';
 import RenderIf from 'components/base-components/RenderIf';

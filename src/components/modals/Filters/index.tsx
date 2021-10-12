@@ -2,7 +2,7 @@ import React, { FunctionComponent, useCallback, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { generateUID } from 'helpers';
 import { notifyEventChannel } from 'event-center';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import Modal from 'components/base-components/Modal';
 import { Button } from 'components/base-components/Button';
 import RenderIf from 'components/base-components/RenderIf';

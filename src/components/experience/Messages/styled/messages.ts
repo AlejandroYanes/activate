@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { headerHeight, mobileHeaderHeight } from 'styles/variables';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs, getBgdColor, getSuccessColor } from 'helpers';
 import { TextArea } from 'components/base-components/Inputs';
 
 export const Messages = styled.main.attrs(anyPropsAttrs)`
@@ -34,8 +34,8 @@ export const ActiveDot = styled.div`
   bottom: 2px;
   right: -2px;
   border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.SUCCESS};
-  border: 3px solid ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getSuccessColor};
+  border: 3px solid ${getBgdColor};
 `;
 
 export const Content = styled.section`

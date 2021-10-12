@@ -7,7 +7,6 @@ export const List = styled.ul`
   align-content: stretch;
   padding: 6px;
   box-sizing: border-box;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
 `;
 
 export const Month = styled.li.attrs(anyPropsAttrs)`

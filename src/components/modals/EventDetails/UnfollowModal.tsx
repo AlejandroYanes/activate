@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, useAppLayout } from 'components/base-components/Configuration';
 import SvgIcon from 'components/base-components/SvgIcon';
 import { Text, Title } from 'components/base-components/Typography';
 import FlexBox from 'components/base-components/FlexBox';

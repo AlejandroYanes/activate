@@ -1,5 +1,9 @@
 import styled, { css } from 'styled-components';
-import { anyPropsAttrs, getBgdLighterColor, getPositionStyles } from 'helpers';
+import {
+  anyPropsAttrs,
+  getBgdColor,
+  getPositionStyles
+} from 'helpers';
 
 const avatarSizes = {
   'x-small': { width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' },
@@ -43,7 +47,7 @@ export const StyledAvatar = styled.div.attrs(anyPropsAttrs)`
   border-radius: 50%;
   box-sizing: content-box;
   overflow: hidden;
-  background-color: ${getBgdLighterColor};
+  background-color: ${getBgdColor};
   ${getSizeStyles};
   ${getClickableStyles};
   ${getPositionStyles};

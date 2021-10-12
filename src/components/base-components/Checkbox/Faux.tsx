@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import React, { FunctionComponent, useMemo } from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
-import { useAppColors } from 'components/providers/Theme';
+import { useAppColors } from 'components/base-components/Configuration';
 
 interface Props {
   isChecked: boolean;
@@ -15,8 +15,8 @@ const tickVariants = {
 };
 
 const Faux: FunctionComponent<Props> = (props) => {
-  const colors = useAppColors();
   const { isChecked, onClick } = props;
+  const colors = useAppColors();
 
   const pathLength = useMotionValue(0);
   const opacity = useTransform(pathLength, [0.05, 0.15], [0, 1]);

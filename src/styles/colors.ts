@@ -1,4 +1,16 @@
-import { getShade, changeColorLight } from 'helpers/color-attrs';
+import { getShade } from 'helpers/color-attrs';
+
+export type Palette = {
+  BRAND: string;
+  ACCENT: string;
+  SUCCESS: string;
+  INFO: string;
+  WARNING: string;
+  ERROR: string;
+  BACKGROUND: string;
+}
+
+export type BasicScheme = Exclude<Palette, { FONT: string }>;
 
 export enum Variations {
   BASE = '',
@@ -10,32 +22,26 @@ export enum Variations {
   SHADE = '_SHADE',
 }
 
-type BasicScheme = {
-  BRAND: string;
-  ACCENT: string;
-  SUCCESS: string;
-  INFO: string;
-  WARNING: string;
-  ERROR: string;
-};
-
 type VariationLabels = Exclude<keyof (typeof Variations), 'BASE'>;
 
 type ExtendedScheme = {
   [Property in keyof BasicScheme as `${Property}_${VariationLabels}`]: string;
 }
 
-type LightColorScheme = {
+export type LightColorScheme = {
   FONT: string;
   FONT_SECONDARY: string;
   FONT_SHADE: string;
+};
+
+export type BackgroundScheme = {
   BACKGROUND: string;
   BACKGROUND_LIGHT: string;
   BACKGROUND_LIGHTER: string;
   BACKGROUND_SHADE: string;
 };
 
-type FixedColorScheme  = {
+export type FixedColorScheme  = {
   WHITE: string;
   WHITE_SHADE: string;
   GRAY: string;
@@ -48,6 +54,7 @@ export type ColorScheme = (
   BasicScheme &
   ExtendedScheme &
   LightColorScheme &
+  BackgroundScheme &
   FixedColorScheme
 );
 
@@ -57,20 +64,12 @@ export const lightStyleColors: LightColorScheme = {
   FONT: '#151718',
   FONT_SECONDARY: '#57585f',
   FONT_SHADE: getShade('#151718', 0.2),
-  BACKGROUND: '#ffffff',
-  BACKGROUND_LIGHT: changeColorLight('#ffffff', -0.02),
-  BACKGROUND_LIGHTER: changeColorLight('#ffffff', -0.03),
-  BACKGROUND_SHADE: getShade('#f5f6fa'),
 };
 
 export const darkStyleColors: LightColorScheme = {
   FONT: '#f5f6fa',
   FONT_SECONDARY: '#b1b1b4',
   FONT_SHADE: getShade('#ffffff'),
-  BACKGROUND: changeColorLight('#121212', 0.05),
-  BACKGROUND_LIGHT: changeColorLight('#121212', 0.025),
-  BACKGROUND_LIGHTER: '#121212',
-  BACKGROUND_SHADE: getShade('#1F1F1F'),
 };
 
 export const fixedColors: FixedColorScheme = {

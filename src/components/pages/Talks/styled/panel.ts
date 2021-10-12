@@ -22,7 +22,9 @@ export const Panel = styled.div`
 `;
 
 export const List = styled(UsersList)`
-  width: 320px;
-  min-width: 320px;
-  padding: 16px;
+  width: calc(300px - 16px);
+  min-width: calc(300px - 16px);
+  margin: 16px 0 16px 16px;
+  box-sizing: border-box;
+  border-right: 2px solid ${getFontShadeColor};
 `

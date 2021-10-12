@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import { useAppLayout } from 'components/providers/Layout';
+import { useAppLayout } from 'components/base-components/Configuration';
 import RenderIf from 'components/base-components/RenderIf';
 import { IconButton } from 'components/base-components/Button';
 import { Edge, StyledListContainer, Wrapper } from './styled/list-container';

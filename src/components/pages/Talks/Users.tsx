@@ -48,7 +48,7 @@ const Users: FunctionComponent<Props> = (props) => {
         onClick={onUserClick}
       />
       <RenderIf condition={!showAllContacts}>
-        <AbsoluteContent bottom={16} left={250}>
+        <AbsoluteContent bottom={16} left={242}>
           <IconButton
             size="large"
             variant="fill"

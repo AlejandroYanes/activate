@@ -35,7 +35,6 @@ const getCurve = ({ side }) => {
 };
 
 export const Edge = styled.div.attrs(anyPropsAttrs)`
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
   ${getCurve};
   box-sizing: border-box;
   height: 60px;

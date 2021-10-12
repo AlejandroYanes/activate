@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'components/base-components/Configuration';
 import { Title } from 'components/base-components/Typography';
 import RenderByLayout from 'components/base-components/RenderByLayout';
 
