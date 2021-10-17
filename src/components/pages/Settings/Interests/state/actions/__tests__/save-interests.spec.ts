@@ -20,7 +20,7 @@ const dispatch = jest.fn();
 
 const interests = ['cat-1', 'cat-3', 'cat-5'];
 
-describe('Interests page - resetPassword action', () => {
+describe('Interests page - saveInterests action', () => {
   beforeEach(() => {
     dispatch.mockClear();
     // @ts-ignore

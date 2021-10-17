@@ -2,7 +2,8 @@ import { AxiosPromise, AxiosResponse } from 'axios';
 import {
   AuthCredentials,
   PasswordDto,
-  ProfileDto, ResetPasswordDto,
+  ProfileDto,
+  ResetPasswordDto,
   SocialProvider,
   UserInfo,
 } from 'models/user';

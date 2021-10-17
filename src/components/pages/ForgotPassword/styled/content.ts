@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Layout } from 'components/providers/Layout';
-import { anyPropsAttrs } from '../../../../helpers';
+import { anyPropsAttrs } from 'helpers';
 
 const contentStyleMap = {
   [Layout.DESKTOP]: css`
@@ -9,14 +9,14 @@ const contentStyleMap = {
   `,
   [Layout.TABLET]: css`
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   `,
   [Layout.MOBILE]: css`
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
   `,
 };
 
 export const Content = styled.section.attrs(anyPropsAttrs)`
-  ${({ layout }) => contentStyleMap[layout]};
+  ${({ theme }) => contentStyleMap[theme.layout]};
 `;

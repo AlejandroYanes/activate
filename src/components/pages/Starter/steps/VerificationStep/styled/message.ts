@@ -3,5 +3,5 @@ import { Paragraph } from 'components/base-components/Typography';
 
 export const Message = styled(Paragraph)`
   max-width: 500px;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 `;

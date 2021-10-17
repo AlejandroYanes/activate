@@ -12,17 +12,16 @@ const signBlockStyleMap = {
   [Layout.TABLET]: css`
     display: flex;
     flex-direction: column;
-    width: 450px;
-    margin: 0 auto;
+    margin: 48px auto;
   `,
   [Layout.MOBILE]: css`
-    width: 100%;
     padding: 0 12px;
+    margin: 48px auto;
     display: flex;
     flex-direction: column;
   `,
 };
 
 export const SignBox = styled.div.attrs(anyPropsAttrs)`
-  ${({ layout }) => signBlockStyleMap[layout]};
+  ${({ theme }) => signBlockStyleMap[theme.layout]};
 `;

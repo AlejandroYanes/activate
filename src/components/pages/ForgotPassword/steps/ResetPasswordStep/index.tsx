@@ -3,6 +3,7 @@ import { Field, Form } from 'components/base-components/Form';
 import { NumberInput, PasswordInput } from 'components/base-components/Inputs';
 import { Button } from 'components/base-components/Button';
 import { StepContent, Step, StepTitle, Message } from '../../styled';
+import { ResendCodeButton } from './styled';
 import useResetPasswordState, { validationRules } from './state';
 
 const ResetPasswordStep: FunctionComponent = () => {
@@ -29,11 +30,10 @@ const ResetPasswordStep: FunctionComponent = () => {
           Please check your email and type the code here.
         </Message>
         <Message>Did not receive an email?</Message>
-        <Button
+        <ResendCodeButton
           onClick={sendResetCode}
           label="Resend Code"
           mB
-          style={{ width: 'fit-content' }}
           rightIcon="ARROW_RIGHT"
           variant="outline"
         />
@@ -43,6 +43,7 @@ const ResetPasswordStep: FunctionComponent = () => {
           errors={errors}
           onError={setErrors}
           rules={validationRules}
+          mT
         >
           <Field
             component={NumberInput}

@@ -4,7 +4,7 @@ import { Button } from 'components/base-components/Button';
 import { Field, Form } from 'components/base-components/Form';
 import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
-import { CodeBox, Message } from './styled';
+import { CodeBox, Message, ResendCodeButton } from './styled';
 import useVerificationState, { codeRules } from './state';
 
 interface Props {
@@ -37,11 +37,9 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
           Please check your email and type the code here.
         </Message>
         <Message>Did not receive an email?</Message>
-        <Button
+        <ResendCodeButton
           onClick={sendVerifyCode}
           label="Resend Code"
-          mB
-          style={{ width: 'fit-content' }}
           rightIcon="ARROW_RIGHT"
           variant="outline"
         />

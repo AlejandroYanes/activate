@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react';
-import { useAppLayout } from 'components/providers/Layout';
 import Stepper from 'components/base-components/Stepper';
 import { Title } from 'components/base-components/Typography';
 import { LinkButton } from 'components/base-components/Button';
@@ -9,16 +8,15 @@ import useForgotPasswordState from './state';
 import { Message, Content, SignBox } from './styled';
 
 const ForgotPasswordPage: FunctionComponent = () => {
-  const layout = useAppLayout();
   const { activeStep, goNextStep } = useForgotPasswordState();
 
   return (
-    <Content layout={layout}>
+    <Content>
       <Stepper activeStep={activeStep}>
         <SendResetCodeStep onSuccess={goNextStep} />
         <ResetPasswordStep />
       </Stepper>
-      <SignBox layout={layout}>
+      <SignBox>
         <Title>Login to your Account</Title>
         <Message>
           If you have an account and remember your current password,

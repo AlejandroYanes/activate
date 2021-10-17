@@ -15,7 +15,7 @@ jest.mock('notifications', () => ({
     ERROR: 'ERROR',
   }
 }));
-jest.mock('../../../../../../../../helpers', () => ({
+jest.mock('helpers', () => ({
   getUserInfo: () => ({ email })
 }))
 

@@ -21,7 +21,7 @@ const closeModal = jest.fn();
 
 const interests = ['cat-1', 'cat-3', 'cat-5'];
 
-describe('Interests modal - resetPassword action', () => {
+describe('Interests modal - saveInterests action', () => {
   beforeEach(() => {
     dispatch.mockClear();
     closeModal.mockClear();
