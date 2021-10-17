@@ -1,10 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import { Button } from 'components/base-components/Button';
-import { Text } from 'components/base-components/Typography';
-import RenderIf from 'components/base-components/RenderIf';
+import { Button, FlexBox, Modal, RenderIf, Text } from 'activate-components';
 import InterestsGrid from 'components/experience/InterestsGrid';
 import useInterestsState from './state';
 

@@ -1,10 +1,13 @@
 import { FunctionComponent } from 'react';
-import FlexBox from 'components/base-components/FlexBox';
-import RenderIf from 'components/base-components/RenderIf';
-import { Field } from 'components/base-components/Form';
-import { Button, LinkButton } from 'components/base-components/Button';
-import Checkbox from 'components/base-components/Checkbox';
-import { Text } from 'components/base-components/Typography';
+import {
+  Button,
+  Checkbox,
+  Field,
+  FlexBox,
+  LinkButton,
+  RenderIf,
+  Text
+} from 'activate-components';
 import { SignAction } from '../state';
 import { ActionBoxProps } from './';
 

@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import { Case, FlexBox, Page, Switch } from 'activate-components';
 import { RelationshipStatus } from 'models/user';
-import Page from 'components/base-components/Page';
-import FlexBox from 'components/base-components/FlexBox';
-import { Case, Switch } from 'components/base-components/Switch';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import PrivateAccount from './PrivateAccount';
 import ProfileData from './ProfileData';

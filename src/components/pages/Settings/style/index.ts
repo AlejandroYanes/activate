@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getFontShadeColor } from 'helpers';
+import { getFontShadeColor } from 'activate-components';
 
 export const Panel = styled.div`
   border: 1px solid ${getFontShadeColor};

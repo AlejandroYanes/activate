@@ -1,13 +1,18 @@
 import React, { FunctionComponent, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'components/base-components/Modal';
-import { Field, Form } from 'components/base-components/Form';
-import RenderIf from 'components/base-components/RenderIf';
-import { PickItem, PickList } from 'components/base-components/PickList';
-import Avatar from 'components/base-components/Avatar';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { ErrorText } from 'components/base-components/Inputs';
-import { Button } from 'components/base-components/Button';
+import {
+  Avatar,
+  Button,
+  Field,
+  Form,
+  Modal,
+  PickItem,
+  PickList,
+  RenderIf,
+  SvgIcon,
+  Text,
+  ErrorText,
+} from 'activate-components';
 import {
   AvatarsBox,
   HiddenInput,
@@ -16,7 +21,6 @@ import {
   ProfileBox,
 } from './styled';
 import useEditProfileState, { AvatarOptions, profileRules } from './state';
-import { Text } from '../../base-components/Typography';
 
 const EditProfileModal: FunctionComponent = () => {
   const { goBack } = useHistory();

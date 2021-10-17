@@ -1,6 +1,6 @@
+import { NotificationType, showNotification } from 'activate-components';
 import interestsApi from 'api/interests';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
 import { Actions } from '../reducer';
 
 export default function saveInterests(

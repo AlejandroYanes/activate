@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
-import Avatar from 'components/base-components/Avatar';
-import { anyPropsAttrs, getPositionStyles } from '../../../../helpers';
+import {
+  anyPropsAttrs,
+  Avatar,
+  getBgdColor,
+  getBgdLightColor,
+  getPositionStyles
+} from 'activate-components';
 
 export const Card = styled.div`
   position: relative;
@@ -8,7 +13,7 @@ export const Card = styled.div`
   padding: 84px 16px 24px;
   margin-top: 43px;
   margin-bottom: 32px;
-  background-color: ${({ theme }) => theme.colors.BACKGROUND_LIGHT};
+  background-color: ${getBgdLightColor};
 `;
 
 export const StyledAvatar = styled(Avatar)`
@@ -16,7 +21,7 @@ export const StyledAvatar = styled(Avatar)`
   top: -43px;
   left: 50%;
   margin: 0 auto 0 -43px;
-  border: 10px solid ${({ theme }) => theme.colors.BACKGROUND};
+  border: 10px solid ${getBgdColor};
 `;
 
 const getAlignStyles = (props) => {

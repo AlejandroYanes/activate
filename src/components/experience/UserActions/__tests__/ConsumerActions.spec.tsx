@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
+import { TestWrapper } from 'activate-components';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
-import TestWrapper from 'components/base-components/TestWrapper';
 import ConsumerActions from '../ConsumerActions';
 
 describe('User Actions - ConsumerActions', () => {
@@ -11,8 +11,11 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.UNRELATED,
     };
 
@@ -42,8 +45,11 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.PENDING,
     };
 
@@ -73,8 +79,11 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.PENDING_FOR_ME,
     };
 
@@ -105,8 +114,11 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.ACCEPTED,
     };
 
@@ -136,8 +148,11 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.MUTED,
     };
 

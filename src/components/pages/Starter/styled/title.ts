@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'activate-components';
 
 const sizeMap = {
   [Layout.DESKTOP]: 40,

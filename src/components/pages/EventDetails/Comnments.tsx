@@ -1,10 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo, useState } from 'react';
+import { Button, Field, FlexBox, Form, Modal, TextArea } from 'activate-components';
 import { CommentModel } from 'models/comment';
-import { Button } from 'components/base-components/Button';
-import { Field, Form } from 'components/base-components/Form';
-import TextArea from 'components/base-components/Inputs/TextArea';
-import FlexBox from 'components/base-components/FlexBox';
-import Modal from 'components/base-components/Modal';
 import Comment from './Comment';
 
 interface Props {

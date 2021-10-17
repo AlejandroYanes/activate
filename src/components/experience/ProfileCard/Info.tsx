@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { formatAmount } from 'helpers';
-import { Text, Title } from 'components/base-components/Typography';
+import { formatAmount, Text, Title } from 'activate-components';
 import { Attr, Info as StyledInfo } from './styled';
 
 interface Props {

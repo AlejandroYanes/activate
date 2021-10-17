@@ -1,12 +1,13 @@
 import React, { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Field, Form } from 'components/base-components/Form';
-import { Text, Title } from 'components/base-components/Typography';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { PasswordInput } from 'components/base-components/Inputs';
-import FlexBox from 'components/base-components/FlexBox';
-import RenderIf from 'components/base-components/RenderIf';
-import { IconButton, LinkButton } from 'components/base-components/Button';
+import {
+  Field,
+  FlexBox, Form, IconButton,
+  Layout, LinkButton, PasswordInput,
+  RenderIf, Tab,
+  Tabset, Text,
+  Title,
+  useAppLayout
+} from 'activate-components';
 import Slider from './Slider';
 import ActionBox from './ActionBox';
 import useSignPageState, { SignAction, validationRules } from './state';

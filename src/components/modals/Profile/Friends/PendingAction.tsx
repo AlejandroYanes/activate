@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useQueryClient } from 'react-query';
+import {
+  Badge,
+  Button,
+  NotificationType,
+  RenderIf,
+  showNotification
+} from 'activate-components';
 import usersApi from 'api/users';
-import { NotificationType, showNotification } from 'notifications';
 import { QueryKey } from 'components/providers/Query';
-import RenderIf from 'components/base-components/RenderIf';
-import Badge from 'components/base-components/Badge';
-import { Button } from 'components/base-components/Button';
 
 const PendingAction = ({ id }) => {
   const queryClient = useQueryClient();

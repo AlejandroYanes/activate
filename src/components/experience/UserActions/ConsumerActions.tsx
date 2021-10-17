@@ -1,10 +1,14 @@
 import { FunctionComponent } from 'react';
+import {
+  FlexBox,
+  IconButton,
+  Menu,
+  MenuItem,
+  RenderIf,
+  Text,
+  Title
+} from 'activate-components';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
-import { Menu, MenuItem } from 'components/base-components/Menu';
-import { IconButton } from 'components/base-components/Button';
-import FlexBox from 'components/base-components/FlexBox';
-import { Text, Title } from 'components/base-components/Typography';
-import RenderIf from 'components/base-components/RenderIf';
 import { useConsumerActions } from './use-user-actions';
 
 interface Props {

@@ -1,4 +1,4 @@
-import { SelectOption } from 'components/base-components/Inputs';
+import { SelectOption } from 'activate-components';
 
 export enum EventLocation {
   OnLine = 'OnLine',

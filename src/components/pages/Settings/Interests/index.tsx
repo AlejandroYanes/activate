@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Text, Title } from 'components/base-components/Typography';
-import { Button } from 'components/base-components/Button';
+import { Button, RenderIf, Text, Title } from 'activate-components';
 import InterestsGrid from 'components/experience/InterestsGrid';
-import RenderIf from 'components/base-components/RenderIf';
 import useInterestsState from './state';
 
 const InterestsSection: FunctionComponent = () => {

@@ -1,5 +1,5 @@
+import { NotificationType, showNotification } from 'activate-components';
 import { getUserInfo } from 'helpers';
-import { NotificationType, showNotification } from 'notifications';
 import { ProfileStepActions } from '../reducer';
 
 async function loadSocialProviderProfileImage(dispatch, avatar, sub) {

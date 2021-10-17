@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
-import { PositionProps } from 'helpers';
-import { Button } from 'components/base-components/Button';
+import { Button, PositionProps } from 'activate-components';
 import ErrorScreen from './Error';
 
 interface Props extends PositionProps {

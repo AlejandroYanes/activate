@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
+import { anyPropsAttrs } from 'activate-components';
 
 const getColumnsTemplate = (props) => {
   const { cols } = props;

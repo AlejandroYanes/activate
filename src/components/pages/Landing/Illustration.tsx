@@ -1,6 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { ManLooking, ManLookingDown } from 'components/base-components/Illustrations';
+import { Layout, ManLooking, ManLookingDown, useAppLayout } from 'activate-components';
 
 const illustrationMap = {
   [Layout.DESKTOP]: ManLooking,

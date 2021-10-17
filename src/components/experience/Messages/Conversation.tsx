@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { Text } from 'components/base-components/Typography';
+import { Text } from 'activate-components';
 import { Conversation as StyledConversation, TextBubble } from './styled/conversation';
 import { messages } from './messages';
 

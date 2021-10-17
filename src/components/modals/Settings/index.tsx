@@ -1,9 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import { Text } from 'components/base-components/Typography';
-import SvgIcon from 'components/base-components/SvgIcon';
+import { FlexBox, Modal, SvgIcon, Text } from 'activate-components';
 import { SettingItem } from './styled';
 
 const SettingsModal: FunctionComponent = () => {

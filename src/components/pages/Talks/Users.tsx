@@ -1,12 +1,14 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useQuery } from 'react-query';
+import {
+  AbsoluteContent,
+  FlexBox,
+  IconButton,
+  RenderIf,
+  Title
+} from 'activate-components';
 import usersApi from 'api/users';
 import { QueryKey } from 'components/providers/Query';
-import FlexBox from 'components/base-components/FlexBox';
-import { IconButton } from 'components/base-components/Button';
-import { Title } from 'components/base-components/Typography';
-import AbsoluteContent from 'components/base-components/AbsoluteContent';
-import RenderIf from 'components/base-components/RenderIf';
 import { List as UsersList } from './styled';
 
 interface Props {

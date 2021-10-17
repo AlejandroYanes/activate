@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
+import { NotificationType, showNotification } from 'activate-components';
 import eventsApi from 'api/events';
-import { NotificationType, showNotification } from 'notifications';
 import handleUnfollow from '../handle-unfollow';
 
-jest.mock('api/events');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
@@ -13,6 +12,7 @@ jest.mock('notifications', () => ({
     ERROR: 'ERROR',
   }
 }));
+jest.mock('api/events');
 
 const setState = jest.fn((...params) => params);
 

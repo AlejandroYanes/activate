@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
+import { TestWrapper } from 'activate-components';
 import { FollowerStatus, PublisherModel } from 'models/user';
-import TestWrapper from 'components/base-components/TestWrapper';
 import PublisherActions from '../PublisherActions';
 
 describe('User Actions - PublisherActions', () => {
@@ -11,8 +11,11 @@ describe('User Actions - PublisherActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      events: undefined,
-      followers: undefined,
+      count: {
+        events: undefined,
+        followers: undefined,
+      },
+      friends: [],
       followerStatus: FollowerStatus.UNRELATED,
     };
 
@@ -40,8 +43,11 @@ describe('User Actions - PublisherActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      events: undefined,
-      followers: undefined,
+      count: {
+        events: undefined,
+        followers: undefined,
+      },
+      friends: [],
       followerStatus: FollowerStatus.FOLLOWING,
     };
 
@@ -69,8 +75,11 @@ describe('User Actions - PublisherActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      events: undefined,
-      followers: undefined,
+      count: {
+        events: undefined,
+        followers: undefined,
+      },
+      friends: [],
       followerStatus: FollowerStatus.MUTED,
     };
 

@@ -1,10 +1,13 @@
 import { FunctionComponent } from 'react';
+import {
+  FlexBox,
+  IconButton,
+  Menu,
+  MenuItem,
+  RenderIf,
+  Title
+} from 'activate-components';
 import { FollowerStatus, PublisherModel } from 'models/user';
-import { Menu, MenuItem } from 'components/base-components/Menu';
-import { IconButton } from 'components/base-components/Button';
-import FlexBox from 'components/base-components/FlexBox';
-import { Title } from 'components/base-components/Typography';
-import RenderIf from 'components/base-components/RenderIf';
 import { usePublisherActions } from './use-user-actions';
 
 interface Props {

@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { NumberInput } from 'components/base-components/Inputs';
-import { Button } from 'components/base-components/Button';
-import { Field, Form } from 'components/base-components/Form';
+import { Button, Field, Form, NumberInput } from 'activate-components';
 import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
 import { CodeBox, Message } from './styled';

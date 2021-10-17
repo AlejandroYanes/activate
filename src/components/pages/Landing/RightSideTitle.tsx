@@ -1,9 +1,11 @@
 import { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
-import FlexBox from 'components/base-components/FlexBox';
-import { Title } from 'components/base-components/Typography';
-import { LinkButton } from 'components/base-components/Button';
-import RenderByLayout from 'components/base-components/RenderByLayout';
+import {
+  FlexBox,
+  Layout,
+  LinkButton,
+  RenderByLayout,
+  Title,
+} from 'activate-components';
 import Illustration from './Illustration';
 
 const fontSize = 64;

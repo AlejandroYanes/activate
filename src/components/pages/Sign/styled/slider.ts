@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { motion } from 'framer-motion';
-import { anyPropsAttrs } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import { Layout, anyPropsAttrs } from 'activate-components';
 
 const wrapperStyleMap = {
   [Layout.DESKTOP]: css`

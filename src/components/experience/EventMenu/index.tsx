@@ -1,11 +1,15 @@
 import { FunctionComponent } from 'react';
+import {
+  FlexBox,
+  IconButton,
+  Menu,
+  MenuItem,
+  MenuLink,
+  RenderIf,
+  Title,
+  capitalizeFirstLetter
+} from 'activate-components';
 import { EventModel } from 'models/event';
-import { capitalizeFirstLetter } from 'helpers';
-import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
-import { IconButton } from 'components/base-components/Button';
-import { Title } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
-import RenderIf from 'components/base-components/RenderIf';
 
 interface Props {
   event: EventModel;

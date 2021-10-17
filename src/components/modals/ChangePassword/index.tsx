@@ -1,12 +1,15 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import { Field, Form } from 'components/base-components/Form';
-import { PasswordInput } from 'components/base-components/Inputs';
-import { Button } from 'components/base-components/Button';
+import {
+  Button,
+  Field,
+  FlexBox,
+  Form,
+  Modal,
+  PasswordInput,
+  Text
+} from 'activate-components';
 import useChangePasswordState, { passwordRules } from './state';
-import { Text } from '../../base-components/Typography';
 
 const ChangePasswordModal: FunctionComponent = () => {
   const { goBack } = useHistory();

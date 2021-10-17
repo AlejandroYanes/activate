@@ -1,7 +1,5 @@
 import { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
-import { Title } from 'components/base-components/Typography';
-import RenderByLayout from 'components/base-components/RenderByLayout';
+import { Layout, RenderByLayout, Title } from 'activate-components';
 import Illustration from './Illustration';
 
 const fontSize = 64;

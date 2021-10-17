@@ -1,37 +1,51 @@
 @font-face {
-  font-family: 'Bitter-Regular';
+  font-family: 'Bitter';
+  font-weight: 400;
   font-display: swap;
-  src: local('Bitter-Regular'), url('../../assets/fonts/Bitter-Regular.ttf');
+  src: url('../../assets/fonts/Bitter-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Bitter-ExtraBold';
+  font-family: 'Bitter';
+  font-weight: 700;
   font-display: swap;
-  src: local('Bitter-ExtraBold'), url('../../assets/fonts/Bitter-ExtraBold.ttf');
+  src: url('../../assets/fonts/Bitter-ExtraBold.ttf');
 }
 
 @font-face {
-  font-family: 'Bitter-ExtraLight';
+  font-family: 'Bitter';
+  font-weight: 200;
   font-display: swap;
-  src: local('Bitter-ExtraLight'), url('../../assets/fonts/Bitter-ExtraLight.ttf');
+  src: url('../../assets/fonts/Bitter-ExtraLight.ttf');
 }
 
 @font-face {
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
+  font-weight: 400;
   font-display: swap;
-  src: local('Roboto-Regular'), url('../../assets/fonts/Roboto-Regular.ttf');
+  src: url('../../assets/fonts/Roboto-Regular.ttf');
 }
 
 @font-face {
-  font-family: 'Roboto-Bold';
+  font-family: 'Roboto';
+  font-weight: 700;
   font-display: swap;
-  src: local('Roboto-Bold'), url('../../assets/fonts/Roboto-Bold.ttf');
+  src: url('../../assets/fonts/Roboto-Bold.ttf');
 }
 
 @font-face {
-  font-family: 'Roboto-Thin';
+  font-family: 'Roboto';
+  font-weight: 200;
   font-display: swap;
-  src: local('Roboto-Thin'), url('../../assets/fonts/Roboto-Thin.ttf');
+  src: url('../../assets/fonts/Roboto-Thin.ttf');
+}
+
+h1, h2, h3 {
+  font-family: Bitter, serif;
+}
+
+span, p {
+  font-family: Roboto, sans-serif;
 }
 
 body {
@@ -40,7 +54,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
-  background-color: #f5f6fa;
+  background-color: #fff;
 
   #root {
     height: 100%;

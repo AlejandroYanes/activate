@@ -1,8 +1,12 @@
 import styled, { css } from 'styled-components';
-import { ZLevels } from 'styles/z-levels';
-import { headerHeight, mobileHeaderHeight } from 'styles/variables';
-import { anyPropsAttrs, getBgdColor } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import {
+  anyPropsAttrs,
+  getBgdColor,
+  headerHeight,
+  Layout,
+  mobileHeaderHeight,
+  ZLevels,
+} from 'activate-components';
 
 const headerStyleMap = {
   [Layout.DESKTOP]: css`

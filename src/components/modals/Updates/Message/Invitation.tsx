@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Text } from 'components/base-components/Typography';
-import RenderIf from 'components/base-components/RenderIf';
+import { RenderIf, Text } from 'activate-components';
 import { MessageProps } from './index';
 
 const Invitation: FunctionComponent<MessageProps> = ({ user, event }) => {

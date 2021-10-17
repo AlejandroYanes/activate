@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { headerHeight, mobileHeaderHeight } from 'styles/variables';
-import { anyPropsAttrs } from 'helpers';
-import { TextArea } from 'components/base-components/Inputs';
+import {
+  TextArea,
+  anyPropsAttrs,
+  headerHeight,
+  mobileHeaderHeight,
+} from 'activate-components';
 
 export const Messages = styled.main.attrs(anyPropsAttrs)`
   height: 100%;

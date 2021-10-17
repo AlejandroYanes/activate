@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react';
 import { useQuery } from 'react-query';
+import { Page } from 'activate-components';
 import eventsApi from 'api/events';
 import { EventChannel, useEventCenterUpdates } from 'event-center';
 import { QueryKey } from 'components/providers/Query';
-import Page from 'components/base-components/Page';
 import EventsGrid from 'components/experience/EventsGrid';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import PageTitle from './PageTitle';

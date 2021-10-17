@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getBgdLightColor } from 'helpers';
+import { getBgdLightColor } from 'activate-components';
 
 export const UsersCard = styled.div`
   display: flex;

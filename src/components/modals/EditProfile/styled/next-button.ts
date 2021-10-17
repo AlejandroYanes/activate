@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Layout } from 'components/providers/Layout';
-import { Button } from 'components/base-components/Button';
+import { Layout, Button } from 'activate-components';
 
 const buttonStyles = {
   [Layout.DESKTOP]: css`

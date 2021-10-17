@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
-import { Title } from 'components/base-components/Typography';
-import NotificationCenter from 'components/experience/NotificationCenter';
+import { NotificationCenter, Title } from 'activate-components';
 import { App as StyledApp, Body, Header } from './styled';
 
 const PublicLayout: FunctionComponent = (props) => {

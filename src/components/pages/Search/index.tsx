@@ -1,10 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
+import { FlexBox, Page, RenderByMap, RenderIf } from 'activate-components';
 import { parseSearchQuery } from 'helpers';
-import Page from 'components/base-components/Page';
-import RenderIf from 'components/base-components/RenderIf';
-import RenderByMap from 'components/base-components/RenderByMap';
-import FlexBox from 'components/base-components/FlexBox';
 import PageTitle from './PageTitle';
 import SearchInput from './SearchInput';
 import EventsResults from './EventsResults';

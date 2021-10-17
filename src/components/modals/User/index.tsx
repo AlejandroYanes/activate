@@ -1,15 +1,20 @@
 import { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
+import {
+  Avatar,
+  Case,
+  FlexBox,
+  IconButton,
+  Modal,
+  Switch,
+  Tab,
+  Tabset,
+  Text,
+  Title,
+  formatAmount
+} from 'activate-components';
 import { RelationshipStatus } from 'models/user';
-import { formatAmount } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
-import { Text, Title } from 'components/base-components/Typography';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import Avatar from 'components/base-components/Avatar';
-import { IconButton } from 'components/base-components/Button';
 import { ConsumerActions } from 'components/experience/UserActions';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Events from './Events';

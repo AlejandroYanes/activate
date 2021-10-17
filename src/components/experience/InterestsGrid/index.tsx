@@ -1,6 +1,6 @@
-import React, { FunctionComponent } from 'react';
+import { FunctionComponent } from 'react';
+import { PositionProps } from 'activate-components';
 import { CategoryModel } from 'models/category';
-import { PositionProps } from 'helpers';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import PlainGrid from './PlainGrid';
 import SectionedGrid from './SectionedGrid';

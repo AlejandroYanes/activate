@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
+import { FlexBox, Modal } from 'activate-components';
 import { LoadingScreen } from 'components/experience/Screens';
 
 const LoadingModal: FunctionComponent = () => {

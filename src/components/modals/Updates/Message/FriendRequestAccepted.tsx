@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Text } from 'components/base-components/Typography';
+import { Text } from 'activate-components';
 import { MessageProps } from './index';
 
 const FriendRequestAccepted: FunctionComponent<MessageProps> = ({ user }) => {

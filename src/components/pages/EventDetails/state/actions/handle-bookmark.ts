@@ -1,8 +1,8 @@
 import { SetStateAction } from 'react';
+import { NotificationType, showNotification } from 'activate-components';
 import { EventModel } from 'models/event';
 import eventsApi from 'api/events';
 import { notifyEventChannel } from 'event-center';
-import { NotificationType, showNotification } from 'notifications';
 import { EventState } from '../';
 
 export default function handleBookmark(

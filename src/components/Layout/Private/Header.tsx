@@ -1,10 +1,7 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
+import { FlexBox, IconButton, Tab, Tabset, Title } from 'activate-components';
 import { Modals } from 'components/modals';
-import FlexBox from 'components/base-components/FlexBox';
-import { Title } from 'components/base-components/Typography';
-import { IconButton } from 'components/base-components/Button';
-import { Tab, Tabset } from 'components/base-components/Tabset';
 import ProfileMenu from './ProfileMenu';
 import { Header as StyledHeader } from './styled';
 

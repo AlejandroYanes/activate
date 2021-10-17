@@ -1,7 +1,7 @@
 import { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { Input, Select, SelectOption } from 'activate-components';
 import { generateQueryString, parseSearchQuery } from 'helpers';
-import { Input, Select, SelectOption } from 'components/base-components/Inputs';
 import { SearchParam, SearchType } from './types';
 import { InputGroup } from './styled';
 

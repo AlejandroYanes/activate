@@ -1,8 +1,12 @@
 import React, { FunctionComponent } from 'react';
-import { formatAmount, PositionProps } from 'helpers';
+import {
+  AvatarGroup,
+  useAppLayout,
+  Layout,
+  PositionProps,
+  formatAmount
+} from 'activate-components';
 import { EventModel } from 'models/event';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import AvatarGroup from 'components/base-components/AvatarGroup';
 
 interface Props extends PositionProps {
   event: EventModel;

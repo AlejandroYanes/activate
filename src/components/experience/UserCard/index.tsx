@@ -1,15 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  AbsoluteContent,
+  Avatar,
+  AvatarGroup,
+  Button,
+  FlexBox,
+  LinkButton,
+  RenderIf,
+  SvgIcon,
+  Text,
+  Title,
+  formatAmount
+} from 'activate-components';
 import { ConsumerModel } from 'models/user';
-import { formatAmount } from 'helpers';
-import { Text, Title } from 'components/base-components/Typography';
-import Avatar from 'components/base-components/Avatar';
-import FlexBox from 'components/base-components/FlexBox';
-import AvatarGroup from 'components/base-components/AvatarGroup';
-import { Button, LinkButton } from 'components/base-components/Button';
-import RenderIf from 'components/base-components/RenderIf';
-import AbsoluteContent from 'components/base-components/AbsoluteContent';
-import SvgIcon from 'components/base-components/SvgIcon';
 import { Card } from './styled';
 import useUserState from './state';
 

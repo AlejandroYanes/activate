@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { anyPropsAttrs, getBgdLightColor, getPositionStyles } from 'helpers';
+import {
+  anyPropsAttrs,
+  getBgdLightColor,
+  getPositionStyles,
+} from 'activate-components';
 
 export const Section = styled.section.attrs(anyPropsAttrs)`
   position: relative;

@@ -1,14 +1,17 @@
 /* eslint-disable max-len */
+import {
+  NotificationType,
+  showNotification,
+  validateEntity,
+} from 'activate-components';
 import { ApiErrorType } from 'api/base';
 import { ProfileDto, VerificationLevel } from 'models/user';
 import authApi from 'api/auth';
-import { NotificationType, showNotification } from 'notifications';
-import { validateEntity } from 'helpers';
 import handleSubmit from '../handle-submit';
 import { AvatarOptions, profileRules, ProfileStepActions } from '../../';
 
 jest.mock('api/auth');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',

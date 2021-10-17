@@ -1,18 +1,23 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import {
+  Avatar,
+  Case,
+  FlexBox,
+  IconButton,
+  Modal,
+  Switch,
+  Tab,
+  Tabset,
+  Text,
+  Title,
+  formatAmount
+} from 'activate-components';
 import usersApi from 'api/users';
 import { ProfileStats } from 'models/user';
-import { formatAmount } from 'helpers';
 import { useAuthData } from 'components/providers/Auth';
 import { QueryKey } from 'components/providers/Query';
-import { Text, Title } from 'components/base-components/Typography';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
-import { IconButton } from 'components/base-components/Button';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import Avatar from 'components/base-components/Avatar';
 import Following from './Following';
 import Friends from './Friends';
 

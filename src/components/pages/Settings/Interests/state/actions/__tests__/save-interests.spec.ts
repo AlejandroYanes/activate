@@ -1,12 +1,11 @@
 /* eslint-disable max-len */
+import { NotificationType, showNotification } from 'activate-components';
 import interestsApi from 'api/interests';
 import { ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
 import { Actions } from '../../reducer';
 import saveInterests from '../save-interests';
 
-jest.mock('api/interests');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
@@ -15,6 +14,7 @@ jest.mock('notifications', () => ({
     ERROR: 'ERROR',
   }
 }));
+jest.mock('api/interests');
 
 const dispatch = jest.fn();
 

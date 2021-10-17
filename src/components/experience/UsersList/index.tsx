@@ -1,10 +1,12 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import {
+  FlexBox,
+  mobileHeaderHeight,
+  PositionProps,
+  RenderIf
+} from 'activate-components';
 import { UserModel } from 'models/user';
 import { UserTalkModel } from 'models/message';
-import { PositionProps } from 'helpers';
-import { mobileHeaderHeight } from 'styles/variables';
-import RenderIf from 'components/base-components/RenderIf';
-import FlexBox from 'components/base-components/FlexBox';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import Users from './Users';
 import { ActionNotch, List, Section } from './styled';

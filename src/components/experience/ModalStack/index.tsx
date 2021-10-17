@@ -1,6 +1,6 @@
 import React, { FunctionComponent, Suspense } from 'react';
 import { useLocation } from 'react-router-dom';
-import ErrorBoundary from 'components/base-components/ErrorBoundry';
+import { ErrorBoundary } from 'activate-components';
 import ModalRenderer from './ModalRenderer';
 import LoadingModal from './LoadingModal';
 import EmptyModal from './EmptyModal';

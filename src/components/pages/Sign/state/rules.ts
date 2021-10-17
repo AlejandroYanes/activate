@@ -1,4 +1,4 @@
-import { commonRules } from 'helpers/form-validations';
+import { commonRules } from 'activate-components';
 
 const { required, email, password } = commonRules;
 

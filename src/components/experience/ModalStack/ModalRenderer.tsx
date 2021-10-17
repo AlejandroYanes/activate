@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+import { Layout, useAppLayout } from 'activate-components';
 import { modalsMap } from 'components/modals';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import EmptyModal from './EmptyModal';
 
 interface Props {

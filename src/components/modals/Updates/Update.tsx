@@ -1,10 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import { Avatar, FlexBox, getRelativeTime, RenderIf, Text } from 'activate-components';
 import { UpdateModel } from 'models/update';
-import { getRelativeTime } from 'helpers';
-import { Text } from 'components/base-components/Typography';
-import Avatar from 'components/base-components/Avatar';
-import FlexBox from 'components/base-components/FlexBox';
-import RenderIf from 'components/base-components/RenderIf';
 import Message from './Message';
 import { Update as StyledUpdate, Content, UnReadDot } from './styled';
 import resolveLink from './resolve-link';

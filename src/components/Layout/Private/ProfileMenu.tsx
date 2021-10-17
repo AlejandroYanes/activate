@@ -1,11 +1,14 @@
 import { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
+import {
+  Avatar,
+  FlexBox,
+  Layout,
+  Menu, MenuItem,
+  MenuLink,
+  RenderByLayout,
+  Title
+} from 'activate-components';
 import { useAuthActions, useAuthData } from 'components/providers/Auth';
-import Avatar from 'components/base-components/Avatar';
-import FlexBox from 'components/base-components/FlexBox';
-import { Title } from 'components/base-components/Typography';
-import RenderByLayout from 'components/base-components/RenderByLayout';
-import { Menu, MenuItem, MenuLink } from 'components/base-components/Menu';
 
 const MenuTrigger = ({ toggleMenu, avatar, size }) => (
   <Avatar size={size} src={avatar} onClick={toggleMenu} />

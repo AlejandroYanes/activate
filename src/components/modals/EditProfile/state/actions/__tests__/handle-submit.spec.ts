@@ -1,14 +1,16 @@
 /* eslint-disable max-len */
+import {
+  validateEntity,
+  showNotification,
+  NotificationType,
+} from 'activate-components';
 import { ApiErrorType } from 'api/base';
 import { ProfileDto, VerificationLevel } from 'models/user';
 import authApi from 'api/auth';
-import { NotificationType, showNotification } from 'notifications';
-import { validateEntity } from 'helpers';
 import handleSubmit from '../handle-submit';
 import { ProfileFormActions, profileRules, AvatarOptions } from '../../';
 
-jest.mock('api/auth');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
@@ -17,6 +19,7 @@ jest.mock('notifications', () => ({
     ERROR: 'ERROR',
   }
 }));
+jest.mock('api/auth');
 const dispatchMock = jest.fn();
 const updateUserInfoMock = jest.fn();
 const closeModalMock = jest.fn();

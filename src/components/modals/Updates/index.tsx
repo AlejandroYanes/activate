@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import Modal from 'components/base-components/Modal';
+import { Layout, Modal, useAppLayout } from 'activate-components';
 import Updates from './Updates';
 
 const UpdatesModal: FunctionComponent = () => {

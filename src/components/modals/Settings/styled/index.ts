@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { elementHeight } from 'styles/variables';
+import { elementHeight } from 'activate-components';
 
 export const SettingItem = styled(Link)`
   text-decoration: none;

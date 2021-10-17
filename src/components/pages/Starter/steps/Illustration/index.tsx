@@ -1,10 +1,11 @@
 import { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import {
   ManHoldingBubble,
   ManWithCheckList,
   ManWriting,
-} from 'components/base-components/Illustrations';
+  useAppLayout,
+  Layout,
+} from 'activate-components';
 import { Aside } from '../../styled';
 
 interface Props {

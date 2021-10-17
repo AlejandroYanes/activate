@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
-import RenderByLayout from 'components/base-components/RenderByLayout';
-import NotificationCenter from 'components/experience/NotificationCenter';
+import { Layout, NotificationCenter, RenderByLayout } from 'activate-components';
 import ModalStack from 'components/experience/ModalStack';
 import Header from './Header';
 import BottomTabBar from './BottomTabs';

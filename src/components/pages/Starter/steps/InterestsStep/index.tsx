@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
+import { Layout, RenderIf, useAppLayout } from 'activate-components';
 import InterestsGrid from 'components/experience/InterestsGrid';
-import RenderIf from 'components/base-components/RenderIf';
 import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
 import { FinishButton } from './styled';

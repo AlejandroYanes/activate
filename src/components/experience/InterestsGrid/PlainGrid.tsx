@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { PickItem, PickList } from 'components/base-components/PickList';
-import { Text } from 'components/base-components/Typography';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
+import { Icons, PickItem, PickList, SvgIcon, Text } from 'activate-components';
 import { GridProps } from './index';
 
 interface Props extends GridProps {

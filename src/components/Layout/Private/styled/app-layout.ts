@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { anyPropsAttrs } from 'helpers';
-import { Layout } from 'components/providers/Layout';
+import { Layout, anyPropsAttrs } from 'activate-components';
 
 const getLayoutStyles = (props) => {
   const { theme: { layout } } = props;

@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { Title } from '../../../base-components/Typography';
-import ThemesGrid from '../../../experience/ThemesGrid';
-import Toggle from '../../../base-components/Toggle';
-import SvgIcon from '../../../base-components/SvgIcon';
-import useSettingsState from './state';
+import { SvgIcon, Title, Toggle } from 'activate-components';
+import ThemesGrid from 'components/experience/ThemesGrid';
+import useAppColorsState from './state';
 import { themes } from './themes';
 
 const sunIcon = (
@@ -28,7 +26,7 @@ const AppColorsSection: FunctionComponent = () => {
       handleThemeChange,
       handleLightStyleChange,
     },
-  } = useSettingsState();
+  } = useAppColorsState();
 
   return (
     <>
