@@ -8,7 +8,7 @@ export default function resolveLink(update: UpdateModel) {
     case UpdateType.FRIEND_REQUEST_ACCEPTED:
     case UpdateType.NEW_FOLLOWER:
     case UpdateType.NEW_EVENT_PARTICIPANT:
-      return `app/user/${userName}`;
+      return `/app/user/${userName}`;
     case UpdateType.NEW_EVENT:
     case UpdateType.EVENT_UPDATED:
     case UpdateType.NEW_COMMENT:

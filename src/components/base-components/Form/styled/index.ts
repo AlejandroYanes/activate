@@ -7,7 +7,9 @@ export const Form = styled.form`
   ${getPositionStyles};
 
   & > [data-el="input-wrapper"],
-  & > [data-el="select-wrapper"] {
+  & > [data-el="select-wrapper"],
+  & > [data-el="date-picker-wrapper"],
+  & > [data-el="options-wrapper"] {
     margin-bottom: 32px;
   }
 `;
