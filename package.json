@@ -12,7 +12,7 @@
     "test:ci": "react-scripts test --watchAll=false --ci --coverage --reporters=default --reporters=jest-junit --coverageReporters=cobertura",
     "eject": "react-scripts eject",
     "test:e2e": "cypress open",
-    "lint": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
+    "lint": "CI=true eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
     "lint:fix": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}' --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

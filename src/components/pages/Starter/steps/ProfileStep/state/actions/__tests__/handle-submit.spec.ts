@@ -8,7 +8,7 @@ import { ApiErrorType } from 'api/base';
 import { ProfileDto, VerificationLevel } from 'models/user';
 import authApi from 'api/auth';
 import handleSubmit from '../handle-submit';
-import { AvatarOptions, profileRules, ProfileStepActions } from '../../';
+import { AvatarOptions, ProfileStepActions } from '../../';
 
 jest.mock('api/auth');
 jest.mock('activate-components', () => ({
