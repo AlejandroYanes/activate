@@ -3,6 +3,7 @@ import {
   AuthCredentials,
   PasswordDto,
   ProfileDto,
+  ResetPasswordDto,
   SocialProvider,
   UserInfo,
 } from 'models/user';
@@ -11,19 +12,22 @@ import { post, patch, get, ApiContentType } from './base';
 const endpoint = 'auth';
 
 const authApi = {
-  signIn: (credentials: AuthCredentials): Promise<AxiosResponse<UserInfo>> => {
+  signIn: (credentials: AuthCredentials): AxiosPromise<UserInfo> => {
     return post(`${endpoint}/login`, credentials);
   },
-  signUp: (credentials: AuthCredentials): Promise<AxiosResponse<UserInfo>> => {
+  signUp: (credentials: AuthCredentials): AxiosPromise<UserInfo> => {
     return post(`${endpoint}/signup`, credentials);
+  },
+  resendSignUpVerifyEmail: (email: string): AxiosPromise<void> => {
+    return post(`${endpoint}/signup/resend-verify-email`, { email })
   },
   verify: (code: number): Promise<AxiosResponse<UserInfo>> => {
     return patch(`${endpoint}/verify`, { code });
   },
-  updateProfile: (profileData: ProfileDto): Promise<AxiosResponse<UserInfo>> => {
+  updateProfile: (profileData: ProfileDto): AxiosPromise<UserInfo> => {
     return patch(`${endpoint}/profile`, profileData);
   },
-  updatePassword: (passwords: PasswordDto): Promise<AxiosResponse<UserInfo>> => {
+  updatePassword: (passwords: PasswordDto): AxiosPromise<UserInfo> => {
     return patch(`${endpoint}/password`, passwords);
   },
   updateTheme: (
@@ -44,7 +48,13 @@ const authApi = {
   },
   socialAuth: (provider: SocialProvider, search: string): AxiosPromise<UserInfo> => {
     return get(`${endpoint}/social/${provider}/fallback${search}`)
-  }
+  },
+  sendResetPasswordEmail: (email: string): AxiosPromise<void> => {
+    return post(`${endpoint}/password/reset/send-email`, { email })
+  },
+  resetPassword: (resetPasswordDto: ResetPasswordDto): AxiosPromise<UserInfo> => {
+    return patch(`${endpoint}/password/reset`, resetPasswordDto);
+  },
 };
 
 export default authApi;
