@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Button, Field, Form, NumberInput } from 'activate-components';
 import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';
-import { CodeBox, Message } from './styled';
+import { CodeBox, Message, ResendCodeButton } from './styled';
 import useVerificationState, { codeRules } from './state';
 
 interface Props {
@@ -21,6 +21,7 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
       setFormValue,
       setErrors,
       verifyUser,
+      sendVerifyCode,
     },
   } = useVerificationState(goNextStep);
 
@@ -33,6 +34,13 @@ const VerificationStep: FunctionComponent<Props> = (props) => {
           we use this code to verify you are a real person.
           Please check your email and type the code here.
         </Message>
+        <Message>Did not receive an email?</Message>
+        <ResendCodeButton
+          onClick={sendVerifyCode}
+          label="Resend Code"
+          rightIcon="ARROW_RIGHT"
+          variant="outline"
+        />
         <CodeBox>
           <Form
             onChange={setFormValue}

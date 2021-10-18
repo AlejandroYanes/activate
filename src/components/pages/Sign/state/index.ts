@@ -5,7 +5,7 @@ import { useAuthActions } from 'components/providers/Auth';
 import signStateReducer, { SignAction, SignState, SignStateActions } from './reducer';
 import authenticate from './actions/authenticate';
 import handleSocialSign from './actions/handle-social-sign-in';
-import handleLogIn from './actions/handle-log-in';
+import handleSocialLogIn from './actions/handle-social-log-in';
 
 export * from './reducer';
 export * from './rules';
@@ -21,12 +21,12 @@ export default function useSignPageState() {
   const { login } = useAuthActions();
   const [state, dispatch] = useReducer(signStateReducer, initialState);
 
-  const  handleLogInEventListener = useCallback(handleLogIn(login), [])
+  const  handleSocialLogInEventListener = useCallback(handleSocialLogIn(login), [])
 
   useEffect(() => {
-    window.addEventListener('message', handleLogInEventListener);
+    window.addEventListener('message', handleSocialLogInEventListener);
 
-    return () => window.removeEventListener('message', handleLogInEventListener);
+    return () => window.removeEventListener('message', handleSocialLogInEventListener);
   }, [])
 
   return {

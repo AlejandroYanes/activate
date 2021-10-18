@@ -112,7 +112,7 @@ const SignPage: FunctionComponent = () => {
           </div>
         </OAuthBox>
         <LinkButton
-          to="/app/sign"
+          to="/forgot_password"
           label="Forgot password?"
           margin="24px auto 0"
         />

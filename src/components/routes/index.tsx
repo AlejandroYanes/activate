@@ -6,6 +6,7 @@ const SignRoute = React.lazy(() => import('./SignRoute'));
 const StarterRoute = React.lazy(() => import('./StarterRoute'));
 const AuthRoutes = React.lazy(() => import('./AuthRoutes'));
 const SocialSignRoute = React.lazy(() => import('./SocialSignInRoute'));
+const ForgotPasswordRoute = React.lazy(() => import('./ForgotPasswordRoute'));
 
 const loading = <div>Loading...</div>;
 
@@ -18,6 +19,7 @@ const Routes: FunctionComponent = () => {
           <Route path="/sign" component={SignRoute} />
           <Route path="/social_sign/:provider" component={SocialSignRoute} />
           <Route path="/starter" component={StarterRoute} />
+          <Route path="/forgot_password" component={ForgotPasswordRoute} />
           <Route path="/app" component={AuthRoutes} />
           <Redirect to="/" />
         </Switch>

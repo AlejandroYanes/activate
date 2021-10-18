@@ -1,19 +1,21 @@
 import { useCallback, useReducer } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAtomicSet } from 'helpers';
 import { useAuthActions } from 'components/providers/Auth';
-import verifyUser from './actions/verify-user';
-import sendVerifyCode from './actions/send-verify-code';
-import reducer, { State, Actions } from './reducer';
+import resetPassword from './actions/reset-password';
+import sendResetCode from './actions/send-reset-code';
+import reducer, { Actions, State } from './reducer';
 
 export * from './rules';
 
 const initialState: State = {
-  formValue: { code: '' } as any,
+  formValue: { verificationCode: null, newPassword: '' },
   errors: {},
   callingAPI: false,
 };
 
-export default function useVerificationState(goNextStep: () => void) {
+export default function useResetPasswordState() {
+  const { push } = useHistory();
   const { login } = useAuthActions();
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -22,11 +24,11 @@ export default function useVerificationState(goNextStep: () => void) {
     actions: {
       setFormValue: useAtomicSet(dispatch, Actions.SET_FORM_VALUE),
       setErrors: useAtomicSet(dispatch, Actions.SET_ERRORS),
-      verifyUser: useCallback(
-        verifyUser(dispatch, state.formValue, login, goNextStep),
+      resetPassword: useCallback(
+        resetPassword(dispatch, state.formValue, login, push),
         [state.formValue],
       ),
-      sendVerifyCode: useCallback(sendVerifyCode(dispatch), []),
+      sendResetCode: useCallback(sendResetCode(dispatch), []),
     },
   };
 }
