@@ -12,6 +12,7 @@ import { AvatarOptions, profileRules, ProfileStepActions } from '../../';
 
 jest.mock('api/auth');
 jest.mock('activate-components', () => ({
+  validateEntity: jest.fn(),
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
@@ -33,9 +34,21 @@ describe('Starter page - Profile step - handle submit action', () => {
     authApi.updateProfile.mockClear();
     // @ts-ignore
     authApi.updateAvatar.mockClear();
+    // @ts-ignore
+    validateEntity.mockClear();
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
   });
 
   it('should validate the profile and dispatch set_errors action', async () => {
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
     const profile: any = {
       email: 'email',
       verificationLevel: VerificationLevel.CODE_VERIFIED,

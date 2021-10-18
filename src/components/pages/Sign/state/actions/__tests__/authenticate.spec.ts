@@ -7,18 +7,23 @@ import {
 import authApi from 'api/auth';
 import { ApiErrorType } from 'api/base';
 import { AuthCredentials } from 'models/user';
-import { validationRules } from '../../rules';
 import { SignAction, SignStateActions } from '../../reducer';
 import authenticate from '../authenticate';
 
 jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
+  validateEntity: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
     SUCCESS: 'SUCCESS',
     WARNING: 'WARNING',
     ERROR: 'ERROR',
-  }
+  },
+  commonRules: {
+    required: {},
+    email: {},
+    password: {},
+  },
 }));
 jest.mock('api/auth');
 
@@ -27,15 +32,30 @@ const setUserInfoMock = jest.fn();
 
 describe('Sign page - authenticate action', () => {
   beforeEach(() => {
+    dispatchMock.mockClear();
+    setUserInfoMock.mockClear();
     // @ts-ignore
     authApi.signIn.mockClear();
     // @ts-ignore
     authApi.signUp.mockClear();
-    dispatchMock.mockClear();
-    setUserInfoMock.mockClear();
+    // @ts-ignore
+    validateEntity.mockClear();
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
   });
 
   it('should validate and dispatch with errors if the credentials are not valid', async () => {
+    // @ts-ignore
+    validateEntity.mockReturnValueOnce({
+      hasErrors: true,
+      errors: {
+        email: 'invalid email',
+        password: 'password is weak',
+      },
+    });
     const credentials: AuthCredentials = {
       email: 'invalid.email',
       password: 'weakPassword',
@@ -51,7 +71,10 @@ describe('Sign page - authenticate action', () => {
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenCalledWith({
       type: SignStateActions.SET_ERRORS,
-      payload: validateEntity(credentials, validationRules).errors,
+      payload: {
+        email: 'invalid email',
+        password: 'password is weak',
+      },
     });
     expect(authApi.signIn).not.toHaveBeenCalled();
     expect(authApi.signUp).not.toHaveBeenCalled();
