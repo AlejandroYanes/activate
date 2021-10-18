@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Layout } from 'components/providers/Layout';
+import { Layout } from 'activate-components';
 
 const stepContentStyles = {
   [Layout.DESKTOP]: css`

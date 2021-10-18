@@ -1,12 +1,12 @@
 /* eslint-disable max-len */
+import { NotificationType, showNotification } from 'activate-components';
 import authApi from 'api/auth';
-import { NotificationType, showNotification } from 'notifications';
 import resetPassword from '../reset-password';
 
 const email = 'user.name@mail.com';
 
 jest.mock('api/auth');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',

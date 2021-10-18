@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import Stepper from 'components/base-components/Stepper';
-import { Title } from 'components/base-components/Typography';
-import { LinkButton } from 'components/base-components/Button';
+import { LinkButton, Stepper, Title } from 'activate-components';
 import SendResetCodeStep from './steps/SendResetCodeStep';
 import ResetPasswordStep from './steps/ResetPasswordStep';
 import useForgotPasswordState from './state';

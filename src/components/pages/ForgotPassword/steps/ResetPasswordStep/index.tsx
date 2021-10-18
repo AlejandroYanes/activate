@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Field, Form } from 'components/base-components/Form';
-import { NumberInput, PasswordInput } from 'components/base-components/Inputs';
-import { Button } from 'components/base-components/Button';
+import { Button, Field, Form, NumberInput, PasswordInput } from 'activate-components';
 import { StepContent, Step, StepTitle, Message } from '../../styled';
 import { ResendCodeButton } from './styled';
 import useResetPasswordState, { validationRules } from './state';

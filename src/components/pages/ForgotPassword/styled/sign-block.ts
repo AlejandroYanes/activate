@@ -1,6 +1,5 @@
 import styled, {css} from 'styled-components';
-import {anyPropsAttrs} from 'helpers';
-import {Layout} from 'components/providers/Layout';
+import { Layout, anyPropsAttrs } from 'activate-components';
 
 const signBlockStyleMap = {
   [Layout.DESKTOP]: css`

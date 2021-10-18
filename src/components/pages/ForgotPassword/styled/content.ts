@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Layout } from 'components/providers/Layout';
-import { anyPropsAttrs } from 'helpers';
+import { Layout, anyPropsAttrs } from 'activate-components';
 
 const contentStyleMap = {
   [Layout.DESKTOP]: css`

@@ -1,7 +1,11 @@
+import {
+  NotificationType,
+  showNotification,
+  validateEntity,
+} from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
-import { storeUserInfo, validateEntity } from 'helpers';
+import { storeUserInfo } from 'helpers';
 import { validationRules } from '../rules';
 import { Actions } from '../reducer';
 
