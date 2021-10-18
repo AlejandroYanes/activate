@@ -19,7 +19,18 @@ jest.mock('activate-components', () => ({
     SUCCESS: 'SUCCESS',
     WARNING: 'WARNING',
     ERROR: 'ERROR',
-  }
+  },
+  RuleType: {
+    Required: 'Required',
+    MinLength: 'MinLength',
+    MaxLength: 'MaxLength',
+    Min: 'Min',
+    Max: 'Max',
+    Email: 'Email',
+    WebSite: 'WebSite',
+    MatchRegExp: 'MatchRegExp',
+  },
+  commonRules: {},
 }));
 const dispatchMock = jest.fn();
 const updateUserInfoMock = jest.fn();
@@ -46,8 +57,8 @@ describe('Starter page - Profile step - handle submit action', () => {
   it('should validate the profile and dispatch set_errors action', async () => {
     // @ts-ignore
     validateEntity.mockReturnValue({
-      hasErrors: false,
-      errors: null,
+      hasErrors: true,
+      errors: { field: 'error' },
     });
     const profile: any = {
       email: 'email',
@@ -65,7 +76,7 @@ describe('Starter page - Profile step - handle submit action', () => {
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenCalledWith({
       type: ProfileStepActions.SET_ERRORS,
-      payload: validateEntity(profile, profileRules).errors,
+      payload: { field: 'error' },
     });
   });
 

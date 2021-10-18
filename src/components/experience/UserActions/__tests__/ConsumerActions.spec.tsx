@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
-import { TestWrapper } from 'activate-components';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
+import TestProviders from 'components/experience/TestProviders';
 import ConsumerActions from '../ConsumerActions';
 
 describe('User Actions - ConsumerActions', () => {
@@ -20,7 +20,7 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -54,7 +54,7 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -88,7 +88,7 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -123,7 +123,7 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -157,7 +157,7 @@ describe('User Actions - ConsumerActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}

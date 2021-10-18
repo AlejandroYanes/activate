@@ -8,16 +8,28 @@ import { ApiErrorType } from 'api/base';
 import { ProfileDto, VerificationLevel } from 'models/user';
 import authApi from 'api/auth';
 import handleSubmit from '../handle-submit';
-import { ProfileFormActions, profileRules, AvatarOptions } from '../../';
+import { ProfileFormActions, AvatarOptions } from '../../';
 
 jest.mock('activate-components', () => ({
+  validateEntity: jest.fn(),
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
     SUCCESS: 'SUCCESS',
     WARNING: 'WARNING',
     ERROR: 'ERROR',
-  }
+  },
+  RuleType: {
+    Required: 'Required',
+    MinLength: 'MinLength',
+    MaxLength: 'MaxLength',
+    Min: 'Min',
+    Max: 'Max',
+    Email: 'Email',
+    WebSite: 'WebSite',
+    MatchRegExp: 'MatchRegExp',
+  },
+  commonRules: {},
 }));
 jest.mock('api/auth');
 const dispatchMock = jest.fn();
@@ -33,9 +45,21 @@ describe('Edit Profile modal - handle submit action', () => {
     authApi.updateProfile.mockClear();
     // @ts-ignore
     authApi.updateAvatar.mockClear();
+    // @ts-ignore
+    validateEntity.mockClear();
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
   });
 
   it('should validate the profile and dispatch set_errors action', async () => {
+    // @ts-ignore
+    validateEntity.mockReturnValueOnce({
+      hasErrors: true,
+      errors: { field: 'error' },
+    });
     const profile: any = {
       email: 'email',
       verificationLevel: VerificationLevel.CODE_VERIFIED,
@@ -52,7 +76,7 @@ describe('Edit Profile modal - handle submit action', () => {
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenCalledWith({
       type: ProfileFormActions.SET_ERRORS,
-      payload: validateEntity(profile, profileRules).errors,
+      payload: { field: 'error' },
     });
   });
 

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
-import { TestWrapper } from 'activate-components';
 import { FollowerStatus, PublisherModel } from 'models/user';
+import TestProviders from 'components/experience/TestProviders';
 import PublisherActions from '../PublisherActions';
 
 describe('User Actions - PublisherActions', () => {
@@ -20,7 +20,7 @@ describe('User Actions - PublisherActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={PublisherActions}
         queryKey="query-key"
         user={user}
@@ -52,7 +52,7 @@ describe('User Actions - PublisherActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={PublisherActions}
         queryKey="query-key"
         user={user}
@@ -84,7 +84,7 @@ describe('User Actions - PublisherActions', () => {
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={PublisherActions}
         queryKey="query-key"
         user={user}
