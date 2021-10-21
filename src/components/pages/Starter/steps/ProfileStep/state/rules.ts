@@ -1,4 +1,4 @@
-import { commonRules } from 'helpers';
+import { commonRules } from 'activate-components';
 
 const { required } = commonRules;
 

@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react';
-import { PositionProps } from 'helpers';
+import { PositionProps } from 'activate-components';
 import { Image, ImageContainer } from './styled/image';
 
 interface Props extends PositionProps {

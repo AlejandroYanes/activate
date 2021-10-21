@@ -1,8 +1,8 @@
 import { AxiosResponse } from 'axios';
+import { NotificationType, showNotification } from 'activate-components';
 import interestsApi from 'api/interests';
 import authApi from 'api/auth';
 import { ProfileDto, UserInfo, VerificationLevel } from 'models/user';
-import { NotificationType, showNotification } from 'notifications';
 import { Actions } from '../reducer';
 
 export default function saveInterests(

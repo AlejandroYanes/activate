@@ -1,7 +1,6 @@
 import { FunctionComponent, ReactNode } from 'react';
+import { FlexBox, Layout, useAppLayout } from 'activate-components';
 import { EventModel } from 'models/event';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import FlexBox from 'components/base-components/FlexBox';
 import EventTile from 'components/experience/EventTile';
 import { Grid } from './styled';
 

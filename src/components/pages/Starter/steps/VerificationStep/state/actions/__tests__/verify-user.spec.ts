@@ -1,20 +1,32 @@
 /* eslint-disable max-len */
+import { NotificationType, showNotification, validateEntity } from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
 import verifyUser from '../verify-user';
 import { Actions } from '../../reducer';
 
-jest.mock('api/auth');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
+  validateEntity: jest.fn(),
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
     SUCCESS: 'SUCCESS',
     WARNING: 'WARNING',
     ERROR: 'ERROR',
-  }
+  },
+  RuleType: {
+    Required: 'Required',
+    MinLength: 'MinLength',
+    MaxLength: 'MaxLength',
+    Min: 'Min',
+    Max: 'Max',
+    Email: 'Email',
+    WebSite: 'WebSite',
+    MatchRegExp: 'MatchRegExp',
+  },
+  commonRules: {},
 }));
+jest.mock('api/auth');
 
 const dispatchMock = jest.fn();
 const setUserInfoMock = jest.fn();
@@ -27,6 +39,13 @@ describe('Starter page - Verify step - verify user action', () => {
     dispatchMock.mockClear();
     setUserInfoMock.mockClear();
     goNextStepMock.mockClear();
+    // @ts-ignore
+    validateEntity.mockClear();
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
   });
 
   it('should call the API and dispatch the go_next_step action if succeeded', async () => {

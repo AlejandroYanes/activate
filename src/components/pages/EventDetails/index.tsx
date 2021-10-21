@@ -1,21 +1,26 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import {
+  Avatar,
+  Case,
+  FlexBox,
+  IconButton,
+  Page,
+  Switch,
+  Tab,
+  Tabset,
+  Text,
+  Title,
+  capitalizeFirstLetter,
+} from 'activate-components';
 import { Modals } from 'components/modals';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Text, Title } from 'components/base-components/Typography';
-import { IconButton } from 'components/base-components/Button';
-import Page from 'components/base-components/Page';
-import FlexBox from 'components/base-components/FlexBox';
-import Avatar from 'components/base-components/Avatar';
-import { Case, Switch } from 'components/base-components/Switch';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
+import EventMenu from 'components/experience/EventMenu';
 import Description from './Description';
 import Comments from './Comnments';
 import UnfollowModal from './UnfollowModal';
 import { Image } from './styled';
 import useEventState, { Tabs } from './state';
-import { capitalizeFirstLetter } from '../../../helpers';
-import EventMenu from '../../experience/EventMenu';
 
 const EventDetailsPage: FunctionComponent = () => {
   const { goBack, push } = useHistory();

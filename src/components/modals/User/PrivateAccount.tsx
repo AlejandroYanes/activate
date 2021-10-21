@@ -1,11 +1,14 @@
 import { FunctionComponent, ReactNode } from 'react';
+import {
+  Avatar,
+  Emoji,
+  FlexBox,
+  formatAmount,
+  Modal,
+  Text,
+  Title
+} from 'activate-components';
 import { ConsumerModel } from 'models/user';
-import { formatAmount } from 'helpers';
-import { Text, Title } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
-import Modal from 'components/base-components/Modal';
-import Avatar from 'components/base-components/Avatar';
-import Emoji from 'components/base-components/Emoji';
 
 interface Props {
   user: ConsumerModel;

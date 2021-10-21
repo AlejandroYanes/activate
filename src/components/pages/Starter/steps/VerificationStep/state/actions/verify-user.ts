@@ -1,9 +1,12 @@
 import { AxiosResponse } from 'axios';
+import {
+  NotificationType,
+  showNotification,
+  validateEntity,
+} from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
 import { UserInfo } from 'models/user';
-import { NotificationType, showNotification } from 'notifications';
-import { validateEntity } from 'helpers';
 import { codeRules } from '../rules';
 import { Actions } from '../reducer';
 

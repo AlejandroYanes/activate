@@ -1,11 +1,9 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { Case, IconButton, Modal, Switch } from 'activate-components';
 import usersApi from 'api/users';
 import { QueryKey } from 'components/providers/Query';
-import { Case, Switch } from 'components/base-components/Switch';
-import { IconButton } from 'components/base-components/Button';
-import Modal from 'components/base-components/Modal';
 import UsersList from 'components/experience/UsersList';
 import Messages from 'components/experience/Messages';
 

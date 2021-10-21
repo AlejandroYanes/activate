@@ -1,11 +1,16 @@
 import React, { FunctionComponent, useRef } from 'react';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { PickItem, PickList } from 'components/base-components/PickList';
-import { Field, Form } from 'components/base-components/Form';
-import Avatar from 'components/base-components/Avatar';
-import SvgIcon from 'components/base-components/SvgIcon';
-import RenderIf from 'components/base-components/RenderIf';
-import { ErrorText } from 'components/base-components/Inputs';
+import {
+  Avatar,
+  Field,
+  Form,
+  PickItem,
+  PickList,
+  RenderIf,
+  SvgIcon,
+  ErrorText,
+  useAppLayout,
+  Layout
+} from 'activate-components';
 import { LoadingScreen } from 'components/experience/Screens';
 import { Content, Step, StepTitle } from '../../styled';
 import Illustration from '../Illustration';

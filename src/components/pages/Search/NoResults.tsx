@@ -1,6 +1,4 @@
-import Emoji from 'components/base-components/Emoji';
-import FlexBox from 'components/base-components/FlexBox';
-import { Title } from 'components/base-components/Typography';
+import { Emoji, FlexBox, Title } from 'activate-components';
 
 const NoResults = () => (
   <FlexBox direction="column" align="center" margin="0 auto">

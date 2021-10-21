@@ -1,9 +1,8 @@
 import { FunctionComponent } from 'react';
-import { Layout } from 'components/providers/Layout';
-import RenderByLayout from 'components/base-components/RenderByLayout';
-import { SignAction } from '../state';
+import { Layout, RenderByLayout } from 'activate-components';
 import PrimaryActionBox from './ActionBox.primary';
 import MobileActionBox from './ActionBox.mobile';
+import { SignAction } from '../state';
 
 export interface ActionBoxProps {
   signAction: SignAction;

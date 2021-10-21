@@ -1,13 +1,16 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { capitalizeFirstLetter } from 'helpers';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import Modal from 'components/base-components/Modal';
-import { Input } from 'components/base-components/Inputs';
+import {
+  Button,
+  FlexBox,
+  Input,
+  Layout,
+  Modal,
+  Text,
+  useAppLayout,
+  capitalizeFirstLetter
+} from 'activate-components';
 import UsersList from 'components/experience/UsersList';
-import FlexBox from 'components/base-components/FlexBox';
-import { Button } from 'components/base-components/Button';
-import { Text } from 'components/base-components/Typography';
 import useInviteState from './state';
 
 const InviteUsersModal: FunctionComponent = () => {

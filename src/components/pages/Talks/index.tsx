@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useMemo, useState, } from 'react';
-import RenderIf from 'components/base-components/RenderIf';
-import { IconButton } from 'components/base-components/Button';
+import { IconButton, RenderIf } from 'activate-components';
 import Messages from 'components/experience/Messages';
 import SplashScreen from './SplashScreen';
 import { Container, Panel } from './styled';

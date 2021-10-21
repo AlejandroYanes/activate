@@ -1,19 +1,31 @@
 /* eslint-disable max-len */
+import { NotificationType, showNotification, validateEntity } from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
 import sendResetCode from '../send-reset-code';
 import { Actions } from '../../reducer';
 
 jest.mock('api/auth');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
+  validateEntity: jest.fn(),
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
     SUCCESS: 'SUCCESS',
     WARNING: 'WARNING',
     ERROR: 'ERROR',
-  }
+  },
+  RuleType: {
+    Required: 'Required',
+    MinLength: 'MinLength',
+    MaxLength: 'MaxLength',
+    Min: 'Min',
+    Max: 'Max',
+    Email: 'Email',
+    WebSite: 'WebSite',
+    MatchRegExp: 'MatchRegExp',
+  },
+  commonRules: {},
 }));
 
 const dispatchMock = jest.fn();
@@ -25,6 +37,13 @@ describe('Forgot Password page - Send reset code step - send reset code action',
     authApi.sendResetPasswordEmail.mockClear();
     dispatchMock.mockClear();
     goNextStepMock.mockClear();
+    // @ts-ignore
+    validateEntity.mockClear();
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
   });
 
   it('should call the API and dispatch the go_next_step action if succeeded', async () => {

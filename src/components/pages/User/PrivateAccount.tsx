@@ -1,7 +1,4 @@
-import Page from 'components/base-components/Page';
-import { Text, Title } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
-import Emoji from 'components/base-components/Emoji';
+import { Emoji, FlexBox, Page, Text, Title } from 'activate-components';
 import ProfileData from './ProfileData';
 
 const PrivateAccount = ({ user }) => (

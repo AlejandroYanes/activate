@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getFontShadeColor } from 'helpers';
+import { getFontShadeColor } from 'activate-components';
 
 export const Comment = styled.article`
   display: flex;

@@ -3,10 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import categoriesApi from 'api/categories';
 import interestsApi from 'api/interests';
+import { useAtomicSet } from 'helpers';
 import { QueryKey } from 'components/providers/Query';
 import saveInterests from './actions/save-interests';
 import interestsReducer, { State, Actions } from './reducer';
-import { useAtomicSet } from '../../../../helpers';
 import toggleTopCategory from './actions/toggle-top-category';
 
 const initialState: State = {

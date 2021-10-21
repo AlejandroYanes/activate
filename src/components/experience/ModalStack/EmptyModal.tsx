@@ -1,9 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { Title } from 'components/base-components/Typography';
+import { FlexBox, Modal, SvgIcon, Title } from 'activate-components';
 
 const EmptyModal: FunctionComponent = () => {
   const { goBack } = useHistory();

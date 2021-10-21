@@ -1,9 +1,12 @@
 import { FunctionComponent } from 'react';
-import { Colors } from 'styles/colors';
-import { PositionProps } from 'helpers';
-import { Text, Title } from 'components/base-components/Typography';
-import SvgIcon, { Icons } from 'components/base-components/SvgIcon';
-import FlexBox from 'components/base-components/FlexBox';
+import {
+  Colors,
+  FlexBox,
+  Icons,
+  PositionProps,
+  SvgIcon,
+  Text, Title
+} from 'activate-components';
 
 interface Props extends PositionProps {
   icon: Icons;

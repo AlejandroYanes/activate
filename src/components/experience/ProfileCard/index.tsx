@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react';
-import { Paragraph } from 'components/base-components/Typography';
+import { Paragraph } from 'activate-components';
 import Info from './Info';
 import { Actions, Card, StyledAvatar } from './styled';
 

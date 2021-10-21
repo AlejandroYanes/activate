@@ -1,7 +1,5 @@
 import { FunctionComponent, useState } from 'react';
-import FlexBox from 'components/base-components/FlexBox';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import { Case, Switch } from 'components/base-components/Switch';
+import { Case, FlexBox, Switch, Tab, Tabset } from 'activate-components';
 import InterestsSection from './Interests';
 import EditProfileSection from './EditProfile';
 import AppColorsSection from './AppColors';

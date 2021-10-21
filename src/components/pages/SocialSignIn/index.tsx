@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import RenderIf from 'components/base-components/RenderIf';
+import { RenderIf } from 'activate-components';
 import { LoadingScreen } from 'components/experience/Screens';
 import useSocialSignInPageState from './state';
 

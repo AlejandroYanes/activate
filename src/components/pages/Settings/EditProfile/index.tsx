@@ -1,13 +1,18 @@
 import React, { FunctionComponent, useRef } from 'react';
-import { Field, Form } from 'components/base-components/Form';
-import RenderIf from 'components/base-components/RenderIf';
-import { PickItem, PickList } from 'components/base-components/PickList';
-import Avatar from 'components/base-components/Avatar';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { ErrorText } from 'components/base-components/Inputs';
-import { Text, Title } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
-import { Button } from 'components/base-components/Button';
+import {
+  Avatar,
+  Button,
+  ErrorText,
+  Field,
+  FlexBox,
+  Form,
+  PickItem,
+  PickList,
+  RenderIf,
+  SvgIcon,
+  Text,
+  Title
+} from 'activate-components';
 import { HiddenInput, ImagePreview } from './styled';
 import useEditProfileState, { AvatarOptions, profileRules } from './state';
 

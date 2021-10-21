@@ -1,8 +1,8 @@
 import { FunctionComponent } from 'react';
+import { FlexBox } from 'activate-components';
 import { useQuery } from 'react-query';
 import eventsApi from 'api/events';
 import { QueryKey } from 'components/providers/Query';
-import FlexBox from 'components/base-components/FlexBox';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import EventsGrid from 'components/experience/EventsGrid';
 import LeftSideTitle from './LeftSideTitle';

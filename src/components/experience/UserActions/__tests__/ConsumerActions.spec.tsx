@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
 import { ConsumerModel, RelationshipStatus } from 'models/user';
-import TestWrapper from 'components/base-components/TestWrapper';
+import TestProviders from 'components/experience/TestProviders';
 import ConsumerActions from '../ConsumerActions';
 
 describe('User Actions - ConsumerActions', () => {
@@ -11,13 +11,16 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.UNRELATED,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -42,13 +45,16 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.PENDING,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -73,13 +79,16 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.PENDING_FOR_ME,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -105,13 +114,16 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.ACCEPTED,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}
@@ -136,13 +148,16 @@ describe('User Actions - ConsumerActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      friends: undefined,
-      following: undefined,
+      count: {
+        friends: undefined,
+        following: undefined,
+      },
+      friends: [],
       relationStatus: RelationshipStatus.MUTED,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={ConsumerActions}
         queryKey="query-key"
         user={user}

@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-import {
-  anyPropsAttrs,
-  getFontShadeColor,
-} from 'helpers';
+import { anyPropsAttrs, getFontShadeColor } from 'activate-components';
 
 export const InputGroup = styled.div.attrs(anyPropsAttrs)`
   display: flex;

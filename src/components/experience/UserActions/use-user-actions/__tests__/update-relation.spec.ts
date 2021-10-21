@@ -1,10 +1,9 @@
 /* eslint-disable max-len */
+import { showNotification } from 'activate-components';
 import usersApi from 'api/users';
-import { showNotification } from 'notifications';
 import updateRelation, { Actions, UserType } from '../update-relation';
 
-jest.mock('api/users');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
@@ -13,6 +12,7 @@ jest.mock('notifications', () => ({
     ERROR: 'ERROR',
   }
 }));
+jest.mock('api/users');
 
 describe('User Actions - updateRelation', () => {
   it('should call the right api action and invalidate the corresponding query', async () => {

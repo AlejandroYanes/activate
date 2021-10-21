@@ -1,5 +1,9 @@
 import styled from 'styled-components';
-import { getAccentColor, getBgdLightColor, getBgdLighterColor } from 'helpers';
+import {
+  getAccentColor,
+  getBgdLightColor,
+  getBgdLighterColor,
+} from 'activate-components';
 
 export const AvatarSection = styled.div`
   pointer-events: none;

@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { mount } from 'enzyme';
 import { FollowerStatus, PublisherModel } from 'models/user';
-import TestWrapper from 'components/base-components/TestWrapper';
+import TestProviders from 'components/experience/TestProviders';
 import PublisherActions from '../PublisherActions';
 
 describe('User Actions - PublisherActions', () => {
@@ -11,13 +11,16 @@ describe('User Actions - PublisherActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      events: undefined,
-      followers: undefined,
+      count: {
+        events: undefined,
+        followers: undefined,
+      },
+      friends: [],
       followerStatus: FollowerStatus.UNRELATED,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={PublisherActions}
         queryKey="query-key"
         user={user}
@@ -40,13 +43,16 @@ describe('User Actions - PublisherActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      events: undefined,
-      followers: undefined,
+      count: {
+        events: undefined,
+        followers: undefined,
+      },
+      friends: [],
       followerStatus: FollowerStatus.FOLLOWING,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={PublisherActions}
         queryKey="query-key"
         user={user}
@@ -69,13 +75,16 @@ describe('User Actions - PublisherActions', () => {
       name: 'user',
       avatar: 'user1',
       userName: 'user',
-      events: undefined,
-      followers: undefined,
+      count: {
+        events: undefined,
+        followers: undefined,
+      },
+      friends: [],
       followerStatus: FollowerStatus.MUTED,
     };
 
     const component = mount(
-      <TestWrapper
+      <TestProviders
         component={PublisherActions}
         queryKey="query-key"
         user={user}

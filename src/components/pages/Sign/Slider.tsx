@@ -1,13 +1,16 @@
 import { FunctionComponent, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { Layout, useAppLayout } from 'components/providers/Layout';
 import {
+  Case,
   FriendsTalking,
   ManLookingLaptop,
   PhoneWithWoman,
-} from 'components/base-components/Illustrations';
-import { Case, Switch } from 'components/base-components/Switch';
-import { Text, Title } from 'components/base-components/Typography';
+  Switch,
+  Text,
+  Title,
+  useAppLayout,
+  Layout,
+} from 'activate-components';
 import { Slide, SliderWrapper } from './styled/slider';
 
 const slideVariants = {

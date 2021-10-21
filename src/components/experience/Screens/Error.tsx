@@ -1,5 +1,5 @@
 import { FunctionComponent } from 'react';
-import { PositionProps } from 'helpers';
+import { PositionProps } from 'activate-components';
 import MessageScreen from './Message';
 
 interface Props extends PositionProps {

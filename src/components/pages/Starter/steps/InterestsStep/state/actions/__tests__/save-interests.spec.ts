@@ -1,12 +1,10 @@
 /* eslint-disable max-len */
+import { NotificationType, showNotification } from 'activate-components';
 import authApi from 'api/auth';
 import interestsApi from 'api/interests';
-import { NotificationType, showNotification } from 'notifications';
 import saveInterests from '../save-interests';
 
-jest.mock('api/auth');
-jest.mock('api/interests');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
@@ -15,6 +13,8 @@ jest.mock('notifications', () => ({
     ERROR: 'ERROR',
   }
 }));
+jest.mock('api/auth');
+jest.mock('api/interests');
 
 const dispatch = jest.fn();
 const updateUserInfo = jest.fn();

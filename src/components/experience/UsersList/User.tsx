@@ -1,10 +1,7 @@
 import React, { FunctionComponent, useCallback, useRef } from 'react';
+import { Avatar, Checkbox, RenderIf, Text } from 'activate-components';
 import { UserModel } from 'models/user';
 import { UserTalkModel } from 'models/message';
-import Avatar from 'components/base-components/Avatar';
-import RenderIf from 'components/base-components/RenderIf';
-import { Text } from 'components/base-components/Typography';
-import Checkbox from 'components/base-components/Checkbox';
 import { ActiveDot, AvatarSection, Info, UserItem } from './styled';
 
 interface Props {

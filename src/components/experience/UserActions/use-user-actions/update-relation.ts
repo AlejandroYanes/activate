@@ -1,5 +1,5 @@
+import { NotificationType, showNotification } from 'activate-components';
 import usersApi from 'api/users';
-import { NotificationType, showNotification } from 'notifications';
 
 export enum UserType {
   CONSUMER,

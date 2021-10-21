@@ -1,7 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import Page from 'components/base-components/Page';
-import FlexBox from 'components/base-components/FlexBox';
-import { Case, Switch } from 'components/base-components/Switch';
+import { Case, FlexBox, Page, Switch } from 'activate-components';
 import ProfileData from './ProfileData';
 import Following from './Following';
 import Friends from './Friends';

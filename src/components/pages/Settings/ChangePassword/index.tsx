@@ -1,9 +1,13 @@
 import React, { FunctionComponent } from 'react';
-import FlexBox from 'components/base-components/FlexBox';
-import { Field, Form } from 'components/base-components/Form';
-import { PasswordInput } from 'components/base-components/Inputs';
-import { Text, Title } from 'components/base-components/Typography';
-import { Button } from 'components/base-components/Button';
+import {
+  Button,
+  Field,
+  FlexBox,
+  Form,
+  PasswordInput,
+  Text,
+  Title
+} from 'activate-components';
 import useChangePasswordState, { passwordRules } from './state';
 
 const ChangePasswordSection: FunctionComponent = () => {

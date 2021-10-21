@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import { Button } from 'components/base-components/Button';
-import { Field, Form } from 'components/base-components/Form';
+import { Button, Field, Form } from 'activate-components';
 import { StepContent, Step, StepTitle, Message } from '../../styled';
 import { SendResetCodeBox } from './styled';
 import useSendResetCodeState, { validationRules } from './state';

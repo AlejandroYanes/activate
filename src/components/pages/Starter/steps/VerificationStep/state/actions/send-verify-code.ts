@@ -1,6 +1,6 @@
+import { NotificationType, showNotification } from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
 import { getUserInfo } from 'helpers';
 import { Actions } from '../reducer';
 

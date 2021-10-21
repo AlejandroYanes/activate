@@ -1,7 +1,7 @@
+import { NotificationType, showNotification } from 'activate-components';
 import { ConsumerModel } from 'models/user';
 import usersApi from 'api/users';
 import { notifyEventChannel } from 'event-center';
-import { NotificationType, showNotification } from 'notifications';
 
 export default function sendFriendRequest(user: ConsumerModel, setSate) {
   return () => {

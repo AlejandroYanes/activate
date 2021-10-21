@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import SvgIcon from 'components/base-components/SvgIcon';
-import { Title } from 'components/base-components/Typography';
+import { SvgIcon, Title } from 'activate-components';
 import { StyledSplashScreen } from './styled';
 
 const SplashScreen: FunctionComponent = () => {

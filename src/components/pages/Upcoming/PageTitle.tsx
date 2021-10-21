@@ -1,10 +1,6 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout } from 'components/providers/Layout';
-import FlexBox from 'components/base-components/FlexBox';
-import { Title } from 'components/base-components/Typography';
-import { Button } from 'components/base-components/Button';
-import RenderByLayout from 'components/base-components/RenderByLayout';
+import { Button, FlexBox, Layout, RenderByLayout, Title } from 'activate-components';
 import EventSortBy from 'components/experience/EventSortBy';
 
 const DesktopTitle: FunctionComponent = () => (

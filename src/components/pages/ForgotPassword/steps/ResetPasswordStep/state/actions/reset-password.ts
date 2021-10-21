@@ -1,9 +1,9 @@
 import { AxiosResponse } from 'axios';
+import { NotificationType, showNotification } from 'activate-components';
 import authApi from 'api/auth';
 import { UserInfo } from 'models/user';
-import { NotificationType, showNotification } from 'notifications';
+import { getUserInfo } from 'helpers';
 import { Actions, ResetPasswordFormValue } from '../reducer';
-import { getUserInfo } from '../../../../../../../helpers';
 
 export default function resetPassword(
   dispatch,

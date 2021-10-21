@@ -1,19 +1,9 @@
-/* eslint-disable max-len */
 import authApi from 'api/auth';
 import { SocialAuthCredentials, SocialProvider } from 'models/user';
 import authenticate from '../authenticate';
 import { SocialSignStateActions } from '../../reducer';
 
 jest.mock('api/auth');
-jest.mock('notifications', () => ({
-  showNotification: jest.fn(),
-  NotificationType: {
-    INFO: 'INFO',
-    SUCCESS: 'SUCCESS',
-    WARNING: 'WARNING',
-    ERROR: 'ERROR',
-  }
-}));
 
 const dispatchMock = jest.fn();
 

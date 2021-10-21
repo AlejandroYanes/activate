@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { Option, Options } from 'activate-components';
 import usersApi from 'api/users';
 import { UserModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
-import { Option, Options } from 'components/base-components/Options';
 import UsersList from 'components/experience/UsersList';
 import FriendActions from './FriendActions';
 

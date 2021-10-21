@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import { PickItem, PickList, PositionProps } from 'activate-components';
 import { AppTheme } from 'components/providers/Theme';
-import { PositionProps } from 'helpers';
-import { PickItem, PickList } from 'components/base-components/PickList';
 import { ColorSample, Palette, Theme } from './styled';
 
 interface Props extends PositionProps {

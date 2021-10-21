@@ -1,5 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
-import { scrollThumbWidth } from 'styles/variables';
+import { scrollThumbWidth } from 'activate-components';
 
 const mobileStyles = css`
   body {

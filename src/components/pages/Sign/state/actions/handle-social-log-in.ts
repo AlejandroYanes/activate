@@ -1,5 +1,5 @@
+import { NotificationType, showNotification } from 'activate-components';
 import { UserInfo } from 'models/user';
-import { NotificationType, showNotification } from 'notifications';
 
 export default function handleSocialLogIn(login: (user: UserInfo) => void) {
   return (event: MessageEvent) => {

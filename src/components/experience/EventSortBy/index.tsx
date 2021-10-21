@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Select, SelectOption } from 'components/base-components/Inputs';
+import { Select, SelectOption } from 'activate-components';
 
 interface Props {
   hideLabel?: boolean;

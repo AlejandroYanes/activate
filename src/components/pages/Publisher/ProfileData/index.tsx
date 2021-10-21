@@ -1,11 +1,9 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
+import { AbsoluteContent, IconButton, Tab, Tabset } from 'activate-components';
 import { PublisherModel } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
-import { Tab, Tabset } from 'components/base-components/Tabset';
-import AbsoluteContent from 'components/base-components/AbsoluteContent';
 import ProfileCard from 'components/experience/ProfileCard';
-import { IconButton } from 'components/base-components/Button';
 import { PublisherActions } from 'components/experience/UserActions';
 import { Tabs } from '../state';
 

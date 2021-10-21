@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { getBgdLighterColor } from 'helpers';
+import { getBgdLighterColor } from 'activate-components';
 
 export const Update = styled.li`
   display: flex;

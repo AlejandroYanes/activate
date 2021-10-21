@@ -1,8 +1,5 @@
 import React, { FunctionComponent, Fragment } from 'react';
-import { Title } from 'components/base-components/Typography';
-import { Button } from 'components/base-components/Button';
-import RenderIf from 'components/base-components/RenderIf';
-import { PickList } from 'components/base-components/PickList';
+import { Button, PickList, RenderIf, Title } from 'activate-components';
 import PlainGrid from './PlainGrid';
 import { SectionTitle } from './styled';
 import { GridProps } from './index';

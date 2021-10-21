@@ -1,15 +1,21 @@
 import React, { FunctionComponent, useCallback, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { generateUID } from 'helpers';
+import {
+  Button,
+  DateTimePicker,
+  Field,
+  Form,
+  Layout,
+  Modal,
+  Option,
+  Options,
+  RenderIf,
+  Select,
+  Text,
+  useAppLayout,
+  generateUID
+} from 'activate-components';
 import { notifyEventChannel } from 'event-center';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import Modal from 'components/base-components/Modal';
-import { Button } from 'components/base-components/Button';
-import RenderIf from 'components/base-components/RenderIf';
-import { Text } from 'components/base-components/Typography';
-import { Field, Form } from 'components/base-components/Form';
-import { Option, Options } from 'components/base-components/Options';
-import { DateTimePicker, Select } from 'components/base-components/Inputs';
 import { EventLocation, Filters, initialFilters } from './types';
 
 const categories = [

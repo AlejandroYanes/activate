@@ -1,43 +1,40 @@
-import React, { FunctionComponent, useCallback, useMemo } from 'react';
+import React, { FunctionComponent } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAppTheme } from 'components/providers/Theme';
-import Modal from 'components/base-components/Modal';
-import FlexBox from 'components/base-components/FlexBox';
-import { Text } from 'components/base-components/Typography';
-import Toggle from 'components/base-components/Toggle';
-import SvgIcon from 'components/base-components/SvgIcon';
+import {
+  FlexBox,
+  Modal,
+  SvgIcon,
+  Text,
+  Toggle,
+} from 'activate-components';
 import ThemesGrid from 'components/experience/ThemesGrid';
-import updateProfileTheme from './update-profile-theme';
 import { themes } from './themes';
+import useAppColorsState from './state';
+
+const sunIcon = (
+  <SvgIcon icon="SUN" color="GRAY_DARK" size="small" />
+);
+
+const moonIcon = (
+  <SvgIcon
+    icon="MOON"
+    color="ACCENT_HIGHLIGHT"
+    size="small"
+  />
+);
 
 const AppColorsModal: FunctionComponent = () => {
   const { goBack } = useHistory();
   const {
-    colors,
-    theme: activeTheme,
-    setTheme,
-    useDarkStyle,
-    toggleLightStyle,
-  } = useAppTheme();
-
-  const handleThemeChange = useCallback((nextTheme) => {
-    setTheme(nextTheme);
-    // noinspection JSIgnoredPromiseFromCall
-    updateProfileTheme(nextTheme, useDarkStyle);
-  }, [activeTheme, useDarkStyle]);
-
-  const handleLightStyleChange = useCallback(() => {
-    toggleLightStyle();
-    // noinspection JSIgnoredPromiseFromCall
-    updateProfileTheme(activeTheme, !useDarkStyle);
-  }, [activeTheme, useDarkStyle]);
-
-  const sunIcon = useMemo(() => (
-    <SvgIcon icon="SUN" color="GRAY_DARK" size="small" />
-  ), [colors]);
-  const moonIcon = useMemo(() => (
-    <SvgIcon icon="MOON" color="ACCENT_HIGHLIGHT" size="small" />
-  ), [colors]);
+    state: {
+      activeTheme,
+      useDarkStyle,
+    },
+    actions: {
+      handleThemeChange,
+      handleLightStyleChange,
+    },
+  } = useAppColorsState();
 
   return (
     <Modal visible title="App Colors" onClose={goBack} size="mobile">

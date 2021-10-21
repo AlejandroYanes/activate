@@ -1,10 +1,5 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react';
-import { getEventValue } from 'helpers';
-import Avatar from 'components/base-components/Avatar';
-import RenderIf from 'components/base-components/RenderIf';
-import { Text } from 'components/base-components/Typography';
-import { IconButton } from 'components/base-components/Button';
-import FlexBox from 'components/base-components/FlexBox';
+import { Avatar, FlexBox, IconButton, RenderIf, Text } from 'activate-components';
 import Conversation from './Conversation';
 import {
   ActiveDot,
@@ -61,7 +56,7 @@ const Messages: FunctionComponent<Props> = (props) => {
           rows={1}
           maxLength={250}
           value={message}
-          onChange={(event) => setMessage(getEventValue(event))}
+          onChange={setMessage}
           placeholder="Type your message here"
         />
         <IconButton

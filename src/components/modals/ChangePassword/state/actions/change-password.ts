@@ -1,7 +1,10 @@
+import {
+  validateEntity,
+  NotificationType,
+  showNotification,
+} from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
-import { NotificationType, showNotification } from 'notifications';
-import { validateEntity } from 'helpers';
 import { passwordRules } from '../rules';
 import { ChangePasswordActions, ChangePasswordModel } from '../reducer';
 

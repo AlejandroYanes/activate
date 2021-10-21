@@ -1,21 +1,36 @@
 /* eslint-disable max-len */
+import {
+  NotificationType,
+  showNotification,
+  validateEntity,
+} from 'activate-components';
 import { ApiErrorType } from 'api/base';
 import { ProfileDto, VerificationLevel } from 'models/user';
 import authApi from 'api/auth';
-import { NotificationType, showNotification } from 'notifications';
-import { validateEntity } from 'helpers';
 import handleSubmit from '../handle-submit';
-import { AvatarOptions, profileRules, ProfileStepActions } from '../../';
+import { AvatarOptions, ProfileStepActions } from '../../';
 
 jest.mock('api/auth');
-jest.mock('notifications', () => ({
+jest.mock('activate-components', () => ({
+  validateEntity: jest.fn(),
   showNotification: jest.fn(),
   NotificationType: {
     INFO: 'INFO',
     SUCCESS: 'SUCCESS',
     WARNING: 'WARNING',
     ERROR: 'ERROR',
-  }
+  },
+  RuleType: {
+    Required: 'Required',
+    MinLength: 'MinLength',
+    MaxLength: 'MaxLength',
+    Min: 'Min',
+    Max: 'Max',
+    Email: 'Email',
+    WebSite: 'WebSite',
+    MatchRegExp: 'MatchRegExp',
+  },
+  commonRules: {},
 }));
 const dispatchMock = jest.fn();
 const updateUserInfoMock = jest.fn();
@@ -30,9 +45,21 @@ describe('Starter page - Profile step - handle submit action', () => {
     authApi.updateProfile.mockClear();
     // @ts-ignore
     authApi.updateAvatar.mockClear();
+    // @ts-ignore
+    validateEntity.mockClear();
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: false,
+      errors: null,
+    });
   });
 
   it('should validate the profile and dispatch set_errors action', async () => {
+    // @ts-ignore
+    validateEntity.mockReturnValue({
+      hasErrors: true,
+      errors: { field: 'error' },
+    });
     const profile: any = {
       email: 'email',
       verificationLevel: VerificationLevel.CODE_VERIFIED,
@@ -49,7 +76,7 @@ describe('Starter page - Profile step - handle submit action', () => {
     expect(dispatchMock).toHaveBeenCalledTimes(1);
     expect(dispatchMock).toHaveBeenCalledWith({
       type: ProfileStepActions.SET_ERRORS,
-      payload: validateEntity(profile, profileRules).errors,
+      payload: { field: 'error' },
     });
   });
 

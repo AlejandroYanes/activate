@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { getFontShadeColor } from 'helpers';
-import UsersList from '../../../experience/UsersList';
+import { getFontShadeColor } from 'activate-components';
+import UsersList from 'components/experience/UsersList';
 
 export const Container = styled.section`
   height: calc(100vh - 64px);

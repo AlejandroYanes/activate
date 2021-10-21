@@ -1,8 +1,11 @@
+import {
+  NotificationType,
+  showNotification,
+  validateEntity,
+} from 'activate-components';
 import authApi from 'api/auth';
 import { ApiErrorResponse, ApiErrorType } from 'api/base';
 import { ProfileDto, UserInfo } from 'models/user';
-import { validateEntity } from 'helpers';
-import { NotificationType, showNotification } from 'notifications';
 import { profileRules } from '../rules';
 import { ProfileFormActions } from '../reducer';
 import { AvatarOptions } from '../types';

@@ -1,8 +1,8 @@
 import { FunctionComponent, useEffect } from 'react';
 import { useQueryClient } from 'react-query';
+import { Stepper } from 'activate-components';
 import categoriesApi from 'api/categories';
 import { QueryKey } from 'components/providers/Query';
-import Stepper from 'components/base-components/Stepper';
 import VerificationStep from './steps/VerificationStep';
 import ProfileStep from './steps/ProfileStep';
 import InterestsStep from './steps/InterestsStep';

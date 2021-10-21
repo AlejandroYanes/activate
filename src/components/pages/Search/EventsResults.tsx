@@ -1,13 +1,11 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { Button, FlexBox, Layout, useAppLayout } from 'activate-components';
 import eventsApi from 'api/events';
 import { parseSearchQuery } from 'helpers';
 import { Modals } from 'components/modals';
 import { QueryKey } from 'components/providers/Query';
-import { Layout, useAppLayout } from 'components/providers/Layout';
-import { Button } from 'components/base-components/Button';
-import FlexBox from 'components/base-components/FlexBox';
 import { LoadingScreen, NoConnectionScreen } from 'components/experience/Screens';
 import EventsGrid from 'components/experience/EventsGrid';
 import EventSortBy from 'components/experience/EventSortBy';

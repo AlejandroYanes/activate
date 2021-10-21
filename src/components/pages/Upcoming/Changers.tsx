@@ -1,10 +1,7 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Layout } from 'components/providers/Layout';
+import { Button, FlexBox, Layout, RenderByLayout } from 'activate-components';
 import EventSortBy from 'components/experience/EventSortBy';
-import { Button } from 'components/base-components/Button';
-import FlexBox from 'components/base-components/FlexBox';
-import RenderByLayout from 'components/base-components/RenderByLayout';
 import { Modals } from 'components/modals';
 
 const PrimaryChangers: FunctionComponent = () => {

@@ -1,4 +1,9 @@
-import { commonRules, RuleType, userNameRegex, ValidationRule } from 'helpers';
+import {
+  commonRules,
+  RuleType,
+  userNameRegex,
+  ValidationRule,
+} from 'activate-components';
 
 const { required, email } = commonRules;
 

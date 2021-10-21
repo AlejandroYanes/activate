@@ -1,8 +1,6 @@
 import React, { FunctionComponent } from 'react';
+import { FlexBox, formatDateTime, Paragraph, Text } from 'activate-components';
 import { EventModel } from 'models/event';
-import { formatDateTime } from 'helpers';
-import { Paragraph, Text } from 'components/base-components/Typography';
-import FlexBox from 'components/base-components/FlexBox';
 import Attendance from 'components/experience/Attendance';
 import { paragraphs } from './description';
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { getPositionStyles } from 'helpers';
+import { getPositionStyles } from 'activate-components';
 
 export const getHeight = (props) => {
   const { height } = props;

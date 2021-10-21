@@ -1,7 +1,5 @@
 import { FunctionComponent } from 'react';
-import { PositionProps } from 'helpers';
-import { SpinningDots } from 'components/base-components/Loaders';
-import FlexBox from 'components/base-components/FlexBox';
+import { FlexBox, PositionProps, SpinningDots } from 'activate-components';
 
 const LoadingScreen: FunctionComponent<PositionProps> = (props) => {
   return (

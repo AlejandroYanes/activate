@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import { useQuery } from 'react-query';
+import { Tab, Tabset } from 'activate-components';
 import usersApi from 'api/users';
 import { ProfileStats } from 'models/user';
 import { QueryKey } from 'components/providers/Query';
 import { useAuthData } from 'components/providers/Auth';
-import { Tab, Tabset } from 'components/base-components/Tabset';
 import ProfileCard from 'components/experience/ProfileCard';
 import { Tabs } from '../';
 
