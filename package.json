@@ -13,7 +13,7 @@
     "eject": "react-scripts eject",
     "test:e2e": "cypress open",
     "lint": "CI=true eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}' --fix",
+    "lint:fix": "CI=true eslint --ext=jsx,ts,tsx 'src/**/*.{ts,tsx}' --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "analize": "source-map-explorer 'build/static/js/*.js'"
@@ -50,7 +50,7 @@
     "usePathForSuiteName": "true"
   },
   "dependencies": {
-    "activate-components": "^0.0.11",
+    "activate-components": "^0.0.12",
     "autosize": "^4.0.2",
     "axios": "0.21.2",
     "date-fns": "^2.16.1",
