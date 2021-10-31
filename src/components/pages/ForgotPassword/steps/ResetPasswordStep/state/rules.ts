@@ -1,4 +1,4 @@
-import { commonRules, RuleType } from 'helpers';
+import { commonRules, RuleType } from 'activate-components';
 
 const { required, password } = commonRules;
 
