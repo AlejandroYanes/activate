@@ -50,7 +50,7 @@
     "usePathForSuiteName": "true"
   },
   "dependencies": {
-    "activate-components": "^0.0.12",
+    "activate-components": "^0.0.13",
     "autosize": "^4.0.2",
     "axios": "0.21.2",
     "date-fns": "^2.16.1",
