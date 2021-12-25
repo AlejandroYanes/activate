@@ -22,19 +22,12 @@ axiosInstance.interceptors.request.use(
     }
     return request;
   },
-  (error) => {
-    const { response: { data } } = error;
-    return Promise.reject(data);
-  },
 );
 
-axiosInstance.interceptors.response.use(
-  undefined,
-  (error) => {
-    const { response: { data } } = error;
-    return Promise.reject(data);
-  },
-);
+function resolveErrorData(error) {
+  const { response: { data } } = error;
+  return data;
+}
 
 export function get(endpoint: string, options: Options = {}) {
   const { headers, params } = options;
@@ -45,6 +38,9 @@ export function get(endpoint: string, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       ...headers,
     },
+  }).catch(error => {
+    const errorData = resolveErrorData(error);
+    return Promise.reject(errorData);
   });
 }
 
@@ -57,6 +53,9 @@ export function post(endpoint: string, data: any, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       ...headers,
     },
+  }).catch(error => {
+    const errorData = resolveErrorData(error);
+    return Promise.reject(errorData);
   });
 }
 
@@ -69,6 +68,9 @@ export function put(endpoint: string, data: any, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       ...headers,
     },
+  }).catch(error => {
+    const errorData = resolveErrorData(error);
+    return Promise.reject(errorData);
   });
 }
 
@@ -81,6 +83,9 @@ export function patch(endpoint: string, data: any, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       ...headers,
     },
+  }).catch(error => {
+    const errorData = resolveErrorData(error);
+    return Promise.reject(errorData);
   });
 }
 
@@ -93,5 +98,8 @@ export function del(endpoint: string, options: Options = {}) {
       'Content-Type': ApiContentType.JSON,
       ...headers,
     },
+  }).catch(error => {
+    const errorData = resolveErrorData(error);
+    return Promise.reject(errorData);
   });
 }
